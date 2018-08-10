@@ -1,0 +1,67 @@
+//
+// Copyright (C) 2017-2018 HERE Europe B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+import MSDKUI
+import NMAKit
+import UIKit
+
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
+
+    // swiftlint:disable:next discouraged_optional_collection
+    func application(_: UIApplication, didFinishLaunchingWithOptions _: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        // Sets the NMA credentials, otherwise aborts execution
+        guard NMAApplicationContext.setAppId(NMACredentials.appID, appCode: NMACredentials.appCode, licenseKey: NMACredentials.licenseKey) == .none else {
+            return false
+        }
+
+        // How to update the visual styling for the general look & feel?
+        // The first method is updating Styles.shared object properties:
+        //     Styles.shared.routeDescriptionListBackgroundColor = UIColor.green
+        // The second method is updating the class appearance like this:
+        //     MSDKUI.ManeuverDescriptionItem.appearance().addressLabel.textColor = UIColor.red
+
+        // We want to have custom navigation bars to be inline with the default components styling
+        UINavigationBar.appearance().barTintColor = UIColor.colorBackgroundDark
+        UINavigationBar.appearance().tintColor = UIColor.colorForegroundLight
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.colorForegroundLight]
+        UINavigationBar.appearance().isTranslucent = false
+        UINavigationBar.appearance().shadowImage = UIImage()
+
+        // We want to update the status bar color to be inline with the default components styling
+        UIApplication.shared.statusBarStyle = .lightContent
+        let statusBar: UIView = UIApplication.shared.value(forKey: "statusBar") as! UIView
+        statusBar.backgroundColor = UIColor.colorBackgroundDark
+
+        // Set up map matching
+        NMAPositioningManager.sharedInstance().mapMatchingEnabled = true
+
+        return true
+    }
+
+    func applicationDidBecomeActive(_: UIApplication) {
+        // Start the positioning manager if not started already
+        if !NMAPositioningManager.sharedInstance().isActive {
+            NMAPositioningManager.sharedInstance().startPositioning()
+        }
+    }
+
+    func applicationWillTerminate(_: UIApplication) {
+        // Stop the positioning manager
+        NMAPositioningManager.sharedInstance().stopPositioning()
+    }
+}
