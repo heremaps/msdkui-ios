@@ -18,45 +18,39 @@ Rapidly build beautiful UIs for common use cases and scenarios within minutes. V
 The HERE Mobile SDK UI Kit comes with various high- and low-level components supporting core use cases around the HERE Mobile SDK. Along with these components we deliver a rich set of supportive controls and tailored data structures to further reduce your development cost. All components can be freely arranged in your layouts and are highly customizable. More components will be delivered as part of the next releases. We already provide UI-centric support for the following features:
 
 - **Route Planner**
- - Waypoint list (start,  stop, incl. support for stopovers, drag & drop sorting)
- - Transport mode panel (to select transport type)
- - Traffic options panel
- - Different route options (including different sub-views for trucks like tunnel or hazardous goods)
- - Travel time options and picker (to select departure or arrival times)
-
-
+	- Waypoint list (start,  stop, incl. support for stopovers, drag & drop sorting)
+	- Transport mode panel (to select transport type)
+	- Traffic options panel
+	- Different route options (including different sub-views for trucks like tunnel or hazardous goods)
+	- Travel time options and picker (to select departure or arrival times)
 - **Route Summary**
- - Route description item (shows localized route details including user options)
- - Route description list (shows alternative routes in an overview)
-
-
+	- Route description item (shows localized route details including user options)
+	- Route description list (shows alternative routes in an overview)
 - **Route Maneuver**
- - Localized maneuver instructions and icons assembled out of the raw route data
- - Maneuver description item (shows actions and turns)
- - Maneuver description list (shows maneuver details of a route in an overview)
+	- Localized maneuver instructions and icons assembled out of the raw route data
+	- Maneuver description item (shows actions and turns)
+	- Maneuver description list (shows maneuver details of a route in an overview)
+- **Guidance**
+	- Localized guidance instructions and icons assembled out of the raw route data
+	- Guidance maneuver panel (shows upcoming actions and turns during navigation)
 
+## Localization
+The HERE Mobile SDK UI Kit is already fully localized for the following languages:
 
- - **Guidance**
-  - Localized guidance instructions and icons assembled out of the raw route data
-  - Guidance maneuver panel (shows upcoming actions and turns during navigation)
-
-
- ## Localization
- The HERE Mobile SDK UI Kit is already fully localized for the following languages:
-     * Chinese (Taiwan)
-     * English (UK)
-     * English (US)
-     * Filipino
-     * French
-     * German
-     * Hindi
-     * Italian
-     * Polish
-     * Portuguese (Brazil)
-     * Spanish (Spain)
-     * Turkish
-     * Ukrainian
-     * Vietnamese
+* Chinese (Taiwan)
+* English (UK)
+* English (US)
+* Filipino
+* French
+* German
+* Hindi
+* Italian
+* Polish
+* Portuguese (Brazil)
+* Spanish (Spain)
+* Turkish
+* Ukrainian
+* Vietnamese
 
 ## Supported platforms
 The HERE Mobile SDK UI Kit components are available for iOS and Android. The required HERE Mobile SDK is Version 3.8 or newer, only the _Premium edition_ is supported. The HERE Mobile SDK UI Kit supports scooter routing. Please, make sure to extend your license key if you want to include scooter routing in your app.
