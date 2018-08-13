@@ -56,6 +56,7 @@ The HERE Mobile SDK UI Kit is already fully localized for the following language
 The HERE Mobile SDK UI Kit components are available for iOS and Android. The required HERE Mobile SDK is Version 3.8 or newer, only the _Premium edition_ is supported. The HERE Mobile SDK UI Kit supports scooter routing. Please, make sure to extend your license key if you want to include scooter routing in your app.
 
 **iOS Environment**
+
 - The HERE Mobile SDK UI Kit supports the latest Xcode 9.4.+ and Swift 4.1. Older versions will not work due to incompatibility with the UI Kit framework binary.
 - Minimum deployment target is iOS 10.0
 
