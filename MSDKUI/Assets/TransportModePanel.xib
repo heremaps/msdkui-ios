@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <button opaque="NO" tag="1000" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3qE-JF-MIi">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <color key="backgroundColor" red="0.30980392159999998" green="0.76470588240000004" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+            <accessibility key="accessibilityConfiguration" identifier="TransportModePanel.button"/>
+            <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <point key="canvasLocation" x="56" y="11"/>
+        </button>
+        <view tag="1001" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UQd-Ks-anI" userLabel="Selector View">
+            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+            <subviews>
+                <view tag="1000" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6i9-eK-Ndu" userLabel="Marker">
+                    <rect key="frame" x="0.0" y="46" width="50" height="4"/>
+                    <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="4" id="CKz-ek-WqK"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <accessibility key="accessibilityConfiguration" identifier="TransportModePanel.selectorView"/>
+            <constraints>
+                <constraint firstItem="6i9-eK-Ndu" firstAttribute="bottom" secondItem="UQd-Ks-anI" secondAttribute="bottom" id="YSY-74-4lf"/>
+                <constraint firstItem="6i9-eK-Ndu" firstAttribute="trailing" secondItem="UQd-Ks-anI" secondAttribute="trailing" id="hxk-ib-vS4"/>
+                <constraint firstItem="6i9-eK-Ndu" firstAttribute="leading" secondItem="UQd-Ks-anI" secondAttribute="leading" id="leg-Ed-pA9"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="147" y="-58"/>
+        </view>
+    </objects>
+</document>

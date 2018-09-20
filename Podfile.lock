@@ -1,0 +1,35 @@
+PODS:
+  - EarlGrey (1.14.0)
+  - HEREMaps (3.8.0)
+  - MSDKUI (1.4.0):
+    - HEREMaps (= 3.8)
+  - OCMock (3.4.1)
+  - SwiftLint (0.27.0)
+
+DEPENDENCIES:
+  - EarlGrey (= 1.14.0)
+  - MSDKUI (from `./`)
+  - OCMock (= 3.4.1)
+  - SwiftLint (= 0.27.0)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - EarlGrey
+    - HEREMaps
+    - OCMock
+    - SwiftLint
+
+EXTERNAL SOURCES:
+  MSDKUI:
+    :path: "./"
+
+SPEC CHECKSUMS:
+  EarlGrey: 334a8a524345243392a8cf5f15f7d2ad030441f7
+  HEREMaps: c7298270d1c9b5655b361f9fad7bc6c531b9df08
+  MSDKUI: e3e7d3a03046c1e8e065003bc6fc8b871d96ee7c
+  OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
+  SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
+
+PODFILE CHECKSUM: 2beb3be42a0482c44080e3282367e54cd1fbdb1a
+
+COCOAPODS: 1.5.3

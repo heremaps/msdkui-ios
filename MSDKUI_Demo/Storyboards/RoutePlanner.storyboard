@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--ViewController-->
+        <scene sceneID="ufC-wZ-h7g">
+            <objects>
+                <viewController storyboardIdentifier="ViewController" title="ViewController" automaticallyAdjustsScrollViewInsets="NO" id="vXZ-lx-hvc" customClass="ViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
+                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bEt-Uh-cfk">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="MSDK UI Demo" id="HTL-zk-yNH">
+                                        <barButtonItem key="leftBarButtonItem" title="Exit" id="nmJ-Gy-LYH">
+                                            <connections>
+                                                <action selector="onExit:" destination="vXZ-lx-hvc" id="nHs-Z3-fal"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Item" id="qpB-CV-T0r">
+                                            <connections>
+                                                <action selector="onRight:" destination="vXZ-lx-hvc" id="3q9-oJ-a6R"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cUk-FX-UpW" userLabel="Canvas View">
+                                <rect key="frame" x="0.0" y="64" width="375" height="191"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="d3H-IW-5g4">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="191"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P1O-lV-Bog" userLabel="WaypointList + Buttons">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="95"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l3M-Ns-Awe" userLabel="Swap" customClass="IconButton" customModule="MSDKUI_Demo" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="95"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="ph6-NZ-jph"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeProxy" value="swap"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="onSwap:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Yya-v5-TAp"/>
+                                                        </connections>
+                                                    </button>
+                                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="csL-mS-KxH" customClass="WaypointList" customModule="MSDKUI">
+                                                        <rect key="frame" x="50" y="0.0" width="275" height="95"/>
+                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </tableView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X2k-Up-tT3" userLabel="Add" customClass="IconButton" customModule="MSDKUI_Demo" customModuleProvider="target">
+                                                        <rect key="frame" x="325" y="0.0" width="50" height="95"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="VwK-gD-LGy"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeProxy" value="add"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="onAdd:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Ibl-pe-tX7"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aFR-eB-cct" customClass="TransportModePanel" customModule="MSDKUI">
+                                                <rect key="frame" x="0.0" y="95" width="375" height="48"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="48" id="Ciy-kf-4zL"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pPM-qa-2Q9" userLabel="Travel Time Panel + Options">
+                                                <rect key="frame" x="0.0" y="143" width="375" height="48"/>
+                                                <subviews>
+                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gGD-aQ-OAR" customClass="TravelTimePanel" customModule="MSDKUI">
+                                                        <rect key="frame" x="0.0" y="0.0" width="325" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="48" id="0mc-ex-Gqq"/>
+                                                        </constraints>
+                                                    </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwg-DI-FW5" customClass="IconButton" customModule="MSDKUI_Demo" customModuleProvider="target">
+                                                        <rect key="frame" x="325" y="0.0" width="50" height="48"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="8ey-6J-JFE"/>
+                                                        </constraints>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="typeProxy" value="options"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="onOptions:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="B3s-v1-3uI"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.086274509803921567" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="d3H-IW-5g4" firstAttribute="top" secondItem="cUk-FX-UpW" secondAttribute="top" id="eFA-eu-L5X"/>
+                                    <constraint firstItem="d3H-IW-5g4" firstAttribute="leading" secondItem="cUk-FX-UpW" secondAttribute="leading" id="gDe-1w-GN8"/>
+                                    <constraint firstAttribute="bottom" secondItem="d3H-IW-5g4" secondAttribute="bottom" id="qic-HU-e1J"/>
+                                    <constraint firstAttribute="trailing" secondItem="d3H-IW-5g4" secondAttribute="trailing" id="xfI-F7-lhK"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="riT-Py-uCJ" customClass="RouteDescriptionList" customModule="MSDKUI">
+                                <rect key="frame" x="0.0" y="255" width="375" height="412"/>
+                                <color key="backgroundColor" red="0.18039215689999999" green="0.83529411760000005" blue="0.78823529410000004" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5b-XW-5tT" customClass="NMAMapView">
+                                <rect key="frame" x="0.0" y="255" width="375" height="412"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KKI-L3-eM9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="Rdf-tw-GRz">
+                                        <rect key="frame" x="169.5" y="315" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Rdf-tw-GRz" firstAttribute="centerX" secondItem="KKI-L3-eM9" secondAttribute="centerX" id="TJh-Nj-2w4"/>
+                                    <constraint firstItem="Rdf-tw-GRz" firstAttribute="centerY" secondItem="KKI-L3-eM9" secondAttribute="centerY" id="e4G-RC-cRC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="bEt-Uh-cfk" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="0Sk-9i-erb"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="riT-Py-uCJ" secondAttribute="bottom" id="5wX-92-rtG"/>
+                            <constraint firstAttribute="trailing" secondItem="KKI-L3-eM9" secondAttribute="trailing" id="84B-vA-fvW"/>
+                            <constraint firstItem="cUk-FX-UpW" firstAttribute="top" secondItem="bEt-Uh-cfk" secondAttribute="bottom" id="HRX-Oz-mcN"/>
+                            <constraint firstItem="KKI-L3-eM9" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="I0H-78-Jhg"/>
+                            <constraint firstItem="KKI-L3-eM9" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="K0H-2s-u6Z"/>
+                            <constraint firstItem="riT-Py-uCJ" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Vr9-32-GLd"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="KKI-L3-eM9" secondAttribute="bottom" id="XGy-4G-4fQ"/>
+                            <constraint firstItem="2fi-mo-0CV" firstAttribute="top" secondItem="o5b-XW-5tT" secondAttribute="bottom" id="bS6-5d-LnX"/>
+                            <constraint firstItem="bEt-Uh-cfk" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" id="bfO-uO-BMy"/>
+                            <constraint firstItem="o5b-XW-5tT" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="dFl-jK-8sQ"/>
+                            <constraint firstItem="cUk-FX-UpW" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="dcX-GZ-nF1"/>
+                            <constraint firstItem="riT-Py-uCJ" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailing" id="eHZ-rI-mrg"/>
+                            <constraint firstItem="o5b-XW-5tT" firstAttribute="top" secondItem="cUk-FX-UpW" secondAttribute="bottom" id="eav-ff-n2f"/>
+                            <constraint firstItem="bEt-Uh-cfk" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailing" id="kpL-Vb-asY"/>
+                            <constraint firstItem="o5b-XW-5tT" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailing" id="oL0-rv-dej"/>
+                            <constraint firstItem="cUk-FX-UpW" firstAttribute="trailing" secondItem="kh9-bI-dsS" secondAttribute="trailing" id="pwi-El-sxJ"/>
+                            <constraint firstItem="riT-Py-uCJ" firstAttribute="top" secondItem="cUk-FX-UpW" secondAttribute="bottom" id="yrt-UO-mfC"/>
+                        </constraints>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout" bottom="YES"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="Rdf-tw-GRz" id="E2n-DK-OxR"/>
+                        <outlet property="exitButton" destination="nmJ-Gy-LYH" id="zZ6-15-BWe"/>
+                        <outlet property="hudView" destination="KKI-L3-eM9" id="4hz-3n-YeZ"/>
+                        <outlet property="mapView" destination="o5b-XW-5tT" id="qgE-rb-vvz"/>
+                        <outlet property="optionsButton" destination="fwg-DI-FW5" id="rdj-5n-7AB"/>
+                        <outlet property="rightButton" destination="qpB-CV-T0r" id="XyR-Nt-e28"/>
+                        <outlet property="routesList" destination="riT-Py-uCJ" id="ubv-pS-Ckr"/>
+                        <outlet property="titleItem" destination="HTL-zk-yNH" id="qYe-Rj-Se9"/>
+                        <outlet property="transportModePanel" destination="aFR-eB-cct" id="wbx-4x-djP"/>
+                        <outlet property="travelTimePanel" destination="gGD-aQ-OAR" id="2y7-m6-cqw"/>
+                        <outlet property="waypointList" destination="csL-mS-KxH" id="Hac-bI-HfH"/>
+                        <outlet property="waypointListStackView" destination="P1O-lV-Bog" id="RAF-YQ-zf2"/>
+                        <segue destination="tEd-w8-XhM" kind="showDetail" identifier="ShowOptions" id="K6W-do-Wcs"/>
+                        <segue destination="B7X-3o-UZn" kind="showDetail" identifier="ShowRoute" id="ocC-dc-dCG"/>
+                        <segue destination="X0h-Jl-RXm" kind="showDetail" identifier="ShowWaypoint" id="3HV-RD-9uU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-734" y="-485"/>
+        </scene>
+        <!--Options View Controller-->
+        <scene sceneID="ZEa-NR-5HK">
+            <objects>
+                <viewController storyboardIdentifier="OptionsViewController" id="tEd-w8-XhM" customClass="OptionsViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dtH-Dy-gUk"/>
+                        <viewControllerLayoutGuide type="bottom" id="ueG-Uq-35c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="7IA-no-2Nh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NwU-6b-bwa">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Options" id="zzd-8S-kku">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="E6S-I1-Pdk">
+                                            <connections>
+                                                <action selector="onBack:" destination="tEd-w8-XhM" id="263-hp-jzD"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="bac-nR-eKg">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="gray" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="Option" id="jk9-bN-w0S">
+                                        <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="jk9-bN-w0S" id="ERb-Ed-Ja4">
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tEd-w8-XhM" id="p4m-RY-04v"/>
+                                    <outlet property="delegate" destination="tEd-w8-XhM" id="Cm0-e4-6nk"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15294117647058825" green="0.17254901960784313" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="bac-nR-eKg" firstAttribute="top" secondItem="NwU-6b-bwa" secondAttribute="bottom" id="Kx6-WV-nQS"/>
+                            <constraint firstItem="NwU-6b-bwa" firstAttribute="top" secondItem="dtH-Dy-gUk" secondAttribute="bottom" id="PP0-c5-fpp"/>
+                            <constraint firstItem="NwU-6b-bwa" firstAttribute="leading" secondItem="7IA-no-2Nh" secondAttribute="leading" id="pwT-9l-Hwe"/>
+                            <constraint firstItem="bac-nR-eKg" firstAttribute="leading" secondItem="7IA-no-2Nh" secondAttribute="leading" id="wTd-jr-4bD"/>
+                            <constraint firstItem="bac-nR-eKg" firstAttribute="trailing" secondItem="7IA-no-2Nh" secondAttribute="trailing" id="xZS-gc-CT2"/>
+                            <constraint firstItem="NwU-6b-bwa" firstAttribute="trailing" secondItem="7IA-no-2Nh" secondAttribute="trailing" id="xaO-JY-fnI"/>
+                            <constraint firstItem="bac-nR-eKg" firstAttribute="bottom" secondItem="ueG-Uq-35c" secondAttribute="top" id="yiq-tN-Gfu"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="E6S-I1-Pdk" id="tz0-23-fCw"/>
+                        <outlet property="tableView" destination="bac-nR-eKg" id="je1-XS-44C"/>
+                        <outlet property="titleItem" destination="zzd-8S-kku" id="Rhw-ta-zde"/>
+                        <segue destination="M19-i3-UH0" kind="showDetail" identifier="ShowPanel" id="kCy-iZ-Fyu"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JrP-qg-Y5R" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1529" y="-1378"/>
+        </scene>
+        <!--Option Panel View Controller-->
+        <scene sceneID="4oR-Va-pHl">
+            <objects>
+                <viewController storyboardIdentifier="OptionPanelViewController" id="M19-i3-UH0" customClass="OptionPanelViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UAJ-mU-FaU"/>
+                        <viewControllerLayoutGuide type="bottom" id="wQA-lq-k1R"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e8W-3E-Hbd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l9p-nQ-as9">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Panel Title" id="UB2-Sm-mr1">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="rxU-c1-cki">
+                                            <connections>
+                                                <action selector="onBack:" destination="M19-i3-UH0" id="Lig-SI-aJr"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XXi-fY-dmX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.1529411765" green="0.17254901959999999" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XXi-fY-dmX" firstAttribute="bottom" secondItem="wQA-lq-k1R" secondAttribute="top" id="3hQ-Pc-P0x"/>
+                            <constraint firstItem="l9p-nQ-as9" firstAttribute="top" secondItem="UAJ-mU-FaU" secondAttribute="bottom" id="PJ5-0h-WHn"/>
+                            <constraint firstItem="XXi-fY-dmX" firstAttribute="trailing" secondItem="e8W-3E-Hbd" secondAttribute="trailing" id="UtJ-0Y-u5p"/>
+                            <constraint firstItem="XXi-fY-dmX" firstAttribute="leading" secondItem="e8W-3E-Hbd" secondAttribute="leading" id="WJL-XB-8kz"/>
+                            <constraint firstItem="l9p-nQ-as9" firstAttribute="leading" secondItem="e8W-3E-Hbd" secondAttribute="leading" id="Yht-51-AuR"/>
+                            <constraint firstItem="XXi-fY-dmX" firstAttribute="top" secondItem="l9p-nQ-as9" secondAttribute="bottom" id="aw8-fw-jfU"/>
+                            <constraint firstItem="XXi-fY-dmX" firstAttribute="top" secondItem="l9p-nQ-as9" secondAttribute="bottom" id="kQQ-8D-Hyc"/>
+                            <constraint firstItem="l9p-nQ-as9" firstAttribute="trailing" secondItem="e8W-3E-Hbd" secondAttribute="trailing" id="yvg-36-F9D"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="backButton" destination="rxU-c1-cki" id="p1Y-gV-Nvs"/>
+                        <outlet property="scrollView" destination="XXi-fY-dmX" id="t7Z-Y9-sRZ"/>
+                        <outlet property="titleItem" destination="UB2-Sm-mr1" id="hPG-f7-tNh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ryu-Ix-CPO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3113" y="-1379"/>
+        </scene>
+        <!--Route View Controller-->
+        <scene sceneID="SX9-G4-kWF">
+            <objects>
+                <viewController storyboardIdentifier="RouteViewController" id="B7X-3o-UZn" customClass="RouteViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3rZ-8Q-sm4"/>
+                        <viewControllerLayoutGuide type="bottom" id="hKn-re-cx5"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RtG-cX-9gM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="htw-9a-jog">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </textAttributes>
+                                <items>
+                                    <navigationItem title="Route preview" id="ke0-mh-UEN">
+                                        <barButtonItem key="leftBarButtonItem" title="Back" style="done" id="MsU-cH-HAO">
+                                            <connections>
+                                                <action selector="onBack:" destination="B7X-3o-UZn" id="2nA-1x-sHJ"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Aov-TM-T2Q" userLabel="Map + Route">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pmy-0f-4eG" customClass="NMAMapView">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Bl5-OJ-EBM" userLabel="Route">
+                                        <rect key="frame" x="0.0" y="325" width="375" height="278"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kn8-BX-dk9" userLabel="Top Line View">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="1" id="tCp-NV-WeJ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wh3-pt-dw3" customClass="RouteDescriptionItem" customModule="MSDKUI">
+                                                <rect key="frame" x="0.0" y="1" width="375" height="81"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="81" id="zuX-zW-aoa"/>
+                                                </constraints>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="visibleSectionsProxy" value="icon|duration|delay|length|time"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FO9-gF-2ZL" userLabel="Bottom Line View">
+                                                <rect key="frame" x="0.0" y="82" width="375" height="1"/>
+                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.84999999999999998" colorSpace="calibratedRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="1" id="Sw9-hu-H5d"/>
+                                                </constraints>
+                                            </view>
+                                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3Av-xR-JW7" customClass="ManeuverDescriptionList" customModule="MSDKUI">
+                                                <rect key="frame" x="0.0" y="83" width="375" height="195"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="195" id="yGy-YL-Tvl"/>
+                                                </constraints>
+                                            </tableView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <view hidden="YES" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="181-be-3sc">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="jYp-r0-LRC">
+                                        <rect key="frame" x="169.5" y="283" width="37" height="37"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="jYp-r0-LRC" firstAttribute="centerX" secondItem="181-be-3sc" secondAttribute="centerX" id="UXh-So-r3W"/>
+                                    <constraint firstItem="jYp-r0-LRC" firstAttribute="centerY" secondItem="181-be-3sc" secondAttribute="centerY" id="pPA-yc-a1n"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.15294117647058825" green="0.17254901960784313" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="181-be-3sc" firstAttribute="trailing" secondItem="RtG-cX-9gM" secondAttribute="trailing" id="6PK-gL-emu"/>
+                            <constraint firstItem="181-be-3sc" firstAttribute="top" secondItem="htw-9a-jog" secondAttribute="bottom" id="6VO-7f-xff"/>
+                            <constraint firstItem="htw-9a-jog" firstAttribute="top" secondItem="3rZ-8Q-sm4" secondAttribute="bottom" id="9b4-tI-iEx"/>
+                            <constraint firstAttribute="trailing" secondItem="Aov-TM-T2Q" secondAttribute="trailing" id="I3H-o0-1sA"/>
+                            <constraint firstItem="htw-9a-jog" firstAttribute="leading" secondItem="RtG-cX-9gM" secondAttribute="leading" id="IDO-Eu-CMf"/>
+                            <constraint firstItem="hKn-re-cx5" firstAttribute="top" secondItem="181-be-3sc" secondAttribute="bottom" id="Qnq-sV-z1i"/>
+                            <constraint firstItem="Aov-TM-T2Q" firstAttribute="leading" secondItem="RtG-cX-9gM" secondAttribute="leading" id="ra0-PQ-22g"/>
+                            <constraint firstItem="hKn-re-cx5" firstAttribute="top" secondItem="Aov-TM-T2Q" secondAttribute="bottom" id="w6w-6r-DkU"/>
+                            <constraint firstItem="htw-9a-jog" firstAttribute="trailing" secondItem="RtG-cX-9gM" secondAttribute="trailing" id="wvn-MV-f5O"/>
+                            <constraint firstItem="Aov-TM-T2Q" firstAttribute="top" secondItem="htw-9a-jog" secondAttribute="bottom" id="xSr-zg-j0h"/>
+                            <constraint firstItem="181-be-3sc" firstAttribute="leading" secondItem="RtG-cX-9gM" secondAttribute="leading" id="yTo-ac-t2N"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="jYp-r0-LRC" id="S6M-jA-5hF"/>
+                        <outlet property="backButton" destination="MsU-cH-HAO" id="txD-85-c1x"/>
+                        <outlet property="hudView" destination="181-be-3sc" id="4K6-sx-CL5"/>
+                        <outlet property="maneuverList" destination="3Av-xR-JW7" id="Ys1-yh-ZGZ"/>
+                        <outlet property="mapView" destination="pmy-0f-4eG" id="O6J-Aa-OVh"/>
+                        <outlet property="routeDescriptionItem" destination="Wh3-pt-dw3" id="CO7-PK-qWN"/>
+                        <outlet property="routeStackView" destination="Bl5-OJ-EBM" id="BIq-Ey-DIs"/>
+                        <outlet property="titleItem" destination="ke0-mh-UEN" id="rxK-Xp-A5u"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Jo9-z5-QVg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1529" y="-485"/>
+        </scene>
+        <!--WaypointViewController-->
+        <scene sceneID="0eJ-xP-jZa">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="WaypointViewController" storyboardName="DriveNavigation" referencedIdentifier="WaypointViewController" id="X0h-Jl-RXm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlq-WA-wsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-892" y="297"/>
+        </scene>
+    </scenes>
+</document>

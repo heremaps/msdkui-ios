@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SingleChoiceOptionItem" customModule="MSDKUI">
+            <connections>
+                <outlet property="leadingTitleConstraint" destination="V4X-m3-Pcr" id="V8N-eh-UaB"/>
+                <outlet property="pickerView" destination="4zC-FV-eoJ" id="Ptl-h2-7n7"/>
+                <outlet property="titleLabel" destination="zq7-ZF-1t2" id="Kr3-Pl-CRj"/>
+                <outlet property="titleView" destination="VvA-pT-6r8" id="ZgZ-vi-BUa"/>
+                <outlet property="trailingTitleConstraint" destination="bSC-mq-XoE" id="dWs-cB-amM"/>
+                <outlet property="view" destination="iN0-l3-epB" id="tXy-KD-8TF"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Wls-D7-qda">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="148"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvA-pT-6r8">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zq7-ZF-1t2">
+                                    <rect key="frame" x="20" y="0.0" width="335" height="48"/>
+                                    <accessibility key="accessibilityConfiguration" identifier="SingleChoiceOptionItem.label"/>
+                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="zq7-ZF-1t2" firstAttribute="top" secondItem="VvA-pT-6r8" secondAttribute="top" id="BEB-Cj-xCF"/>
+                                <constraint firstItem="zq7-ZF-1t2" firstAttribute="leading" secondItem="VvA-pT-6r8" secondAttribute="leading" constant="20" id="V4X-m3-Pcr"/>
+                                <constraint firstItem="zq7-ZF-1t2" firstAttribute="trailing" secondItem="VvA-pT-6r8" secondAttribute="trailing" constant="-20" id="bSC-mq-XoE"/>
+                                <constraint firstItem="zq7-ZF-1t2" firstAttribute="bottom" secondItem="VvA-pT-6r8" secondAttribute="bottom" id="oIF-wt-ZNR"/>
+                                <constraint firstAttribute="height" priority="999" constant="48" id="zmG-rh-lYQ"/>
+                            </constraints>
+                        </view>
+                        <pickerView clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4zC-FV-eoJ">
+                            <rect key="frame" x="0.0" y="48" width="375" height="100"/>
+                            <accessibility key="accessibilityConfiguration" identifier="SingleChoiceOptionItem.pickerView"/>
+                            <constraints>
+                                <constraint firstAttribute="height" priority="999" constant="100" id="5Yg-gl-EJA"/>
+                            </constraints>
+                        </pickerView>
+                    </subviews>
+                </stackView>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="Wls-D7-qda" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="aXt-gE-pT1"/>
+                <constraint firstItem="Wls-D7-qda" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="fo3-UA-14j"/>
+                <constraint firstItem="Wls-D7-qda" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="hsp-tG-sY8"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="42.5" y="71"/>
+        </view>
+    </objects>
+</document>
