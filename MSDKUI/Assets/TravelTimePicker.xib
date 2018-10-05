@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <viewController id="rIJ-Ld-Anm" customClass="TravelTimePicker" customModule="MSDKUI">
+            <layoutGuides>
+                <viewControllerLayoutGuide type="top" id="Gl7-dL-PyB"/>
+                <viewControllerLayoutGuide type="bottom" id="Lpm-oK-dbi"/>
+            </layoutGuides>
+            <view key="view" contentMode="scaleToFill" id="oRe-eZ-tiR">
+                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <subviews>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="4vn-WC-lM0" userLabel="Stack View Main">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <subviews>
+                            <view alpha="0.40000000000000002" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c4i-Qa-PCc" userLabel="Upper Empty View">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="467"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="TravelTimePicker.upperEmptyView"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nQF-ip-xDe" appends="YES" id="5BS-rt-4SC"/>
+                                </connections>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB" userLabel="Canvas View">
+                                <rect key="frame" x="0.0" y="467" width="375" height="200"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVC-9k-qeT" userLabel="Title View">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="DwM-hV-1zb">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2Es-Sf-1vI" userLabel="Cancel Button">
+                                                        <rect key="frame" x="0.0" y="7" width="100" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="TaH-52-lHy"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Cancel">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="dismiss:" destination="rIJ-Ld-Anm" eventType="touchUpInside" id="ZlJ-YV-b2X"/>
+                                                        </connections>
+                                                    </button>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pick time" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="W9e-oN-WCP">
+                                                        <rect key="frame" x="110" y="12" width="155" height="20"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="75M-hL-ieR" userLabel="OK Button">
+                                                        <rect key="frame" x="275" y="7" width="100" height="30"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="100" id="1vP-oQ-FRu"/>
+                                                        </constraints>
+                                                        <state key="normal" title="OK">
+                                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="pickTime:" destination="rIJ-Ld-Anm" eventType="touchUpInside" id="aLN-l1-9ez"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="W9e-oN-WCP" firstAttribute="top" secondItem="DwM-hV-1zb" secondAttribute="top" constant="12" id="SAr-un-E8R"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="TravelTimePicker.titleView"/>
+                                        <constraints>
+                                            <constraint firstItem="DwM-hV-1zb" firstAttribute="leading" secondItem="sVC-9k-qeT" secondAttribute="leading" id="1Pp-Wg-Yld"/>
+                                            <constraint firstAttribute="height" constant="44" id="Mcj-AS-4Hi"/>
+                                            <constraint firstItem="DwM-hV-1zb" firstAttribute="bottom" secondItem="sVC-9k-qeT" secondAttribute="bottom" id="gTy-aZ-mxb"/>
+                                            <constraint firstItem="DwM-hV-1zb" firstAttribute="top" secondItem="sVC-9k-qeT" secondAttribute="top" id="k8k-El-PbZ"/>
+                                            <constraint firstItem="DwM-hV-1zb" firstAttribute="trailing" secondItem="sVC-9k-qeT" secondAttribute="trailing" id="r2T-Sc-wWR"/>
+                                        </constraints>
+                                    </view>
+                                    <datePicker contentMode="scaleToFill" verticalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-Qa-4gJ">
+                                        <rect key="frame" x="10" y="54" width="355" height="142"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <date key="date" timeIntervalSinceReferenceDate="522759222.84468198">
+                                            <!--2017-07-26 10:53:42 +0000-->
+                                        </date>
+                                        <connections>
+                                            <action selector="updateTime:" destination="rIJ-Ld-Anm" eventType="valueChanged" id="oTn-ZW-jtd"/>
+                                        </connections>
+                                    </datePicker>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="TravelTimePicker.pickerView"/>
+                                <constraints>
+                                    <constraint firstItem="ZMD-Qa-4gJ" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" constant="-4" id="6CO-LW-o4c"/>
+                                    <constraint firstAttribute="height" constant="200" id="HeZ-XN-Ou7"/>
+                                    <constraint firstItem="ZMD-Qa-4gJ" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" constant="-10" id="UkE-pU-JEo"/>
+                                    <constraint firstItem="sVC-9k-qeT" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailing" id="WJg-q6-YQf"/>
+                                    <constraint firstItem="ZMD-Qa-4gJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="jZk-8h-Tyk"/>
+                                    <constraint firstItem="sVC-9k-qeT" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kL6-DB-fz8"/>
+                                    <constraint firstItem="ZMD-Qa-4gJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="54" id="lAL-br-idY"/>
+                                    <constraint firstItem="sVC-9k-qeT" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="peC-k1-XJA"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="4vn-WC-lM0" firstAttribute="trailing" secondItem="oRe-eZ-tiR" secondAttribute="trailing" id="0qK-YW-rVY"/>
+                    <constraint firstItem="4vn-WC-lM0" firstAttribute="bottom" secondItem="Lpm-oK-dbi" secondAttribute="top" id="DHZ-BS-a7H"/>
+                    <constraint firstItem="4vn-WC-lM0" firstAttribute="top" secondItem="oRe-eZ-tiR" secondAttribute="top" id="FW9-z2-4oF"/>
+                    <constraint firstItem="4vn-WC-lM0" firstAttribute="leading" secondItem="oRe-eZ-tiR" secondAttribute="leading" id="lNW-oB-z6p"/>
+                </constraints>
+            </view>
+            <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <connections>
+                <outlet property="cancelButton" destination="2Es-Sf-1vI" id="990-wO-dk7"/>
+                <outlet property="canvasView" destination="iN0-l3-epB" id="owq-pa-gVm"/>
+                <outlet property="datePicker" destination="ZMD-Qa-4gJ" id="I7M-8j-WIX"/>
+                <outlet property="okButton" destination="75M-hL-ieR" id="esH-P9-dTy"/>
+                <outlet property="titleLabel" destination="W9e-oN-WCP" id="XFc-mK-TCj"/>
+                <outlet property="titleView" destination="sVC-9k-qeT" id="1us-W9-3HV"/>
+            </connections>
+        </viewController>
+        <tapGestureRecognizer id="nQF-ip-xDe">
+            <connections>
+                <action selector="dismiss:" destination="rIJ-Ld-Anm" id="k0y-5B-Aus"/>
+            </connections>
+        </tapGestureRecognizer>
+    </objects>
+</document>

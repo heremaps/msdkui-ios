@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dn0-HP-acH">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Landing View Controller-->
+        <scene sceneID="PwE-4k-sM0">
+            <objects>
+                <viewController storyboardIdentifier="LandingViewController" id="dn0-HP-acH" customClass="LandingViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="FU0-JO-Ex9"/>
+                        <viewControllerLayoutGuide type="bottom" id="WJD-1u-EmG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dgx-oU-ObZ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onr-rQ-xBy">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="MSDK UI Demo" id="J07-XS-kU8">
+                                        <barButtonItem key="rightBarButtonItem" title="Item" image="Info" id="sBa-c6-eDV">
+                                            <color key="tintColor" red="0.0039215686269999999" green="0.71372549019999998" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="showAboutViewController:" destination="dn0-HP-acH" id="IVe-ru-Vbk"/>
+                                                <segue destination="UZV-dX-fXV" kind="presentation" identifier="AboutSegue" id="cBv-nP-h5u"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91z-DP-Bfl">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="563" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="he6-YF-jk8">
+                                        <rect key="frame" x="20" y="20" width="335" height="500"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="343" translatesAutoresizingMaskIntoConstraints="NO" id="23i-hJ-brZ" userLabel="RoutePlanner Card">
+                                                <rect key="frame" x="0.0" y="0.0" width="335" height="240"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="routeplanner_teaser" translatesAutoresizingMaskIntoConstraints="NO" id="uin-Wp-wHP" userLabel="RoutePlanner Image">
+                                                        <rect key="frame" x="72" y="128" width="263" height="112"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="uin-Wp-wHP" secondAttribute="height" multiplier="263:112" id="46L-jZ-Fko"/>
+                                                            <constraint firstAttribute="height" constant="112" id="UTE-KU-buO"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NKq-UQ-GPT">
+                                                        <rect key="frame" x="20" y="20" width="295" height="89"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Planner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Wk-Wz7">
+                                                                <rect key="frame" x="0.0" y="0.0" width="295" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="25" id="otz-nP-oqI"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get directions for trucks, driving, biking and walking" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-Le-ieu">
+                                                                <rect key="frame" x="0.0" y="29" width="295" height="38"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have  a look" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9j-pX-E8K">
+                                                                <rect key="frame" x="0.0" y="71" width="295" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="0l7-Ao-3oL"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                <color key="textColor" red="0.0039215686269999999" green="0.71372549019999998" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="AUb-Wk-Wz7" firstAttribute="leading" secondItem="NKq-UQ-GPT" secondAttribute="leading" id="7c9-9E-m8Z"/>
+                                                            <constraint firstItem="AUb-Wk-Wz7" firstAttribute="trailing" secondItem="NKq-UQ-GPT" secondAttribute="trailing" id="85u-Fd-LOZ"/>
+                                                            <constraint firstItem="R9j-pX-E8K" firstAttribute="trailing" secondItem="NKq-UQ-GPT" secondAttribute="trailing" id="OZQ-vG-xyL"/>
+                                                            <constraint firstItem="IXg-Le-ieu" firstAttribute="trailing" secondItem="NKq-UQ-GPT" secondAttribute="trailing" id="QqD-RL-OvU"/>
+                                                            <constraint firstItem="R9j-pX-E8K" firstAttribute="leading" secondItem="NKq-UQ-GPT" secondAttribute="leading" id="ZYk-YF-8KB"/>
+                                                            <constraint firstItem="IXg-Le-ieu" firstAttribute="leading" secondItem="NKq-UQ-GPT" secondAttribute="leading" id="hBg-Yt-7Ri"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstItem="uin-Wp-wHP" firstAttribute="bottom" secondItem="23i-hJ-brZ" secondAttribute="bottom" id="CDp-M8-I1m"/>
+                                                    <constraint firstItem="NKq-UQ-GPT" firstAttribute="width" secondItem="23i-hJ-brZ" secondAttribute="width" constant="-40" id="Gh8-bE-QKx"/>
+                                                    <constraint firstItem="NKq-UQ-GPT" firstAttribute="leading" secondItem="23i-hJ-brZ" secondAttribute="leading" constant="20" id="VyN-eI-p78"/>
+                                                    <constraint firstItem="NKq-UQ-GPT" firstAttribute="top" secondItem="23i-hJ-brZ" secondAttribute="top" constant="20" id="WZQ-Ng-rFy"/>
+                                                    <constraint firstItem="uin-Wp-wHP" firstAttribute="trailing" secondItem="23i-hJ-brZ" secondAttribute="trailing" id="mSo-ls-kc0"/>
+                                                    <constraint firstAttribute="height" priority="999" constant="240" id="st7-RT-AqJ"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="lGn-ap-fLV" userLabel="DriveNav Card">
+                                                <rect key="frame" x="0.0" y="260" width="335" height="240"/>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drivenav_teaser" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-rb-Vni" userLabel="DriveNav Image">
+                                                        <rect key="frame" x="72" y="128" width="263" height="112"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" secondItem="SpU-rb-Vni" secondAttribute="height" multiplier="263:112" id="Yf6-da-vDv"/>
+                                                            <constraint firstAttribute="height" constant="112" id="wag-O2-Yx1"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Mct-lS-sdB">
+                                                        <rect key="frame" x="20" y="20" width="295" height="89"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Navigation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbD-ra-XSa">
+                                                                <rect key="frame" x="0.0" y="0.0" width="295" height="25"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="25" id="Ruw-EJ-940"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle2"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help your users get to their destinations with turn-by-turn guidance" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hB1-7Y-w66">
+                                                                <rect key="frame" x="0.0" y="29" width="295" height="38"/>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a look" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcV-t9-0Te">
+                                                                <rect key="frame" x="0.0" y="71" width="295" height="18"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="18" id="9fA-ax-5qE"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                                                <color key="textColor" red="0.0039215686269999999" green="0.71372549019999998" blue="0.69803921570000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="EcV-t9-0Te" firstAttribute="leading" secondItem="Mct-lS-sdB" secondAttribute="leading" id="IbZ-6E-9f3"/>
+                                                            <constraint firstItem="EcV-t9-0Te" firstAttribute="trailing" secondItem="Mct-lS-sdB" secondAttribute="trailing" id="Nfo-l7-uig"/>
+                                                            <constraint firstItem="hB1-7Y-w66" firstAttribute="trailing" secondItem="Mct-lS-sdB" secondAttribute="trailing" id="RAh-XO-kYj"/>
+                                                            <constraint firstItem="qbD-ra-XSa" firstAttribute="leading" secondItem="Mct-lS-sdB" secondAttribute="leading" id="ddf-ey-VV9"/>
+                                                            <constraint firstItem="qbD-ra-XSa" firstAttribute="trailing" secondItem="Mct-lS-sdB" secondAttribute="trailing" id="pbF-Ud-0b2"/>
+                                                            <constraint firstItem="hB1-7Y-w66" firstAttribute="leading" secondItem="Mct-lS-sdB" secondAttribute="leading" id="zjJ-2h-05f"/>
+                                                        </constraints>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" priority="999" constant="240" id="18M-7A-z9r"/>
+                                                    <constraint firstItem="SpU-rb-Vni" firstAttribute="bottom" secondItem="lGn-ap-fLV" secondAttribute="bottom" id="3Ig-EU-gEL"/>
+                                                    <constraint firstItem="Mct-lS-sdB" firstAttribute="leading" secondItem="lGn-ap-fLV" secondAttribute="leading" constant="20" id="ANq-gG-JVT"/>
+                                                    <constraint firstItem="SpU-rb-Vni" firstAttribute="trailing" secondItem="lGn-ap-fLV" secondAttribute="trailing" id="NgS-lw-YUB"/>
+                                                    <constraint firstItem="Mct-lS-sdB" firstAttribute="width" secondItem="lGn-ap-fLV" secondAttribute="width" constant="-40" id="ovp-aL-pKU"/>
+                                                    <constraint firstItem="Mct-lS-sdB" firstAttribute="top" secondItem="lGn-ap-fLV" secondAttribute="top" constant="20" id="yjQ-cA-VEm"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="lGn-ap-fLV" firstAttribute="width" secondItem="23i-hJ-brZ" secondAttribute="width" id="CxZ-lW-Wd2"/>
+                                        </constraints>
+                                        <variation key="heightClass=compact" axis="horizontal"/>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="he6-YF-jk8" secondAttribute="trailing" constant="20" id="8C6-7P-7ew"/>
+                                    <constraint firstItem="he6-YF-jk8" firstAttribute="top" secondItem="91z-DP-Bfl" secondAttribute="top" constant="20" id="9DH-bV-ac3"/>
+                                    <constraint firstItem="he6-YF-jk8" firstAttribute="leading" secondItem="91z-DP-Bfl" secondAttribute="leading" constant="20" id="dTV-nu-y6w"/>
+                                    <constraint firstItem="he6-YF-jk8" firstAttribute="width" secondItem="91z-DP-Bfl" secondAttribute="width" constant="-40" id="fpm-Qh-Ip6"/>
+                                    <constraint firstAttribute="bottom" secondItem="he6-YF-jk8" secondAttribute="bottom" constant="20" id="xH8-sI-Ncd"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="trailing" secondItem="dgx-oU-ObZ" secondAttribute="trailing" id="6NQ-Qi-XeO"/>
+                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="leading" secondItem="dgx-oU-ObZ" secondAttribute="leading" id="9U8-Ix-P6r"/>
+                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="trailing" secondItem="dgx-oU-ObZ" secondAttribute="trailing" id="9u1-bX-fBk"/>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="bottom" secondItem="WJD-1u-EmG" secondAttribute="top" id="H3Z-EJ-ZO9"/>
+                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="top" secondItem="FU0-JO-Ex9" secondAttribute="bottom" id="Ps6-Lb-Ohv"/>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="top" secondItem="Onr-rQ-xBy" secondAttribute="bottom" id="U27-43-K0g"/>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="leading" secondItem="dgx-oU-ObZ" secondAttribute="leading" id="lMS-3v-chU"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="driveNavActionLabel" destination="EcV-t9-0Te" id="kwY-gF-k0S"/>
+                        <outlet property="driveNavHeightConstraint" destination="18M-7A-z9r" id="LbJ-JA-Ca2"/>
+                        <outlet property="driveNavImageView" destination="SpU-rb-Vni" id="iqB-b5-Dcg"/>
+                        <outlet property="driveNavSubtitleLabel" destination="hB1-7Y-w66" id="Uin-i1-PLD"/>
+                        <outlet property="driveNavTitleLabel" destination="qbD-ra-XSa" id="LhQ-WE-OKO"/>
+                        <outlet property="driveNavView" destination="lGn-ap-fLV" id="KYS-5D-zTL"/>
+                        <outlet property="infoButton" destination="sBa-c6-eDV" id="2yE-lC-Pd3"/>
+                        <outlet property="routePannerView" destination="23i-hJ-brZ" id="Rrj-YO-ufo"/>
+                        <outlet property="routePlannerActionLabel" destination="R9j-pX-E8K" id="KNn-86-5d1"/>
+                        <outlet property="routePlannerImageView" destination="uin-Wp-wHP" id="6TB-PF-mfO"/>
+                        <outlet property="routePlannerSubtitleLabel" destination="IXg-Le-ieu" id="UNM-e1-ouW"/>
+                        <outlet property="routePlannerTitleLabel" destination="AUb-Wk-Wz7" id="6rE-kw-JqW"/>
+                        <outlet property="routePlannerViewHeightConstraint" destination="st7-RT-AqJ" id="N6j-vl-Hlo"/>
+                        <outlet property="scrollView" destination="91z-DP-Bfl" id="t5K-uB-Nmv"/>
+                        <outlet property="titleItem" destination="J07-XS-kU8" id="J7k-7y-c2n"/>
+                        <segue destination="X0h-Jl-RXm" kind="showDetail" identifier="ShowDriveNav" id="spS-3D-M3f"/>
+                        <segue destination="WZQ-fK-Fqg" kind="showDetail" identifier="ShowRoutePlanner" id="Q2U-A4-Clb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="spr-FC-92r" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1718" y="139"/>
+        </scene>
+        <!--WaypointViewController-->
+        <scene sceneID="0eJ-xP-jZa">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="WaypointViewController" storyboardName="DriveNavigation" referencedIdentifier="WaypointViewController" id="X0h-Jl-RXm" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hlq-WA-wsg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-993" y="261"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="cSg-v5-4E6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="About" id="UZV-dX-fXV" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QoQ-lQ-WYz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1039" y="-131"/>
+        </scene>
+        <!--ViewController-->
+        <scene sceneID="lwq-YU-oBB">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="ViewController" storyboardName="RoutePlanner" referencedIdentifier="ViewController" id="WZQ-fK-Fqg" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9K7-MN-bsc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1039" y="82"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Info" width="25" height="25"/>
+        <image name="drivenav_teaser" width="263" height="112"/>
+        <image name="routeplanner_teaser" width="263" height="112"/>
+    </resources>
+</document>

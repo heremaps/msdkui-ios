@@ -1,0 +1,121 @@
+//
+// Copyright (C) 2017-2018 HERE Europe B.V.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//   http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+//
+
+import UIKit
+
+/// View for displaying the current speed information.
+@IBDesignable open class GuidanceSpeedView: UIView {
+
+    // MARK: - Outlets
+
+    /// Label for the speed value.
+    @IBOutlet private(set) weak var speedValueLabel: UILabel!
+
+    /// Label for the speed unit.
+    @IBOutlet private(set) weak var speedUnitLabel: UILabel!
+
+    // MARK: - Public properties
+
+    /// The speed used to populate the view.
+    public var speed: Measurement<UnitSpeed> = Measurement(value: 0, unit: .kilometersPerHour) {
+        didSet { updateLabels() }
+    }
+
+    /// Sets the text color of the speed value information.
+    public var speedValueTextColor: UIColor = .colorForeground {
+        didSet { updateLabels() }
+    }
+
+    /// Sets the text color of the speed unit information.
+    public var speedUnitTextColor: UIColor = .colorForegroundSecondary {
+        didSet { updateLabels() }
+    }
+
+    /// Sets the speed unit used by the view.
+    public var unit: UnitSpeed = .kilometersPerHour {
+        didSet { updateLabels() }
+    }
+
+    /// Sets the text alignment of all textual information.
+    public var textAlignment: NSTextAlignment = .left {
+        didSet {
+            speedValueLabel.textAlignment = textAlignment
+            speedUnitLabel.textAlignment = textAlignment
+        }
+    }
+
+    // MARK: - Life cycle
+
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+
+        loadFromNib()
+        setUpView()
+        setUpLabels()
+        setUpViewAccessibility()
+    }
+
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+
+        loadFromNib()
+        setUpView()
+        setUpLabels()
+        setUpViewAccessibility()
+    }
+
+    // MARK: - Private
+
+    /// Sets up the view after initialization.
+    private func setUpView() {
+        backgroundColor = .white
+    }
+
+    /// Sets up labels after view initialization.
+    private func setUpLabels() {
+        updateLabels()
+
+        // Uses monospaced digits for labels
+        speedValueLabel.font = .monospacedDigitSystemFont(ofSize: 22, weight: .bold)
+        speedUnitLabel.font = .monospacedDigitSystemFont(ofSize: 15, weight: .regular)
+    }
+
+    /// Sets up accessibility after view initialization.
+    private func setUpViewAccessibility() {
+        isAccessibilityElement = true
+        accessibilityTraits = .staticText
+        accessibilityIdentifier = "MSDKUI.GuidanceSpeedView"
+        accessibilityLabel = "msdkui_speed".localized
+    }
+
+    /// Updates the labels whenever the viewModel, colors or unit changes.
+    private func updateLabels() {
+        // Converts the speed to the appropriate unit
+        let convertedSpeed = speed.converted(to: unit)
+        let speedValue = NSNumber(value: convertedSpeed.value)
+
+        // Sets labels information
+        speedValueLabel.text = NumberFormatter.roundUpFormatter.string(from: speedValue)
+        speedUnitLabel.text = MeasurementFormatter.shortSpeedFormatter.string(from: unit)
+
+        // Sets the labels colors
+        speedValueLabel.textColor = speedValueTextColor
+        speedUnitLabel.textColor = speedUnitTextColor
+
+        // Update the view accessibility hint when the labels' content change
+        accessibilityHint = MeasurementFormatter.longSpeedFormatter.string(from: convertedSpeed)
+    }
+}
