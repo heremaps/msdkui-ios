@@ -30,9 +30,6 @@ output/
 # Bundler
 .bundle
 
-# Carthage
-Carthage
-
 # CocoaPods
 Pods/
 
