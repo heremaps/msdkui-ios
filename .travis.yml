@@ -8,6 +8,7 @@ branches:
     - master
 
 # unit tests
+
 before_install:
   - gem update --system
 
