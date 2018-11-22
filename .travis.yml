@@ -20,6 +20,6 @@ jobs:
       script: 
         - rake test:msdkui_unit
 
-    - stage: run App UI Tests
+    - stage: run App Unit Tests
       script:
         - rake test:demo_app_unit
