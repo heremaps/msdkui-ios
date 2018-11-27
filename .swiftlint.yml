@@ -1,0 +1,240 @@
+opt_in_rules:
+  # Prefer using `AnyObject` over `class` for class-only protocols.
+  - anyobject_protocol
+
+  # Prefer using `Array(seq)` over `seq.map { $0 }` to convert a sequence into an Array.
+  - array_init
+
+  # Prefer the new block based KVO API with keypaths when using Swift 3.2 or later.
+  - block_based_kvo
+
+  # Closure end should have the same indentation as the line that started it.
+  - closure_end_indentation
+
+  # Closure expressions should have a single space inside each brace.
+  - closure_spacing
+
+  # Conditional statements should always return on the next line.
+  - conditional_returns_on_newline
+
+  # Prefer `contains` over `first(where:) != nil`.
+  - contains_over_first_not_nil
+
+  # Types used for hosting only static members should be implemented as a caseless enum to avoid instantiation.
+  - convenience_type
+
+  # Prefer initializers over object literals.
+  - discouraged_object_literal
+
+  # Prefer non-optional booleans over optional booleans.
+  - discouraged_optional_boolean
+
+  # Prefer non-optional collections over optional collections.
+  - discouraged_optional_collection
+
+  # Prefer checking isEmpty over comparing count to zero.
+  - empty_count
+
+  # Prefer checking isEmpty over comparing string to an empty string literal.
+  - empty_string
+
+  # Empty XCTest method should be avoided.
+  - empty_xctest_method
+
+  #  Explicitly calling .init() should be avoided.
+  - explicit_init
+
+  # Prefer to use extension access modifiers.
+  - extension_access_modifier
+
+  # A fatalError call should have a message.
+  - fatal_error_message
+
+  # Header comments should be consistent with project patterns.
+  - file_header
+
+  # Prefer using .first(where:) over .filter { }.first in collections.
+  - first_where
+
+  # Force tries should be avoided.
+  - force_try
+
+  # Force unwrapping should be avoided.
+  - force_unwrapping
+
+  # Prefer implicit returns in closures.
+  - implicit_return
+
+  # If defer is at the end of its parent scope, it will be executed right where it is anyway.
+  - inert_defer
+
+  # Discouraged explicit usage of the default separator.
+  - joined_default_parameter
+
+  # Prefer using `type.random(in:)` over legacy functions.
+  - legacy_random
+
+  # Ensure definitions have a lower access control level than their enclosing parent
+  - lower_acl_than_parent
+
+  # Declarations should be documented.
+  - missing_docs
+
+  # Modifier order should be consistent.
+  - modifier_order
+
+  # Chained function calls should be either on the same line, or one per line
+  - multiline_function_chains
+
+  # Functions and methods parameters should be either on the same line, or one per line.
+  - multiline_parameters
+
+  # "Fallthroughs can only be used if the `case` contains at least one other statement.
+  - no_fallthrough_only
+
+  # Operators should be surrounded by a single whitespace when they are being used.
+  - operator_usage_whitespace
+
+  # Some overridden methods should always call super.
+  - overridden_super_call
+
+  # Top-level constants should be prefixed by k.
+  - prefixed_toplevel_constant
+
+  # IBActions should be private.
+  - private_action
+
+  # IBOutlets should be private to avoid leaking UIKit to higher layers.
+  - private_outlet
+
+  # Some methods should not call super.
+  - prohibited_super_call
+
+  # nil coalescing operator is only evaluated if the lhs is nil, coalescing operator with nil as rhs is redundant
+  - redundant_nil_coalescing
+
+  # Test files should contain a single QuickSpec or XCTestCase class.
+  - single_test_class
+
+  # Prefer using `min()` or `max()` over `sorted().first` or `sorted().last`.
+  - sorted_first_last
+
+  # Imports should be sorted.
+  - sorted_imports
+
+  # Operators should be declared as static functions, not free functions.
+  - static_operator
+
+  # Cases inside a switch should always be on a newline.
+  - switch_case_on_newline
+
+  # When using trailing closures, empty parentheses should be avoided after the method call.
+  - trailing_closure
+
+  # Unimplemented functions should be marked as unavailable.
+  - unavailable_function
+
+  # Parentheses are not needed when declaring closure arguments.
+  - unneeded_parentheses_in_closure_argument
+
+  # Function parameters should be aligned vertically if they're in multiple lines in a method call.
+  - vertical_parameter_alignment_on_call
+
+  # An XCTFail call should include a description of the assertion.
+  - xctfail_message
+
+  # The variable should be placed on the left, the constant on the right of a comparison operator.
+  - yoda_condition
+
+disabled_rules:
+  # Files should not span too many lines.
+  - file_length
+
+  # TODOs and FIXMEs should be resolved.
+  - todo
+
+  # Type bodies should not span too many lines.
+  - type_body_length
+
+excluded:
+  - .ci/
+  - Pods/
+  - MSDKUI/Classes/Style.swift
+  - MSDKUI_Demo_UI_Tests/EarlGrey.swift
+  - MSDKUI_Demo/NMACredentials.swift
+  - vendor/
+  - Documentation/
+  - output/
+
+force_unwrapping:
+    severity: error
+
+identifier_name:
+  min_length:
+    error: 3
+  max_length: 60
+  excluded:
+    - id
+    - at
+    - to
+
+line_length:
+  warning: 160
+  error: 200
+  ignores_comments: true
+
+nesting:
+  type_level: 2
+type_name:
+  min_length: 3
+  max_length:
+    warning: 50
+    error: 60
+
+function_body_length:
+  warning: 100
+  error: 150
+
+private_outlet:
+  allow_private_set: true
+
+file_header:
+  required_pattern: |
+                    \/\/
+                    \/\/ Copyright \(C\) 2017-\d{4} HERE Europe B\.V\.
+                    \/\/
+                    \/\/ Licensed under the Apache License, Version 2\.0 \(the "License"\);
+                    \/\/ you may not use this file except in compliance with the License\.
+                    \/\/ You may obtain a copy of the License at
+                    \/\/
+                    \/\/   http:\/\/www\.apache\.org\/licenses\/LICENSE-2\.0
+                    \/\/
+                    \/\/ Unless required by applicable law or agreed to in writing, software
+                    \/\/ distributed under the License is distributed on an "AS IS" BASIS,
+                    \/\/ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied\.
+                    \/\/ See the License for the specific language governing permissions and
+                    \/\/ limitations under the License\.
+                    \/\/
+
+custom_rules:
+  localized_string:
+    excluded: "MSDKUI/Classes/ExtensionString.swift|MSDKUI_Tests/TestUtils.swift|MSDKUI_Demo/ExtensionString.swift|Commons_Tests/Extensions/ExtensionXCTestCase.swift"
+    name: "Localized String"
+    regex: "NSLocalizedString(.*[^,], comment: .*[^)])"
+    message: "Please use .localized instead"
+    severity: warning
+  todo_jira:
+    name: "TODO JIRA"
+    regex: 'TODO: (?!MSDKUI).+'
+    message: "TODO must have a JIRA ticket following the format '// TODO: MSDKUI-XYZ ...'"
+    severity: warning
+  comments_space:
+    name: "Blank Space After Comment"
+    regex: '(^ *//\w+)'
+    message: "Please leave a blank space after //"
+    severity: warning
+  empty_line_after_super:
+    name: "Empty Line After Super"
+    regex: '(^ *super\.[ a-zA-Z0-9=?.\(\)\{\}:,><!]*\n *(?!(?:\}|return))\S+)'
+    message: "Please leave an empty line after calling super"
+    severity: warning

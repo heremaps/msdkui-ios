@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uyq-Lq-3mx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MSDKUIPrimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0qw-Nx-WQw">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-DZ-AQK" customClass="WaypointList" customModule="MSDKUI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="159" id="cyS-sj-Lg0"/>
+                                        </constraints>
+                                    </tableView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CMZ-46-GWh">
+                                        <rect key="frame" x="0.0" y="159" width="375" height="70"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTZ-ON-Zld" customClass="TransportModePanel" customModule="MSDKUI">
+                                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJ5-zz-3ng" customClass="NMAMapView">
+                                        <rect key="frame" x="0.0" y="229" width="375" height="318"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6o-IU-UWw">
+                                        <rect key="frame" x="0.0" y="547" width="375" height="56"/>
+                                        <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="7Vn-Rv-lYm"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Show route details">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="1Ps-Qq-ORd" kind="show" id="Ytw-ja-ULG"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="HJ5-zz-3ng" firstAttribute="top" secondItem="0qw-Nx-WQw" secondAttribute="top" constant="229" id="lyw-VL-pKQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="HJ5-zz-3ng" secondAttribute="bottom" constant="56" id="tjw-NN-T6y"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0qw-Nx-WQw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="DcH-aX-Fc8"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="0qw-Nx-WQw" secondAttribute="bottom" id="GZE-PV-2Y4"/>
+                            <constraint firstItem="0qw-Nx-WQw" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Mu3-U5-tad"/>
+                            <constraint firstItem="0qw-Nx-WQw" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="OLb-tS-9uZ"/>
+                            <constraint firstItem="0qw-Nx-WQw" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="d3y-8c-MGk"/>
+                            <constraint firstItem="0qw-Nx-WQw" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="dlj-Uc-dFA"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="oTu-ya-LTD"/>
+                    <connections>
+                        <outlet property="mapView" destination="HJ5-zz-3ng" id="cWd-tQ-dSX"/>
+                        <outlet property="transportModePanel" destination="qTZ-ON-Zld" id="GZf-LR-gYf"/>
+                        <outlet property="waypointList" destination="GUo-DZ-AQK" id="obh-UH-cO1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1055.2" y="107.49625187406298"/>
+        </scene>
+        <!--Maneuver View Controller-->
+        <scene sceneID="2jb-oS-cVa">
+            <objects>
+                <viewController id="1Ps-Qq-ORd" customClass="ManeuverViewController" customModule="MSDKUIPrimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uK0-7m-zP9">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8hL-8C-ms8">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6U-b5-V2k" customClass="RouteDescriptionList" customModule="MSDKUI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="170" id="B5c-DS-caO"/>
+                                        </constraints>
+                                    </view>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHN-r8-8eO" customClass="ManeuverDescriptionList" customModule="MSDKUI">
+                                        <rect key="frame" x="0.0" y="170" width="375" height="377"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </tableView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx9-Dg-ujA">
+                                        <rect key="frame" x="0.0" y="547" width="375" height="56"/>
+                                        <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="SFO-78-Lsc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Start guidance">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <segue destination="agU-o4-yZ3" kind="show" id="ogl-aa-vDO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="8hL-8C-ms8" firstAttribute="top" secondItem="4PJ-1S-I1X" secondAttribute="top" id="217-6S-JOd"/>
+                            <constraint firstItem="8hL-8C-ms8" firstAttribute="trailing" secondItem="4PJ-1S-I1X" secondAttribute="trailing" id="5aZ-Xx-MAW"/>
+                            <constraint firstItem="8hL-8C-ms8" firstAttribute="leading" secondItem="4PJ-1S-I1X" secondAttribute="leading" id="Xlc-nz-mBI"/>
+                            <constraint firstItem="4PJ-1S-I1X" firstAttribute="bottom" secondItem="8hL-8C-ms8" secondAttribute="bottom" id="wko-T6-qhZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4PJ-1S-I1X"/>
+                    </view>
+                    <connections>
+                        <outlet property="maneuverDescriptionList" destination="aHN-r8-8eO" id="hPa-5n-vz6"/>
+                        <outlet property="routeDescriptionList" destination="I6U-b5-V2k" id="q35-JQ-hwd"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lhs-cR-mCR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1762.4000000000001" y="104.7976011994003"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="qFB-4T-5PT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uyq-Lq-3mx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WbB-7S-wQj">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="udm-Hg-A2Y"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cge-lu-mds" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="118" y="107"/>
+        </scene>
+        <!--Guidance View Controller-->
+        <scene sceneID="nAc-oq-fTq">
+            <objects>
+                <viewController id="agU-o4-yZ3" customClass="GuidanceViewController" customModule="MSDKUIPrimer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xYT-To-QpS">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cZ7-0y-OjX">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-vf-u6J" customClass="GuidanceManeuverPanel" customModule="MSDKUI">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="126" id="LqO-8J-Jjm"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rv-GK-2pK" customClass="NMAMapView">
+                                        <rect key="frame" x="0.0" y="126" width="375" height="421"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUG-9F-Irb">
+                                        <rect key="frame" x="0.0" y="547" width="375" height="56"/>
+                                        <color key="backgroundColor" red="0.0039215686269999999" green="0.71372549019999998" blue="0.6993785014142857" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="56" id="wma-Vo-ijc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <state key="normal" title="Stop guidance">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onStopGuidanceButtonClicked:" destination="agU-o4-yZ3" eventType="touchUpInside" id="yj4-gF-wUE"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="cZ7-0y-OjX" secondAttribute="bottom" id="4Lb-U5-f50"/>
+                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="leading" secondItem="f18-ez-Y6K" secondAttribute="leading" id="6ci-H9-Sep"/>
+                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="top" secondItem="f18-ez-Y6K" secondAttribute="top" id="Ckl-KD-N5A"/>
+                            <constraint firstAttribute="trailing" secondItem="cZ7-0y-OjX" secondAttribute="trailing" id="rme-qT-nQQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="f18-ez-Y6K"/>
+                    </view>
+                    <connections>
+                        <outlet property="guidanceManeuverPanel" destination="QOo-vf-u6J" id="nx0-Gc-ZCZ"/>
+                        <outlet property="mapView" destination="2Rv-GK-2pK" id="X2h-Ld-SId"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9k2-UN-Dk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2477.5999999999999" y="102.09895052473765"/>
+        </scene>
+    </scenes>
+</document>

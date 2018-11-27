@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   LastUpgradeVersion = "1010"
+   version = "1.3">
+   <BuildAction
+      parallelizeBuildables = "YES"
+      buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+               BuildableName = "MSDKUI_Demo.app"
+               BlueprintName = "MSDKUI_Demo"
+               ReferencedContainer = "container:MSDKUI.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "607FACE41AFB9204008FA782"
+               BuildableName = "MSDKUI_Tests.xctest"
+               BlueprintName = "MSDKUI_Tests"
+               ReferencedContainer = "container:MSDKUI.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      disableMainThreadChecker = "YES"
+      codeCoverageEnabled = "YES"
+      shouldUseLaunchSchemeArgsEnv = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "5ADC01E1203F6BD500EBA8A5"
+               BuildableName = "MSDKUI_Demo_UI_Tests.xctest"
+               BlueprintName = "MSDKUI_Demo_UI_Tests"
+               ReferencedContainer = "container:MSDKUI.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "ActionbarUITests/testAddRemoveWaypoints()">
+               </Test>
+               <Test
+                  Identifier = "ActionbarUITests/testReorderWaypoint()">
+               </Test>
+               <Test
+                  Identifier = "ActionbarUITests/testReverseWaypointItemsOrder()">
+               </Test>
+               <Test
+                  Identifier = "ActionbarUITests/testSelectDifferentTransportationModes()">
+               </Test>
+               <Test
+                  Identifier = "ActionbarUITests/testSetDepartureTime()">
+               </Test>
+               <Test
+                  Identifier = "DriveNavigationUITests">
+               </Test>
+               <Test
+                  Identifier = "GuidanceIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "RouteDescriptionListUITests">
+               </Test>
+               <Test
+                  Identifier = "RouteOptionsIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "RoutePlannerIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "RoutePlannerOptionsIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "RoutePreviewIntegrationTests">
+               </Test>
+               <Test
+                  Identifier = "RouteViewControllerUITests">
+               </Test>
+               <Test
+                  Identifier = "StartStopNavigationIntegrationUITests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+      </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "MSDKUI_Demo.app"
+            BlueprintName = "MSDKUI_Demo"
+            ReferencedContainer = "container:MSDKUI.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </TestAction>
+   <LaunchAction
+      buildConfiguration = "Debug"
+      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
+      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
+      launchStyle = "0"
+      useCustomWorkingDirectory = "NO"
+      ignoresPersistentStateOnLaunch = "NO"
+      debugDocumentVersioning = "YES"
+      debugServiceExtension = "internal"
+      allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "MSDKUI_Demo.app"
+            BlueprintName = "MSDKUI_Demo"
+            ReferencedContainer = "container:MSDKUI.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "EARL_GREY_ARTIFACTS"
+            value = "$SRCROOT/MSDKUI_Demo_UI_Tests/EarlGreyArtifacts"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
+      <AdditionalOptions>
+      </AdditionalOptions>
+   </LaunchAction>
+   <ProfileAction
+      buildConfiguration = "Release"
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      savedToolIdentifier = ""
+      useCustomWorkingDirectory = "NO"
+      debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "607FACCF1AFB9204008FA782"
+            BuildableName = "MSDKUI_Demo.app"
+            BlueprintName = "MSDKUI_Demo"
+            ReferencedContainer = "container:MSDKUI.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
+   </ProfileAction>
+   <AnalyzeAction
+      buildConfiguration = "Analyze">
+   </AnalyzeAction>
+   <ArchiveAction
+      buildConfiguration = "Release"
+      revealArchiveInOrganizer = "YES">
+   </ArchiveAction>
+</Scheme>
