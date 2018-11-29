@@ -1,0 +1,29 @@
+language: ruby
+rvm:
+  - 2.5.3
+os: osx
+osx_image: xcode10.1
+branches:
+  only:
+    - master
+
+# unit tests
+before_install:
+  - gem update --system
+
+install:
+  - bundle install
+
+jobs:
+  include:
+    - stage: run framework unit tests
+      script:
+        - rake test:msdkui_unit
+      after_success:
+        - bash <(curl -s https://codecov.io/bash) -cF ios -J '^HEREMapsUI$' -J '^MSDKUI$'
+
+    - stage: run demo app unit tests
+      script:
+        - rake test:demo_app_unit
+      after_success:
+        - bash <(curl -s https://codecov.io/bash) -cF ios -J '^MSDKUI_Demo$'
