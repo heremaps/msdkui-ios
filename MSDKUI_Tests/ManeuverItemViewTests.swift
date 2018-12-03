@@ -17,20 +17,20 @@
 @testable import MSDKUI
 import XCTest
 
-final class ManeuverDescriptionItemTests: XCTestCase {
+final class ManeuverItemViewTests: XCTestCase {
 
     /// The object under test.
-    private var itemUnterTest: ManeuverDescriptionItem?
+    private var itemView: ManeuverItemView?
 
     override func setUp() {
         super.setUp()
 
         // Set up the item
-        itemUnterTest = ManeuverDescriptionItem()
+        itemView = ManeuverItemView()
 
         // Make sure to have at least one maneuver
         if let maneuvers = MockUtils.mockRoute().maneuvers, maneuvers.isEmpty == false {
-           itemUnterTest?.setManeuver(maneuvers: maneuvers, index: 0)
+           itemView?.setManeuver(maneuvers: maneuvers, index: 0)
         }
     }
 
@@ -38,7 +38,7 @@ final class ManeuverDescriptionItemTests: XCTestCase {
 
     /// Tests default values.
     func testDefaultValues() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
 
         // All the component should be visible at first
         XCTAssertFalse(item.iconImageView.isHidden, "iconImageView is not visible")
@@ -51,7 +51,7 @@ final class ManeuverDescriptionItemTests: XCTestCase {
 
     /// Tests the item default colors.
     func testDefaultColors() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
 
         XCTAssertEqual(item.backgroundColor, .colorForegroundLight, "It has the correct background color")
         XCTAssertEqual(item.iconImageView.tintColor, .colorForeground, "It has the correct icon tint color")
@@ -62,14 +62,14 @@ final class ManeuverDescriptionItemTests: XCTestCase {
 
     /// Tests default visibility.
     func testDefaultVisibilty() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
 
         XCTAssertEqual(item.visibleSections, .all, "Not the expected default visibility")
     }
 
     /// Tests changing visibilities.
     func testSectionVisibilityModifications() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
 
         item.setSectionVisible(.icon, false)
         item.setSectionVisible(.instructions, false)
@@ -84,7 +84,7 @@ final class ManeuverDescriptionItemTests: XCTestCase {
 
     /// Tests maneuver contents.
     func testManeuverContents() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
         let expectedDistance = Measurement(value: 200, unit: UnitLength.meters)
         let expectedFormattedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: expectedDistance)
 
@@ -98,26 +98,26 @@ final class ManeuverDescriptionItemTests: XCTestCase {
     func testConversions() {
         // Unknown substrings should be ignored along with uppercases & blank spaces
         let string0 = "ICON |   Instructions | distance|unknown1|   UNKNOWN2:)unknoWn3"
-        let section0 = ManeuverDescriptionItem.Section.make(from: string0)
+        let section0 = ManeuverItemView.Section.make(from: string0)
         XCTAssertEqual(section0, [.icon, .instructions, .distance], "Not the expected conversion!")
 
         // If a string has "all", simply .all should be returned
         let string1 = "address|distance|   ALL | All"
-        let section1 = ManeuverDescriptionItem.Section.make(from: string1)
+        let section1 = ManeuverItemView.Section.make(from: string1)
         XCTAssertEqual(section1, .all, "Not the expected conversion!")
 
         // Is the "empty" String handling OK?
         let string2 = ""
-        let section2 = ManeuverDescriptionItem.Section.make(from: string2)
+        let section2 = ManeuverItemView.Section.make(from: string2)
         XCTAssertEqual(section2, [], "Not the expected conversion!")
 
         // Will we get the substrings in the Section declaration order?
-        let section3: ManeuverDescriptionItem.Section = [.icon, .instructions, .distance]
+        let section3: ManeuverItemView.Section = [.icon, .instructions, .distance]
         let string3 = section3.stringized
         XCTAssertEqual(string3, "icon|instructions|distance", "Not the expected conversion!")
 
         // Is the .all handling OK?
-        let section4: ManeuverDescriptionItem.Section = .all
+        let section4: ManeuverItemView.Section = .all
         let string4 = section4.stringized
         XCTAssertEqual(string4, "all", "Not the expected conversion!")
 
@@ -127,19 +127,19 @@ final class ManeuverDescriptionItemTests: XCTestCase {
         XCTAssertTrue(string5.isEmpty, "Not the expected conversion!")
     }
 
-    /// Tests the default `ManeuverDescriptionitem.leadingInset` and `ManeuverDescriptionitem.trailingInset`
+    /// Tests the default `ManeuverItemView.leadingInset` and `ManeuverItemView.trailingInset`
     /// values are in line with the related constraints.
     func testDefaultInsetValues() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
 
         XCTAssertEqual(item.leadingInset, item.leadingConstraint.constant, "Not the expected default value")
         XCTAssertEqual(item.trailingInset, item.trailingConstraint.constant, "Not the expected default value")
     }
 
-    /// Tests that `ManeuverDescriptionItem.leadingInset` and `ManeuverDescriptionItem.trailingInset` properties
+    /// Tests that `ManeuverItemView.leadingInset` and `ManeuverItemView.trailingInset` properties
     /// update the related constraints.
     func testSettingInsetsUpdateRelatedConstraints() throws {
-        let item = try require(itemUnterTest)
+        let item = try require(itemView)
 
         // Update the insets
         item.leadingInset = 17

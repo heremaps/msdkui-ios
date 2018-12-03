@@ -102,10 +102,10 @@ final class RouteViewControllerTests: XCTestCase {
         XCTAssertLocalized(viewControllerUnderTest?.titleItem.title, key: "msdkui_app_route_preview_title", "It has the correct title")
     }
 
-    /// Tests the maneuver list.
-    func testManeuverList() {
-        XCTAssertEqual(viewControllerUnderTest?.maneuverList.tableFooterView?.bounds.height, 0, "It hides unused table view cells")
-        XCTAssertEqual(viewControllerUnderTest?.maneuverList.route, mockRoute, "It has the correct route")
+    /// Tests the maneuver table view.
+    func testManeuverTableView() {
+        XCTAssertEqual(viewControllerUnderTest?.maneuverTableView.tableFooterView?.bounds.height, 0, "It hides unused table view cells")
+        XCTAssertEqual(viewControllerUnderTest?.maneuverTableView.route, mockRoute, "It has the correct route")
     }
 
     /// Tests the map view.
@@ -133,21 +133,21 @@ final class RouteViewControllerTests: XCTestCase {
     /// Tests the show button action.
     func testShowButtonAction() throws {
         let viewController = try require(viewControllerUnderTest)
-        XCTAssertTrue(viewController.listHeightConstraint.isActive, "List height constraint is active")
+        XCTAssertTrue(viewController.tableViewHeightConstraint.isActive, "Table View height constraint is active")
         XCTAssertTrue(viewController.mapView.isAccessibilityElement, "Map view is accessibility element")
         XCTAssertLocalized(viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmaneuvers",
                            "Button has correct title")
 
         viewController.showButton.sendActions(for: .touchUpInside)
 
-        XCTAssertFalse(viewController.listHeightConstraint.isActive, "List height constraint is not active")
+        XCTAssertFalse(viewController.tableViewHeightConstraint.isActive, "Table View height constraint is not active")
         XCTAssertFalse(viewController.mapView.isAccessibilityElement, "Map view is not accessibility element")
         XCTAssertLocalized(viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmap",
                            "Button has correct title")
 
         viewController.showButton.sendActions(for: .touchUpInside)
 
-        XCTAssertTrue(viewController.listHeightConstraint.isActive, "List height constraint is active")
+        XCTAssertTrue(viewController.tableViewHeightConstraint.isActive, "Table View height constraint is active")
         XCTAssertTrue(viewController.mapView.isAccessibilityElement, "Map view is accessibility element")
         XCTAssertLocalized(viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmaneuvers",
                            "Button has correct title")

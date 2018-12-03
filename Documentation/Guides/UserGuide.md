@@ -2,9 +2,9 @@
 <!-- This guide's version is 1.2 and it is based on the HERE Mobile SDK 3.9 and HERE Mobile SDK UI Kit 1.4.0.-->
 Are you looking for a framework that let's you build feature-rich and compelling user interfaces on top of the HERE Mobile SDK, _Premium_ edition? Then the HERE Mobile SDK UI Kit for iOS and Android is the perfect companion for you.
 
-This user guide describes the general workflow using the HERE Mobile SDK UI Kit and its components in detail. If you are looking for a quick overview, please look at our [README](../../README.md), our [Quick Start](QuickStart.md) guide or the latest [Release Notes](../../ReleaseNotes.md).
+This user guide describes the general workflow using the HERE Mobile SDK UI Kit and its components in detail. If you are looking for a quick overview, please look at our [README](../../README.md), our [Quick Start](QuickStart.md) guide or the latest _Release Notes_.
 
-# Contents
+## Contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Why use HERE Mobile SDK UI Kit?](#why-use-here-mobile-sdk-ui-kit)
@@ -405,11 +405,11 @@ In order for our app to be able to use guidance we must use the device's `locati
 ```xml
 <key>UIRequiredDeviceCapabilities</key>
 <array>
-      <string>location-services</string>
+  <string>location-services</string>
   <string>armv7</string>
 </array>
 <key>NSLocationWhenInUseUsageDescription</key>
-    <string>Your location is required for guidance.</string>
+<string>Your location is required for guidance.</string>
 ```
 
 You can open the `plist` file as source file to add the above, or edit the list items directly as property list. The `NSLocationWhenInUseUsageDescription` is just an example - you may want to adapt the description to your specific needs. In this case, we need it for guidance, so we add a suitable text.

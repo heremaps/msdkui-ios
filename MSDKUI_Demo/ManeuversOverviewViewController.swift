@@ -34,7 +34,7 @@ final class ManeuversOverviewViewController: UIViewController, GuidancePresentin
 
     @IBOutlet private(set) var routeDescriptionItem: RouteDescriptionItem!
 
-    @IBOutlet private(set) var maneuverList: ManeuverDescriptionList!
+    @IBOutlet private(set) var maneuverTableView: ManeuverTableView!
 
     @IBOutlet private(set) var dividerViews: [UIView]!
 
@@ -74,7 +74,7 @@ final class ManeuversOverviewViewController: UIViewController, GuidancePresentin
         routeDescriptionItem.route = route
         routeDescriptionItem.trailingInset = 0
         routeDescriptionItem.leadingInset = 0
-        maneuverList.route = route
+        maneuverTableView.route = route
 
         // Sets up the view when based on `toAddress`
         setUpDestinationView()
@@ -115,7 +115,7 @@ final class ManeuversOverviewViewController: UIViewController, GuidancePresentin
 
     private func updateStyle() {
         // Hides unused rows
-        maneuverList.tableFooterView = UIView(frame: .zero)
+        maneuverTableView.tableFooterView = UIView(frame: .zero)
 
         backButton.tintColor = .colorAccentLight
         dividerViews.forEach { $0.backgroundColor = .colorDivider }
@@ -129,7 +129,7 @@ final class ManeuversOverviewViewController: UIViewController, GuidancePresentin
 
     private func setAccessibility() {
         routeDescriptionItem.accessibilityIdentifier = "ManeuversOverviewViewController.routeDescriptionItem"
-        maneuverList.accessibilityIdentifier = "ManeuversOverviewViewController.maneuverDescriptionList"
+        maneuverTableView.accessibilityIdentifier = "ManeuversOverviewViewController.maneuverTableView"
 
         backButton.accessibilityIdentifier = "ManeuversOverviewViewController.backButton"
         showMapButton.accessibilityIdentifier = "ManeuversOverviewViewController.showMapButton"

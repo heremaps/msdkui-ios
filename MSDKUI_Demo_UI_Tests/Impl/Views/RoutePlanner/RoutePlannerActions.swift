@@ -530,7 +530,7 @@ enum RoutePlannerActions {
     /// - Important: If there is a timeout or no visible rows update, this method throws an
     ///              assertion failure.
     static func waypointListMustHaveNewVisibleRows(currentRows: String?) {
-        listMustHaveNewVisibleRows(.waypoint, visibleRows: currentRows)
+        tableViewMustHaveNewVisibleRows(.waypoint, visibleRows: currentRows)
     }
 
     /// After scrolling a route list, we need to make sure the visible rows are updated.
@@ -540,19 +540,19 @@ enum RoutePlannerActions {
     /// - Important: If there is a timeout or no visible rows update, this method throws an
     ///              assertion failure.
     static func routeListMustHaveNewVisibleRows(currentRows: String?) {
-        listMustHaveNewVisibleRows(.route, visibleRows: currentRows)
+        tableViewMustHaveNewVisibleRows(.route, visibleRows: currentRows)
     }
 
-    /// This method makes sure that the passed list has new visible rows relative to the passed ones.
+    /// This method makes sure that the passed table view has new visible rows relative to the passed ones.
     ///
-    /// - Parameter list: The list to check the visible rows.
+    /// - Parameter tableView: The table view to check the visible rows.
     /// - Parameter visibleRows: The last known visible rows.
     /// - Important: If there is a timeout or no visible rows update, this method throws an
     ///              assertion failure.
-    static func listMustHaveNewVisibleRows(_ list: Lists, visibleRows: String?) {
+    static func tableViewMustHaveNewVisibleRows(_ tableView: Lists, visibleRows: String?) {
         let condition = GREYCondition(name: "Wait for new visible rows") {
             // Save the visible rows depending on the list
-            switch list {
+            switch tableView {
             case .waypoint:
                 saveWaypointListVisibleRows()
 
@@ -560,7 +560,7 @@ enum RoutePlannerActions {
                 saveRouteListVisibleRows()
 
             case .maneuver:
-                RouteOverViewActions.saveManeuverListVisibleRows()
+                RouteOverViewActions.saveManeuverTableViewVisibleRows()
             }
 
             return visibleRows != stringizedVisibleRows
@@ -626,7 +626,7 @@ enum RoutePlannerActions {
         )
     }
 
-    /// Check one-by-one all the `ManeuverDescriptionItem` objects of each route.
+    /// Check one-by-one all the `ManeuverItemView` objects of each route.
     static func checkManeuversOfEachRoute() {
         RoutePlannerActions.saveRouteListRoutesAndCount()
 
@@ -639,7 +639,7 @@ enum RoutePlannerActions {
             // Show maneuvers
             CoreActions.tap(element: WaypointMatchers.showManeuversButton)
 
-            RouteOverViewActions.checkManeuverList()
+            RouteOverViewActions.checkManeuverTableView()
             CoreActions.tap(element: RoutePlannerMatchers.backButton)
         }
     }

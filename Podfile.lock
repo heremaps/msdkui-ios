@@ -4,13 +4,13 @@ PODS:
   - HEREMapsUI (2.0.0):
     - HEREMaps (= 3.9)
   - OCMock (3.4.1)
-  - SwiftLint (0.28.1)
+  - SwiftLint (0.29.1)
 
 DEPENDENCIES:
   - EarlGrey (= 1.15.0)
   - HEREMapsUI (from `./`)
   - OCMock (= 3.4.1)
-  - SwiftLint (= 0.28.1)
+  - SwiftLint (= 0.29.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -28,8 +28,8 @@ SPEC CHECKSUMS:
   HEREMaps: ce39da9e661d5c7358ae832d29107072b99f3738
   HEREMapsUI: d966938814c2dca06f3cf7c38c12fb2b9f3d1583
   OCMock: 2cd0716969bab32a2283ff3a46fd26a8c8b4c5e3
-  SwiftLint: 7f5f7de0da74a649b16616cb5246ae323489656e
+  SwiftLint: 6772320e40b52049053a518c17db9b0634a0b45a
 
-PODFILE CHECKSUM: 01e9469d1793955f93af10a377ad80f6bbc484d9
+PODFILE CHECKSUM: 2228e085e6fbd2857da117e8d3c26a2178737365
 
 COCOAPODS: 1.5.3

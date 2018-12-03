@@ -1,7 +1,7 @@
 # Quick Start
 Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we are going to introduce you to the HERE Mobile SDK UI Kit and show you how easy it is to get started. As a very first example, we'll also develop a "Hello HERE Mobile SDK UI Kit" iOS application as part of this guide. For more examples and in-depth information on how to work with the HERE  Mobile SDK UI Kit framework, please refer to the [User Guide](UserGuide.md).
 
-# Contents
+## Contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [How to Run the Example Apps](#how-to-run-the-example-apps)
@@ -46,7 +46,7 @@ For this Quick Start app, we have used Xcode 10.1 and Swift 4.2. Start Xcode and
 - Provide a project name, e.g. "HelloMSDKUI" and select _Swift_ as language.
 - Set a bundle identifier matching the one you have used to acquire your HERE credentials, e.g. "com.here.msdkui.example".
 - After Xcode has prepared the project setup, make sure to set up your provisioning profile: _Project settings_ => _Signing_ or enable _Automatically manage signing_.
-- Make sure your application's _Deployment Target_ is higher or equal to the [minimum supported version](../README.md#ios-environment) of the HERE Mobile SDK UI Kit. It should match the iOS version you have set in your podfile (see below).
+- Make sure your application's _Deployment Target_ is higher or equal to the [minimum supported version](../../README.md#ios-environment) of the HERE Mobile SDK UI Kit. It should match the iOS version you have set in your podfile (see below).
 - Select a simulator, e.g. iPhone 8, or a real device (recommended).
 - We keep default orientation settings.
 

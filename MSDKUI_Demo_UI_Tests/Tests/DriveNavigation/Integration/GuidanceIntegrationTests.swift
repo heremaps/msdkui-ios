@@ -32,13 +32,23 @@ final class GuidanceIntegrationTests: XCTestCase {
 
         // Dismiss permission alert
         DriveNavigationActions.dismissAlert()
+
+        // Drive navigation and map view is shown
+        // Destination marker appears on the map and location address is shown
+        DriveNavigationActions.setDestination(with: .tap)
     }
 
     override func tearDown() {
         super.tearDown()
 
-        // Stop positioning
+        // Done with positioning
         Positioning.shared.stop()
+
+        // Returng to landing view
+        DriveNavigationActions.returnToLandingPage()
+
+        // Return screen orientation to portrait
+        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.portrait, errorOrNil: nil)
     }
 
     // MARK: - Tests
@@ -46,10 +56,6 @@ final class GuidanceIntegrationTests: XCTestCase {
     /// MSDKUI-865: Route calculation.
     /// Check that route can be calculated.
     func testNavigateFromWaypointViewToRouteOverview() {
-
-        // Drive navigation and map view is shown
-        // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
 
         // Show route overview
         CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
@@ -59,18 +65,11 @@ final class GuidanceIntegrationTests: XCTestCase {
         // Return to waypoint view
         CoreActions.tap(element: CoreMatchers.backButton)
         Utils.waitUntil(visible: WaypointMatchers.waypointMapView)
-
-        // Exit waypoint view
-        CoreActions.tap(element: CoreMatchers.exitButton)
     }
 
     /// MSDKUI-889: Start and stop guidance.
     /// Check that guidance can be started and stopped.
     func testStartStopNavigationIntegration() {
-
-        // Drive navigation and map view is shown
-        // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
 
         // Show guidance
         CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
@@ -80,18 +79,12 @@ final class GuidanceIntegrationTests: XCTestCase {
         CoreActions.tap(element: RouteOverviewMatchers.startNavigationButton)
         DriveNavigationActions.dismissAlert()
         Utils.waitUntil(visible: DriveNavigationMatchers.driveNavMapView)
-
-        // Stop guidance
-        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
     }
 
     /// MSDKUI-1268: Current speed in guidance.
     /// Check that current speed is visible.
     func testGuidanceDashboardSpeedView() {
 
-        // Drive navigation and map view is shown
-        // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
         CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
         DriveNavigationActions.dismissAlert()
 
@@ -102,103 +95,71 @@ final class GuidanceIntegrationTests: XCTestCase {
 
         // Check if current speed is visible
         EarlGrey.selectElement(with: DriveNavigationMatchers.currentSpeed).atIndex(1).assert(grey_sufficientlyVisible())
-
-        // Stop guidance
-        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
     }
 
     /// MSDKUI-1289: Integration test for Guidance/Street label component.
     /// Check that street label component is visible.
     func testGuidanceStreetLabel() {
-        // Drive navigation and map view is shown
-        // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
-        CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
-        DriveNavigationActions.dismissAlert()
-
-        // Start navigation simulation
-        CoreActions.longPress(element: RouteOverviewMatchers.startNavigationButton, point: CGPoint(x: 10, y: 10))
-
-        DriveNavigationActions.selecActionOnSimulationAlert(button: "OK")
-
-        // Since we are launching simulation, we must change `updateInterval`, to allow application go into `idle` state
-        // (default `updateInterval` is too often, so EarlGrey is not responding, waiting for `idle` state)
-        DriveNavigationActions.adaptSimulationToEarlGrey()
-
-        DriveNavigationActions.dismissAlert()
-
-        // Wait for street label to be visible
-        Utils.waitUntil(visible: DriveNavigationMatchers.currentStreetLabel)
-
-        // Rotate to landscape
-        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
-
-        // Wait for street label to be visible
-        Utils.waitUntil(visible: DriveNavigationMatchers.currentStreetLabel)
-
-        // Rotate back to portrait
-        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.portrait, errorOrNil: nil)
-
-        // Stop guidance
-        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+            checkStreetLabel()
+        }
     }
 
     /// MSDKUI-1280: Guidance next-next maneuver view.
     /// Check that guidance next-next maneuver view is visible.
-    func testGuidanceNextNextManeuverView() {
-        // Drive navigation and map view is shown
-        // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
-        CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
-        DriveNavigationActions.dismissAlert()
-
-        // Start navigation simulation
-        CoreActions.longPress(element: RouteOverviewMatchers.startNavigationButton, point: CGPoint(x: 10, y: 10))
-
-        DriveNavigationActions.selecActionOnSimulationAlert(button: "OK")
-
-        // Since we are launching simulation, we must change `updateInterval`, to allow application go into `idle` state
-        // (default `updateInterval` is too often, so EarlGrey is not responding, waiting for `idle` state)
-        DriveNavigationActions.adaptSimulationToEarlGrey()
-
-        DriveNavigationActions.dismissAlert()
-
-        // Wait until next-next maneuver view is visible
-        Utils.waitUntil(visible: DriveNavigationMatchers.nextManeuverView)
-
-        // Rotate to landscape
-        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
-
-        // Wait until next-next maneuver view is visible
-        Utils.waitUntil(visible: DriveNavigationMatchers.nextManeuverView)
-
-        // Rotate back to portrait
-        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.portrait, errorOrNil: nil)
-
-        // Stop guidance
-        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
+    func testNextNextManeuverView() {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+            checkNextNextManeuverView()
+        }
     }
 
     /// MSDKUI-1475: Integration test for ETA.
     /// Check if ETA is visible.
     func testGuidanceETA() {
-        // Drive navigation and map view is shown
-        // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
-        CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
-        DriveNavigationActions.dismissAlert()
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+            checkGuidanceETA()
+        }
+    }
 
-        // Start navigation simulation
-        CoreActions.longPress(element: RouteOverviewMatchers.startNavigationButton, point: CGPoint(x: 10, y: 10))
+    /// MSDKUI-1272: Integration test for speed limit.
+    /// Check if speed limit is visible.
+    func testGuidanceSpeedLimit() {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+            checkGuidanceSpeedLimit()
+        }
+    }
 
-        DriveNavigationActions.selecActionOnSimulationAlert(button: "OK")
+    // MARK: - Private
 
-        // Since we are launching simulation, we must change `updateInterval`, to allow application go into `idle` state
-        // (default `updateInterval` is too often, so EarlGrey is not responding, waiting for `idle` state)
-        DriveNavigationActions.adaptSimulationToEarlGrey()
+    /// MSDKUI-1289: Integration test for Guidance/Street label component.
+    /// Check that street label component is visible.
+    private func checkStreetLabel() {
+        // Wait for street label to be visible
+        Utils.waitUntil(visible: DriveNavigationMatchers.currentStreetLabel)
 
-        DriveNavigationActions.dismissAlert()
+        // Rotate to landscape
+        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
 
+        // Wait for street label to be visible
+        Utils.waitUntil(visible: DriveNavigationMatchers.currentStreetLabel)
+    }
+
+    /// MSDKUI-1280: Guidance next-next maneuver view.
+    /// Check that guidance next-next maneuver view is visible.
+    private func checkNextNextManeuverView() {
+        // Wait until next-next maneuver view is visible
+        Utils.waitUntil(visible: DriveNavigationMatchers.nextManeuverView)
+
+        // Rotate to landscape
+        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
+
+        // Wait until next-next maneuver view is visible
+        Utils.waitUntil(visible: DriveNavigationMatchers.nextManeuverView)
+    }
+
+    /// MSDKUI-1475: Integration test for ETA.
+    /// Check if ETA is visible.
+    private func checkGuidanceETA() {
         // Wait for ETA to be visible
         Utils.waitUntil(visible: DriveNavigationMatchers.arrivalTime)
 
@@ -207,11 +168,18 @@ final class GuidanceIntegrationTests: XCTestCase {
 
         // Wait for ETA to be visible
         Utils.waitUntil(visible: DriveNavigationMatchers.arrivalTime)
+    }
 
-        // Rotate back to portrait
-        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.portrait, errorOrNil: nil)
+    /// MSDKUI-1272: Integration test for speed limit.
+    /// Check if speed limit is visible.
+    private func checkGuidanceSpeedLimit() {
+        // Wait until speed limit is visible
+        Utils.waitUntil(visible: DriveNavigationMatchers.speedLimit)
 
-        // Stop guidance
-        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
+        // Rotate to landscape
+        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
+
+        // Wait until speed limit is visible
+        Utils.waitUntil(visible: DriveNavigationMatchers.speedLimit)
     }
 }

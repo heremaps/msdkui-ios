@@ -23,6 +23,12 @@ final class GuidanceSpeedViewTests: XCTestCase {
     /// The object under test.
     private var speedView = GuidanceSpeedView(frame: CGRect(x: 0, y: 0, width: 200, height: 80))
 
+    override func setUp() {
+        super.setUp()
+
+        speedView.unit = .kilometersPerHour
+    }
+
     // MARK: - Tests
 
     /// Tests if the view exists.

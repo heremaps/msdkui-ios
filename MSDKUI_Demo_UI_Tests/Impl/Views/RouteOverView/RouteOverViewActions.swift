@@ -21,27 +21,27 @@ enum RouteOverViewActions {
 
     /// Makes sures that the maneuver contains icon, instruction, address
     /// and distance data.
-    static func checkManeuverList() {
-        EarlGrey.selectElement(with: RouteOverviewMatchers.maneuverDescriptionList)
+    static func checkManeuverTableView() {
+        EarlGrey.selectElement(with: RouteOverviewMatchers.maneuverTableView)
             .perform(GREYActionBlock
-                .action(withName: "checkManeuverList()") { element, errorOrNil -> Bool in
+                .action(withName: "checkManeuverTableView()") { element, errorOrNil -> Bool in
                     guard
                         errorOrNil != nil,
-                        let maneuverList = element as? ManeuverDescriptionList else {
+                        let maneuverTableView = element as? ManeuverTableView else {
                             return false
                     }
 
                     // One-by-one check the maneuvers
-                    for index in 0 ..< maneuverList.entryCount {
+                    for index in 0 ..< maneuverTableView.entryCount {
                         let indexPath = IndexPath(row: index, section: 0)
-                        maneuverList.scrollToRow(at: indexPath, at: .bottom, animated: false) // Make sure it is visible
+                        maneuverTableView.scrollToRow(at: indexPath, at: .bottom, animated: false) // Make sure it is visible
                         guard
-                            let cell = maneuverList.cellForRow(at: indexPath),
-                            let item = RouteOverViewActions.getManeuverDescriptionItem(inside: cell) else {
+                            let cell = maneuverTableView.cellForRow(at: indexPath),
+                            let item = RouteOverViewActions.getManeuverItemView(inside: cell) else {
                                 return false
                         }
 
-                        print("ManeuverList maneuver \(String(index)) accessibilityHint: \(String(describing: item.accessibilityHint))")
+                        print("maneuverTableView maneuver \(String(index)) accessibilityHint: \(String(describing: item.accessibilityHint))")
 
                         GREYAssertNotNil(
                             item.iconImageView.image, reason: "No icon view!")
@@ -56,7 +56,7 @@ enum RouteOverViewActions {
                             item.addressLabel.text?.isEmpty ?? true, reason: "Empty address label text!")
 
                         // The last item distance should not be visible
-                        if index == maneuverList.entryCount - 1 {
+                        if index == maneuverTableView.entryCount - 1 {
                             GREYAssertTrue(
                                 item.visibleSections == [.icon, .instructions, .address],
                                 reason: "The last distance label text should be hidden!")
@@ -76,39 +76,39 @@ enum RouteOverViewActions {
                 })
     }
 
-    /// After scrolling a maneuver list, we need to make sure the visible rows are updated.
-    /// This method makes sure that the maneuver list has new visible rows.
+    /// After scrolling a maneuver table view, we need to make sure the visible rows are updated.
+    /// This method makes sure that the maneuver table view has new visible rows.
     ///
     /// - Parameter currentRows: The last known visible rows.
     /// - Important: If there is a timeout or no visible rows update, this method throws an
     ///              assertion failure.
-    static func maneuverListMustHaveNewVisibleRows(currentRows: String?) {
-        RoutePlannerActions.listMustHaveNewVisibleRows(.maneuver, visibleRows: currentRows)
+    static func maneuverTableViewMustHaveNewVisibleRows(currentRows: String?) {
+        RoutePlannerActions.tableViewMustHaveNewVisibleRows(.maneuver, visibleRows: currentRows)
     }
 
-    /// Gets and returns the `ManeuverDescriptionItem` object out of the cell.
+    /// Gets and returns the `ManeuverItemView` object out of the cell.
     ///
-    /// - Parameter cell: The cell containing the `ManeuverDescriptionItem` object.
-    /// - Returns: The `ManeuverDescriptionItem` found in the cell or `nil` when no `ManeuverDescriptionItem` was found.
-    static func getManeuverDescriptionItem(inside cell: UITableViewCell) -> ManeuverDescriptionItem? {
-        let views = cell.contentView.subviews.filter { $0 is ManeuverDescriptionItem }
+    /// - Parameter cell: The cell containing the `ManeuverItemView` object.
+    /// - Returns: The `ManeuverItemView` found in the cell or `nil` when no `ManeuverItemView` was found.
+    static func getManeuverItemView(inside cell: UITableViewCell) -> ManeuverItemView? {
+        let views = cell.contentView.subviews.filter { $0 is ManeuverItemView }
 
         // There should be one and only one view in the views
         GREYAssertTrue(
             views.count == 1, reason: "Not the expected views count 1, but \(views.count)!")
 
-        return views.first as? ManeuverDescriptionItem
+        return views.first as? ManeuverItemView
     }
 
-    /// Saves the maneuver list visible rows to the `stringizedVisibleRows` property.
-    static func saveManeuverListVisibleRows() {
+    /// Saves the maneuver table view visible rows to the `stringizedVisibleRows` property.
+    static func saveManeuverTableViewVisibleRows() {
         // EarlGrey doesn't support inout variables!
-        EarlGrey.selectElement(with: RouteOverviewMatchers.maneuverDescriptionList).perform(
-            GREYActionBlock.action(withName: "saveManeuverListVisibleRows") { element, errorOrNil in
+        EarlGrey.selectElement(with: RouteOverviewMatchers.maneuverTableView).perform(
+            GREYActionBlock.action(withName: "saveManeuverTableViewVisibleRows") { element, errorOrNil in
                 guard
                     errorOrNil != nil,
-                    let mapList = element as? ManeuverDescriptionList,
-                    let visibleRowsIndexPaths = mapList.indexPathsForVisibleRows else {
+                    let tableView = element as? ManeuverTableView,
+                    let visibleRowsIndexPaths = tableView.indexPathsForVisibleRows else {
                         return false
                 }
 
@@ -119,26 +119,26 @@ enum RouteOverViewActions {
         )
     }
 
-    /// Helper method to allow collecting maneuvers data from `ManeuverDescriptionList`.
+    /// Helper method to allow collecting maneuvers data from `ManeuverTableView`.
     ///
-    /// - Parameter accessibilityIdentifier: Identifier of `ManeuverDescriptionList`
+    /// - Parameter accessibilityIdentifier: Identifier of `ManeuverTableView`
     /// - Returns: Array of tuple containing address and icon accessibility identifier.
     static func collectManeuversData(from element: GREYMatcher) -> [(address: String, iconAccessibilityIdentifier: String)] {
         var data: [(String, String)] = []
         Utils.waitUntil(visible: element)
 
         EarlGrey.selectElement(with: element).perform(
-            GREYActionBlock.action(withName: "Get description list") { element, errorOrNil -> Bool in
-                // Get description list
+            GREYActionBlock.action(withName: "Get description table view") { element, errorOrNil -> Bool in
+                // Get description table view
                 guard
                     errorOrNil != nil,
-                    let descriptionList = element as? ManeuverDescriptionList else {
+                    let descriptionTableView = element as? ManeuverTableView else {
                         return false
                 }
 
-                // Collect every address from list
-                for index in 0..<descriptionList.entryCount {
-                    if let cell = descriptionList.cellForRow(at: IndexPath(row: index, section: 0))?.contentView.subviews.first as? ManeuverDescriptionItem {
+                // Collect every address from table view
+                for index in 0..<descriptionTableView.entryCount {
+                    if let cell = descriptionTableView.cellForRow(at: IndexPath(row: index, section: 0))?.contentView.subviews.first as? ManeuverItemView {
                         // If available, add address and accessibility identifier to array
                         if let address = cell.addressLabel.text,
                             let imageAccessibilityId = cell.iconImageView.accessibilityIdentifier {

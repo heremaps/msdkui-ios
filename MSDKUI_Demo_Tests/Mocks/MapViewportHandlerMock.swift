@@ -19,7 +19,7 @@ import NMAKit
 
 final class MapViewportHandlerMock: NSObject {
 
-    @objc dynamic private(set) var didCallSetViewport = false {
+    @objc private(set) dynamic var didCallSetViewport = false {
         willSet {
             willChangeValue(for: \.didCallSetViewport)
         }

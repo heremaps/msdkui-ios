@@ -46,13 +46,13 @@ class RouteViewController: UIViewController {
 
     @IBOutlet private(set) var destinationLabel: UILabel!
 
-    @IBOutlet private(set) var maneuverList: ManeuverDescriptionList!
+    @IBOutlet private(set) var maneuverTableView: ManeuverTableView!
 
     @IBOutlet private(set) var hudView: UIView!
 
     @IBOutlet private(set) var activityIndicator: UIActivityIndicatorView!
 
-    @IBOutlet private(set) var listHeightConstraint: NSLayoutConstraint!
+    @IBOutlet private(set) var tableViewHeightConstraint: NSLayoutConstraint!
 
     @IBOutlet private(set) var showButtonSeparatorView: UIView!
 
@@ -115,7 +115,7 @@ class RouteViewController: UIViewController {
         routeDescriptionItem.trailingInset = -16
         routeDescriptionItem.leadingInset = 19
         routeDescriptionItem.setSectionVisible(.icon, false)
-        maneuverList.route = route
+        maneuverTableView.route = route
 
         updateShowButtonText()
         updateMapViewAccessibility()
@@ -213,7 +213,7 @@ class RouteViewController: UIViewController {
 
     private func updateStyle() {
         // Hides unused rows
-        maneuverList.tableFooterView = UIView(frame: .zero)
+        maneuverTableView.tableFooterView = UIView(frame: .zero)
 
         backButton.tintColor = .colorAccentLight
 
@@ -252,13 +252,13 @@ class RouteViewController: UIViewController {
     }
 
     private func updateShowButtonText() {
-        let title = listHeightConstraint.isActive ? "msdkui_app_guidance_button_showmaneuvers".localized : "msdkui_app_guidance_button_showmap".localized
+        let title = tableViewHeightConstraint.isActive ? "msdkui_app_guidance_button_showmaneuvers".localized : "msdkui_app_guidance_button_showmap".localized
         showButton.setTitle(title, for: .normal)
     }
 
     private func updateMapViewAccessibility() {
         // Map view is available to accessibility only when visible
-        mapView.isAccessibilityElement = listHeightConstraint.isActive
+        mapView.isAccessibilityElement = tableViewHeightConstraint.isActive
     }
 
     private func showRoute() {
@@ -325,16 +325,16 @@ class RouteViewController: UIViewController {
         dismiss(animated: true)
     }
 
-    @IBAction private func toggleListVisibility(_ sender: Any) {
+    @IBAction private func toggleTableViewVisibility(_ sender: Any) {
         UIView.animate(withDuration: 0.1, animations: {
-            self.listHeightConstraint.isActive.toggle()
+            self.tableViewHeightConstraint.isActive.toggle()
             self.updateShowButtonText()
             self.updateMapViewAccessibility()
 
             self.view.setNeedsLayout()
             self.view.layoutIfNeeded()
         }, completion: { _ in
-            // Accessibility: focus on the back bar button when maneuver list is toggled
+            // Accessibility: focus on the back bar button when maneuver table view is toggled
             UIAccessibility.post(notification: .layoutChanged, argument: self.backButton)
         })
     }

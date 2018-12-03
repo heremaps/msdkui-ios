@@ -18,7 +18,7 @@ import Foundation
 import NMAKit
 
 /// A visual item to display a `NMAManeuver` object based on its visible sections.
-@IBDesignable open class ManeuverDescriptionItem: UIView {
+@IBDesignable open class ManeuverItemView: UIView {
 
     // MARK: - Types
 
@@ -151,7 +151,7 @@ import NMAKit
     /// This constraint helps us to set a trailing inset.
     @IBOutlet public private(set) var trailingConstraint: NSLayoutConstraint!
 
-    /// View containing other view's of description item.
+    /// View containing subviews for landscape and portrait.
     @IBOutlet private var view: UIView!
 
     /// The proxy property to make the `visibleSections` property accessible
@@ -165,7 +165,7 @@ import NMAKit
             return visibleSections.stringized
         }
         set {
-            visibleSections = ManeuverDescriptionItem.Section.make(from: newValue)
+            visibleSections = ManeuverItemView.Section.make(from: newValue)
         }
     }
 
@@ -278,7 +278,7 @@ import NMAKit
     /// Initialises the contents of this view.
     private func setUp() {
         // Instantiate view
-        UINib(nibName: String(describing: ManeuverDescriptionItem.self), bundle: .MSDKUI).instantiate(withOwner: self)
+        UINib(nibName: String(describing: ManeuverItemView.self), bundle: .MSDKUI).instantiate(withOwner: self)
 
         // Use the view's bounds
         bounds = view.bounds
@@ -321,7 +321,7 @@ import NMAKit
         isAccessibilityElement = true
         accessibilityTraits = .staticText
         accessibilityLabel = "msdkui_maneuver".localized
-        accessibilityIdentifier = "MSDKUI.ManeuverDescriptionItem"
+        accessibilityIdentifier = "MSDKUI.ManeuverItemView"
     }
 
     /// Updates the accessibility stuff.

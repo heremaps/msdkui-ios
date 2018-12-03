@@ -160,13 +160,13 @@ final class RoutesAndManeuversTests: XCTestCase {
         // Expand waypoint list
         CoreActions.tap(element: RoutePlannerMatchers.viewContollerRight)
 
-        // Check the ManeuverDescriptionItem objects one-by-one for each route
+        // Check the ManeuverItemView objects one-by-one for each route
         RoutePlannerActions.checkManeuversOfEachRoute()
     }
 
-    /// MSDKUI-153: Scroll maneuver list.
+    /// MSDKUI-153: Scroll maneuver table view.
     /// Check that swiping the maneuvers list results in scrolls.
-    func testScrollManeuverList() {
+    func testScrollManeuverTableView() {
 
         // Set the two waypoints with known names
         RoutePlannerActions.setWaypoints(waypoints: [
@@ -188,19 +188,19 @@ final class RoutesAndManeuversTests: XCTestCase {
         CoreActions.tap(element: WaypointMatchers.showManeuversButton)
 
         // Save the initial visible rows
-        RouteOverViewActions.saveManeuverListVisibleRows()
+        RouteOverViewActions.saveManeuverTableViewVisibleRows()
         let initialVisibleRows = RoutePlannerActions.stringizedVisibleRows
 
         // Swipe up, i.e. scroll down
-        CoreActions.swipeUpOn(element: RouteOverviewMatchers.maneuverDescriptionList)
-        RouteOverViewActions.maneuverListMustHaveNewVisibleRows(currentRows: initialVisibleRows)
+        CoreActions.swipeUpOn(element: RouteOverviewMatchers.maneuverTableView)
+        RouteOverViewActions.maneuverTableViewMustHaveNewVisibleRows(currentRows: initialVisibleRows)
 
         // Save the new visible rows
         let afterScrollDownVisibleRows = RoutePlannerActions.stringizedVisibleRows
 
         // Swipe down, i.e. scroll up
-        CoreActions.swipeDownOn(element: RouteOverviewMatchers.maneuverDescriptionList)
-        RouteOverViewActions.maneuverListMustHaveNewVisibleRows(currentRows: afterScrollDownVisibleRows)
+        CoreActions.swipeDownOn(element: RouteOverviewMatchers.maneuverTableView)
+        RouteOverViewActions.maneuverTableViewMustHaveNewVisibleRows(currentRows: afterScrollDownVisibleRows)
 
         // Return back
         CoreActions.tap(element: RoutePlannerMatchers.backButton)
