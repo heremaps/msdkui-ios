@@ -120,4 +120,35 @@ enum Utils {
             return viewText.contains(text)
         }, descriptionBlock: { _ = $0.appendText("containsText(\"\(text)\")") })
     }
+
+    /// Waits until the specified element passes a condition.
+    ///
+    /// Waits until condition block returns true, or the specified timeout has expired.
+    /// The condition is polled at specified intervals.
+    ///
+    /// - Parameters:
+    ///   - elementMatcher: matcher of the element to wait for.
+    ///   - timeout: the timeout period in seconds.
+    ///   - pollInterval: the polling interval period in seconds.
+    ///   - conditionBlock: the condition block to wait upon.
+    static func waitUntil<T>(element elementMatcher: GREYMatcher,
+                             timeout: TimeInterval = Constants.longWait,
+                             pollInterval: TimeInterval = Constants.longPollInterval,
+                             conditionBlock: @escaping ((T) -> Bool)) {
+        var isMatched: Bool = false
+        GREYCondition(name: "Wait for matcher") {
+            EarlGrey.selectElement(with: elementMatcher).perform(GREYActionBlock.action(withName: "Wait for element") { element, errorOrNil in
+                guard
+                    errorOrNil != nil,
+                    let matchedObject = element as? T else {
+                    return false
+                }
+
+                isMatched = conditionBlock(matchedObject)
+                return true
+            })
+            return isMatched
+        }.wait(withTimeout: timeout, pollInterval: pollInterval)
+        GREYAssert(isMatched, reason: "No element was matched")
+    }
 }

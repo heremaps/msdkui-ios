@@ -213,18 +213,18 @@ final class RoutePlannerIntegrationTests: XCTestCase {
         performRoutePreviewTest(isLandscape: true)
     }
 
-    /// MSDKUI-1473: Show maneuver list
-    /// Check that switching between route overview and maneuver list works
+    /// MSDKUI-1473: Show maneuver table view.
+    /// Check that switching between route overview and maneuver table view works
     /// Portrait version of the test.
-    func testOpenManeuverListInPortrait() {
-        performOpenManeuverListTest(isLandscape: false)
+    func testOpenManeuverTableViewInPortrait() {
+        performOpenManeuverTableViewTest(isLandscape: false)
     }
 
-    /// MSDKUI-1473: Show maneuver list
-    /// Check that switching between route overview and maneuver list works
+    /// MSDKUI-1473: Show maneuver table view.
+    /// Check that switching between route overview and maneuver table view works
     /// Landscape version of the test.
-    func testOpenManeuverListInLandscape() {
-        performOpenManeuverListTest(isLandscape: true)
+    func testOpenManeuverTableViewInLandscape() {
+        performOpenManeuverTableViewTest(isLandscape: true)
     }
 
     // MARK: - Private
@@ -259,7 +259,7 @@ final class RoutePlannerIntegrationTests: XCTestCase {
     /// Method that implements MSDKUI-1473 test.
     ///
     /// - Parameter isLandscape: if `true`, test will be performed in landscape, if `false` - in portrait.
-    private func performOpenManeuverListTest(isLandscape: Bool) {
+    private func performOpenManeuverTableViewTest(isLandscape: Bool) {
         if isLandscape {
             EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
         }
@@ -270,9 +270,9 @@ final class RoutePlannerIntegrationTests: XCTestCase {
         // Select the first route
         CoreActions.tap(element: RoutePlannerMatchers.routeDescriptionListCell(cellNr: 0))
 
-        // Go to maneuver list
+        // Go to maneuver table view
         CoreActions.tap(element: RouteOverviewMatchers.maneuversShowMapButton)
-        Utils.waitUntil(visible: RouteOverviewMatchers.maneuverDescriptionList)
+        Utils.waitUntil(visible: RouteOverviewMatchers.maneuverTableView)
 
         // Go back to route planner
         CoreActions.tap(element: RoutePlannerMatchers.backButton)

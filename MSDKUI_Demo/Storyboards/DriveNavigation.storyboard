@@ -582,7 +582,7 @@
                                     <constraint firstAttribute="height" constant="1" id="aYg-X4-tpM"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8v-4E-lx3" customClass="ManeuverDescriptionList" customModule="MSDKUI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="G8v-4E-lx3" customClass="ManeuverTableView" customModule="MSDKUI">
                                 <rect key="frame" x="0.0" y="172" width="600" height="347"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </tableView>
@@ -667,7 +667,7 @@
                         <outlet property="addressLabel" destination="PUV-Zj-XY8" id="tMa-4u-Nj5"/>
                         <outlet property="backButton" destination="h7J-wt-EYD" id="SEO-w4-ph5"/>
                         <outlet property="destinationView" destination="Nei-xx-y77" id="9M3-c3-cbN"/>
-                        <outlet property="maneuverList" destination="G8v-4E-lx3" id="OrL-Kg-XBd"/>
+                        <outlet property="maneuverTableView" destination="G8v-4E-lx3" id="OrL-Kg-XBd"/>
                         <outlet property="routeDescriptionItem" destination="jvW-NC-8r5" id="kUi-f3-NFC"/>
                         <outlet property="showMapButton" destination="o6w-uX-exz" id="Nva-1H-Ij3"/>
                         <outlet property="startNavigationButton" destination="7db-fV-HHQ" id="0t5-DB-8Qt"/>

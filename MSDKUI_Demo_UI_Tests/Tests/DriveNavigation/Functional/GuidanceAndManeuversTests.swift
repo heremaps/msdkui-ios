@@ -39,11 +39,15 @@ final class GuidanceAndManeuversTests: XCTestCase {
     }
 
     override func tearDown() {
-        // Return screen orientation to portrait
-        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.portrait, errorOrNil: nil)
 
         // Done with positioning
         Positioning.shared.stop()
+
+        // Returng to landing view
+        DriveNavigationActions.returnToLandingPage()
+
+        // Return screen orientation to portrait
+        EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.portrait, errorOrNil: nil)
 
         super.tearDown()
     }
@@ -113,6 +117,22 @@ final class GuidanceAndManeuversTests: XCTestCase {
         CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
     }
 
+    /// MSDKUI-1532: Guidance next-Next maneuver view in portrait.
+    /// Check that guidance next-next maneuver view behaves properly in portrait.
+    func testGuidanceNextNextManeuverViewInPortrait() {
+       DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+            checkGuidanceNextNextManeuverView()
+       }
+    }
+
+    /// MSDKUI-1532: Guidance next-next maneuver view in landscape.
+    /// Check that guidance next-next maneuver view behaves properly in landscape.
+    func testGuidanceNextNextManeuverViewInLandscape() {
+        DriveNavigationActions.performGuidanceTest(isLandscape: true) {
+            checkGuidanceNextNextManeuverView()
+        }
+    }
+
     /// MSDKUI-575: Maneuver view
     /// Check the next maneuver description during guidance.
     /// Portrait version of the test.
@@ -131,7 +151,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
     /// Check dashboard and its settings during simulation.
     /// Portrait version of the test.
     func testGuidanceDashboardInPortrait() {
-        performGuidanceTest(isLandscape: false) {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
             checkDashboard()
         }
     }
@@ -140,7 +160,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
     /// Check dashboard and its settings during simulation.
     /// Landscape version of the test.
     func testGuidanceDashboardInLandscape() {
-        performGuidanceTest(isLandscape: true) {
+        DriveNavigationActions.performGuidanceTest(isLandscape: true) {
             checkDashboard()
         }
     }
@@ -149,7 +169,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
     /// Check that speedview color is displayed correctly during normal driving and overspeeding.
     /// Portrait version of the test.
     func testGuidanceSpeedingInPortrait() {
-        performGuidanceTest(isLandscape: false) {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
             checkSpeeding()
         }
     }
@@ -158,7 +178,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
     /// Check that speedview color is displayed correctly during normal driving and overspeeding.
     /// Landscape version of the test.
     func testGuidanceSpeedingInLandscape() {
-        performGuidanceTest(isLandscape: true) {
+        DriveNavigationActions.performGuidanceTest(isLandscape: true) {
             checkSpeeding()
         }
     }
@@ -171,7 +191,8 @@ final class GuidanceAndManeuversTests: XCTestCase {
     ///              is displayed in minutes initially for the short test route and in order to
     ///              see an update, we have to wait for one minute before comparing the ETA data.
     func testGuidanceEstimatedArrivalView() {
-        performGuidanceTest(isLandscape: false) {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+
             // Get the initial ETA data
             var etaData = DriveNavigationActions.getEstimatedArrivalData()
 
@@ -184,19 +205,18 @@ final class GuidanceAndManeuversTests: XCTestCase {
             // The ETA data can differ at most three minutes during navigation, e.g.
             // if the ETA is "11:12 AM", then it can vary between "11:09 AM" and
             // "11:15 AM"
-            let expectedEta: [String] = [DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-180)),
+            let expectedEta: [String] = [DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-240)),
+                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-180)),
                                          DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-120)),
                                          DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-60)),
                                          etaData.eta,
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(60)),
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(120)),
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(180))]
+                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(60))]
 
             // Wait one minute to make sure the ETA data is updated
             DriveNavigationActions.sleepMainThreadOneMinute()
 
             // Until arrival, check the ETA data regularly
-            while !DriveNavigationActions.hasArrived() {
+            while !DriveNavigationActions.hasArrived() && DriveNavigationActions.getEstimatedArrivalData().tta != "--" {
                 let newEtaData = DriveNavigationActions.getEstimatedArrivalData()
 
                 GREYAssertTrue(expectedEta.contains(newEtaData.eta), reason: "The ETA should stay the same")
@@ -207,17 +227,34 @@ final class GuidanceAndManeuversTests: XCTestCase {
                 etaData = newEtaData
 
                 // Wait one minute to make sure the ETA data is updated
-                DriveNavigationActions.sleepMainThreadOneMinute()
+               DriveNavigationActions.sleepMainThreadOneMinute()
             }
 
-            // Wait until the view is updated
-            DriveNavigationActions.sleepMainThreadUntilViewsUpdated()
-
+            // Get ETA data when simualtion has ended
             let finalEtaData = DriveNavigationActions.getEstimatedArrivalData()
 
             GREYAssertTrue(finalEtaData.eta == "--", reason: "The ETA should not be displayed after arrival")
             GREYAssertTrue(finalEtaData.tta == "--", reason: "The TTA should not be displayed after arrival")
             GREYAssertTrue(finalEtaData.distance == "--", reason: "The distance should not be displayed after arrival")
+
+        }
+    }
+
+    /// MSDKUI-1479: Implementation/Current street label in Guidance.
+    /// It should be possible to see street label in Guidance and it's updates.
+    func testStreetLabelUpdates() {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+            // Wait for street label to be visible
+            Utils.waitUntil(visible: DriveNavigationMatchers.currentStreetLabel)
+
+            // Wait until 2 different street names will be displayed
+            DriveNavigationActions.streetLabelTextChangeTest(minNumberOfStreets: 2)
+
+            // Rotate to landscape
+            EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
+
+            // Wait until 2 different street names will be displayed
+            DriveNavigationActions.streetLabelTextChangeTest(minNumberOfStreets: 2)
         }
     }
 
@@ -258,7 +295,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
         CoreActions.tap(element: WaypointMatchers.showManeuversButton)
 
         var maneuversData = RouteOverViewActions.collectManeuversData(from:
-            RouteOverviewMatchers.maneuverDescriptionList)
+            RouteOverviewMatchers.maneuverTableView)
         GREYAssertFalse(maneuversData.isEmpty, reason: "Instructions must not be empty")
 
         // Remove first - it will not be displayed in view, since application displays "upcoming" maneuver
@@ -280,6 +317,9 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
         DriveNavigationActions.dismissAlert()
 
+        GREYConfiguration.sharedInstance().setValue(false, forConfigKey: kGREYConfigKeySynchronizationEnabled)
+        DriveNavigationActions.setSimulationSpeed(updateInterval: Constants.fastUpdateIntervalForEarlGrey, movementSpeed: Constants.fastSimulationSpeed)
+
         // Check if correct maneuvers are displayed during simulation
         DriveNavigationActions.checkDisplayedManeuversDuringSimulation(maneuvers: maneuversData, isLandscape: isLandscape)
 
@@ -288,36 +328,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
         // Go back to landing page
         CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
-    }
-
-    /// Method that changes to specified orientation, launches guidance simulation, then runs specified
-    /// tests and finally terminates the test.
-    ///
-    /// - Parameter isLandscape: if `true`, test will be performed in landscape and in portrait otherwise.
-    private func performGuidanceTest(isLandscape: Bool, test: () -> Void) {
-        // Tap OK button
-        CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
-        DriveNavigationActions.dismissAlert()
-
-        // Set orientation here - to make sure that both orientations have the same route in test
-        if isLandscape {
-            EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
-        }
-
-        // Start navigation simulation
-        CoreActions.longPress(element: RouteOverviewMatchers.startNavigationButton, point: CGPoint(x: 10, y: 10))
-        DriveNavigationActions.selecActionOnSimulationAlert(button: "OK")
-
-        // Since we are launching simulation, we must change `updateInterval`, to allow application go into `idle` state
-        // (default `updateInterval` is too often, so EarlGrey is not responding, waiting for `idle` state)
-        DriveNavigationActions.adaptSimulationToEarlGrey()
-        DriveNavigationActions.dismissAlert()
-
-        // Carry out custom test actions
-        test()
-
-        // Go back to landing page
-        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
+        GREYConfiguration.sharedInstance().setValue(true, forConfigKey: kGREYConfigKeySynchronizationEnabled)
     }
 
     /// Checks for dashboard being displayed.
@@ -331,7 +342,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
         CoreActions.tap(element: DriveNavigationMatchers.arrivalTime)
 
         // Check visibility of dashboard settings
-        EarlGrey.selectElement(with: DriveNavigationMatchers.dashboardSettings).assert(grey_sufficientlyVisible())
+        EarlGrey.selectElement(with: DriveNavigationMatchers.dashboardSettings).atIndex(1).assert(grey_sufficientlyVisible())
         EarlGrey.selectElement(with: DriveNavigationMatchers.dashboardAbout).assert(grey_sufficientlyVisible())
 
         // Collapse dashboard
@@ -346,13 +357,42 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
     /// Method that implements MSDKUI-1534 test.
     private func checkSpeeding() {
-        // Check that current speed is displayed in black so there is no overspeeding
+
+        DriveNavigationActions.setSimulationSpeed(updateInterval: TimeInterval(1), movementSpeed: 2)
+
+        // Check that current speed is displayed in red so there is no overspeeding
         DriveNavigationActions.verifySpeeding(isSpeeding: false)
 
-        // Increase current simulation speed so there is overspeeding
-        DriveNavigationActions.increaseSimulationMovementSpeed()
+        DriveNavigationActions.setSimulationSpeed(updateInterval: TimeInterval(3), movementSpeed: 15)
 
-        // Check that current speed is displayed in red so there is overspeeding
+        // Check that current speed is displayed in black so there is overspeeding
         DriveNavigationActions.verifySpeeding(isSpeeding: true)
+    }
+
+    /// Method that implements MSDKUI-1532 test.
+    private func checkGuidanceNextNextManeuverView() {
+        var streetName: String?
+
+        // Wait until the view is visible and complete
+        Utils.waitUntil(element: DriveNavigationMatchers.nextManeuverView.andSufficientlyVisible()) { (view: GuidanceNextManeuverView) -> Bool in
+
+            guard DriveNavigationActions.isViewComplete(view) else {
+                return false
+            }
+
+            streetName = view.streetNameLabel.text
+
+            return true
+        }
+
+        // Wait until the view is visible and it's street name changes, then check if it's complete
+        Utils.waitUntil(element: DriveNavigationMatchers.nextManeuverView.andSufficientlyVisible()) { (view: GuidanceNextManeuverView) -> Bool in
+
+            guard let streetNameText = view.streetNameLabel.text, streetNameText != streetName else {
+                return false
+            }
+
+            return DriveNavigationActions.isViewComplete(view)
+        }
     }
 }

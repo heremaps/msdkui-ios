@@ -105,7 +105,7 @@ final class RouteDescriptionItemTests: XCTestCase {
         XCTAssertTrue(string5.isEmpty, "Not the expected conversion")
     }
 
-    /// Tests the default `ManeuverDescriptionItem.leadingInset` and `ManeuverDescriptionItem.trailingInset`
+    /// Tests the default `ManeuverItemView.leadingInset` and `ManeuverItemView.trailingInset`
     /// values are in line with the related constraints.
     func testDefaultInsetValues() throws {
         let item = try require(itemUnterTest)

@@ -30,8 +30,9 @@ enum Constants {
     static let aPointOnMapView = CGPoint(x: 100, y: 300)
 
     static let normalUpdateIntervalForEarlGrey = TimeInterval(11)
-    static let slowUpdateIntervalForEarlGrey = TimeInterval(15)
+    static let fastUpdateIntervalForEarlGrey = TimeInterval(1)
 
-    static let normalSimulationSpeed = Float(7)
-    static let fastSimulationSpeed = Float(9)
+    static let normalSimulationSpeed = Float(6)
+    static let fastSimulationSpeed = Float(8)
+    static let slowSimulationSpeed = Float(2)
 }

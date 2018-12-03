@@ -17,13 +17,13 @@
 import EarlGrey
 
 enum RouteOverviewMatchers {
-    static var maneuverDescriptionList: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("MSDKUI.ManeuverDescriptionList"),
-                           grey_accessibilityID("ManeuversOverviewViewController.maneuverDescriptionList")])
+    static var maneuverTableView: GREYMatcher {
+        return grey_anyOf([grey_accessibilityID("MSDKUI.ManeuverTableView"),
+                           grey_accessibilityID("ManeuversOverviewViewController.maneuverTableView")])
     }
 
-    static func maneuverDescriptionListCell(cellNr: Int) -> GREYMatcher {
-        return grey_accessibilityID("MSDKUI.ManeuverDescriptionList.cell_\(cellNr)")
+    static func maneuverTableViewCell(cellNr: Int) -> GREYMatcher {
+        return grey_accessibilityID("MSDKUI.ManeuverTableView.cell_\(cellNr)")
     }
 
     static var routeDescriptionPanel: GREYMatcher {

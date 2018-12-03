@@ -147,7 +147,6 @@ final class GuidanceDashboardViewController: UIViewController {
     private func setUpCurrentSpeedView() {
         currentSpeedView.backgroundColor = nil
         currentSpeedView.textAlignment = .left
-        currentSpeedView.unit = Locale.current.usesMetricSystem ? .kilometersPerHour : .milesPerHour
     }
 
     /// Sets up the estimated arrival view.

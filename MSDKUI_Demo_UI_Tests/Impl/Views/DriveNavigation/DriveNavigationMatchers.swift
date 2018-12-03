@@ -87,3 +87,10 @@ enum DriveNavigationMatchers {
         return grey_accessibilityID("MSDKUI.GuidanceSpeedLimitView")
     }
 }
+
+extension GREYMatcher {
+
+    func andSufficientlyVisible() -> GREYMatcher {
+        return grey_allOf([self, grey_sufficientlyVisible()])
+    }
+}

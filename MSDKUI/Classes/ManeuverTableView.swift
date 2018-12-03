@@ -17,35 +17,35 @@
 import Foundation
 import NMAKit
 
-/// The delegate of a `ManeuverDescriptionList` object must adopt the `ManeuverDescriptionListDelegate`
-/// protocol. This protocol lets the `ManeuverDescriptionList` object to inform its `delegate` about
+/// The delegate of a `ManeuverTableView` object must adopt the `ManeuverTableViewDelegate`
+/// protocol. This protocol lets the `ManeuverTableView` object to inform its `delegate` about
 /// updates occurred.
-@objc public protocol ManeuverDescriptionListDelegate: AnyObject {
+@objc public protocol ManeuverTableViewDelegate: AnyObject {
 
     /// Tells the delegate that the specified row and maneuver is selected.
     ///
-    /// - Parameter list: A `ManeuverDescriptionList` object informing the delegate about the new row selection.
+    /// - Parameter tableView: A `ManeuverTableView` object informing the delegate about the new row selection.
     /// - Parameter maneuver: The maneuver associated with the row.
     /// - Parameter index: The index of the newly selected row.
-    func maneuverDescriptionList(_ list: ManeuverDescriptionList, didSelect maneuver: NMAManeuver, at index: Int)
+    func maneuverTableView(_ tableView: ManeuverTableView, didSelect maneuver: NMAManeuver, at index: Int)
 
-    /// Tells the delegate the maneuver description list is about to present a maneuver description item.
+    /// Tells the delegate the maneuver table view is about to present a maneuver item view.
     ///
-    /// A maneuver description list sents this message to its delegate just before it presents a maneuver description
-    /// item, thereby permitting the delegate to customize the maneuver description item object before it is displayed.
+    /// A maneuver table view sents this message to its delegate just before it presents a maneuver item view,
+    /// thereby permitting the delegate to customize the maneuver item view object before it is displayed.
     /// This method gives the delegate a chance to override state-based properties, such as background and text colors.
     ///
     /// - Parameters:
-    ///   - list: The maneuver description list presenting the maneuver description item.
-    ///   - item: The maneuver description item to be presented.
-    @objc optional func maneuverDescriptionList(_ list: ManeuverDescriptionList, willDisplay item: ManeuverDescriptionItem)
+    ///   - tableView: The maneuver table view presenting the maneuver item view.
+    ///   - view: The maneuver item view to be presented.
+    @objc optional func maneuverTableView(_ tableView: ManeuverTableView, willDisplay view: ManeuverItemView)
 }
 
-/// A panel to display all the maneuvers of a route based on the visible sections setting. Note that
+/// A view to display all the maneuvers of a route based on the visible sections setting. Note that
 /// in case there is no maneuver, it shows a warning via `noManeuverFoundLabel` property.
 ///
-/// - SeeAlso: ManeuverDescriptionItem
-@IBDesignable open class ManeuverDescriptionList: UITableView {
+/// - SeeAlso: ManeuverItemView
+@IBDesignable open class ManeuverTableView: UITableView {
 
      // MARK: - Properties
 
@@ -62,15 +62,15 @@ import NMAKit
         }
     }
 
-    /// Number of `ManeuverDescriptionItem` objects in the list.
+    /// Number of `ManeuverItemView` objects in the table view.
     public var entryCount: Int {
         return maneuvers.count
     }
 
-    /// Sets the visibility of `ManeuverDescriptionItem` sections.
+    /// Sets the visibility of `ManeuverItemView` sections.
     ///
     /// - Important: Initially all the sections are visible.
-    public var visibleSections: ManeuverDescriptionItem.Section = .all {
+    public var visibleSections: ManeuverItemView.Section = .all {
         didSet {
             reloadData()
         }
@@ -95,13 +95,13 @@ import NMAKit
 
     /// The optional delegate object. When it is set, the delegate object
     /// is informed about the user interactions.
-    public weak var listDelegate: ManeuverDescriptionListDelegate?
+    public weak var maneuverTableViewDelegate: ManeuverTableViewDelegate?
 
     /// All the maneuvers.
     private var maneuvers: [NMAManeuver] = []
 
     /// The cell reuse identifier.
-    private var reuseIdentifier = String(describing: ManeuverDescriptionItem.self)
+    private var reuseIdentifier = String(describing: ManeuverItemView.self)
 
     // MARK: - Public
 
@@ -121,7 +121,7 @@ import NMAKit
 
     /// Sets the accessibility stuff.
     private func setAccessibility() {
-        accessibilityIdentifier = "MSDKUI.ManeuverDescriptionList"
+        accessibilityIdentifier = "MSDKUI.ManeuverTableView"
     }
 
     /// Sets the accessibility stuff for the row.
@@ -129,17 +129,17 @@ import NMAKit
     /// - Parameter cell: The cell to be updated.
     /// - Parameter row: The row of the passed cell.
     private func setAccessibility(_ cell: UITableViewCell, _ row: Int) {
-        if let view = cell.contentView.viewWithTag(1000) as? ManeuverDescriptionItem {
+        if let view = cell.contentView.viewWithTag(1000) as? ManeuverItemView {
             view.tag = 0 // Done
             cell.accessibilityHint = view.accessibilityHint
         }
 
         cell.isAccessibilityElement = true
         cell.accessibilityLabel = String(format: "msdkui_maneuver_in_list".localized, arguments: [row, entryCount])
-        cell.accessibilityIdentifier = "MSDKUI.ManeuverDescriptionList.cell_\(row)"
+        cell.accessibilityIdentifier = "MSDKUI.ManeuverTableView.cell_\(row)"
 
         // If there is a delegate, consider it a button and otherwise text
-        cell.accessibilityTraits = (listDelegate == nil) ? .staticText : .button
+        cell.accessibilityTraits = (maneuverTableViewDelegate == nil) ? .staticText : .button
     }
 
     /// Sets up the items array.
@@ -147,7 +147,7 @@ import NMAKit
         setUpTableView()
 
         // Set the table row height out of the view used for the content view
-        let view = ManeuverDescriptionItem()
+        let view = ManeuverItemView()
         rowHeight = UITableView.automaticDimension
         estimatedRowHeight = view.bounds.size.height
 
@@ -175,7 +175,7 @@ import NMAKit
 
 // MARK: - UITableViewDataSource
 
-extension ManeuverDescriptionList: UITableViewDataSource {
+extension ManeuverTableView: UITableViewDataSource {
 
     public func numberOfSections(in tableView: UITableView) -> Int {
         // Is there any maneuver? No maneuver means no section
@@ -219,13 +219,13 @@ extension ManeuverDescriptionList: UITableViewDataSource {
         cell.editingAccessoryType = .none
 
         // Create the content view subview
-        let view = ManeuverDescriptionItem()
+        let view = ManeuverItemView()
         view.visibleSections = visibleSections
         view.tag = 1000
         view.setManeuver(maneuvers: maneuvers, index: indexPath.row, measurementFormatter: measurementFormatter)
 
         // Tells the delegate the view is about to be displayed
-        listDelegate?.maneuverDescriptionList?(self, willDisplay: view)
+        maneuverTableViewDelegate?.maneuverTableView?(self, willDisplay: view)
 
         // Finally add the view to the content view
         cell.contentView.addSubviewBindToEdges(view)
@@ -243,9 +243,9 @@ extension ManeuverDescriptionList: UITableViewDataSource {
 
 // MARK: - UITableViewDelegate
 
-extension ManeuverDescriptionList: UITableViewDelegate {
+extension ManeuverTableView: UITableViewDelegate {
 
     public func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        listDelegate?.maneuverDescriptionList(self, didSelect: maneuvers[indexPath.row], at: indexPath.row)
+        maneuverTableViewDelegate?.maneuverTableView(self, didSelect: maneuvers[indexPath.row], at: indexPath.row)
     }
 }

@@ -336,9 +336,6 @@ final class GuidanceViewController: UIViewController {
         // Centers the current speed view content
         currentSpeedView.textAlignment = .center
 
-        // Uses the appropriate unit for the current locale
-        currentSpeedView.unit = Locale.current.usesMetricSystem ? .kilometersPerHour : .milesPerHour
-
         // Sets the colors
         currentSpeedView.backgroundColor = .colorBackgroundBrand
         currentSpeedView.speedValueTextColor = .colorForegroundLight
@@ -353,9 +350,6 @@ final class GuidanceViewController: UIViewController {
         // Adds red border
         speedLimitView.layer.borderWidth = 4
         speedLimitView.layer.borderColor = UIColor.red.cgColor
-
-        // Uses the appropriate unit for the current locale
-        speedLimitView.unit = Locale.current.usesMetricSystem ? .kilometersPerHour : .milesPerHour
     }
 
     private func setUpPositionNotificationsObservers() {

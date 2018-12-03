@@ -49,9 +49,9 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
                        "ManeuversOverviewViewController.routeDescriptionItem",
                        "The routeDescriptionItem should have the correct accessibility identifier")
 
-        XCTAssertEqual(viewControllerUnderTest?.maneuverList.accessibilityIdentifier,
-                       "ManeuversOverviewViewController.maneuverDescriptionList",
-                       "The maneuverList should have the correct accessibility identifier")
+        XCTAssertEqual(viewControllerUnderTest?.maneuverTableView.accessibilityIdentifier,
+                       "ManeuversOverviewViewController.maneuverTableView",
+                       "The maneuverTableView should have the correct accessibility identifier")
 
         XCTAssertEqual(viewControllerUnderTest?.showMapButton.accessibilityIdentifier,
                        "ManeuversOverviewViewController.showMapButton",

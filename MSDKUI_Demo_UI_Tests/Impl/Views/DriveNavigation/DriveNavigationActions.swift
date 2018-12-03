@@ -33,6 +33,17 @@ enum DriveNavigationActions {
 
     // MARK: - Public
 
+    /// Returns from Drive navigation to landing page after test.
+    static func returnToLandingPage() {
+        var error: NSError?
+
+        EarlGrey.selectElement(with: CoreMatchers.exitButton)
+            .perform(grey_tap(), error: &error)
+
+        EarlGrey.selectElement(with: DriveNavigationMatchers.stopNavigationButton)
+            .perform(grey_tap(), error: &error)
+    }
+
     /// Dismisses alert if displayed on top.
     static func dismissAlert() {
         let permissionAlertElement = grey_accessibilityID("LocationBasedViewController.AlertController.permissionsView")
@@ -156,7 +167,7 @@ enum DriveNavigationActions {
             }
 
             // Wait until correct address will be visible
-            addressCondition.wait(withTimeout: 120, pollInterval: 1)
+            addressCondition.wait(withTimeout: 200, pollInterval: 1)
 
             // When address is correct, check if correct icon is displayed
             // Since we are using 2 sets of views - one for portrait, one for landscape,
@@ -262,15 +273,16 @@ enum DriveNavigationActions {
         GREYConfiguration.sharedInstance().setValue(true, forConfigKey: kGREYConfigKeySynchronizationEnabled)
     }
 
-    /// Method for increasing simulation movement speed
+    /// Method for changing update interval and simulation speed.
     ///
-    /// - Important: Doing heavy duty actions after this method has been called is unadvised as
-    ///              it is already stretching the limits of EG, a timeout exception can occur.
-    static func increaseSimulationMovementSpeed() {
+    /// - Parameters:
+    ///     - updateInterval: A Double value for positioning update interval.
+    ///     - movementSpeed: A Float value for setting simulation speed.
+    static func setSimulationSpeed(updateInterval: Double, movementSpeed: Float) {
         NMAPositioningManager.sharedInstance().stopPositioning()
         if let dataSource = NMAPositioningManager.sharedInstance().dataSource as? NMARoutePositionSource {
-            dataSource.updateInterval = Constants.slowUpdateIntervalForEarlGrey
-            dataSource.movementSpeed = Constants.fastSimulationSpeed
+            dataSource.updateInterval = updateInterval
+            dataSource.movementSpeed = movementSpeed
             NMAPositioningManager.sharedInstance().dataSource = dataSource
         }
 
@@ -283,13 +295,6 @@ enum DriveNavigationActions {
         GREYAssertTrue(Thread.isMainThread, reason: "The current thread is the main thread")
 
         Thread.sleep(until: Date(timeIntervalSinceNow: 60))
-    }
-
-    /// Sleeps the main thread for updates to occur when guidance is adapted to EarlGrey.
-    static func sleepMainThreadUntilViewsUpdated() {
-        GREYAssertTrue(Thread.isMainThread, reason: "The current thread is the main thread")
-
-        Thread.sleep(until: Date(timeIntervalSinceNow: Constants.normalUpdateIntervalForEarlGrey + Double(1.0)))
     }
 
     /// This method retrieves the estimated arrival data from dashboard.
@@ -325,6 +330,55 @@ enum DriveNavigationActions {
                        reason: "the data is not retrieved")
 
         return etaData
+    }
+
+    /// Method that changes to specified orientation, launches guidance simulation, then runs specified
+    /// tests and finally terminates the test.
+    ///
+    /// - Parameter isLandscape: if `true`, test will be performed in landscape and in portrait otherwise.
+    static func performGuidanceTest(isLandscape: Bool, test: () -> Void) {
+        // Tap OK button
+        CoreActions.tap(element: WaypointMatchers.waypointViewControllerOk)
+        dismissAlert()
+
+        // Set orientation here - to make sure that both orientations have the same route in test
+        if isLandscape {
+            EarlGrey.rotateDeviceTo(orientation: UIDeviceOrientation.landscapeLeft, errorOrNil: nil)
+        }
+
+        // Start navigation simulation
+        CoreActions.longPress(element: RouteOverviewMatchers.startNavigationButton, point: CGPoint(x: 10, y: 10))
+        selecActionOnSimulationAlert(button: "OK")
+
+        // Since we are launching simulation, we must change `updateInterval`, to allow application go into `idle` state
+        // (default `updateInterval` is too often, so EarlGrey is not responding, waiting for `idle` state)
+
+        adaptSimulationToEarlGrey()
+        dismissAlert()
+
+        // Disable synchronization to avoid waiting for "application idle state"
+        GREYConfiguration.sharedInstance().setValue(false, forConfigKey: kGREYConfigKeySynchronizationEnabled)
+
+        // We can increase simulation speed when EG sync is disabled
+        setSimulationSpeed(updateInterval: Constants.fastUpdateIntervalForEarlGrey, movementSpeed: Constants.fastSimulationSpeed)
+
+        // Carry out custom test actions
+        test()
+
+        // Go back to landing page
+        CoreActions.tap(element: DriveNavigationMatchers.stopNavigationButton)
+        GREYConfiguration.sharedInstance().setValue(true, forConfigKey: kGREYConfigKeySynchronizationEnabled)
+    }
+
+    /// Checks if the view is complete, that is it has content for all of it's properties.
+    ///
+    /// - Parameter guidanceNextManeuverView: the view to check for cmpleteness.
+    /// - Returns: true if the view has content in all of it's properties, false otherwise.
+    static func isViewComplete(_ guidanceNextManeuverView: GuidanceNextManeuverView) -> Bool {
+        return guidanceNextManeuverView.maneuverImageView.image != nil &&
+            guidanceNextManeuverView.distanceLabel.text != nil &&
+            guidanceNextManeuverView.separatorLabel.text != nil &&
+            guidanceNextManeuverView.streetNameLabel.text != nil
     }
 
     // MARK: - Private
@@ -376,5 +430,60 @@ enum DriveNavigationActions {
         )
 
         return (labelColor, viewBackgroundColor)
+    }
+
+    /// Method that is getting `GuidanceCurrentStreetLabel` object.
+    /// - Returns: current streel label object or nil if cannot be find.
+    static func getCurrentStreetLabel() -> GuidanceCurrentStreetLabel? {
+        var currentStreetLabel: GuidanceCurrentStreetLabel?
+        EarlGrey.selectElement(with: DriveNavigationMatchers.currentStreetLabel).perform(
+            GREYActionBlock.action(withName: "Get street label") { element, errorOrNil -> Bool in
+                guard errorOrNil != nil, let streetLabel = element as? GuidanceCurrentStreetLabel else {
+                    return false
+                }
+
+                currentStreetLabel = streetLabel
+                return true
+            }
+        )
+
+        return currentStreetLabel
+    }
+
+    /// Method that is checking text change for current street label.
+    /// - Parameter minNumberOfStreets: minimum number of different street names that is needed to pass.
+    /// - Note: Only valid street names are counted, text set when `isLookingForLocation` is not counted.
+    static func streetLabelTextChangeTest(minNumberOfStreets: Int) {
+        // Get current street label
+        guard let currentStreetLabel = DriveNavigationActions.getCurrentStreetLabel() else {
+            GREYFail("Cannot get current street label")
+            return
+        }
+
+        // Set of currently collected street names
+        var collectedStreetNames = Set<String>()
+
+        // Using KVO observe text changes in current street label
+        let observation = currentStreetLabel.observe(\.text, options: [.new]) { _, change in
+            // Check if values are correct
+            guard let newValue = change.newValue, let streetName = newValue else {
+                return
+            }
+            // Add new street name (ignore isLookingForPosition text)
+            if !currentStreetLabel.isLookingForPosition {
+                collectedStreetNames.insert(streetName)
+            }
+        }
+
+        // Condition to wait until minimum number of different street names is collected
+        let collectedStreetNamesCondition = GREYCondition(name: "Collected street names") {
+            collectedStreetNames.count >= minNumberOfStreets
+        }
+
+        // Wait until minimum number of street names is collected
+        collectedStreetNamesCondition.wait(withTimeout: 120, pollInterval: 1)
+
+        // Invalidate KVO observation
+        observation.invalidate()
     }
 }
