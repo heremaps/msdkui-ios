@@ -20,7 +20,7 @@ import XCTest
 final class GuidanceManeuverDataTests: XCTestCase {
 
     private let maneuverIcon = "maneuver_icon_4"
-    private let distance = "300 m"
+    private let distance = Measurement(value: 300, unit: UnitLength.meters)
     private let info1 = "Exit 30"
     private let info2 = "Invalidenstr."
     private let nextRoadIcon = UIImage()
@@ -51,15 +51,5 @@ final class GuidanceManeuverDataTests: XCTestCase {
         let objectWithSameData = GuidanceManeuverData(maneuverIcon: maneuverIcon, distance: distance, info1: info1, info2: info2, nextRoadIcon: nextRoadIcon)
 
         XCTAssertEqual(objectWithSameData, dataObject, "Wrong equality!")
-    }
-
-    /// Tests that the string description works as expected.
-    func testDescription() {
-        let dataObject = GuidanceManeuverData(maneuverIcon: maneuverIcon, distance: distance, info1: nil, info2: info2, nextRoadIcon: nil)
-
-        let description = String(describing: dataObject)
-        let expectedDescription = "maneuverIcon: \(maneuverIcon), distance: \(distance), info1: nil, info2: \(info2)"
-
-        XCTAssertEqual(description, expectedDescription, "Wrong description!")
     }
 }

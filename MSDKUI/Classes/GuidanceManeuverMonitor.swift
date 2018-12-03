@@ -53,19 +53,14 @@ open class GuidanceManeuverMonitor: NSObject {
     /// Reference to the 'NMAPositioningManagerDidUpdatePosition' observer.
     private var positionUpdateObserver: NSObjectProtocol?
 
-    /// The measurement formatter used to format the distance to next maneuver.
-    private var measurementFormatter: MeasurementFormatter
-
     // MARK: - Public
 
     /// Creates and returns a `GuidanceManeuverMonitor` object.
     ///
     /// - Parameters:
     ///   - route: The route to be used.
-    ///   - measurementFormatter: The measurement formatter used to format the distance to next maneuver.
-    ///     The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
-    public convenience init(route: NMARoute, measurementFormatter: MeasurementFormatter = .currentMediumUnitFormatter) {
-        self.init(route: route, notificationCenter: NotificationCenter.default, measurementFormatter: measurementFormatter)
+    public convenience init(route: NMARoute) {
+        self.init(route: route, notificationCenter: NotificationCenter.default)
     }
 
     /// Creates and returns a `GuidanceManeuverMonitor` object.
@@ -73,11 +68,9 @@ open class GuidanceManeuverMonitor: NSObject {
     /// - Parameters:
     ///   - route: The route to be used.
     ///   - notificationCenter: The notification center for observing position updates.
-    ///   - measurementFormatter: The measurement formatter used to format the distance to next maneuver.
-    init(route: NMARoute, notificationCenter: NotificationCenterObserving, measurementFormatter: MeasurementFormatter) {
+    init(route: NMARoute, notificationCenter: NotificationCenterObserving) {
         self.route = route
         self.notificationCenter = notificationCenter
-        self.measurementFormatter = measurementFormatter
 
         super.init()
 
@@ -123,11 +116,7 @@ open class GuidanceManeuverMonitor: NSObject {
         // Try to set the distance
         if NMAPositioningManager.sharedInstance().currentPosition != nil {
             let distanceValue = NMANavigationManager.sharedInstance().distanceToCurrentManeuver
-            let distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
-
-            if distanceValue != NMANavigationManagerInvalidValue {
-                data.distance = measurementFormatter.string(from: distance)
-            }
+            data.distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
         }
 
         // Try to set the info1 and info2 strings

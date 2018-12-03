@@ -108,6 +108,10 @@ import NMAKit
         }
     }
 
+    public var distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
+        didSet { refreshView() }
+    }
+
     /// Sets the view's foreground color, i.e. the color for the icons, text and busy indicators.
     /// The default foreground color is colorForegroundLight.
     public var foregroundColor: UIColor = .colorForegroundLight {
@@ -341,7 +345,7 @@ import NMAKit
         }
 
         if let distance = data.distance {
-            distanceLabels.forEach { $0.text = distance }
+            distanceLabels.forEach { $0.text = distanceFormatter.string(from: distance) }
         }
 
         // Always set the road icon (since nextRoadIcon is optional)

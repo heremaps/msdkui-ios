@@ -50,7 +50,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
     func testContainersStateWithDataSet() {
         // Sets the view data
         view.data = GuidanceManeuverData(maneuverIcon: "maneuver_icon_11",
-                                         distance: "30 m",
+                                         distance: Measurement(value: 30, unit: UnitLength.meters),
                                          info1: "Exit 30",
                                          info2: "Invalidenstr.",
                                          nextRoadIcon: mockNextRoadIcon)
@@ -109,7 +109,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
     /// Tests the view height when the Info1 is set in the portrait orientation.
     func testViewWithInfo1inPortrait() {
         let data = GuidanceManeuverData(maneuverIcon: "maneuver_icon_11",
-                                        distance: "30 m",
+                                        distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: "Exit 30",
                                         info2: "Invalidenstr.",
                                         nextRoadIcon: mockNextRoadIcon)
@@ -133,7 +133,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
     /// Tests the view when the Info1 is not set in the portrait orientation.
     func testViewWithoutInfo1inPortrait() {
         let data = GuidanceManeuverData(maneuverIcon: "maneuver_icon_12",
-                                        distance: "200 m",
+                                        distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: nil,
                                         info2: "Invalidenstr.",
                                         nextRoadIcon: mockNextRoadIcon)
@@ -216,6 +216,11 @@ final class GuidanceManeuverViewTests: XCTestCase {
     // MARK: - Private
 
     private func checkData(_ data: GuidanceManeuverData, line: UInt = #line) {
+        guard let distance = data.distance else {
+            XCTFail("Missing distance")
+            return
+        }
+
         XCTAssertNotNil(view.maneuverImageViews[GuidanceManeuverView.Orientation.portrait.rawValue].image,
                         "The portrait maneuver image is not set!",
                         line: line)
@@ -226,7 +231,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
                        line: line)
 
         XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Orientation.portrait.rawValue].text,
-                       data.distance,
+                       MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
                        "The portrait distance data is wrong!",
                        line: line)
 
@@ -250,7 +255,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
                        line: line)
 
         XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Orientation.landscape.rawValue].text,
-                       data.distance,
+                       MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
                        "The landscape distance data is wrong!",
                        line: line)
 
