@@ -68,7 +68,7 @@ enum Utils {
     ///   - timeout: The timeout period in seconds.
     ///   - pollInterval: The polling interval period in seconds
     static func waitUntil(visible element: GREYMatcher,
-                          timeout: Double = Constants.longWait,
+                          timeout: Double = Constants.mediumWait,
                           pollInterval: Double = Constants.smallPollInterval) {
         // From the GREYMatchers::matcherForSufficientlyVisible() documentation:
         //    "EarlGrey considers elements that are more than kElementSufficientlyVisiblePercentage (75 %)
