@@ -46,10 +46,10 @@ enum DriveNavigationActions {
 
     /// Dismisses alert if displayed on top.
     static func dismissAlert() {
-        let permissionAlertElement = grey_accessibilityID("LocationBasedViewController.AlertController.permissionsView")
+        let permissionAlertID = "LocationBasedViewController.AlertController.permissionsView"
 
-        Utils.waitUntil(visible: permissionAlertElement)
-        EarlGrey.selectElement(with: permissionAlertElement).perform(
+        Utils.waitUntil(visible: grey_accessibilityID(permissionAlertID))
+        EarlGrey.selectElement(with: grey_accessibilityID(permissionAlertID)).perform(
             GREYActionBlock.action(withName: "dismissAlert") { element, errorOrNil -> Bool in
                 // Check error, make sure we have view here, and make sure this is alert controller view
                 guard
@@ -60,7 +60,10 @@ enum DriveNavigationActions {
                 }
 
                 // Dismiss alert
-                alert.dismiss(animated: false)
+                alert.dismiss(animated: true)
+
+                // Wait until alert is not visible anymore
+                Utils.waitUntil(hidden: permissionAlertID)
 
                 return true
             }
