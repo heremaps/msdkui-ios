@@ -59,9 +59,6 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
     /// The mock notification center used to verify expectations.
     private let mockNotificationCenter = NotificationCenterObservingMock()
 
-    /// The measurement formatter used to test the monitor.
-    private let measurementFormatter = MeasurementFormatter.currentMediumUnitFormatter
-
     override func setUp() {
         super.setUp()
 
@@ -69,9 +66,7 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
         _ = GuidanceManeuverMonitorTests.setMethods
 
         // Set up
-        maneuverMonitor = GuidanceManeuverMonitor(route: MockUtils.mockRoute(),
-                                                  notificationCenter: mockNotificationCenter,
-                                                  measurementFormatter: measurementFormatter)
+        maneuverMonitor = GuidanceManeuverMonitor(route: MockUtils.mockRoute(), notificationCenter: mockNotificationCenter)
 
         maneuverMonitor?.delegate = mockDelegate
         GuidanceManeuverMonitorTests.swizzleMethods()
@@ -97,9 +92,8 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
     /// Tests when the delegate method `.navigationManager(_:didUpdateManeuvers:nextManeuver:)` is triggered.
     func testWhenNavigationManagerDidUpdateManeuversNextManeuverIsTriggered() {
         let expectedDistance = Measurement(value: 300, unit: UnitLength.meters)
-        let expectedFormattedDistance = measurementFormatter.string(from: expectedDistance)
         let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: "maneuver_icon_4",
-                                                        distance: expectedFormattedDistance,
+                                                        distance: expectedDistance,
                                                         info1: nil,
                                                         info2: "Invalidenstr.",
                                                         nextRoadIcon: nil)
@@ -127,9 +121,8 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
     /// Tests when a `NMAPositioningManagerDidUpdatePosition` notification is received.
     func testWhenNMAPositioningManagerDidUpdatePositionNotificationIsReceived() {
         let expectedDistance = Measurement(value: 300, unit: UnitLength.meters)
-        let expectedFormattedDistance = measurementFormatter.string(from: expectedDistance)
         let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: "maneuver_icon_4",
-                                                        distance: expectedFormattedDistance,
+                                                        distance: expectedDistance,
                                                         info1: nil,
                                                         info2: "Invalidenstr.",
                                                         nextRoadIcon: nil)
