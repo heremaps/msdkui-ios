@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2544E4BCD7DB26EC1BE02080 /* Pods_MSDKUI_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7641FA5E5CB1E23C5A672D57 /* Pods_MSDKUI_Dev.framework */; };
 		2B03B90721148B8300CA612C /* GuidanceStreetLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */; };
 		2B049B1F217632C90001F117 /* ExtensionArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B049B1E217632C90001F117 /* ExtensionArrayTests.swift */; };
 		2B09C2EB2178D95A00B90B23 /* MapViewportHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B09C2EA2178D95A00B90B23 /* MapViewportHandlerTests.swift */; };
@@ -108,14 +109,21 @@
 		62085071212426120086ED92 /* EstimatedArrivalProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62085070212426120086ED92 /* EstimatedArrivalProviderMock.swift */; };
 		62094471211C70E70026B62C /* ExtensionUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62094470211C70E70026B62C /* ExtensionUIApplication.swift */; };
 		62094473211C75E60026B62C /* URLOpenerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62094472211C75E60026B62C /* URLOpenerMock.swift */; };
+		620E183721A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620E183621A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift */; };
 		62174B03214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */; };
 		62174B04214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */; };
 		621C89B020EDF71F003C8EC6 /* NotificationCenterObservingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */; };
 		621C89B120EDF71F003C8EC6 /* NotificationCenterObservingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */; };
+		62250E1D21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */; };
 		623BF5A02151175300780EAC /* RouteDescriptionListDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BF59F2151175300780EAC /* RouteDescriptionListDelegateMock.swift */; };
 		623BF5A12151175300780EAC /* RouteDescriptionListDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BF59F2151175300780EAC /* RouteDescriptionListDelegateMock.swift */; };
+		623D78CA21A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D78C921A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift */; };
 		6244D94121466D32003ADC49 /* ExtensionUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6244D94021466D32003ADC49 /* ExtensionUITableViewCell.swift */; };
 		6244D94321466DC2003ADC49 /* ExtensionUITableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6244D94221466DC2003ADC49 /* ExtensionUITableViewCellTests.swift */; };
+		6245BCA421A447500042B00C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6245BCA321A447500042B00C /* AppDelegate.swift */; };
+		6245BCA921A447500042B00C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6245BCA721A447500042B00C /* Main.storyboard */; };
+		6245BCAB21A447510042B00C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6245BCAA21A447510042B00C /* Assets.xcassets */; };
+		6245BCAE21A447510042B00C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6245BCAC21A447510042B00C /* LaunchScreen.storyboard */; };
 		624E492321342E4D00D94D23 /* ExtensionNumberFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E492221342E4D00D94D23 /* ExtensionNumberFormatterTests.swift */; };
 		624E872C21411EDD004B61CA /* GuidanceDashboardViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E872A21411D85004B61CA /* GuidanceDashboardViewControllerTests.swift */; };
 		624E872E21413191004B61CA /* GuidanceDashboardViewControllerDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 624E872D21413191004B61CA /* GuidanceDashboardViewControllerDelegateMock.swift */; };
@@ -125,7 +133,12 @@
 		62654619214287E700E00D4B /* GuidanceDashboardTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62654618214287E700E00D4B /* GuidanceDashboardTableViewCellTests.swift */; };
 		6265461B2142C35A00E00D4B /* GuidanceDashboardTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6265461A2142C35A00E00D4B /* GuidanceDashboardTableViewDataSource.swift */; };
 		6265461D2142C37A00E00D4B /* GuidanceDashboardTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6265461C2142C37A00E00D4B /* GuidanceDashboardTableViewDataSourceTests.swift */; };
+		62657CCE21A871FD004993C3 /* GuidanceNextManeuverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62657CCD21A871FD004993C3 /* GuidanceNextManeuverViewController.swift */; };
 		626A452A20EE3E390074C091 /* RouteOverviewViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5AA3E36020E0EE2A00623841 /* RouteOverviewViewControllerTests.swift */; };
+		626BC8AB21B14BD200483AF0 /* GuidanceStreetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626BC8AA21B14BD200483AF0 /* GuidanceStreetViewController.swift */; };
+		626BC8AD21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626BC8AC21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift */; };
+		626E3ED121A566B800F30294 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 626E3ED021A566B800F30294 /* SettingsViewController.swift */; };
+		6279D9A921A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6279D9A821A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift */; };
 		6282D58F213FFE4800B1906F /* GuidanceDashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6282D58E213FFE4800B1906F /* GuidanceDashboardViewController.swift */; };
 		628740C121237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */; };
 		628EFFE8215B5F7A00963B66 /* ExtensionNMACoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EFFE7215B5F7A00963B66 /* ExtensionNMACoreRouter.swift */; };
@@ -162,11 +175,14 @@
 		62E0CFE020EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0CFDF20EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift */; };
 		62E110DF21246E42005D8063 /* ExtensionDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E110DE21246E42005D8063 /* ExtensionDateFormatterTests.swift */; };
 		62E110E121246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E110E021246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift */; };
+		62E5BF7521AEA56900174D27 /* GuidanceManeuverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5BF7421AEA56900174D27 /* GuidanceManeuverViewController.swift */; };
 		62E8A1B621447FD6006EB665 /* AboutTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1B521447FD6006EB665 /* AboutTableViewCellTests.swift */; };
 		62E8A1BA2144913A006EB665 /* AboutTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1B92144913A006EB665 /* AboutTableViewDataSourceTests.swift */; };
 		62E8A1BC214496DC006EB665 /* AboutTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1B721449128006EB665 /* AboutTableViewDataSource.swift */; };
 		62E8A1BF21449B70006EB665 /* ExtensionBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1BD21449B6A006EB665 /* ExtensionBundle.swift */; };
 		62E8A1C12144A277006EB665 /* AboutViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1C02144A277006EB665 /* AboutViewControllerTests.swift */; };
+		62E8C9AA21A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8C9A921A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift */; };
+		62E8C9AD21A46FAE00737B59 /* GuidanceSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8C9AC21A46FAE00737B59 /* GuidanceSpeedViewController.swift */; };
 		62EA5ED020D81BA2004AE496 /* ExtensionUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6231C34120D1DB370046FFC9 /* ExtensionUITableView.swift */; };
 		62EA5ED120D81BA2004AE496 /* ExtensionXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0A2B220D16A71007795CE /* ExtensionXCTestCase.swift */; };
 		62EA5ED320D81BAD004AE496 /* ExtensionNMAMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F7DF420D14112006F0A90 /* ExtensionNMAMapViewTests.swift */; };
@@ -176,6 +192,8 @@
 		62EB17F8212C02070088B7A5 /* DriveNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62EB17F7212C02070088B7A5 /* DriveNavigation.storyboard */; };
 		62EB17FA212C02520088B7A5 /* RoutePlanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62EB17F9212C02520088B7A5 /* RoutePlanner.storyboard */; };
 		62EDC35B20D9357C003D1D33 /* ExtensionUIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDC35A20D9357C003D1D33 /* ExtensionUIStoryboard.swift */; };
+		62F061D521A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F061D421A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift */; };
+		62F061D821A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F061D721A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift */; };
 		62F1DBAC20FE179A00A5D018 /* NMACredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1DBAB20FE179A00A5D018 /* NMACredentials.swift */; };
 		62F770BB20ED640D0044993E /* GuidanceManeuverMonitorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F770BA20ED640D0044993E /* GuidanceManeuverMonitorDelegateMock.swift */; };
 		62F770BC20ED640D0044993E /* GuidanceManeuverMonitorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F770BA20ED640D0044993E /* GuidanceManeuverMonitorDelegateMock.swift */; };
@@ -265,8 +283,8 @@
 		2BF48E162106FD1F0043563C /* NMAGeoPositionFixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMAGeoPositionFixture.swift; sourceTree = "<group>"; };
 		2BF48E182106FE1A0043563C /* Positioning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Positioning.swift; sourceTree = "<group>"; };
 		32276C8FB8149C7E9DB03B64 /* Pods-MSDKUI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Tests/Pods-MSDKUI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
+		32A58AD82E094A40C10B1885 /* Pods-MSDKUI_Dev.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Dev.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev.analyze.xcconfig"; sourceTree = "<group>"; };
 		4FFE1B4BEA0D97480284A960 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		50AD3384F44514791F5635B4 /* Pods-MSDKUI_Demo_ObjC.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo_ObjC.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo_ObjC/Pods-MSDKUI_Demo_ObjC.analyze.xcconfig"; sourceTree = "<group>"; };
 		563337D621A29ACD0093F977 /* CoreMatchers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreMatchers.swift; sourceTree = "<group>"; };
 		5672EC3D2191901700FBF92C /* RoutePlannerActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoutePlannerActions.swift; sourceTree = "<group>"; };
 		5672EC442191925500FBF92C /* RouteOverViewActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOverViewActions.swift; sourceTree = "<group>"; };
@@ -367,13 +385,22 @@
 		62085070212426120086ED92 /* EstimatedArrivalProviderMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EstimatedArrivalProviderMock.swift; sourceTree = "<group>"; };
 		62094470211C70E70026B62C /* ExtensionUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIApplication.swift; sourceTree = "<group>"; };
 		62094472211C75E60026B62C /* URLOpenerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerMock.swift; sourceTree = "<group>"; };
+		620E183621A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceNextManeuverSettingsViewController.swift; sourceTree = "<group>"; };
 		62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimePanelDelegateMock.swift; sourceTree = "<group>"; };
 		621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterObservingMock.swift; sourceTree = "<group>"; };
+		62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverSettingsViewController.swift; sourceTree = "<group>"; };
 		6231C33F20D1D2740046FFC9 /* OptionsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewControllerTests.swift; sourceTree = "<group>"; };
 		6231C34120D1DB370046FFC9 /* ExtensionUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableView.swift; sourceTree = "<group>"; };
 		623BF59F2151175300780EAC /* RouteDescriptionListDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDescriptionListDelegateMock.swift; sourceTree = "<group>"; };
+		623D78C921A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedLimitViewController.swift; sourceTree = "<group>"; };
 		6244D94021466D32003ADC49 /* ExtensionUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableViewCell.swift; sourceTree = "<group>"; };
 		6244D94221466DC2003ADC49 /* ExtensionUITableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableViewCellTests.swift; sourceTree = "<group>"; };
+		6245BCA121A447500042B00C /* MSDKUI_Dev.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MSDKUI_Dev.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6245BCA321A447500042B00C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6245BCA821A447500042B00C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6245BCAA21A447510042B00C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6245BCAD21A447510042B00C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		6245BCAF21A447510042B00C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		624E492221342E4D00D94D23 /* ExtensionNumberFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNumberFormatterTests.swift; sourceTree = "<group>"; };
 		624E872A21411D85004B61CA /* GuidanceDashboardViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceDashboardViewControllerTests.swift; sourceTree = "<group>"; };
 		624E872D21413191004B61CA /* GuidanceDashboardViewControllerDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceDashboardViewControllerDelegateMock.swift; sourceTree = "<group>"; };
@@ -382,6 +409,11 @@
 		62654618214287E700E00D4B /* GuidanceDashboardTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceDashboardTableViewCellTests.swift; sourceTree = "<group>"; };
 		6265461A2142C35A00E00D4B /* GuidanceDashboardTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceDashboardTableViewDataSource.swift; sourceTree = "<group>"; };
 		6265461C2142C37A00E00D4B /* GuidanceDashboardTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceDashboardTableViewDataSourceTests.swift; sourceTree = "<group>"; };
+		62657CCD21A871FD004993C3 /* GuidanceNextManeuverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceNextManeuverViewController.swift; sourceTree = "<group>"; };
+		626BC8AA21B14BD200483AF0 /* GuidanceStreetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceStreetViewController.swift; sourceTree = "<group>"; };
+		626BC8AC21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceStreetSettingsViewController.swift; sourceTree = "<group>"; };
+		626E3ED021A566B800F30294 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6279D9A821A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceEstimatedArrivalSettingsViewController.swift; sourceTree = "<group>"; };
 		627B9CD520D80FFB000672E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6282D58E213FFE4800B1906F /* GuidanceDashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceDashboardViewController.swift; sourceTree = "<group>"; };
 		628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceEstimatedArrivalMonitorTests.swift; sourceTree = "<group>"; };
@@ -413,21 +445,27 @@
 		62E0CFDF20EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManagerDelegateDispatcherTests.swift; sourceTree = "<group>"; };
 		62E110DE21246E42005D8063 /* ExtensionDateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDateFormatterTests.swift; sourceTree = "<group>"; };
 		62E110E021246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMeasurementFormatterTests.swift; sourceTree = "<group>"; };
+		62E5BF7421AEA56900174D27 /* GuidanceManeuverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverViewController.swift; sourceTree = "<group>"; };
 		62E8A1B521447FD6006EB665 /* AboutTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCellTests.swift; sourceTree = "<group>"; };
 		62E8A1B721449128006EB665 /* AboutTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewDataSource.swift; sourceTree = "<group>"; };
 		62E8A1B92144913A006EB665 /* AboutTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewDataSourceTests.swift; sourceTree = "<group>"; };
 		62E8A1BD21449B6A006EB665 /* ExtensionBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionBundle.swift; sourceTree = "<group>"; };
 		62E8A1C02144A277006EB665 /* AboutViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewControllerTests.swift; sourceTree = "<group>"; };
+		62E8C9A921A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceEstimatedArrivalViewController.swift; sourceTree = "<group>"; };
+		62E8C9AC21A46FAE00737B59 /* GuidanceSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedViewController.swift; sourceTree = "<group>"; };
 		62EA5EC520D81B7C004AE496 /* MSDKUI_Demo_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSDKUI_Demo_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EB17F7212C02070088B7A5 /* DriveNavigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DriveNavigation.storyboard; sourceTree = "<group>"; };
 		62EB17F9212C02520088B7A5 /* RoutePlanner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoutePlanner.storyboard; sourceTree = "<group>"; };
 		62EDC35A20D9357C003D1D33 /* ExtensionUIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIStoryboard.swift; sourceTree = "<group>"; };
+		62F061D421A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedSettingsViewController.swift; sourceTree = "<group>"; };
+		62F061D721A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedLimitSettingsViewController.swift; sourceTree = "<group>"; };
 		62F1DBAB20FE179A00A5D018 /* NMACredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMACredentials.swift; sourceTree = "<group>"; };
 		62F770BA20ED640D0044993E /* GuidanceManeuverMonitorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverMonitorDelegateMock.swift; sourceTree = "<group>"; };
 		62F82CCC20FD522B006759AD /* ExtensionUIBarButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIBarButtonItem.swift; sourceTree = "<group>"; };
 		715CC58A8CA71A095E1B05AF /* Pods-MSDKUI_Demo.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo.analyze.xcconfig"; sourceTree = "<group>"; };
 		71B5871BDAED9ABCEB50F065 /* Pods-MSDKUI_Demo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo.release.xcconfig"; sourceTree = "<group>"; };
-		7354E1AF92A099274CE2643C /* Pods_MSDKUI_Demo_ObjC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSDKUI_Demo_ObjC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7641FA5E5CB1E23C5A672D57 /* Pods_MSDKUI_Dev.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSDKUI_Dev.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8974C6B00E189E945ABAB34E /* Pods-MSDKUI_Dev.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Dev.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev.debug.xcconfig"; sourceTree = "<group>"; };
 		8EA75F943C3E58D05BFD7282 /* Pods_MSDKUI_Demo_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSDKUI_Demo_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F5DBB4720EF706C00E65CE2 /* ExtensionArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionArrayTests.swift; sourceTree = "<group>"; };
 		8F8F480B211857F700A9C817 /* LandingViewControllerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewControllerTests.swift; sourceTree = "<group>"; };
@@ -463,8 +501,7 @@
 		DBAFD3BD5CCA335BE80DB553 /* Pods_MSDKUI_Demo_UI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSDKUI_Demo_UI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECAA90F21C47A1229025C3F /* Pods-MSDKUI_Demo_UI_Tests.analyze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo_UI_Tests.analyze.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo_UI_Tests/Pods-MSDKUI_Demo_UI_Tests.analyze.xcconfig"; sourceTree = "<group>"; };
 		DF75689EE35940B3266E507A /* Pods-MSDKUI_Demo_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo_Tests/Pods-MSDKUI_Demo_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		F3B41A344504DB432AD05AC3 /* Pods-MSDKUI_Demo_ObjC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo_ObjC.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo_ObjC/Pods-MSDKUI_Demo_ObjC.debug.xcconfig"; sourceTree = "<group>"; };
-		F7A8E0A0930C04153E6D467E /* Pods-MSDKUI_Demo_ObjC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo_ObjC.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo_ObjC/Pods-MSDKUI_Demo_ObjC.release.xcconfig"; sourceTree = "<group>"; };
+		F7ADACBB37A76457EC422D8F /* Pods-MSDKUI_Dev.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Dev.release.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev.release.xcconfig"; sourceTree = "<group>"; };
 		FB6D1820EFE98789387B188C /* Pods-MSDKUI_Demo_UI_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MSDKUI_Demo_UI_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MSDKUI_Demo_UI_Tests/Pods-MSDKUI_Demo_UI_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -493,6 +530,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6245BC9E21A447500042B00C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				2544E4BCD7DB26EC1BE02080 /* Pods_MSDKUI_Dev.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62EA5EC220D81B7C004AE496 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -509,9 +554,9 @@
 			children = (
 				A84C670E9BEADEDFECD6B305 /* Pods_MSDKUI_Demo.framework */,
 				1B5B63A0F20D885320D69345 /* Pods_MSDKUI_Tests.framework */,
-				7354E1AF92A099274CE2643C /* Pods_MSDKUI_Demo_ObjC.framework */,
 				8EA75F943C3E58D05BFD7282 /* Pods_MSDKUI_Demo_Tests.framework */,
 				DBAFD3BD5CCA335BE80DB553 /* Pods_MSDKUI_Demo_UI_Tests.framework */,
+				7641FA5E5CB1E23C5A672D57 /* Pods_MSDKUI_Dev.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -569,15 +614,15 @@
 				715CC58A8CA71A095E1B05AF /* Pods-MSDKUI_Demo.analyze.xcconfig */,
 				92AE851BA5493F0E27CCD59B /* Pods-MSDKUI_Tests.analyze.xcconfig */,
 				C1D5DD4E1DC9DBA8F8572E7E /* Pods-MSDKUI_Demo_Tests.analyze.xcconfig */,
-				F3B41A344504DB432AD05AC3 /* Pods-MSDKUI_Demo_ObjC.debug.xcconfig */,
-				F7A8E0A0930C04153E6D467E /* Pods-MSDKUI_Demo_ObjC.release.xcconfig */,
-				50AD3384F44514791F5635B4 /* Pods-MSDKUI_Demo_ObjC.analyze.xcconfig */,
 				C8580AADA169C2D91E415D37 /* Pods-MSDKUI_Demo_Tests.debug.xcconfig */,
 				BBD9F4F6EFDD9993E1DDF983 /* Pods-MSDKUI_Demo_Tests.release.xcconfig */,
 				BD8E1B038B276D2B67E15F7E /* Pods-MSDKUI_Demo_Tests.analyze.xcconfig */,
 				FB6D1820EFE98789387B188C /* Pods-MSDKUI_Demo_UI_Tests.debug.xcconfig */,
 				617D9F142E4941145DD28B7F /* Pods-MSDKUI_Demo_UI_Tests.release.xcconfig */,
 				DECAA90F21C47A1229025C3F /* Pods-MSDKUI_Demo_UI_Tests.analyze.xcconfig */,
+				8974C6B00E189E945ABAB34E /* Pods-MSDKUI_Dev.debug.xcconfig */,
+				F7ADACBB37A76457EC422D8F /* Pods-MSDKUI_Dev.release.xcconfig */,
+				32A58AD82E094A40C10B1885 /* Pods-MSDKUI_Dev.analyze.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -710,6 +755,7 @@
 				607FACE81AFB9204008FA782 /* MSDKUI_Tests */,
 				627B9CD220D80FFB000672E6 /* MSDKUI_Demo_Tests */,
 				5ADC01E3203F6BD500EBA8A5 /* MSDKUI_Demo_UI_Tests */,
+				6245BCA221A447500042B00C /* MSDKUI_Dev */,
 				5AD017E41FBB0CA800D71628 /* Commons */,
 				62D392C420E8EA3C006E963D /* Commons_Tests */,
 				607FACD11AFB9204008FA782 /* Products */,
@@ -725,6 +771,7 @@
 				607FACE51AFB9204008FA782 /* MSDKUI_Tests.xctest */,
 				5ADC01E2203F6BD500EBA8A5 /* MSDKUI_Demo_UI_Tests.xctest */,
 				62EA5EC520D81B7C004AE496 /* MSDKUI_Demo_Tests.xctest */,
+				6245BCA121A447500042B00C /* MSDKUI_Dev.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -831,6 +878,17 @@
 				952FD119D7EBACBC8F12BFBC /* HEREMapsUI.podspec */,
 			);
 			name = "MSDKUI Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		6245BCA221A447500042B00C /* MSDKUI_Dev */ = {
+			isa = PBXGroup;
+			children = (
+				6245BCA321A447500042B00C /* AppDelegate.swift */,
+				626E3ED021A566B800F30294 /* SettingsViewController.swift */,
+				62F061D921A5A48A0096A449 /* Components */,
+				62F061D621A5A0EA0096A449 /* Supporting Files */,
+			);
+			path = MSDKUI_Dev;
 			sourceTree = "<group>";
 		};
 		627B9CD220D80FFB000672E6 /* MSDKUI_Demo_Tests */ = {
@@ -975,6 +1033,36 @@
 			path = Storyboards;
 			sourceTree = "<group>";
 		};
+		62F061D621A5A0EA0096A449 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				6245BCAF21A447510042B00C /* Info.plist */,
+				6245BCAA21A447510042B00C /* Assets.xcassets */,
+				6245BCAC21A447510042B00C /* LaunchScreen.storyboard */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		62F061D921A5A48A0096A449 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				6279D9A821A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift */,
+				62E8C9A921A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift */,
+				62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */,
+				62E5BF7421AEA56900174D27 /* GuidanceManeuverViewController.swift */,
+				620E183621A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift */,
+				62657CCD21A871FD004993C3 /* GuidanceNextManeuverViewController.swift */,
+				62F061D721A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift */,
+				623D78C921A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift */,
+				62F061D421A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift */,
+				62E8C9AC21A46FAE00737B59 /* GuidanceSpeedViewController.swift */,
+				626BC8AC21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift */,
+				626BC8AA21B14BD200483AF0 /* GuidanceStreetViewController.swift */,
+				6245BCA721A447500042B00C /* Main.storyboard */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
 		A3C83BB320AC3A10007B2E12 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -1113,6 +1201,26 @@
 			productReference = 607FACE51AFB9204008FA782 /* MSDKUI_Tests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		6245BCA021A447500042B00C /* MSDKUI_Dev */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6245BCB321A447510042B00C /* Build configuration list for PBXNativeTarget "MSDKUI_Dev" */;
+			buildPhases = (
+				8B1D904AB5F83CE4EB0FFDFF /* [CP] Check Pods Manifest.lock */,
+				62F7CF4121AD53A3005FF537 /* SwiftLint */,
+				6245BC9D21A447500042B00C /* Sources */,
+				6245BC9E21A447500042B00C /* Frameworks */,
+				6245BC9F21A447500042B00C /* Resources */,
+				A278CD8444905DD54924B86F /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MSDKUI_Dev;
+			productName = MSDKUI_Components;
+			productReference = 6245BCA121A447500042B00C /* MSDKUI_Dev.app */;
+			productType = "com.apple.product-type.application";
+		};
 		62EA5EC420D81B7C004AE496 /* MSDKUI_Demo_Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 62EA5ECC20D81B7C004AE496 /* Build configuration list for PBXNativeTarget "MSDKUI_Demo_Tests" */;
@@ -1139,7 +1247,7 @@
 		607FACC81AFB9204008FA782 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = CocoaPods;
 				TargetAttributes = {
@@ -1157,6 +1265,10 @@
 						CreatedOnToolsVersion = 6.3.1;
 						LastSwiftMigration = 1000;
 						TestTargetID = 607FACCF1AFB9204008FA782;
+					};
+					6245BCA021A447500042B00C = {
+						CreatedOnToolsVersion = 10.1;
+						ProvisioningStyle = Automatic;
 					};
 					62EA5EC420D81B7C004AE496 = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -1196,6 +1308,7 @@
 				607FACE41AFB9204008FA782 /* MSDKUI_Tests */,
 				62EA5EC420D81B7C004AE496 /* MSDKUI_Demo_Tests */,
 				5ADC01E1203F6BD500EBA8A5 /* MSDKUI_Demo_UI_Tests */,
+				6245BCA021A447500042B00C /* MSDKUI_Dev */,
 			);
 		};
 /* End PBXProject section */
@@ -1227,6 +1340,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6245BC9F21A447500042B00C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6245BCAE21A447510042B00C /* LaunchScreen.storyboard in Resources */,
+				6245BCAB21A447510042B00C /* Assets.xcassets in Resources */,
+				6245BCA921A447500042B00C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1367,6 +1490,46 @@
 			shellPath = /bin/sh;
 			shellScript = "rake tools:buildcredentials\n";
 		};
+		62F7CF4121AD53A3005FF537 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\" autocorrect\n\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		8B1D904AB5F83CE4EB0FFDFF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MSDKUI_Dev-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		97831CE7465B0FAD18B4EA17 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1403,6 +1566,30 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A278CD8444905DD54924B86F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh",
+				"${PODS_ROOT}/HEREMaps/framework/NMAKit.framework",
+				"${BUILT_PRODUCTS_DIR}/HEREMapsUI/MSDKUI.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMAKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSDKUI.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BAA020550981B4C631FD407D /* [CP] Embed Pods Frameworks */ = {
@@ -1615,6 +1802,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6245BC9D21A447500042B00C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				623D78CA21A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift in Sources */,
+				62F061D821A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift in Sources */,
+				626BC8AB21B14BD200483AF0 /* GuidanceStreetViewController.swift in Sources */,
+				62250E1D21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift in Sources */,
+				62E8C9AD21A46FAE00737B59 /* GuidanceSpeedViewController.swift in Sources */,
+				62F061D521A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift in Sources */,
+				626BC8AD21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift in Sources */,
+				62657CCE21A871FD004993C3 /* GuidanceNextManeuverViewController.swift in Sources */,
+				620E183721A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift in Sources */,
+				62E8C9AA21A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift in Sources */,
+				626E3ED121A566B800F30294 /* SettingsViewController.swift in Sources */,
+				62E5BF7521AEA56900174D27 /* GuidanceManeuverViewController.swift in Sources */,
+				6279D9A921A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift in Sources */,
+				6245BCA421A447500042B00C /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		62EA5EC120D81B7C004AE496 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1734,6 +1942,22 @@
 				5A96ECC11F5D7A5100451792 /* Base */,
 			);
 			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6245BCA721A447500042B00C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6245BCA821A447500042B00C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		6245BCAC21A447510042B00C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6245BCAD21A447510042B00C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -2024,6 +2248,84 @@
 			};
 			name = Release;
 		};
+		6245BCB021A447510042B00C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8974C6B00E189E945ABAB34E /* Pods-MSDKUI_Dev.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.here.MSDKUI-Components";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		6245BCB121A447510042B00C /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F7ADACBB37A76457EC422D8F /* Pods-MSDKUI_Dev.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.here.MSDKUI-Components";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		6245BCB221A447510042B00C /* Analyze */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32A58AD82E094A40C10B1885 /* Pods-MSDKUI_Dev.analyze.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.here.MSDKUI-Components";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Analyze;
+		};
 		62EA5ECD20D81B7C004AE496 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = C8580AADA169C2D91E415D37 /* Pods-MSDKUI_Demo_Tests.debug.xcconfig */;
@@ -2245,6 +2547,16 @@
 				607FACF31AFB9204008FA782 /* Debug */,
 				607FACF41AFB9204008FA782 /* Release */,
 				AC1375311EA9F071005B4DF2 /* Analyze */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		6245BCB321A447510042B00C /* Build configuration list for PBXNativeTarget "MSDKUI_Dev" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6245BCB021A447510042B00C /* Debug */,
+				6245BCB121A447510042B00C /* Release */,
+				6245BCB221A447510042B00C /* Analyze */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;

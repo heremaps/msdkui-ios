@@ -11,6 +11,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 	- [Setting up the Environment](#setting-up-the-environment)
 - [Building the MSKUI Framework](#building-the-mskui-framework)
 - [Building the Demo App](#building-the-demo-app)
+- [Building the Dev App](#building-the-dev-app)
 - [Commit / Pull Request Policy](#commit-pull-request-policy)
 - [Running Tests](#running-tests)
 - [Command Line](#command-line)
@@ -115,14 +116,23 @@ At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`.
 
 >**Note:** If you run the demo app in a simulator, please make sure to delete the build phase "Adapt to Build Platform" in Xcode. Otherwise, you won't be able to mock locations for the iOS simulator of your choice.
 
+## Building the Dev App
+
+This project includes a Dev application, which is designed to display MSDKUI components in their raw form. While the `Demo App` offers a polished experience of the MSDKUI components, it doesn't show the different combinations these components allow developers to set.
+
+1. Open the `MSDKUI.xcworkspace`
+1. Select the `MSDKUI_Dev` scheme
+1. Build it (Product > Build) or Command+B
+
 ## Commit / Pull Request Policy
 
 Please follow our commit policy. Once you have pushed your changes, you should be able to see your work on GitHub. Each pull request will be reviewed and merged if there are no objections. Before sending a pull request, please make sure to:
 
 - Write well-formatted [commit messages](#writing-git-commit-messages).
-- Explain what the pull request addresses (especially if your pull request bundles several commits).
+- [Explain what the pull request addresses](#submitting-a-pull-request) (especially if your pull request bundles several commits).
 - Add [unit tests](#running-tests) for newly added features or - if suitable - for bug fixes.
-- Keep the unit test coverage for the [MSDKUI framework](#test-coverage-for-the-msdkui-framework-toolsxcov_msdkui) and the [Demo app](#test-coverage-for-the-demo-application-toolsxcov_demo_app) above 80%.
+- Add new UI components to the `MSDKUI_Dev` application.
+- Keep the unit test coverage for the MSDKUI framework and Demo app above 80% (reported via Codecov via comment on Pull Requests).
 - If your change involves a new UI behavior, please consider to help us write a [UI test](#running-tests) (not mandatory, but more than welcome).
 
 ## Running Tests
