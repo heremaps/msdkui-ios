@@ -92,7 +92,8 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
     /// Tests when the delegate method `.navigationManager(_:didUpdateManeuvers:nextManeuver:)` is triggered.
     func testWhenNavigationManagerDidUpdateManeuversNextManeuverIsTriggered() {
         let expectedDistance = Measurement(value: 300, unit: UnitLength.meters)
-        let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: "maneuver_icon_4",
+        let expectedManeuverIcon = UIImage(named: "maneuver_icon_4", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: expectedManeuverIcon,
                                                         distance: expectedDistance,
                                                         info1: nil,
                                                         info2: "Invalidenstr.",
@@ -121,7 +122,8 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
     /// Tests when a `NMAPositioningManagerDidUpdatePosition` notification is received.
     func testWhenNMAPositioningManagerDidUpdatePositionNotificationIsReceived() {
         let expectedDistance = Measurement(value: 300, unit: UnitLength.meters)
-        let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: "maneuver_icon_4",
+        let expectedManeuverIcon = UIImage(named: "maneuver_icon_4", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: expectedManeuverIcon,
                                                         distance: expectedDistance,
                                                         info1: nil,
                                                         info2: "Invalidenstr.",

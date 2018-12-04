@@ -127,8 +127,10 @@ open class GuidanceManeuverMonitor: NSObject {
         data.info1 = maneuver.getSignpostExitNumber()
         data.info2 = maneuver.getNextStreet(fallback: route)
 
-        // Set the icon
-        data.maneuverIcon = maneuver.getIconFileName()
+        // Set the maneuver icon
+        data.maneuverIcon = maneuver.getIconFileName().flatMap {
+            UIImage(named: $0, in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        }
 
         // Set the next road icon for this maneuver
         data.nextRoadIcon = maneuver.nextRoadIcon?.uiImage()

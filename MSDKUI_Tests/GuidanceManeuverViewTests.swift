@@ -49,7 +49,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
     /// Tests the state of Data and NoData Containers after data is set.
     func testContainersStateWithDataSet() {
         // Sets the view data
-        view.data = GuidanceManeuverData(maneuverIcon: "maneuver_icon_11",
+        view.data = GuidanceManeuverData(maneuverIcon: UIImage(),
                                          distance: Measurement(value: 30, unit: UnitLength.meters),
                                          info1: "Exit 30",
                                          info2: "Invalidenstr.",
@@ -108,7 +108,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the view height when the Info1 is set in the portrait orientation.
     func testViewWithInfo1inPortrait() {
-        let data = GuidanceManeuverData(maneuverIcon: "maneuver_icon_11",
+        let data = GuidanceManeuverData(maneuverIcon: UIImage(),
                                         distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: "Exit 30",
                                         info2: "Invalidenstr.",
@@ -132,7 +132,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the view when the Info1 is not set in the portrait orientation.
     func testViewWithoutInfo1inPortrait() {
-        let data = GuidanceManeuverData(maneuverIcon: "maneuver_icon_12",
+        let data = GuidanceManeuverData(maneuverIcon: UIImage(),
                                         distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: nil,
                                         info2: "Invalidenstr.",

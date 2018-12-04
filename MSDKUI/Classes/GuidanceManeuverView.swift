@@ -339,9 +339,7 @@ import NMAKit
 
     private func displayData(data: GuidanceManeuverData) {
         if let maneuverIcon = data.maneuverIcon {
-            let image = UIImage(named: maneuverIcon, in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-
-            maneuverImageViews.forEach { $0.image = image }
+            maneuverImageViews.forEach { $0.image = maneuverIcon }
         }
 
         if let distance = data.distance {
