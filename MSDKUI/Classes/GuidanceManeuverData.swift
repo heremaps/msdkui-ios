@@ -21,17 +21,17 @@ import Foundation
 public struct GuidanceManeuverData: Equatable {
 
     /// The maneuver icon of the next maneuver.
-    var maneuverIcon: String?
+    public var maneuverIcon: String?
 
     /// The distance to the next maneuver.
-    var distance: Measurement<UnitLength>?
+    public var distance: Measurement<UnitLength>?
 
     /// The info1 string which is mostly the next maneuver street.
-    var info1: String?
+    public var info1: String?
 
     /// The info2 string which is mostly the highway related information.
-    var info2: String?
+    public var info2: String?
 
     /// The next road icon for this maneuver.
-    var nextRoadIcon: UIImage?
+    public var nextRoadIcon: UIImage?
 }
