@@ -21,7 +21,7 @@ import Foundation
 public struct GuidanceManeuverData: Equatable {
 
     /// The maneuver icon of the next maneuver.
-    public var maneuverIcon: String?
+    public var maneuverIcon: UIImage?
 
     /// The distance to the next maneuver.
     public var distance: Measurement<UnitLength>?
