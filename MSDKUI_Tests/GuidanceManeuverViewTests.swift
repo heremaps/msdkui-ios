@@ -213,6 +213,101 @@ final class GuidanceManeuverViewTests: XCTestCase {
         checkStyle(backgroundColor: newBackgroundColor, foregroundColor: newForegroundColor)
     }
 
+    // MARK: - Guidance Maneuver Data
+
+    /// Tests the behavior when maneuverIcon is nil.
+    func testWhenManeuverIconIsNil() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.maneuverImageViews.filter { $0.image == nil }.isEmpty,
+                       "It doesn't have maneuver image")
+    }
+
+    /// Tests the behavior when maneuverIcon is valid.
+    func testWhenManeuverIconIsValid() {
+        view.data = GuidanceManeuverData(maneuverIcon: UIImage(), distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.maneuverImageViews.filter { $0.image != nil }.isEmpty,
+                       "It has maneuver image")
+    }
+
+    /// Tests the behavior when distance is nil.
+    func testWhenDistanceIsNil() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.distanceLabels.filter { $0.text == nil }.isEmpty,
+                       "It doesn't have distance text")
+    }
+
+    /// Tests the behavior when distance is valid.
+    func testWhenDistanceIsValid() {
+        let distance = Measurement(value: 30, unit: UnitLength.furlongs)
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: distance, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.distanceLabels.filter { $0.text != nil }.isEmpty,
+                       "It has distance text")
+    }
+
+    /// Tests the behavior when info1 is nil.
+    func testWhenInfo1IsNil() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.info1Labels.filter { $0.text == nil }.isEmpty,
+                       "It doesn't have info1 text")
+
+        XCTAssertFalse(view.info1Labels.filter { $0.isHidden }.isEmpty,
+                       "It hides the info1 labels")
+    }
+
+    /// Tests the behavior when info1 is valid.
+    func testWhenInfo1IsValid() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: "Foobar", info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.info1Labels.filter { $0.text != nil }.isEmpty,
+                       "It has info1 text")
+
+        XCTAssertTrue(view.info1Labels.filter { $0.isHidden }.isEmpty,
+                      "It shows the info1 labels")
+    }
+
+    /// Tests the behavior when info2 is nil.
+    func testWhenInfo2IsNil() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.info2Labels.filter { $0.text == nil }.isEmpty,
+                       "It doesn't have info2 text")
+
+        XCTAssertFalse(view.info2Labels.filter { $0.isHidden }.isEmpty,
+                       "It hides the info2 labels")
+    }
+
+    /// Tests the behavior when info2 is valid.
+    func testWhenInfo2IsValid() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: "Foobar", nextRoadIcon: nil)
+
+        XCTAssertFalse(view.info2Labels.filter { $0.text != nil }.isEmpty,
+                       "It has info2 text")
+
+        XCTAssertTrue(view.info2Labels.filter { $0.isHidden }.isEmpty,
+                      "It shows the info2 labels")
+    }
+
+    /// Tests the behavior when nextRoadIcon is nil.
+    func testWhenNextRoadIconIsNil() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+
+        XCTAssertFalse(view.roadIconViews.filter { $0.image == nil }.isEmpty,
+                       "It doesn't have road icon image")
+    }
+
+    /// Tests the behavior when nextRoadIcon is valid.
+    func testWhenNextRoadIconIsValid() {
+        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: UIImage())
+
+        XCTAssertFalse(view.roadIconViews.filter { $0.image != nil }.isEmpty,
+                       "It has road icon image")
+    }
+
     // MARK: - Private
 
     private func checkData(_ data: GuidanceManeuverData, line: UInt = #line) {

@@ -338,34 +338,30 @@ import NMAKit
     }
 
     private func displayData(data: GuidanceManeuverData) {
-        if let maneuverIcon = data.maneuverIcon {
-            maneuverImageViews.forEach { $0.image = maneuverIcon }
+        // Sets the maneuver icon
+        maneuverImageViews.forEach {
+            $0.image = data.maneuverIcon
         }
 
-        if let distance = data.distance {
-            distanceLabels.forEach { $0.text = distanceFormatter.string(from: distance) }
+        // Sets the distance text
+        distanceLabels.forEach {
+            $0.text = data.distance.map(distanceFormatter.string)
         }
 
-        // Always set the road icon (since nextRoadIcon is optional)
+        // Sets the road icon
         roadIconViews.forEach {
             $0.image = data.nextRoadIcon
         }
 
-        // Info1 is an optional string
-        if let info1 = data.info1 {
-            info1Labels.forEach {
-                $0.text = info1
-                $0.isHidden = false
-            }
-        } else {
-            info1Labels.forEach {
-                $0.text = nil
-                $0.isHidden = true
-            }
+        // Sets the info 1 and info 2 texts
+        info1Labels.forEach {
+            $0.text = data.info1
+            $0.isHidden = data.info1 == nil
         }
 
-        if let info2 = data.info2 {
-            info2Labels.forEach { $0.text = info2 }
+        info2Labels.forEach {
+            $0.text = data.info2
+            $0.isHidden = data.info2 == nil
         }
 
         // Sets the visibility of the two containers to display the maneuver data
