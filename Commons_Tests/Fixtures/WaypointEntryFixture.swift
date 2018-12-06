@@ -51,6 +51,14 @@ enum WaypointEntryFixture {
         return makeWaypoint(name: "Zoologischer Garten, Berlin", latitude: 52.507920, longitude: 13.337755)
     }
 
+    static func berlinHauptbahnhof() -> WaypointEntry {
+        return makeWaypoint(name: "Hauptbahnhof, Berlin", latitude: 52.528533, longitude: 13.369879)
+    }
+
+    static func berlinPotsdamerPlatz() -> WaypointEntry {
+        return makeWaypoint(name: "Potsdamer Platz, Berlin", latitude: 52.509590, longitude: 13.376363)
+    }
+
     static func empty() -> WaypointEntry {
         return WaypointEntry(NMAWaypoint(), name: "Without coordinates")
     }

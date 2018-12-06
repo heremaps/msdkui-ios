@@ -151,4 +151,29 @@ enum Utils {
         }.wait(withTimeout: timeout, pollInterval: pollInterval)
         GREYAssert(isMatched, reason: "No element was matched")
     }
+
+    /// Matches option element with specified label and returns UISwitch that belongs to this option view.
+    ///
+    /// - Parameter text: Text that option label should contain.
+    /// - Returns: UISwith element for option item.
+    static func optionSwitchForLabelContainingText(_ text: String) -> GREYMatcher {
+        return GREYElementMatcherBlock(matchesBlock: { element in
+
+            // Find option switch, switch must have parent
+            guard let view = element as? UISwitch,
+                view.accessibilityIdentifier == "Label+SwitchOption.switch",
+                let superview = view.superview else {
+                    return false
+            }
+
+            // Check if parent of found switch have UILabel that contains searched text
+            return superview.subviews.contains { view -> Bool in
+                guard let label = view as? UILabel, let labelText = label.text else {
+                    return false
+                }
+                return labelText.contains(text)
+            }
+
+        }, descriptionBlock: { _ = $0.appendText("optionSwitchWithLabelContainText(\"\(text)\")") })
+    }
 }
