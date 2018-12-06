@@ -25,6 +25,10 @@ enum RoutePlannerOptionMatchers {
         return  grey_accessibilityLabel("Avoid traffic")
     }
 
+    static var optionSwitchAvoidTunnels: GREYMatcher {
+        return Utils.optionSwitchForLabelContainingText("Avoid tunnels")
+    }
+
     static var optionRouteType: GREYMatcher {
         return grey_accessibilityLabel("Route type")
     }

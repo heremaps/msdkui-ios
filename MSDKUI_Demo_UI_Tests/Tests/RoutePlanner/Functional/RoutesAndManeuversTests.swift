@@ -278,4 +278,57 @@ final class RoutesAndManeuversTests: XCTestCase {
         EarlGrey.selectElement(with: Utils.viewContainingText(TestStrings.to))
             .assert(grey_sufficientlyVisible())
     }
+
+    /// MSDKUI-1628: Tunnel route option applied.
+    /// Check that route is recalculated after enabling tunnels.
+    func testTunnelOptionApplied() {
+        // Make sure default transport mode car is selected
+        RoutePlannerActions.saveTransportMode()
+        GREYAssertTrue(
+            RoutePlannerActions.transportMode == .car,
+            reason: "The default transport mode should be car!"
+        )
+
+        // Set all the waypoints with known names
+        RoutePlannerActions.setWaypoints(
+            waypoints: [
+                WaypointEntryFixture.berlinHauptbahnhof(),
+                WaypointEntryFixture.berlinPotsdamerPlatz()
+            ])
+        RoutePlannerActions.waitUntilRoutesCalculated()
+
+        // Get data for first initially calculated route
+        guard let initialRoute = RoutePlannerActions.routeListRoutes.first else {
+            GREYFail("No route is found")
+            return
+        }
+
+        // Go to route options
+        CoreActions.tap(element: RoutePlannerMatchers.routeOptionsButton)
+        EarlGrey.selectElement(with: RoutePlannerOptionMatchers.optionRouteOptions)
+            .assert(grey_sufficientlyVisible())
+            .perform(grey_tap())
+
+        // Tap avoid tunnels switch
+        EarlGrey.selectElement(with: RoutePlannerOptionMatchers.optionSwitchAvoidTunnels)
+            .assert(grey_sufficientlyVisible())
+            .perform(grey_tap())
+
+        // Back to route planner
+        EarlGrey.selectElement(with: CoreMatchers.backButton).perform(grey_tap())
+        EarlGrey.selectElement(with: CoreMatchers.backButton).perform(grey_tap())
+        RoutePlannerActions.waitUntilRoutesCalculated()
+
+        // Get data for first updated route
+        guard let updatedRoute = RoutePlannerActions.routeListRoutes.first else {
+            GREYFail("No route is found")
+            return
+        }
+
+        // Check if length and duration is different for initial and updated route
+        GREYAssertNotEqualObjects(initialRoute.length, updatedRoute.length, reason: "Lengths should be different")
+        GREYAssertNotEqualObjects(initialRoute.ttaExcludingTraffic(forSubleg: UInt(NMARouteSublegWhole))?.duration,
+                                  updatedRoute.ttaExcludingTraffic(forSubleg: UInt(NMARouteSublegWhole))?.duration,
+                                  reason: "Durations should be different")
+    }
 }
