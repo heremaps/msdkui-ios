@@ -23,6 +23,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 - [Writing Git Commit Messages](#writing-git-commit-messages)
 	- [A normal ticket](#a-normal-ticket)
 	- [Solving multiple tickets](#solving-multiple-tickets)
+- [Submitting a Pull Request](#submitting-a-pull-request)
 - [Writing Code](#writing-code)
 	- [Accessibility Identifiers](#accessibility-identifiers)
 	- [MARK directives](#mark-directives)
@@ -284,6 +285,15 @@ TICKET-IDZ: Ticket Z Title
 
 Extended description (as for a normal ticket, see above).
 ```
+
+## Submitting a Pull Request
+
+- Pull Requests may contain multiple commits.
+- Pull Requests should not include "Merge" commits.
+    - Rebase your work to keep the Pull Request commits on top.
+- Give the Pull Request a short title which explains what the Pull Request is about.
+- Give the Pull Request a description which details what the Pull Request is about.
+- Once the Pull Request is merged into master, delete the feature branch.
 
 ## Writing Code
 
