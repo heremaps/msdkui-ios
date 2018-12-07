@@ -21,11 +21,9 @@ MSDKUI_PROJECT = "MSDKUI.xcodeproj"
 MSDKUI_PODSPEC = "MSDKUI.podspec"
 MSDKUI_ARCHIVE = "MSDKUI.xcarchive"
 
+MSDKUI_TARGET_SCHEME_NAME = "HEREMapsUI"
 MSDKUI_TARGET = "MSDKUI"
 DEMO_APP_TARGET = "MSDKUI_Demo"
-DEMO_APP_UNIT_TESTS_TARGET = "MSDKUI_Demo_Tests"
-DEMO_APP_UI_TESTS_TARGET = "MSDKUI_Demo_UI_Tests"
-MSDKUI_UNIT_TESTS_TARGET = "MSDKUI_Tests"
 
 DEFAULT_SIMULATOR_NAME = ENV['DEFAULT_SIMULATOR_NAME'] || "iPhone 8"
 DEFAULT_IOS_VERSION = ENV['DEFAULT_IOS_VERSION'] || "12.1"
@@ -83,14 +81,14 @@ namespace :build do
 
         # Build for device
         buildframework(workspace: MSDKUI_WORKSPACE,
-                       scheme: MSDKUI_TARGET,
+                       scheme: MSDKUI_TARGET_SCHEME_NAME,
                        architectures: "armv7,arm64",
                        sdk: device_framework,
                        output_directory: "#{frameworks_directory}/#{device_framework}/")
 
         # Build for simulator
         buildframework(workspace: MSDKUI_WORKSPACE,
-                       scheme: MSDKUI_TARGET,
+                       scheme: MSDKUI_TARGET_SCHEME_NAME,
                        architectures: "x86_64,i386",
                        sdk: simulator_framework,
                        output_directory: "#{frameworks_directory}/#{simulator_framework}/")
