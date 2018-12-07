@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B03B90721148B8300CA612C /* GuidanceCurrentStreetLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B90621148B8300CA612C /* GuidanceCurrentStreetLabelTests.swift */; };
+		2B03B90721148B8300CA612C /* GuidanceStreetLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */; };
 		2B049B1F217632C90001F117 /* ExtensionArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B049B1E217632C90001F117 /* ExtensionArrayTests.swift */; };
 		2B09C2EB2178D95A00B90B23 /* MapViewportHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B09C2EA2178D95A00B90B23 /* MapViewportHandlerTests.swift */; };
 		2B2C50E4218B609A00227C29 /* DriveNavigationActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B2C50E3218B609A00227C29 /* DriveNavigationActions.swift */; };
@@ -247,7 +247,7 @@
 
 /* Begin PBXFileReference section */
 		1B5B63A0F20D885320D69345 /* Pods_MSDKUI_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MSDKUI_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2B03B90621148B8300CA612C /* GuidanceCurrentStreetLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceCurrentStreetLabelTests.swift; sourceTree = "<group>"; };
+		2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceStreetLabelTests.swift; sourceTree = "<group>"; };
 		2B049B1E217632C90001F117 /* ExtensionArrayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionArrayTests.swift; sourceTree = "<group>"; };
 		2B09C2EA2178D95A00B90B23 /* MapViewportHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewportHandlerTests.swift; sourceTree = "<group>"; };
 		2B2C50E3218B609A00227C29 /* DriveNavigationActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DriveNavigationActions.swift; sourceTree = "<group>"; };
@@ -777,7 +777,7 @@
 				62E110DE21246E42005D8063 /* ExtensionDateFormatterTests.swift */,
 				62E110E021246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift */,
 				624E492221342E4D00D94D23 /* ExtensionNumberFormatterTests.swift */,
-				2B03B90621148B8300CA612C /* GuidanceCurrentStreetLabelTests.swift */,
+				2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */,
 				2B31F6B7212E989E007B760B /* GuidanceCurrentStreetNameMonitorTests.swift */,
 				628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */,
 				62CFD6B82122CAD200E77A69 /* GuidanceEstimatedArrivalViewTests.swift */,
@@ -1558,7 +1558,7 @@
 				62D4B280216B92CF009744BF /* OptionsPanelDelegateMock.swift in Sources */,
 				62D392CE20E9100E006E963D /* NMAMapViewPartialMock.swift in Sources */,
 				5A61A56D1F0664A300470BE9 /* WaypointListTests.swift in Sources */,
-				2B03B90721148B8300CA612C /* GuidanceCurrentStreetLabelTests.swift in Sources */,
+				2B03B90721148B8300CA612C /* GuidanceStreetLabelTests.swift in Sources */,
 				5A16301B208F693100E61B07 /* GuidanceManeuverViewTests.swift in Sources */,
 				5A09DBFE1F296B15006EBED7 /* TravelTimePickerTests.swift in Sources */,
 				5A1B2AA320A09A8D009AD672 /* GuidanceManeuverUtilTests.swift in Sources */,

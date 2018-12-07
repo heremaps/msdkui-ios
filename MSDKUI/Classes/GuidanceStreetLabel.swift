@@ -17,9 +17,9 @@
 import Foundation
 import UIKit
 
-/// Label for displaying the current street name,
+/// Label for displaying the street name,
 /// which depends on position and map tracking data.
-@IBDesignable open class GuidanceCurrentStreetLabel: UILabel {
+@IBDesignable open class GuidanceStreetLabel: UILabel {
 
     // MARK: - Properties
 
@@ -118,7 +118,7 @@ import UIKit
         updateBackgroundColor()
 
         // Accessibility
-        accessibilityIdentifier = String(reflecting: GuidanceCurrentStreetLabel.self)
+        accessibilityIdentifier = String(reflecting: GuidanceStreetLabel.self)
     }
 
     private func updateIsLookingForPosition() {

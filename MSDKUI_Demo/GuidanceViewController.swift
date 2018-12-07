@@ -54,7 +54,7 @@ final class GuidanceViewController: UIViewController {
     @IBOutlet private(set) var mapOverlayView: UIView!
 
     /// The current street label view which is initially hidden.
-    @IBOutlet private(set) var currentStreetLabel: GuidanceCurrentStreetLabel!
+    @IBOutlet private(set) var currentStreetLabel: GuidanceStreetLabel!
 
     @IBOutlet private(set) var currentSpeedView: GuidanceSpeedView!
 
