@@ -435,13 +435,13 @@ enum DriveNavigationActions {
         return (labelColor, viewBackgroundColor)
     }
 
-    /// Method that is getting `GuidanceCurrentStreetLabel` object.
+    /// Method that is getting `GuidanceStreetLabel` object.
     /// - Returns: current streel label object or nil if cannot be find.
-    static func getCurrentStreetLabel() -> GuidanceCurrentStreetLabel? {
-        var currentStreetLabel: GuidanceCurrentStreetLabel?
+    static func getCurrentStreetLabel() -> GuidanceStreetLabel? {
+        var currentStreetLabel: GuidanceStreetLabel?
         EarlGrey.selectElement(with: DriveNavigationMatchers.currentStreetLabel).perform(
             GREYActionBlock.action(withName: "Get street label") { element, errorOrNil -> Bool in
-                guard errorOrNil != nil, let streetLabel = element as? GuidanceCurrentStreetLabel else {
+                guard errorOrNil != nil, let streetLabel = element as? GuidanceStreetLabel else {
                     return false
                 }
 
