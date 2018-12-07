@@ -17,15 +17,15 @@
 @testable import MSDKUI
 import XCTest
 
-final class GuidanceCurrentStreetLabelTests: XCTestCase {
+final class GuidanceStreetLabelTests: XCTestCase {
 
     /// The object under test.
-    private var labelUnderTest: GuidanceCurrentStreetLabel?
+    private var labelUnderTest: GuidanceStreetLabel?
 
     override func setUp() {
         super.setUp()
 
-        labelUnderTest = GuidanceCurrentStreetLabel(frame: .zero)
+        labelUnderTest = GuidanceStreetLabel(frame: .zero)
     }
 
     // MARK: - Looking for position state
@@ -119,7 +119,7 @@ final class GuidanceCurrentStreetLabelTests: XCTestCase {
         var labelUnderTest = try require(self.labelUnderTest)
         assertStyleProperties(of: labelUnderTest)
 
-        labelUnderTest = try require(GuidanceCurrentStreetLabel(coder: NSKeyedUnarchiver(forReadingWith: NSKeyedArchiver().encodedData)))
+        labelUnderTest = try require(GuidanceStreetLabel(coder: NSKeyedUnarchiver(forReadingWith: NSKeyedArchiver().encodedData)))
         assertStyleProperties(of: labelUnderTest)
     }
 
@@ -130,18 +130,18 @@ final class GuidanceCurrentStreetLabelTests: XCTestCase {
         var labelUnderTest = try require(self.labelUnderTest)
         assertAccessibility(of: labelUnderTest)
 
-        labelUnderTest = try require(GuidanceCurrentStreetLabel(coder: NSKeyedUnarchiver(forReadingWith: NSKeyedArchiver().encodedData)))
+        labelUnderTest = try require(GuidanceStreetLabel(coder: NSKeyedUnarchiver(forReadingWith: NSKeyedArchiver().encodedData)))
         assertAccessibility(of: labelUnderTest)
     }
 
     // MARK: - Private
 
-    private func assertAccessibility(of labelUnderTest: GuidanceCurrentStreetLabel) {
-        XCTAssertEqual(labelUnderTest.accessibilityIdentifier, "MSDKUI.GuidanceCurrentStreetLabel",
+    private func assertAccessibility(of labelUnderTest: GuidanceStreetLabel) {
+        XCTAssertEqual(labelUnderTest.accessibilityIdentifier, "MSDKUI.GuidanceStreetLabel",
                        "It has correct accessibility identifier")
     }
 
-    private func assertStyleProperties(of labelUnderTest: GuidanceCurrentStreetLabel) {
+    private func assertStyleProperties(of labelUnderTest: GuidanceStreetLabel) {
         XCTAssertTrue(labelUnderTest.isAccented, "It has correct style state")
         XCTAssertEqual(labelUnderTest.backgroundColor, .colorPositive, "It has correct background color")
         XCTAssertEqual(labelUnderTest.font, .preferredFont(forTextStyle: .subheadline), "It has correct font")
