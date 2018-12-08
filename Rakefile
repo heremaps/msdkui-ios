@@ -315,8 +315,6 @@ def buildframework(workspace:, scheme:, architectures:, sdk:, output_directory:)
 end
 
 def buildjazzy(workspace:, scheme:, module_name:, readme:, output_directory:)
-    systemOrExit "rm -rf #{output_directory}/"
-
     systemOrExit "bundle exec jazzy \
             --skip-undocumented \
             --clean \
