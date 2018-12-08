@@ -322,7 +322,6 @@ def buildjazzy(workspace:, scheme:, module_name:, readme:, output_directory:)
             --module '#{module_name}' \
             --output '#{output_directory}' \
             --github_url 'https://github.com/heremaps/msdkui-ios/' \
-            --github-file-prefix 'https://github.com/heremaps/msdkui-ios/blob/master/' \
             --theme fullwidth \
             --readme='#{readme}'"
 
