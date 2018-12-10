@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "類別 E";
 "msdkui_tunnels_allowed_title" = "允許的隧道";
 "msdkui_undefined" = "未定義";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "公里";
 "msdkui_unit_km_per_h" = "公里/小時";
 "msdkui_unit_meter" = "公尺";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "不明";
 "msdkui_userposition_search" = "取得您的位置";
 "msdkui_violate_truck_options" = "忽略貨車選項";

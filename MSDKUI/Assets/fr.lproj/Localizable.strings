@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "Catégorie E";
 "msdkui_tunnels_allowed_title" = "Tunnels autorisés";
 "msdkui_undefined" = "Non défini";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "km";
 "msdkui_unit_km_per_h" = "km/h";
 "msdkui_unit_meter" = "m";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "Inconnu";
 "msdkui_userposition_search" = "Détection de votre position";
 "msdkui_violate_truck_options" = "Ignorer les options pour les camions";

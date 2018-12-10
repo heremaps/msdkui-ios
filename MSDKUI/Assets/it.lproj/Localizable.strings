@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "Categoria E";
 "msdkui_tunnels_allowed_title" = "Gallerie consentite";
 "msdkui_undefined" = "Non definita";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "km";
 "msdkui_unit_km_per_h" = "km/h";
 "msdkui_unit_meter" = "m";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "Sconosciuta";
 "msdkui_userposition_search" = "Recupero della posizione";
 "msdkui_violate_truck_options" = "Ignora opzioni camion";

@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "Категорія E";
 "msdkui_tunnels_allowed_title" = "Тунелі дозволено";
 "msdkui_undefined" = "Не визначено";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "км";
 "msdkui_unit_km_per_h" = "км/год";
 "msdkui_unit_meter" = "м";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "Невідомо";
 "msdkui_userposition_search" = "Отримання місцезнаходження";
 "msdkui_violate_truck_options" = "Ігнорувати характеристики вантажівки";

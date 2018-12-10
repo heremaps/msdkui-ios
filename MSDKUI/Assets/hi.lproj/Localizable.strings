@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "श्रेणी E";
 "msdkui_tunnels_allowed_title" = "सुरंग की अनुमति";
 "msdkui_undefined" = "निर्धारित नहीं";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "किमी.";
 "msdkui_unit_km_per_h" = "किमी/घंटा";
 "msdkui_unit_meter" = "मीटर";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "अज्ञात";
 "msdkui_userposition_search" = "आपका स्थान पता कर रहे हैं";
 "msdkui_violate_truck_options" = "ट्रक विकल्पों को नज़रअंदाज करें";

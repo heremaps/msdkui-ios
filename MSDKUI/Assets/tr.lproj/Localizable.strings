@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "Kategori E";
 "msdkui_tunnels_allowed_title" = "Tünellere izin verildi";
 "msdkui_undefined" = "Tanımlı değil";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "km";
 "msdkui_unit_km_per_h" = "km/s";
 "msdkui_unit_meter" = "m";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "Bilinmiyor";
 "msdkui_userposition_search" = "Konumunuz alınıyor";
 "msdkui_violate_truck_options" = "Kamyon seçeneklerini yok say";

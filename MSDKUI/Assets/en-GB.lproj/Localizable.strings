@@ -147,9 +147,13 @@
 "msdkui_tunnel_cat_e" = "Category E";
 "msdkui_tunnels_allowed_title" = "Tunnels allowed";
 "msdkui_undefined" = "Not defined";
+"msdkui_unit_foot" = "ft";
 "msdkui_unit_kilometer" = "km";
 "msdkui_unit_km_per_h" = "km/h";
 "msdkui_unit_meter" = "m";
+"msdkui_unit_mile" = "mi";
+"msdkui_unit_miles_per_hour" = "mi/h";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "Unknown";
 "msdkui_userposition_search" = "Getting your location";
 "msdkui_violate_truck_options" = "Ignore truck options";
