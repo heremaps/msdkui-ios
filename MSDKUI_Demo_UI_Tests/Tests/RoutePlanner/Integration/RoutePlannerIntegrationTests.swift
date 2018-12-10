@@ -249,8 +249,8 @@ final class RoutePlannerIntegrationTests: XCTestCase {
         // Select the first route
         CoreActions.tap(element: RoutePlannerMatchers.routeDescriptionListCell(cellNr: 0))
 
-        // Check if route description panel is visible
-        EarlGrey.selectElement(with: RouteOverviewMatchers.routeDescriptionPanel).assert(grey_sufficientlyVisible())
+        // Check that route description info is displayed correctly
+        RouteOverViewActions.checkManeuverDescriptionItem()
 
         // Leave route preview
         EarlGrey.selectElement(with: RoutePlannerMatchers.backButton).perform(grey_tap())
