@@ -113,29 +113,29 @@ open class GuidanceManeuverMonitor: NSObject {
     private func publishData(from maneuver: NMAManeuver) {
         var data = GuidanceManeuverData()
 
-        // Try to set the distance
+        // Try to set the distance.
         if NMAPositioningManager.sharedInstance().currentPosition != nil {
             let distanceValue = NMANavigationManager.sharedInstance().distanceToCurrentManeuver
             data.distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
         }
 
-        // Try to set the info1 and info2 strings
+        // Try to set the info1 and info2 strings.
         // Trick: As the exit number string is an optional number and when it
         //        is available the street name should appear below it, we assign
         //        it to info1, not to info2! Note that info1 is optional and
-        //        when it is not available, it is hidden
+        //        when it is not available, it is hidden.
         data.info1 = maneuver.getSignpostExitNumber()
         data.info2 = maneuver.getNextStreet(fallback: route)
 
-        // Set the maneuver icon
+        // Sets the maneuver icon
         data.maneuverIcon = maneuver.getIconFileName().flatMap {
             UIImage(named: $0, in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         }
 
-        // Set the next road icon for this maneuver
+        // Sets the next road icon for this maneuver
         data.nextRoadIcon = maneuver.nextRoadIcon?.uiImage()
 
-        // Inform the delegate
+        // Informs the delegate
         delegate?.guidanceManeuverMonitor(self, didUpdateData: data)
     }
 }
@@ -149,7 +149,7 @@ extension GuidanceManeuverMonitor: NMANavigationManagerDelegate {
                                   _ nextManeuver: NMAManeuver?) {
         // See documentation for `NMANavigationManagerDelegate`: The `currentManeuver` is the
         // upcoming maneuver to be taken, `nextManeuver` is the maneuver to be taken after the
-        // current maneuver
+        // current maneuver.
         guard let currentManeuver = currentManeuver else {
             return
         }

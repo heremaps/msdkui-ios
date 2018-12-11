@@ -34,7 +34,7 @@ extension Date {
         let currentDay = calendar.component(.day, from: currentDate)
 
         // If the year is different, make sure to show the year, month, day and time.
-        // Else, if the month or day is different, make sure to show the month, day and time.
+        // Else if the month or day is different, make sure to show the month, day and time.
         // Otherwise, i.e. at the current day, show only the time.
         if parameterYear != currentYear {
             return DateFormatter.localizedString(from: self, dateStyle: .medium, timeStyle: .short)

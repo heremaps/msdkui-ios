@@ -36,7 +36,7 @@ import UIKit
         /// Creates and returns a `GuidanceNextManeuverView.ViewModel`.
         ///
         /// - Parameters:
-        ///   - maneuverIcon: The icon of next maneuver to be displayed.
+        ///   - maneuverIcon: The icon of the next maneuver to be displayed.
         ///   - distance: The travel distance of the next destination to be displayed.
         ///   - streetName: The name of the next maneuver street to be displayed.
         ///   - distanceFormatter: The `MeasurementFormatter` used to format the distance information.
@@ -70,7 +70,7 @@ import UIKit
     /// The default foreground color is colorForegroundSecondaryLight.
     public var foregroundColor: UIColor = .colorForegroundSecondaryLight {
         didSet {
-            // Note the next maneuver icon is tinted in GuidanceNextManeuverView.configure(with:)
+            // Note, the next maneuver icon is tinted in GuidanceNextManeuverView.configure(with:)
             distanceLabel.textColor = foregroundColor
             separatorLabel.textColor = foregroundColor
             streetNameLabel.textColor = foregroundColor
@@ -108,7 +108,7 @@ import UIKit
         distanceLabel.text = model.distanceFormatter.string(from: model.distance)
         distanceLabel.sizeToFit()
 
-        // When ViewModel.streetName is nil, the dot & street name labels should be hidden
+        // When ViewModel.streetName is nil, the dot & street name labels' should be hidden
         if let streetName = model.streetName {
             streetNameLabel.text = streetName
             separatorLabel.isHidden = false
