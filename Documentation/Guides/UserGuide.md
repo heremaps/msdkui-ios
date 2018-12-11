@@ -45,7 +45,7 @@ Version 1.x of the HERE Mobile SDK UI Kit mainly focuses on enabling user experi
 
 ## Where to start?
 - If you haven't done so, please read our [Quick Start](QuickStart.md) guide to see how you can integrate the HERE Mobile SDK UI Kit into your own apps.
-- Check the _API Reference_ that can be built locally using the command line, see [Contribution Guide](ContributionGuide.md).
+- Check the [API Reference](https://heremaps.github.io/msdkui-ios/) that can be also built locally using the command line, see the [Contribution Guide](ContributionGuide.md).
 - You can also find:
   - Numerous [examples](../Guides_Examples/) accompanying this user guide.
   - A HERE MSDK UI [demo app](../../MSDKUI_Demo/) showcasing most features of the HERE Mobile SDK UI Kit in production-ready quality.
@@ -444,7 +444,7 @@ Within Xcode you have to add the desired languages you want to support. If the l
 Note that this procedure does not contain any HERE specific steps. It's just the standard way on iOS how to add localization to your app. Once the app is properly localized the HERE Mobile SDK UI Kit will recognize the language and display the current language, if available.
 
 ## Where to go from here?
-Congratulations, by following this HERE Mobile SDK UI Kit Primer tutorial you have discovered the basic HERE Mobile SDK UI Kit components and how they can work together to build extremely powerful apps. Please take a look at the _API Reference_ to learn more about the various HERE Mobile SDK UI Kit components.
+Congratulations, by following this HERE Mobile SDK UI Kit Primer tutorial you have discovered the basic HERE Mobile SDK UI Kit components and how they can work together to build extremely powerful apps. Please take a look at the [API Reference](https://heremaps.github.io/msdkui-ios/) to learn more about the various HERE Mobile SDK UI Kit components.
 
 There you can also find more example code, and our demo application that shows most of the available HERE Mobile SDK UI Kit components and capabilities.
 

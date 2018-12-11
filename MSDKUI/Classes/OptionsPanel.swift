@@ -17,8 +17,7 @@
 import Foundation
 
 /// The delegate of an `OptionsPanel` object must adopt the `OptionsPanelDelegate`
-/// protocol. This protocol lets the `OptionsPanel` object to inform its `delegate` about
-/// updates occurred.
+/// protocol to get notified on updates.
 public protocol OptionsPanelDelegate: AnyObject {
 
     /// Tells the delegate the panel changes to a new option item.

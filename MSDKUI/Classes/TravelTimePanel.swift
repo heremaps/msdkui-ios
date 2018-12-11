@@ -16,8 +16,7 @@
 
 import NMAKit
 
-/// The delegate of a `TravelTimePanel` object must adopt the `TravelTimePanelDelegate` protocol.
-/// This protocol lets the `TravelTimePanel` object to inform its `delegate` about updates occurred.
+/// The delegate of a `TravelTimePanel` object must adopt the `TravelTimePanelDelegate` protocol to get notified on updates.
 @objc public protocol TravelTimePanelDelegate: AnyObject {
 
     /// Tells the delegate the date was updated.

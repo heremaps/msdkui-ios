@@ -69,14 +69,14 @@ end
 
 >**Note:** The above points to the public MSDKUI podspec which may not exist yet. In case of trouble, please point to the local MSDKUI.podspec: If your project lives in the same folder as the example apps, this would be: `pod 'HEREMapsUI', :path => '../../../'` - for example.
 
->**Note:** The podspec for MSDKUI already includes the dependency to the HERE Mobile SDK and the SDK will be automatically fetched and integrated into your app by CocoaPods. The HERE Mobile SDK version will be the one that MSDKUI has specified on its podspec.
+The podspec for MSDKUI already includes the dependency to the HERE Mobile SDK and the SDK will be automatically fetched and integrated into your app by CocoaPods. The HERE Mobile SDK version will be the one that MSDKUI has specified on its podspec.
+
+> What to do if you have already included the HERE Mobile SDK? If you have already included the HERE Mobile SDK via CocoaPods, then the related dependency (`pod 'HEREMaps’, ‘x.x’`) can be removed from your Podfile. If you used a different SDK version, please make sure, that your app is compatible with the [SDK version](../../README.md#supported-platforms) required by the MSDKUI library. If you had the SDK integrated _manually_, please deintegrate it before installing the pods.
 
 As `target` please specify your project name (which is set to "HelloMSDKUI" in this example). Make sure to set the version number for MSDKUI to a version we have published via CocoaPods. In this example we have set it to the latest version.
 
 - Open the terminal and navigate to your project folder to execute: `pod install --repo-update`. This will fetch and integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit to your project.
 - Once done, please open the newly generated `*.xcworkspace` Xcode project file (do NOT open `*.xcodeproj`).
-
-Alternatively, you can download the HERE Mobile SDK for iOS package from [developer.here.com](http://developer.here.com) and manually import the SDK. Please read this [tutorial](https://developer.here.com/documentation/ios-premium/topics/app-create-simple.html) for more information. You can also integrate the HERE Mobile SDK UI Kit manually using a locally build binary (please see below).
 
 ## Integrating the HERE Mobile SDK UI Kit for iOS manually
 Since CocoaPods is supported, you don't have to integrate the HERE Mobile SDK UI Kit manually, but if you prefer to build the framework manually, you can integrate the binary similar like adding any other framework to your project.
@@ -88,7 +88,9 @@ As a first step, please build the HERE Mobile SDK UI Kit framework. This can be 
 1. Copy the resulting `MSDKUI.framework` file to your app's root folder.
 2. In Xcode, open the _General_ settings of the _App_ target and add the `MSDKUI.framework` to the _Embedded Binaries_ section ("Add other..." -> "Create folder references")
 
-Make sure the HERE Mobile SDK UI Kit framework also appears below in the section _Linked Frameworks and Libraries_. Same steps apply, when you plan to integrate the HERE Mobile SDK manually.
+Make sure the HERE Mobile SDK UI Kit framework also appears below in the section _Linked Frameworks and Libraries_. Same steps apply, when you plan to download and integrate the HERE Mobile SDK fo iOS manually. You can download the HERE Mobile SDK for iOS package from [developer.here.com](http://developer.here.com). Please read this [tutorial](https://developer.here.com/documentation/ios-premium/topics/app-create-simple.html) for more information.
+
+>**Note:** If you integrate the MSDKUI library manually into an existing project, please make sure, that your app is compatible with the [HERE Mobile SDK version](../../README.md#supported-platforms) required by the MSDKUI library. If you are using a different SDK version, please update your app to use the required version.
 
 ### Setting your HERE SDK credentials
 The HERE SDK (Premium flavor) must be authenticated by providing a set of credentials specific for your project. If you don't know your credentials, please ask your HERE stakeholder or register on [developer.here.com](https://developer.here.com) and create new ones.

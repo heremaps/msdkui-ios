@@ -228,10 +228,10 @@ namespace :tools do
     desc "Build Jazzy API Reference"
     task :jazzy => [:"tools:cocoapods", :"build:clean"] do
         buildjazzy(workspace: MSDKUI_WORKSPACE,
-                   scheme: MSDKUI_TARGET,
+                   scheme: MSDKUI_TARGET_SCHEME_NAME,
                    module_name: MSDKUI_TARGET,
                    readme: "Documentation/API_Reference/Intro.md",
-                   output_directory: "output/jazzy/")
+                   output_directory: "docs/")
     end
 
     desc "Build the NMACredentials file from environment variables"
@@ -321,8 +321,11 @@ def buildjazzy(workspace:, scheme:, module_name:, readme:, output_directory:)
             --xcodebuild-arguments -workspace,#{workspace},-scheme,#{scheme},-configuration,Release,defines_module=yes \
             --module '#{module_name}' \
             --output '#{output_directory}' \
+            --github_url 'https://github.com/heremaps/msdkui-ios/' \
             --theme fullwidth \
             --readme='#{readme}'"
+
+    systemOrExit "rm -rf '#{output_directory}/undocumented.json'"
 end
 
 def xcodesetteam(xcode_project:, team_id:)
