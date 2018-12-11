@@ -22,7 +22,7 @@ protocol CurrentPositionProviding {
     /// The best estimate for the user's current position.
     var currentPosition: NMAGeoPosition? { get }
 
-    /// Get the road element of the current position.
+    /// Gets the road element of the current position.
     func currentRoadElement() -> NMARoadElement?
 }
 

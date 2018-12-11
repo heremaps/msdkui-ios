@@ -76,7 +76,7 @@ public extension NMAManeuver {
                 return signpost.exitDirections[0].text
             }
 
-            // Try the signpost exit text
+            // Try the signpost exit text.
             if signpost.exitText.hasContent == true {
                 return signpost.exitText
             }
@@ -104,9 +104,9 @@ public extension NMAManeuver {
 extension NMAManeuver {
 
     /// The localized orientation string.
-    /// - Important: If unable to assign the angle to a string, returns an empty string.
+    /// - Note: If unable to assign the angle to a string, returns an empty string.
     var orientationString: String {
-        // Convert `mapOrientation` to an index
+        // Convert `mapOrientation` to an index.
         let index = Int(((mapOrientation + 45 / 2) % 360) / 45)
 
         if NMAManeuver.localizedOrientations.indices.contains(index) {
@@ -137,7 +137,7 @@ extension NMAManeuver {
         }
     }
 
-    /// A Boolean value that determines whether the maneuver is for changing road.
+    /// A Boolean value that determines whether the maneuver is for changing the road.
     var isChangingRoad: Bool {
         return action == NMAManeuverAction.junction || action == NMAManeuverAction.roundabout
     }
