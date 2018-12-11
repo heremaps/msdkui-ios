@@ -640,6 +640,7 @@ enum RoutePlannerActions {
             CoreActions.tap(element: WaypointMatchers.showManeuversButton)
 
             RouteOverViewActions.checkManeuverTableView()
+            RouteOverViewActions.checkManeuverDescriptionItem()
             CoreActions.tap(element: RoutePlannerMatchers.backButton)
         }
     }

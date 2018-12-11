@@ -26,7 +26,7 @@ enum RouteOverviewMatchers {
         return grey_accessibilityID("MSDKUI.ManeuverTableView.cell_\(cellNr)")
     }
 
-    static var routeDescriptionPanel: GREYMatcher {
+    static var routeDescriptionItem: GREYMatcher {
         return grey_accessibilityID("MSDKUI.RouteDescriptionItem")
     }
 

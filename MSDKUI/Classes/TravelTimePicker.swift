@@ -16,8 +16,7 @@
 
 import NMAKit
 
-/// The delegate of a `travelTimePicker` object must adopt the `TravelTimePickerDelegate` protocol.
-/// This protocol lets the `TravelTimePicker` object to inform its `delegate` about updates occurred.
+/// The delegate of a `travelTimePicker` object must adopt the `TravelTimePickerDelegate` protocol to get notified on updates.
 public protocol TravelTimePickerDelegate: AnyObject {
 
     /// Tells the delegate when a new date/time is selected.

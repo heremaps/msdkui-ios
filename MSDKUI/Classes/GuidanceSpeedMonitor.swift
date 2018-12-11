@@ -26,7 +26,7 @@ public protocol GuidanceSpeedMonitorDelegate: AnyObject {
     ///   - monitor: The monitor announcing the changes.
     ///   - currentSpeed: The current speed.
     ///   - isSpeeding: A boolean indicating if the current speed is above the road speed limit.
-    ///   - speedLimit: The lane speed limit.
+    ///   - speedLimit: The lane speed limit, can be nil if no information is available
     func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
                               didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>,
                               isSpeeding: Bool,

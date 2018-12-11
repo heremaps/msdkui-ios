@@ -19,6 +19,39 @@ import EarlGrey
 
 enum RouteOverViewActions {
 
+    /// This method checks that all the assests of route description item are displayed correctly.
+    static func checkManeuverDescriptionItem() {
+        EarlGrey.selectElement(with: RouteOverviewMatchers.routeDescriptionItem)
+            .assert(grey_sufficientlyVisible())
+            .perform(GREYActionBlock.action(withName: "Check maneuver description item assets") { element, errorOrNil -> Bool in
+                guard
+                    errorOrNil != nil,
+                    let maneuverDescriptionItem = element as? RouteDescriptionItem,
+                    let transportModeImage = maneuverDescriptionItem.transportModeImage,
+                    let durationLabelText = maneuverDescriptionItem.durationLabel.text,
+                    let delayLabelText = maneuverDescriptionItem.delayLabel.text,
+                    let lenghtLabelText = maneuverDescriptionItem.lengthLabel.text,
+                    let timeLabelText = maneuverDescriptionItem.timeLabel.text else {
+                        return false
+                }
+
+                GREYAssertNotNil(transportModeImage, reason: "Transport mode image should be displayed")
+                GREYAssertFalse(durationLabelText.isEmpty, reason: "Duration should be displayed")
+                GREYAssertFalse(lenghtLabelText.isEmpty, reason: "Route length should be displayed")
+                GREYAssertFalse(timeLabelText.isEmpty, reason: "Arrival time should be displayed")
+
+                // If delay is greater or equal to 60 seconds, a traffic delay should be displayed
+                if maneuverDescriptionItem.handler.delaySeconds >= 60 {
+                    GREYAssertFalse(delayLabelText.isEmpty, reason: "Delay should be displayed")
+                } else {
+                    GREYAssertTrue(delayLabelText.isEmpty, reason: "Delay should not be displayed")
+                }
+
+                return true
+            }
+        )
+    }
+
     /// Makes sures that the maneuver contains icon, instruction, address
     /// and distance data.
     static func checkManeuverTableView() {
@@ -73,7 +106,8 @@ enum RouteOverViewActions {
                         }
                     }
                     return true
-                })
+                }
+        )
     }
 
     /// After scrolling a maneuver table view, we need to make sure the visible rows are updated.

@@ -18,8 +18,7 @@ import Foundation
 import NMAKit
 
 /// The delegate of a `TransportModePanel` object must adopt the `TransportModePanelDelegate`
-/// protocol. This protocol lets the `TransportModePanel` object to inform its `delegate` about
-/// updates occurred.
+/// protocol to get notified on updates.
 public protocol TransportModePanelDelegate: AnyObject {
 
     /// Tells the delegate a new transport mode is selected.
