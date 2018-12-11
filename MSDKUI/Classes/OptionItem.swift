@@ -17,8 +17,7 @@
 import Foundation
 
 /// The delegate of an `OptionItem` object must adopt the `OptionItemDelegate`
-/// protocol. This protocol lets the `OptionItem` object to inform its `delegate` about
-/// updates occurred.
+/// protocol to get notified on updates.
 public protocol OptionItemDelegate: AnyObject {
 
     /// Tells the delegate when the option item is changed.
