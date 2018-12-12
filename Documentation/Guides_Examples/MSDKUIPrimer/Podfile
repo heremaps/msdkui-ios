@@ -3,5 +3,5 @@ target 'MSDKUIPrimer' do
     # Use pod 'HEREMapsUI', '2.0' once the public podspec is available.
     # Until then you can point to the local podspec contained in this repo at the
     # following path, relative to this example app:
-    #pod 'HEREMapsUI', :path => '../../../'
+    pod 'HEREMapsUI', :path => '../../../'
 end
