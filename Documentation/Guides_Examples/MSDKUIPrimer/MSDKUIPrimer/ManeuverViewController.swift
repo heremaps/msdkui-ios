@@ -19,12 +19,12 @@ import NMAKit
 import MSDKUI
 
 /// Shows a RouteDescriptionList where a user can select a route and sees the belonging maneuvers
-/// in a ManeuverDescriptionList.
-class ManeuverViewController: UIViewController, RouteDescriptionListDelegate, ManeuverDescriptionListDelegate {
+/// in a ManeuverTableView.
+class ManeuverViewController: UIViewController, RouteDescriptionListDelegate, ManeuverTableViewDelegate {
 
     @IBOutlet weak var routeDescriptionList: RouteDescriptionList!
-    @IBOutlet weak var maneuverDescriptionList: ManeuverDescriptionList!
-
+    @IBOutlet weak var maneuverTableView: ManeuverTableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,15 +41,15 @@ class ManeuverViewController: UIViewController, RouteDescriptionListDelegate, Ma
         routeDescriptionList.listDelegate = self
         routeDescriptionList.backgroundColor = UIColor(red: 0.93, green: 0.93, blue: 0.93, alpha: 1.0)
 
-        maneuverDescriptionList.route = RouteHelper.sharedInstance.selectedRoute
-        maneuverDescriptionList.listDelegate = self
+        maneuverTableView.route = RouteHelper.sharedInstance.selectedRoute
+        maneuverTableView.maneuverTableViewDelegate = self
     }
 
     // MARK: - RouteDescriptionListDelegate
 
     func routeDescriptionList(_ list: RouteDescriptionList, didSelect route: NMARoute, at index: Int) {
         print("Selected route at index: \(index)")
-        maneuverDescriptionList.route = route
+        maneuverTableView.route = route
         RouteHelper.sharedInstance.selectedRoute = route
     }
 
@@ -57,13 +57,13 @@ class ManeuverViewController: UIViewController, RouteDescriptionListDelegate, Ma
         item.backgroundColor = UIColor(red: 0.96, green: 0.96, blue: 0.96, alpha: 1.0)
     }
 
-    // MARK: - ManeuverDescriptionListDelegate
+    // MARK: - ManeuverTableViewDelegate
 
-    func maneuverDescriptionList(_ list: ManeuverDescriptionList, didSelect maneuver: NMAManeuver, at index: Int) {
+    func maneuverTableView(_ tableView: ManeuverTableView, didSelect maneuver: NMAManeuver, at index: Int) {
         print("Selected maneuver \(maneuver.description)")
     }
 
-    func maneuverDescriptionList(_ list: ManeuverDescriptionList, willDisplay item: ManeuverDescriptionItem) {
-        item.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
+    @objc public func maneuverTableView(_ tableView: MSDKUI.ManeuverTableView, willDisplay view: MSDKUI.ManeuverItemView) {
+        view.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
     }
 }

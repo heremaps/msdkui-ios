@@ -18,14 +18,14 @@ import UIKit
 import NMAKit
 import MSDKUI
 
-/// Shows usage of GuidanceManeuverPanel and how to fed maneuver data into it while running
+/// Shows usage of GuidanceManeuverView and how to fed maneuver data into it while running
 /// guidance simulation.
-class GuidanceViewController: UIViewController, GuidanceManeuverPanelPresenterDelegate {
+class GuidanceViewController: UIViewController, GuidanceManeuverMonitorDelegate {
 
-    @IBOutlet weak var guidanceManeuverPanel: GuidanceManeuverPanel!
+    @IBOutlet weak var guidanceManeuverView: GuidanceManeuverView!
     @IBOutlet weak var mapView: NMAMapView!
 
-    var guidanceManeuverPanelPresenter: GuidanceManeuverPanelPresenter!
+    var guidanceManeuverMonitor: GuidanceManeuverMonitor!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,24 +35,28 @@ class GuidanceViewController: UIViewController, GuidanceManeuverPanelPresenterDe
             return
         }
 
-        guidanceManeuverPanelPresenter = GuidanceManeuverPanelPresenter(route: route)
-        guidanceManeuverPanelPresenter.delegate = self
+        guidanceManeuverMonitor = GuidanceManeuverMonitor(route: route)
+        guidanceManeuverMonitor.delegate = self
 
-        guidanceManeuverPanel.foregroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
+        guidanceManeuverView.foregroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
 
         startGuidanceSimulation(route: route)
     }
 
-    func guidanceManeuverPanelPresenter(_ presenter: GuidanceManeuverPanelPresenter,
-                                        didUpdateData data: GuidanceManeuverData?) {
+    // MARK: - GuidanceManeuverMonitorDelegate
+
+    func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
+                                 didUpdateData data: GuidanceManeuverData?) {
         print("data changed: \(String(describing: data))")
-        guidanceManeuverPanel.data = data
+        guidanceManeuverView.data = data
     }
 
-    func guidanceManeuverPanelPresenterDidReachDestination(_ presenter: GuidanceManeuverPanelPresenter) {
+    func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
         print("Destination reached.")
-        guidanceManeuverPanel.highlightManeuver(textColor: .colorAccentLight)
+        guidanceManeuverView.highlightManeuver(textColor: .colorAccentLight)
     }
+
+    // MARK: - GuidanceHelper
 
     func startGuidanceSimulation(route: NMARoute) {
         GuidanceHelper.sharedInstance.startGuidanceSimulation(route: route, mapView: mapView)
