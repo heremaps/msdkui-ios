@@ -99,7 +99,7 @@ import UIKit
         setUpView()
     }
 
-    /// Configures the labels' content.
+    /// Configures the label's content.
     ///
     /// - Parameter model: The model used to configure the view.
     public func configure(with model: ViewModel) {
@@ -108,7 +108,7 @@ import UIKit
         distanceLabel.text = model.distanceFormatter.string(from: model.distance)
         distanceLabel.sizeToFit()
 
-        // When ViewModel.streetName is nil, the dot & street name labels' should be hidden
+        // When ViewModel.streetName is nil, the dot & street name label's should be hidden
         if let streetName = model.streetName {
             streetNameLabel.text = streetName
             separatorLabel.isHidden = false
@@ -119,7 +119,7 @@ import UIKit
             streetNameLabel.isHidden = true
         }
 
-        // Update the view accessibility hint when the labels' content change
+        // Updates the view accessibility hint when the label's content change
         updateViewAccessibilityHint()
     }
 

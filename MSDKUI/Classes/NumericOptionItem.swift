@@ -23,12 +23,12 @@ public struct NumericOptionItemInputHelper {
 
     /// The optional title of the input box.
     ///
-    /// - Important: Either title or message should not be nil.
+    /// - Note: Either title or message should not be nil.
     var title: String?
 
     /// The optional message of the input box.
     ///
-    /// - Important: Either title or message should not be nil.
+    /// - Note: Either title or message should not be nil.
     var message: String?
 
     /// The keyboard type for the input box.
@@ -36,7 +36,7 @@ public struct NumericOptionItemInputHelper {
 
     /// The optional placeholder string for the input box.
     ///
-    /// - Important: When it is not provided, the current value of the item
+    /// - Note: When it is not provided, the current value of the item
     ///              is used as the placeholder when available.
     var placeholder: String?
 
@@ -86,10 +86,10 @@ public struct NumericOptionItemInputHelper {
 
                 // Any update?
                 if stringValue != getButtonTitle() {
-                    // Reflect the update
+                    // Reflects the update
                     setButtonTitle(stringValue)
 
-                    // Notify the delegate
+                    // Notifies the delegate
                     delegate?.optionItemDidChange(self)
                 }
             }
@@ -99,7 +99,7 @@ public struct NumericOptionItemInputHelper {
     /// The label for the option.
     var label: String? {
         didSet {
-            // Reflect the update
+            // Reflects the update
             makeOption(label: label)
         }
     }

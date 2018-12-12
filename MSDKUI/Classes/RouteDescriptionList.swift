@@ -32,7 +32,7 @@ import NMAKit
 
     /// Tells the delegate the route description list is about to present a route description item.
     ///
-    /// A route description list sents this message to its delegate just before it presents a route description item,
+    /// A route description list sends this message to its delegate just before it presents a route description item,
     /// thereby permitting the delegate to customize the route description item object before it is displayed. This method gives
     /// the delegate a chance to override state-based properties, such as background and text colors.
     ///
@@ -48,13 +48,13 @@ import NMAKit
 
     // MARK: - Types
 
-    /// Used for specifiying the metric used for sorting the routes.
+    /// Specifies the metric used for sorting the routes.
     public enum SortType: String {
 
-        /// Sort by duration.
+        /// Sorts by duration.
         case duration
 
-        /// Sort by length.
+        /// Sorts by length.
         case length
     }
 
@@ -107,13 +107,13 @@ import NMAKit
         }
     }
 
-    /// Whether traffic should be considered.
+    /// If traffic should be considered.
     @IBInspectable public var trafficEnabled: Bool = false
 
     /// Shows or hides the title.
     @IBInspectable public var showTitle: Bool = false {
         didSet {
-            // Be careful: we are setting a view's isHidden property!
+            // Note: we are setting a view's isHidden property!
             titleItem?.view.isHidden = !showTitle
             titleItem?.view.isAccessibilityElement = showTitle
         }
@@ -179,7 +179,7 @@ import NMAKit
         }
 
         set {
-            // Accept the new value, refreshes the scaler and itself
+            // Accepts the new value, refreshes the scaler and itself
             sortedRoutes = newValue
             scaler.refresh()
             refresh()
@@ -191,14 +191,14 @@ import NMAKit
         return sortedRoutes.count
     }
 
-    /// Sort type for this `RouteDescriptionList`.
+    /// Sorts the type for this `RouteDescriptionList`.
     public var sortType: SortType = .duration {
         didSet {
             refresh()
         }
     }
 
-    /// Sort order for this `RouteDescriptionList`.
+    /// Sorts the order for this `RouteDescriptionList`.
     public var sortOrder: SortOrder = .ascending {
         didSet {
             refresh()
@@ -207,7 +207,7 @@ import NMAKit
 
     /// Sets the visibility of `RouteDescriptionItem` sections.
     ///
-    /// - Important: Initially all the sections are visible.
+    /// - Note: Initially all the sections are visible.
     public var visibleSections: RouteDescriptionItem.Section = .all {
         didSet {
             refresh()
@@ -216,7 +216,7 @@ import NMAKit
 
     /// The label used to display a warning when no route is found.
     ///
-    /// - Important: When not set, a label with default settings is used.
+    /// - Note: When not set, a label with default settings is used.
     public var noRouteFoundLabel: UILabel! {
         didSet {
             noRouteFoundLabel.text = "msdkui_no_route_found".localized
@@ -255,7 +255,7 @@ import NMAKit
 
     /// All the title visuals are found on this item.
     ///
-    /// - Important: This is an optional property and it is created only
+    /// - Note: This is an optional property and it is created only
     ///              when the `title` property is set.
     var titleItem: TitleItem?
 
@@ -378,19 +378,19 @@ import NMAKit
         // Sets up the table view
         setUpTableView()
 
-        // Create the scaler object
+        // Creates the scaler object
         scaler = RouteBarScaler(parent: self)
 
-        // Set the table row height out of the view used for the content view
+        // Sets the table row height out of the view used for the content view
         let view = RouteDescriptionItem()
         tableView.rowHeight = view.bounds.size.height
 
-        // Register the nib file for the custom cell
+        // Registers the nib file for the custom cell
         tableView.register(UITableViewCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
 
         setAccessibility()
 
-        // Add the table view: the title view is added when a title is set
+        // Adds the table view: the title view is added when a title is set
         stackView.addArrangedSubview(tableView)
 
         addSubviewBindToEdges(stackView)
@@ -433,16 +433,16 @@ extension RouteDescriptionList: UITableViewDataSource {
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
 
-        // Remove the existing content subviews
+        // Removes the existing content subviews
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
 
-        // Cell settings
+        // Cells settings
         cell.selectionStyle = .none
         cell.accessoryType = .none
         cell.accessoryView = nil
         cell.editingAccessoryType = .none
 
-        // Create the content view subview
+        // Creates the content view subview
         let view = RouteDescriptionItem()
         view.trafficEnabled = trafficEnabled
         view.visibleSections = visibleSections
@@ -454,7 +454,7 @@ extension RouteDescriptionList: UITableViewDataSource {
         // Tells the delegate the view is about to be displayed
         listDelegate?.routeDescriptionList?(self, willDisplay: view)
 
-        // Finally add the view to the content view
+        // Finally, add the view to the content view
         cell.contentView.addSubviewBindToEdges(view)
 
         setAccessibility(cell, indexPath.row)

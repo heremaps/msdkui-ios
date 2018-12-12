@@ -24,9 +24,9 @@ import UIKit
 
     /// All the selected item indexes.
     ///
-    /// - Important: If there is no selected index, returns nil.
-    /// - Important: Setting it nil clears all the selections.
-    /// - Important: Any selected item index outside of the available range has no effect.
+    /// - Note: If there is no selected index, returns nil.
+    /// - Note: Setting it nil clears all the selections.
+    /// - Note: Any selected item index outside of the available range has no effect.
     public var selectedItemIndexes: Set<Int>? { // swiftlint:disable:this discouraged_optional_collection
         get {
             return getSelectedSwitches()
@@ -42,7 +42,7 @@ import UIKit
 
                 // Are there any valid index?
                 if validValue.isEmpty == false {
-                    // Get the previously selected switches
+                    // Gets the previously selected switches
                     if let oldValue = getSelectedSwitches() {
                         // If there is an update, we need to know the off & on switches
                         if validValue != oldValue {
@@ -102,7 +102,7 @@ import UIKit
         stackView.distribution = .fillEqually
         stackView.axis = .vertical
 
-        // Add the stackview to the view
+        // Adds the stackview to the view
         addSubviewBindToEdges(stackView)
 
         super.setUp()
@@ -122,20 +122,20 @@ import UIKit
 
         // One-by-one create options
         for label in labels {
-            // Create new nib instance for each label
+            // Creates new nib instance for each label
             let nibInstance = UINib(nibName: "Label+SwitchOption", bundle: .MSDKUI).instantiate(withOwner: nil)
-            // Get the views
+            // Gets the views
             if
                 let optionView = nibInstance.first as? UIView,
                 let optionLabel = optionView.viewWithTag(1000) as? UILabel,
                 let optionSwitch = optionView.viewWithTag(1001) as? UISwitch {
 
-                // Set the label text & append it to the labels array
+                // Sets the label text & append it to the labels array
                 let elementIndex = optionLabels.count
                 optionLabel.text = label
                 optionLabels.append(optionLabel)
 
-                // Set the switch action handler & its tag & append it to the swicthes array
+                // Sets the switch action handler & its tag & append it to the swicthes array
                 optionSwitch.tag = MultipleChoiceOptionItem.initialSwitchTag + elementIndex
                 optionSwitch.addTarget(self, action: #selector(onSwitch), for: .valueChanged)
                 optionSwitches.append(optionSwitch)
@@ -144,7 +144,7 @@ import UIKit
                 stackView.addArrangedSubview(optionView)
                 setAccessibility(elementIndex)
 
-                // Reflect the initial state
+                // Reflects the initial state
                 updateAccessibility(elementIndex)
             }
         }
@@ -152,10 +152,10 @@ import UIKit
         setNeedsUpdateConstraints()
         updateConstraintsIfNeeded()
 
-        // Set the line height per option out of the last nib view
+        // Sets the line height per option out of the last nib view
         let lineHeight = stackView.arrangedSubviews.last?.frame.size.height ?? 0
 
-        // Set the very important intrinsic content height
+        // Sets the very important intrinsic content height
         intrinsicContentHeight = lineHeight * CGFloat(labels.count)
         invalidateIntrinsicContentSize()
 
@@ -204,14 +204,14 @@ import UIKit
         for index in set {
             optionSwitches[index].isOn = state
 
-            // Reflect the update
+            // Reflects the update
             updateAccessibility(index)
         }
     }
 
     /// Sets the accessibility stuff.
     private func setAccessibility(_ index: Int) {
-        // Add a tap gesture recognizer: it is enabled only when the accessibility is turned on
+        // Adds a tap gesture recognizer: it is enabled only when the accessibility is turned on
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleSwitch))
         tapGestureRecognizer.isEnabled = UIAccessibility.isVoiceOverRunning
 
@@ -236,11 +236,11 @@ import UIKit
     ///
     /// - Parameter sender: The switch which is updated.
     @objc private func onSwitch(_ sender: UISwitch) {
-        // Reflect the update
+        // Reflects the update
         let index = sender.tag - MultipleChoiceOptionItem.initialSwitchTag
         updateAccessibility(index)
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.optionItemDidChange(self)
     }
 
@@ -250,7 +250,7 @@ import UIKit
             optionSwitches[index].setOn(!optionSwitches[index].isOn, animated: true)
             updateAccessibility(index)
 
-            // Notify the delegate
+            // Notifies the delegate
             delegate?.optionItemDidChange(self)
         }
     }

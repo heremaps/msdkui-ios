@@ -37,9 +37,9 @@ class ManeuverResources {
         self.maneuvers = maneuvers
     }
 
-    /// Gets the resource icon name for the indexed maneuver.
+    /// Gets the resource icon name for an indexed maneuver.
     ///
-    /// - Parameter index: The index of maneuver asking its icon name.
+    /// - Parameter index: The index of a maneuver asking its icon name.
     /// - Returns: The icon name assigned to the maneuver.
     func getIconFileName(for index: Int) -> String? {
         guard let maneuver = getManeuver(at: index) else {
@@ -49,9 +49,9 @@ class ManeuverResources {
         return maneuver.getIconFileName()
     }
 
-    /// Gets the maneuver instruction for the indexed maneuver.
+    /// Gets the maneuver instruction for an indexed maneuver.
     ///
-    /// - Parameter index: The index of maneuver asking its instruction.
+    /// - Parameter index: The index of a maneuver asking its instruction.
     /// - Returns: The maneuver instruction.
     func getInstruction(for index: Int) -> String? {
         guard let maneuver = getManeuver(at: index) else {
@@ -67,9 +67,9 @@ class ManeuverResources {
         }
     }
 
-    /// Gets the distance of given maneuver from the previous maneuver.
+    /// Gets the distance of a given maneuver from the previous maneuver.
     ///
-    /// - Parameter index: The index of maneuver asking its distance from the previous maneuver.
+    /// - Parameter index: The index of a maneuver asking its distance from the previous maneuver.
     /// - Returns: The maneuver's `NMAManeuver.distanceFromPreviousManeuver` property.
     /// - Important: When the indexed maneuver is not found, returns zero.
     func getDistance(for index: Int) -> Int {
@@ -141,7 +141,7 @@ class ManeuverResources {
 
     /// Gets the road name for the indexed maneuver.
     ///
-    /// - Parameter index: The index of maneuver.
+    /// - Parameter index: The index of a maneuver.
     /// - Returns: The road name for the indexed maneuver.
     private func getRoadName(maneuver: NMAManeuver, index: Int) -> String? {
         var roadName = maneuver.roadName as String?
@@ -163,9 +163,9 @@ class ManeuverResources {
         }
     }
 
-    /// Gets the next maneuver street name for the indexed maneuver.
+    /// Gets the next maneuver street name for an indexed maneuver.
     ///
-    /// - Parameter index: The index of maneuver.
+    /// - Parameter index: The index of a maneuver.
     /// - Returns: The next maneuver street name.
     private func getNextManeuverStreet(index: Int) -> String? {
         var distance: Int = 0

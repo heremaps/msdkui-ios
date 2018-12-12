@@ -26,12 +26,12 @@ protocol NavigationManagerDelegateDispatching {
     /// A Boolean value indicating whether the delegates collection is empty.
     var isEmpty: Bool { get }
 
-    /// Add a delegate object.
+    /// Adds a delegate object.
     ///
     /// - Parameter delegate: An object conforming to the protocol.
     func add(delegate: NMANavigationManagerDelegate)
 
-    /// Remove a delegate object.
+    /// Removes a delegate object.
     ///
     /// - Parameter delegate: An object conforming to the protocol.
     func remove(delegate: NMANavigationManagerDelegate)
@@ -88,7 +88,7 @@ extension NavigationManagerDelegateDispatcher: NavigationManagerDelegateDispatch
 
     // MARK: - Private
 
-    /// Update the Shared Navigation Manager delegate.
+    /// Updates the Shared Navigation Manager delegate.
     private func updateNavigationManagerDelegate() {
         sharedNavigationManager.delegate = delegates.isEmpty ? nil : self
     }

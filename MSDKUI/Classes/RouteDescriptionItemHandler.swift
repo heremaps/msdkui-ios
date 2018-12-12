@@ -98,7 +98,7 @@ struct RouteDescriptionItemHandler {
             return nil
         }
 
-        // Create the image in the template mode for customization as the backgroundColor and tintColor
+        // Creates the image in the template mode for customization as the backgroundColor and tintColor
         // properties works well with layered images
         return UIImage(named: imageName, in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }

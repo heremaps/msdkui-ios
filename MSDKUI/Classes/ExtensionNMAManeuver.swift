@@ -137,7 +137,7 @@ extension NMAManeuver {
         }
     }
 
-    /// A Boolean value that determines whether the maneuver is for changing the road.
+    /// A Boolean value that determines whether the maneuver indicates a junction or a roundabout.
     var isChangingRoad: Bool {
         return action == NMAManeuverAction.junction || action == NMAManeuverAction.roundabout
     }

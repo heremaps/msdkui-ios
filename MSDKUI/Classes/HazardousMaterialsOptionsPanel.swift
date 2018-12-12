@@ -16,7 +16,7 @@
 
 import NMAKit
 
-/// An options panel for displaying the hazardous materials options available for `NMARoutingMode`.
+/// An options panel for displaying the hazardous material's options available for `NMARoutingMode`.
 ///
 /// - SeeAlso: `NMARoutingMode.hazardousGoods`
 @IBDesignable open class HazardousMaterialsOptionsPanel: OptionsPanel {
@@ -76,10 +76,10 @@ import NMAKit
 
     /// Creates the spec for the underlying `MultipleChoiceOptionItem` object.
     override func makePanel() {
-        // Map the options to strings
+        // Maps the options to strings
         let labels: [String] = HazardousMaterialsOptionsPanel.options.map { $0.label }
 
-        // Create the spec for the option item
+        // Creates the spec for the option item
         specs = [OptionItemSpec.makeMultipleChoiceOptionItem(labels: labels)]
     }
 }
@@ -93,7 +93,7 @@ extension HazardousMaterialsOptionsPanel: OptionItemDelegate {
             return
         }
 
-        // Assume there is no selected item index
+        // Assumes there is no selected item index
         var hazardousGoods: UInt = 0
 
         // Is there any selected item index?
@@ -104,10 +104,10 @@ extension HazardousMaterialsOptionsPanel: OptionItemDelegate {
             }
         }
 
-        // Update the value
+        // Updates the value
         routingMode.hazardousGoods = NMAHazardousGoodsType(rawValue: hazardousGoods)
 
-        // Notify the delegate
+        // Notifes the delegate
         delegate?.optionsPanel(self, didChangeTo: item)
     }
 }

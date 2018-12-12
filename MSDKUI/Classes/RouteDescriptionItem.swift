@@ -57,20 +57,20 @@ import NMAKit
         /// This variable returns the Section as a String. For example, Section(rawValue: 19)
         /// is stringized as "icon|duration|length".
         ///
-        /// - Important: The "|" character is used to concatanate the Section values.
-        /// - Important: The returned string is all in lowercase.
-        /// - Important: The order of the substrings follow the Section declaration order. For example
+        /// - Note: The "|" character is used to concatanate the Section values.
+        /// - Note: The returned string is all in lowercase.
+        /// - Note: The order of the substrings follow the Section declaration order. For example
         ///              [.length, .icon] is converted as "icon|length".
         public var stringized: String {
             var string = "" // Initially empty
 
             // Always prefix the string with a "|" as a kind of "normalization"
 
-            // Handle the .all as a special case
+            // Handles the .all as a special case
             if self == .all {
                 string = "|all"
             } else {
-                // Follow the Section declaration order
+                // Follows the Section declaration order
                 if contains(.icon) {
                     string += "|icon"
                 }
@@ -112,8 +112,8 @@ import NMAKit
         /// - Returns: The Section value created out of the string. Note that it will be empty
         ///            if the string does not have any Section-like substring.
         ///
-        /// - Important: The "|" character should be used in the string to concatenate substrings.
-        /// - Important: The function allows irregularities like blank chars before
+        /// - Note: The "|" character should be used in the string to concatenate substrings.
+        /// - Note: The function allows irregularities like blank chars before
         ///              or after a "|" char or using capital characters.
         public static func make(from string: String) -> Section {
             let trimmed = string.components(separatedBy: .whitespaces).joined()
@@ -193,13 +193,13 @@ import NMAKit
 
     /// The stack view for the duration & delay data.
     ///
-    /// - Important: When both of the data labels are hidden, the
+    /// - Note: When both of the data labels are hidden, the
     ///              stack view is hidden automatically.
     @IBOutlet private(set) var durationDelayView: UIStackView!
 
     /// The stack view for the length & arrival data.
     ///
-    /// - Important: When both of the data labels are hidden, the
+    /// - Note: When both of the data labels are hidden, the
     ///              stack view is hidden automatically.
     @IBOutlet private(set) var lengthArrrivalView: UIStackView!
 
@@ -210,7 +210,7 @@ import NMAKit
                 return
             }
 
-            // Reflect the update
+            // Reflects the update
             populate()
             refresh()
         }
@@ -221,7 +221,7 @@ import NMAKit
     /// to set the `visibleSections` property, so the users can avoid arithmetic while
     /// setting this property. Note that unknown substrings are simply ignored.
     ///
-    /// - Important: It shadows the visibleSections property.
+    /// - Note: It shadows the visibleSections property.
     @IBInspectable public var visibleSectionsProxy: String {
         get {
             return visibleSections.stringized
@@ -290,7 +290,7 @@ import NMAKit
 
     /// Sets the visibility of available sections.
     ///
-    /// - Important: Initially all the sections are visible.
+    /// - Note: Initially all the sections are visible.
     public var visibleSections: Section = .all {
         didSet {
             refresh()
@@ -338,7 +338,7 @@ import NMAKit
 
     /// Queries the visibility of the given section.
     ///
-    /// - Parameter section: The section whose visibility to be queried.
+    /// - Parameter section: The section whose visibility is to be queried.
     /// - Returns: true if the section is visible and false otherwise.
     public func isSectionVisible(_ section: Section) -> Bool {
         return visibleSections.contains(section)
@@ -363,10 +363,10 @@ import NMAKit
         // Instantiate view
         if let view = UINib(nibName: String(describing: RouteDescriptionItem.self), bundle: .MSDKUI).instantiate(withOwner: self).first as? UIView {
 
-            // Use the view's bounds
+            // Uses the view's bounds
             bounds = view.bounds
 
-            // Add the view to the hierarchy
+            // Adds the view to the hierarchy
             addSubviewBindToEdges(view)
         }
 
@@ -402,11 +402,11 @@ import NMAKit
         lengthLabel.isHidden = !isSectionVisible(.length)
         timeLabel.isHidden = !isSectionVisible(.time)
 
-        // If both of the labels are hidden, hide the container view, too
+        // If both of the labels are hidden, hide the container view
         durationDelayView.isHidden = durationLabel.isHidden && delayLabel.isHidden
         lengthArrrivalView.isHidden = lengthLabel.isHidden && timeLabel.isHidden
 
-        // Update the accessibility stuff
+        // Updates the accessibility contents
         updateAccessibility()
     }
 

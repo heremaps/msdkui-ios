@@ -44,7 +44,7 @@ import NMAKit
                 // Finally, set the selected options on the item
                 item?.selectedItemIndexes = selectedItemIndexes
 
-                // Set the item delegate
+                // Sets the item delegate
                 item?.delegate = self
             }
         }
@@ -76,7 +76,7 @@ import NMAKit
         // Map the options to strings
         let labels: [String] = RoutingOptionsPanel.options.map { $0.label }
 
-        // Create the spec for the option item
+        // Creates the spec for the option item
         specs = [OptionItemSpec.makeMultipleChoiceOptionItem(labels: labels)]
     }
 }
@@ -90,7 +90,7 @@ extension RoutingOptionsPanel: OptionItemDelegate {
             return
         }
 
-        // Assume there is no selected item index
+        // Assumes there is no selected item index
         var routingOptions = NMARoutingOption(rawValue: 0)
 
         // Is there any selected item index?
@@ -101,10 +101,10 @@ extension RoutingOptionsPanel: OptionItemDelegate {
             }
         }
 
-        // Update the value
+        // Updates the value
         routingMode.routingOptions = routingOptions
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.optionsPanel(self, didChangeTo: item)
     }
 }

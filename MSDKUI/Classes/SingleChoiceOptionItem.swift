@@ -24,7 +24,7 @@ import UIKit
     /// - Parameter pickerView: The picker view requesting a label.
     /// - Parameter text: The text to be displayed on the label.
     /// - Returns: A customized UILabel object having the specified text.
-    /// - Important: When there is no delegate, a standard UILabel object with
+    /// - Note: When there is no delegate, a standard UILabel object with
     ///              center text alignment is used.
     func makeLabel(_ pickerView: UIPickerView, text: String) -> UILabel
 
@@ -67,7 +67,7 @@ import UIKit
 
     /// The currently selected button.
     ///
-    /// - Important: Setting an index outside of the available range has no effect.
+    /// - Note: Setting an index outside of the available range has no effect.
     public var selectedItemIndex: Int {
         get {
             return backupSelectedItemIndex
@@ -113,10 +113,10 @@ import UIKit
         // Instantiate view
         UINib(nibName: String(describing: SingleChoiceOptionItem.self), bundle: .MSDKUI).instantiate(withOwner: self)
 
-        // Use the view's bounds
+        // Uses the view's bounds
         bounds = view.bounds
 
-        // Add the view to the hierarchy
+        // Adds the view to the hierarchy
         addSubviewBindToEdges(view)
     }
 
@@ -126,7 +126,7 @@ import UIKit
     private func makeOptions() {
         updateStyle()
 
-        // Set the delegates of the pickerview
+        // Sets the delegates of the pickerview
         pickerView.delegate = self
         pickerView.dataSource = self
 

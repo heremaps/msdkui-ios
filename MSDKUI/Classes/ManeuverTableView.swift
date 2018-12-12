@@ -31,7 +31,7 @@ import NMAKit
 
     /// Tells the delegate the maneuver table view is about to present a maneuver item view.
     ///
-    /// A maneuver table view sents this message to its delegate just before it presents a maneuver item view,
+    /// A maneuver table view sends this message to its delegate just before it presents a maneuver item view,
     /// thereby permitting the delegate to customize the maneuver item view object before it is displayed.
     /// This method gives the delegate a chance to override state-based properties, such as background and text colors.
     ///
@@ -69,7 +69,7 @@ import NMAKit
 
     /// Sets the visibility of `ManeuverItemView` sections.
     ///
-    /// - Important: Initially all the sections are visible.
+    /// - Note: Initially all the sections are visible.
     public var visibleSections: ManeuverItemView.Section = .all {
         didSet {
             reloadData()
@@ -86,7 +86,7 @@ import NMAKit
 
     /// The label used to display a warning when no maneuver is found.
     ///
-    /// - Important: When not set, a label with default settings is used.
+    /// - Note: When not set, a label with default settings is used.
     public var noManeuverFoundLabel: UILabel! {
         didSet {
             noManeuverFoundLabel.text = "msdkui_no_maneuver_found".localized
@@ -146,12 +146,12 @@ import NMAKit
     private func setUp() {
         setUpTableView()
 
-        // Set the table row height out of the view used for the content view
+        // Sets the table row height out of the view used for the content view
         let view = ManeuverItemView()
         rowHeight = UITableView.automaticDimension
         estimatedRowHeight = view.bounds.size.height
 
-        // Register the nib file for the custom cell
+        // Registers the nib file for the custom cell
         register(UITableViewCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
 
         setAccessibility()
@@ -218,7 +218,7 @@ extension ManeuverTableView: UITableViewDataSource {
         cell.accessoryView = nil
         cell.editingAccessoryType = .none
 
-        // Create the content view subview
+        // Creates the content view subview
         let view = ManeuverItemView()
         view.visibleSections = visibleSections
         view.tag = 1000
