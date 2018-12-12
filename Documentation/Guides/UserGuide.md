@@ -14,10 +14,10 @@ This user guide describes the general workflow using the HERE Mobile SDK UI Kit 
 - [Overview of the HERE Mobile SDK UI Kit Primer example](#overview-of-the-here-mobile-sdk-ui-kit-primer-example)
 - [Designing the app flow](#designing-the-app-flow)
 - [Adding HERE Mobile SDK UI Kit components](#adding-here-mobile-sdk-ui-kit-components)
-	- [Adding the map view](#adding-the-map-view)
+  - [Adding the map view](#adding-the-map-view)
 - [Using the WaypointList](#using-the-waypointlist)
-	- [Adding custom styles](#adding-custom-styles)
-	- [Calculating the route](#calculating-the-route)
+  - [Adding custom styles](#adding-custom-styles)
+  - [Calculating the route](#calculating-the-route)
 - [Using TransportModePanel](#using-transportmodepanel)
 - [Implementing Route Details screen](#implementing-route-details-screen)
 - [Using RouteDescriptionList](#using-routedescriptionlist)
@@ -165,7 +165,7 @@ waypointList.waypointEntries = [startWaypoint, stopoverWaypoint1, stopoverWaypoi
 
 Note that order matters, but don't worry, the `WaypointList` HERE Mobile SDK UI Kit component by default already provides drag handles to change the order afterwards.
 
-However, we also want to get notified, whenever the user did any interaction with the `WaypointList`. Therefore our view controller can conform to the `WaypointListDelegate` protocol. It provides the following messages:
+However, we also want to get notified, whenever the user did any interaction with the `WaypointList`. Therefore our view controller can conform to the `WaypointListDelegate` protocol. It provides the following methods:
 
 - `entryAdded(_ list:index:entry:)`: Occurs when a new waypoint was added programmatically.
 - `entrySelected(_ list:index:entry:)`: Occurs when a user taps on a waypoint.
@@ -343,14 +343,14 @@ maneuverTableView.route = route
   <img src="./Images/primer_maneuver.png" width="250"/>
 </p></center>
 
-Like for all HERE Mobile SDK UI Kit's list components, we can get notified once a user selects a specific maneuver by tapping on it. To react on this event, we need to conform to the `ManeuverTableViewDelegate` protocol and implement it's message:
+Like for all HERE Mobile SDK UI Kit's list components, we can get notified once a user selects a specific maneuver by tapping on it. To react on this event, we need to conform to the `ManeuverTableViewDelegate` protocol and implement the required method:
 ```swift
 maneuverTableView.maneuverTableViewDelegate = self
 
 // ...
 
 func maneuverTableView(_ tableView: ManeuverTableView, didSelect maneuver: NMAManeuver, at index: Int) {
-		print("Selected maneuver \(maneuver.description)")
+    print("Selected maneuver \(maneuver.description)")
 }
 ```
 
@@ -358,7 +358,7 @@ As you may have noticed from the previous screenshot, we've also customized the 
 
 ```swift
 @objc public func maneuverTableView(_ tableView: MSDKUI.ManeuverTableView, willDisplay view: MSDKUI.ManeuverItemView) {
-		view.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
+    view.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
 }
 ```
 
@@ -380,14 +380,14 @@ Once we have attached all needed views to our layout, we can Control-drag them t
 The `GuidanceManeuverView` is a view where information about the next maneuvers will appear. As with all HERE Mobile SDK UI Kit components, it is already configured, so you only need to pass in the current `GuidanceManeuverData`. Therefore we need to implement the `GuidanceManeuverMonitorDelegate` which requires us to implement two methods:
 ```swift
 func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
-														 didUpdateData data: GuidanceManeuverData?) {
-		print("data changed: \(String(describing: data))")
-		guidanceManeuverView.data = data
+                             didUpdateData data: GuidanceManeuverData?) {
+    print("data changed: \(String(describing: data))")
+    guidanceManeuverView.data = data
 }
 
 func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
-		print("Destination reached.")
-		guidanceManeuverView.highlightManeuver(textColor: .colorAccentLight)
+    print("Destination reached.")
+    guidanceManeuverView.highlightManeuver(textColor: .colorAccentLight)
 }
 ```
 
@@ -429,7 +429,7 @@ Now, we are ready to start guidance by calling the helper method `startGuidanceS
 For this example we have customized the icon and text color by adjusting the following style:
 
 ```swift
-guidanceManeuverView.foregroundColor = .green
+guidanceManeuverView.foregroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
 ```
 
 Similar to other components there are many more style settings available to adjust the view.
