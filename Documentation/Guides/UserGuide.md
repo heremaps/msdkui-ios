@@ -14,15 +14,15 @@ This user guide describes the general workflow using the HERE Mobile SDK UI Kit 
 - [Overview of the HERE Mobile SDK UI Kit Primer example](#overview-of-the-here-mobile-sdk-ui-kit-primer-example)
 - [Designing the app flow](#designing-the-app-flow)
 - [Adding HERE Mobile SDK UI Kit components](#adding-here-mobile-sdk-ui-kit-components)
-	- [Adding the map view](#adding-the-map-view)
+  - [Adding the map view](#adding-the-map-view)
 - [Using the WaypointList](#using-the-waypointlist)
-	- [Adding custom styles](#adding-custom-styles)
-	- [Calculating the route](#calculating-the-route)
+  - [Adding custom styles](#adding-custom-styles)
+  - [Calculating the route](#calculating-the-route)
 - [Using TransportModePanel](#using-transportmodepanel)
 - [Implementing Route Details screen](#implementing-route-details-screen)
 - [Using RouteDescriptionList](#using-routedescriptionlist)
 - [Implementing Guidance screen](#implementing-guidance-screen)
-- [Using GuidanceManeuverPanel](#using-guidancemaneuverpanel)
+- [Using GuidanceManeuverView](#using-guidancemaneuverview)
 - [How to localize your app?](#how-to-localize-your-app)
 - [Where to go from here?](#where-to-go-from-here)
 
@@ -76,11 +76,11 @@ The HERE Mobile SDK UI Kit Primer example app consists of three screens illustra
 
 **Route Details Screen** (`ManeuverViewController.swift`)
 - Contains a `RouteDescriptionList` to select a route (if more than one route was found)
-- A `ManeuverDescriptionList` to show the maneuvers of the selected route
+- A `ManeuverTableView` to show the maneuvers of the selected route
 - An `UIButton` to navigate to the next screen
 
 **Guidance Screen** (`GuidanceViewController.swift`)
-- Shows a `GuidanceManeuverPanel` to indicate the next maneuvers including voice over
+- Shows a `GuidanceManeuverView` to indicate the next maneuvers including voice over
 - A `NMAMapView` to show the current position and orientation on the map
 - An `UIButton` to stop guidance
 
@@ -165,7 +165,7 @@ waypointList.waypointEntries = [startWaypoint, stopoverWaypoint1, stopoverWaypoi
 
 Note that order matters, but don't worry, the `WaypointList` HERE Mobile SDK UI Kit component by default already provides drag handles to change the order afterwards.
 
-However, we also want to get notified, whenever the user did any interaction with the `WaypointList`. Therefore our view controller can conform to the `WaypointListDelegate` protocol. It provides the following callbacks:
+However, we also want to get notified, whenever the user did any interaction with the `WaypointList`. Therefore our view controller can conform to the `WaypointListDelegate` protocol. It provides the following methods:
 
 - `entryAdded(_ list:index:entry:)`: Occurs when a new waypoint was added programmatically.
 - `entrySelected(_ list:index:entry:)`: Occurs when a user taps on a waypoint.
@@ -173,7 +173,7 @@ However, we also want to get notified, whenever the user did any interaction wit
 - `entryDragged(_ list:from:to:)`: A waypoint was dragged to a new position.
 - `entryUpdated(_ list:index:entry:)`: The waypoint contents have been updated.
 
-All callbacks are optional, so you need to implement only the ones you are interested in. By default the `WaypointList` component provides a UI that allows the user to:
+All methods are optional, so you need to implement only the ones you are interested in. By default the `WaypointList` component provides a UI that allows the user to:
 - drag a waypoint via the drag handles on the right side
 - remove a waypoint by clicking the minus button on the left side
 
@@ -184,7 +184,7 @@ To start listening for the first events, we need to add a delegate:
 waypointList.listDelegate = self
 ```
 
-In this case our `ViewController` conforms to the `WaypointListDelegate` protocol, so the delegate is `self`. Then we can implement the desired callbacks:
+In this case our `ViewController` conforms to the `WaypointListDelegate` protocol, so the delegate is `self`. Then we can implement the desired methods:
 ```swift
 func entrySelected(_ list: MSDKUI.WaypointList, index: Int, entry: MSDKUI.WaypointEntry) {
     print("entrySelected")
@@ -203,7 +203,7 @@ func entryDragged(_ list: MSDKUI.WaypointList, from: Int, to: Int) {
 }
 ```
 
-We implemented three callbacks to implement the following behavior:
+We implemented three methods to implement the following behavior:
 - when a waypoint is selected, we want to zoom to the waypoint's position and center the map on it
 - when a waypoint is removed, we want to calculate a new route
 - when a waypoint is dragged, we also want to calculate a new route
@@ -283,12 +283,12 @@ The screenshot shows how the updated main `ViewController` would look like on an
 ## Implementing Route Details screen
 In the previous screen the user was able to calculate a route based on his or her waypoint selection and a suitable route mode. Now we want to show a summary for the found routes and their maneuvers on a new screen. As described above we will show this in the `ManeuverViewController` of our HERE Mobile SDK UI Kit Primer example app. The `ManeuverViewController` controller holds two HERE Mobile SDK UI Kit components:
 - `RouteDescriptionList`: Shows all found routes as a summary in a scrollable list
-- `ManeuverDescriptionList`: Shows all maneuvers belonging to a route
+- `ManeuverTableView`: Shows all maneuvers belonging to a route
 
 First, we need to wire up our layout using _Interface Builder_ - once done, we can control drag the views to create the desired `IBOutlet` references:
 ```swift
 @IBOutlet weak var routeDescriptionList: RouteDescriptionList!
-@IBOutlet weak var maneuverDescriptionList: ManeuverDescriptionList!
+@IBOutlet weak var maneuverTableView: ManeuverTableView!
 ```
 
 For the sake of this example we show both components on one screen. You may look at our demo app for an alternative User Interface approach. Note that the HERE Mobile SDK UI Kit does not promote any specific flow how it's component must be arranged - it all depends on your specific needs and taste.
@@ -323,40 +323,42 @@ func routeDescriptionList(_ list: RouteDescriptionList, willDisplay item: RouteD
 
 func routeDescriptionList(_ list: RouteDescriptionList, didSelect route: NMARoute, at index: Int) {
     print("Selected route at index: \(index)")
-    maneuverDescriptionList.route = route
+    maneuverTableView.route = route
 }
 ```
 
-The first callback allows to set a custom color for a `RouteDescriptionItem`, the latter notifies once a user selects a route by tapping on an item.
+The first method allows to set a custom color for a `RouteDescriptionItem`, the latter notifies once a user selects a route by tapping on an item.
 
 Once our view controller class conforms to the delegate protocol, we have to make sure to start listening by setting `self` as delegate:
 ```swift
 routeDescriptionList.listDelegate = self
 ```
 
-As our goal is to select a route and to see all the maneuvers of that route, we have to set the selected route to the `maneuverDescriptionList`. Since we receive the selected `NMARoute` from the callback (as shown above) we can set it as new `route` to the `route` property of `ManeuverDescriptionList`:
+As our goal is to select a route and to see all the maneuvers of that route, we have to set the selected route to the `maneuverTableView`. Since we receive the selected `NMARoute` from the protocol method (as shown above) we can set it as new `route` to the `route` property of `ManeuverTableView`:
 ```swift
-maneuverDescriptionList.route = route
+maneuverTableView.route = route
 ```
 
 <center><p>
   <img src="./Images/primer_maneuver.png" width="250"/>
 </p></center>
 
-Like for all HERE Mobile SDK UI Kit's list components, we can get notified once a user selects a specific maneuver by tapping on it. To react on this event, we need to conform to the `ManeuverDescriptionListDelegate` protocol and implement it's callback:
+Like for all HERE Mobile SDK UI Kit's list components, we can get notified once a user selects a specific maneuver by tapping on it. To react on this event, we need to conform to the `ManeuverTableViewDelegate` protocol and implement the required method:
 ```swift
-maneuverDescriptionList.listDelegate = self
-...
-func maneuverDescriptionList(_ list: ManeuverDescriptionList, didSelect maneuver: NMAManeuver, at index: Int) {
+maneuverTableView.maneuverTableViewDelegate = self
+
+// ...
+
+func maneuverTableView(_ tableView: ManeuverTableView, didSelect maneuver: NMAManeuver, at index: Int) {
     print("Selected maneuver \(maneuver.description)")
 }
 ```
 
-As you may have noticed from the previous screenshot, we've also customized the icon color to appear in `green`:
+As you may have noticed from the previous screenshot, we've also customized the icon color to appear in sunny yellow. This can be achieved by implementing an optional method of the `ManeuverTableViewDelegate` protocol:
 
 ```swift
-func maneuverDescriptionList(_ list: ManeuverDescriptionList, willDisplay item: ManeuverDescriptionItem) {
-    item.iconImageView.tintColor = .green
+@objc public func maneuverTableView(_ tableView: MSDKUI.ManeuverTableView, willDisplay view: MSDKUI.ManeuverItemView) {
+    view.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
 }
 ```
 
@@ -364,42 +366,42 @@ Tip: Try to play around with other customizable properties.
 
 ## Implementing Guidance screen
 To finish our quick overview, we want to use the selected route from the previous step to start guidance along that route. For this we only need one new HERE Mobile SDK UI Kit component:
-- `GuidanceManeuverPanel`
+- `GuidanceManeuverView`
 
 In addition, we also want to show a map during guidance to let the user orientate where we currently are.
 
 Once we have attached all needed views to our layout, we can Control-drag them to the `GuidanceViewController`:
 ```swift
-@IBOutlet weak var guidanceManeuverPanel: GuidanceManeuverPanel!
+@IBOutlet weak var guidanceManeuverView: GuidanceManeuverView!
 @IBOutlet weak var mapView: NMAMapView!
 ```
 
-## Using GuidanceManeuverPanel
-The `GuidanceManeuverPanel` is a panel where information about the next maneuvers will appear. As with all HERE Mobile SDK UI Kit components, it is already configured, so you only need to pass in the current `GuidanceManeuverData`. Therefore we need to implement the `GuidanceManeuverPanelPresenterDelegate` which requires us to implement two callbacks:
+## Using GuidanceManeuverView
+The `GuidanceManeuverView` is a view where information about the next maneuvers will appear. As with all HERE Mobile SDK UI Kit components, it is already configured, so you only need to pass in the current `GuidanceManeuverData`. Therefore we need to implement the `GuidanceManeuverMonitorDelegate` which requires us to implement two methods:
 ```swift
-func guidanceManeuverPanelPresenter(_ presenter: GuidanceManeuverPanelPresenter,
-                                    didUpdateData data: GuidanceManeuverData?) {
+func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
+                             didUpdateData data: GuidanceManeuverData?) {
     print("data changed: \(String(describing: data))")
-    guidanceManeuverPanel.data = data
+    guidanceManeuverView.data = data
 }
 
-func guidanceManeuverPanelPresenterDidReachDestination(_ presenter: GuidanceManeuverPanelPresenter) {
+func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
     print("Destination reached.")
-    guidanceManeuverPanel.highlightManeuver(textColor: .colorAccentLight)
+    guidanceManeuverView.highlightManeuver(textColor: .colorAccentLight)
 }
 ```
 
-While the first callback simply sets the received `GuidanceManeuverData` to the `GuidanceManeuverPanel` by setting it to the `data` property of the panel, the latter informs us when the user has finally reached the destination. In this case, we choose to highlight the last maneuver.
+While the first method simply sets the received `GuidanceManeuverData` to the `GuidanceManeuverView` by setting it to the `data` property of the view, the latter informs us when the user has finally reached the destination. In this case, we choose to highlight the last maneuver.
 
-Both callbacks require us to create a new `GuidanceManeuverPanelPresenter` object to start listening:
+Both methods require us to create a new `GuidanceManeuverMonitor` object to start listening:
 ```swift
-guidanceManeuverPanelPresenter = GuidanceManeuverPanelPresenter(route: route!)
-guidanceManeuverPanelPresenter.delegate = self
+guidanceManeuverMonitor = GuidanceManeuverMonitor(route: route!)
+guidanceManeuverMonitor.delegate = self
 ```
 
-This way our class can set the `route` that is used for guidance to the `GuidanceManeuverPanelPresenter`. The presenter is then taking care of forwarding any navigation events to the delegate class - allowing it to intercept the current `GuidanceManeuverData`. In our implementation we simply set the current `data` to the `GuidanceManeuverPanel`, so the user can see which turn to take next.
+This way our class can set the `route` that is used for guidance to the `GuidanceManeuverMonitor`. The presenter is then taking care of forwarding any navigation events to the delegate class - allowing it to intercept the current `GuidanceManeuverData`. In our implementation we simply set the current `data` to the `GuidanceManeuverView`, so the user can see which turn to take next.
 
->**Note:** `data: GuidanceManeuverData?` is an _optional_ value. If `nil` is passed to `guidanceManeuverPanel.data`, then the panel will show a loading state - indicating that there is currently no data to show. In case you want to stick with the default behavior, you can simply pass `data` - regardless if it is `nil` or not. If you want to change the default behavior, you can set a customized `GuidanceManeuverData` instance. Please note, before starting the trip, no initial maneuver data may be present. In such a case, the panel shows a suitable default instruction, like "Follow the route on the map", until the first maneuver data - whether `nil` or not - is provided.
+>**Note:** `data: GuidanceManeuverData?` is an _optional_ value. If `nil` is passed to `guidanceManeuverView.data`, then the view will show a loading state - indicating that there is currently no data to show. In case you want to stick with the default behavior, you can simply pass `data` - regardless if it is `nil` or not. If you want to change the default behavior, you can set a customized `GuidanceManeuverData` instance. Please note, before starting the trip, no initial maneuver data may be present. In such a case, the view shows a suitable default instruction, like "Follow the route on the map", until the first maneuver data - whether `nil` or not - is provided.
 
 In order for our app to be able to use guidance we must use the device's `location-services` and add the following permissions to our `Info.plist`.
 ```xml
@@ -418,7 +420,7 @@ You can open the `plist` file as source file to add the above, or edit the list 
 
 Now, we are ready to start guidance by calling the helper method `startGuidanceSimulation(route: route!)`.
 
->**Note:** You can use the HERE Mobile SDK to start _simulated_ guidance. For implementation details, please check the example's code. During the development phase, it is usually more convenient to simulate the navigation experience along the provided route - so that we can quickly see how the `GuidanceManeuverPanel` changes it's content in real-time.
+>**Note:** You can use the HERE Mobile SDK to start _simulated_ guidance. For implementation details, please check the example's code. During the development phase, it is usually more convenient to simulate the navigation experience along the provided route - so that we can quickly see how the `GuidanceManeuverView` changes it's content in real-time.
 
 <center><p>
   <img src="./Images/primer_guidance.png" width="250"/>
@@ -427,10 +429,10 @@ Now, we are ready to start guidance by calling the helper method `startGuidanceS
 For this example we have customized the icon and text color by adjusting the following style:
 
 ```swift
-guidanceManeuverPanel.foregroundColor = .green
+guidanceManeuverView.foregroundColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
 ```
 
-Similar to other components there are many more style settings available to adjust the panel.
+Similar to other components there are many more style settings available to adjust the view.
 
 ## How to localize your app?
 The HERE Mobile SDK UI Kit for iOS is already localized. Please check [here](../../README.md#localization) to verify what languages are available.

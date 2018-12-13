@@ -130,6 +130,7 @@
 		628740C121237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */; };
 		628EFFE8215B5F7A00963B66 /* ExtensionNMACoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EFFE7215B5F7A00963B66 /* ExtensionNMACoreRouter.swift */; };
 		628EFFEA215B63FA00963B66 /* NMACoreRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EFFE9215B63FA00963B66 /* NMACoreRouterMock.swift */; };
+		62A89F9C21C14F8A00F296EA /* ExtensionLocaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A89F9B21C14F8A00F296EA /* ExtensionLocaleTests.swift */; };
 		62AA2C0A20E6377B0007CB45 /* MulticastDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA2C0920E6377B0007CB45 /* MulticastDelegateTests.swift */; };
 		62AA2C0B20E637A90007CB45 /* ExtensionXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0A2B220D16A71007795CE /* ExtensionXCTestCase.swift */; };
 		62B506E121353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B506E021353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift */; };
@@ -390,6 +391,7 @@
 		629F7DEF20D12EB7006F0A90 /* OptionsDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsDelegateMock.swift; sourceTree = "<group>"; };
 		629F7DF420D14112006F0A90 /* ExtensionNMAMapViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNMAMapViewTests.swift; sourceTree = "<group>"; };
 		629F7DF820D14F51006F0A90 /* NMAMapViewPartialMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMAMapViewPartialMock.swift; sourceTree = "<group>"; };
+		62A89F9B21C14F8A00F296EA /* ExtensionLocaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionLocaleTests.swift; sourceTree = "<group>"; };
 		62AA2C0920E6377B0007CB45 /* MulticastDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegateTests.swift; sourceTree = "<group>"; };
 		62B506E021353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedMonitorTests.swift; sourceTree = "<group>"; };
 		62B884F420ECA9EA00CA47C7 /* ExtensionNMARoutingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNMARoutingError.swift; sourceTree = "<group>"; };
@@ -761,9 +763,9 @@
 				5A96ECBE1F5D72C200451792 /* OptionsViewController.swift */,
 				5AA42EA420C579170047446C /* RouteOverviewViewController.swift */,
 				5A220E851F619741004B068F /* RouteViewController.swift */,
+				62EB17FB212C02930088B7A5 /* Storyboards */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				5A9706A220B8A9060007C05C /* WaypointViewController.swift */,
-				62EB17FB212C02930088B7A5 /* Storyboards */,
 			);
 			name = "MSDKUI Demo";
 			path = MSDKUI_Demo;
@@ -775,25 +777,26 @@
 				5A74B2481F063967002B1135 /* BooleanOptionItemTests.swift */,
 				8F5DBB4720EF706C00E65CE2 /* ExtensionArrayTests.swift */,
 				62E110DE21246E42005D8063 /* ExtensionDateFormatterTests.swift */,
+				62A89F9B21C14F8A00F296EA /* ExtensionLocaleTests.swift */,
 				62E110E021246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift */,
 				624E492221342E4D00D94D23 /* ExtensionNumberFormatterTests.swift */,
-				2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */,
 				2B31F6B7212E989E007B760B /* GuidanceCurrentStreetNameMonitorTests.swift */,
 				628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */,
 				62CFD6B82122CAD200E77A69 /* GuidanceEstimatedArrivalViewTests.swift */,
 				5A1B2AA020A07C84009AD672 /* GuidanceManeuverDataTests.swift */,
 				5A1B2A9E20A076FF009AD672 /* GuidanceManeuverMonitorTests.swift */,
-				5A16301A208F693100E61B07 /* GuidanceManeuverViewTests.swift */,
 				5A1B2AA220A09A8D009AD672 /* GuidanceManeuverUtilTests.swift */,
+				5A16301A208F693100E61B07 /* GuidanceManeuverViewTests.swift */,
 				5A76DE982135908E006BE1CC /* GuidanceNextManeuverMonitorTests.swift */,
 				5A76DE972135908D006BE1CC /* GuidanceNextManeuverViewTests.swift */,
 				62C8EEED21390158004928C8 /* GuidanceSpeedLimitViewTests.swift */,
 				62B506E021353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift */,
 				62DC5DD12134021000FEB9B1 /* GuidanceSpeedViewTests.swift */,
+				2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */,
 				5AF97C931F1647DB002E0944 /* HazardousMaterialsOptionsPanelTests.swift */,
 				BD7F07871F18C45D00B161DD /* ManeuverItemViewTests.swift */,
-				BD7F078A1F18C94C00B161DD /* ManeuverTableViewTests.swift */,
 				BD7F078C1F18EBCA00B161DD /* ManeuverResourcesTest.swift */,
+				BD7F078A1F18C94C00B161DD /* ManeuverTableViewTests.swift */,
 				62AA2C0920E6377B0007CB45 /* MulticastDelegateTests.swift */,
 				5A74B2491F063967002B1135 /* MultipleChoiceOptionItemTests.swift */,
 				62E0CFDF20EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift */,
@@ -1591,6 +1594,7 @@
 				62DC5DD22134021000FEB9B1 /* GuidanceSpeedViewTests.swift in Sources */,
 				621C89B020EDF71F003C8EC6 /* NotificationCenterObservingMock.swift in Sources */,
 				62E110E121246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift in Sources */,
+				62A89F9C21C14F8A00F296EA /* ExtensionLocaleTests.swift in Sources */,
 				5A09DBFD1F28F8C1006EBED7 /* TravelTimePanelTests.swift in Sources */,
 				8FA3587D215115D700B62D2E /* TitleItemTests.swift in Sources */,
 				62CB084120FFFDC1003E71C2 /* ExtensionUIAlertController.swift in Sources */,

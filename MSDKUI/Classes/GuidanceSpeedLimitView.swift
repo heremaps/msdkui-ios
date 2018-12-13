@@ -35,9 +35,9 @@ import UIKit
     /// Sets the speed limit unit used by the view.
     ///
     /// The default value depends on the locale.
-    /// - It uses .kilometersPerHour if current locale uses metric system,
+    /// - It uses .kilometersPerHour if current locale uses metric system for speed,
     /// - It uses .milesPerHour otherwise.
-    public var unit: UnitSpeed = Locale.current.usesMetricSystem ? .kilometersPerHour : .milesPerHour {
+    public var unit: UnitSpeed = Locale.current.usesKilometersPerHour ? .kilometersPerHour : .milesPerHour {
         didSet { updateContent() }
     }
 

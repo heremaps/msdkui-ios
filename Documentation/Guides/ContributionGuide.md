@@ -292,8 +292,8 @@ Extended description (as for a normal ticket, see above).
 - Pull Requests should not include "Merge" commits.
     - Rebase your work to keep the Pull Request commits on top.
 - Give the Pull Request a short title which explains what the Pull Request is about.
-- Give the Pull Request a description which details what the Pull Request is about.
-- Once the Pull Request is merged into master, delete the feature branch.
+- Give the Pull Request a description with details on what the Pull Request is about.
+- Once the Pull Request is merged into master, delete the remote feature branch.
 
 ## Writing Code
 
