@@ -116,7 +116,7 @@ import NMAKit
         numberFormatter.locale = NSLocale.current
         numberFormatter.numberStyle = NumberFormatter.Style.decimal
 
-        // Create the specs for the option items: note that the id's assigned
+        // Creates the specs for the option items: note that the id's assigned
         // here is important for the updates afterwards
         specs = [
             OptionItemSpec.makeNumericOptionItem(
@@ -192,7 +192,7 @@ import NMAKit
 extension TruckOptionsPanel: OptionItemDelegate {
 
     public func optionItemDidChange(_ item: OptionItem) { //swiftlint:disable:this cyclomatic_complexity
-        // Proceed based on the option item id
+        // Proceeds based on the option item id
         switch item.id {
         case OptionItemID.vehicleHeight.rawValue:
             if let itemValue = (item as? NumericOptionItem)?.value?.floatValue {
@@ -241,7 +241,7 @@ extension TruckOptionsPanel: OptionItemDelegate {
             assertionFailure("Unknown option!")
         }
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.optionsPanel(self, didChangeTo: item)
     }
 }

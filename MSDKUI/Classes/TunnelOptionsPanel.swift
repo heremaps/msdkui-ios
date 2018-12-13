@@ -71,10 +71,10 @@ import NMAKit
 
     /// Creates the spec for the underlying `SingleChoiceOptionItem` object.
     override func makePanel() {
-        // Map the options to strings
+        // Maps the options to strings
         let labels: [String] = TunnelOptionsPanel.options.map { $0.label }
 
-        // Create the spec for the option item
+        // Creates the spec for the option item
         specs = [OptionItemSpec.makeSingleChoiceOptionItem(title: nil, labels: labels)]
     }
 }
@@ -92,7 +92,7 @@ extension TunnelOptionsPanel: OptionItemDelegate {
             routingMode.tunnelCategory = tunnelCategory
         }
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.optionsPanel(self, didChangeTo: item)
     }
 }

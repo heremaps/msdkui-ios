@@ -169,14 +169,14 @@ public struct NumericOptionItemInputHelper {
     ///
     /// - Parameter label: The option string.
     private func makeOption(label: String?) {
-        // Load the view from nib file
+        // Loads the view from nib file
         optionView = UINib(nibName: "Label+ButtonOption", bundle: .MSDKUI).instantiate(withOwner: nil).first as? UIView
 
-        // Set the label text
+        // Sets the label text
         optionLabel = optionView.viewWithTag(1000) as? UILabel
         optionLabel.text = label
 
-        // Set the button title & action handler
+        // Sets the button title & action handler
         optionButton = optionView.viewWithTag(1001) as? UIButton
         setButtonTitle("msdkui_set".localized)
         optionButton.addTarget(self, action: #selector(onButton), for: .touchUpInside)
@@ -184,13 +184,13 @@ public struct NumericOptionItemInputHelper {
         updateStyle(optionView)
         addSubviewBindToEdges(optionView)
 
-        // Set the very important intrinsic content height
+        // Sets the very important intrinsic content height
         intrinsicContentHeight = optionView.bounds.size.height
         invalidateIntrinsicContentSize()
 
         setAccessibility()
 
-        // Reflect the initial state
+        // Reflects the initial state
         updateAccessibility()
     }
 
@@ -220,24 +220,24 @@ public struct NumericOptionItemInputHelper {
         let cancelAction = UIAlertAction(title: "cancel".localized, style: .cancel) { _ in }
 
         alertController.addTextField { textField in
-            // Set the placeholder
+            // Sets the placeholder
             if let placeholder = self.inputHelper?.placeholder {
                 textField.placeholder = placeholder
             } else if let value = self.value {
                 textField.placeholder = value.stringValue
             }
 
-            // Set the keyboard type
+            // Sets the keyboard type
             if let keyboardType = self.inputHelper?.keyboardType {
                 textField.keyboardType = keyboardType
             }
         }
 
-        // Add the actions
+        // Adds the actions
         alertController.addAction(okAction)
         alertController.addAction(cancelAction)
 
-        // Present the alert
+        // Presents the alert
         presenter.present(alertController, animated: true)
     }
 
@@ -247,13 +247,13 @@ public struct NumericOptionItemInputHelper {
     private func setButtonTitle(_ title: String) {
         optionButton.setTitle(title, for: .normal)
 
-        // Reflect the update
+        // Reflects the update
         updateAccessibility()
     }
 
     /// Sets the accessibility stuff.
     private func setAccessibility() {
-        // Add a tap gesture recognizer: it is enabled only when the accessibility is turned on
+        // Adds a tap gesture recognizer: it is enabled only when the accessibility is turned on
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleLabel))
         tapGestureRecognizer.isEnabled = UIAccessibility.isVoiceOverRunning
 

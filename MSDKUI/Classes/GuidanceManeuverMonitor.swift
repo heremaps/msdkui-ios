@@ -113,7 +113,7 @@ open class GuidanceManeuverMonitor: NSObject {
     private func publishData(from maneuver: NMAManeuver) {
         var data = GuidanceManeuverData()
 
-        // Try to set the distance.
+        // Try to set the distance
         if NMAPositioningManager.sharedInstance().currentPosition != nil {
             let distanceValue = NMANavigationManager.sharedInstance().distanceToCurrentManeuver
             data.distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)

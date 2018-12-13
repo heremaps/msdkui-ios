@@ -19,7 +19,7 @@ import Foundation
 /// This class is responsible for providing all the version data.
 public class Version: NSObject {
 
-    /// Returns the MSDKUI framework version string. Note that, it is set by the podspec file.
+    /// Returns the MSDKUI framework version string. Note that it is set by the podspec file.
     ///
     /// - Returns: The version string or a question mark if it is not possible to retrieve the version string.
     public static func getString() -> String {

@@ -138,7 +138,7 @@ public protocol TravelTimePickerDelegate: AnyObject {
         datePicker.accessibilityIdentifier = "MSDKUI.TravelTimePicker.datePicker"
     }
 
-    /// Dismiss action.
+    /// Dismisses action.
     @IBAction private func dismiss(_ sender: Any) {
         dismiss(animated: true)
     }
