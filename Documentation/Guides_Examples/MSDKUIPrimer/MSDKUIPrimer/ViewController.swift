@@ -61,19 +61,19 @@ class ViewController: UIViewController, WaypointListDelegate, TransportModePanel
 
     // MARK: - WaypointListDelegate
 
-    func entrySelected(_ list: MSDKUI.WaypointList, index: Int, entry: MSDKUI.WaypointEntry) {
+    func waypointList(_ list: WaypointList, didSelect entry: WaypointEntry, at index: Int) {
         print("entrySelected")
         // zoom from route overview to waypoint
         mapView.zoomLevel = 14
         mapView.set(geoCenter: entry.waypoint.originalPosition, animation: NMAMapAnimation.bow)
     }
 
-    func entryRemoved(_ list: MSDKUI.WaypointList, index: Int, entry: MSDKUI.WaypointEntry) {
+    func waypointList(_ list: WaypointList, didRemove entry: WaypointEntry, at index: Int) {
         print("entryRemoved")
         calculateRoutes()
     }
 
-    func entryDragged(_ list: MSDKUI.WaypointList, from: Int, to: Int) {
+    func waypointList(_ list: WaypointList, didDragFrom from: Int, to: Int) {
         print("entryDragged")
         calculateRoutes()
     }

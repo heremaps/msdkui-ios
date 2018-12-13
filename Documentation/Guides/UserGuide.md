@@ -9,7 +9,7 @@ This user guide describes the general workflow using the HERE Mobile SDK UI Kit 
 - [Why use HERE Mobile SDK UI Kit?](#why-use-here-mobile-sdk-ui-kit)
 - [Where to start?](#where-to-start)
 - [How to read this guide?](#how-to-read-this-guide)
-- [Getting Started - A HERE Mobile SDK UI Kit Primer](#getting-started-a-here-mobile-sdk-ui-kit-primer)
+- [Getting Started - A HERE Mobile SDK UI Kit Primer](#getting-started---a-here-mobile-sdk-ui-kit-primer)
 - [Overview of the HERE Mobile SDK UI Kit Primer example](#overview-of-the-here-mobile-sdk-ui-kit-primer-example)
 - [Designing the app flow](#designing-the-app-flow)
 - [Adding HERE Mobile SDK UI Kit components](#adding-here-mobile-sdk-ui-kit-components)
@@ -38,7 +38,7 @@ The HERE Mobile SDK UI Kit builds upon optimized native platform code to fully s
 
 - **Flexible:** All HERE Mobile SDK UI Kit components can be independently integrated from each other - allowing extensible cutting-edge user interfaces. Imagine an interactive route summary mixed with customized planning options directly showing the route to your facility? Or presenting route maneuvers based on the user's traffic preference on the same view? No matter what kind of user flow you want to create, with the HERE Mobile SDK UI Kit it is now all in your hands - making the HERE Mobile SDK a more powerful development tool than ever before.
 
-With the HERE Mobile SDK UI Kit, realizing complete apps including comprehensive route planning and state-of-the-art guidance becomes a matter of minutes. While hiding the underlying complexity, you still have all the freedom you need to build unique and powerful apps - take a quick tour with our [HERE Mobile SDK UI Kit Primer](#getting-started-a-here-mobile-sdk-ui-kit-primer) to see a practical example.
+With the HERE Mobile SDK UI Kit, realizing complete apps including comprehensive route planning and state-of-the-art guidance becomes a matter of minutes. While hiding the underlying complexity, you still have all the freedom you need to build unique and powerful apps - take a quick tour with our [HERE Mobile SDK UI Kit Primer](#getting-started---a-here-mobile-sdk-ui-kit-primer) to see a practical example.
 
 Version 1.x of the HERE Mobile SDK UI Kit mainly focuses on enabling user experiences related to route planning and guidance. The HERE Mobile SDK UI Kit components are available for iOS and Android, supporting Java and Kotlin on Android, and Swift on iOS.
 
@@ -48,7 +48,7 @@ Version 1.x of the HERE Mobile SDK UI Kit mainly focuses on enabling user experi
 - You can also find:
   - Numerous [examples](../Guides_Examples/) accompanying this user guide.
   - A HERE MSDK UI [demo app](../../MSDKUI_Demo/) showcasing most features of the HERE Mobile SDK UI Kit in production-ready quality.
-- Read the [HERE Mobile SDK UI Kit Primer](#getting-started-a-here-mobile-sdk-ui-kit-primer) chapter of this user guide.
+- Read the [HERE Mobile SDK UI Kit Primer](#getting-started---a-here-mobile-sdk-ui-kit-primer) chapter of this user guide.
 
 ## How to read this guide?
 In the following sections we will guide you through the most common usage scenarios and reveal tips and easy-to-understand guidelines to help you get the most out of using the HERE Mobile SDK UI Kit for iOS. All _main_ sections can be read independent from each other, so you can skip any section and dive straight into the topics you are most interested in.
@@ -166,11 +166,11 @@ Note that order matters, but don't worry, the `WaypointList` HERE Mobile SDK UI 
 
 However, we also want to get notified, whenever the user did any interaction with the `WaypointList`. Therefore our view controller can conform to the `WaypointListDelegate` protocol. It provides the following methods:
 
-- `entryAdded(_ list:index:entry:)`: Occurs when a new waypoint was added programmatically.
-- `entrySelected(_ list:index:entry:)`: Occurs when a user taps on a waypoint.
-- `entryRemoved(_ list:index:entry:)`: A waypoint was removed programmatically or via the minus button.
-- `entryDragged(_ list:from:to:)`: A waypoint was dragged to a new position.
-- `entryUpdated(_ list:index:entry:)`: The waypoint contents have been updated.
+- `waypointList(_ list: WaypointList, didAdd entry: WaypointEntry, at index: Int)`: Occurs when a new waypoint was added programmatically.
+- `waypointList(_ list: WaypointList, didSelect entry: WaypointEntry, at index: Int)`: Occurs when a user taps on a waypoint.
+- `waypointList(_ list: WaypointList, didRemove entry: WaypointEntry, at index: Int)`: A waypoint was removed programmatically or via the minus button.
+- `waypointList(_ list: WaypointList, didDragFrom from: Int, to: Int)`: A waypoint was dragged to a new position.
+- `waypointList(_ list: WaypointList, didUpdate entry: WaypointEntry, at index: Int)`: The waypoint contents have been updated.
 
 All methods are optional, so you need to implement only the ones you are interested in. By default the `WaypointList` component provides a UI that allows the user to:
 - drag a waypoint via the drag handles on the right side
@@ -185,18 +185,18 @@ waypointList.listDelegate = self
 
 In this case our `ViewController` conforms to the `WaypointListDelegate` protocol, so the delegate is `self`. Then we can implement the desired methods:
 ```swift
-func entrySelected(_ list: MSDKUI.WaypointList, index: Int, entry: MSDKUI.WaypointEntry) {
+func waypointList(_ list: WaypointList, didSelect entry: WaypointEntry, at index: Int) {
     print("entrySelected")
     mapView.zoomLevel = 14
     mapView.set(geoCenter: entry.waypoint.originalPosition, animation: NMAMapAnimation.bow)
 }
 
-func entryRemoved(_ list: MSDKUI.WaypointList, index: Int, entry: MSDKUI.WaypointEntry) {
+func waypointList(_ list: WaypointList, didRemove entry: WaypointEntry, at index: Int) {
     print("entryRemoved")
     calculateRoutes()
 }
 
-func entryDragged(_ list: MSDKUI.WaypointList, from: Int, to: Int) {
+func waypointList(_ list: WaypointList, didDragFrom from: Int, to: Int) {
     print("entryDragged")
     calculateRoutes()
 }
@@ -223,7 +223,7 @@ These are not the only customizations you can make to a HERE Mobile SDK UI Kit c
 - `.itemTextColor: UIColor`
 - `.itemTextLeadingInset: CGFloat`
 - `.itemFlashColor: UIColor`
-- `.itemFlashDuration: CGFloat`
+- `.itemFlashDuration: TimeInterval`
 
 ### Calculating the route
 Since we integrated a HERE map, we can easily show a new route on it. For route calculation, we use the HERE Mobile SDK's core router. If you are interested in the implementation details, please have a look at the example code. For the purpose of this guide, we only need to be aware that route calculation requires `NMAWaypoint` objects and a `NMARoutingMode` containing details about the desired route. For example, a travel date, route options or a transport mode. For the sake of simplicity, we only provide a transport mode option. The `NMAWaypoint` array can easily be retrieved like:
@@ -415,7 +415,7 @@ In order for our app to be able to use guidance we must use the device's `locati
 
 You can open the `plist` file as source file to add the above, or edit the list items directly as property list. The `NSLocationWhenInUseUsageDescription` is just an example - you may want to adapt the description to your specific needs. In this case, we need it for guidance, so we add a suitable text.
 
->**Note: During guidance it may be useful to [prevent the device's display from dimming](https://developer.apple.com/documentation/uikit/uiapplication/1623070-idletimerdisabled). Therefore, it may be recommended to set the `UIApplication.shared.isIdleTimerDisabled` property to `true` before starting guidance - and back to `false`, once destination is reached.
+>**Note:** During guidance it may be useful to [prevent the device's display from dimming](https://developer.apple.com/documentation/uikit/uiapplication/1623070-idletimerdisabled). Therefore, it may be recommended to set the `UIApplication.shared.isIdleTimerDisabled` property to `true` before starting guidance - and back to `false`, once destination is reached.
 
 Now, we are ready to start guidance by calling the helper method `startGuidanceSimulation(route: route!)`.
 
