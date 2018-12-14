@@ -113,7 +113,7 @@ At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`.
 1. Select the `MSDKUI_Demo` scheme (if not selected by default)
 1. Build it (Product > Build) or Command+B
 
-**>Note:** If you run the demo app in a simulator, please make sure to delete the build phase "Adapt to Build Platform" in Xcode. Otherwise, you won't be able to mock locations for the iOS simulator of your choice.
+>**Note:** If you run the demo app in a simulator, please make sure to delete the build phase "Adapt to Build Platform" in Xcode. Otherwise, you won't be able to mock locations for the iOS simulator of your choice.
 
 ## Commit / Pull Request Policy
 
@@ -252,9 +252,9 @@ We follow the format described below to ensure all the commit messages are align
 ### A normal ticket
 
 ```
-TICKET-ID: Capitalized short - 80 characters or less - title
+TICKET-ID: Capitalized short - 72 characters or less - title
 
-Extended description. Please wrap it to 80 characters. Don't forget
+Extended description. Please wrap it to 72 characters. Don't forget
 the blank line separating the title from the description, otherwise
 Git will treat the entire thing as title.
 
@@ -275,7 +275,7 @@ Use blank lines for additional paragraphs.
 ### Solving multiple tickets
 
 ```
-TICKET-IDX, TICKET-IDY, TICKET-IDZ: Capitalized short - 80 characters or less - title
+TICKET-IDX, TICKET-IDY, TICKET-IDZ: Capitalized short - 72 characters or less - title
 
 Contains:
 
@@ -528,7 +528,7 @@ func testAlerControllerPresentation() throws {
 The snipped below shows how to test an `UIAlertController` action. It triggers the action and checks the expected result when the button is tapped.
 
 ```swift
-func testAlerControllerButtonAction() throws {
+func testAlertControllerButtonAction() throws {
     // Triggers the action that will display the alert
     viewControllerUnderTest.someButton?.sendAction(.touchUpInside)
 
