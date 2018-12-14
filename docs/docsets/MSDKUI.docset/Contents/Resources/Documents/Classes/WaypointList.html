@@ -375,7 +375,7 @@ this:</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The minimum number of waypoints required for a route.
-When this value is set to a number lower than 2 or greater than entryCount it will be reverted to its previous value.</p>
+When this value is set to a number lower than 2 or greater than entryCount, it will be reverted to its previous value.</p>
 
                       </div>
                       <div class="declaration">
@@ -404,7 +404,7 @@ When this value is set to a number lower than 2 or greater than entryCount it wi
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>The maximum number of waypoints.
-When this value is set to a number lower than minWaypointItems or maxVisibleItems or entryCount it will be reverted to its previous value.</p>
+When this value is set to a number lower than minWaypointItems or maxVisibleItems or entryCount, it will be reverted to its previous value.</p>
 
                       </div>
                       <div class="declaration">
@@ -434,7 +434,7 @@ When this value is set to a number lower than minWaypointItems or maxVisibleItem
                       <div class="abstract">
                         <p>The maximum number of waypoints this list should show at once.
 Any item above this number will be visible via scrolling.
-When this value is set to a number lower than the minWaypointItems or greater than maxWaypointItems it will be reverted to its previous value.</p>
+When this value is set to a number lower than the minWaypointItems or greater than maxWaypointItems, it will be reverted to its previous value.</p>
 
                       </div>
                       <div class="declaration">
@@ -518,19 +518,19 @@ the minimum number of entries is available, false otherwise.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Array of <code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> objects found in the list.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     The array is initalized with minWaypointItems <code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> objects having no coordinates.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
-    When set to an array with less entries than minWaypointItems it will be reverted to old value.
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    When set to an array with less entries than minWaypointItems, it will be reverted to the old value.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
-    When set to an array with more entries than maxWaypointItems it will be reverted to old value.
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
+    When set to an array with more entries than maxWaypointItems, it will be reverted to the old value.
 
 </div>
 
@@ -926,23 +926,23 @@ four entries, then 1, 2, 3, 4 will be reversed to 4, 3, 2, 1.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Inserts a new <code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> object to the end of the list if it is valid.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is not valid, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the list already has the maxWaypointItems, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is valid, scrolls to the row.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If there is a delegate, its <code>.waypointList(_:didAdd:at:)</code> method is called.
 
 </div>
@@ -993,23 +993,23 @@ four entries, then 1, 2, 3, 4 will be reversed to 4, 3, 2, 1.</p>
                       <div class="abstract">
                         <p>Inserts a new <code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> object at the specified position to the list if it
 is valid.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is not valid, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the list already reached the maxWaypointItems, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is valid, scrolls to the row.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If there is a delegate, its <code>.waypointList(_:didAdd:at:)</code> method is called.
 
 </div>
@@ -1072,18 +1072,18 @@ is valid.</p>
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Updates the <code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> object found at the specified position if it is valid.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is not valid, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is valid, scrolls to the row.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If there is a delegate, its <code>.waypointList(_:didUpdate:at:)</code> method is called.
 
 </div>
@@ -1109,7 +1109,7 @@ is valid.</p>
                               </td>
                               <td>
                                 <div>
-                                  <p><code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> object to be added to list.</p>
+                                  <p><code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> object to be added to the list.</p>
                                 </div>
                               </td>
                             </tr>
@@ -1147,8 +1147,8 @@ is valid.</p>
                       <div class="abstract">
                         <p>Adds a <code><a href="../Classes/WaypointEntry.html">WaypointEntry</a></code> object with an empty <code>NMAWaypoint</code> object using default values (latitude
 and longititude are zero and a default name) at the end of the list.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If there is a delegate, its <code>.waypointList(_:didAdd:at:)</code> method is called.
 
 </div>
@@ -1180,13 +1180,13 @@ and longititude are zero and a default name) at the end of the list.</p>
                       <div class="abstract">
                         <p>Inserts a WaypointEntry<code>object with an empty</code>NMAWaypoint` object using default values (latitude
 and longititude are zero and a default name) at the specified position of the list.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is not valid, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If there is a delegate, its <code>.waypointList(_:didAdd:at:)</code> method is called.
 
 </div>
@@ -1237,18 +1237,18 @@ and longititude are zero and a default name) at the specified position of the li
                       <div class="pointer"></div>
                       <div class="abstract">
                         <p>Removes and returns the entry at the specified position.</p>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the list contains only the minWaypointItems, nothing is done.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If there is a delegate, its <code>.waypointList(_:didRemove:at:)</code> method is called.
 
 </div>
-<div class="aside aside-important">
-    <p class="aside-title">Important</p>
+<div class="aside aside-note">
+    <p class="aside-title">Note</p>
     If the entry is deleted, scrolls to the previous row.
 
 </div>
@@ -1298,7 +1298,7 @@ and longititude are zero and a default name) at the specified position of the li
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/heremaps/msdkui-ios" target="_blank" rel="external">HERE Europe B.V.</a>. All rights reserved. (Last updated: 2018-12-08)</p>
+      <p>&copy; 2018 <a class="link" href="https://github.com/heremaps/msdkui-ios" target="_blank" rel="external">HERE Europe B.V.</a>. All rights reserved. (Last updated: 2018-12-14)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
