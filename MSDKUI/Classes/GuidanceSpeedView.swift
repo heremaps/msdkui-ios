@@ -90,7 +90,7 @@ import UIKit
     private func setUpLabels() {
         updateLabels()
 
-        // Uses monospaced digits for labels
+        // Uses monospaced digits for labels.
         speedValueLabel.font = .monospacedDigitSystemFont(ofSize: 22, weight: .bold)
         speedUnitLabel.font = .monospacedDigitSystemFont(ofSize: 15, weight: .regular)
     }
@@ -105,19 +105,19 @@ import UIKit
 
     /// Updates the labels whenever the viewModel, colors or unit changes.
     private func updateLabels() {
-        // Converts the speed to the appropriate unit
+        // Converts the speed to the appropriate unit.
         let convertedSpeed = speed.converted(to: unit)
         let speedValue = NSNumber(value: convertedSpeed.value)
 
-        // Sets labels information
+        // Sets the labels information.
         speedValueLabel.text = NumberFormatter.roundUpFormatter.string(from: speedValue)
         speedUnitLabel.text = MeasurementFormatter.shortSpeedFormatter.string(from: unit)
 
-        // Sets the labels colors
+        // Sets the labels colors.
         speedValueLabel.textColor = speedValueTextColor
         speedUnitLabel.textColor = speedUnitTextColor
 
-        // Update the view accessibility hint when the labels' content change
+        // Updates the view accessibility hint when the labels' content change.
         accessibilityHint = MeasurementFormatter.longSpeedFormatter.string(from: convertedSpeed)
     }
 }

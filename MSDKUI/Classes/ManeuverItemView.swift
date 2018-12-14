@@ -45,20 +45,20 @@ import NMAKit
         /// This variable returns the Section as a String. For example, Section(rawValue: 19)
         /// is stringized as "icon|duration|length".
         ///
-        /// - Important: The "|" character is used to concatanate the Section values.
-        /// - Important: The returned string is all in lowercase.
-        /// - Important: The order of the substrings follow the Section declaration order. For example
+        /// - Note: The "|" character is used to concatenate the Section values.
+        /// - Note: The returned string is all in lowercase.
+        /// - Note: The order of the substrings follow the Section declaration order. For example
         ///              [.address, .icon] is converted as "icon|address".
         public var stringized: String {
             var string = "" // Initially empty
 
             // Always prefix the string with a "|" as a kind of "normalization"
 
-            // Handle the .all as a special case
+            // Handles the .all as a special case
             if self == .all {
                 string = "|all"
             } else {
-                // Follow the Section declaration order
+                // Follows the Section declaration order
                 if contains(.icon) {
                     string += "|icon"
                 }
@@ -76,7 +76,7 @@ import NMAKit
                 }
             }
 
-            // If the string is not empty, remove the first char: due to "normalization" it is always "|"
+            // If the string is not empty, remove the first char: due to "normalization", it is always "|"
             return string.isEmpty ? string : String(string.dropFirst())
         }
 
@@ -92,8 +92,8 @@ import NMAKit
         /// - Returns: The Section value created out of the string. Note that it will be empty
         ///            if the string does not have any Section-like substring.
         ///
-        /// - Important: The "|" character should be used in the string to concatenate substrings.
-        /// - Important: The function allows irregularities like blank chars before
+        /// - Note: The "|" character should be used in the string to concatenate substrings.
+        /// - Note: The function allows irregularities like blank chars before
         ///              or after a "|" char or using capital characters.
         public static func make(from string: String) -> Section {
             let trimmed = string.components(separatedBy: .whitespaces).joined()
@@ -210,7 +210,7 @@ import NMAKit
 
     /// Queries the visibility of the given section.
     ///
-    /// - Parameter section: The section whose visibility to be queried.
+    /// - Parameter section: The section whose visibility is to be queried.
     /// - Returns: true if the section is visible and false otherwise.
     public func isSectionVisible(_ section: Section) -> Bool {
         return visibleSections.contains(section)
@@ -269,7 +269,7 @@ import NMAKit
             setSectionVisible(.icon, false)
         }
 
-        // Update the accessibility stuff
+        // Updates the accessibility contents
         updateAccessibility()
     }
 
@@ -277,13 +277,13 @@ import NMAKit
 
     /// Initialises the contents of this view.
     private func setUp() {
-        // Instantiate view
+        // Instantiates the view
         UINib(nibName: String(describing: ManeuverItemView.self), bundle: .MSDKUI).instantiate(withOwner: self)
 
-        // Use the view's bounds
+        // Uses the view's bounds
         bounds = view.bounds
 
-        // Add the view to the hierarchy
+        // Adds the view to the hierarchy
         addSubviewBindToEdges(view)
 
         setAccessibility()
@@ -296,7 +296,7 @@ import NMAKit
         addressLabel.isHidden = !isSectionVisible(.address)
         distanceLabel.isHidden = !isSectionVisible(.distance)
 
-        // Update the accessibility stuff
+        // Updates the accessibility contents
         updateAccessibility()
     }
 
@@ -310,14 +310,14 @@ import NMAKit
         distanceLabel.textColor = .colorForegroundSecondary
     }
 
-    /// Sets the accessibility stuff.
+    /// Sets the accessibility contents.
     private func setAccessibility() {
         iconImageView.isAccessibilityElement = false
         instructionLabel.isAccessibilityElement = false
         addressLabel.isAccessibilityElement = false
         distanceLabel.isAccessibilityElement = false
 
-        // Let it be accessed as one-piece
+        // Lets it be accessed as one-piece
         isAccessibilityElement = true
         accessibilityTraits = .staticText
         accessibilityLabel = "msdkui_maneuver".localized

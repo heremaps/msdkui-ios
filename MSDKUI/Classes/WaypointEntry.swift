@@ -65,8 +65,8 @@ open class WaypointEntry: NSObject {
     /// Creates a `WaypointEntry` object with a `NMAWaypoint` object.
     ///
     /// - Parameter waypoint: The `NMAWaypoint` object.
-    /// - Important: The name associated with the waypoint is a string representation of its coordinates.
-    /// - Important: The latitude and longitude values are rounded to five decimal digits.
+    /// - Note: The name associated with the waypoint is a string representation of its coordinates.
+    /// - Note: The latitude and longitude values are rounded to five decimal digits.
     public convenience init(_ waypoint: NMAWaypoint) {
         let waypointLabel = String(format: "%.5f", waypoint.originalPosition.latitude) +
             ", " +
@@ -75,9 +75,9 @@ open class WaypointEntry: NSObject {
         self.init(waypoint, name: waypointLabel)
     }
 
-    /// Determines if this entry holds a valid `NMAWaypoint` or not. It is valid when its latitude is in the
-    /// [-90, 0), (0, +90] range and its longitude is in the [-180, 0), (0, +180] range.
-    /// Note that, the default values of the `NMAWaypoint`, latitude = 0 and longitude = 0, are considered
+    /// Determines if this entry holds a valid `NMAWaypoint` or not. It is valid when the latitude is in the
+    /// range [-90, 0), (0, +90] and the longitude is in the range [-180, 0), (0, +180].
+    /// Note that the default values of the `NMAWaypoint`, latitude = 0 and longitude = 0, are considered
     /// as invalid.
     ///
     /// - Returns: True, if the `NMAWaypoint` contains a valid coordinate, false otherwise.

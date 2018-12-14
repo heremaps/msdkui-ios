@@ -40,8 +40,8 @@ public protocol TransportModePanelDelegate: AnyObject {
 
     /// The visible transport modes.
     ///
-    /// - Important: NMATransportMode.urbanMobility and NMATransportMode.publicTransport are not supported.
-    /// - Important: The buttons are listed in the order of this array.
+    /// - Note: NMATransportMode.urbanMobility and NMATransportMode.publicTransport are not supported.
+    /// - Note: The buttons are listed in the order of this array.
     public var transportModes: [NMATransportMode] = [.car, .truck, .pedestrian, .bike, .scooter] {
         didSet {
             resetPanel()
@@ -52,7 +52,7 @@ public protocol TransportModePanelDelegate: AnyObject {
 
     /// The selected transport mode. It sets the initially selected transport mode, too.
     ///
-    /// - Important: It should be within the `transportModes` array. Otherwise, no transport mode is selected.
+    /// - Note: It should be within the `transportModes` array. Otherwise, no transport mode is selected.
     public var transportMode: NMATransportMode = .car {
         willSet {
             // Any update?
@@ -102,7 +102,7 @@ public protocol TransportModePanelDelegate: AnyObject {
 
     // All the button images
     private static let buttonImages: [NMATransportMode: UIImage?] = [
-        // Create the images in the template mode for customization as the backgroundColor and tintColor
+        // Creates the images in the template mode for customization as the backgroundColor and tintColor
         // properties works well with layered images
         .car: UIImage(named: "TransportModePanel.car", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate),
         .pedestrian: UIImage(named: "TransportModePanel.pedestrian", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate),
@@ -148,7 +148,7 @@ public protocol TransportModePanelDelegate: AnyObject {
         setUp()
     }
 
-    /// Create view that will be displayed as selector marker in panel.
+    /// Creates the view that will be displayed as selector marker in panel.
     ///
     /// - Returns: Created view, or nil if cannot create.
     func createSelectorView() -> UIView? {
@@ -156,7 +156,7 @@ public protocol TransportModePanelDelegate: AnyObject {
         let selectorView = UINib(nibName: String(describing: TransportModePanel.self),
                                  bundle: .MSDKUI).instantiate(withOwner: nil).dropFirst().first as? UIView
 
-        // Apply the style
+        // Applies the style
         selectorView?.viewWithTag(1000)?.backgroundColor = selectorColor
 
         return selectorView
@@ -188,10 +188,10 @@ public protocol TransportModePanelDelegate: AnyObject {
         // Only the transport modes in this array are supported
         let supportedTransportModes: [NMATransportMode] = [.car, .pedestrian, .truck, .bike, .scooter]
 
-        // Load the nib file
+        // Loads the nib file
         let nibFile = UINib(nibName: String(describing: TransportModePanel.self), bundle: .MSDKUI)
 
-        // Store the height of the last button added
+        // Stores the height of the last button added
         var lastButtonHeight = CGFloat(0)
 
         // One-by-one create buttons
@@ -211,18 +211,18 @@ public protocol TransportModePanelDelegate: AnyObject {
             stackView.addArrangedSubview(button)
             setAccessibility()
 
-            // Insert the new key/value pair
+            // Inserts the new key/value pair
             modesToButtons[mode] = button
 
-            // Store the height of the button
+            // Stores the height of the button
             lastButtonHeight = button.bounds.size.height
         }
 
-        // Set the very important intrinsic content height out of the last button
+        // Sets the very important intrinsic content height out of the last button
         intrinsicContentHeight = lastButtonHeight
         invalidateIntrinsicContentSize()
 
-        // Add the stackview to the view
+        // Adds the stackview to the view
         addSubviewBindToEdges(stackView)
 
         setNeedsUpdateConstraints()
@@ -299,21 +299,21 @@ public protocol TransportModePanelDelegate: AnyObject {
     ///
     /// - Parameter sender: The button which is tapped.
     @objc private func onButton(_ sender: UIButton) {
-        // Get the new transport mode and checks if there's an update
+        // Gets the new transport mode and checks if there's an update
         guard
             let newTransportMode = modesToButtons.first(where: { $0.value === sender })?.key,
             transportMode != newTransportMode else {
                 return
         }
 
-        // Clear the previously selected button and select the new one
+        // Clears the previously selected button and select the new one
         modesToButtons[transportMode]?.setBackgroundImage(nil, for: .normal)
         sender.setBackgroundImage(selector, for: .normal)
 
-        // Update the transport mode
+        // Updates the transport mode
         transportMode = newTransportMode
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.transportModePanel(self, didChangeTo: transportMode)
     }
 }

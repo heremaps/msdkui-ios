@@ -100,7 +100,7 @@ enum GuidanceManeuverUtil {
         return nextStreet
     }
 
-    /// Creates the a string like "number/name" out of the passed parameters.
+    /// Creates a string like "number/name" out of the passed parameters.
     ///
     /// - Parameter maneuver: The maneuver.
     /// - Parameter name: The name of street.
@@ -116,7 +116,7 @@ enum GuidanceManeuverUtil {
             // Proceed based on the string availability
             switch (name.hasContent, number.hasContent) {
             case (true, true):
-                // Skip combining if the name contains the number already
+                // Skips combining if the name contains the number already
                 if let name = name, let number = number, name.range(of: number) == nil {
                     combinedString = String(format: "msdkui_maneuver_road_name_divider".localized, number, name)
                 } else {

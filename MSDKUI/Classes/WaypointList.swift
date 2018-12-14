@@ -123,7 +123,7 @@ import NMAKit
     }
 
     /// The minimum number of waypoints required for a route.
-    /// When this value is set to a number lower than 2 or greater than entryCount it will be reverted to its previous value.
+    /// When this value is set to a number lower than 2 or greater than entryCount, it will be reverted to its previous value.
     @IBInspectable public var minWaypointItems: Int = 2 {
         didSet {
             if minWaypointItems < 2
@@ -134,7 +134,7 @@ import NMAKit
     }
 
     /// The maximum number of waypoints.
-    /// When this value is set to a number lower than minWaypointItems or maxVisibleItems or entryCount it will be reverted to its previous value.
+    /// When this value is set to a number lower than minWaypointItems or maxVisibleItems or entryCount, it will be reverted to its previous value.
     @IBInspectable public var maxWaypointItems: Int = 16 {
         didSet {
             if maxWaypointItems < minWaypointItems
@@ -147,7 +147,7 @@ import NMAKit
 
     /// The maximum number of waypoints this list should show at once.
     /// Any item above this number will be visible via scrolling.
-    /// When this value is set to a number lower than the minWaypointItems or greater than maxWaypointItems it will be reverted to its previous value.
+    /// When this value is set to a number lower than the minWaypointItems or greater than maxWaypointItems, it will be reverted to its previous value.
     @IBInspectable public var maxVisibleItems: Int = 4 {
         didSet {
             if maxVisibleItems < minWaypointItems
@@ -170,9 +170,9 @@ import NMAKit
 
     /// Array of `WaypointEntry` objects found in the list.
     ///
-    /// - Important: The array is initalized with minWaypointItems `WaypointEntry` objects having no coordinates.
-    /// - Important: When set to an array with less entries than minWaypointItems it will be reverted to old value.
-    /// - Important: When set to an array with more entries than maxWaypointItems it will be reverted to old value.
+    /// - Note: The array is initalized with minWaypointItems `WaypointEntry` objects having no coordinates.
+    /// - Note: When set to an array with less entries than minWaypointItems, it will be reverted to the old value.
+    /// - Note: When set to an array with more entries than maxWaypointItems, it will be reverted to the old value.
     public var waypointEntries: [WaypointEntry] = [WaypointEntry]() {
         didSet {
             if waypointEntries.count < minWaypointItems
@@ -305,10 +305,10 @@ import NMAKit
     /// Inserts a new `WaypointEntry` object to the end of the list if it is valid.
     ///
     /// - Parameter entry: `WaypointEntry` object to be added to list.
-    /// - Important: If the entry is not valid, nothing is done.
-    /// - Important: If the list already has the maxWaypointItems, nothing is done.
-    /// - Important: If the entry is valid, scrolls to the row.
-    /// - Important: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
+    /// - Note: If the entry is not valid, nothing is done.
+    /// - Note: If the list already has the maxWaypointItems, nothing is done.
+    /// - Note: If the entry is valid, scrolls to the row.
+    /// - Note: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
     public func addEntry(_ entry: WaypointEntry) {
         if entryCount >= maxWaypointItems {
             return
@@ -327,10 +327,10 @@ import NMAKit
     /// - Parameter entry: `WaypointEntry` object to be added to list.
     /// - Parameter index: The position at which to insert the new entry. It must be a valid
     ///                    index within the list or equal to the list's entryCount property.
-    /// - Important: If the entry is not valid, nothing is done.
-    /// - Important: If the list already reached the maxWaypointItems, nothing is done.
-    /// - Important: If the entry is valid, scrolls to the row.
-    /// - Important: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
+    /// - Note: If the entry is not valid, nothing is done.
+    /// - Note: If the list already reached the maxWaypointItems, nothing is done.
+    /// - Note: If the entry is valid, scrolls to the row.
+    /// - Note: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
     public func insertEntry(_ entry: WaypointEntry, at index: Int) {
         if entryCount >= maxWaypointItems {
             return
@@ -347,12 +347,12 @@ import NMAKit
 
     /// Updates the `WaypointEntry` object found at the specified position if it is valid.
     ///
-    /// - Parameter entry: `WaypointEntry` object to be added to list.
+    /// - Parameter entry: `WaypointEntry` object to be added to the list.
     /// - Parameter index: The position of the entry to update. `index` must be a valid
     ///                    index within the list.
-    /// - Important: If the entry is not valid, nothing is done.
-    /// - Important: If the entry is valid, scrolls to the row.
-    /// - Important: If there is a delegate, its `.waypointList(_:didUpdate:at:)` method is called.
+    /// - Note: If the entry is not valid, nothing is done.
+    /// - Note: If the entry is valid, scrolls to the row.
+    /// - Note: If there is a delegate, its `.waypointList(_:didUpdate:at:)` method is called.
     public func updateEntry(_ entry: WaypointEntry, at index: Int) {
         if isIndexValid(at: index) {
             waypointEntries[index] = entry
@@ -366,7 +366,7 @@ import NMAKit
     /// Adds a `WaypointEntry` object with an empty `NMAWaypoint` object using default values (latitude
     /// and longititude are zero and a default name) at the end of the list.
     ///
-    /// - Important: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
+    /// - Note: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
     public func addEmptyEntry() {
         addEntry(WaypointEntry(NMAWaypoint(), name: "msdkui_waypoint_select_location".localized))
     }
@@ -376,8 +376,8 @@ import NMAKit
     ///
     /// - Parameter index: The position at which to insert the new entry. It must be a valid index within
     ///                    the list or equal to the list's entryCount property.
-    /// - Important: If the entry is not valid, nothing is done.
-    /// - Important: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
+    /// - Note: If the entry is not valid, nothing is done.
+    /// - Note: If there is a delegate, its `.waypointList(_:didAdd:at:)` method is called.
     public func insertEmptyEntry(at index: Int) {
         insertEntry(WaypointEntry(NMAWaypoint(), name: "msdkui_waypoint_select_location".localized), at: index)
     }
@@ -387,9 +387,9 @@ import NMAKit
     /// - Parameter index: The position of the entry to remove. `index` must be a valid index
     ///                    within the list.
     /// - Returns: The entry at the specified index or nil if the index is not valid.
-    /// - Important: If the list contains only the minWaypointItems, nothing is done.
-    /// - Important: If there is a delegate, its `.waypointList(_:didRemove:at:)` method is called.
-    /// - Important: If the entry is deleted, scrolls to the previous row.
+    /// - Note: If the list contains only the minWaypointItems, nothing is done.
+    /// - Note: If there is a delegate, its `.waypointList(_:didRemove:at:)` method is called.
+    /// - Note: If the entry is deleted, scrolls to the previous row.
     @discardableResult public func removeEntry(at index: Int) -> WaypointEntry? {
         if entryCount > minWaypointItems
             && isIndexValid(at: index) {
@@ -411,12 +411,12 @@ import NMAKit
 
     // MARK: - Private
 
-    /// Sets the accessibility stuff.
+    /// Sets the accessibility contents.
     private func setAccessibility() {
         accessibilityIdentifier = "MSDKUI.WaypointList"
     }
 
-    /// Sets the accessibility stuff for a cell.
+    /// Sets the accessibility contents for a cell.
     ///
     /// - Parameter cell: The cell to be updated.
     /// - Parameter row: The row of the passed cell.
@@ -430,7 +430,7 @@ import NMAKit
             view.label.isAccessibilityElement = false
             view.removeButton.isAccessibilityElement = true
 
-            // For accessibility always use "From" and "To"
+            // For accessibility, always use "From" and "To"
             switch view.type {
             case .startPoint:
                 let waypointName = String(format: "msdkui_rp_from".localized, view.entry.name)
@@ -469,17 +469,17 @@ import NMAKit
         delegate = self
         dataSource = self
 
-        // Set the table row height out of the view used for the content view
+        // Sets the table row height out of the view used for the content view
         let view = WaypointItem()
         rowHeight = UITableView.automaticDimension
         estimatedRowHeight = view.bounds.size.height
 
-        // Register cells
+        // Registers cells
         register(UITableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
 
         setAccessibility()
 
-        // Initiate
+        // Initiates waypointEntries to be a default of waypoints.
         waypointEntries = makeDefaultWaypoints()
     }
 
@@ -499,16 +499,16 @@ import NMAKit
         separatorColor = .colorDividerLight
     }
 
-    /// Checks the given index. To be valid it must be within the [0..Count of entries)
+    /// Checks the given index. To be valid, it must be within the [0..Count of entries)
     /// range.
     ///
     /// - Parameter index: The position within the list to check.
-    /// - Returns: true if the index is valid and false otherwise.
+    /// - Returns: True, if the index is valid and false otherwise.
     private func isIndexValid(at index: Int) -> Bool {
         return (index >= 0 && index < waypointEntries.count)
     }
 
-    /// Create initial list of empty entries containing as many entries as the minimum number of waypoints
+    /// CreateS initial list of empty entries containing as many entries as the minimum number of waypoints
     private func makeDefaultWaypoints() -> [WaypointEntry] {
         return [WaypointEntry](cloneValue: WaypointEntry(NMAWaypoint(), name: "msdkui_waypoint_select_location".localized),
                                count: minWaypointItems)
@@ -522,7 +522,7 @@ import NMAKit
         superview?.layoutIfNeeded()
     }
 
-    /// Show remove buttons when there are more than minNumberOfWaypoints
+    /// Shows remove buttons when there are more than minNumberOfWaypoints
     /// otherwise hide them
     private func toggleRemoveButtons() {
         let isRemovable = entryCount > minWaypointItems
@@ -555,7 +555,7 @@ extension WaypointList: WaypointItemDelegate {
         }
     }
 
-    /// Note that flashes the selected cell as a visual feedback.
+    /// Note that flashes the selected cell has a visual feedback.
     func selectItem(_ item: WaypointItem) {
         // If we get the index path, select the cell
         for cell in visibleCells where cell.contentView == item.superview {
@@ -594,17 +594,17 @@ extension WaypointList: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: reuseIdentifier, for: indexPath)
         let entry = waypointEntries[indexPath.row]
 
-        // Remove the existing content subviews
+        // Removes the existing content subviews
         cell.contentView.subviews.forEach { $0.removeFromSuperview() }
 
-        // Cell settings
+        // Cell's settings
         cell.selectionStyle = .none
         cell.accessoryType = .none
         cell.accessoryView = nil
         cell.editingAccessoryType = .none
         cell.backgroundColor = itemBackgroundColor
 
-        // Create the content view subview
+        // Creates the content view subview
         let view = WaypointItem()
         view.backgroundColor = itemBackgroundColor
         view.label.textColor = entry.isValid() ? itemTextColor : itemPlaceholderColor
@@ -615,7 +615,7 @@ extension WaypointList: UITableViewDataSource {
         view.tag = 1000
         view.entry = entry
 
-        // Set the view type
+        // Sets the view type
         switch indexPath.row {
         case 0:
             view.type = .startPoint
@@ -625,7 +625,7 @@ extension WaypointList: UITableViewDataSource {
             view.type = .waypoint
         }
 
-        // Finally add the view to the content view
+        // Finally adds the view to the content view
         cell.contentView.addSubviewBindToEdges(view)
 
         setAccessibility(cell, indexPath.row)
@@ -642,7 +642,7 @@ extension WaypointList: UITableViewDataSource {
             // Has any delegate?
             listDelegate?.waypointList?(self, didDragFrom: sourceIndexPath.row, to: destinationIndexPath.row)
 
-            // Accessibility: after the dragging completed, we want to focus on the
+            // Accessibility: after the dragging is completed, we want to focus on the
             // on the row dragged to the new row. Note that by default, the source row
             // is focused
             if UIAccessibility.isVoiceOverRunning {

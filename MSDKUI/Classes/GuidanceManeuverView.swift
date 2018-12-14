@@ -179,12 +179,12 @@ import NMAKit
 
     /// Initialises the contents of this view.
     private func setUp() {
-        // Create nib instance
+        // Creates nib instance
         UINib(nibName: String(describing: GuidanceManeuverView.self), bundle: .MSDKUI).instantiate(withOwner: self)
 
-        // Ensure that views are sorted by tag, because tag with value of 1 represents portrait and value of 2 represents landscape.
+        // Ensure that views are sorted by tags, because tags with the value of 1 represents portrait and value of 2 represents landscape.
         // Order of views in `views` array are inline with order of cases in `Orientation` enumeration.
-        // Since indexing `views` array with `rawValue` from `Orientation` enumeration is based on a assumption,
+        // Since indexing `views` array with `rawValue` from `Orientation` enumeration is based on an assumption,
         // an assumption is also made for `tag` of related views and representation of their values.
         views.sort { $0.tag < $1.tag }
 
@@ -192,7 +192,7 @@ import NMAKit
         translatesAutoresizingMaskIntoConstraints = false
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
-        // Save the label design heights which will be used to calculate the height constraints
+        // Saves the label design heights which will be used to calculate the height constraints
         portraitInfo1LabelDesignHeight = info1Labels[Orientation.portrait.rawValue].frame.height
         portraitInfo2LabelDesignHeight = info2Labels[Orientation.portrait.rawValue].frame.height
         landscapeInfo1LabelDesignHeight = info1Labels[Orientation.landscape.rawValue].frame.height
@@ -328,7 +328,7 @@ import NMAKit
         heightConstraints[Orientation.landscape.rawValue].isActive = true
     }
 
-    /// This method refreshs the view with the new data set.
+    /// This method refreshes the view with the new data set.
     private func refreshView() {
         if let data = data {
             displayData(data: data)

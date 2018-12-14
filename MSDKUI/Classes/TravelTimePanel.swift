@@ -41,8 +41,8 @@ import NMAKit
 /// Displays the selected time from `TravelTimePicker` and when tapped,
 /// opens a `TravelTimePicker` to update the selected time.
 ///
-/// - Important: Currently, arrival time is not supported by all the HERE Maps SDK routing modes.
-///              Please check the relevant HERE Maps SDK documentation before using the
+/// - Note: Currently, arrival time is not supported by all the HERE Maps SDK routing modes.
+///              Please, check the relevant HERE Maps SDK documentation before using the
 ///              arrival time option for a routing mode.
 @IBDesignable open class TravelTimePanel: UIView {
 
@@ -60,7 +60,7 @@ import NMAKit
 
     /// The time displayed date on the panel.
     ///
-    /// - Important: It is initialized with the current time.
+    /// - Note: It is initialized with the current time.
     public var time = Date() {
         didSet {
             // Reflect the update
@@ -115,7 +115,7 @@ import NMAKit
             // Tells the delegate the view travel time picker is about to be displayed
             delegate?.travelTimePanel?(self, willDisplay: viewControllerToPresent)
 
-            // Present it
+            // Presents it
             presenter.present(viewControllerToPresent, animated: true)
         }
     }
@@ -129,15 +129,15 @@ import NMAKit
             case let nibInstance = UINib(nibName: String(describing: TravelTimePanel.self), bundle: .MSDKUI).instantiate(withOwner: self),
             let view = nibInstance.first as? UIView {
 
-            // Add the view to the hierarchy
+            // Adds the view to the hierarchy
             addSubviewBindToEdges(view)
 
-            // Set the very important intrinsic content height
+            // Sets the very important intrinsic content height
             intrinsicContentHeight = view.bounds.size.height
             invalidateIntrinsicContentSize()
         }
 
-        // Add the tag gesture recognizer
+        // Adds the tag gesture recognizer
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         addGestureRecognizer(tapGestureRecognizer)
 

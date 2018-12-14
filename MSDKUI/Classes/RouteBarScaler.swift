@@ -40,7 +40,7 @@ class RouteBarScaler {
         self.parent = parent
     }
 
-    /// Prepeares the scaler by finding the max value out of the parent's routes.
+    /// Prepares the scaler by finding the max value out of the parent's routes.
     func refresh() {
         maxValue = 0
 
@@ -65,7 +65,7 @@ class RouteBarScaler {
         if maxValue == 0 {
             item.scale = 1
         } else {
-            // Set the scale based on the sort type
+            // Sets the scale based on the sort type
             switch parent.sortType {
             case .length:
                 item.scale = Double(item.route?.length ?? 0) / maxValue

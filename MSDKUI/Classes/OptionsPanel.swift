@@ -46,7 +46,7 @@ open class OptionsPanel: UIView {
             stackView.insertArrangedSubview(titleItem.view, at: 0)
             self.titleItem = titleItem
 
-            // Update the vertical content height
+            // Updates the vertical content height
             intrinsicContentHeight += titleItem.view.frame.size.height
             invalidateIntrinsicContentSize()
         }
@@ -59,7 +59,7 @@ open class OptionsPanel: UIView {
     /// All the available option item specs that are used to build the available option items.
     public var specs: [OptionItemSpec] = [] {
         didSet {
-            // Reflect the update
+            // Reflects the update
             makeItems()
         }
     }
@@ -72,7 +72,7 @@ open class OptionsPanel: UIView {
 
     /// All the title visuals are found on this item.
     ///
-    /// - Important: This is an optional property and it is created only
+    /// - Note: This is an optional property and it is created only
     ///              when the `title` property is set.
     var titleItem: TitleItem?
 
@@ -117,7 +117,7 @@ open class OptionsPanel: UIView {
         stackView.axis = .vertical
         stackView.addArrangedSubview(optionsView)
 
-        // Make the underlying option item specs
+        // Makes the underlying option item specs
         makePanel()
 
         addSubviewBindToEdges(stackView)
@@ -132,11 +132,11 @@ open class OptionsPanel: UIView {
         for spec in specs {
             let item = spec.makeOptionItem()
 
-            // Add the item to the items array & stackview
+            // Adds the item to the items array & stackview
             optionItems.append(item)
             optionsView.addArrangedSubview(item)
 
-            // Update the vertical content height
+            // Updates the vertical content height
             intrinsicContentHeight += item.intrinsicContentSize.height
         }
 

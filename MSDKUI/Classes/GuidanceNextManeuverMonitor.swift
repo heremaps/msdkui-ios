@@ -90,7 +90,7 @@ open class GuidanceNextManeuverMonitor: NSObject {
     /// - Parameter nextManeuver: The next maneuver to be queried.
     private func publishData(from nextManeuver: NMAManeuver?) {
         // If there is no next maneuver or the distance from the previous maneuver is greater
-        // than `GuidanceNextManeuverMonitor.distanceThresholdMeter`, consider them as error cases
+        // than `GuidanceNextManeuverMonitor.distanceThresholdMeter`, consider them as error cases.
         guard let nextManeuver = nextManeuver,
             nextManeuver.distanceFromPreviousManeuver < GuidanceNextManeuverMonitor.distanceThresholdMeter else {
                 delegate?.guidanceNextManeuverMonitorDidReceiveError(self)
@@ -121,7 +121,7 @@ extension GuidanceNextManeuverMonitor: NMANavigationManagerDelegate {
                                   _ nextManeuver: NMAManeuver?) {
         // See documentation for `NMANavigationManagerDelegate`: The `currentManeuver` is the
         // upcoming maneuver to be taken, `nextManeuver` is the maneuver to be taken after the
-        // current maneuver
+        // current maneuver.
         publishData(from: nextManeuver)
     }
 }

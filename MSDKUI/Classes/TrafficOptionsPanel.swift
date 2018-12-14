@@ -37,7 +37,7 @@ import NMAKit
                     break
                 }
 
-                // Set the item delegate
+                // Sets the item delegate
                 item?.delegate = self
             }
         }
@@ -52,7 +52,7 @@ import NMAKit
 
     /// All the label/value option pairs that the panel supports.
     ///
-    /// - Important: The options are listed in the declaration order.
+    /// - Note: The options are listed in the declaration order.
     static let options: [(label: String, value: NMATrafficPenaltyMode)] = [
         ("msdkui_disabled".localized, NMATrafficPenaltyMode.disabled),
         ("msdkui_optimal".localized, NMATrafficPenaltyMode.optimal),
@@ -71,7 +71,7 @@ import NMAKit
         // Map the options to strings
         let labels: [String] = TrafficOptionsPanel.options.map { $0.label }
 
-        // Create the spec for the option item
+        // Creates the spec for the option item
         specs = [OptionItemSpec.makeSingleChoiceOptionItem(title: nil, labels: labels)]
     }
 }
@@ -89,7 +89,7 @@ extension TrafficOptionsPanel: OptionItemDelegate {
             dynamicPenalty.trafficPenaltyMode = trafficPenaltyMode
         }
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.optionsPanel(self, didChangeTo: item)
     }
 }

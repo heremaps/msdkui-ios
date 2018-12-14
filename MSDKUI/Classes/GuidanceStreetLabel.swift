@@ -30,7 +30,7 @@ import UIKit
         }
     }
 
-    /// Background color of label when it's accented.
+    /// Background color of the label when it's accented.
     public var accentBackgroundColor: UIColor = .colorPositive {
         didSet {
             updateBackgroundColor()
@@ -52,7 +52,7 @@ import UIKit
         }
     }
 
-    /// Sets text of label that should be displayed when `isLookingForPosition` is `true`.
+    /// Sets the text of the label that should be displayed when `isLookingForPosition` is `true`.
     public var lookingForPositionText: String? {
         didSet {
             if isLookingForPosition {
@@ -63,11 +63,11 @@ import UIKit
 
     /// Sets the state to "looking for position".
     ///
-    /// When set to `true` the label sets it's `isHidden` property to `true`,
-    /// uses `plainBackgroundColor` as it's `backgroundColor` and sets `lookingForPositionText` as it's `text`.
+    /// When set to `true`, the label sets its `isHidden` property to `true`,
+    /// uses `plainBackgroundColor` as its `backgroundColor` and sets `lookingForPositionText` as its `text`.
     ///
-    /// When set to `false` the label sets it's `isHidden` property to `false`,
-    /// uses `accentBackgroundColor` as it's `backgroundColor` and sets it's `text` property `nil`.
+    /// When set to `false`, the label sets its `isHidden` property to `false`,
+    /// uses `accentBackgroundColor` as its `backgroundColor` and sets its `text` property `nil`.
     ///
     /// - Note: When this property is set, `text` property is invalidated and should be configured again.
     public var isLookingForPosition = false {

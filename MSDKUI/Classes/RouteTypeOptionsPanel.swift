@@ -71,7 +71,7 @@ import NMAKit
         // Map the options to strings
         let labels: [String] = RouteTypeOptionsPanel.options.map { $0.label }
 
-        // Create the spec for the option item
+        // Creates the spec for the option item
         specs = [OptionItemSpec.makeSingleChoiceOptionItem(title: nil, labels: labels)]
     }
 }
@@ -89,7 +89,7 @@ extension RouteTypeOptionsPanel: OptionItemDelegate {
             routingMode.routingType = routingType
         }
 
-        // Notify the delegate
+        // Notifies the delegate
         delegate?.optionsPanel(self, didChangeTo: item)
     }
 }

@@ -119,7 +119,7 @@ import UIKit
         optionSwitch.thumbTintColor = Styles.shared.optionItemSwitchThumbTintColor
     }
 
-    /// Sets the accessibility stuff.
+    /// Sets the accessibility contents.
     private func setAccessibility() {
         // Add a tap gesture recognizer: it is enabled only when the accessibility is turned on
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleSwitch))
@@ -139,7 +139,7 @@ import UIKit
         optionSwitch.isAccessibilityElement = false
     }
 
-    /// Updates the accessibility stuff.
+    /// Updates the accessibility contents.
     private func updateAccessibility() {
         optionLabel.accessibilityLabel = "\(label as String): \(checked ? "msdkui_enabled".localized : "msdkui_disabled".localized)"
     }

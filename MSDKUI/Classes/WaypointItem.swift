@@ -39,13 +39,13 @@ protocol WaypointItemDelegate: AnyObject {
     /// Defines type of the waypoint.
     enum ItemType {
 
-        /// Route start point.
+        /// Route's start point.
         case startPoint
 
-        /// Route destination.
+        /// Route's destination.
         case endPoint
 
-        /// Route waypoint.
+        /// Route's waypoint.
         case waypoint
     }
 
@@ -56,7 +56,7 @@ protocol WaypointItemDelegate: AnyObject {
 
     /// The remove button for removing the item.
     ///
-    /// - Important: This button has no assigned action and works through the hit test.
+    /// - Note: This button has no assigned action and works through the hit test.
     @IBOutlet private(set) var removeButton: UIButton!
 
     /// This constraint helps us to set a leading inset.
@@ -65,17 +65,17 @@ protocol WaypointItemDelegate: AnyObject {
     /// The entry object assigned to this item object.
     var entry: WaypointEntry! {
         didSet {
-            // Reflect the update
+            // Reflects the update
             removeButton.isHidden = !(entry?.removable ?? false)
             label.text = name
         }
     }
 
-    /// Waypoint item type.
+    /// Waypoint's item type.
     /// The default value is '.waypoint'.
     var type: ItemType = .waypoint {
         didSet {
-            // Update only when entry is already set
+            // Updates only when entry is already set
             guard entry != nil else {
                 return
             }
@@ -124,14 +124,14 @@ protocol WaypointItemDelegate: AnyObject {
             // If there is no touch, ignore the event
             // If the hit view is a UIButton remove the item: there is only one UIButton!
             // Else, select the item
-            // Note that:
+            // Note:
             //   - For all the operations, we should be careful to
             //     avoid multiple handling!
             //   - We support both UITableView and stand-alone use cases
             // Note that we inform the remove and select actions via the delegate object
             let touchCount = event.allTouches?.count ?? 0
             if let button = hitView as? UIButton {
-                // Remove button
+                // Removes button
                 if touchCount == 1 {
                     delegate?.removeItem(self)
                     return button
@@ -152,19 +152,19 @@ protocol WaypointItemDelegate: AnyObject {
 
     /// Initialises the contents of this view.
     private func setUp() {
-        // Instantiate view
+        // Instantiates view
         if
             case let nibInstance = UINib(nibName: String(describing: WaypointItem.self), bundle: .MSDKUI).instantiate(withOwner: self),
             let view = nibInstance.first as? UIView {
 
-            // Use the view's bounds
+            // Uses the view's bounds
             bounds = view.bounds
 
-            // Add the view to the hierarchy
+            // Adds the view to the hierarchy
             addSubviewBindToEdges(view)
         }
 
-        // Set the button image: it should be in template rendering mode
+        // Sets the button image: it should be in template rendering mode
         let image = UIImage(named: "Icon.remove", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         removeButton.setImage(image, for: .normal)
 

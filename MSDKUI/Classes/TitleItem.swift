@@ -52,10 +52,10 @@ open class TitleItem: NSObject {
 
     /// Loads the related nib file and creates the title.
     override public init() {
-        // Load the nib file and create the title view
+        // Loads the nib file and create the title view
         let nibFile = UINib(nibName: String(describing: TitleItem.self), bundle: .MSDKUI)
 
-        // Create the title view
+        // Creates the title view
         view = nibFile.instantiate(withOwner: nil).first as? UIView
 
         // We use autolayout
@@ -71,7 +71,7 @@ open class TitleItem: NSObject {
         // Line view for the border
         lineView = view.viewWithTag(1000)
 
-        // Set up the title
+        // Sets up the title
         label = view.viewWithTag(1001) as? UILabel
 
         super.init()

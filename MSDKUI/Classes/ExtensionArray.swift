@@ -18,7 +18,7 @@ import Foundation
 
 extension Array {
 
-    /// Moves the element from the source index to the to the destination
+    /// Moves the element from the source index to the destination
     /// index.
     ///
     /// - Parameters:
