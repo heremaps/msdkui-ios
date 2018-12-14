@@ -52,7 +52,7 @@ For this Quick Start app, we have used Xcode 10.1 and Swift 4.2. Start Xcode and
 
 Now _build and run the current scheme_ and verify that your project executes as expected. If all goes well, you should see blank view without any content.
 
-While all of the functionality of the HERE Mobile SDK UI Kit is accessible from the emulator, usage of a real device is strongly recommended. The overall performance will be better, and some features like gestures are just easier to use on multi-touch-enabled hardware.
+While all of the functionality of the HERE Mobile SDK UI Kit is accessible from the simulator, usage of a real device is strongly recommended. The overall performance will be better, and some features like gestures are just easier to use on multi-touch-enabled hardware.
 
 ## Integrating the HERE Mobile SDK for iOS and the HERE Mobile SDK UI Kit framework
 You can integrate the SDK and the framework manually or via CocoaPods. More details on integrating the HERE Mobile SDK can be found on [developer.here.com](https://developer.here.com/documentation/ios-premium/topics/app-simple-swift.html).
@@ -126,13 +126,13 @@ let waypointList = WaypointList(frame: view.bounds)
 view.addSubview(waypointList)
 ```
 
-A `WaypointList` is a HERE Mobile SDK UI Kit component containing items describing waypoints for which a route can be calculated. We initialize the `WaypointList` by giving it the same size as the parent view and then adding it as a sub view. Since WaypointList is a child of `UITableView`, it behaves like you would expect from any other `UIView`.
+A `WaypointList` is a HERE Mobile SDK UI Kit component containing items describing waypoints for which a route can be calculated. We initialize the `WaypointList` by giving it the same size as the parent view and then adding it as a subview. Since WaypointList is a child of `UITableView`, it behaves like you would expect from any other `UIView`.
 
 Usually, you want to initialize HERE Mobile SDK UI Kit components from a storyboard, but all components support both ways. For this Quick Start guide, we only want to see a quick proof how seamless the HERE Mobile SDK UI Kit can be incorporated into your app.
 
 Now it's time to build and run the app. If all goes well, you should see a `WaypointList` with default content covering the whole area of the view.
 
-As you know from the HERE Mobile SDK, it is easy to create waypoints for route calculation. First, create a set of `NMAGeoCoordinates` and pass them into the constructor for `NMAWaypoint`:
+As you know from the HERE Mobile SDK, it is easy to create waypoints for route calculation. First, create a set of `NMAGeoCoordinates` and pass them into the initializer for `NMAWaypoint`:
 ```swift
 let waypoint = NMAWaypoint(geoCoordinates: NMAGeoCoordinates(latitude: 52, longitude: 13))
 let startWaypointEntry = WaypointEntry(waypoint)
