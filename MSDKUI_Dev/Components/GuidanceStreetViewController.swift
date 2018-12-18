@@ -24,11 +24,13 @@ final class GuidanceStreetViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsViewController = segue.destination as? GuidanceStreetSettingsViewController
 
-        settingsViewController?.didSelect = { [weak self] setting in
-            self?.currentStreetLabel.accentBackgroundColor = setting.accentBackgroundColor
-            self?.currentStreetLabel.plainBackgroundColor = setting.plainBackgroundColor
-            self?.currentStreetLabel.isAccented = setting.isAccented
-            self?.currentStreetLabel.text = setting.text
+        settingsViewController?.didSelect = { [weak self] item in
+            self?.title = item.title
+
+            self?.currentStreetLabel.accentBackgroundColor = item.configuration.accentBackgroundColor
+            self?.currentStreetLabel.plainBackgroundColor = item.configuration.plainBackgroundColor
+            self?.currentStreetLabel.isAccented = item.configuration.isAccented
+            self?.currentStreetLabel.text = item.configuration.text
         }
     }
 }

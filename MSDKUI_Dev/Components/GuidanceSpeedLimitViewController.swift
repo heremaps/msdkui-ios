@@ -24,11 +24,13 @@ final class GuidanceSpeedLimitViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsViewController = segue.destination as? GuidanceSpeedLimitSettingsViewController
 
-        settingsViewController?.didSelect = { [weak self] setting in
-            self?.speedLimitView.unit = setting.unit
-            self?.speedLimitView.speedLimitTextColor = setting.speedLimitTextColor
-            self?.speedLimitView.backgroundImageView.image = setting.backgroundImage
-            self?.speedLimitView.speedLimit = setting.speedLimit
+        settingsViewController?.didSelect = { [weak self] item in
+            self?.title = item.title
+
+            self?.speedLimitView.unit = item.configuration.unit
+            self?.speedLimitView.speedLimitTextColor = item.configuration.speedLimitTextColor
+            self?.speedLimitView.backgroundImageView.image = item.configuration.backgroundImage
+            self?.speedLimitView.speedLimit = item.configuration.speedLimit
         }
     }
 }

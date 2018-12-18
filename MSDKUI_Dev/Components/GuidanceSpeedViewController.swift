@@ -24,12 +24,14 @@ final class GuidanceSpeedViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsViewController = segue.destination as? GuidanceSpeedSettingsViewController
 
-        settingsViewController?.didSelect = { [weak self] setting in
-            self?.currentSpeedView.textAlignment = setting.textAligment
-            self?.currentSpeedView.unit = setting.unit
-            self?.currentSpeedView.speedValueTextColor = setting.speedValueTextColor
-            self?.currentSpeedView.speedUnitTextColor = setting.speedUnitTextColor
-            self?.currentSpeedView.speed = setting.speed
+        settingsViewController?.didSelect = { [weak self] item in
+            self?.title = item.title
+
+            self?.currentSpeedView.textAlignment = item.configuration.textAligment
+            self?.currentSpeedView.unit = item.configuration.unit
+            self?.currentSpeedView.speedValueTextColor = item.configuration.speedValueTextColor
+            self?.currentSpeedView.speedUnitTextColor = item.configuration.speedUnitTextColor
+            self?.currentSpeedView.speed = item.configuration.speed
         }
     }
 }

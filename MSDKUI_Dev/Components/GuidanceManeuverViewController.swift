@@ -24,9 +24,11 @@ final class GuidanceManeuverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsViewController = segue.destination as? GuidanceManeuverSettingsViewController
 
-        settingsViewController?.didSelect = { [weak self] setting in
-            self?.maneuverView.foregroundColor = setting.foregroundColor
-            self?.maneuverView.data = setting.data
+        settingsViewController?.didSelect = { [weak self] item in
+            self?.title = item.title
+
+            self?.maneuverView.foregroundColor = item.configuration.foregroundColor
+            self?.maneuverView.data = item.configuration.data
         }
     }
 }

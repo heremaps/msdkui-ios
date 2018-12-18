@@ -24,16 +24,18 @@ final class GuidanceEstimatedArrivalViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsViewController = segue.destination as? GuidanceEstimatedArrivalSettingsViewController
 
-        settingsViewController?.didSelect = { [weak self] setting in
-            self?.estimatedArrivalView.estimatedTimeOfArrival = setting.estimatedTimeOfArrival
-            self?.estimatedArrivalView.estimatedTimeOfArrivalFormatter = setting.estimatedTimeOfArrivalFormatter
-            self?.estimatedArrivalView.duration = setting.duration
-            self?.estimatedArrivalView.durationFormatter = setting.durationFormatter
-            self?.estimatedArrivalView.distance = setting.distance
-            self?.estimatedArrivalView.distanceFormatter = setting.distanceFormatter
-            self?.estimatedArrivalView.textAlignment = setting.textAligment
-            self?.estimatedArrivalView.primaryInfoTextColor = setting.primaryInfoTextColor
-            self?.estimatedArrivalView.secondaryInfoTextColor = setting.secondaryInfoTextColor
+        settingsViewController?.didSelect = { [weak self] item in
+            self?.title = item.title
+
+            self?.estimatedArrivalView.estimatedTimeOfArrival = item.configuration.estimatedTimeOfArrival
+            self?.estimatedArrivalView.estimatedTimeOfArrivalFormatter = item.configuration.estimatedTimeOfArrivalFormatter
+            self?.estimatedArrivalView.duration = item.configuration.duration
+            self?.estimatedArrivalView.durationFormatter = item.configuration.durationFormatter
+            self?.estimatedArrivalView.distance = item.configuration.distance
+            self?.estimatedArrivalView.distanceFormatter = item.configuration.distanceFormatter
+            self?.estimatedArrivalView.textAlignment = item.configuration.textAligment
+            self?.estimatedArrivalView.primaryInfoTextColor = item.configuration.primaryInfoTextColor
+            self?.estimatedArrivalView.secondaryInfoTextColor = item.configuration.secondaryInfoTextColor
         }
     }
 }

@@ -25,7 +25,7 @@ struct SettingsItem<Model> {
 class SettingsViewController<T>: UITableViewController {
 
     var data: [SettingsItem<T>] = []
-    var didSelect: ((T) -> Void) = { _ in }
+    var didSelect: ((SettingsItem<T>) -> Void) = { _ in }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,8 +52,8 @@ class SettingsViewController<T>: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let configuration = data[indexPath.row].configuration
-        didSelect(configuration)
+        let item = data[indexPath.row]
+        didSelect(item)
         navigationController?.popViewController(animated: true)
     }
 }

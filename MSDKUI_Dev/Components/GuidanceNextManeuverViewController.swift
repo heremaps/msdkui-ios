@@ -24,14 +24,16 @@ final class GuidanceNextManeuverViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let settingsViewController = segue.destination as? GuidanceNextManeuverSettingsViewController
 
-        settingsViewController?.didSelect = { [weak self] setting in
-            self?.nextManeuverView.textAlignment = setting.textAlignment
-            self?.nextManeuverView.foregroundColor = setting.foregroundColor
+        settingsViewController?.didSelect = { [weak self] item in
+            self?.title = item.title
 
-            let model = GuidanceNextManeuverView.ViewModel(maneuverIcon: setting.maneuverIcon,
-                                                           distance: setting.distance,
-                                                           streetName: setting.streetName,
-                                                           distanceFormatter: setting.distanceFormatter)
+            self?.nextManeuverView.textAlignment = item.configuration.textAlignment
+            self?.nextManeuverView.foregroundColor = item.configuration.foregroundColor
+
+            let model = GuidanceNextManeuverView.ViewModel(maneuverIcon: item.configuration.maneuverIcon,
+                                                           distance: item.configuration.distance,
+                                                           streetName: item.configuration.streetName,
+                                                           distanceFormatter: item.configuration.distanceFormatter)
             self?.nextManeuverView.configure(with: model)
         }
     }
