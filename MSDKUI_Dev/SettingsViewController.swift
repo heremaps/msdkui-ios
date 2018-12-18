@@ -31,6 +31,10 @@ class SettingsViewController<T>: UITableViewController {
         super.viewDidLoad()
 
         title = "Settings"
+
+        tableView.register(ComponentsCell.self, forCellReuseIdentifier: "ComponentsCell")
+        tableView.backgroundColor = UIColor(named: "colorBackgroundLight")
+        tableView.hideEmptyCells()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +42,9 @@ class SettingsViewController<T>: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: "SettingsCell")
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ComponentsCell") as? ComponentsCell else {
+            fatalError("Failed to dequeue the cell")
+        }
 
         cell.textLabel?.text = data[indexPath.row].title
 

@@ -110,6 +110,10 @@
 		62094471211C70E70026B62C /* ExtensionUIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62094470211C70E70026B62C /* ExtensionUIApplication.swift */; };
 		62094473211C75E60026B62C /* URLOpenerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62094472211C75E60026B62C /* URLOpenerMock.swift */; };
 		620E183721A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 620E183621A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift */; };
+		6210A17C21C8F0FB0095AA1A /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6210A17B21C8F0FB0095AA1A /* Colors.xcassets */; };
+		6210A17E21C8F3B10095AA1A /* ExtensionUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6210A17D21C8F3B10095AA1A /* ExtensionUITableView.swift */; };
+		6210A18021C8F59C0095AA1A /* ComponentsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6210A17F21C8F59C0095AA1A /* ComponentsCell.swift */; };
+		6210A18221C8FA800095AA1A /* ExtensionUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6210A18121C8FA800095AA1A /* ExtensionUITableViewCell.swift */; };
 		62174B03214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */; };
 		62174B04214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */; };
 		621C89B020EDF71F003C8EC6 /* NotificationCenterObservingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */; };
@@ -386,6 +390,10 @@
 		62094470211C70E70026B62C /* ExtensionUIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIApplication.swift; sourceTree = "<group>"; };
 		62094472211C75E60026B62C /* URLOpenerMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLOpenerMock.swift; sourceTree = "<group>"; };
 		620E183621A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceNextManeuverSettingsViewController.swift; sourceTree = "<group>"; };
+		6210A17B21C8F0FB0095AA1A /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
+		6210A17D21C8F3B10095AA1A /* ExtensionUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableView.swift; sourceTree = "<group>"; };
+		6210A17F21C8F59C0095AA1A /* ComponentsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsCell.swift; sourceTree = "<group>"; };
+		6210A18121C8FA800095AA1A /* ExtensionUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableViewCell.swift; sourceTree = "<group>"; };
 		62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimePanelDelegateMock.swift; sourceTree = "<group>"; };
 		621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterObservingMock.swift; sourceTree = "<group>"; };
 		62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverSettingsViewController.swift; sourceTree = "<group>"; };
@@ -880,12 +888,23 @@
 			name = "MSDKUI Podspec Metadata";
 			sourceTree = "<group>";
 		};
+		6210A18321C8FA980095AA1A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6210A17D21C8F3B10095AA1A /* ExtensionUITableView.swift */,
+				6210A18121C8FA800095AA1A /* ExtensionUITableViewCell.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		6245BCA221A447500042B00C /* MSDKUI_Dev */ = {
 			isa = PBXGroup;
 			children = (
 				6245BCA321A447500042B00C /* AppDelegate.swift */,
+				6210A17F21C8F59C0095AA1A /* ComponentsCell.swift */,
 				626E3ED021A566B800F30294 /* SettingsViewController.swift */,
 				62F061D921A5A48A0096A449 /* Components */,
+				6210A18321C8FA980095AA1A /* Extensions */,
 				62F061D621A5A0EA0096A449 /* Supporting Files */,
 			);
 			path = MSDKUI_Dev;
@@ -1038,6 +1057,7 @@
 			children = (
 				6245BCAF21A447510042B00C /* Info.plist */,
 				6245BCAA21A447510042B00C /* Assets.xcassets */,
+				6210A17B21C8F0FB0095AA1A /* Colors.xcassets */,
 				6245BCAC21A447510042B00C /* LaunchScreen.storyboard */,
 			);
 			name = "Supporting Files";
@@ -1348,6 +1368,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6245BCAE21A447510042B00C /* LaunchScreen.storyboard in Resources */,
+				6210A17C21C8F0FB0095AA1A /* Colors.xcassets in Resources */,
 				6245BCAB21A447510042B00C /* Assets.xcassets in Resources */,
 				6245BCA921A447500042B00C /* Main.storyboard in Resources */,
 			);
@@ -1811,12 +1832,15 @@
 				626BC8AB21B14BD200483AF0 /* GuidanceStreetViewController.swift in Sources */,
 				62250E1D21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift in Sources */,
 				62E8C9AD21A46FAE00737B59 /* GuidanceSpeedViewController.swift in Sources */,
+				6210A18021C8F59C0095AA1A /* ComponentsCell.swift in Sources */,
 				62F061D521A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift in Sources */,
 				626BC8AD21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift in Sources */,
+				6210A18221C8FA800095AA1A /* ExtensionUITableViewCell.swift in Sources */,
 				62657CCE21A871FD004993C3 /* GuidanceNextManeuverViewController.swift in Sources */,
 				620E183721A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift in Sources */,
 				62E8C9AA21A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift in Sources */,
 				626E3ED121A566B800F30294 /* SettingsViewController.swift in Sources */,
+				6210A17E21C8F3B10095AA1A /* ExtensionUITableView.swift in Sources */,
 				62E5BF7521AEA56900174D27 /* GuidanceManeuverViewController.swift in Sources */,
 				6279D9A921A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift in Sources */,
 				6245BCA421A447500042B00C /* AppDelegate.swift in Sources */,
@@ -2265,6 +2289,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -2292,6 +2317,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.here.MSDKUI-Components";
@@ -2317,6 +2343,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MTL_FAST_MATH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.here.MSDKUI-Components";

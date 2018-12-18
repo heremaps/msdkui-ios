@@ -31,10 +31,21 @@ final class GuidanceEstimatedArrivalSettingsViewController: SettingsViewControll
         var secondaryInfoTextColor: UIColor
     }
 
+    // swiftlint:disable:next function_body_length
     override func viewDidLoad() {
         super.viewDidLoad()
 
         data = [
+            SettingsItem(title: "Without properties",
+                         configuration: Settings(estimatedTimeOfArrival: nil,
+                                                 estimatedTimeOfArrivalFormatter: .currentShortTimeFormatter,
+                                                 duration: nil,
+                                                 durationFormatter: .currentMediumUnitFormatter,
+                                                 distance: nil,
+                                                 distanceFormatter: .currentMediumUnitFormatter,
+                                                 textAligment: .center,
+                                                 primaryInfoTextColor: .colorForeground,
+                                                 secondaryInfoTextColor: .colorForegroundSecondary)),
             SettingsItem(title: "With all properties",
                          configuration: Settings(estimatedTimeOfArrival: .distantFuture,
                                                  estimatedTimeOfArrivalFormatter: .currentShortTimeFormatter,
