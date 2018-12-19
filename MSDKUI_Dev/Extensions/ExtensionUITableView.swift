@@ -22,4 +22,13 @@ extension UITableView {
     func hideEmptyCells() {
         tableFooterView = UIView(frame: .zero)
     }
+
+    /// Dequeues a table view cell using class name as identifier.
+    func dequeueReusableCell<T: UITableViewCell>() -> T {
+        guard let cell = dequeueReusableCell(withIdentifier: String(describing: T.self)) as? T else {
+            fatalError("failed to dequeue cell")
+        }
+
+        return cell
+    }
 }
