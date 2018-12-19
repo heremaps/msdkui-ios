@@ -31,6 +31,17 @@ enum DriveNavigationActions {
         let distance: String
     }
 
+    struct ETADataFormatted {
+        let eta: Date
+        let tta: Int
+        let distance: Int
+    }
+
+    // MARK: - Properties
+    
+    /// Counter for verifying ETA check in MSDKUI-1477.
+    static var etaCheckCounter = 0
+
     // MARK: - Public
 
     /// Returns from Drive navigation to landing page after test.
@@ -172,14 +183,13 @@ enum DriveNavigationActions {
             // Wait until correct address will be visible
             addressCondition.wait(withTimeout: 200, pollInterval: 1)
 
-            // When address is correct, check if correct icon is displayed
+            // When address is correct, check if correct icon is present
             // Since we are using 2 sets of views - one for portrait, one for landscape,
             // both icons are in hierarchy, but different index is visible
             let iconElementIndex: UInt = isLandscape ? 1 : 0
-            EarlGrey.selectElement(with: grey_allOf([grey_accessibilityID(maneuvers[step].iconAccessibilityIdentifier),
-                                                     grey_ancestor(DriveNavigationMatchers.maneuverView)]))
+            EarlGrey.selectElement(with: grey_accessibilityID(maneuvers[step].iconAccessibilityIdentifier))
                 .atIndex(iconElementIndex)
-                .assert(grey_sufficientlyVisible())
+                .assert(grey_notNil())
         }
     }
 
@@ -188,7 +198,7 @@ enum DriveNavigationActions {
     /// - Important: Arrival trigger is that the address color changes to .colorAccentLight
     ///              when destination is reached.
     static func waitForArrival() {
-        let timeOut: Double = 180
+        let timeOut: Double = 240
         let condition = GREYCondition(name: "Wait for destination") {
             // Is the destination reached?
             getEstimatedArrivalLabelTextColor() == .colorAccentLight
@@ -293,46 +303,101 @@ enum DriveNavigationActions {
         NMAPositioningManager.sharedInstance().startPositioning()
     }
 
-    /// Sleeps the main thread one minute.
-    static func sleepMainThreadOneMinute() {
-        GREYAssertTrue(Thread.isMainThread, reason: "The current thread is the main thread")
-
-        Thread.sleep(until: Date(timeIntervalSinceNow: 60))
-    }
-
     /// This method retrieves the estimated arrival data from dashboard.
     ///
-    /// - Returns: Estimated arrival time as a struct
-    static func getEstimatedArrivalData() -> ETAData {
+    /// - Returns:
+    ///     - etaData: Estimated arrival data in a string format.
+    ///     - etaDataFormatted: Estimated arrival data in specified formats.
+    static func getEstimatedArrivalData() -> (ETAData: ETAData, ETADataFormatted: ETADataFormatted?) {
+
         var etaData = ETAData(eta: "", tta: "", distance: "")
+        var etaDataFormatted = ETADataFormatted(eta: Date(), tta: Int(), distance: Int())
 
         _ = GREYCondition(name: "Wait for ETA data") {
             EarlGrey.selectElement(with: DriveNavigationMatchers.arrivalTime).perform(
                 GREYActionBlock.action(withName: "eta") { element, errorOrNil in
                     guard
                         errorOrNil != nil,
-                        let arivalView = element as? GuidanceEstimatedArrivalView,
-                        let eta = arivalView.estimatedTimeOfArrivalLabel?.text,
-                        let tta = arivalView.durationLabel?.text,
-                        let distance = arivalView.distanceLabel?.text else {
+                        let arrivalView = element as? GuidanceEstimatedArrivalView,
+                        let eta = arrivalView.estimatedTimeOfArrivalLabel?.text,
+                        let tta = arrivalView.durationLabel?.text,
+                        let distance = arrivalView.distanceLabel?.text else {
                             return false
                     }
 
                     etaData = ETAData(eta: eta, tta: tta, distance: distance)
-
                     return true
                 }
             )
 
+            // Convert ETA data into measurable form until destination is reached
+            if hasArrived() == false {
+                guard
+                    let etaDate = DateFormatter.currentShortTimeFormatter.date(from: etaData.eta),
+                    let ttaInt = Int(etaData.tta.trimmingCharacters(in: .whitespaces)
+                        .components(separatedBy: CharacterSet.decimalDigits.inverted)
+                        .joined()),
+                    let distanceInt = Int(etaData.distance.trimmingCharacters(in: .whitespaces)
+                        .components(separatedBy: CharacterSet.decimalDigits.inverted)
+                        .joined()) else {
+                            return false
+                }
+                etaDataFormatted = ETADataFormatted(eta: etaDate, tta: ttaInt, distance: distanceInt)
+                return true
+            }
+
             return etaData.eta.isEmpty == false && etaData.tta.isEmpty == false && etaData.distance.isEmpty == false
         }.wait(withTimeout: Constants.shortWait, pollInterval: Constants.longPollInterval)
-
-        print("Arrival data: ETA = \(etaData.eta), TTA = \(etaData.tta), Distance = \(etaData.distance)")
 
         GREYAssertTrue(etaData.eta.isEmpty == false && etaData.tta.isEmpty == false && etaData.distance.isEmpty == false,
                        reason: "the data is not retrieved")
 
-        return etaData
+        return (etaData, etaDataFormatted)
+    }
+
+    /// This method checks ETA data continously within fixed conditions
+    /// - Parameter conditionBlock: if true function will stop calling itself.
+    /// - Note: Checks are being done on a background thread.
+    static func checkETADataDuringSimulation(conditionBlock: @escaping () -> Bool) {
+        DispatchQueue.global(qos: .background).async {
+
+            // Save first ETA data
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                guard let firstETAData = getEstimatedArrivalData().ETADataFormatted else {
+                    GREYFail("ETA data could not be converted")
+                    return
+                }
+
+                // Save second ETA data and compare it to the first
+                DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                    guard let secondETAData = getEstimatedArrivalData().ETADataFormatted else {
+                        GREYFail("ETA data could not be converted")
+                        return
+                    }
+
+                    // Start checking ETA data when distance is below 1 km/mi
+                    if firstETAData.distance != 1 && firstETAData.distance != 2 {
+                        let comparisonETA = firstETAData.eta.compare(secondETAData.eta)
+
+                        // Increase counter by 1 with every iteration
+                        etaCheckCounter += 1
+
+                        GREYAssertTrue(comparisonETA == ComparisonResult.orderedSame ||
+                            comparisonETA == ComparisonResult.orderedDescending,
+                                       reason: "ETA should be the same or decrease over time")
+                        GREYAssertTrue(firstETAData.tta >= secondETAData.tta,
+                                       reason: "TTA should be same and decrease over time")
+                        GREYAssertTrue(firstETAData.distance > secondETAData.distance,
+                                       reason: "Distance must decrease over time")
+                    }
+
+                    // Stop recursion when condition is true
+                    if !conditionBlock() {
+                        self.checkETADataDuringSimulation(conditionBlock: conditionBlock)
+                    }
+                }
+            }
+        }
     }
 
     /// Method that changes to specified orientation, launches guidance simulation, then runs specified

@@ -40,6 +40,9 @@ final class RoutesAndManeuversTests: XCTestCase {
     }
 
     override func tearDown() {
+        // Rotate device to portrait
+        EarlGrey.rotateDeviceTo(orientation: .portrait, errorOrNil: nil)
+
         // Return back to the landing view
         CoreActions.tap(element: CoreMatchers.exitButton)
 
@@ -208,7 +211,16 @@ final class RoutesAndManeuversTests: XCTestCase {
 
     /// MSDKUI-140: Scroll route list.
     /// Check that swiping the route list results in scrolls.
+    /// - Note: In case of X-series iPhones, route list scroll is being checked in landcape because
+    ///   in portrait all the routes fit on the screen.
     func testScrollRouteList() {
+
+        // If X-series device is used, switch to landscape mode to test scroll
+        // Those screen heights start at 812 points
+        if UIScreen.main.bounds.height > 811 {
+            // Rotate device to landscape
+            EarlGrey.rotateDeviceTo(orientation: .landscapeLeft, errorOrNil: nil)
+        }
 
         // We want to have as many routes as possible
         CoreActions.tap(element: RoutePlannerMatchers.transportModeBike)

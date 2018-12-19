@@ -184,59 +184,35 @@ final class GuidanceAndManeuversTests: XCTestCase {
     }
 
     /// MSDKUI-1477: ETA in Guidance
-    /// Check the estimated arrival data until navigation ends.
-    ///
-    /// - Important: Due to GuidanceActions.adaptSimulationToEarlGrey(), the method should wait
-    ///              for screen updates, see `Constants.updateIntervalForEarlGrey`. Plus, the TTA
-    ///              is displayed in minutes initially for the short test route and in order to
-    ///              see an update, we have to wait for one minute before comparing the ETA data.
+    /// Check the estimated arrival data during navigation simulation.
     func testGuidanceEstimatedArrivalView() {
         DriveNavigationActions.performGuidanceTest(isLandscape: false) {
 
-            // Get the initial ETA data
-            var etaData = DriveNavigationActions.getEstimatedArrivalData()
+            // Check ETA data during simulation
+            // This method will run in background, in parallel with waitForArrival()
+            DriveNavigationActions.checkETADataDuringSimulation(conditionBlock:) { () -> Bool in
+                guard let condition = DriveNavigationActions.getEstimatedArrivalData().ETADataFormatted else {
+                    GREYFail("ETA data could not be converted")
+                    return true
+                }
 
-            // Try to convert the ETA string to date
-            guard let etaDate = DateFormatter.currentShortTimeFormatter.date(from: etaData.eta) else {
-                GREYFail("No ETA date available")
-                return
+                // Stop looping when tta is 2 (minutes)
+                return condition.tta == 2
             }
 
-            // The ETA data can differ at most three minutes during navigation, e.g.
-            // if the ETA is "11:12 AM", then it can vary between "11:09 AM" and
-            // "11:15 AM"
-            let expectedEta: [String] = [DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-240)),
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-180)),
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-120)),
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(-60)),
-                                         etaData.eta,
-                                         DateFormatter.currentShortTimeFormatter.string(from: etaDate.addingTimeInterval(60))]
-
-            // Wait one minute to make sure the ETA data is updated
-            DriveNavigationActions.sleepMainThreadOneMinute()
-
-            // Until arrival, check the ETA data regularly
-            while !DriveNavigationActions.hasArrived() && DriveNavigationActions.getEstimatedArrivalData().tta != "--" {
-                let newEtaData = DriveNavigationActions.getEstimatedArrivalData()
-
-                GREYAssertTrue(expectedEta.contains(newEtaData.eta), reason: "The ETA should stay the same")
-                GREYAssertTrue(newEtaData.tta != etaData.tta, reason: "The TTA should be updated")
-                GREYAssertTrue(newEtaData.distance != etaData.distance, reason: "The distance should be updated")
-
-                // Refresh
-                etaData = newEtaData
-
-                // Wait one minute to make sure the ETA data is updated
-               DriveNavigationActions.sleepMainThreadOneMinute()
-            }
+            // Wait for simulation to end
+            DriveNavigationActions.waitForArrival()
+            
+            // Verify that ETA checks were run during simulation
+            GREYAssertTrue(DriveNavigationActions.etaCheckCounter >= 4,
+                           reason: "ETA data checks must be run at least 4 times")
 
             // Get ETA data when simualtion has ended
-            let finalEtaData = DriveNavigationActions.getEstimatedArrivalData()
+            let finalEtaData = DriveNavigationActions.getEstimatedArrivalData().ETAData
 
             GREYAssertTrue(finalEtaData.eta == "--", reason: "The ETA should not be displayed after arrival")
             GREYAssertTrue(finalEtaData.tta == "--", reason: "The TTA should not be displayed after arrival")
             GREYAssertTrue(finalEtaData.distance == "--", reason: "The distance should not be displayed after arrival")
-
         }
     }
 
