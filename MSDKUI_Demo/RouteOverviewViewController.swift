@@ -158,7 +158,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
         }
 
         // Prepare the 'routeDescriptionItem'
-        routeDescriptionItem.trafficEnabled = mapView.isTrafficVisible
+        routeDescriptionItem.trafficEnabled = trafficEnabled
         routeDescriptionItem.trailingInset = 0
         routeDescriptionItem.leadingInset = 0
 
