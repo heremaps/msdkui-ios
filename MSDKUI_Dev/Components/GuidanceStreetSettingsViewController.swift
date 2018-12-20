@@ -24,6 +24,7 @@ final class GuidanceStreetSettingsViewController: SettingsViewController<Guidanc
         var accentBackgroundColor: UIColor
         var plainBackgroundColor: UIColor
         var isAccented: Bool
+        var font: UIFont?
     }
 
     override func viewDidLoad() {
@@ -34,22 +35,32 @@ final class GuidanceStreetSettingsViewController: SettingsViewController<Guidanc
                          configuration: Settings(text: "Fuubarstrasse",
                                                  accentBackgroundColor: .colorPositive,
                                                  plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true)),
+                                                 isAccented: true,
+                                                 font: nil)),
             SettingsItem(title: "Looking for position (custom msg)",
                          configuration: Settings(text: "👀 for position",
                                                  accentBackgroundColor: .colorPositive,
                                                  plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true)),
+                                                 isAccented: true,
+                                                 font: nil)),
+            SettingsItem(title: "Looking for position (font size: 22 points)",
+                         configuration: Settings(text: "👀 for position",
+                                                 accentBackgroundColor: .colorPositive,
+                                                 plainBackgroundColor: .colorForegroundSecondary,
+                                                 isAccented: true,
+                                                 font: .systemFont(ofSize: 22))),
             SettingsItem(title: "With address, accented: false",
                          configuration: Settings(text: "Fuubarstrasse",
                                                  accentBackgroundColor: .colorPositive,
                                                  plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: false)),
+                                                 isAccented: false,
+                                                 font: nil)),
             SettingsItem(title: "Looking for position, accented: false",
                          configuration: Settings(text: "👀 for position",
                                                  accentBackgroundColor: .colorPositive,
                                                  plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: false))
+                                                 isAccented: false,
+                                                 font: nil))
         ]
     }
 }
