@@ -4,13 +4,14 @@ Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we ar
 ## Contents
 <!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
+- [Contents](#contents)
 - [How to Run the Example Apps](#how-to-run-the-example-apps)
 - [How to Run the Demo App](#how-to-run-the-demo-app)
 - [Creating a new iOS Project](#creating-a-new-ios-project)
-- [Integrating the HERE Mobile SDK for iOS and the HERE Mobile SDK UI Kit framework](#integrating-the-here-mobile-sdk-for-ios-and-the-here-mobile-sdk-ui-kit-framework)
-- [Integrating the HERE Mobile SDK UI Kit for iOS manually](#integrating-the-here-mobile-sdk-ui-kit-for-ios-manually)
+	- [Integrating the HERE Mobile SDK for iOS and the HERE Mobile SDK UI Kit framework](#integrating-the-here-mobile-sdk-for-ios-and-the-here-mobile-sdk-ui-kit-framework)
+	- [Integrating the HERE Mobile SDK UI Kit for iOS manually](#integrating-the-here-mobile-sdk-ui-kit-for-ios-manually)
 	- [Setting your HERE SDK credentials](#setting-your-here-sdk-credentials)
-- [Implementing the HelloMSDKUI app](#implementing-the-hellomsdkui-app)
+	- [Add your first HERE Mobile SDK UI Kit component](#add-your-first-here-mobile-sdk-ui-kit-component)
 
 <!-- /TOC -->
 
@@ -54,7 +55,7 @@ Now _build and run the current scheme_ and verify that your project executes as 
 
 While all of the functionality of the HERE Mobile SDK UI Kit is accessible from the simulator, usage of a real device is strongly recommended. The overall performance will be better, and some features like gestures are just easier to use on multi-touch-enabled hardware.
 
-## Integrating the HERE Mobile SDK for iOS and the HERE Mobile SDK UI Kit framework
+### Integrating the HERE Mobile SDK for iOS and the HERE Mobile SDK UI Kit framework
 You can integrate the SDK and the framework manually or via CocoaPods. More details on integrating the HERE Mobile SDK can be found on [developer.here.com](https://developer.here.com/documentation/ios-premium/topics/app-simple-swift.html).
 
 With the full support of the CocoaPods dependency manager, you don't have to download and integrate the HERE Mobile SDK package and the HERE Mobile SDK UI Kit manually. If you are new to CocoaPods or need to install it via Terminal, please follow the steps as described on [guides.cocoapods.org](https://guides.cocoapods.org/using/getting-started.html).
@@ -78,7 +79,7 @@ As `target` please specify your project name (which is set to "HelloMSDKUI" in t
 - Open the terminal and navigate to your project folder to execute: `pod install --repo-update`. This will fetch and integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit to your project.
 - Once done, please open the newly generated `*.xcworkspace` Xcode project file (do NOT open `*.xcodeproj`).
 
-## Integrating the HERE Mobile SDK UI Kit for iOS manually
+### Integrating the HERE Mobile SDK UI Kit for iOS manually
 Since CocoaPods is supported, you don't have to integrate the HERE Mobile SDK UI Kit manually, but if you prefer to build the framework manually, you can integrate the binary similar like adding any other framework to your project.
 
 As a first step, please build the HERE Mobile SDK UI Kit framework. This can be done using a simple `rake` command from your _Terminal_. Please see our [Contribution Guide](ContributionGuide.md) for details.
@@ -111,7 +112,7 @@ Make sure to add `import NMAKit` and `import MSDKUI` at the top of the file to m
 
 Now it is time to test that everything is set up correctly by printing a "Hello" message with the help of the HERE Mobile SDK UI Kit.
 
-## Implementing the HelloMSDKUI app
+### Add your first HERE Mobile SDK UI Kit component
 Once we have the HERE SDK _and_ the HERE Mobile SDK UI Kit available in our project, we open the main view controller Xcode has created for us, i.e. `ViewController.swift`, and add the following imports to include the HERE Mobile SDK and the HERE Mobile SDK UI Kit:
 ```swift
 import UIKit
