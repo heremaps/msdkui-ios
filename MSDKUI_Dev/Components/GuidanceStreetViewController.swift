@@ -31,6 +31,7 @@ final class GuidanceStreetViewController: UIViewController {
             self?.currentStreetLabel.plainBackgroundColor = item.configuration.plainBackgroundColor
             self?.currentStreetLabel.isAccented = item.configuration.isAccented
             self?.currentStreetLabel.text = item.configuration.text
+            self?.currentStreetLabel.font = item.configuration.font
         }
     }
 }

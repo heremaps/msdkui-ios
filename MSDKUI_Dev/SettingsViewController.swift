@@ -27,6 +27,8 @@ class SettingsViewController<T>: UITableViewController {
     var data: [SettingsItem<T>] = []
     var didSelect: ((SettingsItem<T>) -> Void) = { _ in }
 
+    // MARK: - Life cycle
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -37,19 +39,21 @@ class SettingsViewController<T>: UITableViewController {
         tableView.hideEmptyCells()
     }
 
+    // MARK: - UITableViewDataSource
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ComponentsCell") as? ComponentsCell else {
-            fatalError("Failed to dequeue the cell")
-        }
+        let cell = tableView.dequeueReusableCell() as ComponentsCell
 
         cell.textLabel?.text = data[indexPath.row].title
 
         return cell
     }
+
+    // MARK: - UITableViewDelegate
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let item = data[indexPath.row]

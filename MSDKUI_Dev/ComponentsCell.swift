@@ -21,7 +21,7 @@ final class ComponentsCell: UITableViewCell {
     // MARK: - Life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        super.init(style: .subtitle, reuseIdentifier: reuseIdentifier)
 
         setUpCell()
     }

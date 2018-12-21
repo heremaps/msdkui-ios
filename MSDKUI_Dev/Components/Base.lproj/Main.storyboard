@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SQp-1E-f9T">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -11,12 +15,12 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GuidanceEstimatedArrivalViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="XIe-B5-Ymo" customClass="GuidanceEstimatedArrivalView" customModule="MSDKUI">
-                                <rect key="frame" x="180" y="204" width="240" height="128"/>
+                                <rect key="frame" x="67.5" y="237.5" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -41,368 +45,80 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1644" y="-667"/>
+            <point key="canvasLocation" x="1643" y="-668"/>
         </scene>
         <!--MSDKUI Components-->
-        <scene sceneID="7wh-Ho-xMg">
+        <scene sceneID="3Fp-fT-kKw">
             <objects>
-                <tableViewController id="d4a-3U-3qN" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="72" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FWA-E6-6jY">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                <viewController id="8CA-jA-Y4s" customClass="ComponentsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w0U-eH-snk">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" name="colorBackgroundLight"/>
-                        <sections>
-                            <tableViewSection id="JXg-QS-ABG">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="lrI-xK-QkY" detailTextLabel="qBn-SB-4mA" style="IBUITableViewCellStyleSubtitle" id="qmi-Ge-GH5" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qmi-Ge-GH5" id="8hd-bE-gah">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceEstimatedArrivalView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="lrI-xK-QkY">
-                                                    <rect key="frame" x="20" y="16" width="234.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Intrinsic Content Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qBn-SB-4mA">
-                                                    <rect key="frame" x="20" y="39.5" width="157" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="BYZ-38-t0r" kind="show" id="tbN-UO-5rv"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Fn8-n3-gP0" detailTextLabel="qB7-Dj-VZh" style="IBUITableViewCellStyleSubtitle" id="JAq-dM-whr" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="72" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JAq-dM-whr" id="kKX-kC-O3d">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceEstimatedArrivalView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Fn8-n3-gP0">
-                                                    <rect key="frame" x="20" y="16" width="234.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Layout Constraints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qB7-Dj-VZh">
-                                                    <rect key="frame" x="20" y="39.5" width="142.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ijs-wL-pxb" kind="show" id="sKH-fT-ApF"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="TxK-Zo-cEp" detailTextLabel="0CT-Dh-bFr" style="IBUITableViewCellStyleSubtitle" id="kw6-IL-yAF" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="144" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kw6-IL-yAF" id="ofr-AE-ElJ">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceSpeedView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="TxK-Zo-cEp">
-                                                    <rect key="frame" x="20" y="16" width="159" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Intrinsic Content Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0CT-Dh-bFr">
-                                                    <rect key="frame" x="20" y="39.5" width="157" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="zgq-KB-cQc" kind="show" id="XHu-dD-QJP"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="jEr-fG-MMH" detailTextLabel="pVu-Wf-mtH" style="IBUITableViewCellStyleSubtitle" id="if3-e7-AAF" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="216" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="if3-e7-AAF" id="FR8-Xa-cyl">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceSpeedView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jEr-fG-MMH">
-                                                    <rect key="frame" x="20" y="16" width="159" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Layout Constraints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="pVu-Wf-mtH">
-                                                    <rect key="frame" x="20" y="39.5" width="142.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Bv6-II-ueS" kind="show" id="eFp-i6-Hib"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="iU0-EF-4Np" detailTextLabel="XWu-MT-yjK" style="IBUITableViewCellStyleSubtitle" id="14w-pJ-Hor" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="288" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="14w-pJ-Hor" id="kGi-TW-SdC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceSpeedLimitView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="iU0-EF-4Np">
-                                                    <rect key="frame" x="20" y="16" width="196" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Intrinsic Content Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XWu-MT-yjK">
-                                                    <rect key="frame" x="20" y="39.5" width="157" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="Bx0-sy-OYB" kind="show" id="h6D-ZV-Atm"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="H9X-mP-MMM" detailTextLabel="ClN-ns-dfy" style="IBUITableViewCellStyleSubtitle" id="nQ2-8F-iTz" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="360" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nQ2-8F-iTz" id="Asn-5w-8Ss">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceSpeedLimitView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="H9X-mP-MMM">
-                                                    <rect key="frame" x="20" y="16" width="196" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Layout Constraints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ClN-ns-dfy">
-                                                    <rect key="frame" x="20" y="39.5" width="142.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="ASS-hp-lFj" kind="show" id="I1H-FR-FNX"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="Y80-Ur-naz" detailTextLabel="Gaw-pc-s8P" style="IBUITableViewCellStyleSubtitle" id="8UG-5L-8os" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="432" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8UG-5L-8os" id="bOo-A8-2Hw">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceNextManeuverView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Y80-Ur-naz">
-                                                    <rect key="frame" x="20" y="16" width="221" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Intrinsic Content Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gaw-pc-s8P">
-                                                    <rect key="frame" x="20" y="39.5" width="157" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="7s3-TQ-TbA" kind="show" id="glm-XS-DAX"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="WXk-U5-7Nl" detailTextLabel="ICr-dQ-Uvk" style="IBUITableViewCellStyleSubtitle" id="3rk-bh-NjK" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="504" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3rk-bh-NjK" id="JPY-em-DWe">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceNextManeuverView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="WXk-U5-7Nl">
-                                                    <rect key="frame" x="20" y="16" width="221" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Layout Constraints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ICr-dQ-Uvk">
-                                                    <rect key="frame" x="20" y="39.5" width="142.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="OyC-sr-Zkm" kind="show" id="gwW-Zh-c6c"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="hoi-gz-080" detailTextLabel="b1E-bj-aj0" style="IBUITableViewCellStyleSubtitle" id="Gpd-g9-vPE" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="576" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Gpd-g9-vPE" id="Xvb-Sv-xmR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceManeuverView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hoi-gz-080">
-                                                    <rect key="frame" x="15" y="16" width="185.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Intrinsic Content Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="b1E-bj-aj0">
-                                                    <rect key="frame" x="15" y="39.5" width="157" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="JSj-Qk-xTb" kind="show" id="eWs-Pw-rf1"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="xQS-iI-Ic2" detailTextLabel="DYV-RL-Y2g" style="IBUITableViewCellStyleSubtitle" id="PgJ-Pz-8WD" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="648" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="PgJ-Pz-8WD" id="w7R-FO-Awv">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceManeuverView" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="xQS-iI-Ic2">
-                                                    <rect key="frame" x="15" y="16" width="185.5" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Layout Constraints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DYV-RL-Y2g">
-                                                    <rect key="frame" x="15" y="39.5" width="142.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="749-jj-Due" kind="show" id="POh-bZ-Y1x"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="SDd-SK-WDu" detailTextLabel="1j6-j6-xsE" style="IBUITableViewCellStyleSubtitle" id="Mzw-WN-gbD" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="720" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Mzw-WN-gbD" id="xGX-YP-dm6">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceStreetLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="SDd-SK-WDu">
-                                                    <rect key="frame" x="15" y="16" width="161" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Layout Constraints" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1j6-j6-xsE">
-                                                    <rect key="frame" x="15" y="39.5" width="142.5" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="yTF-p7-Rm3" kind="show" id="MoM-pg-38m"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" textLabel="a1X-5L-3CT" detailTextLabel="Gaw-gt-dyb" style="IBUITableViewCellStyleSubtitle" id="TBq-5N-Yid" customClass="ComponentsCell" customModule="MSDKUI_Dev" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="792" width="600" height="72"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="TBq-5N-Yid" id="8H2-OJ-hDa">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="71.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="GuidanceStreetLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="a1X-5L-3CT">
-                                                    <rect key="frame" x="15" y="16" width="161" height="20.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Using Intrinsic Content Size" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Gaw-gt-dyb">
-                                                    <rect key="frame" x="15" y="39.5" width="157" height="14.5"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="poX-rT-7rd" kind="show" id="g4h-GX-Kpx"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="d4a-3U-3qN" id="tB0-rx-SdA"/>
-                            <outlet property="delegate" destination="d4a-3U-3qN" id="aW9-wj-Oou"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="MSDKUI Components" id="KBn-d0-znc"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yZc-my-koe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lyp-fK-Ae7">
+                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                <color key="backgroundColor" name="colorBackgroundLight"/>
+                                <connections>
+                                    <outlet property="delegate" destination="8CA-jA-Y4s" id="gkU-FE-8DW"/>
+                                </connections>
+                            </tableView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ugI-CU-ii9">
+                                <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="Intrinsic"/>
+                                    <segment title="Constrained"/>
+                                </segments>
+                                <color key="tintColor" name="colorAccentLight"/>
+                                <connections>
+                                    <action selector="filterComponents:" destination="8CA-jA-Y4s" eventType="valueChanged" id="Dz2-bi-RZ6"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" name="colorBackgroundBrand"/>
+                        <constraints>
+                            <constraint firstItem="sZy-2e-wjL" firstAttribute="trailing" secondItem="ugI-CU-ii9" secondAttribute="trailing" constant="8" id="DbH-4N-QE9"/>
+                            <constraint firstItem="ugI-CU-ii9" firstAttribute="top" secondItem="sZy-2e-wjL" secondAttribute="top" constant="8" id="NRi-k0-Bx7"/>
+                            <constraint firstItem="Lyp-fK-Ae7" firstAttribute="top" secondItem="ugI-CU-ii9" secondAttribute="bottom" constant="8" id="W7W-42-SKu"/>
+                            <constraint firstItem="sZy-2e-wjL" firstAttribute="bottom" secondItem="Lyp-fK-Ae7" secondAttribute="bottom" id="cgO-re-T7r"/>
+                            <constraint firstItem="sZy-2e-wjL" firstAttribute="trailing" secondItem="Lyp-fK-Ae7" secondAttribute="trailing" id="kFf-YB-QsW"/>
+                            <constraint firstItem="ugI-CU-ii9" firstAttribute="leading" secondItem="sZy-2e-wjL" secondAttribute="leading" constant="8" id="o8P-l6-62s"/>
+                            <constraint firstItem="Lyp-fK-Ae7" firstAttribute="leading" secondItem="sZy-2e-wjL" secondAttribute="leading" id="vNT-kX-dJy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="sZy-2e-wjL"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="MSDKUI Components" id="3Uq-F0-psd"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="ugI-CU-ii9" id="jJM-qI-MqD"/>
+                        <outlet property="tableView" destination="Lyp-fK-Ae7" id="vcI-Bb-Svk"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="GuidanceEstimatedArrivalView_intrinsic" id="BZG-BT-Uwl"/>
+                        <segue destination="ijs-wL-pxb" kind="show" identifier="GuidanceEstimatedArrivalView_constrained" id="2Fx-Hy-eCQ"/>
+                        <segue destination="zgq-KB-cQc" kind="show" identifier="GuidanceSpeedView_intrinsic" id="geG-kB-oss"/>
+                        <segue destination="Bv6-II-ueS" kind="show" identifier="GuidanceSpeedView_constrained" id="cCY-m5-fn4"/>
+                        <segue destination="Bx0-sy-OYB" kind="show" identifier="GuidanceSpeedLimitView_intrinsic" id="R90-p9-ENE"/>
+                        <segue destination="ASS-hp-lFj" kind="show" identifier="GuidanceSpeedLimitView_constrained" id="Heg-nZ-B9B"/>
+                        <segue destination="7s3-TQ-TbA" kind="show" identifier="GuidanceNextManeuverView_intrinsic" id="eai-Vb-6xg"/>
+                        <segue destination="OyC-sr-Zkm" kind="show" identifier="GuidanceNextManeuverView_constrained" id="dFN-a3-X3T"/>
+                        <segue destination="JSj-Qk-xTb" kind="show" identifier="GuidanceManeuverView_intrinsic" id="CDy-bh-u6u"/>
+                        <segue destination="749-jj-Due" kind="show" identifier="GuidanceManeuverView_constrained" id="Djd-qI-Sbh"/>
+                        <segue destination="yTF-p7-Rm3" kind="show" identifier="GuidanceStreetLabel_intrinsic" id="Uvu-Pv-Ntb"/>
+                        <segue destination="poX-rT-7rd" kind="show" identifier="GuidanceStreetLabel_constrained" id="7Ze-GE-sQZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dbC-qv-RE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-8.8000000000000007" y="844.22788605697156"/>
+            <point key="canvasLocation" x="182" y="843"/>
         </scene>
         <!--Guidance Estimated Arrival View Controller-->
         <scene sceneID="tdh-1G-of3">
             <objects>
                 <viewController id="ijs-wL-pxb" customClass="GuidanceEstimatedArrivalViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Yhx-3w-HMr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="Yhx-3w-HMr">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixp-4F-R0P" customClass="GuidanceEstimatedArrivalView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="500" height="436"/>
+                                <rect key="frame" x="50" y="50" width="275" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -436,9 +152,10 @@
             <objects>
                 <tableViewController id="zpD-QY-F4J" customClass="GuidanceEstimatedArrivalSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oop-RA-vrM">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
                         <connections>
                             <outlet property="dataSource" destination="zpD-QY-F4J" id="jgy-xB-ib7"/>
                             <outlet property="delegate" destination="zpD-QY-F4J" id="Oqw-eH-SaJ"/>
@@ -453,12 +170,12 @@
         <scene sceneID="PaJ-qd-9uQ">
             <objects>
                 <viewController id="Bv6-II-ueS" customClass="GuidanceSpeedViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="hUZ-xp-vmh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="hUZ-xp-vmh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2R-II-L3r" customClass="GuidanceSpeedView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="500" height="436"/>
+                                <rect key="frame" x="50" y="50" width="275" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -492,11 +209,11 @@
             <objects>
                 <viewController id="zgq-KB-cQc" customClass="GuidanceSpeedViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zqY-h1-kfT">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="CEh-ce-3CM" customClass="GuidanceSpeedView" customModule="MSDKUI">
-                                <rect key="frame" x="250" y="218" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -542,7 +259,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="d4a-3U-3qN" kind="relationship" relationship="rootViewController" id="Jrz-tw-Jzd"/>
+                        <segue destination="8CA-jA-Y4s" kind="relationship" relationship="rootViewController" id="ZTZ-RU-4hA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bzV-XB-vtR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -553,12 +270,12 @@
         <scene sceneID="7LT-2z-KSi">
             <objects>
                 <viewController id="Bx0-sy-OYB" customClass="GuidanceSpeedLimitViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="gFH-dm-glv">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="gFH-dm-glv">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-Ak-CaJ" customClass="GuidanceSpeedLimitView" customModule="MSDKUI">
-                                <rect key="frame" x="250" y="218" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -589,12 +306,12 @@
         <scene sceneID="VUk-gE-dlj">
             <objects>
                 <viewController id="ASS-hp-lFj" customClass="GuidanceSpeedLimitViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="r7e-OA-zGW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="r7e-OA-zGW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Q99-87-DKT" customClass="GuidanceSpeedLimitView" customModule="MSDKUI">
-                                <rect key="frame" x="275" y="243" width="50" height="50"/>
+                                <rect key="frame" x="162.5" y="276.5" width="50" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -630,9 +347,10 @@
             <objects>
                 <tableViewController id="i19-Ep-FK2" customClass="GuidanceSpeedSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dd7-LT-6Ta">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
                         <connections>
                             <outlet property="dataSource" destination="i19-Ep-FK2" id="whC-dP-2OD"/>
                             <outlet property="delegate" destination="i19-Ep-FK2" id="jiO-rR-LXd"/>
@@ -648,9 +366,10 @@
             <objects>
                 <tableViewController id="plQ-Un-d55" customClass="GuidanceSpeedLimitSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nki-kf-aKG">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
                         <connections>
                             <outlet property="dataSource" destination="plQ-Un-d55" id="bug-Fd-JpU"/>
                             <outlet property="delegate" destination="plQ-Un-d55" id="WoS-lz-B4j"/>
@@ -665,12 +384,12 @@
         <scene sceneID="7sx-5Y-gTo">
             <objects>
                 <viewController id="7s3-TQ-TbA" customClass="GuidanceNextManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="aKP-tY-6Yh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="aKP-tY-6Yh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-Vv-9Qx" customClass="GuidanceNextManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="250" y="218" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -701,10 +420,11 @@
         <scene sceneID="UE8-gu-vOU">
             <objects>
                 <tableViewController id="OnD-BN-wIL" customClass="GuidanceNextManeuverSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CLg-kZ-z2n">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CLg-kZ-z2n">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
                         <connections>
                             <outlet property="dataSource" destination="OnD-BN-wIL" id="hOU-O8-nAh"/>
                             <outlet property="delegate" destination="OnD-BN-wIL" id="RXu-pi-7g1"/>
@@ -720,11 +440,11 @@
             <objects>
                 <viewController id="OyC-sr-Zkm" customClass="GuidanceNextManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OjE-Rp-BlB">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="XKp-Kf-sEN" customClass="GuidanceNextManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="500" height="436"/>
+                                <rect key="frame" x="50" y="50" width="275" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -757,12 +477,12 @@
         <scene sceneID="rTB-nV-C9f">
             <objects>
                 <viewController id="JSj-Qk-xTb" customClass="GuidanceManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="HSy-RA-ksX">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="HSy-RA-ksX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="6hv-U1-r5a" customClass="GuidanceManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="250" y="218" width="100" height="100"/>
+                                <rect key="frame" x="0.5" y="232" width="374" height="139"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -794,11 +514,11 @@
             <objects>
                 <viewController id="749-jj-Due" customClass="GuidanceManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TF5-60-bL3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="XTf-dC-DYI" customClass="GuidanceManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="500" height="436"/>
+                                <rect key="frame" x="50" y="50" width="275" height="503"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -832,9 +552,10 @@
             <objects>
                 <tableViewController id="dPi-K0-2OZ" customClass="GuidanceManeuverSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="BnE-ha-dKC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
                         <connections>
                             <outlet property="dataSource" destination="dPi-K0-2OZ" id="gKb-6s-bBR"/>
                             <outlet property="delegate" destination="dPi-K0-2OZ" id="oIx-9E-P4V"/>
@@ -850,11 +571,11 @@
             <objects>
                 <viewController id="yTF-p7-Rm3" customClass="GuidanceStreetViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uz7-3r-I4L">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="jbU-I8-XKQ" customClass="GuidanceStreetLabel" customModule="MSDKUI">
-                                <rect key="frame" x="250" y="218" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -885,12 +606,12 @@
         <scene sceneID="TQ0-Sl-dqT">
             <objects>
                 <viewController id="poX-rT-7rd" customClass="GuidanceStreetViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" misplaced="YES" id="Rzz-yU-XEK">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <view key="view" contentMode="scaleToFill" id="Rzz-yU-XEK">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="5pp-qj-fTs" customClass="GuidanceStreetLabel" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="250" width="500" height="36"/>
+                                <rect key="frame" x="50" y="283.5" width="275" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -925,10 +646,11 @@
         <scene sceneID="gUY-Z3-2hq">
             <objects>
                 <tableViewController id="Myq-RG-obX" customClass="GuidanceStreetSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hva-Qr-Myi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hva-Qr-Myi">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
                         <connections>
                             <outlet property="dataSource" destination="Myq-RG-obX" id="efD-gR-7kE"/>
                             <outlet property="delegate" destination="Myq-RG-obX" id="Wu5-ED-YrR"/>
@@ -950,13 +672,16 @@
         <namedColor name="colorBackgroundLight">
             <color red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <namedColor name="colorHint">
+            <color red="0.058823529411764705" green="0.086274509803921567" blue="0.12941176470588237" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yIW-oY-x8P"/>
-        <segue reference="Zjr-f5-ptL"/>
-        <segue reference="1w3-H9-b8O"/>
-        <segue reference="nx1-9c-kra"/>
-        <segue reference="aIB-UG-qvn"/>
-        <segue reference="XVd-Vi-nea"/>
+        <segue reference="os6-pf-Av8"/>
+        <segue reference="GdD-IV-DQl"/>
+        <segue reference="HQb-XD-CFc"/>
+        <segue reference="BrV-0B-MRf"/>
+        <segue reference="n02-0M-D70"/>
+        <segue reference="dBU-L3-LA3"/>
     </inferredMetricsTieBreakers>
 </document>
