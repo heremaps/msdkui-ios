@@ -151,6 +151,8 @@
 		62AA2C0A20E6377B0007CB45 /* MulticastDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA2C0920E6377B0007CB45 /* MulticastDelegateTests.swift */; };
 		62AA2C0B20E637A90007CB45 /* ExtensionXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0A2B220D16A71007795CE /* ExtensionXCTestCase.swift */; };
 		62B506E121353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B506E021353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift */; };
+		62B5B04521CD155600F7366E /* ManeuverItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B5B04421CD155600F7366E /* ManeuverItemViewController.swift */; };
+		62B5B04721CD156500F7366E /* ManeuverItemSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B5B04621CD156500F7366E /* ManeuverItemSettingsViewController.swift */; };
 		62B884F520ECA9EA00CA47C7 /* ExtensionNMARoutingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B884F420ECA9EA00CA47C7 /* ExtensionNMARoutingError.swift */; };
 		62B884F720ECADE900CA47C7 /* ExtensionNMARoutingErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B884F620ECADE900CA47C7 /* ExtensionNMARoutingErrorTests.swift */; };
 		62BBB0F3213541AF003B843F /* GuidanceSpeedMonitorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBB0F2213541AF003B843F /* GuidanceSpeedMonitorDelegateMock.swift */; };
@@ -436,6 +438,8 @@
 		62A89F9B21C14F8A00F296EA /* ExtensionLocaleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionLocaleTests.swift; sourceTree = "<group>"; };
 		62AA2C0920E6377B0007CB45 /* MulticastDelegateTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MulticastDelegateTests.swift; sourceTree = "<group>"; };
 		62B506E021353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedMonitorTests.swift; sourceTree = "<group>"; };
+		62B5B04421CD155600F7366E /* ManeuverItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManeuverItemViewController.swift; sourceTree = "<group>"; };
+		62B5B04621CD156500F7366E /* ManeuverItemSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManeuverItemSettingsViewController.swift; sourceTree = "<group>"; };
 		62B884F420ECA9EA00CA47C7 /* ExtensionNMARoutingError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNMARoutingError.swift; sourceTree = "<group>"; };
 		62B884F620ECADE900CA47C7 /* ExtensionNMARoutingErrorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNMARoutingErrorTests.swift; sourceTree = "<group>"; };
 		62BBB0F2213541AF003B843F /* GuidanceSpeedMonitorDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedMonitorDelegateMock.swift; sourceTree = "<group>"; };
@@ -1084,6 +1088,8 @@
 				62E8C9AC21A46FAE00737B59 /* GuidanceSpeedViewController.swift */,
 				626BC8AC21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift */,
 				626BC8AA21B14BD200483AF0 /* GuidanceStreetViewController.swift */,
+				62B5B04621CD156500F7366E /* ManeuverItemSettingsViewController.swift */,
+				62B5B04421CD155600F7366E /* ManeuverItemViewController.swift */,
 				6245BCA721A447500042B00C /* Main.storyboard */,
 			);
 			path = Components;
@@ -1841,6 +1847,7 @@
 				62E8C9AD21A46FAE00737B59 /* GuidanceSpeedViewController.swift in Sources */,
 				6210A18021C8F59C0095AA1A /* ComponentsCell.swift in Sources */,
 				62F061D521A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift in Sources */,
+				62B5B04521CD155600F7366E /* ManeuverItemViewController.swift in Sources */,
 				626BC8AD21B14BF300483AF0 /* GuidanceStreetSettingsViewController.swift in Sources */,
 				6210A18221C8FA800095AA1A /* ExtensionUITableViewCell.swift in Sources */,
 				62657CCE21A871FD004993C3 /* GuidanceNextManeuverViewController.swift in Sources */,
@@ -1852,6 +1859,7 @@
 				62E5BF7521AEA56900174D27 /* GuidanceManeuverViewController.swift in Sources */,
 				6279D9A921A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift in Sources */,
 				6245BCA421A447500042B00C /* AppDelegate.swift in Sources */,
+				62B5B04721CD156500F7366E /* ManeuverItemSettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

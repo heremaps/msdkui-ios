@@ -34,7 +34,9 @@ final class ComponentsViewController: UIViewController {
         ComponentEntry(title: "GuidanceManeuverView", presentationType: .intrinsic),
         ComponentEntry(title: "GuidanceManeuverView", presentationType: .constrained),
         ComponentEntry(title: "GuidanceStreetLabel", presentationType: .intrinsic),
-        ComponentEntry(title: "GuidanceStreetLabel", presentationType: .constrained)
+        ComponentEntry(title: "GuidanceStreetLabel", presentationType: .constrained),
+        ComponentEntry(title: "ManeuverItemView", presentationType: .intrinsic),
+        ComponentEntry(title: "ManeuverItemView", presentationType: .constrained)
     ]
 
     // MARK: - Life cycle
