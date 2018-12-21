@@ -187,6 +187,8 @@
 		62E8A1C12144A277006EB665 /* AboutViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1C02144A277006EB665 /* AboutViewControllerTests.swift */; };
 		62E8C9AA21A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8C9A921A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift */; };
 		62E8C9AD21A46FAE00737B59 /* GuidanceSpeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8C9AC21A46FAE00737B59 /* GuidanceSpeedViewController.swift */; };
+		62E9AA7521CA610A008531F4 /* ComponentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E9AA7421CA610A008531F4 /* ComponentsViewController.swift */; };
+		62E9AA7721CA7255008531F4 /* ComponentsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E9AA7621CA7255008531F4 /* ComponentsDataSource.swift */; };
 		62EA5ED020D81BA2004AE496 /* ExtensionUITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6231C34120D1DB370046FFC9 /* ExtensionUITableView.swift */; };
 		62EA5ED120D81BA2004AE496 /* ExtensionXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0A2B220D16A71007795CE /* ExtensionXCTestCase.swift */; };
 		62EA5ED320D81BAD004AE496 /* ExtensionNMAMapViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 629F7DF420D14112006F0A90 /* ExtensionNMAMapViewTests.swift */; };
@@ -461,6 +463,8 @@
 		62E8A1C02144A277006EB665 /* AboutViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewControllerTests.swift; sourceTree = "<group>"; };
 		62E8C9A921A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceEstimatedArrivalViewController.swift; sourceTree = "<group>"; };
 		62E8C9AC21A46FAE00737B59 /* GuidanceSpeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedViewController.swift; sourceTree = "<group>"; };
+		62E9AA7421CA610A008531F4 /* ComponentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsViewController.swift; sourceTree = "<group>"; };
+		62E9AA7621CA7255008531F4 /* ComponentsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentsDataSource.swift; sourceTree = "<group>"; };
 		62EA5EC520D81B7C004AE496 /* MSDKUI_Demo_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MSDKUI_Demo_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		62EB17F7212C02070088B7A5 /* DriveNavigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DriveNavigation.storyboard; sourceTree = "<group>"; };
 		62EB17F9212C02520088B7A5 /* RoutePlanner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoutePlanner.storyboard; sourceTree = "<group>"; };
@@ -902,6 +906,8 @@
 			children = (
 				6245BCA321A447500042B00C /* AppDelegate.swift */,
 				6210A17F21C8F59C0095AA1A /* ComponentsCell.swift */,
+				62E9AA7621CA7255008531F4 /* ComponentsDataSource.swift */,
+				62E9AA7421CA610A008531F4 /* ComponentsViewController.swift */,
 				626E3ED021A566B800F30294 /* SettingsViewController.swift */,
 				62F061D921A5A48A0096A449 /* Components */,
 				6210A18321C8FA980095AA1A /* Extensions */,
@@ -1827,6 +1833,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62E9AA7521CA610A008531F4 /* ComponentsViewController.swift in Sources */,
 				623D78CA21A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift in Sources */,
 				62F061D821A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift in Sources */,
 				626BC8AB21B14BD200483AF0 /* GuidanceStreetViewController.swift in Sources */,
@@ -1838,6 +1845,7 @@
 				6210A18221C8FA800095AA1A /* ExtensionUITableViewCell.swift in Sources */,
 				62657CCE21A871FD004993C3 /* GuidanceNextManeuverViewController.swift in Sources */,
 				620E183721A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift in Sources */,
+				62E9AA7721CA7255008531F4 /* ComponentsDataSource.swift in Sources */,
 				62E8C9AA21A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift in Sources */,
 				626E3ED121A566B800F30294 /* SettingsViewController.swift in Sources */,
 				6210A17E21C8F3B10095AA1A /* ExtensionUITableView.swift in Sources */,
