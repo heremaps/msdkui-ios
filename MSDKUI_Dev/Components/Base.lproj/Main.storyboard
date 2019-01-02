@@ -80,7 +80,7 @@
                             <constraint firstItem="sZy-2e-wjL" firstAttribute="trailing" secondItem="ugI-CU-ii9" secondAttribute="trailing" constant="8" id="DbH-4N-QE9"/>
                             <constraint firstItem="ugI-CU-ii9" firstAttribute="top" secondItem="sZy-2e-wjL" secondAttribute="top" constant="8" id="NRi-k0-Bx7"/>
                             <constraint firstItem="Lyp-fK-Ae7" firstAttribute="top" secondItem="ugI-CU-ii9" secondAttribute="bottom" constant="8" id="W7W-42-SKu"/>
-                            <constraint firstItem="sZy-2e-wjL" firstAttribute="bottom" secondItem="Lyp-fK-Ae7" secondAttribute="bottom" id="cgO-re-T7r"/>
+                            <constraint firstAttribute="bottom" secondItem="Lyp-fK-Ae7" secondAttribute="bottom" id="cgO-re-T7r"/>
                             <constraint firstItem="sZy-2e-wjL" firstAttribute="trailing" secondItem="Lyp-fK-Ae7" secondAttribute="trailing" id="kFf-YB-QsW"/>
                             <constraint firstItem="ugI-CU-ii9" firstAttribute="leading" secondItem="sZy-2e-wjL" secondAttribute="leading" constant="8" id="o8P-l6-62s"/>
                             <constraint firstItem="Lyp-fK-Ae7" firstAttribute="leading" secondItem="sZy-2e-wjL" secondAttribute="leading" id="vNT-kX-dJy"/>
@@ -103,6 +103,8 @@
                         <segue destination="749-jj-Due" kind="show" identifier="GuidanceManeuverView_constrained" id="Djd-qI-Sbh"/>
                         <segue destination="yTF-p7-Rm3" kind="show" identifier="GuidanceStreetLabel_intrinsic" id="Uvu-Pv-Ntb"/>
                         <segue destination="poX-rT-7rd" kind="show" identifier="GuidanceStreetLabel_constrained" id="7Ze-GE-sQZ"/>
+                        <segue destination="G7d-EC-RAS" kind="show" identifier="ManeuverItemView_intrinsic" id="0lc-9y-Lhn"/>
+                        <segue destination="RQi-b0-b4V" kind="show" identifier="ManeuverItemView_constrained" id="2x6-UI-Hxs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dbC-qv-RE3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -661,6 +663,99 @@
             </objects>
             <point key="canvasLocation" x="4038" y="3092"/>
         </scene>
+        <!--Maneuver Item View Controller-->
+        <scene sceneID="0Lo-am-V2P">
+            <objects>
+                <viewController id="G7d-EC-RAS" customClass="ManeuverItemViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="R8O-Ew-7NN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="asb-U5-c4F" customClass="ManeuverItemView" customModule="MSDKUI">
+                                <rect key="frame" x="79.5" y="251.5" width="216" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="colorBackgroundLight"/>
+                        <constraints>
+                            <constraint firstItem="asb-U5-c4F" firstAttribute="centerY" secondItem="R8O-Ew-7NN" secondAttribute="centerY" id="4eP-ka-ijd"/>
+                            <constraint firstItem="asb-U5-c4F" firstAttribute="centerX" secondItem="R8O-Ew-7NN" secondAttribute="centerX" id="Hec-lg-e22"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qkY-ex-a0c"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="7UR-oa-5rU">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="xYn-4o-Sm5">
+                            <connections>
+                                <segue destination="GLi-ns-HdV" kind="show" id="foe-8O-G34"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="maneuverView" destination="asb-U5-c4F" id="Ibz-TE-4jf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lch-v4-SuM" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1642" y="3855"/>
+        </scene>
+        <!--Maneuver Item View Controller-->
+        <scene sceneID="AMk-5v-ST9">
+            <objects>
+                <viewController id="RQi-b0-b4V" customClass="ManeuverItemViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k1R-7t-kBu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-kw-tt4" customClass="ManeuverItemView" customModule="MSDKUI">
+                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <gestureRecognizers/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" name="colorBackgroundLight"/>
+                        <constraints>
+                            <constraint firstItem="h0h-kw-tt4" firstAttribute="top" secondItem="5uk-KG-bX8" secondAttribute="top" constant="50" id="54A-sR-aRh"/>
+                            <constraint firstItem="h0h-kw-tt4" firstAttribute="leading" secondItem="5uk-KG-bX8" secondAttribute="leading" constant="50" id="azu-nW-fx8"/>
+                            <constraint firstItem="5uk-KG-bX8" firstAttribute="bottom" secondItem="h0h-kw-tt4" secondAttribute="bottom" constant="50" id="gcv-zG-0qB"/>
+                            <constraint firstItem="5uk-KG-bX8" firstAttribute="trailing" secondItem="h0h-kw-tt4" secondAttribute="trailing" constant="50" id="i19-Lq-j7k"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="5uk-KG-bX8"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Jmg-Oi-Cd3">
+                        <barButtonItem key="rightBarButtonItem" systemItem="edit" id="7eR-eS-bv4">
+                            <connections>
+                                <segue destination="GLi-ns-HdV" kind="show" id="t0s-xA-uls"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="maneuverView" destination="h0h-kw-tt4" id="jHH-BY-l8E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="URz-07-K7l" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2601" y="3854"/>
+        </scene>
+        <!--Maneuver Item Settings View Controller-->
+        <scene sceneID="td5-fH-ChJ">
+            <objects>
+                <tableViewController id="GLi-ns-HdV" customClass="ManeuverItemSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vQp-uB-e3j">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="separatorColor" name="colorHint"/>
+                        <connections>
+                            <outlet property="dataSource" destination="GLi-ns-HdV" id="I7h-I7-ghO"/>
+                            <outlet property="delegate" destination="GLi-ns-HdV" id="xGx-I5-s0T"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5R-wO-d8X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4038" y="3853"/>
+        </scene>
     </scenes>
     <resources>
         <namedColor name="colorAccentLight">
@@ -677,7 +772,8 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="os6-pf-Av8"/>
+        <segue reference="t0s-xA-uls"/>
+        <segue reference="yIW-oY-x8P"/>
         <segue reference="GdD-IV-DQl"/>
         <segue reference="HQb-XD-CFc"/>
         <segue reference="BrV-0B-MRf"/>
