@@ -1,7 +1,7 @@
 # What is the HERE Mobile SDK UI Kit?
 The HERE Mobile SDK UI Kit is a framework that provides modular and highly customizable user interface components that can be used on top of the HERE Mobile SDKs for iOS and Android ([Premium edition](https://developer.here.com/develop/mobile-sdks)).
 
-![](Documentation/Guides/Images/UIKit_Intro.png)
+![](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/Images/UIKit_Intro.png?raw=true)
 
 Rapidly build beautiful UIs for common use cases and scenarios within minutes. Version 2.x of the HERE Mobile SDK UI Kit will mainly focus on route planning, maneuver details and guidance. More components will follow subsequently with the next releases.
 
@@ -66,7 +66,7 @@ The HERE Mobile SDK UI Kit components are available for iOS and [Android](https:
 - Minimum deployment target is iOS 10.0.
 
 ## Quick Start
-Please have a look at our [Quick Start](Documentation/Guides/QuickStart.md) tutorial to see how easy it is to integrate the HERE Mobile SDK UI Kit into your own apps. More information on how to use the HERE Mobile SDK UI Kit can be found in our [User Guide](Documentation/Guides/UserGuide.md). Information on how to contribute to this project can be found in our [Contribution Guide](Documentation/Guides/ContributionGuide.md).
+Please have a look at our [Quick Start](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/QuickStart.md) tutorial to see how easy it is to integrate the HERE Mobile SDK UI Kit into your own apps. More information on how to use the HERE Mobile SDK UI Kit can be found in our [User Guide](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/UserGuide.md). Information on how to contribute to this project can be found in our [Contribution Guide](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/ContributionGuide.md).
 
 ## Documentation
 - The latest API Reference can be found [here](https://heremaps.github.io/msdkui-ios/).
@@ -80,4 +80,4 @@ We are happy to hear your feedback. Please [contact us](https://developer.here.c
 ## License
 Copyright (c) 2017-2018 HERE Europe B.V.
 
-See the [LICENSE](LICENSE) file in the root of this project for license details.
+See the [LICENSE](https://github.com/heremaps/msdkui-ios/blob/master/LICENSE) file in the root of this project for license details.
