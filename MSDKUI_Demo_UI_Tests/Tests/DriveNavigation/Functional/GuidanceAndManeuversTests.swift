@@ -202,7 +202,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
             // Wait for simulation to end
             DriveNavigationActions.waitForArrival()
-            
+
             // Verify that ETA checks were run during simulation
             GREYAssertTrue(DriveNavigationActions.etaCheckCounter >= 4,
                            reason: "ETA data checks must be run at least 4 times")
