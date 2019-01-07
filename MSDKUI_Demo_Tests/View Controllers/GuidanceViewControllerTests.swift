@@ -96,6 +96,9 @@ final class GuidanceViewControllerTests: XCTestCase {
     func testNextManeuverView() throws {
         XCTAssertNotNil(viewControllerUnderTest?.nextManeuverView, "It has the next maneuver view")
         XCTAssertTrue(try require(viewControllerUnderTest?.nextManeuverView.isHidden), "It has the next maneuver view hidden by default")
+        XCTAssertEqual(try require(viewControllerUnderTest?.nextManeuverView.layoutMargins),
+                       UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20),
+                       "It has the next maneuver view layout margins correctly set")
     }
 
     /// Checks if the Speed View exists and is configured.
