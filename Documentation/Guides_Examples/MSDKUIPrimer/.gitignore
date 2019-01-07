@@ -18,12 +18,10 @@ profile
 DerivedData
 *.hmap
 *.ipa
-*.lock
-Pods/
 *.xcworkspace
+
+# CocoaPods
+Pods/
 
 # Bundler
 .bundle
-
-# UIKit
-MSDKUI.framework/
