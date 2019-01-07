@@ -127,6 +127,8 @@ import UIKit
 
     /// Sets up the view.
     private func setUpView() {
+        layoutMargins = .zero
+
         loadFromNib()
         setUpLabels()
         setUpViewAccessibility()
