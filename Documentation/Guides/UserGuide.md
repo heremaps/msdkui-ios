@@ -4,8 +4,6 @@ Are you looking for a framework that let's you build feature-rich and compelling
 This user guide describes the general workflow using the HERE Mobile SDK UI Kit and its components in detail. If you are looking for a quick overview, please look at our [README](../../README.md), our [Quick Start](QuickStart.md) guide or the latest _Release Notes_.
 
 ## Contents
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [Why use HERE Mobile SDK UI Kit?](#why-use-here-mobile-sdk-ui-kit)
 - [Where to start?](#where-to-start)
 - [How to read this guide?](#how-to-read-this-guide)
@@ -24,8 +22,6 @@ This user guide describes the general workflow using the HERE Mobile SDK UI Kit 
 - [Using GuidanceManeuverView](#using-guidancemaneuverview)
 - [How to localize your app?](#how-to-localize-your-app)
 - [Where to go from here?](#where-to-go-from-here)
-
-<!-- /TOC -->
 
 ## Why use HERE Mobile SDK UI Kit?
 The HERE Mobile SDK UI Kit provides highly flexible and customizable User Interface building blocks that can be freely combined and arranged with your own UI components - with just a few lines of code.
