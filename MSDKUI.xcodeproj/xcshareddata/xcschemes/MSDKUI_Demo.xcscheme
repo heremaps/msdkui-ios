@@ -54,7 +54,7 @@
          </BuildableReference>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "FB949059578F017F6B3D5D759CE78581"
+            BlueprintIdentifier = "175E164643C1193E14C187766B6E7F94"
             BuildableName = "MSDKUI.framework"
             BlueprintName = "HEREMapsUI"
             ReferencedContainer = "container:Pods/Pods.xcodeproj">
