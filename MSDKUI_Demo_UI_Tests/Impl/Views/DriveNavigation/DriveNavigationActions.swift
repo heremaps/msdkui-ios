@@ -38,7 +38,7 @@ enum DriveNavigationActions {
     }
 
     // MARK: - Properties
-    
+
     /// Counter for verifying ETA check in MSDKUI-1477.
     static var etaCheckCounter = 0
 
