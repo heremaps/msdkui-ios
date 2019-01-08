@@ -85,6 +85,7 @@ extension LocationBasedViewController where Self: UIViewController {
         switch locationAuthorizationStatusProvider() {
         case .authorizedAlways, .authorizedWhenInUse:
             locationAuthorizationGrantedAction()
+
         default:
             locationAuthorizationDeniedAction()
         }

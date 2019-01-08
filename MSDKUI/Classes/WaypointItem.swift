@@ -96,8 +96,10 @@ protocol WaypointItemDelegate: AnyObject {
             switch type {
             case .startPoint:
                 return String(format: "msdkui_rp_from".localized, entry.name)
+
             case .endPoint:
                 return String(format: "msdkui_rp_to".localized, entry.name)
+
             case .waypoint:
                 return entry.name
             }

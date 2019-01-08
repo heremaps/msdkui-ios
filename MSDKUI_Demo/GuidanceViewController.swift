@@ -394,6 +394,7 @@ final class GuidanceViewController: UIViewController {
         switch traitCollection.verticalSizeClass {
         case .compact:
             currentSpeedView.isHidden = false
+
         default:
             currentSpeedView.isHidden = true
         }

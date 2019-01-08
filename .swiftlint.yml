@@ -71,6 +71,9 @@ opt_in_rules:
   # Discouraged explicit usage of the default separator.
   - joined_default_parameter
 
+  # Prefer using `.last(where:)` over `.filter { }.last` in collections.
+  - last_where
+
   # Prefer using `type.random(in:)` over legacy functions.
   - legacy_random
 
@@ -137,11 +140,23 @@ opt_in_rules:
   # Parentheses are not needed when declaring closure arguments.
   - unneeded_parentheses_in_closure_argument
 
+  # Unused control flow label should be removed.
+  - unused_control_flow_label
+
   # Function parameters should be aligned vertically if they're in multiple lines in a method call.
   - vertical_parameter_alignment_on_call
 
+  # Include a single empty line between switch cases.
+  - vertical_whitespace_between_cases
+
+  # Don't include vertical whitespace (empty line) before closing braces.
+  - vertical_whitespace_closing_braces
+
   # An XCTFail call should include a description of the assertion.
   - xctfail_message
+
+  # Prefer specific XCTest matchers over `XCTAssertEqual` and `XCTAssertNotEqual`.
+  - xct_specific_matcher
 
   # The variable should be placed on the left, the constant on the right of a comparison operator.
   - yoda_condition
