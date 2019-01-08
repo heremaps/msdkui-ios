@@ -102,17 +102,21 @@ import UIKit
         super.drawText(in: rect.inset(by: contentInsets))
     }
 
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+
+        applyRoundedCorners()
+    }
+
     // MARK: - Private
 
     /// Initializes the contents of this view.
     private func setUp() {
         // Style
         font = .preferredFont(forTextStyle: .subheadline)
-        clipsToBounds = true
         textAlignment = .center
         numberOfLines = 1
         textColor = .colorForegroundLight
-        layer.cornerRadius = 16
 
         // Background color
         updateBackgroundColor()
@@ -135,5 +139,12 @@ import UIKit
 
     private func updateBackgroundColor() {
         backgroundColor = isAccented ? accentBackgroundColor : plainBackgroundColor
+    }
+
+    private func applyRoundedCorners() {
+        let mask = CAShapeLayer()
+        mask.frame = bounds
+        mask.path = UIBezierPath(roundedRect: bounds, cornerRadius: bounds.height / 2).cgPath
+        layer.mask = mask
     }
 }
