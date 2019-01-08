@@ -30,6 +30,11 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
         XCTAssertNotNil(nextManeuverView, "It exists")
     }
 
+    /// Tests if the view has correct layout margins set.
+    func testLayoutMargins() {
+        XCTAssertEqual(nextManeuverView.layoutMargins, UIEdgeInsets.zero, "It has correct layout margins")
+    }
+
     /// Tests if the view has the distance label with empty content by default.
     func testHasDistanceLabel() {
         XCTAssertNotNil(nextManeuverView.distanceLabel, "It has the distance label")
