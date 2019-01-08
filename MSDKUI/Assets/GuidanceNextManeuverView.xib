@@ -13,6 +13,7 @@
             <connections>
                 <outlet property="distanceLabel" destination="sCU-qM-EZl" id="yY3-K1-Hr1"/>
                 <outlet property="maneuverImageView" destination="p0e-Lb-zDt" id="hXK-iT-eFc"/>
+                <outlet property="maneuverImageViewContainer" destination="TUk-YB-RZY" id="Hwe-d0-9Cp"/>
                 <outlet property="separatorLabel" destination="Al9-lS-4w7" id="wib-7r-khE"/>
                 <outlet property="streetNameLabel" destination="1fM-b3-8Pq" id="2Oi-8G-jCV"/>
             </connections>

@@ -54,6 +54,9 @@ import UIKit
 
     // MARK: - Properties
 
+    /// Container view of the next maneuver icon.
+    @IBOutlet private(set) weak var maneuverImageViewContainer: UIView!
+
     /// Image view for the icon of the next manuever.
     @IBOutlet private(set) weak var maneuverImageView: UIImageView!
 
@@ -103,10 +106,18 @@ import UIKit
     ///
     /// - Parameter model: The model used to configure the view.
     public func configure(with model: ViewModel) {
-        maneuverImageView.image = model.maneuverIcon
         maneuverImageView.tintColor = foregroundColor
         distanceLabel.text = model.distanceFormatter.string(from: model.distance)
         distanceLabel.sizeToFit()
+
+        // When icon is nil, it should be removed (not visible, giving space to the rest of the views)
+        if let icon = model.maneuverIcon {
+            maneuverImageViewContainer.isHidden = false
+            maneuverImageView.image = icon
+        } else {
+            maneuverImageViewContainer.isHidden = true
+            maneuverImageView.image = nil
+        }
 
         // When ViewModel.streetName is nil, the dot & street name label's should be hidden
         if let streetName = model.streetName {
