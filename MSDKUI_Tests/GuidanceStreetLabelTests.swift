@@ -146,7 +146,7 @@ final class GuidanceStreetLabelTests: XCTestCase {
         XCTAssertEqual(labelUnderTest.backgroundColor, .colorPositive, "It has correct background color")
         XCTAssertEqual(labelUnderTest.font, .preferredFont(forTextStyle: .subheadline), "It has correct font")
         XCTAssertEqual(labelUnderTest.textColor, .colorForegroundLight, "It has correct text color")
-        XCTAssertEqual(labelUnderTest.layer.cornerRadius, 16, "It has correct rounded corners radius")
+        XCTAssertEqual(labelUnderTest.layer.cornerRadius, labelUnderTest.bounds.height / 2, "It has correct rounded corners radius")
         XCTAssertTrue(labelUnderTest.clipsToBounds, "It has rounded corners")
         XCTAssertEqual(labelUnderTest.textAlignment, .center, "It has correct text alignment")
         XCTAssertEqual(labelUnderTest.numberOfLines, 1, "It has correct text alignment")
