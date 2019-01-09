@@ -132,6 +132,7 @@ enum DriveNavigationActions {
         switch gesture {
         case .tap:
             CoreActions.tap(element: WaypointMatchers.waypointMapView, point: screenPoint)
+
         case .longPress:
             CoreActions.longPress(element: WaypointMatchers.waypointMapView, point: screenPoint)
         }

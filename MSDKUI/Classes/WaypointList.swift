@@ -619,8 +619,10 @@ extension WaypointList: UITableViewDataSource {
         switch indexPath.row {
         case 0:
             view.type = .startPoint
+
         case entryCount - 1:
             view.type = .endPoint
+
         default:
             view.type = .waypoint
         }

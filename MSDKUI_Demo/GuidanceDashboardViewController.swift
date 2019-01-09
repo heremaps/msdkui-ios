@@ -113,6 +113,7 @@ final class GuidanceDashboardViewController: UIViewController {
         switch traitCollection.verticalSizeClass {
         case .compact:
             estimatedArrivalView.textAlignment = .left
+
         default:
             estimatedArrivalView.textAlignment = .center
         }

@@ -56,10 +56,10 @@ final class ExtensionNMAMapViewTests: XCTestCase {
         try setUpDefaultMapBoundingBox()
 
         // Triggers the method with desired direction
-        let didScroll = mapViewUnderTest?.accessibilityScroll(.up)
+        let didScroll = try require(mapViewUnderTest?.accessibilityScroll(.up))
 
         // Tests if map view did scroll
-        XCTAssertEqual(didScroll, true, "It scrolls the map view")
+        XCTAssertTrue(didScroll, "It scrolls the map view")
 
         // Tests the new bouding box
         XCTAssertEqual(try require(mapViewUnderTest?.lastBoundingBox?.center?.latitude), 0.5, accuracy: 0.1, "It scrolls the map view")
@@ -74,9 +74,9 @@ final class ExtensionNMAMapViewTests: XCTestCase {
         try setUpDefaultMapBoundingBox()
 
         // Triggers the method with desired direction
-        let didScroll = mapViewUnderTest?.accessibilityScroll(.down)
+        let didScroll = try require(mapViewUnderTest?.accessibilityScroll(.down))
 
-        XCTAssertEqual(didScroll, true, "It scrolls the map view")
+        XCTAssertTrue(didScroll, "It scrolls the map view")
 
         // New bounding box
         XCTAssertEqual(try require(mapViewUnderTest?.lastBoundingBox?.center?.latitude), -0.5, accuracy: 0.1, "It scrolls the map view")
@@ -91,10 +91,10 @@ final class ExtensionNMAMapViewTests: XCTestCase {
         try setUpDefaultMapBoundingBox()
 
         // Triggers the method with desired direction
-        let didScroll = mapViewUnderTest?.accessibilityScroll(.left)
+        let didScroll = try require(mapViewUnderTest?.accessibilityScroll(.left))
 
         // Tests if map view did scroll
-        XCTAssertEqual(didScroll, true, "It scrolls the map view")
+        XCTAssertTrue(didScroll, "It scrolls the map view")
 
         // Tests the new bouding box
         XCTAssertEqual(try require(mapViewUnderTest?.lastBoundingBox?.center?.latitude), 0.0, accuracy: 0.1, "It keeps the same latitude")
@@ -109,10 +109,10 @@ final class ExtensionNMAMapViewTests: XCTestCase {
         try setUpDefaultMapBoundingBox()
 
         // Triggers the method with desired direction
-        let didScroll = mapViewUnderTest?.accessibilityScroll(.right)
+        let didScroll = try require(mapViewUnderTest?.accessibilityScroll(.right))
 
         // Tests if map view did scroll
-        XCTAssertEqual(didScroll, true, "It scrolls the map view")
+        XCTAssertTrue(didScroll, "It scrolls the map view")
 
         // Tests the new bouding box
         XCTAssertEqual(try require(mapViewUnderTest?.lastBoundingBox?.center?.latitude), 0.0, accuracy: 0.1, "It keeps the same latitude")
@@ -127,10 +127,10 @@ final class ExtensionNMAMapViewTests: XCTestCase {
         try setUpDefaultMapBoundingBox()
 
         // Triggers the method with desired direction
-        let didScroll = mapViewUnderTest?.accessibilityScroll(.next)
+        let didScroll = try require(mapViewUnderTest?.accessibilityScroll(.next))
 
         // Tests if map view did not scroll: not supported
-        XCTAssertEqual(didScroll, false, "It doesn't scroll the map view")
+        XCTAssertFalse(didScroll, "It doesn't scroll the map view")
     }
 
     /// Tests the accessibility scroll when user scrolls to the previous view.
@@ -138,10 +138,10 @@ final class ExtensionNMAMapViewTests: XCTestCase {
         try setUpDefaultMapBoundingBox()
 
         // Triggers the method with desired direction
-        let didScroll = mapViewUnderTest?.accessibilityScroll(.previous)
+        let didScroll = try require(mapViewUnderTest?.accessibilityScroll(.previous))
 
         // Tests if map view did not scroll: not supported
-        XCTAssertEqual(didScroll, false, "It doesn't scroll the map view")
+        XCTAssertFalse(didScroll, "It doesn't scroll the map view")
     }
 
     /// Tests `currentPositionIndicatorMarker` when there is no `positionIndicator.displayObject`.

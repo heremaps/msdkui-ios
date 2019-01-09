@@ -58,6 +58,7 @@ class WaypointViewController: UIViewController {
             switch locationState {
             case .available:
                 displayInfo()
+
             case .searching:
                 displaySearchingLocation()
             }

@@ -30,6 +30,7 @@ final class GuidanceDashboardTableViewDataSource: NSObject {
             switch self {
             case .about:
                 return "msdkui_app_about".localized
+
             case .settings:
                 return "msdkui_app_settings".localized
             }
@@ -39,6 +40,7 @@ final class GuidanceDashboardTableViewDataSource: NSObject {
             switch self {
             case .about:
                 return UIImage(named: "Info")
+
             case .settings:
                 return UIImage(named: "IconButton.options")
             }

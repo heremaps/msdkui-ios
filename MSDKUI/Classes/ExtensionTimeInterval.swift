@@ -42,14 +42,19 @@ extension TimeInterval {
         switch (days, hours, minutes, seconds) {
         case let (day, hour, _, _) where day > 0 && hour > 0:
             return String(format: "msdkui_days_hours".localized, Int(day), Int(hour))
+
         case let (day, _, _, _) where day > 0:
             return String(format: "msdkui_days".localized, Int(day))
+
         case let (_, hour, minute, _) where hour > 0 && minute > 0:
             return String(format: "msdkui_hours_minutes".localized, Int(hour), Int(minute))
+
         case let (_, hour, _, _) where hour > 0:
             return String(format: "msdkui_hours".localized, Int(hour))
+
         case let (_, _, minute, _) where minute > 0:
             return String(format: "msdkui_minutes".localized, Int(minute))
+
         default:
             return String(format: "msdkui_seconds".localized, Int(seconds))
         }

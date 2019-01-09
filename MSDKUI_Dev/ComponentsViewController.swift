@@ -66,8 +66,10 @@ final class ComponentsViewController: UIViewController {
         switch sender.selectedSegmentIndex {
         case 1:
             dataSource?.components = allComponents.filter { $0.presentationType == .intrinsic }
+
         case 2:
             dataSource?.components = allComponents.filter { $0.presentationType == .constrained }
+
         default:
             dataSource?.components = allComponents
         }

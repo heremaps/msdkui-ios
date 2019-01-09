@@ -173,7 +173,6 @@ enum Utils {
                 }
                 return labelText.contains(text)
             }
-
         }, descriptionBlock: { _ = $0.appendText("optionSwitchWithLabelContainText(\"\(text)\")") })
     }
 }

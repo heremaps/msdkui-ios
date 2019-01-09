@@ -283,7 +283,7 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
     }
 
     /// Tests when the method `.navigationManager(_:didUpdateSpeedingStatus:forCurrentSpeed:speedLimit:)` is triggered.
-    func testWhenNavigationManagerDidUpdateSpeedingStatusForCurrentSpeedSpeedLimitIsTriggered() {
+    func testWhenNavigationManagerDidUpdateSpeedingStatusForCurrentSpeedSpeedLimitIsTriggered() throws {
         let mockDelegateA = NMANavigationManagerDelegateMock()
         let mockDelegateB = NMANavigationManagerDelegateMock()
 
@@ -297,8 +297,8 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
                       "It calls the delegate method with the correct navigation manager.")
 
-        XCTAssertEqual(mockDelegateA.lastSpeedingStatus, true,
-                       "It calls the delegate method with the correct speeding status.")
+        XCTAssertTrue(try require(mockDelegateA.lastSpeedingStatus),
+                      "It calls the delegate method with the correct speeding status.")
 
         XCTAssertEqual(mockDelegateA.lastSpeed, 42.0,
                        "It calls the delegate method with the correct speed.")
@@ -309,8 +309,8 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
                       "It calls the delegate method with the correct navigation manager.")
 
-        XCTAssertEqual(mockDelegateB.lastSpeedingStatus, true,
-                       "It calls the delegate method with the correct speeding status.")
+        XCTAssertTrue(try require(mockDelegateB.lastSpeedingStatus),
+                      "It calls the delegate method with the correct speeding status.")
 
         XCTAssertEqual(mockDelegateB.lastSpeed, 42.0,
                        "It calls the delegate method with the correct speed.")
