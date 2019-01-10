@@ -62,7 +62,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
     // MARK: - Configure
 
-    /// Tests if the subview vsibilities are correct when model is populated with a complete model.
+    /// Tests if the subview visibilities are correct when model is populated with a complete model.
     func testSubviewVisibilitiesWhenModelIsComplete() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
         let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
@@ -71,13 +71,14 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
         nextManeuverView.configure(with: viewModel)
 
+        XCTAssertFalse(nextManeuverView.maneuverImageViewContainer.isHidden, "The container of maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertFalse(nextManeuverView.separatorLabel.isHidden, "The separator label is visible")
         XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
     }
 
-    /// Tests if the subview vsibilities are correct when model is populated with an incomplete model.
+    /// Tests if the subview visibilities are correct when model is populated with an incomplete model.
     func testSubviewVisibilitiesWhenModelIsIncomplete() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
         let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
@@ -86,10 +87,27 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
         nextManeuverView.configure(with: viewModel)
 
+        XCTAssertFalse(nextManeuverView.maneuverImageViewContainer.isHidden, "The container of maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertTrue(nextManeuverView.separatorLabel.isHidden, "The separator label is hidden")
         XCTAssertTrue(nextManeuverView.streetNameLabel.isHidden, "The street name label is hidden")
+    }
+
+    /// Tests if container image view is hidden when model is populated without icon view.
+    func testIconVisibilityWhenNotAvailable() {
+        let distance = Measurement<UnitLength>(value: 100, unit: .meters)
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: nil,
+                                                           distance: distance,
+                                                           streetName: "Invalidenstr.")
+
+        nextManeuverView.configure(with: viewModel)
+
+        XCTAssertTrue(nextManeuverView.maneuverImageViewContainer.isHidden, "The container of maneuver icon is hidden")
+        XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
+        XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
+        XCTAssertFalse(nextManeuverView.separatorLabel.isHidden, "The separator label is visible")
+        XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
     }
 
     // MARK: - Accessibility
