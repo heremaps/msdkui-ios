@@ -386,13 +386,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         dispatcherUnderTest.add(delegate: mockDelegateB)
 
         // Triggers the method
-        dispatcherUnderTest.navigationManagerDidReroute(.sharedInstance())
+        dispatcherUnderTest.navigationManager(.sharedInstance(), didRerouteWithError: .unknown)
 
         XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
                       "It calls the delegate method with the correct navigation manager.")
+        XCTAssertEqual(mockDelegateA.lastError, .unknown, "It calls the delegate method with the correct error.")
 
         XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
                       "It calls the delegate method with the correct navigation manager.")
+        XCTAssertEqual(mockDelegateB.lastError, .unknown, "It calls the delegate method with the correct error.")
     }
 
     /// Tests when the method `.navigationManager(_:didChangeRoutingState:)` is triggered.
