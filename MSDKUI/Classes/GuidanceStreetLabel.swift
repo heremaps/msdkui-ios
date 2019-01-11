@@ -102,6 +102,12 @@ import UIKit
         super.drawText(in: rect.inset(by: contentInsets))
     }
 
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+
+        applyRoundedCorners()
+    }
+
     // MARK: - Private
 
     /// Initializes the contents of this view.
@@ -112,7 +118,7 @@ import UIKit
         textAlignment = .center
         numberOfLines = 1
         textColor = .colorForegroundLight
-        layer.cornerRadius = 16
+        applyRoundedCorners()
 
         // Background color
         updateBackgroundColor()
@@ -135,5 +141,9 @@ import UIKit
 
     private func updateBackgroundColor() {
         backgroundColor = isAccented ? accentBackgroundColor : plainBackgroundColor
+    }
+
+    private func applyRoundedCorners() {
+        layer.cornerRadius = bounds.height / 2
     }
 }
