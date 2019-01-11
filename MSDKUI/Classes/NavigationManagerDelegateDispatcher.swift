@@ -201,9 +201,9 @@ extension NavigationManagerDelegateDispatcher: NMANavigationManagerDelegate {
         updateNavigationManagerDelegate()
     }
 
-    public func navigationManagerDidReroute(_ navigationManager: NMANavigationManager) {
+    public func navigationManager(_ navigationManager: NMANavigationManager, didRerouteWithError error: NMARoutingError) {
         delegates.invoke {
-            $0.navigationManagerDidReroute?(navigationManager)
+            $0.navigationManager?(navigationManager, didRerouteWithError: error)
         }
 
         updateNavigationManagerDelegate()

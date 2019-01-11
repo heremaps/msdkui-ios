@@ -24,6 +24,7 @@ final class NMANavigationManagerDelegateMock: NSObject {
     // Properties used for verifying expectations.
     private(set) var lastNavigationManager: NMANavigationManager?
     private(set) var lastCurrentManeuver: NMAManeuver?
+    private(set) var lastError: NMARoutingError?
     private(set) var lastNextManeuver: NMAManeuver?
     private(set) var lastStopOver: NMAWaypoint?
     private(set) var lastRouteResult: NMARouteResult?
@@ -121,8 +122,9 @@ extension NMANavigationManagerDelegateMock: NMANavigationManagerDelegate {
         lastNavigationManager = navigationManager
     }
 
-    public func navigationManagerDidReroute(_ navigationManager: NMANavigationManager) {
+    public func navigationManager(_ navigationManager: NMANavigationManager, didRerouteWithError error: NMARoutingError) {
         lastNavigationManager = navigationManager
+        lastError = error
     }
 
     public func navigationManager(_ navigationManager: NMANavigationManager, didFindAlternateRoute routeResult: NMARouteResult) {
