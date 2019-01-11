@@ -133,6 +133,12 @@ struct RouteDescriptionItemHandler {
         return MeasurementFormatter.currentMediumUnitFormatter.string(from: distance)
     }
 
+    /// Length of the route using current locale, natural scale and long style.
+    var longFormatLength: String {
+        let distance = Measurement(value: Double(route.length), unit: UnitLength.meters)
+        return MeasurementFormatter.currentLongUnitFormatter.string(from: distance)
+    }
+
     /// The route object which provides the main data.
     private let route: NMARoute
 

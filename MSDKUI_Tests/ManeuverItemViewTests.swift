@@ -87,11 +87,13 @@ final class ManeuverItemViewTests: XCTestCase {
         let item = try require(itemView)
         let expectedDistance = Measurement(value: 200, unit: UnitLength.meters)
         let expectedFormattedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: expectedDistance)
+        let expectedLongFormattedDistance = MeasurementFormatter.currentLongUnitFormatter.string(from: expectedDistance)
 
         XCTAssertLocalized(item.instructionLabel.text, key: "msdkui_maneuver_enter_highway", bundle: .MSDKUI,
                            "item is displaying wrong instruction")
 
         XCTAssertEqual(item.distanceLabel.text, expectedFormattedDistance, "Maneuver should display distance 200 m")
+        XCTAssertEqual(item.distanceLabel.accessibilityLabel, expectedLongFormattedDistance, "Maneuver should read distance 200 meters")
     }
 
     /// Tests `String` to `Section` and `Section` to `String` conversion.

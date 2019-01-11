@@ -234,7 +234,12 @@ import NMAKit
     ///   - maneuvers: All `NMAManeuver` elements of route.
     ///   - index: The index to get the maneuver from the given array.
     ///   - measurementFormatter: The measurement formatter used to format the distance.
-    public func setManeuver(maneuvers: [NMAManeuver], index: Int, measurementFormatter: MeasurementFormatter = .currentMediumUnitFormatter) {
+    ///   - accessibilityMeasurementFormatter: The measurement formatter used to format
+    ///     the distance for accessibility VoiceOver.
+    public func setManeuver(maneuvers: [NMAManeuver],
+                            index: Int,
+                            measurementFormatter: MeasurementFormatter = .currentMediumUnitFormatter,
+                            accessibilityMeasurementFormatter: MeasurementFormatter = .currentLongUnitFormatter) {
         setUpStyle()
 
         maneuver = maneuvers.indices.contains(index) ? maneuvers[index] : nil
@@ -259,6 +264,7 @@ import NMAKit
         } else {
             let distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
             distanceLabel.text = measurementFormatter.string(from: distance)
+            distanceLabel.accessibilityLabel = accessibilityMeasurementFormatter.string(from: distance)
         }
 
         if let iconFileName = maneuverResources.getIconFileName(for: index) {
