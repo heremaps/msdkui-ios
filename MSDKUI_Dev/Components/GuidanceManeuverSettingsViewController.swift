@@ -20,7 +20,7 @@ import UIKit
 final class GuidanceManeuverSettingsViewController: SettingsViewController<GuidanceManeuverSettingsViewController.Settings> {
 
     struct Settings {
-        var data: GuidanceManeuverData?
+        var state: GuidanceManeuverView.State
         var foregroundColor: UIColor
     }
 
@@ -28,22 +28,24 @@ final class GuidanceManeuverSettingsViewController: SettingsViewController<Guida
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "With all data properties",
-                         configuration: Settings(data: .allProperties, foregroundColor: .colorForegroundLight)),
-            SettingsItem(title: "Without maneuver icon",
-                         configuration: Settings(data: .withoutManeuverIcon, foregroundColor: .colorForegroundLight)),
-            SettingsItem(title: "Without distance",
-                         configuration: Settings(data: .withoutDistance, foregroundColor: .colorForegroundLight)),
-            SettingsItem(title: "Without info1",
-                         configuration: Settings(data: .withoutInfo1, foregroundColor: .colorForegroundLight)),
-            SettingsItem(title: "Without into2",
-                         configuration: Settings(data: .withoutInfo2, foregroundColor: .colorForegroundLight)),
-            SettingsItem(title: "Without road icon",
-                         configuration: Settings(data: .withoutRoadIcon, foregroundColor: .colorForegroundLight)),
-            SettingsItem(title: "All properties, red",
-                         configuration: Settings(data: .allProperties, foregroundColor: .red)),
-            SettingsItem(title: "Without data (requires data set first to work)",
-                         configuration: Settings(data: nil, foregroundColor: .colorForegroundLight))
+            SettingsItem(title: ".data, with all data properties",
+                         configuration: Settings(state: .data(.allProperties), foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".data, without maneuver icon",
+                         configuration: Settings(state: .data(.withoutManeuverIcon), foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".data, without distance",
+                         configuration: Settings(state: .data(.withoutDistance), foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".data, without info1",
+                         configuration: Settings(state: .data(.withoutInfo1), foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".data, without into2",
+                         configuration: Settings(state: .data(.withoutInfo2), foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".data, without road icon",
+                         configuration: Settings(state: .data(.withoutRoadIcon), foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".data, all properties, red",
+                         configuration: Settings(state: .data(.allProperties), foregroundColor: .red)),
+            SettingsItem(title: ".noData",
+                         configuration: Settings(state: .noData, foregroundColor: .colorForegroundLight)),
+            SettingsItem(title: ".updating",
+                         configuration: Settings(state: .updating, foregroundColor: .colorForegroundLight))
         ]
     }
 }

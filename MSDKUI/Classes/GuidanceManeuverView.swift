@@ -26,7 +26,18 @@ import NMAKit
 
     // MARK: - Types
 
-    /// All the suported orientations.
+    /// All the supported guidance maneuver view states.
+    ///
+    /// - noData: State where the view does not have maneuver data (e.g. initial state).
+    /// - updating: State where the view awaits maneuver data.
+    /// - data: State where the view contains maneuver data.
+    public enum State: Equatable {
+        case noData
+        case updating
+        case data(_ data: GuidanceManeuverData)
+    }
+
+    /// All the supported orientations.
     enum Orientation: Int {
         case portrait
         case landscape
@@ -96,20 +107,32 @@ import NMAKit
         }
     }
 
-    /// The data used by the view.
-    public var data: GuidanceManeuverData? {
+    /// The view state.
+    public var state: State = .noData {
         didSet {
-            // Refresh only when old or new value are not nil
-            // This will keep initial state when needed, also skip unnecessary updates
-            if oldValue != nil || data != nil {
-                // Reflect the new data
-                refreshView()
+            switch state {
+            case .noData:
+                displayNoData()
+
+            case .updating:
+                displayBusyState()
+
+            case .data(let maneuverData):
+                displayData(data: maneuverData)
             }
         }
     }
 
+    /// The distance measurement formatter. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
     public var distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
-        didSet { refreshView() }
+        didSet {
+            // There's no need to refresh the distance label, unless there's maneuver data.
+            guard case let .data(maneuverData) = state else {
+                return
+            }
+
+            displayData(data: maneuverData)
+        }
     }
 
     /// Sets the view's foreground color, i.e. the color for the icons, text and busy indicators.
@@ -220,7 +243,9 @@ import NMAKit
 
         // Finally
         updateStyle()
-        displayNoData()
+
+        // Sets the initial state.
+        state = .noData
     }
 
     /// Updates the style for the visuals.
@@ -326,15 +351,6 @@ import NMAKit
         // Height constraint = intrinsic content height - (top + bottom paddings)
         heightConstraints[Orientation.landscape.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
         heightConstraints[Orientation.landscape.rawValue].isActive = true
-    }
-
-    /// This method refreshes the view with the new data set.
-    private func refreshView() {
-        if let data = data {
-            displayData(data: data)
-        } else {
-            displayBusyState()
-        }
     }
 
     private func displayData(data: GuidanceManeuverData) {

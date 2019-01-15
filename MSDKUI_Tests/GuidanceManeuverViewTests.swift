@@ -35,29 +35,17 @@ final class GuidanceManeuverViewTests: XCTestCase {
     // MARK: - Tests
 
     /// Tests the initial state of Data and NoData Containers after the view initialization.
-    func testContainersInitialState() {
-        // Check initial state
-        checkInitialState()
+    func testInitialState() {
+        XCTAssertEqual(view.state, .noData, "It has the correct initial state")
 
-        // Set nil data
-        view.data = nil
-
-        // View should stay at initial state
-        checkInitialState()
-    }
-
-    /// Tests the state of Data and NoData Containers after data is set.
-    func testContainersStateWithDataSet() {
-        // Sets the view data
-        view.data = GuidanceManeuverData(maneuverIcon: UIImage(),
-                                         distance: Measurement(value: 30, unit: UnitLength.meters),
-                                         info1: "Exit 30",
-                                         info2: "Invalidenstr.",
-                                         nextRoadIcon: mockNextRoadIcon)
-
-        // Has data containers visible
+        // Has the data containers hidden by default (when data isn't yet set)
         view.dataContainers.forEach {
-            XCTAssertFalse($0.isHidden, "Data Container is visible")
+            XCTAssertTrue($0.isHidden, "Data Container is hidden")
+        }
+
+        // Has the NoData containers visible by default (when data isn't yet set)
+        view.noDataContainers.forEach {
+            XCTAssertFalse($0.isHidden, "NoData Container is visible")
         }
 
         // Has busy indicators hidden
@@ -66,38 +54,16 @@ final class GuidanceManeuverViewTests: XCTestCase {
             XCTAssertFalse($0.isAnimating, "Busy indicator is not animating")
         }
 
-        // Has NoData containers hidden
-        view.noDataContainers.forEach {
-            XCTAssertTrue($0.isHidden, "NoData Container is hidden")
-        }
-
-        // Reset data to nil to check busy state
-        view.data = nil
-
-        // Has data containers hidden
-        view.dataContainers.forEach {
-            XCTAssertTrue($0.isHidden, "Data Container is visible")
-        }
-
-        // Has busy indicators visible and animating
-        view.busyIndicators.forEach {
-            XCTAssertFalse($0.isHidden, "Busy indicator is hidden")
-            XCTAssertTrue($0.isAnimating, "Busy indicator is not animating")
-        }
-
-        // Has NoData icons hidden
-        view.noDataImageViews.forEach {
-            XCTAssertTrue($0.isHidden, "NoData icons is hidden")
-        }
-
-        // Has NoData labels visible and with correct text
+        // Shows the correct message about missing maneuver information
         view.noDataLabels.forEach {
-            XCTAssertFalse($0.isHidden, "NoData labels is visible")
+            XCTAssertNotEqual($0.text,
+                              "msdkui_maneuverpanel_nodata",
+                              "The string is localized")
 
             XCTAssertLocalized($0.text,
-                               key: "msdkui_maneuverpanel_updating",
+                               key: "msdkui_maneuverpanel_nodata",
                                bundle: .MSDKUI,
-                               "It shows the correct string for busy state")
+                               "Shows the correct string when there's no maneuver data")
         }
     }
 
@@ -115,7 +81,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
                                         nextRoadIcon: mockNextRoadIcon)
 
         // Pass the data to the view
-        view.data = data
+        view.state = .data(data)
 
         // Is the view height unchanged?
         XCTAssertEqual(view.intrinsicContentSize.height, 139.0, "The view height with Info1 is wrong!")
@@ -139,7 +105,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
                                         nextRoadIcon: mockNextRoadIcon)
 
         // Pass the data to the view
-        view.data = data
+        view.state = .data(data)
 
         // Is the view height smaller now?
         XCTAssertLessThan(view.intrinsicContentSize.height, 139.0, "The view height without Info1 is wrong!")
@@ -215,9 +181,66 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     // MARK: - Guidance Maneuver Data
 
+    /// Tests the behavior when maneuver data is set.
+    func testWhenManeuverDataIsSet() {
+        // Sets the view data
+        view.state = .data(GuidanceManeuverData(maneuverIcon: UIImage(),
+                                                distance: Measurement(value: 30, unit: UnitLength.meters),
+                                                info1: "Exit 30",
+                                                info2: "Invalidenstr.",
+                                                nextRoadIcon: mockNextRoadIcon))
+
+        // Has data containers visible
+        view.dataContainers.forEach {
+            XCTAssertFalse($0.isHidden, "Data Container is visible")
+        }
+
+        // Has busy indicators hidden
+        view.busyIndicators.forEach {
+            XCTAssertTrue($0.isHidden, "Busy indicator is hidden")
+            XCTAssertFalse($0.isAnimating, "Busy indicator is not animating")
+        }
+
+        // Has NoData containers hidden
+        view.noDataContainers.forEach {
+            XCTAssertTrue($0.isHidden, "NoData Container is hidden")
+        }
+    }
+
+    /// Tests the behavior when state is .updating
+    func testWhenStateIsUpdating() {
+        view.state = .updating
+
+        // Has data containers hidden
+        view.dataContainers.forEach {
+            XCTAssertTrue($0.isHidden, "Data Container is visible")
+        }
+
+        // Has busy indicators visible and animating
+        view.busyIndicators.forEach {
+            XCTAssertFalse($0.isHidden, "Busy indicator is hidden")
+            XCTAssertTrue($0.isAnimating, "Busy indicator is not animating")
+        }
+
+        // Has NoData icons hidden
+        view.noDataImageViews.forEach {
+            XCTAssertTrue($0.isHidden, "NoData icons is hidden")
+        }
+
+        // Has NoData labels visible and with correct text
+        view.noDataLabels.forEach {
+            XCTAssertFalse($0.isHidden, "NoData labels is visible")
+
+            XCTAssertLocalized($0.text,
+                               key: "msdkui_maneuverpanel_updating",
+                               bundle: .MSDKUI,
+                               "It shows the correct string for busy state")
+        }
+    }
+
     /// Tests the behavior when maneuverIcon is nil.
     func testWhenManeuverIconIsNil() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.maneuverImageViews.filter { $0.image == nil }.isEmpty,
                        "It doesn't have maneuver image")
@@ -225,7 +248,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when maneuverIcon is valid.
     func testWhenManeuverIconIsValid() {
-        view.data = GuidanceManeuverData(maneuverIcon: UIImage(), distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: UIImage(), distance: nil, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.maneuverImageViews.filter { $0.image != nil }.isEmpty,
                        "It has maneuver image")
@@ -233,7 +256,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when distance is nil.
     func testWhenDistanceIsNil() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.distanceLabels.filter { $0.text == nil }.isEmpty,
                        "It doesn't have distance text")
@@ -242,7 +265,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
     /// Tests the behavior when distance is valid.
     func testWhenDistanceIsValid() {
         let distance = Measurement(value: 30, unit: UnitLength.furlongs)
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: distance, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: distance, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.distanceLabels.filter { $0.text != nil }.isEmpty,
                        "It has distance text")
@@ -250,7 +273,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when info1 is nil.
     func testWhenInfo1IsNil() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.info1Labels.filter { $0.text == nil }.isEmpty,
                        "It doesn't have info1 text")
@@ -261,7 +284,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when info1 is valid.
     func testWhenInfo1IsValid() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: "Foobar", info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: "Foobar", info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.info1Labels.filter { $0.text != nil }.isEmpty,
                        "It has info1 text")
@@ -272,7 +295,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when info2 is nil.
     func testWhenInfo2IsNil() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.info2Labels.filter { $0.text == nil }.isEmpty,
                        "It doesn't have info2 text")
@@ -283,7 +306,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when info2 is valid.
     func testWhenInfo2IsValid() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: "Foobar", nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: "Foobar", nextRoadIcon: nil))
 
         XCTAssertFalse(view.info2Labels.filter { $0.text != nil }.isEmpty,
                        "It has info2 text")
@@ -294,7 +317,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when nextRoadIcon is nil.
     func testWhenNextRoadIconIsNil() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil)
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: nil))
 
         XCTAssertFalse(view.roadIconViews.filter { $0.image == nil }.isEmpty,
                        "It doesn't have road icon image")
@@ -302,7 +325,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when nextRoadIcon is valid.
     func testWhenNextRoadIconIsValid() {
-        view.data = GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: UIImage())
+        view.state = .data(GuidanceManeuverData(maneuverIcon: nil, distance: nil, info1: nil, info2: nil, nextRoadIcon: UIImage()))
 
         XCTAssertFalse(view.roadIconViews.filter { $0.image != nil }.isEmpty,
                        "It has road icon image")
@@ -446,37 +469,5 @@ final class GuidanceManeuverViewTests: XCTestCase {
                        foregroundColor,
                        "The landscape busy indicator color is wrong!",
                        line: line)
-    }
-
-    private func checkInitialState(line: UInt = #line) {
-        // Has the data containers hidden by default (when data isn't yet set)
-        view.dataContainers.forEach {
-            XCTAssertTrue($0.isHidden, "Data Container is hidden", line: line)
-        }
-
-        // Has the NoData containers visible by default (when data isn't yet set)
-        view.noDataContainers.forEach {
-            XCTAssertFalse($0.isHidden, "NoData Container is visible", line: line)
-        }
-
-        // Has busy indicators hidden
-        view.busyIndicators.forEach {
-            XCTAssertTrue($0.isHidden, "Busy indicator is hidden", line: line)
-            XCTAssertFalse($0.isAnimating, "Busy indicator is not animating", line: line)
-        }
-
-        // Shows the correct message about missing maneuver information
-        view.noDataLabels.forEach {
-            XCTAssertNotEqual($0.text,
-                              "msdkui_maneuverpanel_nodata",
-                              "The string is localized",
-                              line: line)
-
-            XCTAssertLocalized($0.text,
-                               key: "msdkui_maneuverpanel_nodata",
-                               bundle: .MSDKUI,
-                               "Shows the correct string when there's no maneuver data",
-                               line: line)
-        }
     }
 }

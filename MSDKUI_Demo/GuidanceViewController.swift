@@ -406,7 +406,11 @@ final class GuidanceViewController: UIViewController {
 extension GuidanceViewController: GuidanceManeuverMonitorDelegate {
 
     func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor, didUpdateData data: GuidanceManeuverData?) {
-        maneuverView.data = data
+        if let maneuverData = data {
+            maneuverView.state = .data(maneuverData)
+        } else {
+            maneuverView.state = .updating
+        }
     }
 
     func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
