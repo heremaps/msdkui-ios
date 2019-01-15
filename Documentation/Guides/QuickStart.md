@@ -4,7 +4,7 @@ Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we ar
 ## Contents
 - [How to Run the Example Apps](#how-to-run-the-example-apps)
 - [How to Run the Demo App](#how-to-run-the-demo-app)
-- [Setup an Xcode iOS Project](#setup-an-xcode-ios-project)
+- [Set up an Xcode iOS Project](#set-up-an-xcode-ios-project)
 	- [Integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit](#integrate-the-here-mobile-sdk-and-the-here-mobile-sdk-ui-kit)
 	- [Set your HERE Mobile SDK credentials](#set-your-here-mobile-sdk-credentials)
 	- [Add your first HERE Mobile SDK UI Kit component](#add-your-first-here-mobile-sdk-ui-kit-component)
@@ -29,7 +29,7 @@ Along with the accompanying example apps and code snippets, we also provide a mo
 
 If you want to build your own app, it may be useful to follow the guide below where we will develop step by step a first "Hello HERE Mobile SDK UI Kit" app in greater detail.
 
-## Setup an Xcode iOS Project
+## Set up an Xcode iOS Project
 Let's start by creating a new iOS app. If you want to integrate the HERE Mobile SDK UI Kit into an existing app, you can skip the step below, but please make sure to meet the [minimum requirements](../../README.md#ios-environment).
 If you are new to iOS development please follow the guides on [developer.apple.com](https://developer.apple.com/documentation/) to help you to get started with the first steps.
 
