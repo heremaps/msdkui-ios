@@ -322,6 +322,12 @@ import NMAKit
     /// Helper object for extracting the route data for display purposes.
     var handler: RouteDescriptionItemHandler!
 
+    /// Helper object for holding last set warning image.
+    private var warningImage: UIImage?
+
+    /// Observarion of warning icon's image.
+    private var warningIconImageObservation: NSKeyValueObservation?
+
     // MARK: - Public
 
     override public init(frame: CGRect) {
@@ -370,6 +376,9 @@ import NMAKit
             addSubviewBindToEdges(view)
         }
 
+        // Observe changes of warning icon's image
+        warningIconImageObservation = observeWarningIconImage()
+
         setAccessibility()
         setUpStyle()
     }
@@ -399,6 +408,16 @@ import NMAKit
         durationLabel.isHidden = !isSectionVisible(.duration)
         delayLabel.isHidden = !isSectionVisible(.delay) || (delayLabel.attributedText?.length ?? 0) == 0
         warningIcon.isHidden = handler != nil && handler.hasDelay ? delayLabel.isHidden : true
+
+        // Stop observarion before setting warning icon's image internally
+        warningIconImageObservation = nil
+
+        // MSDKUI-1684: Fix for visual artifact of warning icon's image after rotations
+        warningIcon.image = warningIcon.isHidden ? nil : warningImage
+
+        // Resume observarion after setting warning icon's image internally
+        warningIconImageObservation = observeWarningIconImage()
+
         barView.isHidden = !isSectionVisible(.bar)
         lengthLabel.isHidden = !isSectionVisible(.length)
         timeLabel.isHidden = !isSectionVisible(.time)
@@ -475,5 +494,14 @@ import NMAKit
 
         // Any hint?
         accessibilityHint = hint.isEmpty ? nil : hint
+    }
+
+    /// Returns KVO Observation for new value of warning icon's image.
+    private func observeWarningIconImage() -> NSKeyValueObservation? {
+        return observe(\.warningIcon.image, options: [.new]) { object, change in
+            if let newValue = change.newValue {
+                object.warningImage = newValue
+            }
+        }
     }
 }
