@@ -18,9 +18,6 @@ import MSDKUI
 import NMAKit
 import UIKit
 
-// This view controller is orientation sensitive: the `GuidanceManeuverView`
-// monitors the device rotations. For the portrait and landscape orientations,
-// it has different layouts.
 final class GuidanceViewController: UIViewController {
 
     // MARK: - Types
@@ -109,7 +106,7 @@ final class GuidanceViewController: UIViewController {
     lazy var viewAnimator = UIView.animate(withDuration:animations:)
 
     override var prefersStatusBarHidden: Bool {
-        // We want to show the status bar always, i.e. even in the landscape orientation
+        // We want to show the status bar always, i.e. even in the horizontal orientation
         return false
     }
 
@@ -205,8 +202,9 @@ final class GuidanceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        // Sets up the view when `UIUserInterfaceSizeClass` case changes from `.unspecified`
+        // Sets up views when `UIUserInterfaceSizeClass` case changes from `.unspecified`
         setUpCurrentSpeedView(for: traitCollection)
+        setUpManeuverView(for: traitCollection)
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -218,8 +216,9 @@ final class GuidanceViewController: UIViewController {
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
         super.willTransition(to: newCollection, with: coordinator)
 
-        // Sets up the view based on new `UITraitCollection`
+        // Sets up views based on new `UITraitCollection`
         setUpCurrentSpeedView(for: newCollection)
+        setUpManeuverView(for: newCollection)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -397,6 +396,19 @@ final class GuidanceViewController: UIViewController {
 
         default:
             currentSpeedView.isHidden = true
+        }
+    }
+
+    /// Sets up the maneuver view for the given trait collection.
+    ///
+    /// - Parameter traitCollection: The trait collection used to set up the `maneuverView`.
+    private func setUpManeuverView(for traitCollection: UITraitCollection) {
+        switch traitCollection.verticalSizeClass {
+        case .compact:
+            maneuverView.axis = .vertical
+
+        default:
+            maneuverView.axis = .horizontal
         }
     }
 }

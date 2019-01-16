@@ -17,11 +17,7 @@
 import Foundation
 import NMAKit
 
-/// A view for displaying the maneuvers during guidance. Note that
-/// this view displays a different view in portrait and landscape
-/// orientations. The view listens to the `UIDeviceOrientationDidChange`
-/// notification to monitor orientation changes.
-///
+/// A view for displaying the maneuvers during guidance.
 @IBDesignable open class GuidanceManeuverView: UIView {
 
     // MARK: - Types
@@ -37,10 +33,13 @@ import NMAKit
         case data(_ data: GuidanceManeuverData)
     }
 
-    /// All the supported orientations.
-    enum Orientation: Int {
-        case portrait
-        case landscape
+    /// The axis along which the arranged views are laid out.
+    ///
+    /// - vertical: The constraint applied when laying out the vertical relationship between objects.
+    /// - horizontal: The constraint applied when laying out the horizontal relationship between objects.
+    public enum Axis: Int {
+        case vertical
+        case horizontal
     }
 
     // MARK: - Properties
@@ -123,6 +122,20 @@ import NMAKit
         }
     }
 
+    public var axis: Axis = .vertical {
+        didSet {
+            switch axis {
+            case .vertical:
+                adaptToVertical()
+
+            case .horizontal:
+                adaptToHorizontal()
+            }
+
+            calculateHeight()
+        }
+    }
+
     /// The distance measurement formatter. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
     public var distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
         didSet {
@@ -186,19 +199,19 @@ import NMAKit
         calculateHeight()
     }
 
+    // MARK: - Private
+
     /// Handles to the portrait orientation.
-    func adaptToPortrait() {
-        views[Orientation.portrait.rawValue].isHidden = false
-        views[Orientation.landscape.rawValue].isHidden = true
+    private func adaptToHorizontal() {
+        views[Axis.vertical.rawValue].isHidden = false
+        views[Axis.horizontal.rawValue].isHidden = true
     }
 
     /// Handles to the landscape orientation.
-    func adaptToLandscape() {
-        views[Orientation.portrait.rawValue].isHidden = true
-        views[Orientation.landscape.rawValue].isHidden = false
+    private func adaptToVertical() {
+        views[Axis.vertical.rawValue].isHidden = true
+        views[Axis.horizontal.rawValue].isHidden = false
     }
-
-    // MARK: - Private
 
     /// Initialises the contents of this view.
     private func setUp() {
@@ -216,9 +229,9 @@ import NMAKit
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         // Saves the label design heights which will be used to calculate the height constraints
-        portraitInfo1LabelDesignHeight = info1Labels[Orientation.portrait.rawValue].frame.height
-        portraitInfo2LabelDesignHeight = info2Labels[Orientation.portrait.rawValue].frame.height
-        landscapeInfo1LabelDesignHeight = info1Labels[Orientation.landscape.rawValue].frame.height
+        portraitInfo1LabelDesignHeight = info1Labels[Axis.vertical.rawValue].frame.height
+        portraitInfo2LabelDesignHeight = info2Labels[Axis.vertical.rawValue].frame.height
+        landscapeInfo1LabelDesignHeight = info1Labels[Axis.horizontal.rawValue].frame.height
 
         // We expect that the owner will constraint us depending on the orientation
         views.forEach { addSubviewBindToEdges($0) }
@@ -226,26 +239,18 @@ import NMAKit
         // Use monospcaed digits for distance to next maneuver
         distanceLabels.forEach { $0.font = .monospacedDigitSystemFont(ofSize: 34, weight: .regular) }
 
-        // Initially adapt to the current orientation
-        orientationDidChange()
-
-        // We want to monitor the UIDeviceOrientationDidChange notification
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(orientationDidChange),
-                                               name: UIDevice.orientationDidChangeNotification,
-                                               object: nil)
-
         // Sets the information about missing maneuver information
         noDataLabels.forEach { $0.text = "msdkui_maneuverpanel_nodata".localized }
         noDataImageViews.forEach {
             $0.image = UIImage(named: "car_position_marker", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
         }
 
-        // Finally
-        updateStyle()
-
         // Sets the initial state.
         state = .noData
+        axis = .horizontal
+
+        // Finally
+        updateStyle()
     }
 
     /// Updates the style for the visuals.
@@ -257,11 +262,11 @@ import NMAKit
     /// Calculates the very important intrinsic content height depending on the subview visibilities.
     private func calculateHeight() {
         // Disable both constraints
-        heightConstraints[Orientation.landscape.rawValue].isActive = false
-        heightConstraints[Orientation.portrait.rawValue].isActive = false
+        heightConstraints[Axis.horizontal.rawValue].isActive = false
+        heightConstraints[Axis.vertical.rawValue].isActive = false
 
         // Proceed based on the visible view
-        if views[Orientation.portrait.rawValue].isHidden == false {
+        if views[Axis.vertical.rawValue].isHidden == false {
             calculatePortraitHeight()
         } else {
             calculateLandscapeHeight()
@@ -274,83 +279,83 @@ import NMAKit
 
     /// Calculates the intrinsic content height and set the height constraint and for the portrait orientation.
     private func calculatePortraitHeight() {
-        let topPadding = topConstraints[Orientation.portrait.rawValue].constant
-        let bottomPadding = abs(bottomConstraints[Orientation.portrait.rawValue].constant)
+        let topPadding = topConstraints[Axis.vertical.rawValue].constant
+        let bottomPadding = abs(bottomConstraints[Axis.vertical.rawValue].constant)
 
         // Unconditional height contributors: top padding + distance label height + bottom padding
-        intrinsicContentHeight = topPadding + distanceLabels[Orientation.portrait.rawValue].frame.height + bottomPadding
+        intrinsicContentHeight = topPadding + distanceLabels[Axis.vertical.rawValue].frame.height + bottomPadding
 
         // Spacing between the distance label and info labels
-        if info1Labels[Orientation.portrait.rawValue].isHidden == false ||
-            info2Labels[Orientation.portrait.rawValue].isHidden == false {
+        if info1Labels[Axis.vertical.rawValue].isHidden == false ||
+            info2Labels[Axis.vertical.rawValue].isHidden == false {
             intrinsicContentHeight += portraitVerticalContainer.spacing
         }
 
         // If visible, add info 1 label height
-        if info1Labels[Orientation.portrait.rawValue].isHidden == false {
+        if info1Labels[Axis.vertical.rawValue].isHidden == false {
             intrinsicContentHeight += portraitInfo1LabelDesignHeight
         }
 
         // Spacing bteween the info 1 & 2 labels, e.g. 2
-        if info1Labels[Orientation.portrait.rawValue].isHidden == false &&
-            info2Labels[Orientation.portrait.rawValue].isHidden == false {
-            intrinsicContentHeight += infoLabelContainers[Orientation.portrait.rawValue].spacing
+        if info1Labels[Axis.vertical.rawValue].isHidden == false &&
+            info2Labels[Axis.vertical.rawValue].isHidden == false {
+            intrinsicContentHeight += infoLabelContainers[Axis.vertical.rawValue].spacing
         }
 
         /// If visible, add info 2 label height
-        if info2Labels[Orientation.portrait.rawValue].isHidden == false {
+        if info2Labels[Axis.vertical.rawValue].isHidden == false {
             intrinsicContentHeight += portraitInfo2LabelDesignHeight
         }
 
         // Height constraint = intrinsic content height - (top + bottom paddings)
-        heightConstraints[Orientation.portrait.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
-        heightConstraints[Orientation.portrait.rawValue].isActive = true
+        heightConstraints[Axis.vertical.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
+        heightConstraints[Axis.vertical.rawValue].isActive = true
     }
 
     /// Calculates the intrinsic content height and set the height constraint and for the landscape orientation.
     private func calculateLandscapeHeight() {
-        let topPadding = topConstraints[Orientation.landscape.rawValue].constant
-        let bottomPadding = abs(bottomConstraints[Orientation.landscape.rawValue].constant)
+        let topPadding = topConstraints[Axis.horizontal.rawValue].constant
+        let bottomPadding = abs(bottomConstraints[Axis.horizontal.rawValue].constant)
 
         // Unconditional height contributors: top padding + distance label height + bottom padding
-        intrinsicContentHeight = topPadding + distanceLabels[Orientation.landscape.rawValue].frame.height + bottomPadding
+        intrinsicContentHeight = topPadding + distanceLabels[Axis.horizontal.rawValue].frame.height + bottomPadding
 
         // Spacing between the distance label and info labels, e.g. 12
-        if info1Labels[Orientation.landscape.rawValue].isHidden == false ||
-            info2Labels[Orientation.landscape.rawValue].isHidden == false {
-            intrinsicContentHeight += dataContainers[Orientation.landscape.rawValue].spacing
+        if info1Labels[Axis.horizontal.rawValue].isHidden == false ||
+            info2Labels[Axis.horizontal.rawValue].isHidden == false {
+            intrinsicContentHeight += dataContainers[Axis.horizontal.rawValue].spacing
         }
 
         /// If visible, add info 1 label height
-        if info1Labels[Orientation.landscape.rawValue].isHidden == false {
+        if info1Labels[Axis.horizontal.rawValue].isHidden == false {
             intrinsicContentHeight += landscapeInfo1LabelDesignHeight
         }
 
         // Spacing bteween the info 1 & 2 labels
-        if info1Labels[Orientation.landscape.rawValue].isHidden == false &&
-            info2Labels[Orientation.landscape.rawValue].isHidden == false {
-            intrinsicContentHeight += infoLabelContainers[Orientation.landscape.rawValue].spacing
+        if info1Labels[Axis.horizontal.rawValue].isHidden == false &&
+            info2Labels[Axis.horizontal.rawValue].isHidden == false {
+            intrinsicContentHeight += infoLabelContainers[Axis.horizontal.rawValue].spacing
         }
 
         // If visible, add info 2 label height which is a two-lines label
-        if info2Labels[Orientation.landscape.rawValue].isHidden == false {
-            info2Labels[Orientation.landscape.rawValue].sizeToFit()
-            intrinsicContentHeight += info2Labels[Orientation.landscape.rawValue].frame.height
+        if info2Labels[Axis.horizontal.rawValue].isHidden == false {
+            info2Labels[Axis.horizontal.rawValue].sizeToFit()
+            intrinsicContentHeight += info2Labels[Axis.horizontal.rawValue].frame.height
         }
 
         // If visible, add road icon
-        if roadIconViews[Orientation.landscape.rawValue].image == nil {
+        if roadIconViews[Axis.horizontal.rawValue].image == nil {
             landscapeRoadViewContainer.isHidden = true
         } else {
             // Spacing between the info labels and road icon + road icon height
-            intrinsicContentHeight += dataContainers[Orientation.landscape.rawValue].spacing +
+            intrinsicContentHeight += dataContainers[Axis.horizontal.rawValue].spacing +
                 landscapeRoadViewContainer.frame.height
             landscapeRoadViewContainer.isHidden = false
         }
 
         // Height constraint = intrinsic content height - (top + bottom paddings)
-        heightConstraints[Orientation.landscape.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
-        heightConstraints[Orientation.landscape.rawValue].isActive = true
+        heightConstraints[Axis.horizontal.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
+        heightConstraints[Axis.horizontal.rawValue].isActive = true
     }
 
     private func displayData(data: GuidanceManeuverData) {
@@ -411,16 +416,5 @@ import NMAKit
             $0.startAnimating()
             $0.isHidden = false
         }
-    }
-
-    /// Handles the orientation changes.
-    @objc private func orientationDidChange() {
-        if UIApplication.shared.statusBarOrientation == .portrait {
-            adaptToPortrait()
-        } else {
-            adaptToLandscape()
-        }
-
-        calculateHeight()
     }
 }

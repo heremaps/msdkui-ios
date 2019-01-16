@@ -27,9 +27,6 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
-        // Make sure to be in the portrait orientation
-        UIDevice.current.setValue(UIInterfaceOrientation.portrait.rawValue, forKeyPath: #keyPath(UIDevice.orientation))
     }
 
     // MARK: - Tests
@@ -72,8 +69,8 @@ final class GuidanceManeuverViewTests: XCTestCase {
         XCTAssertEqual(view.frame.size.height, 139.0, "The initial view height is wrong!")
     }
 
-    /// Tests the view height when the Info1 is set in the portrait orientation.
-    func testViewWithInfo1inPortrait() {
+    /// Tests the view height when the Info1 is set for default axis.
+    func testViewWithInfo1in() {
         let data = GuidanceManeuverData(maneuverIcon: UIImage(),
                                         distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: "Exit 30",
@@ -87,17 +84,17 @@ final class GuidanceManeuverViewTests: XCTestCase {
         XCTAssertEqual(view.intrinsicContentSize.height, 139.0, "The view height with Info1 is wrong!")
 
         // Are the data set correctly?
-        XCTAssertFalse(view.info1Labels[GuidanceManeuverView.Orientation.portrait.rawValue].isHidden,
-                       "The view landscape info1 label is hidden!")
+        XCTAssertFalse(view.info1Labels[GuidanceManeuverView.Axis.vertical.rawValue].isHidden,
+                       "The view info1 label is hidden!")
 
-        XCTAssertFalse(view.info1Labels[GuidanceManeuverView.Orientation.landscape.rawValue].isHidden,
-                       "The view landscape info1 label is hidden!")
+        XCTAssertFalse(view.info1Labels[GuidanceManeuverView.Axis.horizontal.rawValue].isHidden,
+                       "The view info1 label is hidden!")
 
         checkData(data)
     }
 
-    /// Tests the view when the Info1 is not set in the portrait orientation.
-    func testViewWithoutInfo1inPortrait() {
+    /// Tests the view when the Info1 is not set for default axis.
+    func testViewWithoutInfo() {
         let data = GuidanceManeuverData(maneuverIcon: UIImage(),
                                         distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: nil,
@@ -111,11 +108,11 @@ final class GuidanceManeuverViewTests: XCTestCase {
         XCTAssertLessThan(view.intrinsicContentSize.height, 139.0, "The view height without Info1 is wrong!")
 
         // Are the data set correctly?
-        XCTAssertTrue(view.info1Labels[GuidanceManeuverView.Orientation.portrait.rawValue].isHidden,
-                      "The view landscape info1 label is not hidden!")
+        XCTAssertTrue(view.info1Labels[GuidanceManeuverView.Axis.vertical.rawValue].isHidden,
+                      "The view info1 label is not hidden!")
 
-        XCTAssertTrue(view.info1Labels[GuidanceManeuverView.Orientation.landscape.rawValue].isHidden,
-                      "The view landscape info1 label is not hidden!")
+        XCTAssertTrue(view.info1Labels[GuidanceManeuverView.Axis.horizontal.rawValue].isHidden,
+                      "The view info1 label is not hidden!")
 
         checkData(data)
     }
@@ -125,33 +122,33 @@ final class GuidanceManeuverViewTests: XCTestCase {
         // This method updates the color of Info2 labels
         view.highlightManeuver(textColor: UIColor.red)
 
-        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Orientation.portrait.rawValue].textColor, UIColor.red,
-                       "The portrait Info2 color is wrong!")
+        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Axis.vertical.rawValue].textColor, UIColor.red,
+                       "The Info2 color is wrong!")
 
-        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Orientation.landscape.rawValue].textColor, UIColor.red,
-                       "The landscape Info2 color is wrong!")
+        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Axis.horizontal.rawValue].textColor, UIColor.red,
+                       "The Info2 color is wrong!")
     }
 
-    /// Tests the `GuidanceManeuverView.adaptToPortrait()` method.
-    func testAdaptToPortrait() {
-        view.adaptToPortrait()
+    /// Tests the behavior when axis is set to horizontal.
+    func testWhenAxisIsSetToHorizontal() {
+        view.axis = .horizontal
 
-        XCTAssertFalse(view.views[GuidanceManeuverView.Orientation.portrait.rawValue].isHidden,
-                       "The portrait orientation is visible!")
+        XCTAssertFalse(view.views[GuidanceManeuverView.Axis.vertical.rawValue].isHidden,
+                       "The vertical view is visible!")
 
-        XCTAssertTrue(view.views[GuidanceManeuverView.Orientation.landscape.rawValue].isHidden,
-                      "The portrait orientation is hidden!")
+        XCTAssertTrue(view.views[GuidanceManeuverView.Axis.horizontal.rawValue].isHidden,
+                      "Th horizontal view is hidden!")
     }
 
-    /// Tests the `GuidanceManeuverView.adaptToLandscape()` method.
-    func testAdaptToLandscape() {
-        view.adaptToLandscape()
+    /// Tests the behavior when axis is set to vertical.
+    func testWhenAxisIsSetToVertical() {
+        view.axis = .vertical
 
-        XCTAssertTrue(view.views[GuidanceManeuverView.Orientation.portrait.rawValue].isHidden,
-                      "The portrait orientation is hidden!")
+        XCTAssertTrue(view.views[GuidanceManeuverView.Axis.vertical.rawValue].isHidden,
+                      "The vertical view is hidden!")
 
-        XCTAssertFalse(view.views[GuidanceManeuverView.Orientation.landscape.rawValue].isHidden,
-                       "The portrait orientation is visible!")
+        XCTAssertFalse(view.views[GuidanceManeuverView.Axis.horizontal.rawValue].isHidden,
+                       "The horizontal view is visible!")
     }
 
     /// Tests the default style.
@@ -161,7 +158,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the distance label.
     func testDistanceLabel() {
-        XCTAssertEqual(view.distanceLabels.count, 2, "It has two distance labels (portrait and landscape)")
+        XCTAssertEqual(view.distanceLabels.count, 2, "It has two distance labels (vertical and horizontal)")
 
         view.distanceLabels.forEach {
             XCTAssertEqual($0.font, .monospacedDigitSystemFont(ofSize: 34, weight: .regular), "It uses monospaced font for distance labels")
@@ -339,135 +336,135 @@ final class GuidanceManeuverViewTests: XCTestCase {
             return
         }
 
-        XCTAssertNotNil(view.maneuverImageViews[GuidanceManeuverView.Orientation.portrait.rawValue].image,
-                        "The portrait maneuver image is not set!",
+        XCTAssertNotNil(view.maneuverImageViews[GuidanceManeuverView.Axis.vertical.rawValue].image,
+                        "The maneuver image is not set!",
                         line: line)
 
-        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Orientation.portrait.rawValue].image,
+        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Axis.vertical.rawValue].image,
                        mockNextRoadIcon,
-                       "The portrait highway image is not set!",
+                       "The highway image is not set!",
                        line: line)
 
-        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Orientation.portrait.rawValue].text,
+        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Axis.vertical.rawValue].text,
                        MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
-                       "The portrait distance data is wrong!",
+                       "The distance data is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Orientation.portrait.rawValue].text,
+        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Axis.vertical.rawValue].text,
                        data.info1,
-                       "The portrait distance info1 is wrong!",
+                       "The distance info1 is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Orientation.portrait.rawValue].text,
+        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Axis.vertical.rawValue].text,
                        data.info2,
-                       "The portrait distance info2 is wrong!",
+                       "The distance info2 is wrong!",
                        line: line)
 
-        XCTAssertNotNil(view.maneuverImageViews[GuidanceManeuverView.Orientation.landscape.rawValue].image,
-                        "The landscape maneuver image is not set!",
+        XCTAssertNotNil(view.maneuverImageViews[GuidanceManeuverView.Axis.horizontal.rawValue].image,
+                        "The maneuver image is not set!",
                         line: line)
 
-        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Orientation.landscape.rawValue].image,
+        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Axis.horizontal.rawValue].image,
                        mockNextRoadIcon,
-                       "The landscape highway image is not set!",
+                       "The highway image is not set!",
                        line: line)
 
-        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Orientation.landscape.rawValue].text,
+        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Axis.horizontal.rawValue].text,
                        MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
-                       "The landscape distance data is wrong!",
+                       "The distance data is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Orientation.landscape.rawValue].text,
+        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Axis.horizontal.rawValue].text,
                        data.info1,
-                       "The landscape distance info1 is wrong!",
+                       "The distance info1 is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Orientation.landscape.rawValue].text,
+        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Axis.horizontal.rawValue].text,
                        data.info2,
-                       "The landscape distance info2 is wrong!",
+                       "The distance info2 is wrong!",
                        line: line)
     }
 
     private func checkStyle(backgroundColor: UIColor, foregroundColor: UIColor, line: UInt = #line) {
-        XCTAssertEqual(view.views[GuidanceManeuverView.Orientation.portrait.rawValue].backgroundColor,
+        XCTAssertEqual(view.views[GuidanceManeuverView.Axis.vertical.rawValue].backgroundColor,
                        backgroundColor,
-                       "The portrait view backgroundColor is wrong!",
+                       "The view backgroundColor is wrong!",
                        line: line)
-        XCTAssertEqual(view.views[GuidanceManeuverView.Orientation.landscape.rawValue].backgroundColor,
+        XCTAssertEqual(view.views[GuidanceManeuverView.Axis.horizontal.rawValue].backgroundColor,
                        backgroundColor,
-                       "The landscape view backgroundColor is wrong!",
+                       "The view backgroundColor is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Orientation.portrait.rawValue].textColor,
+        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Axis.vertical.rawValue].textColor,
                        foregroundColor,
-                       "The portrait distance label text color is wrong!",
+                       "The distance label text color is wrong!",
                        line: line)
-        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Orientation.landscape.rawValue].textColor,
+        XCTAssertEqual(view.distanceLabels[GuidanceManeuverView.Axis.horizontal.rawValue].textColor,
                        foregroundColor,
-                       "The landscape distance label text color is wrong!",
-                       line: line)
-
-        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Orientation.portrait.rawValue].textColor,
-                       foregroundColor,
-                       "The portrait info1 label text color is wrong!",
-                       line: line)
-        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Orientation.landscape.rawValue].textColor,
-                       foregroundColor,
-                       "The landscape info1 label text color is wrong!",
+                       "The distance label text color is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Orientation.portrait.rawValue].textColor,
+        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Axis.vertical.rawValue].textColor,
                        foregroundColor,
-                       "The portrait info2 label text color is wrong!",
+                       "The info1 label text color is wrong!",
                        line: line)
-        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Orientation.landscape.rawValue].textColor,
+        XCTAssertEqual(view.info1Labels[GuidanceManeuverView.Axis.horizontal.rawValue].textColor,
                        foregroundColor,
-                       "The landscape info2 label text color is wrong!",
-                       line: line)
-
-        XCTAssertEqual(view.noDataLabels[GuidanceManeuverView.Orientation.portrait.rawValue].textColor,
-                       foregroundColor,
-                       "The portrait no data label text color is wrong!",
-                       line: line)
-        XCTAssertEqual(view.noDataLabels[GuidanceManeuverView.Orientation.landscape.rawValue].textColor,
-                       foregroundColor,
-                       "The landscape no data label text color is wrong!",
+                       "The info1 label text color is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.maneuverImageViews[GuidanceManeuverView.Orientation.portrait.rawValue].tintColor,
+        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Axis.vertical.rawValue].textColor,
                        foregroundColor,
-                       "The portrait maneuver icon color is wrong!",
+                       "The info2 label text color is wrong!",
                        line: line)
-        XCTAssertEqual(view.maneuverImageViews[GuidanceManeuverView.Orientation.landscape.rawValue].tintColor,
+        XCTAssertEqual(view.info2Labels[GuidanceManeuverView.Axis.horizontal.rawValue].textColor,
                        foregroundColor,
-                       "The landscape maneuver icon color is wrong!",
-                       line: line)
-
-        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Orientation.portrait.rawValue].tintColor,
-                       foregroundColor,
-                       "The portrait road icon color is wrong!",
-                       line: line)
-        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Orientation.landscape.rawValue].tintColor,
-                       foregroundColor,
-                       "The landscape road icon color is wrong!",
+                       "The info2 label text color is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.noDataImageViews[GuidanceManeuverView.Orientation.portrait.rawValue].tintColor,
+        XCTAssertEqual(view.noDataLabels[GuidanceManeuverView.Axis.vertical.rawValue].textColor,
                        foregroundColor,
-                       "The portrait no data icon color is wrong!",
+                       "The no data label text color is wrong!",
                        line: line)
-        XCTAssertEqual(view.noDataImageViews[GuidanceManeuverView.Orientation.landscape.rawValue].tintColor,
+        XCTAssertEqual(view.noDataLabels[GuidanceManeuverView.Axis.horizontal.rawValue].textColor,
                        foregroundColor,
-                       "The landscape no data icon color is wrong!",
+                       "The no data label text color is wrong!",
                        line: line)
 
-        XCTAssertEqual(view.busyIndicators[GuidanceManeuverView.Orientation.portrait.rawValue].color,
+        XCTAssertEqual(view.maneuverImageViews[GuidanceManeuverView.Axis.vertical.rawValue].tintColor,
                        foregroundColor,
-                       "The portrait busy indicator color is wrong!",
+                       "The maneuver icon color is wrong!",
                        line: line)
-        XCTAssertEqual(view.busyIndicators[GuidanceManeuverView.Orientation.landscape.rawValue].color,
+        XCTAssertEqual(view.maneuverImageViews[GuidanceManeuverView.Axis.horizontal.rawValue].tintColor,
                        foregroundColor,
-                       "The landscape busy indicator color is wrong!",
+                       "The maneuver icon color is wrong!",
+                       line: line)
+
+        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Axis.vertical.rawValue].tintColor,
+                       foregroundColor,
+                       "The road icon color is wrong!",
+                       line: line)
+        XCTAssertEqual(view.roadIconViews[GuidanceManeuverView.Axis.horizontal.rawValue].tintColor,
+                       foregroundColor,
+                       "The road icon color is wrong!",
+                       line: line)
+
+        XCTAssertEqual(view.noDataImageViews[GuidanceManeuverView.Axis.vertical.rawValue].tintColor,
+                       foregroundColor,
+                       "The no data icon color is wrong!",
+                       line: line)
+        XCTAssertEqual(view.noDataImageViews[GuidanceManeuverView.Axis.horizontal.rawValue].tintColor,
+                       foregroundColor,
+                       "The no data icon color is wrong!",
+                       line: line)
+
+        XCTAssertEqual(view.busyIndicators[GuidanceManeuverView.Axis.vertical.rawValue].color,
+                       foregroundColor,
+                       "The busy indicator color is wrong!",
+                       line: line)
+        XCTAssertEqual(view.busyIndicators[GuidanceManeuverView.Axis.horizontal.rawValue].color,
+                       foregroundColor,
+                       "The busy indicator color is wrong!",
                        line: line)
     }
 }
