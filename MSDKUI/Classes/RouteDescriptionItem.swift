@@ -382,6 +382,7 @@ import NMAKit
             durationLabel.text = handler.duration
             delayLabel.text = handler.trafficDelay
             lengthLabel.text = handler.length
+            lengthLabel.accessibilityLabel = handler.longFormatLength
             timeLabel.text = handler.arrivalTime
 
             // If there is a delay, `delayLabel` should use the
@@ -463,7 +464,7 @@ import NMAKit
 
             if isSectionVisible(.length) {
                 hint.appendComma()
-                hint += String(format: "msdkui_route_length".localized, arguments: [handler.length])
+                hint += String(format: "msdkui_route_length".localized, arguments: [handler.longFormatLength])
             }
 
             if isSectionVisible(.time) {

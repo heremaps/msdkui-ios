@@ -28,6 +28,16 @@ public extension MeasurementFormatter {
         formatter.numberFormatter.maximumFractionDigits = 0
         return formatter
     }()
+
+    /// Returns a `MeasurementFormatter` for reading units using current locale.
+    static let currentLongUnitFormatter: MeasurementFormatter = {
+        let formatter = MeasurementFormatter()
+        formatter.unitOptions = .naturalScale
+        formatter.unitStyle = .long
+        formatter.locale = .current
+        formatter.numberFormatter.maximumFractionDigits = 0
+        return formatter
+    }()
 }
 
 extension MeasurementFormatter {

@@ -160,6 +160,21 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
         XCTAssertEqual(nextManeuverView.accessibilityHint, exepectedHint, "It returns the correct hint")
     }
 
+    /// Tests if the view's distance label's accessibility label is correct when model is populated
+    /// with the default distance formatter.
+    func testViewDistanceLabelAccessibilityLabelWithDefaultDistanceFormatter() {
+        let distance = Measurement<UnitLength>(value: 100, unit: .meters)
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
+                                                           distance: distance,
+                                                           streetName: "Invalidenstr.")
+
+        nextManeuverView.configure(with: viewModel)
+
+        let exepectedLabel = MeasurementFormatter.currentLongUnitFormatter.string(from: distance)
+
+        XCTAssertEqual(nextManeuverView.distanceLabel.accessibilityLabel, exepectedLabel, "It returns the correct label")
+    }
+
     /// Tests if the view accessibility hint is correct when model is populated with a custom distance formatter.
     func testViewAccessibilityHintWithCustomDistanceFormatter() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
@@ -175,6 +190,23 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
             + (viewModel.streetName ?? "")
 
         XCTAssertEqual(nextManeuverView.accessibilityHint, exepectedHint, "It returns the correct hint")
+    }
+
+    /// Tests if the view's distance label's accessibility label is correct when model is populated
+    /// with a custom accessibility distance formatter.
+    func testViewDistanceLabelAccessibilityLabelWithCustomDistanceFormatter() {
+        let distance = Measurement<UnitLength>(value: 100, unit: .meters)
+        let distanceFormatter = MeasurementFormatter()
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
+                                                           distance: distance,
+                                                           streetName: "Invalidenstr.",
+                                                           accessibilityDistanceFormatter: distanceFormatter)
+
+        nextManeuverView.configure(with: viewModel)
+
+        let exepectedLabel = distanceFormatter.string(from: distance)
+
+        XCTAssertEqual(nextManeuverView.distanceLabel.accessibilityLabel, exepectedLabel, "It returns the correct label")
     }
 
     /// Tests if the view accessibility hint is correct when model is populated with an incomplete model.

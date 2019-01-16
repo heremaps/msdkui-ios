@@ -30,6 +30,7 @@ import UIKit
         var distance: Measurement<UnitLength>
         var streetName: String?
         var distanceFormatter: MeasurementFormatter
+        var accessibilityDistanceFormatter: MeasurementFormatter
 
         // MARK: - Public
 
@@ -41,14 +42,19 @@ import UIKit
         ///   - streetName: The name of the next maneuver street to be displayed.
         ///   - distanceFormatter: The `MeasurementFormatter` used to format the distance information.
         ///     The default value: Uses `MeasurementFormatter.currentMediumUnitFormatter`.
+        ///   - accessibilityDistanceFormatter: The `MeasurementFormatter` used to format
+        ///                                     the distance information for accessibility VoiceOver.
+        ///     The default value: Uses `MeasurementFormatter.currentLongUnitFormatter`.
         public init(maneuverIcon: UIImage?,
                     distance: Measurement<UnitLength>,
                     streetName: String?,
-                    distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter) {
+                    distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter,
+                    accessibilityDistanceFormatter: MeasurementFormatter = .currentLongUnitFormatter) {
             self.maneuverIcon = maneuverIcon
             self.distance = distance
             self.streetName = streetName
             self.distanceFormatter = distanceFormatter
+            self.accessibilityDistanceFormatter = accessibilityDistanceFormatter
         }
     }
 
@@ -108,6 +114,7 @@ import UIKit
     public func configure(with model: ViewModel) {
         maneuverImageView.tintColor = foregroundColor
         distanceLabel.text = model.distanceFormatter.string(from: model.distance)
+        distanceLabel.accessibilityLabel = model.accessibilityDistanceFormatter.string(from: model.distance)
         distanceLabel.sizeToFit()
 
         // When icon is nil, it should be removed (not visible, giving space to the rest of the views)
