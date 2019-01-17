@@ -61,19 +61,19 @@ import UIKit
     // MARK: - Properties
 
     /// Container view of the next maneuver icon.
-    @IBOutlet private(set) weak var maneuverImageViewContainer: UIView!
+    @IBOutlet private(set) var maneuverImageViewContainer: UIView!
 
     /// Image view for the icon of the next manuever.
-    @IBOutlet private(set) weak var maneuverImageView: UIImageView!
+    @IBOutlet private(set) var maneuverImageView: UIImageView!
 
     /// Label for the travel distance of the next manuever.
-    @IBOutlet private(set) weak var distanceLabel: UILabel!
+    @IBOutlet private(set) var distanceLabel: UILabel!
 
     /// Label for the duration/distance separator.
-    @IBOutlet private(set) weak var separatorLabel: UILabel!
+    @IBOutlet private(set) var separatorLabel: UILabel!
 
     /// Label for the street name of the next manuever.
-    @IBOutlet private(set) weak var streetNameLabel: UILabel!
+    @IBOutlet private(set) var streetNameLabel: UILabel!
 
     /// Sets the view's foreground color, i.e. the color for the maneuver icon, distance etc.
     /// The default foreground color is colorForegroundSecondaryLight.

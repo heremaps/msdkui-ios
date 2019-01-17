@@ -28,10 +28,10 @@ final class GuidanceDashboardTableViewCell: UITableViewCell {
     // MARK: - Properties
 
     /// The image view used for the dashboard entry icon.
-    @IBOutlet private(set) weak var iconImageView: UIImageView!
+    @IBOutlet private(set) var iconImageView: UIImageView!
 
     /// The label used for the dashboard entry title.
-    @IBOutlet private(set) weak var titleLabel: UILabel!
+    @IBOutlet private(set) var titleLabel: UILabel!
 
     // MARK: - Life cycle
 

@@ -22,10 +22,10 @@ import UIKit
     // MARK: - Properties
 
     /// Image View for the background image.
-    @IBOutlet public private(set) weak var backgroundImageView: UIImageView!
+    @IBOutlet public private(set) var backgroundImageView: UIImageView!
 
     /// Label for the speed limit.
-    @IBOutlet private(set) weak var speedLimitLabel: UILabel!
+    @IBOutlet private(set) var speedLimitLabel: UILabel!
 
     /// The speed limit used to populate the view.
     public var speedLimit: Measurement<UnitSpeed>? = nil {
