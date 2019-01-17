@@ -24,16 +24,16 @@ import UIKit
     // MARK: - Properties
 
     /// Label for the estimated time of arrival (ETA).
-    @IBOutlet private(set) weak var estimatedTimeOfArrivalLabel: UILabel!
+    @IBOutlet private(set) var estimatedTimeOfArrivalLabel: UILabel!
 
     /// Label for the duration.
-    @IBOutlet private(set) weak var durationLabel: UILabel!
+    @IBOutlet private(set) var durationLabel: UILabel!
 
     /// Label for the remaining distance.
-    @IBOutlet private(set) weak var distanceLabel: UILabel!
+    @IBOutlet private(set) var distanceLabel: UILabel!
 
     /// Label for the duration/distance separator.
-    @IBOutlet private(set) weak var separatorLabel: UILabel!
+    @IBOutlet private(set) var separatorLabel: UILabel!
 
     /// Sets the text color of the estimated time of arrival information.
     public var primaryInfoTextColor: UIColor = .colorForeground {

@@ -22,10 +22,10 @@ import UIKit
     // MARK: - Properties
 
     /// Label for the speed value.
-    @IBOutlet private(set) weak var speedValueLabel: UILabel!
+    @IBOutlet private(set) var speedValueLabel: UILabel!
 
     /// Label for the speed unit.
-    @IBOutlet private(set) weak var speedUnitLabel: UILabel!
+    @IBOutlet private(set) var speedUnitLabel: UILabel!
 
     /// The speed used to populate the view.
     public var speed: Measurement<UnitSpeed> = Measurement(value: 0, unit: .kilometersPerHour) {

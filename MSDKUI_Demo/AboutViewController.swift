@@ -21,13 +21,13 @@ final class AboutViewController: UIViewController {
     // MARK: - Properties
 
     /// The dashboard table view.
-    @IBOutlet private(set) weak var tableView: UITableView!
+    @IBOutlet private(set) var tableView: UITableView!
 
     /// The exist button.
-    @IBOutlet private(set) weak var exitButton: UIBarButtonItem!
+    @IBOutlet private(set) var exitButton: UIBarButtonItem!
 
     /// The view controller's navigation item.
-    @IBOutlet private(set) weak var titleItem: UINavigationItem!
+    @IBOutlet private(set) var titleItem: UINavigationItem!
 
     /// The table view data source.
     let tableViewDataSource = AboutTableViewDataSource()

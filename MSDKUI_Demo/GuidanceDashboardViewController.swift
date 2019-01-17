@@ -45,22 +45,22 @@ final class GuidanceDashboardViewController: UIViewController {
     /// The stop navigation button, which triggers the
     /// `GuidanceDashboardViewControllerDelegate.guidanceDashboardViewControllerDidTapStopNavigation(_:)`
     /// method to stop the navigation.
-    @IBOutlet private(set) weak var stopNavigationButton: UIButton!
+    @IBOutlet private(set) var stopNavigationButton: UIButton!
 
     /// The estimated arrival view.
-    @IBOutlet private(set) weak var estimatedArrivalView: GuidanceEstimatedArrivalView!
+    @IBOutlet private(set) var estimatedArrivalView: GuidanceEstimatedArrivalView!
 
     /// The current speed view.
-    @IBOutlet private(set) weak var currentSpeedView: GuidanceSpeedView!
+    @IBOutlet private(set) var currentSpeedView: GuidanceSpeedView!
 
     /// The dashboard pull view (handle).
-    @IBOutlet private(set) weak var pullView: UIView!
+    @IBOutlet private(set) var pullView: UIView!
 
     /// The dashboard table view.
-    @IBOutlet private(set) weak var tableView: UITableView!
+    @IBOutlet private(set) var tableView: UITableView!
 
     // The separator view.
-    @IBOutlet private(set) weak var separatorView: UIView!
+    @IBOutlet private(set) var separatorView: UIView!
 
     /// The delegate that implements the `GuidanceDashboardViewControllerDelegate` protocol.
     weak var delegate: GuidanceDashboardViewControllerDelegate?

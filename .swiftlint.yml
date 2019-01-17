@@ -128,6 +128,9 @@ opt_in_rules:
   # Operators should be declared as static functions, not free functions.
   - static_operator
 
+  # @IBOutlets shouldn't be declared as weak.
+  - strong_iboutlet
+
   # Cases inside a switch should always be on a newline.
   - switch_case_on_newline
 
