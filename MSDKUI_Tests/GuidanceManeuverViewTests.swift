@@ -328,6 +328,47 @@ final class GuidanceManeuverViewTests: XCTestCase {
                        "It has road icon image")
     }
 
+    /// Tests the default distance formatter used by the view.
+    func testDistanceFormatter() {
+        XCTAssertEqual(view.distanceFormatter, .currentMediumUnitFormatter, "It has the correct default formatter")
+    }
+
+    /// Tests the behavior when a new distance formatter is set and the view has data.
+    func testWhenDistanceFormatterIsSetAndViewHasManeuverData() {
+        let maneuverData = GuidanceManeuverData(maneuverIcon: nil,
+                                                distance: Measurement(value: 30, unit: .meters),
+                                                info1: nil,
+                                                info2: nil,
+                                                nextRoadIcon: nil)
+        view.state = .data(maneuverData)
+
+        // Sets a different formatter
+        view.distanceFormatter = MeasurementFormatter()
+
+        let expectedDistance = MeasurementFormatter().string(from: Measurement(value: 30, unit: UnitLength.meters))
+
+        view.dataContainers.forEach {
+            XCTAssertFalse($0.isHidden, "It has the data view container visible")
+        }
+
+        view.distanceLabels.forEach {
+            XCTAssertEqual($0.text, expectedDistance, "It has the correct distance set")
+            XCTAssertFalse($0.isHidden, "It has the distance labels visible")
+        }
+    }
+
+    /// Tests the behavior when a new distance formatter is set and the view doesn't have data.
+    func testWhenDistanceFormatterIsSetAndViewDoesntHaveManeuverData() {
+        view.state = .updating
+
+        // Sets a different formatter
+        view.distanceFormatter = MeasurementFormatter()
+
+        view.dataContainers.forEach {
+            XCTAssertTrue($0.isHidden, "It has the data view containers hidden")
+        }
+    }
+
     // MARK: - Private
 
     private func checkData(_ data: GuidanceManeuverData, line: UInt = #line) {
