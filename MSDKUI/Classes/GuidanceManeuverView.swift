@@ -44,55 +44,55 @@ import NMAKit
 
     // MARK: - Properties
 
-    /// The portrait & landscape views.
+    /// The views.
     @IBOutlet private(set) var views: [UIView]!
 
-    /// The portrait & landscape busy indicators.
+    /// The busy indicators.
     @IBOutlet private(set) var busyIndicators: [UIActivityIndicatorView]!
 
-    /// The portrait & landscape maneuver images.
+    /// The maneuver images.
     @IBOutlet private(set) var maneuverImageViews: [UIImageView]!
 
-    /// The portrait & landscape road icon images.
+    /// The road icon images.
     @IBOutlet private(set) var roadIconViews: [UIImageView]!
 
-    /// The portrait & landscape distance labels.
+    /// The distance labels.
     @IBOutlet private(set) var distanceLabels: [UILabel]!
 
-    /// The portrait & landscape info1 labels.
+    /// The info1 labels.
     @IBOutlet private(set) var info1Labels: [UILabel]!
 
-    /// The portrait & landscape info2 labels.
+    /// The info2 labels.
     @IBOutlet private(set) var info2Labels: [UILabel]!
 
-    /// The portrait & landscape data containers.
+    /// The data containers.
     @IBOutlet private(set) var dataContainers: [UIStackView]!
 
-    /// The portrait & landscape info label containers
+    /// The info label containers
     @IBOutlet private(set) var infoLabelContainers: [UIStackView]!
 
-    /// The portrait & landscape height constraints.
+    /// The height constraints.
     @IBOutlet private(set) var heightConstraints: [NSLayoutConstraint]!
 
-    /// The landscape road stack view.
-    @IBOutlet private(set) var landscapeRoadViewContainer: UIStackView!
+    /// The horizontal road stack view.
+    @IBOutlet private(set) var horizontalRoadViewContainer: UIStackView!
 
-    /// The portrait vertical container holding the distance & road icon + info labels
-    @IBOutlet private(set) var portraitVerticalContainer: UIStackView!
+    /// The vertical content container (holding the distance & road icon + info labels)
+    @IBOutlet private(set) var verticalContentContainer: UIStackView!
 
-    /// The portrait & landscape top constraints
+    /// The top constraints
     @IBOutlet private(set) var topConstraints: [NSLayoutConstraint]!
 
-    /// The portrait & landscape bottom constraints
+    /// The bottom constraints
     @IBOutlet private(set) var bottomConstraints: [NSLayoutConstraint]!
 
-    /// The portrait & landscape no data containers.
+    /// The no data containers.
     @IBOutlet private(set) var noDataContainers: [UIView]!
 
-    /// The portrait & landscape no data images.
+    /// The no data images.
     @IBOutlet private(set) var noDataImageViews: [UIImageView]!
 
-    /// The portrait & landscape no data labels.
+    /// The no data labels.
     @IBOutlet private(set) var noDataLabels: [UILabel]!
 
     override open var intrinsicContentSize: CGSize {
@@ -164,17 +164,17 @@ import NMAKit
         }
     }
 
-    /// The intrinsic content height is important for portrait/landscape orientation handling.
+    /// The intrinsic content height.
     private var intrinsicContentHeight = CGFloat(0.0)
 
-    /// The height of portrait Info 1 label as designed.
-    private var portraitInfo1LabelDesignHeight = CGFloat(0.0)
+    /// The height of vertical Info 1 label as designed.
+    private var verticalInfo1LabelDesignHeight = CGFloat(0.0)
 
-    /// The height of portrait Info 2 label as designed.
-    private var portraitInfo2LabelDesignHeight = CGFloat(0.0)
+    /// The height of vertical Info 2 label as designed.
+    private var verticalInfo2LabelDesignHeight = CGFloat(0.0)
 
-    /// The height of landscape Info 1 label as designed.
-    private var landscapeInfo1LabelDesignHeight = CGFloat(0.0)
+    /// The height of horozintal Info 1 label as designed.
+    private var horizontalInfo1LabelDesignHeight = CGFloat(0.0)
 
     // MARK: - Public
 
@@ -201,13 +201,13 @@ import NMAKit
 
     // MARK: - Private
 
-    /// Handles to the portrait orientation.
+    /// Handles to the horizontal orientation.
     private func adaptToHorizontal() {
         views[Axis.vertical.rawValue].isHidden = false
         views[Axis.horizontal.rawValue].isHidden = true
     }
 
-    /// Handles to the landscape orientation.
+    /// Handles to the vertical orientation.
     private func adaptToVertical() {
         views[Axis.vertical.rawValue].isHidden = true
         views[Axis.horizontal.rawValue].isHidden = false
@@ -218,7 +218,7 @@ import NMAKit
         // Creates nib instance
         UINib(nibName: String(describing: GuidanceManeuverView.self), bundle: .MSDKUI).instantiate(withOwner: self)
 
-        // Ensure that views are sorted by tags, because tags with the value of 1 represents portrait and value of 2 represents landscape.
+        // Ensure that views are sorted by tags, because tags with the value of 1 represents vertical and value of 2 represents horizontal.
         // Order of views in `views` array are inline with order of cases in `Orientation` enumeration.
         // Since indexing `views` array with `rawValue` from `Orientation` enumeration is based on an assumption,
         // an assumption is also made for `tag` of related views and representation of their values.
@@ -229,9 +229,9 @@ import NMAKit
         views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
         // Saves the label design heights which will be used to calculate the height constraints
-        portraitInfo1LabelDesignHeight = info1Labels[Axis.vertical.rawValue].frame.height
-        portraitInfo2LabelDesignHeight = info2Labels[Axis.vertical.rawValue].frame.height
-        landscapeInfo1LabelDesignHeight = info1Labels[Axis.horizontal.rawValue].frame.height
+        verticalInfo1LabelDesignHeight = info1Labels[Axis.vertical.rawValue].frame.height
+        verticalInfo2LabelDesignHeight = info2Labels[Axis.vertical.rawValue].frame.height
+        horizontalInfo1LabelDesignHeight = info1Labels[Axis.horizontal.rawValue].frame.height
 
         // We expect that the owner will constraint us depending on the orientation
         views.forEach { addSubviewBindToEdges($0) }
@@ -267,9 +267,9 @@ import NMAKit
 
         // Proceed based on the visible view
         if views[Axis.vertical.rawValue].isHidden == false {
-            calculatePortraitHeight()
+            calculateVerticalHeight()
         } else {
-            calculateLandscapeHeight()
+            calculateHorizontalHeight()
         }
 
         invalidateIntrinsicContentSize()
@@ -277,8 +277,8 @@ import NMAKit
         layoutIfNeeded()
     }
 
-    /// Calculates the intrinsic content height and set the height constraint and for the portrait orientation.
-    private func calculatePortraitHeight() {
+    /// Calculates the intrinsic content height and set the height constraint and for the vertical content.
+    private func calculateVerticalHeight() {
         let topPadding = topConstraints[Axis.vertical.rawValue].constant
         let bottomPadding = abs(bottomConstraints[Axis.vertical.rawValue].constant)
 
@@ -288,12 +288,12 @@ import NMAKit
         // Spacing between the distance label and info labels
         if info1Labels[Axis.vertical.rawValue].isHidden == false ||
             info2Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += portraitVerticalContainer.spacing
+            intrinsicContentHeight += verticalContentContainer.spacing
         }
 
         // If visible, add info 1 label height
         if info1Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += portraitInfo1LabelDesignHeight
+            intrinsicContentHeight += verticalInfo1LabelDesignHeight
         }
 
         // Spacing bteween the info 1 & 2 labels, e.g. 2
@@ -304,7 +304,7 @@ import NMAKit
 
         /// If visible, add info 2 label height
         if info2Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += portraitInfo2LabelDesignHeight
+            intrinsicContentHeight += verticalInfo2LabelDesignHeight
         }
 
         // Height constraint = intrinsic content height - (top + bottom paddings)
@@ -313,7 +313,7 @@ import NMAKit
     }
 
     /// Calculates the intrinsic content height and set the height constraint and for the landscape orientation.
-    private func calculateLandscapeHeight() {
+    private func calculateHorizontalHeight() {
         let topPadding = topConstraints[Axis.horizontal.rawValue].constant
         let bottomPadding = abs(bottomConstraints[Axis.horizontal.rawValue].constant)
 
@@ -328,7 +328,7 @@ import NMAKit
 
         /// If visible, add info 1 label height
         if info1Labels[Axis.horizontal.rawValue].isHidden == false {
-            intrinsicContentHeight += landscapeInfo1LabelDesignHeight
+            intrinsicContentHeight += horizontalInfo1LabelDesignHeight
         }
 
         // Spacing bteween the info 1 & 2 labels
@@ -345,12 +345,12 @@ import NMAKit
 
         // If visible, add road icon
         if roadIconViews[Axis.horizontal.rawValue].image == nil {
-            landscapeRoadViewContainer.isHidden = true
+            horizontalRoadViewContainer.isHidden = true
         } else {
             // Spacing between the info labels and road icon + road icon height
             intrinsicContentHeight += dataContainers[Axis.horizontal.rawValue].spacing +
-                landscapeRoadViewContainer.frame.height
-            landscapeRoadViewContainer.isHidden = false
+                horizontalRoadViewContainer.frame.height
+            horizontalRoadViewContainer.isHidden = false
         }
 
         // Height constraint = intrinsic content height - (top + bottom paddings)

@@ -53,10 +53,6 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
         // Shows the correct message about missing maneuver information
         view.noDataLabels.forEach {
-            XCTAssertNotEqual($0.text,
-                              "msdkui_maneuverpanel_nodata",
-                              "The string is localized")
-
             XCTAssertLocalized($0.text,
                                key: "msdkui_maneuverpanel_nodata",
                                bundle: .MSDKUI,
@@ -70,7 +66,7 @@ final class GuidanceManeuverViewTests: XCTestCase {
     }
 
     /// Tests the view height when the Info1 is set for default axis.
-    func testViewWithInfo1in() {
+    func testViewWithInfo1() {
         let data = GuidanceManeuverData(maneuverIcon: UIImage(),
                                         distance: Measurement(value: 30, unit: UnitLength.meters),
                                         info1: "Exit 30",

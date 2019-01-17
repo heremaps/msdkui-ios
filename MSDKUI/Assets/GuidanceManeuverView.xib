@@ -12,8 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GuidanceManeuverView" customModule="MSDKUI" customModuleProvider="target">
             <connections>
-                <outlet property="landscapeRoadViewContainer" destination="qBj-7Z-Q6B" id="Dax-oE-CO2"/>
-                <outlet property="portraitVerticalContainer" destination="aGD-lr-iLf" id="JlG-ww-s27"/>
+                <outlet property="horizontalRoadViewContainer" destination="qBj-7Z-Q6B" id="Dax-oE-CO2"/>
+                <outlet property="verticalContentContainer" destination="aGD-lr-iLf" id="JlG-ww-s27"/>
                 <outletCollection property="maneuverImageViews" destination="jRi-q9-frX" collectionClass="NSMutableArray" id="BZE-Du-E6H"/>
                 <outletCollection property="noDataImageViews" destination="xxY-8J-PmG" collectionClass="NSMutableArray" id="i1M-Hh-HL7"/>
                 <outletCollection property="noDataImageViews" destination="ppl-Fa-BwQ" collectionClass="NSMutableArray" id="KeK-xX-ndi"/>
