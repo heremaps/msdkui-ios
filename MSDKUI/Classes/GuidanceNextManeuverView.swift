@@ -60,11 +60,12 @@ import UIKit
 
     // MARK: - Properties
 
-    /// Container view of the next maneuver icon.
-    @IBOutlet private(set) var maneuverImageViewContainer: UIView!
-
     /// Image view for the icon of the next manuever.
     @IBOutlet private(set) var maneuverImageView: UIImageView!
+
+    /// Height constraint of the next maneuver icon image.
+    /// By default the constraint is not active.
+    @IBOutlet private(set) var maneuverImageHeightConstraint: NSLayoutConstraint!
 
     /// Label for the travel distance of the next manuever.
     @IBOutlet private(set) var distanceLabel: UILabel!
@@ -119,11 +120,13 @@ import UIKit
 
         // When icon is nil, it should be removed (not visible, giving space to the rest of the views)
         if let icon = model.maneuverIcon {
-            maneuverImageViewContainer.isHidden = false
+            maneuverImageView.isHidden = false
             maneuverImageView.image = icon
+            maneuverImageHeightConstraint.isActive = true
         } else {
-            maneuverImageViewContainer.isHidden = true
+            maneuverImageHeightConstraint.isActive = false
             maneuverImageView.image = nil
+            maneuverImageView.isHidden = true
         }
 
         // When ViewModel.streetName is nil, the dot & street name label's should be hidden
