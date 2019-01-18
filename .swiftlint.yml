@@ -32,6 +32,9 @@ opt_in_rules:
   # Prefer non-optional collections over optional collections.
   - discouraged_optional_collection
 
+  # Imports should be unique.
+  - duplicate_imports
+
   # Prefer checking isEmpty over comparing count to zero.
   - empty_count
 
@@ -145,6 +148,9 @@ opt_in_rules:
 
   # Unused control flow label should be removed.
   - unused_control_flow_label
+
+  # Setter value is not used.
+  - unused_setter_value
 
   # Function parameters should be aligned vertically if they're in multiple lines in a method call.
   - vertical_parameter_alignment_on_call
