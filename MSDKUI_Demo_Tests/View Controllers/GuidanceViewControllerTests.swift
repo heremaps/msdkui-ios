@@ -195,16 +195,39 @@ final class GuidanceViewControllerTests: XCTestCase {
         XCTAssertEqual(trailingConstraint?.constant, 0, "It has the correct trailing constraint constant")
     }
 
-    /// Tests the `GuidanceManeuverMonitorDelegate` methods.
-    func testGuidanceManeuverMonitorDelegateMethods() throws {
-        let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
-        let data = GuidanceManeuverData()
+    /// Tests `MapRouteHandler` handles the correct objects.
+    func testMapRouteHandler() {
+        XCTAssertEqual(mockMapRouteHandler.lastRoute, viewControllerUnderTest?.route, "It handles correct route")
+        XCTAssertEqual(mockMapRouteHandler.lastMapView, viewControllerUnderTest?.mapView, "It handles correct map view")
+        XCTAssertEqual(mockMapRouteHandler.lastMapRoute, viewControllerUnderTest?.mapRoute, "It handles correct map route")
+    }
 
-        viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: data)
+    // MARK: - GuidanceManeuverMonitorDelegate
+
+    /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitor(_:didUpdateData:)` returns data.
+    func testWhenGuidanceManeuverMonitorDidUpdateDataIsTriggeredWithData() throws {
+        let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
+        let maneuverData = GuidanceManeuverData()
+
+        viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: maneuverData)
 
         // Is the data passed?
-        XCTAssertNotNil(viewControllerUnderTest?.maneuverView.data, "Maneuver view has no data!")
-        XCTAssertEqual(viewControllerUnderTest?.maneuverView.data, data, "Maneuver view hasn't the data!")
+        XCTAssertEqual(viewControllerUnderTest?.maneuverView.state, .data(maneuverData), "It has the correct data")
+    }
+
+    /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitor(_:didUpdateData:)` doesn't return data.
+    func testWhenGuidanceManeuverMonitorDidUpdateDataIsTriggeredWithNil() throws {
+        let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
+
+        viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: nil)
+
+        // Is the data passed?
+        XCTAssertEqual(viewControllerUnderTest?.maneuverView.state, .updating, "It has the correct state")
+    }
+
+    /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitorDidReachDestination(_:)` is triggered.
+    func testWhenGuidanceManeuverMonitorDidReachDestinationIsTriggered() throws {
+        let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
 
         viewControllerUnderTest?.guidanceManeuverMonitorDidReachDestination(monitor)
 
@@ -217,13 +240,6 @@ final class GuidanceViewControllerTests: XCTestCase {
         // Is the idle timer enabled?
         let idleTimerDisabler = try require(viewControllerUnderTest?.idleTimerDisabler)
         XCTAssertFalse(idleTimerDisabler.isIdleTimerDisabled, "Idle timer is enabled when reached the destination")
-    }
-
-    /// Tests `MapRouteHandler` handles the correct objects.
-    func testMapRouteHandler() {
-        XCTAssertEqual(mockMapRouteHandler.lastRoute, viewControllerUnderTest?.route, "It handles correct route")
-        XCTAssertEqual(mockMapRouteHandler.lastMapView, viewControllerUnderTest?.mapView, "It handles correct map view")
-        XCTAssertEqual(mockMapRouteHandler.lastMapRoute, viewControllerUnderTest?.mapRoute, "It handles correct map route")
     }
 
     // MARK: - GuidanceCurrentStreetNameMonitorDelegate
