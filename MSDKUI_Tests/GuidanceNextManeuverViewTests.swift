@@ -71,8 +71,9 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
         nextManeuverView.configure(with: viewModel)
 
-        XCTAssertFalse(nextManeuverView.maneuverImageViewContainer.isHidden, "The container of maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
+        XCTAssertNotNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is set")
+        XCTAssertTrue(nextManeuverView.maneuverImageHeightConstraint.isActive, "The maneuver icon height constraint is active")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertFalse(nextManeuverView.separatorLabel.isHidden, "The separator label is visible")
         XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
@@ -87,7 +88,9 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
         nextManeuverView.configure(with: viewModel)
 
-        XCTAssertFalse(nextManeuverView.maneuverImageViewContainer.isHidden, "The container of maneuver icon is visible")
+        XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
+        XCTAssertNotNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is set")
+        XCTAssertTrue(nextManeuverView.maneuverImageHeightConstraint.isActive, "The maneuver icon height constraint is active")
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertTrue(nextManeuverView.separatorLabel.isHidden, "The separator label is hidden")
@@ -103,8 +106,9 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
         nextManeuverView.configure(with: viewModel)
 
-        XCTAssertTrue(nextManeuverView.maneuverImageViewContainer.isHidden, "The container of maneuver icon is hidden")
-        XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
+        XCTAssertTrue(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is hidden")
+        XCTAssertNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is not set")
+        XCTAssertFalse(nextManeuverView.maneuverImageHeightConstraint.isActive, "The maneuver icon height constraint is inactive")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertFalse(nextManeuverView.separatorLabel.isHidden, "The separator label is visible")
         XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
