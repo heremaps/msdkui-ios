@@ -4,7 +4,7 @@ use_frameworks!
 
 def project_pods
     pod 'HEREMapsUI', :path => './'
-    pod 'SwiftLint', '0.29.4'
+    pod 'SwiftLint', '0.30.0'
 end
 
 target 'MSDKUI_Demo' do
