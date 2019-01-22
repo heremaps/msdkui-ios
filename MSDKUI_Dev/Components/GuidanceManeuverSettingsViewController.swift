@@ -21,50 +21,126 @@ final class GuidanceManeuverSettingsViewController: SettingsViewController<Guida
 
     struct Settings {
         var state: GuidanceManeuverView.State
-        var axis: GuidanceManeuverView.Axis
+        var axis: NSLayoutConstraint.Axis
         var foregroundColor: UIColor
+        var highlightManeuver: Bool
     }
 
+    // swiftlint:disable:next function_body_length
     override func viewDidLoad() {
         super.viewDidLoad()
 
         data = [
+            SettingsItem(title: ".data without properties, .horizontal",
+                         configuration: Settings(state: .data(.allNill),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data with all data properties, .horizontal",
-                         configuration: Settings(state: .data(.allProperties), axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.allProperties),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without maneuver icon, .horizontal",
-                         configuration: Settings(state: .data(.withoutManeuverIcon), axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutManeuverIcon),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without distance, .horizontal",
-                         configuration: Settings(state: .data(.withoutDistance), axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutDistance),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without info1, .horizontal",
-                         configuration: Settings(state: .data(.withoutInfo1), axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutInfo1),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without into2, .horizontal",
-                         configuration: Settings(state: .data(.withoutInfo2), axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutInfo2),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without road icon, .horizontal",
-                         configuration: Settings(state: .data(.withoutRoadIcon), axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutRoadIcon),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data with all properties, red, .horizontal",
-                         configuration: Settings(state: .data(.allProperties), axis: .horizontal, foregroundColor: .red)),
+                         configuration: Settings(state: .data(.allProperties),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .red,
+                                                 highlightManeuver: false)),
+            SettingsItem(title: ".data with highlighted info2, .horizontal",
+                         configuration: Settings(state: .data(.allProperties),
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: true)),
             SettingsItem(title: ".noData, .horizontal",
-                         configuration: Settings(state: .noData, axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .noData,
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".updating, .horizontal",
-                         configuration: Settings(state: .updating, axis: .horizontal, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .updating,
+                                                 axis: .horizontal,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
+            SettingsItem(title: ".data without properties, .vertical",
+                         configuration: Settings(state: .data(.allNill),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data with all data properties, .vertical",
-                         configuration: Settings(state: .data(.allProperties), axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.allProperties),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without maneuver icon, .vertical",
-                         configuration: Settings(state: .data(.withoutManeuverIcon), axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutManeuverIcon),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without distance, .vertical",
-                         configuration: Settings(state: .data(.withoutDistance), axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutDistance),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without info1, .vertical",
-                         configuration: Settings(state: .data(.withoutInfo1), axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutInfo1),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without into2, .vertical",
-                         configuration: Settings(state: .data(.withoutInfo2), axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutInfo2),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data without road icon, .vertical",
-                         configuration: Settings(state: .data(.withoutRoadIcon), axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .data(.withoutRoadIcon),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".data with all properties, red, .vertical",
-                         configuration: Settings(state: .data(.allProperties), axis: .vertical, foregroundColor: .red)),
+                         configuration: Settings(state: .data(.allProperties),
+                                                 axis: .vertical,
+                                                 foregroundColor: .red,
+                                                 highlightManeuver: false)),
+            SettingsItem(title: ".data with highlighted info2, .vertical",
+                         configuration: Settings(state: .data(.allProperties),
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: true)),
             SettingsItem(title: ".noData, .vertical",
-                         configuration: Settings(state: .noData, axis: .vertical, foregroundColor: .colorForegroundLight)),
+                         configuration: Settings(state: .noData,
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false)),
             SettingsItem(title: ".updating, .vertical",
-                         configuration: Settings(state: .updating, axis: .vertical, foregroundColor: .colorForegroundLight))
+                         configuration: Settings(state: .updating,
+                                                 axis: .vertical,
+                                                 foregroundColor: .colorForegroundLight,
+                                                 highlightManeuver: false))
         ]
     }
 }
@@ -77,7 +153,7 @@ private extension GuidanceManeuverData {
         maneuverIcon: UIImage(named: "red_sign"),
         distance: Measurement(value: 4, unit: .kilometers),
         info1: "Useful information 1",
-        info2: "Useful information 2",
+        info2: "Very very long useful information 2",
         nextRoadIcon: UIImage(named: "red_sign")
     )
 
@@ -85,7 +161,7 @@ private extension GuidanceManeuverData {
         maneuverIcon: nil,
         distance: Measurement(value: 4, unit: .kilometers),
         info1: "Useful information 1",
-        info2: "Useful information 2",
+        info2: "Very very long useful information 2",
         nextRoadIcon: UIImage(named: "red_sign")
     )
 
@@ -93,7 +169,7 @@ private extension GuidanceManeuverData {
         maneuverIcon: UIImage(named: "red_sign"),
         distance: nil,
         info1: "Useful information 1",
-        info2: "Useful information 2",
+        info2: "Very very long useful information 2",
         nextRoadIcon: UIImage(named: "red_sign")
     )
 
@@ -101,7 +177,7 @@ private extension GuidanceManeuverData {
         maneuverIcon: UIImage(named: "red_sign"),
         distance: Measurement(value: 4, unit: .kilometers),
         info1: nil,
-        info2: "Useful information 2",
+        info2: "Very very long useful information 2",
         nextRoadIcon: UIImage(named: "red_sign")
     )
 
@@ -117,7 +193,15 @@ private extension GuidanceManeuverData {
         maneuverIcon: UIImage(named: "red_sign"),
         distance: Measurement(value: 4, unit: .kilometers),
         info1: "Useful information 1",
-        info2: "Useful information 2",
+        info2: "Very very long useful information 2",
+        nextRoadIcon: nil
+    )
+
+    static let allNill = GuidanceManeuverData(
+        maneuverIcon: nil,
+        distance: nil,
+        info1: nil,
+        info2: nil,
         nextRoadIcon: nil
     )
 }

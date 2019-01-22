@@ -160,6 +160,9 @@ final class GuidanceViewController: UIViewController {
         // Applies speed limit style
         setUpSpeedLimitView()
 
+        // Applies maneuver view style
+        setUpManeuverView()
+
         // Applies next maneuver view style
         setUpNextManeuverView()
 
@@ -360,6 +363,11 @@ final class GuidanceViewController: UIViewController {
         nextManeuverView.layoutMargins = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
     }
 
+    /// Styles the maneuver view.
+    private func setUpManeuverView() {
+        maneuverView.tintColor = .colorAccentLight
+    }
+
     private func setUpPositionNotificationsObservers() {
         for notificationName: Notification.Name in [.NMAPositioningManagerDidUpdatePosition] {
             let observer = notificationCenter.addObserver(forName: notificationName, object: nil, queue: nil) { [weak self] _ in
@@ -428,8 +436,7 @@ extension GuidanceViewController: GuidanceManeuverMonitorDelegate {
     func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
         // Enable the idle timer back
         idleTimerDisabler.isIdleTimerDisabled = false
-
-        maneuverView.highlightManeuver(textColor: .colorAccentLight)
+        maneuverView.highlightManeuver = true
     }
 }
 

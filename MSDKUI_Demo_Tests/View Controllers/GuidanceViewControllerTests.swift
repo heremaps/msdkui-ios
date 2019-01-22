@@ -92,6 +92,11 @@ final class GuidanceViewControllerTests: XCTestCase {
                        "Not the expected statusbar style!")
     }
 
+    /// Tests the maneuver view's default state.
+    func testDefaultManeuverView() {
+        XCTAssertEqual(viewControllerUnderTest?.maneuverView.tintColor, .colorAccentLight, "It has the correct tint color")
+    }
+
     /// Checks if the Next Maneuver View exists and is configured.
     func testNextManeuverView() throws {
         XCTAssertNotNil(viewControllerUnderTest?.nextManeuverView, "It has the next maneuver view")
@@ -228,14 +233,11 @@ final class GuidanceViewControllerTests: XCTestCase {
     /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitorDidReachDestination(_:)` is triggered.
     func testWhenGuidanceManeuverMonitorDidReachDestinationIsTriggered() throws {
         let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
+        let maneuverView = try require(viewControllerUnderTest?.maneuverView)
 
         viewControllerUnderTest?.guidanceManeuverMonitorDidReachDestination(monitor)
 
-        // Are the Info2 labels highlighted?
-        viewControllerUnderTest?.maneuverView.info2Labels.forEach {
-            XCTAssertEqual($0.textColor, .colorAccentLight,
-                           "Maneuver view info2 labels not highlighted!")
-        }
+        XCTAssertTrue(maneuverView.highlightManeuver, "It highlights the maneuver label")
 
         // Is the idle timer enabled?
         let idleTimerDisabler = try require(viewControllerUnderTest?.idleTimerDisabler)
