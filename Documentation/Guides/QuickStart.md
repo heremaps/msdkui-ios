@@ -2,14 +2,14 @@
 Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we are going to introduce you to the HERE Mobile SDK UI Kit and show you how easy it is to get started. As a very first example, we'll also develop a "Hello HERE Mobile SDK UI Kit" iOS application as part of this guide. For more examples and in-depth information on how to work with the HERE  Mobile SDK UI Kit framework, please refer to the [User Guide](UserGuide.md).
 
 ## Contents
-- [How to Run the Example Apps](#how-to-run-the-example-apps)
-- [How to Run the Demo App](#how-to-run-the-demo-app)
+- [How to run the example Apps](#how-to-run-the-example-apps)
+- [How to run the Demo app](#how-to-run-the-demo-app)
 - [Set up an Xcode iOS Project](#set-up-an-xcode-ios-project)
 	- [Integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit](#integrate-the-here-mobile-sdk-and-the-here-mobile-sdk-ui-kit)
 	- [Set your HERE Mobile SDK credentials](#set-your-here-mobile-sdk-credentials)
 	- [Add your first HERE Mobile SDK UI Kit component](#add-your-first-here-mobile-sdk-ui-kit-component)
 
-## How to Run the Example Apps
+## How to run the example apps
 If you just want to try out the accompanying examples, please perform the following steps:
 
 - If you are new to CocoaPods or need to install it via Terminal, please follow the steps as described [here](https://guides.cocoapods.org/using/getting-started.html).
@@ -24,7 +24,7 @@ let licenseKey = "YOUR_LICENSE_KEY"
 - Open the `*.xcworkspace` (NOT `*.xcodeproj`)
 - For more information on how to set up a new project, please, refer to our guide below which contains much more useful information on how to use the example apps.
 
-## How to Run the Demo App
+## How to run the Demo app
 Along with the accompanying example apps and code snippets, we also provide a more complex demo app showing a complete and fully functional flow. If you want to try out the Demo application, please take a look at the [Contribution Guide](ContributionGuide.md).
 
 If you want to build your own app, it may be useful to follow the guide below where we will develop step by step a first "Hello HERE Mobile SDK UI Kit" app in greater detail.
@@ -73,7 +73,7 @@ To include the required dependencies, please perform the following steps:
 - Open the terminal and navigate to your project folder to execute: `pod install --repo-update`. This will fetch and integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit to your project.
 - Once done, please open the newly generated `*.xcworkspace` Xcode project file (do NOT open `*.xcodeproj`).
 
-> If you are getting an error that MSDKUI.modulemap or NMAKit is not found, please make sure to use the latest supported [Cocoapods version](../../README.md#ios-environment). You may need to remove all traces from previous pods by executing `pod deintegrate`. Once done, you can install the pods again.
+> If you are getting an error that MSDKUI.modulemap or NMAKit is not found, please make sure to use the latest supported [Cocoapods version](../../README.md#ios-environment). You may need to remove all traces from previous pods by executing `pod deintegrate`. Once this is done, you can install the pods again.
 
 #### What to do if you have already included the HERE Mobile SDK in an existing project?
 If you have already included the HERE Mobile SDK via CocoaPods, then the related dependency (`pod 'HEREMaps’, ‘x.x’`) can be removed from your Podfile. If you used a different SDK version, please make sure that your app is compatible with the [SDK version](../../README.md#supported-platforms) required by the MSDKUI library. If you had the SDK integrated _manually_, please deintegrate it before installing the pods.

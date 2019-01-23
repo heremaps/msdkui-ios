@@ -3,15 +3,15 @@
 This guide is for developers who want to contribute to the MSDKUI codebase, build the MSDKUI framework, or run the Demo application on their local machines. For using the `MSDKUI.framework` on your own project, or running the accompanying example apps, please check the [QuickStart](QuickStart.md) guide.
 
 ## Contents
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:0 orderedList:0 -->
 
-- [Development Environment](#development-environment)
-	- [Getting the Code](#getting-the-code)
+- [Development environment](#development-environment)
+	- [Getting the code](#getting-the-code)
 	- [Setting the HERE Mobile SDK license](#setting-the-here-mobile-sdk-license)
-	- [Setting up the Environment](#setting-up-the-environment)
+	- [Setting up the environment](#setting-up-the-environment)
 - [Building the MSKUI Framework](#building-the-mskui-framework)
-- [Building the Demo App](#building-the-demo-app)
-- [Building the Dev App](#building-the-dev-app)
+- [Building the Demo app](#building-the-demo-app)
+- [Building the Dev app](#building-the-dev-app)
 - [Commit / Pull Request Policy](#commit-pull-request-policy)
 - [Running Tests](#running-tests)
 - [Command Line](#command-line)
@@ -25,7 +25,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 	- [A normal ticket](#a-normal-ticket)
 	- [Solving multiple tickets](#solving-multiple-tickets)
 - [Submitting a Pull Request](#submitting-a-pull-request)
-- [Writing Code](#writing-code)
+- [Writing code](#writing-code)
 	- [Accessibility Identifiers](#accessibility-identifiers)
 	- [MARK directives](#mark-directives)
 - [Writing Unit Tests](#writing-unit-tests)
@@ -40,7 +40,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 <!-- /TOC -->
 
-## Development Environment
+## Development environment
 
 Prerequisites, as of November, 2018:
 
@@ -51,7 +51,7 @@ Prerequisites, as of November, 2018:
 
 There are many ways to install Ruby on macOS. Recent macOS versions already include Ruby 2.0 or higher, but other popular ways to install Ruby include [brew](https://brew.sh/), [rbenv](https://github.com/rbenv/rbenv), and [rvm](https://rvm.io/rvm/install). For this reason, installing Bundler might differ between environments, see [Troubleshooting](#troubleshooting) for more details.
 
-### Getting the Code
+### Getting the code
 
 ```
 $ git clone https://github.com/heremaps/msdkui-ios
@@ -81,7 +81,7 @@ ENV['MSDKUI_APP_TOKEN_IOS'] = "your app code"
 ENV['MSDKUI_APP_LICENSE_IOS'] = "your license"
 ```
 
-### Setting up the Environment
+### Setting up the environment
 
 ```
 $ bundle install
@@ -108,7 +108,7 @@ $ bundle exec rake build:msdkui_framework
 
 At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`. The framework is a [fat binary](https://en.wikipedia.org/wiki/Fat_binary), built for device and simulator.
 
-## Building the Demo App
+## Building the Demo app
 
 1. Open the `MSDKUI.xcworkspace`
 1. Select the `MSDKUI_Demo` scheme (if not selected by default)
@@ -116,7 +116,7 @@ At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`.
 
 >**Note:** If you run the demo app in a simulator, please make sure to delete the build phase "Adapt to Build Platform" in Xcode. Otherwise, you won't be able to mock locations for the iOS simulator of your choice.
 
-## Building the Dev App
+## Building the Dev app
 
 This project includes a Dev application, which is designed to display MSDKUI components in their raw form. While the `Demo App` offers a polished experience of the MSDKUI components, it doesn't show the different combinations these components allow developers to set.
 
@@ -305,7 +305,7 @@ Extended description (as for a normal ticket, see above).
 - Give the Pull Request a description with details on what the Pull Request is about.
 - Once the Pull Request is merged into master, delete the remote feature branch.
 
-## Writing Code
+## Writing code
 
 These are general rules to follow when writing code.
 

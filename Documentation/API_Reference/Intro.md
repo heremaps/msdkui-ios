@@ -9,4 +9,4 @@ Browse the latest API reference for the HERE Mobile SDK UI Kit framework.
 - You can find various _examples_ and _code snippets_ accompanying the Developer's Guide on GitHub, plus a more complex and fully functional _demo app_.
 
 ## Get in Touch
-We are happy to hear your feedback. Please [contact us](https://developer.here.com/contact-us) for any questions, suggestions or improvements. Thank you for your using the HERE Mobile SDK UI Kit.
+We are happy to hear your feedback. Please [contact us](https://developer.here.com/contact-us) for any questions, suggestions or improvements. Thank you for using the HERE Mobile SDK UI Kit.

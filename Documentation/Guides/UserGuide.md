@@ -1,29 +1,31 @@
 # HERE Mobile SDK UI Kit - User Guide
-Are you looking for a framework that let's you build feature-rich and compelling user interfaces on top of the HERE Mobile SDK, _Premium_ edition? Then the HERE Mobile SDK UI Kit for iOS and Android is the perfect companion for you.
+Are you looking for a framework that lets you build feature-rich and compelling user interfaces on top of the HERE Mobile SDK, _Premium_ edition? Then the HERE Mobile SDK UI Kit for iOS and Android is the perfect companion for you.
 
 This user guide describes the general workflow using the HERE Mobile SDK UI Kit and its components in detail. If you are looking for a quick overview, please look at our [README](../../README.md), our [Quick Start](QuickStart.md) guide or the latest _Release Notes_.
 
 ## Contents
-- [Why use HERE Mobile SDK UI Kit?](#why-use-here-mobile-sdk-ui-kit)
+
+- [Why use the HERE Mobile SDK UI Kit?](#why-use-the-here-mobile-sdk-ui-kit)
 - [Where to start?](#where-to-start)
 - [How to read this guide?](#how-to-read-this-guide)
 - [Getting Started - A HERE Mobile SDK UI Kit Primer](#getting-started---a-here-mobile-sdk-ui-kit-primer)
 - [Overview of the HERE Mobile SDK UI Kit Primer example](#overview-of-the-here-mobile-sdk-ui-kit-primer-example)
 - [Designing the app flow](#designing-the-app-flow)
 - [Adding HERE Mobile SDK UI Kit components](#adding-here-mobile-sdk-ui-kit-components)
-  - [Adding the map view](#adding-the-map-view)
+	- [Adding the map view](#adding-the-map-view)
 - [Using the WaypointList](#using-the-waypointlist)
-  - [Adding custom styles](#adding-custom-styles)
-  - [Calculating the route](#calculating-the-route)
-- [Using TransportModePanel](#using-transportmodepanel)
-- [Implementing Route Details screen](#implementing-route-details-screen)
-- [Using RouteDescriptionList](#using-routedescriptionlist)
-- [Implementing Guidance screen](#implementing-guidance-screen)
-- [Using GuidanceManeuverView](#using-guidancemaneuverview)
+	- [Adding Custom Styles](#adding-custom-styles)
+	- [Calculating the Route](#calculating-the-route)
+- [Using the TransportModePanel](#using-the-transportmodepanel)
+- [Implementing the route details screen](#implementing-the-route-details-screen)
+- [Using the RouteDescriptionList](#using-the-routedescriptionlist)
+- [Implementing the guidance screen](#implementing-the-guidance-screen)
+- [Using the GuidanceManeuverView](#using-the-guidancemaneuverview)
 - [How to localize your app?](#how-to-localize-your-app)
 - [Where to go from here?](#where-to-go-from-here)
 
-## Why use HERE Mobile SDK UI Kit?
+
+## Why use the HERE Mobile SDK UI Kit?
 The HERE Mobile SDK UI Kit provides highly flexible and customizable User Interface building blocks that can be freely combined and arranged with your own UI components - with just a few lines of code.
 
 The HERE Mobile SDK UI Kit builds upon optimized native platform code to fully support Xcode's _Interface Builder_ and Android Studio's _Layout Editor_ resulting in reduced development time and a faster time to market for your apps.
@@ -109,7 +111,7 @@ Then switch to _Identity Inspector_ and set _Class_ and _Module_ accordingly for
 - Class: `TransportModePanel`
 - Module: `MSDKUI`
 
-In case of `WaypointList` you would set the class name to _WaypointList_.
+In case of `WaypointList`, you would set the class name to _WaypointList_.
 
 <center><p>
   <img src="./Images/xcode_custom_class.png" width="350"/>
@@ -203,7 +205,7 @@ We implemented three methods to implement the following behavior:
 - when a waypoint is removed, we want to calculate a new route
 - when a waypoint is dragged, we also want to calculate a new route
 
-### Adding custom styles
+### Adding Custom Styles
 To indicate that a waypoint was tapped, we tweak a little bit the default styles that are available for each HERE Mobile SDK UI Kit component. Each component provides properties to allow you to change the default styles at any time to achieve an immediate effect or to change the look-and-feel of a component on-the-fly.
 ```swift
 waypointList.itemFlashColor = .lightGray
@@ -221,7 +223,7 @@ These are not the only customizations you can make to a HERE Mobile SDK UI Kit c
 - `.itemFlashColor: UIColor`
 - `.itemFlashDuration: TimeInterval`
 
-### Calculating the route
+### Calculating the Route
 Since we integrated a HERE map, we can easily show a new route on it. For route calculation, we use the HERE Mobile SDK's core router. If you are interested in the implementation details, please have a look at the example code. For the purpose of this guide, we only need to be aware that route calculation requires `NMAWaypoint` objects and a `NMARoutingMode` containing details about the desired route. For example, a travel date, route options or a transport mode. For the sake of simplicity, we only provide a transport mode option. The `NMAWaypoint` array can easily be retrieved like:
 ```swift
 let myWaypoints = waypointList.waypoints
@@ -229,7 +231,7 @@ let myWaypoints = waypointList.waypoints
 
 Note that we show a route on the map once route calculation is completed. In this example, we show only the first calculated route, if more routes could be found.
 
-## Using TransportModePanel
+## Using the TransportModePanel
 As mentioned in the previous section we want to calculate a route for a specific transportation mode. Therefore we have added the `TransportModePanel` HERE Mobile SDK UI Kit component. By default it shows all supported transportation modes:
 - `NMATransportMode.car`
 - `NMATransportMode.truck`
@@ -275,7 +277,7 @@ The screenshot shows how the updated main `ViewController` would look like on an
   <img src="./Images/primer_main.png" width="250"/>
 </p></center>
 
-## Implementing Route Details screen
+## Implementing the route details screen
 In the previous screen the user was able to calculate a route based on his or her waypoint selection and a suitable route mode. Now we want to show a summary for the found routes and their maneuvers on a new screen. As described above we will show this in the `ManeuverViewController` of our HERE Mobile SDK UI Kit Primer example app. The `ManeuverViewController` controller holds two HERE Mobile SDK UI Kit components:
 - `RouteDescriptionList`: Shows all found routes as a summary in a scrollable list
 - `ManeuverTableView`: Shows all maneuvers belonging to a route
@@ -288,7 +290,7 @@ First, we need to wire up our layout using _Interface Builder_ - once done, we c
 
 For the sake of this example we show both components on one screen. You may look at our demo app for an alternative User Interface approach. Note that the HERE Mobile SDK UI Kit does not promote any specific flow how it's component must be arranged - it all depends on your specific needs and taste.
 
-## Using RouteDescriptionList
+## Using the RouteDescriptionList
 Firstly, we use the routes calculated from the previous screens and check if we have routes to show. As we have pre-filled the `WaypointList`, we most likely will have at least one route to show. If a route may not be found, for example, when crossing the ocean, you may want to let the `RouteDescriptionList` component indicate a localized message that _no routes_ are set:
 ```swift
 routeDescriptionList.routes = []
@@ -359,7 +361,7 @@ As you may have noticed from the previous screenshot, we've also customized the 
 
 Tip: Try to play around with other customizable properties.
 
-## Implementing Guidance screen
+## Implementing the guidance screen
 To finish our quick overview, we want to use the selected route from the previous step to start guidance along that route. For this we only need one new HERE Mobile SDK UI Kit component:
 - `GuidanceManeuverView`
 
@@ -371,7 +373,7 @@ Once we have attached all needed views to our layout, we can Control-drag them t
 @IBOutlet weak var mapView: NMAMapView!
 ```
 
-## Using GuidanceManeuverView
+## Using the GuidanceManeuverView
 The `GuidanceManeuverView` is a view where information about the next maneuvers will appear. As with all HERE Mobile SDK UI Kit components, it is already configured, so you only need to pass in the current `GuidanceManeuverData`. Therefore we need to implement the `GuidanceManeuverMonitorDelegate` which requires us to implement two methods:
 ```swift
 func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
@@ -415,7 +417,7 @@ You can open the `plist` file as source file to add the above, or edit the list 
 
 Now, we are ready to start guidance by calling the helper method `startGuidanceSimulation(route: route!)`.
 
->**Note:** You can use the HERE Mobile SDK to start _simulated_ guidance. For implementation details, please check the example's code. During the development phase, it is usually more convenient to simulate the navigation experience along the provided route - so that we can quickly see how the `GuidanceManeuverView` changes it's content in real-time.
+>**Note:** You can use the HERE Mobile SDK to start _simulated_ guidance. For implementation details, please check the example's code. During the development phase, it is usually more convenient to simulate the navigation experience along the provided route - so that we can quickly see how the `GuidanceManeuverView` changes its content in real-time.
 
 <center><p>
   <img src="./Images/primer_guidance.png" width="250"/>
