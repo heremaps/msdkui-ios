@@ -3,7 +3,6 @@
 This guide is for developers who want to contribute to the MSDKUI codebase, build the MSDKUI framework, or run the Demo application on their local machines. For using the `MSDKUI.framework` on your own project, or running the accompanying example apps, please check the [QuickStart](QuickStart.md) guide.
 
 ## Contents
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
 
 - [Development Environment](#development-environment)
 	- [Getting the Code](#getting-the-code)
@@ -13,21 +12,10 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 - [Building the Demo App](#building-the-demo-app)
 - [Building the Dev App](#building-the-dev-app)
 - [Commit / Pull Request Policy](#commit-pull-request-policy)
-- [Running Tests](#running-tests)
-- [Command Line](#command-line)
-	- [MSDKUI API Reference (tools:jazzy)](#msdkui-api-reference-toolsjazzy)
-	- [Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)](#test-coverage-for-the-msdkui-framework-toolsxcovmsdkui)
-	- [Test Coverage for the Demo Application (tools:xcov_demo_app)](#test-coverage-for-the-demo-application-toolsxcovdemoapp)
-	- [Updating localized strings (strings:all)](#updating-localized-strings-stringsall)
-- [Troubleshooting](#troubleshooting)
-	- [Bundler](#bundler)
 - [Writing Git Commit Messages](#writing-git-commit-messages)
 	- [A normal ticket](#a-normal-ticket)
 	- [Solving multiple tickets](#solving-multiple-tickets)
 - [Submitting a Pull Request](#submitting-a-pull-request)
-- [Writing Code](#writing-code)
-	- [Accessibility Identifiers](#accessibility-identifiers)
-	- [MARK directives](#mark-directives)
 - [Writing Unit Tests](#writing-unit-tests)
 	- [Localized Strings](#localized-strings)
 	- [Nonlocalizable Strings](#nonlocalizable-strings)
@@ -37,8 +25,18 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 		- [Testing UIAlertController actions (when buttons are tapped)](#testing-uialertcontroller-actions-when-buttons-are-tapped)
 	- [UIBarButtonItem](#uibarbuttonitem)
 	- [Test cases MARK directives](#test-cases-mark-directives)
+- [Running Tests](#running-tests)
+- [Writing Code](#writing-code)
+	- [Accessibility Identifiers](#accessibility-identifiers)
+	- [MARK directives](#mark-directives)
+- [Command Line](#command-line)
+	- [MSDKUI API Reference (tools:jazzy)](#msdkui-api-reference-toolsjazzy)
+	- [Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)](#test-coverage-for-the-msdkui-framework-toolsxcovmsdkui)
+	- [Test Coverage for the Demo Application (tools:xcov_demo_app)](#test-coverage-for-the-demo-application-toolsxcovdemoapp)
+	- [Updating localized strings (strings:all)](#updating-localized-strings-stringsall)
+- [Troubleshooting](#troubleshooting)
+	- [Bundler](#bundler)
 
-<!-- /TOC -->
 
 ## Development Environment
 
@@ -135,125 +133,6 @@ Please follow our commit policy. Once you have pushed your changes, you should b
 - Keep the unit test coverage for the MSDKUI framework and Demo app above 80% (reported via Codecov via comment on Pull Requests).
 - If your change involves a new UI behavior, please consider to help us write a [UI test](#running-tests) (not mandatory, but more than welcome).
 
-## Running Tests
-
-1. Open the `MSDKUI.xcworkspace`
-1. Select the `MSDKUI_Demo` scheme (if not selected by default)
-1. Test it (Product > Test or Command+U)
-    1. The following test targets will be executed
-        1. `MSDKUI_Test`: MSDKUI Framework Unit Tests
-        1. `MSDKUI_Demo_Test`: Demo app Unit Tests
-        1. `MSDKUI_Demo_UI_Test`: Demo app UI Tests
-
-It's also possible to run these tests from the command line. See the [Command Line](#command-line) section below.
-
-## Command Line
-
-Several command line shortcuts are available, as Rake tasks, to build and test the MSDKUI framework and Demo application.
-
-```
-$ bundle exec rake -T
-rake build:clean             # Clean
-rake build:msdkui_framework  # Build MSDKUI framework (fat binary)
-rake build:simulator         # Build the Demo app
-rake test:all                # Run all tests (Demo app Unit and UI; MSDKUI Unit)
-rake test:demo_app_ui        # Run Demo App UI Tests
-rake test:demo_app_unit      # Run Demo App Unit Tests
-rake test:msdkui_unit        # Run MSDKUI Framework Unit Tests
-rake tools:cocoapods         # Run CocoaPods
-rake tools:jazzy             # Build Jazzy API Reference
-rake tools:podspeclint       # Run Podspec lint
-rake tools:swiftlint         # Run SwiftLint
-rake tools:xcov_demo_app     # Run Test Coverage for the Demo App Unit Tests
-rake tools:xcov_msdkui       # Run Test Coverage for the MSDKUI Framework Unit Tests
-```
-
-The iOS version used for testing is `12.1` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
-
-```
-$ DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="12.0" bundle exec rake test:msdkui_unit
-```
-
-Although most of the Rake tasks included are meant to be used by CI, some are relevant for developers. For instance, `tools:jazzy`, `tools:xcov_msdkui`, `tools:xcov_demo_app`, and the aforementioned `build:msdkui_framework`.
-
-### MSDKUI API Reference (tools:jazzy)
-
-To generate the MSDKUI API Reference, run:
-
-```
-$ bundle exec rake tools:jazzy
-```
-
-It will place the API Reference at `output/jazzy/`. Run `open output/jazzy/index.html` to open the API Reference on the default browser.
-
-### Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)
-
-To generate the test coverage for the MSDKUI framework, run:
-
-```
-$ bundle exec rake tools:xcov_msdkui
-```
-
-It will place the report at `output/xcov/msdkui/`. Run `open output/xcov/msdkui/index.html` to open the report on the default browser.
-
-### Test Coverage for the Demo Application (tools:xcov_demo_app)
-
-To generate the test coverage for the Demo application, run:
-
-```
-$ bundle exec rake tools:xcov_demo_app
-```
-
-It will place the report at `output/xcov/demo_app/`. Run `open output/xcov/demo_app/index.html` to open the report on the default browser.
-
-### Updating localized strings (strings:all)
-
->**Note:** This section is only relevant if you are an internal at HERE.
-
-In order to update the localized strings, two env. variables are required: `MSDKUI_FRAMEWORK_STRINGS_URL` and `MSDKUI_DEMO_APP_STRINGS_URL`. They should hold the URLs to the .zip files containing the localized strings.
-
-```
-$ bundle exec rake strings:all
-```
-
-The env. variables can be set via command line (preferable for CI)
-
-```
-$ MSDKUI_FRAMEWORK_STRINGS_URL="https://.../release.zip" MSDKUI_DEMO_APP_STRINGS_URL="https://.../release.zip" bundle exec rake strings:all
-```
-
-Or via `.env.rb` (preferable for developer workstation)
-
-```
-ENV['MSDKUI_FRAMEWORK_STRINGS_URL'] = "https://.../release.zip"
-ENV['MSDKUI_DEMO_APP_STRINGS_URL'] = "https://.../release.zip"
-```
-
-## Troubleshooting
-
-### Bundler
-
-The easiest way to install Bundler, as [described on Bundler's website](https://bundler.io/), is:
-
-```
-$ gem install bundler
-```
-
-This installs Bundler as a [gem](https://rubygems.org/gems/bundler) through [RubyGems](https://rubygems.org/). Basically, Bundler itself is a gem that can install other gems to ensure the required versions are compatible.
-
-But depending on how Ruby is installed, `--user-install` might be necessary:
-
-```
-$ gem install bundler --user-install
-```
-
-Also, depending on how Ruby is installed, `--path vendor/bundle` might be necessary before running `bundle install`
-
-```
-$ bundle install --path vendor/bundle
-```
-
-This will install the required dependencies locally to `./vendor` - depending on how Ruby is installed, Bundler might try to install gems at system-level (aka globally) on directories the current user doesn't have write privileges.
 
 ## Writing Git Commit Messages
 
@@ -304,150 +183,6 @@ Extended description (as for a normal ticket, see above).
 - Give the Pull Request a short title which explains what the Pull Request is about.
 - Give the Pull Request a description with details on what the Pull Request is about.
 - Once the Pull Request is merged into master, delete the remote feature branch.
-
-## Writing Code
-
-These are general rules to follow when writing code.
-
-### Accessibility Identifiers
-
-Prefer to use a pattern for accessibility identifiers of `ViewController.xType`, where `x` is the name of accessibility element and `Type` is a general type of that element.
-
-- Specific types like `UIButton`, `UITabBarButton`, `IconButton` use a general `Button` as a `Type`. The same rules apply for other types. For example `UILabel` and `FancyLabel` would just use `Label` as a `Type`.
-
-```swift
-/// ViewController class from demo app.
-final class GuidanceDashboardViewController: UIViewController {
-    @IBOutlet private(set) weak var stopNavigationButton: UIButton!
-
-    private func setAccessibility() {
-        stopNavigationButton.accessibilityIdentifier = "GuidanceDashboardViewController.stopNavigationButton"
-    }
-}
-```
-
-- Demo app components do not use any prefix. The MSDKUI components use their bundle name as a prefix, e.g., `MSDKUI.ManeuverDescriptionList`
-
-- List items' identifier should be constructed by adding postfix numbering in form of `_%d`
-
-```swift
-/// Function of class ManeuverDescriptionList from MSDKUI.
-private func setAccessibility(_ cell: UITableViewCell, _ row: Int) {
-    cell.accessibilityIdentifier = "MSDKUI.ManeuverDescriptionList.cell_\(row)"
-}
-```
-
-```swift
-/// Function of class MultipleChoiceOptionItem from MSDKUI.
-private func setAccessibility(_ index: Int) {
-    optionLabels[index].accessibilityIdentifier = "MSDKUI.MultipleChoiceOptionItem.optionLabel_\(index)"
-}
-```
-
-- Enum based types' identifier should be constructed by using enum case name in place of `x` from `ViewController.xType`
-
-```swift
-/// Function of class TransportModePanel from MSDKUI.
-private func setAccessibility(_ button: UIButton, _ mode: NMATransportMode) {
-    switch mode {
-    case .car:
-        button.accessibilityIdentifier = "MSDKUI.TransportModePanel.carButton"
-    }
-}
-```
-
-- Alerts' view identifier should be in form of `ViewController.AlertController.xType`
-
-```swift
-let alert = UIAlertController(...)
-alert.view.accessibilityIdentifier = "LocationBasedViewController.AlertController.permissionsView"
-```
-
-### MARK directives
-
-Add `MARK` directives based on access modifier and section type. A general order and naming convention is defined below:
-
-```swift
-class ViewController: UIViewController {
-
-    // MARK: - Types
-
-    /// All types in order of: `open`, `public`, `internal`, `fileprivate`, `private`.
-    /// Inner types follow the same `MARK` order and naming.
-
-    // MARK: - Properties
-
-    /// All properties in order of: `@IBOutlet`, `@IBInspectable`, `open`, `public`, `internal`, `fileprivate`, `private`.
-
-    // MARK: - Life cycle
-
-    /// Life cycle methods of `UIKit` such as `viewDidLoad()`, `prepare(for:sender:)`, `didMoveToSuperview()`
-    /// and `init` and `deinit` for such objects. In other objects without `UIKit` lifecycle methods
-    /// `init` and `deinit` are treated as normal methods and should be marked as such.
-
-    // MARK: - Public
-
-    /// All methods in order of: `open`, `public`, `internal`.
-
-    // MARK: - Private
-
-    /// All methods in order of: `fileprivate`, `private`, `@IBAction`.
-}
-```
-
-Do not use `MARK` directives for protocol extensions of a type, which already conforms to that protocol:
-
-```swift
-class FooBar {
-    func foo() { // ... code ... }
-    func bar() { // ... code ... }
-}
-
-protocol ProtocolFoo {
-    func foo()
-}
-
-protocol ProtocolBar {
-    func bar()
-}
-
-extension FooBar: ProtocolFoo, ProtocolBar {}
-```
-
-Add a `MARK` directive for protocol conformance:
-
-```swift
-// MARK: - ProtocolA
-
-extension Foo: ProtocolA {
-    // ... code ...
-}
-```
-
-When extensions are well focused, a `MARK` directive could group them
-
-```swift
-// MARK: - Dashboard Constants
-
-public extension CGFloat {
-    static let dashboardCollapsedAlpha = CGFloat(0.0)
-    static let dashboardCollapsedHeight = CGFloat(84)
-    static let dashboardOpenAlpha = CGFloat(0.5)
-    static let dashboardOpenHeight = CGFloat(197)
-}
-```
-
-Add a `MARK` directive for generic extension with names of the type constraints:
-
-```swift
-// MARK: - Foo
-
-extension ProtocolA where Self: Foo {
-    // ... code ...
-}
-```
-
-Apply `MARK` directives only when they make sense. For example, if a `struct` has only properties, one doesn't need to group them as `Properties`. Please try to avoid excessive use of the `MARK` directives.
 
 ## Writing Unit Tests
 
@@ -631,3 +366,268 @@ extension FooMock {
     // ... code ...
 }
 ```
+
+## Running Tests
+
+1. Open the `MSDKUI.xcworkspace`
+1. Select the `MSDKUI_Demo` scheme (if not selected by default)
+1. Test it (Product > Test or Command+U)
+    1. The following test targets will be executed
+        1. `MSDKUI_Test`: MSDKUI Framework Unit Tests
+        1. `MSDKUI_Demo_Test`: Demo app Unit Tests
+        1. `MSDKUI_Demo_UI_Test`: Demo app UI Tests
+
+It's also possible to run these tests from the command line. See the [Command Line](#command-line) section below.
+
+
+## Writing Code
+
+These are general rules to follow when writing code.
+
+### Accessibility Identifiers
+
+Prefer to use a pattern for accessibility identifiers of `ViewController.xType`, where `x` is the name of accessibility element and `Type` is a general type of that element.
+
+- Specific types like `UIButton`, `UITabBarButton`, `IconButton` use a general `Button` as a `Type`. The same rules apply for other types. For example `UILabel` and `FancyLabel` would just use `Label` as a `Type`.
+
+```swift
+/// ViewController class from demo app.
+final class GuidanceDashboardViewController: UIViewController {
+    @IBOutlet private(set) weak var stopNavigationButton: UIButton!
+
+    private func setAccessibility() {
+        stopNavigationButton.accessibilityIdentifier = "GuidanceDashboardViewController.stopNavigationButton"
+    }
+}
+```
+
+- Demo app components do not use any prefix. The MSDKUI components use their bundle name as a prefix, e.g., `MSDKUI.ManeuverDescriptionList`
+
+- List items' identifier should be constructed by adding postfix numbering in form of `_%d`
+
+```swift
+/// Function of class ManeuverDescriptionList from MSDKUI.
+private func setAccessibility(_ cell: UITableViewCell, _ row: Int) {
+    cell.accessibilityIdentifier = "MSDKUI.ManeuverDescriptionList.cell_\(row)"
+}
+```
+
+```swift
+/// Function of class MultipleChoiceOptionItem from MSDKUI.
+private func setAccessibility(_ index: Int) {
+    optionLabels[index].accessibilityIdentifier = "MSDKUI.MultipleChoiceOptionItem.optionLabel_\(index)"
+}
+```
+
+- Enum based types' identifier should be constructed by using enum case name in place of `x` from `ViewController.xType`
+
+```swift
+/// Function of class TransportModePanel from MSDKUI.
+private func setAccessibility(_ button: UIButton, _ mode: NMATransportMode) {
+    switch mode {
+    case .car:
+        button.accessibilityIdentifier = "MSDKUI.TransportModePanel.carButton"
+    }
+}
+```
+
+- Alerts' view identifier should be in form of `ViewController.AlertController.xType`
+
+```swift
+let alert = UIAlertController(...)
+alert.view.accessibilityIdentifier = "LocationBasedViewController.AlertController.permissionsView"
+```
+
+### MARK directives
+
+Add `MARK` directives based on access modifier and section type. A general order and naming convention is defined below:
+
+```swift
+class ViewController: UIViewController {
+
+    // MARK: - Types
+
+    /// All types in order of: `open`, `public`, `internal`, `fileprivate`, `private`.
+    /// Inner types follow the same `MARK` order and naming.
+
+    // MARK: - Properties
+
+    /// All properties in order of: `@IBOutlet`, `@IBInspectable`, `open`, `public`, `internal`, `fileprivate`, `private`.
+
+    // MARK: - Life cycle
+
+    /// Life cycle methods of `UIKit` such as `viewDidLoad()`, `prepare(for:sender:)`, `didMoveToSuperview()`
+    /// and `init` and `deinit` for such objects. In other objects without `UIKit` lifecycle methods
+    /// `init` and `deinit` are treated as normal methods and should be marked as such.
+
+    // MARK: - Public
+
+    /// All methods in order of: `open`, `public`, `internal`.
+
+    // MARK: - Private
+
+    /// All methods in order of: `fileprivate`, `private`, `@IBAction`.
+}
+```
+
+Do not use `MARK` directives for protocol extensions of a type, which already conforms to that protocol:
+
+```swift
+class FooBar {
+    func foo() { // ... code ... }
+    func bar() { // ... code ... }
+}
+
+protocol ProtocolFoo {
+    func foo()
+}
+
+protocol ProtocolBar {
+    func bar()
+}
+
+extension FooBar: ProtocolFoo, ProtocolBar {}
+```
+
+Add a `MARK` directive for protocol conformance:
+
+```swift
+// MARK: - ProtocolA
+
+extension Foo: ProtocolA {
+    // ... code ...
+}
+```
+
+When extensions are well focused, a `MARK` directive could group them
+
+```swift
+// MARK: - Dashboard Constants
+
+public extension CGFloat {
+    static let dashboardCollapsedAlpha = CGFloat(0.0)
+    static let dashboardCollapsedHeight = CGFloat(84)
+    static let dashboardOpenAlpha = CGFloat(0.5)
+    static let dashboardOpenHeight = CGFloat(197)
+}
+```
+
+Add a `MARK` directive for generic extension with names of the type constraints:
+
+```swift
+// MARK: - Foo
+
+extension ProtocolA where Self: Foo {
+    // ... code ...
+}
+```
+
+Apply `MARK` directives only when they make sense. For example, if a `struct` has only properties, one doesn't need to group them as `Properties`. Please try to avoid excessive use of the `MARK` directives.
+
+## Command Line
+
+Several command line shortcuts are available, as Rake tasks, to build and test the MSDKUI framework and Demo application.
+
+```
+$ bundle exec rake -T
+rake build:clean             # Clean
+rake build:msdkui_framework  # Build MSDKUI framework (fat binary)
+rake build:simulator         # Build the Demo app
+rake test:all                # Run all tests (Demo app Unit and UI; MSDKUI Unit)
+rake test:demo_app_ui        # Run Demo App UI Tests
+rake test:demo_app_unit      # Run Demo App Unit Tests
+rake test:msdkui_unit        # Run MSDKUI Framework Unit Tests
+rake tools:cocoapods         # Run CocoaPods
+rake tools:jazzy             # Build Jazzy API Reference
+rake tools:podspeclint       # Run Podspec lint
+rake tools:swiftlint         # Run SwiftLint
+rake tools:xcov_demo_app     # Run Test Coverage for the Demo App Unit Tests
+rake tools:xcov_msdkui       # Run Test Coverage for the MSDKUI Framework Unit Tests
+```
+
+The iOS version used for testing is `12.1` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
+
+```
+$ DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="12.0" bundle exec rake test:msdkui_unit
+```
+
+Although most of the Rake tasks included are meant to be used by CI, some are relevant for developers. For instance, `tools:jazzy`, `tools:xcov_msdkui`, `tools:xcov_demo_app`, and the aforementioned `build:msdkui_framework`.
+
+### MSDKUI API Reference (tools:jazzy)
+
+To generate the MSDKUI API Reference, run:
+
+```
+$ bundle exec rake tools:jazzy
+```
+
+It will place the API Reference at `output/jazzy/`. Run `open output/jazzy/index.html` to open the API Reference on the default browser.
+
+### Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)
+
+To generate the test coverage for the MSDKUI framework, run:
+
+```
+$ bundle exec rake tools:xcov_msdkui
+```
+
+It will place the report at `output/xcov/msdkui/`. Run `open output/xcov/msdkui/index.html` to open the report on the default browser.
+
+### Test Coverage for the Demo Application (tools:xcov_demo_app)
+
+To generate the test coverage for the Demo application, run:
+
+```
+$ bundle exec rake tools:xcov_demo_app
+```
+
+It will place the report at `output/xcov/demo_app/`. Run `open output/xcov/demo_app/index.html` to open the report on the default browser.
+
+### Updating localized strings (strings:all)
+
+>**Note:** This section is only relevant if you are an internal at HERE.
+
+In order to update the localized strings, two env. variables are required: `MSDKUI_FRAMEWORK_STRINGS_URL` and `MSDKUI_DEMO_APP_STRINGS_URL`. They should hold the URLs to the .zip files containing the localized strings.
+
+```
+$ bundle exec rake strings:all
+```
+
+The env. variables can be set via command line (preferable for CI)
+
+```
+$ MSDKUI_FRAMEWORK_STRINGS_URL="https://.../release.zip" MSDKUI_DEMO_APP_STRINGS_URL="https://.../release.zip" bundle exec rake strings:all
+```
+
+Or via `.env.rb` (preferable for developer workstation)
+
+```
+ENV['MSDKUI_FRAMEWORK_STRINGS_URL'] = "https://.../release.zip"
+ENV['MSDKUI_DEMO_APP_STRINGS_URL'] = "https://.../release.zip"
+```
+
+## Troubleshooting
+
+### Bundler
+
+The easiest way to install Bundler, as [described on Bundler's website](https://bundler.io/), is:
+
+```
+$ gem install bundler
+```
+
+This installs Bundler as a [gem](https://rubygems.org/gems/bundler) through [RubyGems](https://rubygems.org/). Basically, Bundler itself is a gem that can install other gems to ensure the required versions are compatible.
+
+But depending on how Ruby is installed, `--user-install` might be necessary:
+
+```
+$ gem install bundler --user-install
+```
+
+Also, depending on how Ruby is installed, `--path vendor/bundle` might be necessary before running `bundle install`
+
+```
+$ bundle install --path vendor/bundle
+```
+
+This will install the required dependencies locally to `./vendor` - depending on how Ruby is installed, Bundler might try to install gems at system-level (aka globally) on directories the current user doesn't have write privileges.
