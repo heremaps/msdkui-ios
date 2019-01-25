@@ -118,16 +118,8 @@ import UIKit
         distanceLabel.accessibilityLabel = model.accessibilityDistanceFormatter.string(from: model.distance)
         distanceLabel.sizeToFit()
 
-        // When icon is nil, it should be removed (not visible, giving space to the rest of the views)
-        if let icon = model.maneuverIcon {
-            maneuverImageView.isHidden = false
-            maneuverImageView.image = icon
-            maneuverImageHeightConstraint.isActive = true
-        } else {
-            maneuverImageHeightConstraint.isActive = false
-            maneuverImageView.image = nil
-            maneuverImageView.isHidden = true
-        }
+        maneuverImageView.image = model.maneuverIcon
+        updateManeuverImageViewVisibility()
 
         // When ViewModel.streetName is nil, the dot & street name label's should be hidden
         if let streetName = model.streetName {
@@ -151,6 +143,7 @@ import UIKit
         layoutMargins = .zero
 
         loadFromNib()
+        updateManeuverImageViewVisibility()
         setUpLabels()
         setUpViewAccessibility()
 
@@ -186,5 +179,17 @@ import UIKit
             .joined(separator: ", ")
 
         accessibilityHint = hint.isEmpty ? nil : hint
+    }
+
+    /// Updates the maneuver image view visibility based on its image.
+    private func updateManeuverImageViewVisibility() {
+        // When icon is nil, view should be hidden, giving space to the rest of the views
+        if maneuverImageView.image == nil {
+            maneuverImageHeightConstraint.isActive = false
+            maneuverImageView.isHidden = true
+        } else {
+            maneuverImageView.isHidden = false
+            maneuverImageHeightConstraint.isActive = true
+        }
     }
 }

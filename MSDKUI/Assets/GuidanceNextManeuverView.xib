@@ -32,11 +32,6 @@
                                 <constraint firstAttribute="height" constant="32" id="oLv-fc-4QF"/>
                                 <constraint firstAttribute="width" secondItem="p0e-Lb-zDt" secondAttribute="height" multiplier="1:1" id="tSZ-bf-NL7"/>
                             </constraints>
-                            <variation key="default">
-                                <mask key="constraints">
-                                    <exclude reference="oLv-fc-4QF"/>
-                                </mask>
-                            </variation>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCU-qM-EZl">
                             <rect key="frame" x="40" y="6" width="67" height="20.5"/>
