@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/heremaps/msdkui-ios.svg?branch=master)](https://travis-ci.com/heremaps/msdkui-ios) [![codecov](https://codecov.io/gh/heremaps/msdkui-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/heremaps/msdkui-ios)
+
 # What is the HERE Mobile SDK UI Kit?
 The HERE Mobile SDK UI Kit is a framework that provides modular and highly customizable user interface components that can be used on top of the HERE Mobile SDKs for iOS and Android ([Premium edition](https://developer.here.com/develop/mobile-sdks)).
 
