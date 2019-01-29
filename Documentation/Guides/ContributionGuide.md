@@ -4,19 +4,19 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 ## Contents
 
-- [Development Environment](#development-environment)
-	- [Getting the Code](#getting-the-code)
+- [Development environment](#development-environment)
+	- [Getting the code](#getting-the-code)
 	- [Setting the HERE Mobile SDK license](#setting-the-here-mobile-sdk-license)
-	- [Setting up the Environment](#setting-up-the-environment)
+	- [Setting up the environment](#setting-up-the-environment)
 - [Building the MSKUI Framework](#building-the-mskui-framework)
-- [Building the Demo App](#building-the-demo-app)
-- [Building the Dev App](#building-the-dev-app)
-- [Commit / Pull Request Policy](#commit-pull-request-policy)
-- [Writing Git Commit Messages](#writing-git-commit-messages)
+- [Building the Demo app](#building-the-demo-app)
+- [Building the Dev app](#building-the-dev-app)
+- [Commit / pull request policy](#commit-pull-request-policy)
+- [Writing Git commit messages](#writing-git-commit-messages)
 	- [A normal ticket](#a-normal-ticket)
 	- [Solving multiple tickets](#solving-multiple-tickets)
-- [Submitting a Pull Request](#submitting-a-pull-request)
-- [Writing Unit Tests](#writing-unit-tests)
+- [Submitting a pull request](#submitting-a-pull-request)
+- [Writing unit tests](#writing-unit-tests)
 	- [Localized Strings](#localized-strings)
 	- [Nonlocalizable Strings](#nonlocalizable-strings)
 	- [IBActions](#ibactions)
@@ -25,11 +25,11 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 		- [Testing UIAlertController actions (when buttons are tapped)](#testing-uialertcontroller-actions-when-buttons-are-tapped)
 	- [UIBarButtonItem](#uibarbuttonitem)
 	- [Test cases MARK directives](#test-cases-mark-directives)
-- [Running Tests](#running-tests)
-- [Writing Code](#writing-code)
+- [Running tests](#running-tests)
+- [Writing code](#writing-code)
 	- [Accessibility Identifiers](#accessibility-identifiers)
 	- [MARK directives](#mark-directives)
-- [Command Line](#command-line)
+- [Command line](#command-line)
 	- [MSDKUI API Reference (tools:jazzy)](#msdkui-api-reference-toolsjazzy)
 	- [Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)](#test-coverage-for-the-msdkui-framework-toolsxcovmsdkui)
 	- [Test Coverage for the Demo Application (tools:xcov_demo_app)](#test-coverage-for-the-demo-application-toolsxcovdemoapp)
@@ -38,7 +38,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 	- [Bundler](#bundler)
 
 
-## Development Environment
+## Development environment
 
 Prerequisites, as of November, 2018:
 
@@ -49,7 +49,7 @@ Prerequisites, as of November, 2018:
 
 There are many ways to install Ruby on macOS. Recent macOS versions already include Ruby 2.0 or higher, but other popular ways to install Ruby include [brew](https://brew.sh/), [rbenv](https://github.com/rbenv/rbenv), and [rvm](https://rvm.io/rvm/install). For this reason, installing Bundler might differ between environments, see [Troubleshooting](#troubleshooting) for more details.
 
-### Getting the Code
+### Getting the code
 
 ```
 $ git clone https://github.com/heremaps/msdkui-ios
@@ -79,7 +79,7 @@ ENV['MSDKUI_APP_TOKEN_IOS'] = "your app code"
 ENV['MSDKUI_APP_LICENSE_IOS'] = "your license"
 ```
 
-### Setting up the Environment
+### Setting up the environment
 
 ```
 $ bundle install
@@ -106,7 +106,7 @@ $ bundle exec rake build:msdkui_framework
 
 At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`. The framework is a [fat binary](https://en.wikipedia.org/wiki/Fat_binary), built for device and simulator.
 
-## Building the Demo App
+## Building the Demo app
 
 1. Open the `MSDKUI.xcworkspace`
 1. Select the `MSDKUI_Demo` scheme (if not selected by default)
@@ -114,7 +114,7 @@ At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`.
 
 >**Note:** If you run the demo app in a simulator, please make sure to delete the build phase "Adapt to Build Platform" in Xcode. Otherwise, you won't be able to mock locations for the iOS simulator of your choice.
 
-## Building the Dev App
+## Building the Dev app
 
 This project includes a Dev application, which is designed to display MSDKUI components in their raw form. While the `Demo App` offers a polished experience of the MSDKUI components, it doesn't show the different combinations these components allow developers to set.
 
@@ -122,7 +122,7 @@ This project includes a Dev application, which is designed to display MSDKUI com
 1. Select the `MSDKUI_Dev` scheme
 1. Build it (Product > Build) or Command+B
 
-## Commit / Pull Request Policy
+## Commit / pull request policy
 
 Please follow our commit policy. Once you have pushed your changes, you should be able to see your work on GitHub. Each pull request will be reviewed and merged if there are no objections. Before sending a pull request, please make sure to:
 
@@ -134,7 +134,7 @@ Please follow our commit policy. Once you have pushed your changes, you should b
 - If your change involves a new UI behavior, please consider to help us write a [UI test](#running-tests) (not mandatory, but more than welcome).
 
 
-## Writing Git Commit Messages
+## Writing Git commit messages
 
 We follow the format described below to ensure all the commit messages are aligned and in a consistent format.
 
@@ -175,7 +175,7 @@ TICKET-IDZ: Ticket Z Title
 Extended description (as for a normal ticket, see above).
 ```
 
-## Submitting a Pull Request
+## Submitting a pull request
 
 - Pull Requests may contain multiple commits.
 - Pull Requests should not include "Merge" commits.
@@ -184,7 +184,7 @@ Extended description (as for a normal ticket, see above).
 - Give the Pull Request a description with details on what the Pull Request is about.
 - Once the Pull Request is merged into master, delete the remote feature branch.
 
-## Writing Unit Tests
+## Writing unit tests
 
 These are general rules to follow when writing unit tests.
 
@@ -367,7 +367,7 @@ extension FooMock {
 }
 ```
 
-## Running Tests
+## Running tests
 
 1. Open the `MSDKUI.xcworkspace`
 1. Select the `MSDKUI_Demo` scheme (if not selected by default)
@@ -380,7 +380,7 @@ extension FooMock {
 It's also possible to run these tests from the command line. See the [Command Line](#command-line) section below.
 
 
-## Writing Code
+## Writing code
 
 These are general rules to follow when writing code.
 
@@ -524,7 +524,7 @@ extension ProtocolA where Self: Foo {
 
 Apply `MARK` directives only when they make sense. For example, if a `struct` has only properties, one doesn't need to group them as `Properties`. Please try to avoid excessive use of the `MARK` directives.
 
-## Command Line
+## Command line
 
 Several command line shortcuts are available, as Rake tasks, to build and test the MSDKUI framework and Demo application.
 
