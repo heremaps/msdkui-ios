@@ -30,6 +30,7 @@ final class GuidanceManeuverViewController: UIViewController {
             self?.maneuverView.foregroundColor = item.configuration.foregroundColor
             self?.maneuverView.state = item.configuration.state
             self?.maneuverView.axis = item.configuration.axis
+            self?.maneuverView.highlightManeuver = item.configuration.highlightManeuver
         }
     }
 }

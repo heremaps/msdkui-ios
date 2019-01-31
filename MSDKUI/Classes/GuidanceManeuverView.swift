@@ -14,8 +14,7 @@
 // limitations under the License.
 //
 
-import Foundation
-import NMAKit
+import UIKit
 
 /// A view for displaying the maneuvers during guidance.
 @IBDesignable open class GuidanceManeuverView: UIView {
@@ -33,80 +32,39 @@ import NMAKit
         case data(_ data: GuidanceManeuverData)
     }
 
-    /// The axis along which the arranged views are laid out.
-    ///
-    /// - vertical: The constraint applied when laying out the vertical relationship between objects.
-    /// - horizontal: The constraint applied when laying out the horizontal relationship between objects.
-    public enum Axis: Int {
-        case vertical
-        case horizontal
-    }
-
     // MARK: - Properties
 
-    /// The views.
-    @IBOutlet private(set) var views: [UIView]!
+    /// The content stack view.
+    @IBOutlet private(set) var contentStackView: UIStackView!
 
-    /// The busy indicators.
-    @IBOutlet private(set) var busyIndicators: [UIActivityIndicatorView]!
+    /// The labels stack view (distance, info1, info2, separator, and message).
+    @IBOutlet private(set) var labelsStackView: UIStackView!
 
-    /// The maneuver images.
-    @IBOutlet private(set) var maneuverImageViews: [UIImageView]!
+    /// The activity indicator.
+    @IBOutlet private(set) var activityIndicator: UIActivityIndicatorView!
 
-    /// The road icon images.
-    @IBOutlet private(set) var roadIconViews: [UIImageView]!
+    /// The maneuver icon image view.
+    @IBOutlet private(set) var maneuverIconImageView: UIImageView!
 
-    /// The distance labels.
-    @IBOutlet private(set) var distanceLabels: [UILabel]!
+    /// The next road icon image view.
+    @IBOutlet private(set) var nextRoadIconImageView: UIImageView!
 
-    /// The info1 labels.
-    @IBOutlet private(set) var info1Labels: [UILabel]!
+    /// The distance label.
+    @IBOutlet private(set) var distanceLabel: UILabel!
 
-    /// The info2 labels.
-    @IBOutlet private(set) var info2Labels: [UILabel]!
+    /// The info1 label.
+    @IBOutlet private(set) var info1Label: UILabel!
 
-    /// The data containers.
-    @IBOutlet private(set) var dataContainers: [UIStackView]!
+    /// The info2 label.
+    @IBOutlet private(set) var info2Label: UILabel!
 
-    /// The info label containers
-    @IBOutlet private(set) var infoLabelContainers: [UIStackView]!
+    /// The message separator view, adding additional vertical space before the message label.
+    @IBOutlet private(set) var messageSeparatorView: UIView!
 
-    /// The height constraints.
-    @IBOutlet private(set) var heightConstraints: [NSLayoutConstraint]!
+    /// The message label.
+    @IBOutlet private(set) var messageLabel: UILabel!
 
-    /// The horizontal road stack view.
-    @IBOutlet private(set) var horizontalRoadViewContainer: UIStackView!
-
-    /// The vertical content container (holding the distance & road icon + info labels)
-    @IBOutlet private(set) var verticalContentContainer: UIStackView!
-
-    /// The top constraints
-    @IBOutlet private(set) var topConstraints: [NSLayoutConstraint]!
-
-    /// The bottom constraints
-    @IBOutlet private(set) var bottomConstraints: [NSLayoutConstraint]!
-
-    /// The no data containers.
-    @IBOutlet private(set) var noDataContainers: [UIView]!
-
-    /// The no data images.
-    @IBOutlet private(set) var noDataImageViews: [UIImageView]!
-
-    /// The no data labels.
-    @IBOutlet private(set) var noDataLabels: [UILabel]!
-
-    override open var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
-    }
-
-    /// The default background color is colorBackgroundDark.
-    override open var backgroundColor: UIColor? {
-        didSet {
-            views?.forEach { $0.backgroundColor = backgroundColor }
-        }
-    }
-
-    /// The view state.
+    /// The view state. The default value is `.noData`.
     public var state: State = .noData {
         didSet {
             switch state {
@@ -117,304 +75,174 @@ import NMAKit
                 displayBusyState()
 
             case .data(let maneuverData):
-                displayData(data: maneuverData)
+                displayData(maneuverData)
             }
+
+            updateSeparator()
         }
     }
 
-    public var axis: Axis = .vertical {
-        didSet {
-            switch axis {
-            case .vertical:
-                adaptToVertical()
+    /// The axis along which the arranged views are laid out.
+    /// The default value is .horizontal.
+    public var axis: NSLayoutConstraint.Axis {
+        get { return contentStackView.axis }
+        set {
+            contentStackView.axis = newValue
 
+            switch newValue {
             case .horizontal:
-                adaptToHorizontal()
+                contentStackView.alignment = .top
+                contentStackView.spacing = 16
+
+            case .vertical:
+                contentStackView.alignment = .leading
+                contentStackView.spacing = 12
             }
 
-            calculateHeight()
+            updateSeparator()
         }
     }
 
-    /// The distance measurement formatter. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
+    /// The distance measurement formatter.
+    /// The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
     public var distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
         didSet {
-            // There's no need to refresh the distance label, unless there's maneuver data.
             guard case let .data(maneuverData) = state else {
                 return
             }
 
-            displayData(data: maneuverData)
+            displayData(maneuverData)
         }
     }
 
-    /// Sets the view's foreground color, i.e. the color for the icons, text and busy indicators.
-    /// The default foreground color is colorForegroundLight.
-    public var foregroundColor: UIColor = .colorForegroundLight {
+    /// Sets the view's foreground color, i.e. the color for the icons,
+    /// text and activity indicators. The default value is `.colorForegroundLight`.
+    public var foregroundColor: UIColor? {
         didSet {
-            distanceLabels.forEach { $0.textColor = foregroundColor }
-            info1Labels.forEach { $0.textColor = foregroundColor }
-            info2Labels.forEach { $0.textColor = foregroundColor }
-            noDataLabels.forEach { $0.textColor = foregroundColor }
+            distanceLabel.textColor = foregroundColor
+            info1Label.textColor = foregroundColor
+            info2Label.textColor = highlightManeuver ? tintColor : foregroundColor
+            messageLabel.textColor = foregroundColor
 
-            maneuverImageViews.forEach { $0.tintColor = foregroundColor }
-            roadIconViews.forEach { $0.tintColor = foregroundColor }
-            noDataImageViews.forEach { $0.tintColor = foregroundColor }
-            busyIndicators.forEach { $0.color = foregroundColor }
+            maneuverIconImageView.tintColor = foregroundColor
+            nextRoadIconImageView.tintColor = foregroundColor
+            activityIndicator.color = foregroundColor
         }
     }
 
-    /// The intrinsic content height.
-    private var intrinsicContentHeight = CGFloat(0.0)
+    /// A Boolean value that determines whether the maneuver should be highlighted.
+    /// If `true`, sets the maneuver text color to the view's `.tintColor`.
+    /// If `false`, sets the maneuver text color to `.foregroundColor`.
+    /// The default value is `false`.
+    public var highlightManeuver: Bool = false {
+        didSet {
+            info2Label.textColor = highlightManeuver ? tintColor : foregroundColor
+        }
+    }
 
-    /// The height of vertical Info 1 label as designed.
-    private var verticalInfo1LabelDesignHeight = CGFloat(0.0)
-
-    /// The height of vertical Info 2 label as designed.
-    private var verticalInfo2LabelDesignHeight = CGFloat(0.0)
-
-    /// The height of horozintal Info 1 label as designed.
-    private var horizontalInfo1LabelDesignHeight = CGFloat(0.0)
-
-    // MARK: - Public
+    // MARK: - Life cycle
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        setUp()
+        setUpView()
     }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
 
-        setUp()
-    }
-
-    /// This method highlights the current maneuver with the specified text color.
-    ///
-    /// - Parameter textColor: The new highlight color.
-    public func highlightManeuver(textColor: UIColor) {
-        info2Labels.forEach { $0.textColor = textColor }
-
-        calculateHeight()
+        setUpView()
     }
 
     // MARK: - Private
 
-    /// Handles to the horizontal orientation.
-    private func adaptToHorizontal() {
-        views[Axis.vertical.rawValue].isHidden = false
-        views[Axis.horizontal.rawValue].isHidden = true
-    }
+    private func setUpView() {
+        // Loads the xib
+        loadFromNib()
 
-    /// Handles to the vertical orientation.
-    private func adaptToVertical() {
-        views[Axis.vertical.rawValue].isHidden = true
-        views[Axis.horizontal.rawValue].isHidden = false
-    }
-
-    /// Initialises the contents of this view.
-    private func setUp() {
-        // Creates nib instance
-        UINib(nibName: String(describing: GuidanceManeuverView.self), bundle: .MSDKUI).instantiate(withOwner: self)
-
-        // Ensure that views are sorted by tags, because tags with the value of 1 represents vertical and value of 2 represents horizontal.
-        // Order of views in `views` array are inline with order of cases in `Orientation` enumeration.
-        // Since indexing `views` array with `rawValue` from `Orientation` enumeration is based on an assumption,
-        // an assumption is also made for `tag` of related views and representation of their values.
-        views.sort { $0.tag < $1.tag }
-
-        // We use autolayout
-        translatesAutoresizingMaskIntoConstraints = false
-        views.forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
-
-        // Saves the label design heights which will be used to calculate the height constraints
-        verticalInfo1LabelDesignHeight = info1Labels[Axis.vertical.rawValue].frame.height
-        verticalInfo2LabelDesignHeight = info2Labels[Axis.vertical.rawValue].frame.height
-        horizontalInfo1LabelDesignHeight = info1Labels[Axis.horizontal.rawValue].frame.height
-
-        // We expect that the owner will constraint us depending on the orientation
-        views.forEach { addSubviewBindToEdges($0) }
-
-        // Use monospcaed digits for distance to next maneuver
-        distanceLabels.forEach { $0.font = .monospacedDigitSystemFont(ofSize: 34, weight: .regular) }
-
-        // Sets the information about missing maneuver information
-        noDataLabels.forEach { $0.text = "msdkui_maneuverpanel_nodata".localized }
-        noDataImageViews.forEach {
-            $0.image = UIImage(named: "car_position_marker", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        }
-
-        // Sets the initial state.
-        state = .noData
-        axis = .horizontal
-
-        // Finally
-        updateStyle()
-    }
-
-    /// Updates the style for the visuals.
-    private func updateStyle() {
+        // Sets the default colors
         backgroundColor = .colorBackgroundDark
         foregroundColor = .colorForegroundLight
+
+        // Uses monospaced font to have fixed distances between digits
+        distanceLabel.font = .monospacedDigitSystemFont(ofSize: 34, weight: .regular)
+
+        // Sets the initial state
+        state = .noData
     }
 
-    /// Calculates the very important intrinsic content height depending on the subview visibilities.
-    private func calculateHeight() {
-        // Disable both constraints
-        heightConstraints[Axis.horizontal.rawValue].isActive = false
-        heightConstraints[Axis.vertical.rawValue].isActive = false
-
-        // Proceed based on the visible view
-        if views[Axis.vertical.rawValue].isHidden == false {
-            calculateVerticalHeight()
-        } else {
-            calculateHorizontalHeight()
-        }
-
-        invalidateIntrinsicContentSize()
-        setNeedsUpdateConstraints()
-        layoutIfNeeded()
-    }
-
-    /// Calculates the intrinsic content height and set the height constraint and for the vertical content.
-    private func calculateVerticalHeight() {
-        let topPadding = topConstraints[Axis.vertical.rawValue].constant
-        let bottomPadding = abs(bottomConstraints[Axis.vertical.rawValue].constant)
-
-        // Unconditional height contributors: top padding + distance label height + bottom padding
-        intrinsicContentHeight = topPadding + distanceLabels[Axis.vertical.rawValue].frame.height + bottomPadding
-
-        // Spacing between the distance label and info labels
-        if info1Labels[Axis.vertical.rawValue].isHidden == false ||
-            info2Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += verticalContentContainer.spacing
-        }
-
-        // If visible, add info 1 label height
-        if info1Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += verticalInfo1LabelDesignHeight
-        }
-
-        // Spacing bteween the info 1 & 2 labels, e.g. 2
-        if info1Labels[Axis.vertical.rawValue].isHidden == false &&
-            info2Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += infoLabelContainers[Axis.vertical.rawValue].spacing
-        }
-
-        /// If visible, add info 2 label height
-        if info2Labels[Axis.vertical.rawValue].isHidden == false {
-            intrinsicContentHeight += verticalInfo2LabelDesignHeight
-        }
-
-        // Height constraint = intrinsic content height - (top + bottom paddings)
-        heightConstraints[Axis.vertical.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
-        heightConstraints[Axis.vertical.rawValue].isActive = true
-    }
-
-    /// Calculates the intrinsic content height and set the height constraint and for the landscape orientation.
-    private func calculateHorizontalHeight() {
-        let topPadding = topConstraints[Axis.horizontal.rawValue].constant
-        let bottomPadding = abs(bottomConstraints[Axis.horizontal.rawValue].constant)
-
-        // Unconditional height contributors: top padding + distance label height + bottom padding
-        intrinsicContentHeight = topPadding + distanceLabels[Axis.horizontal.rawValue].frame.height + bottomPadding
-
-        // Spacing between the distance label and info labels, e.g. 12
-        if info1Labels[Axis.horizontal.rawValue].isHidden == false ||
-            info2Labels[Axis.horizontal.rawValue].isHidden == false {
-            intrinsicContentHeight += dataContainers[Axis.horizontal.rawValue].spacing
-        }
-
-        /// If visible, add info 1 label height
-        if info1Labels[Axis.horizontal.rawValue].isHidden == false {
-            intrinsicContentHeight += horizontalInfo1LabelDesignHeight
-        }
-
-        // Spacing bteween the info 1 & 2 labels
-        if info1Labels[Axis.horizontal.rawValue].isHidden == false &&
-            info2Labels[Axis.horizontal.rawValue].isHidden == false {
-            intrinsicContentHeight += infoLabelContainers[Axis.horizontal.rawValue].spacing
-        }
-
-        // If visible, add info 2 label height which is a two-lines label
-        if info2Labels[Axis.horizontal.rawValue].isHidden == false {
-            info2Labels[Axis.horizontal.rawValue].sizeToFit()
-            intrinsicContentHeight += info2Labels[Axis.horizontal.rawValue].frame.height
-        }
-
-        // If visible, add road icon
-        if roadIconViews[Axis.horizontal.rawValue].image == nil {
-            horizontalRoadViewContainer.isHidden = true
-        } else {
-            // Spacing between the info labels and road icon + road icon height
-            intrinsicContentHeight += dataContainers[Axis.horizontal.rawValue].spacing +
-                horizontalRoadViewContainer.frame.height
-            horizontalRoadViewContainer.isHidden = false
-        }
-
-        // Height constraint = intrinsic content height - (top + bottom paddings)
-        heightConstraints[Axis.horizontal.rawValue].constant = intrinsicContentHeight - (topPadding + bottomPadding)
-        heightConstraints[Axis.horizontal.rawValue].isActive = true
-    }
-
-    private func displayData(data: GuidanceManeuverData) {
-        // Sets the maneuver icon
-        maneuverImageViews.forEach {
-            $0.image = data.maneuverIcon
-        }
-
-        // Sets the distance text
-        distanceLabels.forEach {
-            $0.text = data.distance.map(distanceFormatter.string)
-        }
-
-        // Sets the road icon
-        roadIconViews.forEach {
-            $0.image = data.nextRoadIcon
-        }
-
-        // Sets the info 1 and info 2 texts
-        info1Labels.forEach {
-            $0.text = data.info1
-            $0.isHidden = data.info1 == nil
-        }
-
-        info2Labels.forEach {
-            $0.text = data.info2
-            $0.isHidden = data.info2 == nil
-        }
-
-        // Sets the visibility of the two containers to display the maneuver data
-        dataContainers.forEach { $0.isHidden = false }
-        noDataContainers.forEach { $0.isHidden = true }
-        busyIndicators.forEach {
-            $0.stopAnimating()
-            $0.isHidden = true
-        }
-
-        calculateHeight()
-    }
-
+    /// Displays the no data state.
     private func displayNoData() {
-        dataContainers.forEach { $0.isHidden = true }
-        noDataLabels.forEach { $0.text = "msdkui_maneuverpanel_nodata".localized }
-        noDataImageViews.forEach { $0.isHidden = false }
-        noDataContainers.forEach { $0.isHidden = false }
-        busyIndicators.forEach {
-            $0.stopAnimating()
-            $0.isHidden = true
-        }
+        // Shows the instruction icon
+        maneuverIconImageView.image = UIImage(named: "car_position_marker", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+        maneuverIconImageView.isHidden = false
+
+        // Sets the corrent message label text
+        messageLabel.text = "msdkui_maneuverpanel_nodata".localized
+        messageLabel.isHidden = false
+
+        // Stops the activity indicator animation, automatically hidding it
+        activityIndicator.stopAnimating()
+
+        // Hides all the other views
+        nextRoadIconImageView.image = nil
+        [distanceLabel, info1Label, info2Label].forEach { $0?.text = nil }
+        [nextRoadIconImageView, distanceLabel, info1Label, info2Label].forEach { $0.isHidden = true }
     }
 
+    /// Displays the busy state.
     private func displayBusyState() {
-        dataContainers.forEach { $0.isHidden = true }
-        noDataLabels.forEach { $0.text = "msdkui_maneuverpanel_updating".localized }
-        noDataImageViews.forEach { $0.isHidden = true }
-        noDataContainers.forEach { $0.isHidden = false }
-        busyIndicators.forEach {
-            $0.startAnimating()
-            $0.isHidden = false
+        // Animates the activity indicator
+        activityIndicator.startAnimating()
+
+        // Sets the corrent message label text
+        messageLabel.text = "msdkui_maneuverpanel_updating".localized
+        messageLabel.isHidden = false
+
+        // Hides all the other views
+        [maneuverIconImageView, nextRoadIconImageView].forEach { $0?.image = nil }
+        [distanceLabel, info1Label, info2Label].forEach { $0?.text = nil }
+        [maneuverIconImageView, nextRoadIconImageView, distanceLabel, info1Label, info2Label].forEach { $0.isHidden = true }
+    }
+
+    /// Displays the maneuver data state.
+    private func displayData(_ data: GuidanceManeuverData) {
+        // Stops the activity indicator animation, automatically hidding it
+        activityIndicator.stopAnimating()
+
+        // Sets the maneuver icon if valid, otherwise hides the view
+        maneuverIconImageView.image = data.maneuverIcon
+        maneuverIconImageView.isHidden = data.maneuverIcon == nil
+
+        // Sets the next road icon if valid, otherwise hides the view
+        nextRoadIconImageView.image = data.nextRoadIcon
+        nextRoadIconImageView.isHidden = data.nextRoadIcon == nil
+
+        // Sets the distance text if valid, otherwise hides the label
+        distanceLabel.text = data.distance.map(distanceFormatter.string)
+        distanceLabel.isHidden = data.distance == nil
+
+        // Sets the info1 text if valid, otherwise hides the label
+        info1Label.text = data.info1
+        info1Label.isHidden = data.info1 == nil
+
+        // Sets the info2 text if valid, otherwise hides the label
+        info2Label.text = data.info2
+        info2Label.isHidden = data.info2 == nil
+
+        // Resets the text label and hides it
+        messageLabel.text = nil
+        messageLabel.isHidden = true
+    }
+
+    /// Show or hide the message separator view depending on the axis and state.
+    private func updateSeparator() {
+        switch (axis, state) {
+        case (.horizontal, .noData), (.horizontal, .updating):
+            messageSeparatorView.isHidden = false
+
+        default:
+            messageSeparatorView.isHidden = true
         }
     }
 }

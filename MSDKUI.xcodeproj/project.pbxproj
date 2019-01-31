@@ -43,7 +43,6 @@
 		5A09DBFD1F28F8C1006EBED7 /* TravelTimePanelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A09DBF81F28F300006EBED7 /* TravelTimePanelTests.swift */; };
 		5A09DBFE1F296B15006EBED7 /* TravelTimePickerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A09DBFA1F28F896006EBED7 /* TravelTimePickerTests.swift */; };
 		5A163019208F692600E61B07 /* GuidanceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A163018208F692600E61B07 /* GuidanceViewController.swift */; };
-		5A16301B208F693100E61B07 /* GuidanceManeuverViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A16301A208F693100E61B07 /* GuidanceManeuverViewTests.swift */; };
 		5A16343820C2CD4A0018156F /* LandingMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A16343520C2CD4A0018156F /* LandingMatchers.swift */; };
 		5A16343920C2CD4A0018156F /* LandingActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A16343720C2CD4A0018156F /* LandingActions.swift */; };
 		5A1B2A9F20A076FF009AD672 /* GuidanceManeuverMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A1B2A9E20A076FF009AD672 /* GuidanceManeuverMonitorTests.swift */; };
@@ -118,7 +117,6 @@
 		62174B04214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */; };
 		621C89B020EDF71F003C8EC6 /* NotificationCenterObservingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */; };
 		621C89B120EDF71F003C8EC6 /* NotificationCenterObservingMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */; };
-		62250E1D21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */; };
 		623BF5A02151175300780EAC /* RouteDescriptionListDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BF59F2151175300780EAC /* RouteDescriptionListDelegateMock.swift */; };
 		623BF5A12151175300780EAC /* RouteDescriptionListDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623BF59F2151175300780EAC /* RouteDescriptionListDelegateMock.swift */; };
 		623D78CA21A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 623D78C921A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift */; };
@@ -147,6 +145,7 @@
 		628740C121237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */; };
 		628EFFE8215B5F7A00963B66 /* ExtensionNMACoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EFFE7215B5F7A00963B66 /* ExtensionNMACoreRouter.swift */; };
 		628EFFEA215B63FA00963B66 /* NMACoreRouterMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628EFFE9215B63FA00963B66 /* NMACoreRouterMock.swift */; };
+		62933B4221F9E5C600B82EDC /* GuidanceManeuverViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62933B4121F9E5C600B82EDC /* GuidanceManeuverViewTests.swift */; };
 		62A89F9C21C14F8A00F296EA /* ExtensionLocaleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62A89F9B21C14F8A00F296EA /* ExtensionLocaleTests.swift */; };
 		62AA2C0A20E6377B0007CB45 /* MulticastDelegateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62AA2C0920E6377B0007CB45 /* MulticastDelegateTests.swift */; };
 		62AA2C0B20E637A90007CB45 /* ExtensionXCTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C0A2B220D16A71007795CE /* ExtensionXCTestCase.swift */; };
@@ -181,7 +180,6 @@
 		62E0CFE020EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E0CFDF20EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift */; };
 		62E110DF21246E42005D8063 /* ExtensionDateFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E110DE21246E42005D8063 /* ExtensionDateFormatterTests.swift */; };
 		62E110E121246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E110E021246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift */; };
-		62E5BF7521AEA56900174D27 /* GuidanceManeuverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E5BF7421AEA56900174D27 /* GuidanceManeuverViewController.swift */; };
 		62E8A1B621447FD6006EB665 /* AboutTableViewCellTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1B521447FD6006EB665 /* AboutTableViewCellTests.swift */; };
 		62E8A1BA2144913A006EB665 /* AboutTableViewDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1B92144913A006EB665 /* AboutTableViewDataSourceTests.swift */; };
 		62E8A1BC214496DC006EB665 /* AboutTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62E8A1B721449128006EB665 /* AboutTableViewDataSource.swift */; };
@@ -200,6 +198,8 @@
 		62EB17F8212C02070088B7A5 /* DriveNavigation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62EB17F7212C02070088B7A5 /* DriveNavigation.storyboard */; };
 		62EB17FA212C02520088B7A5 /* RoutePlanner.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62EB17F9212C02520088B7A5 /* RoutePlanner.storyboard */; };
 		62EDC35B20D9357C003D1D33 /* ExtensionUIStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EDC35A20D9357C003D1D33 /* ExtensionUIStoryboard.swift */; };
+		62EFE9EB21F764F80030B3E5 /* GuidanceManeuverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9EA21F764F80030B3E5 /* GuidanceManeuverViewController.swift */; };
+		62EFE9ED21F765270030B3E5 /* GuidanceManeuverSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62EFE9EC21F765270030B3E5 /* GuidanceManeuverSettingsViewController.swift */; };
 		62F061D521A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F061D421A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift */; };
 		62F061D821A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F061D721A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift */; };
 		62F1DBAC20FE179A00A5D018 /* NMACredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62F1DBAB20FE179A00A5D018 /* NMACredentials.swift */; };
@@ -322,7 +322,6 @@
 		5A09DBF81F28F300006EBED7 /* TravelTimePanelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelTimePanelTests.swift; sourceTree = "<group>"; };
 		5A09DBFA1F28F896006EBED7 /* TravelTimePickerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TravelTimePickerTests.swift; sourceTree = "<group>"; };
 		5A163018208F692600E61B07 /* GuidanceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceViewController.swift; sourceTree = "<group>"; };
-		5A16301A208F693100E61B07 /* GuidanceManeuverViewTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverViewTests.swift; sourceTree = "<group>"; };
 		5A16343520C2CD4A0018156F /* LandingMatchers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingMatchers.swift; sourceTree = "<group>"; };
 		5A16343720C2CD4A0018156F /* LandingActions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingActions.swift; sourceTree = "<group>"; };
 		5A1B2A9E20A076FF009AD672 /* GuidanceManeuverMonitorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverMonitorTests.swift; sourceTree = "<group>"; };
@@ -400,7 +399,6 @@
 		6210A18121C8FA800095AA1A /* ExtensionUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableViewCell.swift; sourceTree = "<group>"; };
 		62174B02214FE28D001BFFE2 /* TravelTimePanelDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TravelTimePanelDelegateMock.swift; sourceTree = "<group>"; };
 		621C89AF20EDF71F003C8EC6 /* NotificationCenterObservingMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterObservingMock.swift; sourceTree = "<group>"; };
-		62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverSettingsViewController.swift; sourceTree = "<group>"; };
 		6231C33F20D1D2740046FFC9 /* OptionsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewControllerTests.swift; sourceTree = "<group>"; };
 		6231C34120D1DB370046FFC9 /* ExtensionUITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUITableView.swift; sourceTree = "<group>"; };
 		623BF59F2151175300780EAC /* RouteDescriptionListDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteDescriptionListDelegateMock.swift; sourceTree = "<group>"; };
@@ -431,6 +429,7 @@
 		628740C021237CF000BCD03E /* GuidanceEstimatedArrivalMonitorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceEstimatedArrivalMonitorTests.swift; sourceTree = "<group>"; };
 		628EFFE7215B5F7A00963B66 /* ExtensionNMACoreRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNMACoreRouter.swift; sourceTree = "<group>"; };
 		628EFFE9215B63FA00963B66 /* NMACoreRouterMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMACoreRouterMock.swift; sourceTree = "<group>"; };
+		62933B4121F9E5C600B82EDC /* GuidanceManeuverViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverViewTests.swift; sourceTree = "<group>"; };
 		629F7DEC20D12039006F0A90 /* OptionPanelViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionPanelViewControllerTests.swift; sourceTree = "<group>"; };
 		629F7DEF20D12EB7006F0A90 /* OptionsDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsDelegateMock.swift; sourceTree = "<group>"; };
 		629F7DF420D14112006F0A90 /* ExtensionNMAMapViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionNMAMapViewTests.swift; sourceTree = "<group>"; };
@@ -459,7 +458,6 @@
 		62E0CFDF20EA757F0097D4C8 /* NavigationManagerDelegateDispatcherTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManagerDelegateDispatcherTests.swift; sourceTree = "<group>"; };
 		62E110DE21246E42005D8063 /* ExtensionDateFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDateFormatterTests.swift; sourceTree = "<group>"; };
 		62E110E021246E4C005D8063 /* ExtensionMeasurementFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionMeasurementFormatterTests.swift; sourceTree = "<group>"; };
-		62E5BF7421AEA56900174D27 /* GuidanceManeuverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverViewController.swift; sourceTree = "<group>"; };
 		62E8A1B521447FD6006EB665 /* AboutTableViewCellTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewCellTests.swift; sourceTree = "<group>"; };
 		62E8A1B721449128006EB665 /* AboutTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewDataSource.swift; sourceTree = "<group>"; };
 		62E8A1B92144913A006EB665 /* AboutTableViewDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTableViewDataSourceTests.swift; sourceTree = "<group>"; };
@@ -473,6 +471,8 @@
 		62EB17F7212C02070088B7A5 /* DriveNavigation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = DriveNavigation.storyboard; sourceTree = "<group>"; };
 		62EB17F9212C02520088B7A5 /* RoutePlanner.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = RoutePlanner.storyboard; sourceTree = "<group>"; };
 		62EDC35A20D9357C003D1D33 /* ExtensionUIStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUIStoryboard.swift; sourceTree = "<group>"; };
+		62EFE9EA21F764F80030B3E5 /* GuidanceManeuverViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverViewController.swift; sourceTree = "<group>"; };
+		62EFE9EC21F765270030B3E5 /* GuidanceManeuverSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceManeuverSettingsViewController.swift; sourceTree = "<group>"; };
 		62F061D421A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedSettingsViewController.swift; sourceTree = "<group>"; };
 		62F061D721A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidanceSpeedLimitSettingsViewController.swift; sourceTree = "<group>"; };
 		62F1DBAB20FE179A00A5D018 /* NMACredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NMACredentials.swift; sourceTree = "<group>"; };
@@ -849,7 +849,7 @@
 				5A1B2AA020A07C84009AD672 /* GuidanceManeuverDataTests.swift */,
 				5A1B2A9E20A076FF009AD672 /* GuidanceManeuverMonitorTests.swift */,
 				5A1B2AA220A09A8D009AD672 /* GuidanceManeuverUtilTests.swift */,
-				5A16301A208F693100E61B07 /* GuidanceManeuverViewTests.swift */,
+				62933B4121F9E5C600B82EDC /* GuidanceManeuverViewTests.swift */,
 				5A76DE982135908E006BE1CC /* GuidanceNextManeuverMonitorTests.swift */,
 				5A76DE972135908D006BE1CC /* GuidanceNextManeuverViewTests.swift */,
 				62C8EEED21390158004928C8 /* GuidanceSpeedLimitViewTests.swift */,
@@ -1078,8 +1078,8 @@
 			children = (
 				6279D9A821A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift */,
 				62E8C9A921A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift */,
-				62250E1C21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift */,
-				62E5BF7421AEA56900174D27 /* GuidanceManeuverViewController.swift */,
+				62EFE9EC21F765270030B3E5 /* GuidanceManeuverSettingsViewController.swift */,
+				62EFE9EA21F764F80030B3E5 /* GuidanceManeuverViewController.swift */,
 				620E183621A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift */,
 				62657CCD21A871FD004993C3 /* GuidanceNextManeuverViewController.swift */,
 				62F061D721A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift */,
@@ -1764,6 +1764,7 @@
 				62AA2C0B20E637A90007CB45 /* ExtensionXCTestCase.swift in Sources */,
 				62CFD6B92122CAD200E77A69 /* GuidanceEstimatedArrivalViewTests.swift in Sources */,
 				5A74B2501F063977002B1135 /* BooleanOptionItemTests.swift in Sources */,
+				62933B4221F9E5C600B82EDC /* GuidanceManeuverViewTests.swift in Sources */,
 				5ACDA1251F1650A7004C918C /* TrafficOptionsPanelTests.swift in Sources */,
 				62B506E121353D1900E7ADE8 /* GuidanceSpeedMonitorTests.swift in Sources */,
 				62F770BB20ED640D0044993E /* GuidanceManeuverMonitorDelegateMock.swift in Sources */,
@@ -1782,7 +1783,6 @@
 				62D392CE20E9100E006E963D /* NMAMapViewPartialMock.swift in Sources */,
 				5A61A56D1F0664A300470BE9 /* WaypointListTests.swift in Sources */,
 				2B03B90721148B8300CA612C /* GuidanceStreetLabelTests.swift in Sources */,
-				5A16301B208F693100E61B07 /* GuidanceManeuverViewTests.swift in Sources */,
 				5A09DBFE1F296B15006EBED7 /* TravelTimePickerTests.swift in Sources */,
 				5A1B2AA320A09A8D009AD672 /* GuidanceManeuverUtilTests.swift in Sources */,
 				BD7F07891F18C46B00B161DD /* ManeuverItemViewTests.swift in Sources */,
@@ -1843,7 +1843,6 @@
 				623D78CA21A4821F009CD1DB /* GuidanceSpeedLimitViewController.swift in Sources */,
 				62F061D821A5A3BC0096A449 /* GuidanceSpeedLimitSettingsViewController.swift in Sources */,
 				626BC8AB21B14BD200483AF0 /* GuidanceStreetViewController.swift in Sources */,
-				62250E1D21AEBCF600C3AAB9 /* GuidanceManeuverSettingsViewController.swift in Sources */,
 				62E8C9AD21A46FAE00737B59 /* GuidanceSpeedViewController.swift in Sources */,
 				6210A18021C8F59C0095AA1A /* ComponentsCell.swift in Sources */,
 				62F061D521A5A0C90096A449 /* GuidanceSpeedSettingsViewController.swift in Sources */,
@@ -1852,11 +1851,12 @@
 				6210A18221C8FA800095AA1A /* ExtensionUITableViewCell.swift in Sources */,
 				62657CCE21A871FD004993C3 /* GuidanceNextManeuverViewController.swift in Sources */,
 				620E183721A8789C0096F887 /* GuidanceNextManeuverSettingsViewController.swift in Sources */,
+				62EFE9EB21F764F80030B3E5 /* GuidanceManeuverViewController.swift in Sources */,
 				62E9AA7721CA7255008531F4 /* ComponentsDataSource.swift in Sources */,
 				62E8C9AA21A466BA00737B59 /* GuidanceEstimatedArrivalViewController.swift in Sources */,
 				626E3ED121A566B800F30294 /* SettingsViewController.swift in Sources */,
 				6210A17E21C8F3B10095AA1A /* ExtensionUITableView.swift in Sources */,
-				62E5BF7521AEA56900174D27 /* GuidanceManeuverViewController.swift in Sources */,
+				62EFE9ED21F765270030B3E5 /* GuidanceManeuverSettingsViewController.swift in Sources */,
 				6279D9A921A5985200B14F09 /* GuidanceEstimatedArrivalSettingsViewController.swift in Sources */,
 				6245BCA421A447500042B00C /* AppDelegate.swift in Sources */,
 				62B5B04721CD156500F7366E /* ManeuverItemSettingsViewController.swift in Sources */,
