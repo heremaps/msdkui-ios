@@ -243,8 +243,6 @@ import NMAKit
                             index: Int,
                             measurementFormatter: MeasurementFormatter = .currentMediumUnitFormatter,
                             accessibilityMeasurementFormatter: MeasurementFormatter = .currentLongUnitFormatter) {
-        setUpStyle()
-
         maneuver = maneuvers.indices.contains(index) ? maneuvers[index] : nil
         maneuverResources = ManeuverResources(maneuvers: maneuvers)
 
@@ -295,6 +293,7 @@ import NMAKit
         // Adds the view to the hierarchy
         addSubviewBindToEdges(view)
 
+        setUpStyle()
         setAccessibility()
     }
 

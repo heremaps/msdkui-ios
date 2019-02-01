@@ -29,11 +29,8 @@ final class ManeuverItemViewController: UIViewController {
 
             self?.maneuverView.iconImageView.image = item.configuration.iconImageViewImage
             self?.maneuverView?.instructionLabel.text = item.configuration.instructionLabelText
-            self?.maneuverView?.instructionLabel.textColor = item.configuration.instructionLabelTextColor
             self?.maneuverView.addressLabel.text = item.configuration.addressLabelText
-            self?.maneuverView.addressLabel.textColor = item.configuration.addressLabelTextColor
             self?.maneuverView.distanceLabel.text = item.configuration.distanceLabelText
-            self?.maneuverView.distanceLabel.textColor = item.configuration.distanceLabelTextColor
             self?.maneuverView.visibleSections = item.configuration.visibleSections
         }
     }
