@@ -67,6 +67,23 @@ final class ManeuverItemViewTests: XCTestCase {
         XCTAssertEqual(item.visibleSections, .all, "Not the expected default visibility")
     }
 
+    /// Tests the instruction label.
+    func testInstructionLabel() throws {
+        XCTAssertEqual(itemView?.instructionLabel.numberOfLines, 0, "It supports multiple lines")
+        XCTAssertFalse(try require(itemView?.instructionLabel.adjustsFontSizeToFitWidth), "It doesn't shrink the font based on the string lenght")
+    }
+
+    /// Tests the address label.
+    func testAddressLabel() throws {
+        XCTAssertEqual(itemView?.addressLabel.numberOfLines, 0, "It supports multiple lines")
+        XCTAssertFalse(try require(itemView?.addressLabel.adjustsFontSizeToFitWidth), "It doesn't shrink the font based on the string lenght")
+    }
+
+    /// Tests the stack view which contains the address and distance labels.
+    func testAddressDistanceStackView() {
+        XCTAssertEqual(itemView?.addressDistanceStackView.alignment, .lastBaseline, "It has the correct alignemnt for address and distance labels")
+    }
+
     /// Tests changing visibilities.
     func testSectionVisibilityModifications() throws {
         let item = try require(itemView)
