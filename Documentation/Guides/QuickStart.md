@@ -2,14 +2,18 @@
 Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we are going to introduce you to the HERE Mobile SDK UI Kit and show you how easy it is to get started. As a very first example, we'll also develop a "Hello HERE Mobile SDK UI Kit" iOS application as part of this guide. For more examples and in-depth information on how to work with the HERE  Mobile SDK UI Kit framework, please refer to the [User Guide](UserGuide.md).
 
 ## Contents
-- [How to Run the Example Apps](#how-to-run-the-example-apps)
-- [How to Run the Demo App](#how-to-run-the-demo-app)
+
+- [How to run the example apps](#how-to-run-the-example-apps)
+- [How to run the Demo app](#how-to-run-the-demo-app)
 - [Set up an Xcode iOS Project](#set-up-an-xcode-ios-project)
 	- [Integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit](#integrate-the-here-mobile-sdk-and-the-here-mobile-sdk-ui-kit)
+		- [What to do if you have already included the HERE Mobile SDK in an existing project?](#what-to-do-if-you-have-already-included-the-here-mobile-sdk-in-an-existing-project)
+		- [Can I integrate the HERE Mobile SDK UI Kit manually without CocoaPods?](#can-i-integrate-the-here-mobile-sdk-ui-kit-manually-without-cocoapods)
 	- [Set your HERE Mobile SDK credentials](#set-your-here-mobile-sdk-credentials)
 	- [Add your first HERE Mobile SDK UI Kit component](#add-your-first-here-mobile-sdk-ui-kit-component)
 
-## How to Run the Example Apps
+
+## How to run the example apps
 If you just want to try out the accompanying examples, please perform the following steps:
 
 - If you are new to CocoaPods or need to install it via Terminal, please follow the steps as described [here](https://guides.cocoapods.org/using/getting-started.html).
@@ -24,7 +28,7 @@ let licenseKey = "YOUR_LICENSE_KEY"
 - Open the `*.xcworkspace` (NOT `*.xcodeproj`)
 - For more information on how to set up a new project, please, refer to our guide below which contains much more useful information on how to use the example apps.
 
-## How to Run the Demo App
+## How to run the Demo app
 Along with the accompanying example apps and code snippets, we also provide a more complex demo app showing a complete and fully functional flow. If you want to try out the Demo application, please take a look at the [Contribution Guide](ContributionGuide.md).
 
 If you want to build your own app, it may be useful to follow the guide below where we will develop step by step a first "Hello HERE Mobile SDK UI Kit" app in greater detail.
@@ -197,4 +201,4 @@ override func viewDidLoad() {
 }
 ```
 
-Congratulations, you have just successfully mastered your first steps in using the HERE Mobile SDK UI Kit for iOS. If you want to see more examples and code snippets, please have a look at our [User Guide](UserGuide.md). Thank you!
+Congratulations, you have just successfully mastered your first steps in using the HERE Mobile SDK UI Kit for iOS. If you want to see more examples and code snippets, please take a look at our [User Guide](UserGuide.md). Thank you!
