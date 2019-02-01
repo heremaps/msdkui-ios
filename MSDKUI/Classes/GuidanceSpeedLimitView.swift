@@ -42,6 +42,7 @@ import UIKit
     }
 
     /// Sets the text color of the speed limit information.
+    /// The default value is `UIColor.colorForeground`.
     public var speedLimitTextColor: UIColor = .colorForeground {
         didSet { updateContent() }
     }

@@ -36,6 +36,7 @@ import UIKit
     @IBOutlet private(set) var separatorLabel: UILabel!
 
     /// Sets the text color of the estimated time of arrival information.
+    /// The default value is `UIColor.colorForeground`.
     public var primaryInfoTextColor: UIColor = .colorForeground {
         didSet {
             estimatedTimeOfArrivalLabel.textColor = primaryInfoTextColor
@@ -43,6 +44,7 @@ import UIKit
     }
 
     /// Sets the text color of duration and distance information.
+    /// The default value is `UIColor.colorForegroundSecondary`.
     public var secondaryInfoTextColor: UIColor = .colorForegroundSecondary {
         didSet {
             durationLabel.textColor = secondaryInfoTextColor
@@ -52,6 +54,7 @@ import UIKit
     }
 
     /// Sets the text alignment of all textual information.
+    /// The default value is `NSTextAlignment.center`.
     public var textAlignment: NSTextAlignment = .center {
         didSet {
             estimatedTimeOfArrivalLabel.textAlignment = textAlignment
@@ -84,7 +87,8 @@ import UIKit
         }
     }
 
-    /// The `DateFormatter` used to format the ETA information. The default value is `DateFormatter.currentShortTimeFormatter`.
+    /// The `DateFormatter` used to format the ETA information.
+    /// The default value is `DateFormatter.currentShortTimeFormatter`.
     public var estimatedTimeOfArrivalFormatter: DateFormatter = .currentShortTimeFormatter {
         didSet {
             updateEstimatedTimeOfArrivalLabel()
@@ -92,7 +96,8 @@ import UIKit
         }
     }
 
-    /// The `MeasurementFormatter` used to format the duration information. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
+    /// The `MeasurementFormatter` used to format the duration information.
+    /// The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
     public var durationFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
         didSet {
             updateDurationLabel()
@@ -100,7 +105,8 @@ import UIKit
         }
     }
 
-    /// The `MeasurementFormatter` used to format the distance information. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
+    /// The `MeasurementFormatter` used to format the distance information.
+    /// The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
     public var distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
         didSet {
             updateDistanceLabel()

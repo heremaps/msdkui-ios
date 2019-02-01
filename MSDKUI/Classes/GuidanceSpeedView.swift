@@ -33,11 +33,13 @@ import UIKit
     }
 
     /// Sets the text color of the speed value information.
+    /// The default value is `UIColor.colorForeground`.
     public var speedValueTextColor: UIColor = .colorForeground {
         didSet { updateLabels() }
     }
 
     /// Sets the text color of the speed unit information.
+    /// The default value is `UIColor.colorForegroundSecondary`.
     public var speedUnitTextColor: UIColor = .colorForegroundSecondary {
         didSet { updateLabels() }
     }
@@ -52,6 +54,7 @@ import UIKit
     }
 
     /// Sets the text alignment of all textual information.
+    /// The default value is `NSTextAlignment.left`.
     public var textAlignment: NSTextAlignment = .left {
         didSet {
             speedValueLabel.textAlignment = textAlignment

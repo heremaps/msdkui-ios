@@ -83,7 +83,7 @@ import UIKit
     }
 
     /// The axis along which the arranged views are laid out.
-    /// The default value is .horizontal.
+    /// The default value is `NSLayoutConstraint.Axis.horizontal`.
     public var axis: NSLayoutConstraint.Axis {
         get { return contentStackView.axis }
         set {
@@ -116,7 +116,7 @@ import UIKit
     }
 
     /// Sets the view's foreground color, i.e. the color for the icons,
-    /// text and activity indicators. The default value is `.colorForegroundLight`.
+    /// text and activity indicators. The default value is `UIColor.colorForegroundLight`.
     public var foregroundColor: UIColor? {
         didSet {
             distanceLabel.textColor = foregroundColor

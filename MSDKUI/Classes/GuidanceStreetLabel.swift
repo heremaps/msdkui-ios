@@ -31,6 +31,7 @@ import UIKit
     }
 
     /// Background color of the label when it's accented.
+    /// The default value is `UIColor.colorPositive`.
     public var accentBackgroundColor: UIColor = .colorPositive {
         didSet {
             updateBackgroundColor()
@@ -38,6 +39,7 @@ import UIKit
     }
 
     /// Background color of label when it's not accented.
+    /// The default value is `UIColor.colorForegroundSecondary`.
     public var plainBackgroundColor: UIColor = .colorForegroundSecondary {
         didSet {
             updateBackgroundColor()
@@ -46,6 +48,7 @@ import UIKit
 
     /// Sets the background color.
     /// If `true` it uses `accentBackgroundColor`, otherwise `plainBackgroundColor` is used.
+    /// The default value is `true`.
     public var isAccented = true {
         didSet {
             updateBackgroundColor()
@@ -70,6 +73,8 @@ import UIKit
     /// uses `accentBackgroundColor` as its `backgroundColor` and sets its `text` property `nil`.
     ///
     /// - Note: When this property is set, `text` property is invalidated and should be configured again.
+    ///
+    /// The default value is `false`.
     public var isLookingForPosition = false {
         didSet {
             updateIsLookingForPosition()
