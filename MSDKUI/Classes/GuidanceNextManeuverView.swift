@@ -77,7 +77,7 @@ import UIKit
     @IBOutlet private(set) var streetNameLabel: UILabel!
 
     /// Sets the view's foreground color, i.e. the color for the maneuver icon, distance etc.
-    /// The default foreground color is colorForegroundSecondaryLight.
+    /// The default value is `UIColor.colorForegroundSecondaryLight`.
     public var foregroundColor: UIColor = .colorForegroundSecondaryLight {
         didSet {
             // Note, the next maneuver icon is tinted in GuidanceNextManeuverView.configure(with:)
@@ -88,6 +88,7 @@ import UIKit
     }
 
     /// Sets the text alignment of all textual information.
+    /// The default value is `NSTextAlignment.left`.
     public var textAlignment: NSTextAlignment = .left {
         didSet {
             distanceLabel.textAlignment = textAlignment
