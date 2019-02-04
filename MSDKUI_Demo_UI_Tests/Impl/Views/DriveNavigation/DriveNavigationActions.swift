@@ -161,7 +161,7 @@ enum DriveNavigationActions {
                 var address = ""
                 // Get view address label
                 EarlGrey.selectElement(with: DriveNavigationMatchers.maneuverViewText)
-                    .atIndex(2)
+                    .atIndex(0)
                     .perform(
                         GREYActionBlock.action(withName: "Get description list") { element, errorOrNil -> Bool in
                             guard
@@ -458,7 +458,7 @@ enum DriveNavigationActions {
     private static func getEstimatedArrivalLabelTextColor() -> UIColor? {
         var labelColor: UIColor?
         EarlGrey.selectElement(with: DriveNavigationMatchers.maneuverViewText)
-            .atIndex(2)
+            .atIndex(0)
             .perform(
                 GREYActionBlock.action(withName: "Get label text color") { element, errorOrNil -> Bool in
                     guard
