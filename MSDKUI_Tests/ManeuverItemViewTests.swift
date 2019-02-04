@@ -49,22 +49,48 @@ final class ManeuverItemViewTests: XCTestCase {
         XCTAssertEqual(item.visibleSections, .all, "visible section returns wrong value")
     }
 
-    /// Tests the item default colors.
-    func testDefaultColors() throws {
+    /// Tests the item background color.
+    func testDefaultBackgroundColor() throws {
         let item = try require(itemView)
 
         XCTAssertEqual(item.backgroundColor, .colorForegroundLight, "It has the correct background color")
-        XCTAssertEqual(item.iconImageView.tintColor, .colorForeground, "It has the correct icon tint color")
-        XCTAssertEqual(item.instructionLabel.textColor, .colorForeground, "It has the correct instruction label text color")
-        XCTAssertEqual(item.addressLabel.textColor, .colorForegroundSecondary, "It has the correct address label text color")
-        XCTAssertEqual(item.distanceLabel.textColor, .colorForegroundSecondary, "It has the correct distance label text color")
     }
 
     /// Tests default visibility.
     func testDefaultVisibilty() throws {
-        let item = try require(itemView)
+        XCTAssertEqual(itemView?.visibleSections, .all, "Not the expected default visibility")
+    }
 
-        XCTAssertEqual(item.visibleSections, .all, "Not the expected default visibility")
+    /// Tests the icon image view.
+    func testIconImageView() throws {
+        XCTAssertEqual(itemView?.iconImageView.tintColor, .colorForeground, "It has the correct icon tint color")
+    }
+
+    /// Tests the instruction label.
+    func testInstructionLabel() throws {
+        XCTAssertEqual(itemView?.instructionLabel.font, UIFont.preferredFont(forTextStyle: .body), "It has the correct font")
+        XCTAssertEqual(itemView?.instructionLabel.textColor, .colorForeground, "It has the correct instruction label text color")
+        XCTAssertEqual(itemView?.instructionLabel.numberOfLines, 0, "It supports multiple lines")
+        XCTAssertFalse(try require(itemView?.instructionLabel.adjustsFontSizeToFitWidth), "It doesn't shrink the font based on the string lenght")
+    }
+
+    /// Tests the address label.
+    func testAddressLabel() throws {
+        XCTAssertEqual(itemView?.addressLabel.font, UIFont.preferredFont(forTextStyle: .subheadline), "It has the correct font")
+        XCTAssertEqual(itemView?.addressLabel.textColor, .colorForegroundSecondary, "It has the correct address label text color")
+        XCTAssertEqual(itemView?.addressLabel.numberOfLines, 0, "It supports multiple lines")
+        XCTAssertFalse(try require(itemView?.addressLabel.adjustsFontSizeToFitWidth), "It doesn't shrink the font based on the string lenght")
+    }
+
+    /// Tests the distance label.
+    func testDistanceLabel() throws {
+        XCTAssertEqual(itemView?.distanceLabel.font, UIFont.preferredFont(forTextStyle: .subheadline), "It has the correct font")
+        XCTAssertEqual(itemView?.distanceLabel.textColor, .colorForegroundSecondary, "It has the correct distance label text color")
+    }
+
+    /// Tests the stack view which contains the address and distance labels.
+    func testAddressDistanceStackView() {
+        XCTAssertEqual(itemView?.addressDistanceStackView.alignment, .lastBaseline, "It has the correct alignemnt for address and distance labels")
     }
 
     /// Tests changing visibilities.

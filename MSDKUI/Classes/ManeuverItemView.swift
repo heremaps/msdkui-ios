@@ -154,6 +154,9 @@ import NMAKit
     /// View containing subviews for landscape and portrait.
     @IBOutlet private var view: UIView!
 
+    /// The stack view which contains the address and the distance labels.
+    @IBOutlet private(set) var addressDistanceStackView: UIStackView!
+
     /// The proxy property to make the `visibleSections` property accessible
     /// from the Interface Builder. It accepts a string like "icon|instructions|date"
     /// to set the `visibleSections` property, so the users can avoid arithmetic while
@@ -240,8 +243,6 @@ import NMAKit
                             index: Int,
                             measurementFormatter: MeasurementFormatter = .currentMediumUnitFormatter,
                             accessibilityMeasurementFormatter: MeasurementFormatter = .currentLongUnitFormatter) {
-        setUpStyle()
-
         maneuver = maneuvers.indices.contains(index) ? maneuvers[index] : nil
         maneuverResources = ManeuverResources(maneuvers: maneuvers)
 
@@ -292,6 +293,7 @@ import NMAKit
         // Adds the view to the hierarchy
         addSubviewBindToEdges(view)
 
+        setUpStyle()
         setAccessibility()
     }
 
