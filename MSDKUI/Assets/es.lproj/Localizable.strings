@@ -160,6 +160,6 @@
 "msdkui_waypoint" = "Punto intermedio";
 "msdkui_waypoint_current_location" = "Ubicación actual";
 "msdkui_waypoint_in_list" = "Punto intermedio %ld";
-"msdkui_waypoint_select_location" = "Elegir punto intermedio";
+"msdkui_waypoint_select_location" = "Punto intermedio";
 "msdkui_weight_per_axle" = "Peso por eje";
 "msdkui_width" = "Ancho";
