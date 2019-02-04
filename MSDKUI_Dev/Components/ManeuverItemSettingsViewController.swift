@@ -20,71 +20,66 @@ import UIKit
 final class ManeuverItemSettingsViewController: SettingsViewController<ManeuverItemSettingsViewController.Settings> {
 
     struct Settings {
-        var iconImageViewImage: UIImage?
-        var instructionLabelText: String?
-        var addressLabelText: String?
-        var distanceLabelText: String?
-        var visibleSections: ManeuverItemView.Section
+        var icon: UIImage?
+        var instructions: String?
+        var address: String?
+        var distance: Measurement<UnitLength>?
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "Without any value and all sections visible",
-                         configuration: Settings(iconImageViewImage: nil,
-                                                 instructionLabelText: nil,
-                                                 addressLabelText: nil,
-                                                 distanceLabelText: nil,
-                                                 visibleSections: .all)),
+            SettingsItem(title: "Without any value",
+                         configuration: Settings(icon: nil,
+                                                 instructions: nil,
+                                                 address: nil,
+                                                 distance: nil)),
             SettingsItem(title: "With all values (short instruction)",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "Short instruction!",
-                                                 addressLabelText: "Fuubarstrasse",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .all)),
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "Short instruction!",
+                                                 address: "Fuubarstrasse",
+                                                 distance: Measurement(value: 50, unit: .meters))),
             SettingsItem(title: "With all values (long instruction)",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "This is a very very very long instruction!",
-                                                 addressLabelText: "Fuubarstrasse",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .all)),
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "This is a very very very long instruction!",
+                                                 address: "Fuubarstrasse",
+                                                 distance: Measurement(value: 50, unit: .meters))),
             SettingsItem(title: "With all values (long address)",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "Short instruction!",
-                                                 addressLabelText: "This is a very very very long address line!",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .all)),
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "Short instruction!",
+                                                 address: "This is a very very very long address line!",
+                                                 distance: Measurement(value: 50, unit: .meters))),
             SettingsItem(title: "With all values (long instruction and address)",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "This is a very very very long instruction!",
-                                                 addressLabelText: "This is a very very very long address line!",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .all)),
-            SettingsItem(title: "visibleSections = .icon",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "Short instruction!",
-                                                 addressLabelText: "Fuubarstrasse",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .icon)),
-            SettingsItem(title: "visibleSections = .instructions",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "Short instruction!",
-                                                 addressLabelText: "Fuubarstrasse",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .instructions)),
-            SettingsItem(title: "visibleSections = .address",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "Short instruction!",
-                                                 addressLabelText: "Fuubarstrasse",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .address)),
-            SettingsItem(title: "visibleSections = .distance",
-                         configuration: Settings(iconImageViewImage: UIImage(named: "red_sign"),
-                                                 instructionLabelText: "Short instruction!",
-                                                 addressLabelText: "Fuubarstrasse",
-                                                 distanceLabelText: "10 km",
-                                                 visibleSections: .distance))
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "This is a very very very long instruction!",
+                                                 address: "This is a very very very long address line!",
+                                                 distance: Measurement(value: 50, unit: .meters))),
+            SettingsItem(title: "Without icon",
+                         configuration: Settings(icon: nil,
+                                                 instructions: "Short instruction!",
+                                                 address: "Fuubarstrasse",
+                                                 distance: Measurement(value: 50, unit: .meters))),
+            SettingsItem(title: "Without instructions",
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: nil,
+                                                 address: "Fuubarstrasse",
+                                                 distance: Measurement(value: 50, unit: .meters))),
+            SettingsItem(title: "Without address",
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "Short instruction!",
+                                                 address: nil,
+                                                 distance: Measurement(value: 50, unit: .meters))),
+            SettingsItem(title: "Without distance",
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "Short instruction!",
+                                                 address: "Fuubarstrasse",
+                                                 distance: nil)),
+            SettingsItem(title: "Without address and distance",
+                         configuration: Settings(icon: UIImage(named: "red_sign"),
+                                                 instructions: "Short instruction!",
+                                                 address: nil,
+                                                 distance: nil))
         ]
     }
 }

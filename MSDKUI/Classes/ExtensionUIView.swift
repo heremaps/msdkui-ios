@@ -45,7 +45,7 @@ extension UIView {
     /// bottom constraints as the parent view.
     ///
     /// - Parameter view: The view to be added.
-    func addSubviewBindToEdges(_ view: UIView) {
+    func addSubviewBindToEdges(_ view: UIView, inset: UIEdgeInsets = .zero) {
         // We use autolayout
         view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -54,16 +54,16 @@ extension UIView {
         // The view constraints for the edges
         let leadingConstraint = NSLayoutConstraint(item: view, attribute: .leading, relatedBy: .equal,
                                                    toItem: self, attribute: .leading, multiplier: 1,
-                                                   constant: 0)
+                                                   constant: inset.left)
         let topConstraint = NSLayoutConstraint(item: view, attribute: .top, relatedBy: .equal,
                                                toItem: self, attribute: .top, multiplier: 1,
-                                               constant: 0)
+                                               constant: inset.top)
         let trailingConstraint = NSLayoutConstraint(item: view, attribute: .trailing,
                                                     relatedBy: .equal, toItem: self,
-                                                    attribute: .trailing, multiplier: 1, constant: 0)
+                                                    attribute: .trailing, multiplier: 1, constant: inset.right)
         let bottomConstraint = NSLayoutConstraint(item: view, attribute: .bottom, relatedBy: .equal,
                                                   toItem: self, attribute: .bottom, multiplier: 1,
-                                                  constant: 0)
+                                                  constant: inset.bottom)
 
         // Add the constraints
         addConstraints([leadingConstraint, topConstraint, trailingConstraint, bottomConstraint])

@@ -76,33 +76,18 @@ enum RouteOverViewActions {
 
                         print("maneuverTableView maneuver \(String(index)) accessibilityHint: \(String(describing: item.accessibilityHint))")
 
-                        GREYAssertNotNil(
-                            item.iconImageView.image, reason: "No icon view!")
-                        GREYAssertNotNil(
-                            item.instructionLabel.text, reason: "No instruction label text!")
-                        GREYAssertFalse(
-                            item.instructionLabel.text?.isEmpty ?? true,
-                            reason: "Empty instruction label text!")
-                        GREYAssertNotNil(
-                            item.addressLabel.text, reason: "No address label text!")
-                        GREYAssertFalse(
-                            item.addressLabel.text?.isEmpty ?? true, reason: "Empty address label text!")
+                        GREYAssertNotNil(item.iconImageView.image, reason: "No icon view!")
+                        GREYAssertNotNil(item.instructionLabel.text, reason: "No instruction label text!")
+                        GREYAssertFalse(item.instructionLabel.text?.isEmpty ?? true, reason: "Empty instruction label text!")
+                        GREYAssertNotNil(item.addressLabel.text, reason: "No address label text!")
+                        GREYAssertFalse(item.addressLabel.text?.isEmpty ?? true, reason: "Empty address label text!")
 
                         // The last item distance should not be visible
                         if index == maneuverTableView.entryCount - 1 {
-                            GREYAssertTrue(
-                                item.visibleSections == [.icon, .instructions, .address],
-                                reason: "The last distance label text should be hidden!")
-                            GREYAssert(
-                                item.distanceLabel.isHidden == true,
-                                reason: "The last distance label text should be hidden!")
+                            GREYAssert(item.distanceLabel.isHidden == true, reason: "The last distance label text should be hidden!")
                         } else {
-                            GREYAssertNotNil(
-                                item.distanceLabel.text,
-                                reason: "No distance label text!")
-                            GREYAssertFalse(
-                                item.distanceLabel.text?.isEmpty ?? true,
-                                reason: "Empty distance label text!")
+                            GREYAssertNotNil(item.distanceLabel.text, reason: "No distance label text!")
+                            GREYAssertFalse(item.distanceLabel.text?.isEmpty ?? true, reason: "Empty distance label text!")
                         }
                     }
                     return true
