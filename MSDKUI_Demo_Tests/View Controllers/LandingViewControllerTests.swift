@@ -48,7 +48,7 @@ final class LandingViewControllerTests: XCTestCase {
     // MARK: - Tests
 
     /// Tests that LandingViewController.getAppVersionStrings(sender:) launches the expected view controller.
-    func testHandleRoutePannerTap() throws {
+    func testHandleRoutePlannerTap() throws {
         let viewControllerUnderTest = try require(self.viewControllerUnderTest)
 
         // Sets the testing expectation
@@ -56,7 +56,7 @@ final class LandingViewControllerTests: XCTestCase {
         expectation(for: predicate, evaluatedWith: viewControllerUnderTest)
 
         // Triggers the action
-        viewControllerUnderTest.handleRoutePannerTap(sender: UITapGestureRecognizer())
+        viewControllerUnderTest.handleRoutePlannerTap(sender: UITapGestureRecognizer())
 
         // Sets the timeout for the expectation
         waitForExpectations(timeout: 5)

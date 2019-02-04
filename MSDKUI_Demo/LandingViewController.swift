@@ -45,7 +45,7 @@ class LandingViewController: UIViewController {
 
     @IBOutlet private(set) var driveNavHeightConstraint: NSLayoutConstraint!
 
-    @IBOutlet private(set) var routePannerView: UIView!
+    @IBOutlet private(set) var routePlannerView: UIView!
 
     @IBOutlet private(set) var routePlannerTitleLabel: UILabel!
 
@@ -81,8 +81,8 @@ class LandingViewController: UIViewController {
         setAccessibility()
 
         // Add the tap gesture recognizers to the cards
-        let tapGestureRecognizerRoutePanner = UITapGestureRecognizer(target: self, action: #selector(handleRoutePannerTap))
-        routePannerView.addGestureRecognizer(tapGestureRecognizerRoutePanner)
+        let tapGestureRecognizerRoutePlanner = UITapGestureRecognizer(target: self, action: #selector(handleRoutePlannerTap))
+        routePlannerView.addGestureRecognizer(tapGestureRecognizerRoutePlanner)
 
         let tapGestureRecognizerDriveNav = UITapGestureRecognizer(target: self, action: #selector(handleDriveNavTap))
         driveNavView.addGestureRecognizer(tapGestureRecognizerDriveNav)
@@ -114,8 +114,8 @@ class LandingViewController: UIViewController {
     /// Handles tapping the route planner card.
     ///
     /// - Parameter sender: The gesture recognizer triggering the action.
-    @objc func handleRoutePannerTap(sender _: UITapGestureRecognizer) {
-        handleTap(view: routePannerView, segue: "ShowRoutePlanner")
+    @objc func handleRoutePlannerTap(sender _: UITapGestureRecognizer) {
+        handleTap(view: routePlannerView, segue: "ShowRoutePlanner")
     }
 
     /// Handles tapping the drive nav card.
@@ -152,7 +152,7 @@ class LandingViewController: UIViewController {
 
         // Card subviews are not accessibility elements
 
-        routePannerView.subviews.forEach {
+        routePlannerView.subviews.forEach {
             $0.isAccessibilityElement = false
         }
         driveNavView.subviews.forEach {
@@ -162,13 +162,13 @@ class LandingViewController: UIViewController {
         // For each card, make sure the whole card is the accessibility element
         // and combine the label texts with dots for better reading
 
-        routePannerView.isAccessibilityElement = true
-        routePannerView.accessibilityIdentifier = "LandingViewController.routePlannerView"
-        routePannerView.accessibilityLabel = nil
+        routePlannerView.isAccessibilityElement = true
+        routePlannerView.accessibilityIdentifier = "LandingViewController.routePlannerView"
+        routePlannerView.accessibilityLabel = nil
         if let titleText = routePlannerTitleLabel.text,
             let subtitleText = routePlannerSubtitleLabel.text,
             let actionText = routePlannerActionLabel.text {
-            routePannerView.accessibilityLabel = titleText + "." + subtitleText + "." + actionText
+            routePlannerView.accessibilityLabel = titleText + "." + subtitleText + "." + actionText
         }
 
         driveNavView.isAccessibilityElement = true
@@ -183,17 +183,17 @@ class LandingViewController: UIViewController {
 
     private func updateStyle() {
         view.backgroundColor = UIColor.colorBackgroundLight
-        routePannerView.backgroundColor = UIColor.colorBackgroundViewLight
+        routePlannerView.backgroundColor = UIColor.colorBackgroundViewLight
         driveNavView.backgroundColor = UIColor.colorBackgroundViewLight
 
         routePlannerTitleLabel.textColor = UIColor.colorForeground
         routePlannerSubtitleLabel.textColor = UIColor.colorForegroundSecondary
         routePlannerActionLabel.textColor = UIColor.colorAccent
 
-        routePannerView.layer.shadowColor = UIColor.colorDivider.cgColor
-        routePannerView.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-        routePannerView.layer.shadowOpacity = 1.0
-        routePannerView.layer.shadowRadius = 1.0
+        routePlannerView.layer.shadowColor = UIColor.colorDivider.cgColor
+        routePlannerView.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
+        routePlannerView.layer.shadowOpacity = 1.0
+        routePlannerView.layer.shadowRadius = 1.0
 
         driveNavTitleLabel.textColor = UIColor.colorForeground
         driveNavSubtitleLabel.textColor = UIColor.colorForegroundSecondary
@@ -248,7 +248,7 @@ class LandingViewController: UIViewController {
         routePlannerSubtitleLabel.sizeToFit()
         driveNavSubtitleLabel.sizeToFit()
 
-        routePlannerViewHeightConstraint.constant = setCardHeight(view: routePannerView)
+        routePlannerViewHeightConstraint.constant = setCardHeight(view: routePlannerView)
         driveNavHeightConstraint.constant = setCardHeight(view: driveNavView)
 
         // If the orientation is landscape, i.e. not portrait, we have to
