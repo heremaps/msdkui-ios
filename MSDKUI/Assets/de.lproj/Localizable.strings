@@ -160,6 +160,6 @@
 "msdkui_waypoint" = "Wegpunkt";
 "msdkui_waypoint_current_location" = "Aktueller Standort";
 "msdkui_waypoint_in_list" = "Wegpunkt %ld";
-"msdkui_waypoint_select_location" = "Wegpunkt aussuchen";
+"msdkui_waypoint_select_location" = "Wegpunkt";
 "msdkui_weight_per_axle" = "Gewicht pro Achse";
 "msdkui_width" = "Breite";

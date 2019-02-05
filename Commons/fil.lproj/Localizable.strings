@@ -1,7 +1,7 @@
 ﻿"msdkui_app_about" = "Tungkol sa";
 "msdkui_app_about_info_part_four" = "Sa ngayon, magagamit mo ang mga component sa HERE Mobile SDK UI Kit upang gumawa ng pamplano ng ruta at karansasan sa patnubay. Alamin pa ang higit tungkol dito sa gabay ng gumagamit.";
 "msdkui_app_about_info_part_one" = "Gumawa ng magagandang interface para sa Android at iOS gamit ang HERE Mobile SDK Kit.";
-"msdkui_app_about_info_part_three" = "Sa paggamit lamang ng iilang linya ng code, makakagawa ka na ng buong UI gamit ang Premium edition ng HERE Mobile SDK. Kaya, sa halip na kailangan pa ng ilang araw para makagawa ng listahan ng maneobra gamit ang native APIs, ang kailangan mo lamang ay ilang oras. Mas kaunting panahon sa pag-develop mas mabilis na panahon para i-market.\n\nSiyempre, kung gusto mo, maaari mong gamitin ang UI Kit upang baguhin ang hitsura (mga kulay, dimension) at behaviour (data presentation, logic, flow, mga subcomponent) ng ilang kontrol ng UI. Ikaw ang bahala.";
+"msdkui_app_about_info_part_three" = "Sa paggamit lang nang ilang linya ng code, maaari kang lumikha ng buong UI gamit ang Premium na edisyon ng HERE Mobile SDK. Kaya imbes na mangailangan nang mangilan-ngilang oras para makabuo ng manoeuvre na listahan gamit ang mga native API, kakailanganin mo lang nang ilang minuto. Mas maikling oras ng pag-develope ay nangangahulugan nang mas mabilis na oras para imerkado.\n\nSiyempre maaari mong gamitin ang UI Kit para baguhin ang hitsura (mga kulay, sukat) at gawi (datos presentasyon, lohika, daloy, mga subcomponens) ng ilang kontrol ng UI. Bahala ka.";
 "msdkui_app_about_info_part_two" = "Ang isang magandang user interface ay kadalasang ang pangunahing kaibahan ay sa pagitan ng paghahanap at pagpapanatili ng mga gumagamit, o ang maiwala sila at mapunta sa iyong mga kakompetensiya. Iyan ang dahilan kung bakit ang HERE Mobile SDK Kit para sa Android at iOS ay may naka-pack nang iba’t ibang screen na lubusang gumagana at handa nang gamitin sa iyong application.";
 "msdkui_app_add" = "Magdagdag";
 "msdkui_app_app_version" = "Bersyon ng App";
@@ -15,8 +15,8 @@
 "msdkui_app_guidance_button_end" = "Tapusin";
 "msdkui_app_guidance_button_showmaneuvers" = "Tingnan hakbang";
 "msdkui_app_guidance_button_showmap" = "Ipakita ang mapa";
-"msdkui_app_guidance_button_start" = "Simulan ang nabigasyon";
-"msdkui_app_guidance_start_simulation" = "Isang gabay na simulation ang magsisimula na";
+"msdkui_app_guidance_button_start" = "Simulan nabigasyon";
+"msdkui_app_guidance_start_simulation" = "Magsisimula ang simulation ng gabay.";
 "msdkui_app_guidance_teaser_description" = "Tulungan ang mga user mo na makapunta sa kanilang destinasyon na may gabay sa bawat pagliko.";
 "msdkui_app_guidance_teaser_title" = "Nabigasyon";
 "msdkui_app_guidance_waypoint_subtitle" = "Tapikin ang mapa para itakda ang destinasyon mo";
@@ -37,8 +37,8 @@
 "msdkui_app_route_preview_title" = "Kabuoang tanaw ng ruta";
 "msdkui_app_routeoverview_to" = "Tungo:";
 "msdkui_app_routeplanner_getdirections" = "Kumuha ng mga direksyon";
-"msdkui_app_routeplanner_startchoosingwaypoint" = "Start by choosing a \"from\" or a \"to\"";
-"msdkui_app_routeresults_error" = "Hindi nakahanap ng anumang mga ruta";
+"msdkui_app_routeplanner_startchoosingwaypoint" = "Simulan sa pamamagitan ng pagpili ng \"mula sa\" o isang \"papunta sa\"";
+"msdkui_app_routeresults_error" = "Hindi nakakita ng anumang mga ruta.";
 "msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "Kunin ang mga direksiyon para sa mga kotse, lorry, bisikleta at paglalakad.";
 "msdkui_app_rp_teaser_title" = "Tagaplano ng ruta";
