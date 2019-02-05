@@ -153,13 +153,13 @@
 "msdkui_unit_meter" = "m";
 "msdkui_unit_mile" = "mi";
 "msdkui_unit_miles_per_hour" = "mph";
-"msdkui_unit_yard" = "jd";
+"msdkui_unit_yard" = "yd";
 "msdkui_unknown" = "Nieznany";
-"msdkui_userposition_search" = "Pobieranie Twojej lokalizacji";
+"msdkui_userposition_search" = "Pobieranie lokalizacji";
 "msdkui_violate_truck_options" = "Ignoruj opcje dla samochodów ciężarowych";
 "msdkui_waypoint" = "Punkt nawigacyjny";
 "msdkui_waypoint_current_location" = "Bieżąca lokalizacja";
 "msdkui_waypoint_in_list" = "Punkt nawigacyjny: %ld";
-"msdkui_waypoint_select_location" = "Wybierz punkt nawigacyjny";
+"msdkui_waypoint_select_location" = "Punkt nawigacyjny";
 "msdkui_weight_per_axle" = "Waga na oś";
 "msdkui_width" = "Szerokość";

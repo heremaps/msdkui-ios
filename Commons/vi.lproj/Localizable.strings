@@ -16,7 +16,7 @@
 "msdkui_app_guidance_button_showmaneuvers" = "Xem chỉ đường";
 "msdkui_app_guidance_button_showmap" = "Hiện bản đồ";
 "msdkui_app_guidance_button_start" = "Bắt đầu điều hướng";
-"msdkui_app_guidance_start_simulation" = "Mô phỏng hướng dẫn sẽ bắt đầu.";
+"msdkui_app_guidance_start_simulation" = "Phần mô phỏng hướng dẫn sẽ bắt đầu.";
 "msdkui_app_guidance_teaser_description" = "Giúp người sử dụng của bạn tới đích với hướng dẫn từng chặn.";
 "msdkui_app_guidance_teaser_title" = "Điều hướng lái xe";
 "msdkui_app_guidance_waypoint_subtitle" = "Chạm vào bản đồ để chọn đích đến của bạn";
