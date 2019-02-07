@@ -32,7 +32,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
     /// Tests if the view has correct layout margins set.
     func testLayoutMargins() {
-        XCTAssertEqual(nextManeuverView.layoutMargins, UIEdgeInsets.zero, "It has correct layout margins")
+        XCTAssertEqual(nextManeuverView.layoutMargins, .zero, "It has correct layout margins")
     }
 
     /// Tests if the view has the distance label with empty content by default.
@@ -40,15 +40,13 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
         XCTAssertNotNil(nextManeuverView.distanceLabel, "It has the distance label")
         XCTAssertNil(nextManeuverView.distanceLabel.text, "It doesn't show the distance text")
         XCTAssertEqual(nextManeuverView.distanceLabel.textColor, nextManeuverView.foregroundColor, "It has the correct text color")
-        XCTAssertEqual(nextManeuverView.distanceLabel.textAlignment, .left, "It has the correct text alignment")
     }
 
     /// Tests if the view has the distance/street name separator.
     func testHasSeparatorLabel() {
         XCTAssertNotNil(nextManeuverView.separatorLabel, "It has the separator label")
-        XCTAssertEqual(nextManeuverView.separatorLabel.text, "·", "It has the correct separator character")
+        XCTAssertEqual(nextManeuverView.separatorLabel.text, "・", "It has the correct separator character")
         XCTAssertEqual(nextManeuverView.separatorLabel.textColor, nextManeuverView.foregroundColor, "It has the correct text color")
-        XCTAssertEqual(nextManeuverView.separatorLabel.textAlignment, .center, "It has the correct text alignment")
         XCTAssertTrue(nextManeuverView.separatorLabel.isHidden, "It is hidden by default")
     }
 
@@ -57,58 +55,62 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
         XCTAssertNotNil(nextManeuverView.streetNameLabel, "It has the street name label")
         XCTAssertNil(nextManeuverView.streetNameLabel.text, "It doesn't show the street name text")
         XCTAssertEqual(nextManeuverView.streetNameLabel.textColor, nextManeuverView.foregroundColor, "It has the correct text color")
-        XCTAssertEqual(nextManeuverView.streetNameLabel.textAlignment, .left, "It has the correct text alignment")
     }
 
     // MARK: - Configure
 
     /// Tests if the subview visibilities are correct when model is populated with a complete model.
-    func testSubviewVisibilitiesWhenModelIsComplete() {
+    func testConfigureWhenModeIsComplete() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: "Invalidenstr.")
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(), distance: distance, streetName: "Foobarstrasse 123")
 
         nextManeuverView.configure(with: viewModel)
 
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
         XCTAssertNotNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is set")
-        XCTAssertTrue(nextManeuverView.maneuverImageHeightConstraint.isActive, "The maneuver icon height constraint is active")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertFalse(nextManeuverView.separatorLabel.isHidden, "The separator label is visible")
         XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
     }
 
-    /// Tests if the subview visibilities are correct when model is populated with an incomplete model.
-    func testSubviewVisibilitiesWhenModelIsIncomplete() {
+    /// Tests if the subview visibilities are correct when model misses street name.
+    func testConfigureWhenStreetNameIsMissing() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: nil)
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(), distance: distance, streetName: nil)
 
         nextManeuverView.configure(with: viewModel)
 
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
         XCTAssertNotNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is set")
-        XCTAssertTrue(nextManeuverView.maneuverImageHeightConstraint.isActive, "The maneuver icon height constraint is active")
         XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertTrue(nextManeuverView.separatorLabel.isHidden, "The separator label is hidden")
         XCTAssertTrue(nextManeuverView.streetNameLabel.isHidden, "The street name label is hidden")
     }
 
-    /// Tests if container image view is hidden when model is populated without icon view.
-    func testIconVisibilityWhenNotAvailable() {
+    /// Tests if the subview visibilities are correct when model misses distance.
+    func testConfigureWhenDistanceIsMissing() {
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(), distance: nil, streetName: "Foobarstrasse 123")
+
+        nextManeuverView.configure(with: viewModel)
+
+        XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
+        XCTAssertNotNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is set")
+        XCTAssertFalse(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is visible")
+        XCTAssertTrue(nextManeuverView.distanceLabel.isHidden, "The distance label is hidden")
+        XCTAssertTrue(nextManeuverView.separatorLabel.isHidden, "The separator label is hidden")
+        XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
+    }
+
+    /// Tests if the subview visibilities are correct when model misses icon.
+    func testConfigureWhenIconIsMissing() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: nil,
-                                                           distance: distance,
-                                                           streetName: "Invalidenstr.")
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: nil, distance: distance, streetName: "Foobarstrasse 123")
 
         nextManeuverView.configure(with: viewModel)
 
         XCTAssertTrue(nextManeuverView.maneuverImageView.isHidden, "The maneuver icon is hidden")
         XCTAssertNil(nextManeuverView.maneuverImageView.image, "The maneuver icon is not set")
-        XCTAssertFalse(nextManeuverView.maneuverImageHeightConstraint.isActive, "The maneuver icon height constraint is inactive")
         XCTAssertFalse(nextManeuverView.distanceLabel.isHidden, "The distance label is visible")
         XCTAssertFalse(nextManeuverView.separatorLabel.isHidden, "The separator label is visible")
         XCTAssertFalse(nextManeuverView.streetNameLabel.isHidden, "The street name label is visible")
@@ -132,15 +134,11 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
     func testViewAccessibility() {
         XCTAssertTrue(nextManeuverView.isAccessibilityElement,
                       "It allows accessibility access")
-        XCTAssertEqual(nextManeuverView.accessibilityTraits,
-                       .staticText,
+        XCTAssertEqual(nextManeuverView.accessibilityTraits, .staticText,
                        "It has the correct accessibility traits")
-        XCTAssertEqual(nextManeuverView.accessibilityIdentifier,
-                       "MSDKUI.GuidanceNextManeuverView",
+        XCTAssertEqual(nextManeuverView.accessibilityIdentifier, "MSDKUI.GuidanceNextManeuverView",
                        "It has the correct accessibility identifier")
-        XCTAssertLocalized(nextManeuverView.accessibilityLabel,
-                           key: "msdkui_next_maneuver",
-                           bundle: .MSDKUI,
+        XCTAssertLocalized(nextManeuverView.accessibilityLabel, key: "msdkui_next_maneuver", bundle: .MSDKUI,
                            "It has the correct accessibility label")
     }
 
@@ -152,9 +150,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
     /// Tests if the view accessibility hint is correct when model is populated with the default distance formatter.
     func testViewAccessibilityHintWithDefaultDistanceFormatter() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: "Invalidenstr.")
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(), distance: distance, streetName: "Foobarstrasse 123")
 
         nextManeuverView.configure(with: viewModel)
 
@@ -168,9 +164,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
     /// with the default distance formatter.
     func testViewDistanceLabelAccessibilityLabelWithDefaultDistanceFormatter() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: "Invalidenstr.")
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(), distance: distance, streetName: "Foobarstrasse 123")
 
         nextManeuverView.configure(with: viewModel)
 
@@ -185,7 +179,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
         let distanceFormatter = MeasurementFormatter()
         let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
                                                            distance: distance,
-                                                           streetName: "Invalidenstr.",
+                                                           streetName: "Foobarstrasse 123",
                                                            distanceFormatter: distanceFormatter)
 
         nextManeuverView.configure(with: viewModel)
@@ -203,7 +197,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
         let distanceFormatter = MeasurementFormatter()
         let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
                                                            distance: distance,
-                                                           streetName: "Invalidenstr.",
+                                                           streetName: "Foobarstrasse 123",
                                                            accessibilityDistanceFormatter: distanceFormatter)
 
         nextManeuverView.configure(with: viewModel)
@@ -216,9 +210,7 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
     /// Tests if the view accessibility hint is correct when model is populated with an incomplete model.
     func testViewAccessibilityHintWhenModelIsIncomplete() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: nil)
+        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(), distance: distance, streetName: nil)
 
         nextManeuverView.configure(with: viewModel)
 
@@ -235,31 +227,9 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
         nextManeuverView.foregroundColor = testForegroundColor
 
-        // Make sure that the labels switch to the new foregroundColor
         XCTAssertEqual(nextManeuverView.distanceLabel.textColor, testForegroundColor, "It sets the correct foreground color for the view")
         XCTAssertEqual(nextManeuverView.separatorLabel.textColor, testForegroundColor, "It sets the correct foreground color for the view")
         XCTAssertEqual(nextManeuverView.streetNameLabel.textColor, testForegroundColor, "It sets the correct foreground color for the view")
-
-        // Make sure that the icon is tinted with the new foregroundColor
-        let distance = Measurement<UnitLength>(value: 100, unit: .meters)
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: nil)
-
-        nextManeuverView.configure(with: viewModel)
-
         XCTAssertEqual(nextManeuverView.maneuverImageView.tintColor, testForegroundColor, "It sets the correct foreground color for the view")
-    }
-
-    /// Tests the behavior when the `.textAlignment` property is set.
-    func testWhenTextAlignmentIsSet() {
-        nextManeuverView.textAlignment = .right
-
-        // Make sure that the distanceLabel & streetNameLabel switch to the new text alignment
-        XCTAssertEqual(nextManeuverView.distanceLabel.textAlignment, .right, "It sets the correct text alignment for the distance label")
-        XCTAssertEqual(nextManeuverView.streetNameLabel.textAlignment, .right, "It sets the correct text alignment for the street name label")
-
-        // Note that the separatorLabel.textAlignment should not be updated at all
-        XCTAssertEqual(nextManeuverView.separatorLabel.textAlignment, .center, "It sets the correct text alignment for the street name label")
     }
 }

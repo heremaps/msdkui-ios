@@ -27,7 +27,6 @@ final class GuidanceNextManeuverViewController: UIViewController {
         settingsViewController?.didSelect = { [weak self] item in
             self?.title = item.title
 
-            self?.nextManeuverView.textAlignment = item.configuration.textAlignment
             self?.nextManeuverView.foregroundColor = item.configuration.foregroundColor
 
             let model = GuidanceNextManeuverView.ViewModel(maneuverIcon: item.configuration.maneuverIcon,
