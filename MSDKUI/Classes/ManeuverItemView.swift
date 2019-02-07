@@ -17,185 +17,69 @@
 import Foundation
 import NMAKit
 
-/// A visual item to display a `NMAManeuver` object based on its visible sections.
+/// The maneuver item view.
 @IBDesignable open class ManeuverItemView: UIView {
-
-    // MARK: - Types
-
-    /// Describes atomic sections of the item for visibility.
-    public struct Section: OptionSet {
-
-        // MARK: - Properties
-
-        /// The icon section indicating the next maneuver.
-        public static let icon = Section(rawValue: 1 << 0)
-
-        /// The instructions section indicating the next turns to take.
-        public static let instructions = Section(rawValue: 1 << 1)
-
-        /// The address section indicating address information of the next maneuver.
-        public static let address = Section(rawValue: 1 << 2)
-
-        /// The distance section indicating the distance to next maneuver in meters.
-        public static let distance = Section(rawValue: 1 << 3)
-
-        /// All available sections combined in one array.
-        public static let all: Section = [icon, instructions, address, distance]
-
-        /// This variable returns the Section as a String. For example, Section(rawValue: 19)
-        /// is stringized as "icon|duration|length".
-        ///
-        /// - Note: The "|" character is used to concatenate the Section values.
-        /// - Note: The returned string is all in lowercase.
-        /// - Note: The order of the substrings follow the Section declaration order. For example
-        ///              [.address, .icon] is converted as "icon|address".
-        public var stringized: String {
-            var string = "" // Initially empty
-
-            // Always prefix the string with a "|" as a kind of "normalization"
-
-            // Handles the .all as a special case
-            if self == .all {
-                string = "|all"
-            } else {
-                // Follows the Section declaration order
-                if contains(.icon) {
-                    string += "|icon"
-                }
-
-                if contains(.instructions) {
-                    string += "|instructions"
-                }
-
-                if contains(.address) {
-                    string += "|address"
-                }
-
-                if contains(.distance) {
-                    string += "|distance"
-                }
-            }
-
-            // If the string is not empty, remove the first char: due to "normalization", it is always "|"
-            return string.isEmpty ? string : String(string.dropFirst())
-        }
-
-        /// The corresponding value of the raw type.
-        public let rawValue: Int
-
-        // MARK: - Public
-
-        /// This function converts a String which mimics the or'ed Section values like
-        /// "icon|instructions|distance" to a Section like Section(rawValue: 11). Unknown strings
-        /// are simply ignored.
-        /// - Parameter string: The string to be converted to a Section value.
-        /// - Returns: The Section value created out of the string. Note that it will be empty
-        ///            if the string does not have any Section-like substring.
-        ///
-        /// - Note: The "|" character should be used in the string to concatenate substrings.
-        /// - Note: The function allows irregularities like blank chars before
-        ///              or after a "|" char or using capital characters.
-        public static func make(from string: String) -> Section {
-            let trimmed = string.components(separatedBy: .whitespaces).joined()
-            let lowercased = trimmed.lowercased()
-            let tokens = lowercased.split(separator: "|")
-            var section = Section() // Initially empty
-
-            for token in tokens {
-                switch token {
-                case "icon":
-                    section.insert(.icon)
-
-                case "instructions":
-                    section.insert(.instructions)
-
-                case "address":
-                    section.insert(.address)
-
-                case "distance":
-                    section.insert(.distance)
-
-                case "all":
-                    section.insert(.all)
-
-                default:
-                    () // Ignore the unknown string
-                }
-            }
-
-            return section
-        }
-
-        public init(rawValue: Int) {
-            self.rawValue = rawValue
-        }
-    }
 
     // MARK: - Properties
 
     /// The label for displaying the maneuver icon.
-    @IBOutlet public private(set) var iconImageView: UIImageView!
+    @IBOutlet private(set) var iconImageView: UIImageView!
 
     /// The label for displaying the maneuver instruction.
-    @IBOutlet public private(set) var instructionLabel: UILabel!
+    @IBOutlet private(set) var instructionLabel: UILabel!
 
     /// The label for displaying the address info.
-    @IBOutlet public private(set) var addressLabel: UILabel!
+    @IBOutlet private(set) var addressLabel: UILabel!
 
     /// The label for displaying the distance info.
-    @IBOutlet public private(set) var distanceLabel: UILabel!
-
-    /// This constraint helps us to set a leading inset.
-    @IBOutlet public private(set) var leadingConstraint: NSLayoutConstraint!
-
-    /// This constraint helps us to set a trailing inset.
-    @IBOutlet public private(set) var trailingConstraint: NSLayoutConstraint!
-
-    /// View containing subviews for landscape and portrait.
-    @IBOutlet private var view: UIView!
+    @IBOutlet private(set) var distanceLabel: UILabel!
 
     /// The stack view which contains the address and the distance labels.
     @IBOutlet private(set) var addressDistanceStackView: UIStackView!
 
-    /// The proxy property to make the `visibleSections` property accessible
-    /// from the Interface Builder. It accepts a string like "icon|instructions|date"
-    /// to set the `visibleSections` property, so the users can avoid arithmetic while
-    /// setting this property. Note that unknown substrings are simply ignored.
-    ///
-    /// - Important: It shadows the visibleSections property.
-    @IBInspectable public var visibleSectionsProxy: String {
-        get {
-            return visibleSections.stringized
-        }
-        set {
-            visibleSections = ManeuverItemView.Section.make(from: newValue)
-        }
-    }
-
-    /// The visibility of the maneuver data.
-    ///
-    /// - Important: Initially all the sections are visible.
-    public var visibleSections: Section = .all {
+    // The maneuver icon image.
+    public var icon: UIImage? {
         didSet {
-            refresh()
+            iconImageView.image = icon
+            iconImageView.isHidden = icon == nil
         }
     }
 
-    /// The item leading inset, which sets the spacing between the leading side and the visible subviews.
-    public var leadingInset = CGFloat(16) {
-        didSet { leadingConstraint.constant = leadingInset }
+    /// The maneuver instructions.
+    public var instructions: String? {
+        didSet {
+            instructionLabel.text = instructions
+            instructionLabel.isHidden = instructions == nil
+
+            updateAccessibility()
+        }
     }
 
-    /// The item trailing inset, which sets the spacing between the visible subviews and the trailing side.
-    public var trailingInset = CGFloat(-16) {
-        didSet { trailingConstraint.constant = trailingInset }
+    /// The maneuver address.
+    public var address: String? {
+        didSet {
+            addressLabel.text = address
+            addressLabel.isHidden = address == nil
+            addressDistanceStackView.isHidden = addressLabel.isHidden && distanceLabel.isHidden
+
+            updateAccessibility()
+        }
     }
 
-    /// The `NMAManeuver` object associated with this item.
-    public private(set) var maneuver: NMAManeuver?
+    /// The maneuver distance.
+    public var distance: Measurement<UnitLength>? {
+        didSet { updateDistance() }
+    }
 
-    /// Helper `ManeuverResources` type object.
-    private var maneuverResources: ManeuverResources!
+    /// The distance formatter. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
+    public var distanceFormatter: MeasurementFormatter = .currentMediumUnitFormatter {
+        didSet { updateDistance() }
+    }
+
+    /// The accessibility distance formatter. The default value is `MeasurementFormatter.currentLongUnitFormatter`.
+    public var accessibilityDistanceFormatter: MeasurementFormatter = .currentLongUnitFormatter {
+        didSet { updateDistance() }
+    }
 
     // MARK: - Public
 
@@ -211,105 +95,22 @@ import NMAKit
         setUp()
     }
 
-    /// Queries the visibility of the given section.
-    ///
-    /// - Parameter section: The section whose visibility is to be queried.
-    /// - Returns: true if the section is visible and false otherwise.
-    public func isSectionVisible(_ section: Section) -> Bool {
-        return visibleSections.contains(section)
-    }
-
-    /// Sets the given section visible or not.
-    ///
-    /// - Parameter section: The section whose visibility to be set.
-    /// - Parameter visible: The new visibility of the section.
-    public func setSectionVisible(_ section: Section, _ visible: Bool) {
-        if visible {
-            visibleSections.insert(section)
-        } else {
-            visibleSections.remove(section)
-        }
-    }
-
-    /// Sets the `NMAManeuver` to be visualized by this item.
-    ///
-    /// - Parameters:
-    ///   - maneuvers: All `NMAManeuver` elements of route.
-    ///   - index: The index to get the maneuver from the given array.
-    ///   - measurementFormatter: The measurement formatter used to format the distance.
-    ///   - accessibilityMeasurementFormatter: The measurement formatter used to format
-    ///     the distance for accessibility VoiceOver.
-    public func setManeuver(maneuvers: [NMAManeuver],
-                            index: Int,
-                            measurementFormatter: MeasurementFormatter = .currentMediumUnitFormatter,
-                            accessibilityMeasurementFormatter: MeasurementFormatter = .currentLongUnitFormatter) {
-        maneuver = maneuvers.indices.contains(index) ? maneuvers[index] : nil
-        maneuverResources = ManeuverResources(maneuvers: maneuvers)
-
-        if let instruction = maneuverResources.getInstruction(for: index) {
-            instructionLabel.text = instruction
-        } else {
-            setSectionVisible(.instructions, false)
-        }
-
-        if let address = maneuverResources.getRoadName(for: index) {
-            addressLabel.text = address
-        } else {
-            setSectionVisible(.address, false)
-        }
-
-        // If there is no distance, hide the distance label
-        let distanceValue = maneuverResources.getDistance(for: index)
-        if distanceValue == 0 {
-            setSectionVisible(.distance, false)
-        } else {
-            let distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
-            distanceLabel.text = measurementFormatter.string(from: distance)
-            distanceLabel.accessibilityLabel = accessibilityMeasurementFormatter.string(from: distance)
-        }
-
-        if let iconFileName = maneuverResources.getIconFileName(for: index) {
-            iconImageView.image = UIImage(named: iconFileName,
-                                          in: .MSDKUI,
-                                          compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        } else {
-            setSectionVisible(.icon, false)
-        }
-
-        // Updates the accessibility contents
-        updateAccessibility()
-    }
-
     // MARK: - Private
 
-    /// Initialises the contents of this view.
     private func setUp() {
-        // Instantiates the view
-        UINib(nibName: String(describing: ManeuverItemView.self), bundle: .MSDKUI).instantiate(withOwner: self)
+        loadFromNib()
 
-        // Uses the view's bounds
-        bounds = view.bounds
+        setUpColors()
+        setUpViewAccessibility()
 
-        // Adds the view to the hierarchy
-        addSubviewBindToEdges(view)
-
-        setUpStyle()
-        setAccessibility()
+        // Sets initial values
+        icon = nil
+        instructions = nil
+        address = nil
+        distance = nil
     }
 
-    /// Paints the maneuver based on the visible sections.
-    private func refresh() {
-        iconImageView.isHidden = !isSectionVisible(.icon)
-        instructionLabel.isHidden = !isSectionVisible(.instructions)
-        addressLabel.isHidden = !isSectionVisible(.address)
-        distanceLabel.isHidden = !isSectionVisible(.distance)
-
-        // Updates the accessibility contents
-        updateAccessibility()
-    }
-
-    /// Sets up item style.
-    private func setUpStyle() {
+    private func setUpColors() {
         backgroundColor = .colorForegroundLight
 
         iconImageView.tintColor = .colorForeground
@@ -318,43 +119,29 @@ import NMAKit
         distanceLabel.textColor = .colorForegroundSecondary
     }
 
-    /// Sets the accessibility contents.
-    private func setAccessibility() {
+    private func setUpViewAccessibility() {
         iconImageView.isAccessibilityElement = false
         instructionLabel.isAccessibilityElement = false
         addressLabel.isAccessibilityElement = false
         distanceLabel.isAccessibilityElement = false
 
-        // Lets it be accessed as one-piece
         isAccessibilityElement = true
         accessibilityTraits = .staticText
         accessibilityLabel = "msdkui_maneuver".localized
         accessibilityIdentifier = "MSDKUI.ManeuverItemView"
     }
 
-    /// Updates the accessibility stuff.
     private func updateAccessibility() {
-        var hint: String = ""
+        let formattedDistance = distance.map(accessibilityDistanceFormatter.string)
+        let hint = [instructions, address, formattedDistance].compactMap { $0 }
+        accessibilityHint = hint.isEmpty ? nil : hint.joined(separator: ", ")
+    }
 
-        // If the maneuver is not available yet, do nothing
-        if maneuver != nil {
-            if isSectionVisible(.instructions), let text = instructionLabel.text {
-                hint.appendComma()
-                hint += text
-            }
+    public func updateDistance() {
+        distanceLabel.text = distance.map(distanceFormatter.string)
+        distanceLabel.isHidden = distance == nil
+        addressDistanceStackView.isHidden = addressLabel.isHidden && distanceLabel.isHidden
 
-            if isSectionVisible(.address), let text = addressLabel.text {
-                hint.appendComma()
-                hint += text
-            }
-
-            if isSectionVisible(.distance), let text = distanceLabel.text {
-                hint.appendComma()
-                hint += text
-            }
-        }
-
-        // Any hint?
-        accessibilityHint = hint.isEmpty ? nil : hint
+        updateAccessibility()
     }
 }

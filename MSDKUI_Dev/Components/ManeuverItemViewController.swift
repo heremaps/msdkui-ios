@@ -27,11 +27,10 @@ final class ManeuverItemViewController: UIViewController {
         settingsViewController?.didSelect = { [weak self] item in
             self?.title = item.title
 
-            self?.maneuverView.iconImageView.image = item.configuration.iconImageViewImage
-            self?.maneuverView?.instructionLabel.text = item.configuration.instructionLabelText
-            self?.maneuverView.addressLabel.text = item.configuration.addressLabelText
-            self?.maneuverView.distanceLabel.text = item.configuration.distanceLabelText
-            self?.maneuverView.visibleSections = item.configuration.visibleSections
+            self?.maneuverView.icon = item.configuration.icon
+            self?.maneuverView.instructions = item.configuration.instructions
+            self?.maneuverView.address = item.configuration.address
+            self?.maneuverView.distance = item.configuration.distance
         }
     }
 }

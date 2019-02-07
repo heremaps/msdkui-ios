@@ -19,162 +19,183 @@ import XCTest
 
 final class ManeuverItemViewTests: XCTestCase {
 
-    /// The object under test.
-    private var itemView: ManeuverItemView?
+    private var view = ManeuverItemView()
 
-    override func setUp() {
-        super.setUp()
-
-        // Set up the item
-        itemView = ManeuverItemView()
-
-        // Make sure to have at least one maneuver
-        if let maneuvers = MockUtils.mockRoute().maneuvers, maneuvers.isEmpty == false {
-           itemView?.setManeuver(maneuvers: maneuvers, index: 0)
-        }
+    /// Tests the item view.
+    func testView() {
+        XCTAssertEqual(view.backgroundColor, .colorForegroundLight, "It has the correct background color")
+        XCTAssertTrue(view.isAccessibilityElement, "It supports accessbility")
+        XCTAssertEqual(view.accessibilityTraits, .staticText, "It has the correct accessbility traits")
+        XCTAssertLocalized(view.accessibilityLabel, key: "msdkui_maneuver", bundle: .MSDKUI, "It has the correct accessbility label")
+        XCTAssertEqual(view.accessibilityIdentifier, "MSDKUI.ManeuverItemView", "It has the correct accessbility identifier")
+        XCTAssertNil(view.accessibilityHint, "It has the correct accessbility hint")
     }
 
-    // MARK: - Tests
-
-    /// Tests default values.
-    func testDefaultValues() throws {
-        let item = try require(itemView)
-
-        // All the component should be visible at first
-        XCTAssertFalse(item.iconImageView.isHidden, "iconImageView is not visible")
-        XCTAssertFalse(item.instructionLabel.isHidden, " instructionLabel is not visible")
-        XCTAssertFalse(item.addressLabel.isHidden, "addressLabel is not visible")
-        XCTAssertFalse(item.distanceLabel.isHidden, "distanceLabel is not visible")
-        XCTAssertNotNil(item.maneuver, "maneuver is null")
-        XCTAssertEqual(item.visibleSections, .all, "visible section returns wrong value")
+    /// Tests the icon image view after item view initialization.
+    func testIconImageView() {
+        XCTAssertNil(view.iconImageView.image, "It doesn't an image by default")
+        XCTAssertTrue(view.iconImageView.isHidden, "It is hidden by default")
+        XCTAssertEqual(view.iconImageView.tintColor, .colorForeground, "It has the correct tint color")
+        XCTAssertFalse(view.iconImageView.isAccessibilityElement, "It doesn't support accessbility")
     }
 
-    /// Tests the item background color.
-    func testDefaultBackgroundColor() throws {
-        let item = try require(itemView)
-
-        XCTAssertEqual(item.backgroundColor, .colorForegroundLight, "It has the correct background color")
+    /// Tests the instruction label after item view initialization.
+    func testInstructionLabel() {
+        XCTAssertNil(view.instructionLabel.text, "It doesn't text by default")
+        XCTAssertTrue(view.instructionLabel.isHidden, "It is hidden by default")
+        XCTAssertEqual(view.instructionLabel.font, UIFont.preferredFont(forTextStyle: .body), "It has the correct font")
+        XCTAssertEqual(view.instructionLabel.textColor, .colorForeground, "It has the correct text color")
+        XCTAssertEqual(view.instructionLabel.numberOfLines, 0, "It supports multiple lines")
+        XCTAssertFalse(view.instructionLabel.adjustsFontSizeToFitWidth, "It doesn't shrink the font based on the string lenght")
+        XCTAssertFalse(view.instructionLabel.isAccessibilityElement, "It doesn't support accessbility")
     }
 
-    /// Tests default visibility.
-    func testDefaultVisibilty() throws {
-        XCTAssertEqual(itemView?.visibleSections, .all, "Not the expected default visibility")
+    /// Tests the address label after item view initialization.
+    func testAddressLabel() {
+        XCTAssertNil(view.addressLabel.text, "It doesn't text by default")
+        XCTAssertTrue(view.addressLabel.isHidden, "It is hidden by default")
+        XCTAssertEqual(view.addressLabel.font, UIFont.preferredFont(forTextStyle: .subheadline), "It has the correct font")
+        XCTAssertEqual(view.addressLabel.textColor, .colorForegroundSecondary, "It has the correct text color")
+        XCTAssertEqual(view.addressLabel.numberOfLines, 0, "It supports multiple lines")
+        XCTAssertFalse(view.addressLabel.adjustsFontSizeToFitWidth, "It doesn't shrink the font based on the string lenght")
+        XCTAssertFalse(view.addressLabel.isAccessibilityElement, "It doesn't support accessbility")
     }
 
-    /// Tests the icon image view.
-    func testIconImageView() throws {
-        XCTAssertEqual(itemView?.iconImageView.tintColor, .colorForeground, "It has the correct icon tint color")
+    /// Tests the distance label after item view initialization.
+    func testDistanceLabel() {
+        XCTAssertNil(view.distanceLabel.text, "It doesn't text by default")
+        XCTAssertTrue(view.distanceLabel.isHidden, "It is hidden by default")
+        XCTAssertEqual(view.distanceLabel.font, UIFont.preferredFont(forTextStyle: .subheadline), "It has the correct font")
+        XCTAssertEqual(view.distanceLabel.textColor, .colorForegroundSecondary, "It has the correct text color")
+        XCTAssertEqual(view.distanceLabel.numberOfLines, 1, "It supports one line")
+        XCTAssertFalse(view.distanceLabel.isAccessibilityElement, "It doesn't support accessbility")
     }
 
-    /// Tests the instruction label.
-    func testInstructionLabel() throws {
-        XCTAssertEqual(itemView?.instructionLabel.font, UIFont.preferredFont(forTextStyle: .body), "It has the correct font")
-        XCTAssertEqual(itemView?.instructionLabel.textColor, .colorForeground, "It has the correct instruction label text color")
-        XCTAssertEqual(itemView?.instructionLabel.numberOfLines, 0, "It supports multiple lines")
-        XCTAssertFalse(try require(itemView?.instructionLabel.adjustsFontSizeToFitWidth), "It doesn't shrink the font based on the string lenght")
-    }
-
-    /// Tests the address label.
-    func testAddressLabel() throws {
-        XCTAssertEqual(itemView?.addressLabel.font, UIFont.preferredFont(forTextStyle: .subheadline), "It has the correct font")
-        XCTAssertEqual(itemView?.addressLabel.textColor, .colorForegroundSecondary, "It has the correct address label text color")
-        XCTAssertEqual(itemView?.addressLabel.numberOfLines, 0, "It supports multiple lines")
-        XCTAssertFalse(try require(itemView?.addressLabel.adjustsFontSizeToFitWidth), "It doesn't shrink the font based on the string lenght")
-    }
-
-    /// Tests the distance label.
-    func testDistanceLabel() throws {
-        XCTAssertEqual(itemView?.distanceLabel.font, UIFont.preferredFont(forTextStyle: .subheadline), "It has the correct font")
-        XCTAssertEqual(itemView?.distanceLabel.textColor, .colorForegroundSecondary, "It has the correct distance label text color")
-    }
-
-    /// Tests the stack view which contains the address and distance labels.
+    /// Tests the address and distance stack view after item view initialization.
     func testAddressDistanceStackView() {
-        XCTAssertEqual(itemView?.addressDistanceStackView.alignment, .lastBaseline, "It has the correct alignemnt for address and distance labels")
+        XCTAssertTrue(view.distanceLabel.isHidden, "It is hidden by default")
+        XCTAssertEqual(view.addressDistanceStackView.alignment, .lastBaseline, "It has the correct alignemnt for address and distance labels")
     }
 
-    /// Tests changing visibilities.
-    func testSectionVisibilityModifications() throws {
-        let item = try require(itemView)
+    /// Tests the behavior when all the properties are set.
+    func testWhenPropertiesAreSet() {
+        let mockImage = UIImage()
+        let distance = Measurement(value: 50, unit: UnitLength.meters)
+        let expectedFormattedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: distance)
+        let expectedFormattedAccessbilityDistance = MeasurementFormatter.currentLongUnitFormatter.string(from: distance)
+        let expectedAccessibilityHint = "mocked instructions, mocked address, \(expectedFormattedAccessbilityDistance)"
 
-        item.setSectionVisible(.icon, false)
-        item.setSectionVisible(.instructions, false)
-        item.setSectionVisible(.address, true)
-        item.setSectionVisible(.distance, false)
+        view.icon = mockImage
+        view.instructions = "mocked instructions"
+        view.address = "mocked address"
+        view.distance = distance
 
-        XCTAssertTrue(item.iconImageView.isHidden, "Not the expected visibility setting")
-        XCTAssertTrue(item.instructionLabel.isHidden, "Not the expected visibility setting")
-        XCTAssertFalse(item.addressLabel.isHidden, "Not the expected visibility setting")
-        XCTAssertTrue(item.distanceLabel.isHidden, "Not the expected visibility setting")
+        XCTAssertEqual(view.iconImageView.image, mockImage, "It has the correct icon")
+        XCTAssertFalse(view.iconImageView.isHidden, "It shows the icon image view")
+        XCTAssertEqual(view.instructionLabel.text, "mocked instructions", "It has the correct instruction text")
+        XCTAssertFalse(view.instructionLabel.isHidden, "It shows the instruction label")
+        XCTAssertEqual(view.addressLabel.text, "mocked address", "It has the correct address text")
+        XCTAssertFalse(view.addressLabel.isHidden, "It shows the address label")
+        XCTAssertEqual(view.distanceLabel.text, expectedFormattedDistance, "It has the correct distance text")
+        XCTAssertFalse(view.distanceLabel.isHidden, "It shows the distance label")
+        XCTAssertFalse(view.addressDistanceStackView.isHidden, "It shows the address and distance stack view")
+        XCTAssertEqual(view.accessibilityHint, expectedAccessibilityHint, "It has the correct accessbility hint")
     }
 
-    /// Tests maneuver contents.
-    func testManeuverContents() throws {
-        let item = try require(itemView)
-        let expectedDistance = Measurement(value: 200, unit: UnitLength.meters)
-        let expectedFormattedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: expectedDistance)
-        let expectedLongFormattedDistance = MeasurementFormatter.currentLongUnitFormatter.string(from: expectedDistance)
+    /// Tests the behavior when the icon is set.
+    func testWhenIconIsset() {
+        let mockImage = UIImage()
 
-        XCTAssertLocalized(item.instructionLabel.text, key: "msdkui_maneuver_enter_highway", bundle: .MSDKUI,
-                           "item is displaying wrong instruction")
+        view.icon = mockImage
 
-        XCTAssertEqual(item.distanceLabel.text, expectedFormattedDistance, "Maneuver should display distance 200 m")
-        XCTAssertEqual(item.distanceLabel.accessibilityLabel, expectedLongFormattedDistance, "Maneuver should read distance 200 meters")
+        XCTAssertEqual(view.iconImageView.image, mockImage, "It has the correct icon")
+        XCTAssertFalse(view.iconImageView.isHidden, "It shows the icon image view")
+        XCTAssertNil(view.accessibilityHint, "It has the correct accessbility hint")
     }
 
-    /// Tests `String` to `Section` and `Section` to `String` conversion.
-    func testConversions() {
-        // Unknown substrings should be ignored along with uppercases & blank spaces
-        let string0 = "ICON |   Instructions | distance|unknown1|   UNKNOWN2:)unknoWn3"
-        let section0 = ManeuverItemView.Section.make(from: string0)
-        XCTAssertEqual(section0, [.icon, .instructions, .distance], "Not the expected conversion!")
+    /// Tests the behavior when the instructions are set.
+    func testWhenInstructionsAreSet() {
+        view.instructions = "mocked instructions"
 
-        // If a string has "all", simply .all should be returned
-        let string1 = "address|distance|   ALL | All"
-        let section1 = ManeuverItemView.Section.make(from: string1)
-        XCTAssertEqual(section1, .all, "Not the expected conversion!")
-
-        // Is the "empty" String handling OK?
-        let string2 = ""
-        let section2 = ManeuverItemView.Section.make(from: string2)
-        XCTAssertEqual(section2, [], "Not the expected conversion!")
-
-        // Will we get the substrings in the Section declaration order?
-        let section3: ManeuverItemView.Section = [.icon, .instructions, .distance]
-        let string3 = section3.stringized
-        XCTAssertEqual(string3, "icon|instructions|distance", "Not the expected conversion!")
-
-        // Is the .all handling OK?
-        let section4: ManeuverItemView.Section = .all
-        let string4 = section4.stringized
-        XCTAssertEqual(string4, "all", "Not the expected conversion!")
-
-        // Is the "empty" Section handling OK?
-        let section5 = RouteDescriptionItem.Section()
-        let string5 = section5.stringized
-        XCTAssertTrue(string5.isEmpty, "Not the expected conversion!")
+        XCTAssertEqual(view.instructionLabel.text, "mocked instructions", "It has the correct instruction text")
+        XCTAssertFalse(view.instructionLabel.isHidden, "It shows the instruction label")
+        XCTAssertEqual(view.accessibilityHint, "mocked instructions", "It has the correct accessbility hint")
     }
 
-    /// Tests the default `ManeuverItemView.leadingInset` and `ManeuverItemView.trailingInset`
-    /// values are in line with the related constraints.
-    func testDefaultInsetValues() throws {
-        let item = try require(itemView)
+    /// Tests the behavior when address is set.
+    func testWhenAddressIsSet() {
+        view.address = "mocked address"
 
-        XCTAssertEqual(item.leadingInset, item.leadingConstraint.constant, "Not the expected default value")
-        XCTAssertEqual(item.trailingInset, item.trailingConstraint.constant, "Not the expected default value")
+        XCTAssertEqual(view.addressLabel.text, "mocked address", "It has the correct address text")
+        XCTAssertFalse(view.addressLabel.isHidden, "It shows the address label")
+        XCTAssertFalse(view.addressDistanceStackView.isHidden, "It shows the address and distance stack view")
+        XCTAssertEqual(view.accessibilityHint, "mocked address", "It has the correct accessbility hint")
     }
 
-    /// Tests that `ManeuverItemView.leadingInset` and `ManeuverItemView.trailingInset` properties
-    /// update the related constraints.
-    func testSettingInsetsUpdateRelatedConstraints() throws {
-        let item = try require(itemView)
+    /// Tests the behavior when distance is set.
+    func testWhenDistanceIsSet() {
+        let distance = Measurement(value: 50, unit: UnitLength.meters)
+        let expectedFormattedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: distance)
+        let expectedFormattedAccessbilityDistance = MeasurementFormatter.currentLongUnitFormatter.string(from: distance)
 
-        // Update the insets
-        item.leadingInset = 17
-        item.trailingInset = -38
+        view.distance = distance
 
-        // Are the constraints updated?
-        XCTAssertEqual(item.leadingConstraint.constant, item.leadingInset, "Not the expected default value")
-        XCTAssertEqual(item.trailingConstraint.constant, item.trailingInset, "Not the expected default value")
+        XCTAssertEqual(view.distanceLabel.text, expectedFormattedDistance, "It has the correct distance text")
+        XCTAssertFalse(view.distanceLabel.isHidden, "It shows the distance label")
+        XCTAssertFalse(view.addressDistanceStackView.isHidden, "It shows the address and distance stack view")
+        XCTAssertEqual(view.accessibilityHint, expectedFormattedAccessbilityDistance, "It has the correct accessbility hint")
+    }
+
+    /// Tests the behavior when address and distance are missing.
+    func testWhenAddressAndDistanceAreMissing() {
+        let mockImage = UIImage()
+
+        view.icon = mockImage
+        view.instructions = "mocked instructions"
+
+        XCTAssertEqual(view.iconImageView.image, mockImage, "It has the correct icon")
+        XCTAssertFalse(view.iconImageView.isHidden, "It shows the icon image view")
+        XCTAssertEqual(view.instructionLabel.text, "mocked instructions", "It has the correct instruction text")
+        XCTAssertFalse(view.instructionLabel.isHidden, "It shows the instruction label")
+        XCTAssertNil(view.addressLabel.text, "It doesn't have the address text")
+        XCTAssertTrue(view.addressLabel.isHidden, "It hides the address label")
+        XCTAssertNil(view.distanceLabel.text, "It doesn't have the distance text")
+        XCTAssertTrue(view.distanceLabel.isHidden, "It hides the distance label")
+        XCTAssertTrue(view.addressDistanceStackView.isHidden, "It hides the address and distance stack view")
+        XCTAssertEqual(view.accessibilityHint, "mocked instructions", "It has the correct accessbility hint")
+    }
+
+    /// Tests the behavior when distance formatter is set.
+    func testWhenDistanceFormatterIsSet() {
+        let distance = Measurement(value: 50, unit: UnitLength.meters)
+        let mockFormatter = MeasurementFormatter()
+        let expectedFormattedDistance = mockFormatter.string(from: distance)
+
+        view.distance = distance
+        view.distanceFormatter = mockFormatter
+
+        XCTAssertEqual(view.distanceLabel.text, expectedFormattedDistance, "It has the correct distance text")
+        XCTAssertFalse(view.distanceLabel.isHidden, "It shows the distance label")
+        XCTAssertFalse(view.addressDistanceStackView.isHidden, "It shows the address and distance stack view")
+    }
+
+    /// Tests the behavior when accessbility distance formatter is set.
+    func testWhenAccessibilityDistanceFormatterIsSet() {
+        let distance = Measurement(value: 50, unit: UnitLength.meters)
+        let mockFormatter = MeasurementFormatter()
+        let expectedFormattedAccessbilityDistance = mockFormatter.string(from: distance)
+
+        view.distance = distance
+        view.accessibilityDistanceFormatter = mockFormatter
+
+        XCTAssertEqual(view.accessibilityHint, expectedFormattedAccessbilityDistance, "It has the correct accessbility hint")
+    }
+
+    /// Tests if the required `.init(coder:)` returns a new instance.
+    func testInitWithCoder() {
+        let coder = NSKeyedUnarchiver(forReadingWith: Data())
+        let itemView = ManeuverItemView(coder: coder)
+
+        XCTAssertNotNil(itemView, "It exists")
     }
 }

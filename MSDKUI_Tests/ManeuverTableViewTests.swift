@@ -73,7 +73,7 @@ final class ManeuverTableViewTests: XCTestCase {
         XCTAssertFalse(maneuverItemView1.iconImageView.isHidden, "Init -> iconImageView is not visible")
         XCTAssertLocalized(maneuverItemView1.instructionLabel.text, key: "msdkui_maneuver_arrive_at_02y", bundle: .MSDKUI,
                            "item is displaying wrong instruction")
-        XCTAssertFalse(maneuverItemView1.isSectionVisible(.distance), "Maneuver should not display a distance")
+        XCTAssertTrue(maneuverItemView1.distanceLabel.isHidden, "Maneuver should not display a distance")
     }
 
     // MARK: - Private

@@ -67,15 +67,6 @@ import NMAKit
         return maneuvers.count
     }
 
-    /// Sets the visibility of `ManeuverItemView` sections.
-    ///
-    /// - Note: Initially all the sections are visible.
-    public var visibleSections: ManeuverItemView.Section = .all {
-        didSet {
-            reloadData()
-        }
-    }
-
     /// Sets the measurement formatter used to format distances.
     /// The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
     public var measurementFormatter = MeasurementFormatter.currentMediumUnitFormatter {
@@ -146,10 +137,8 @@ import NMAKit
     private func setUp() {
         setUpTableView()
 
-        // Sets the table row height out of the view used for the content view
-        let view = ManeuverItemView()
         rowHeight = UITableView.automaticDimension
-        estimatedRowHeight = view.bounds.size.height
+        estimatedRowHeight = UITableView.automaticDimension
 
         // Registers the nib file for the custom cell
         register(UITableViewCell.classForCoder(), forCellReuseIdentifier: reuseIdentifier)
@@ -218,17 +207,21 @@ extension ManeuverTableView: UITableViewDataSource {
         cell.accessoryView = nil
         cell.editingAccessoryType = .none
 
-        // Creates the content view subview
+        let resource = ManeuverResource(maneuvers: maneuvers, at: indexPath.row)
+
         let view = ManeuverItemView()
-        view.visibleSections = visibleSections
         view.tag = 1000
-        view.setManeuver(maneuvers: maneuvers, index: indexPath.row, measurementFormatter: measurementFormatter)
+        view.icon = resource.icon
+        view.instructions = resource.instructions
+        view.address = resource.address
+        view.distance = resource.distance
+        view.distanceFormatter = measurementFormatter
 
         // Tells the delegate the view is about to be displayed
         maneuverTableViewDelegate?.maneuverTableView?(self, willDisplay: view)
 
         // Finally add the view to the content view
-        cell.contentView.addSubviewBindToEdges(view)
+        cell.contentView.addSubviewBindToEdges(view, inset: UIEdgeInsets(top: 20, left: 16, bottom: -20, right: -16))
 
         setAccessibility(cell, indexPath.row)
 
