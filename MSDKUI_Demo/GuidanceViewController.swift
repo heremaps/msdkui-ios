@@ -163,9 +163,6 @@ final class GuidanceViewController: UIViewController {
         // Applies maneuver view style
         setUpManeuverView()
 
-        // Applies next maneuver view style
-        setUpNextManeuverView()
-
         guard let route = route else {
             return
         }
@@ -355,12 +352,6 @@ final class GuidanceViewController: UIViewController {
         // Adds red border
         speedLimitView.layer.borderWidth = 4
         speedLimitView.layer.borderColor = UIColor.red.cgColor
-    }
-
-    /// Styles the next maneuver view.
-    private func setUpNextManeuverView() {
-        // Sets margins for view
-        nextManeuverView.layoutMargins = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
     }
 
     /// Styles the maneuver view.
