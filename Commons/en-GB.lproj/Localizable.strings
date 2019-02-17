@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "Get directions";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "Start by choosing a \"from\" or a \"to\"";
 "msdkui_app_routeresults_error" = "Didn't find any routes.";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "Get directions for cars, lorries, bicycles and walking.";
 "msdkui_app_rp_teaser_title" = "Route planner";
 "msdkui_app_rp_waypoint_subtitle" = "Tap or long press on the map";

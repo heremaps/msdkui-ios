@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "Uzyskaj wskazówki";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "Rozpocznij od wybrania punktu początkowego lub końcowego";
 "msdkui_app_routeresults_error" = "Nie znaleziono żadnych tras.";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "Uzyskaj wskazówki dla samochodów, ciężarówek, rowerów i pieszych.";
 "msdkui_app_rp_teaser_title" = "Planer tras";
 "msdkui_app_rp_waypoint_subtitle" = "Naciśnij lub naciśnij i przytrzymaj mapę";
@@ -52,6 +51,6 @@
 "msdkui_app_up" = "W górę";
 "msdkui_app_userposition_notfound" = "Nie można Cię znaleźć";
 "msdkui_app_userposition_notfound_subtitle" = "Upewnij się, że na urządzeniu włączono funkcję lokalizacji.";
-"msdkui_app_userposition_search" = "Pobieranie Twojej lokalizacji";
+"msdkui_app_userposition_search" = "Pobieranie lokalizacji";
 "msdkui_app_waypoint_not_valid" = "Nieprawidłowy punkt nawigacyjny";
-"msdkui_app_waypoint_select_location" = "Wybierz punkt nawigacyjny";
+"msdkui_app_waypoint_select_location" = "Punkt nawigacyjny";

@@ -99,7 +99,7 @@
 "msdkui_minutes" = "%ld min";
 "msdkui_next_maneuver" = "Susunod na maneobra";
 "msdkui_no_maneuver_found" = "Hindi nakahanap ng mapagmamaneobrahan";
-"msdkui_no_route_found" = "Hindi nakahanap ng anumang mga ruta";
+"msdkui_no_route_found" = "Hindi nakakita ng anumang ruta";
 "msdkui_no_traffic_delays" = "Walang pagkaantala";
 "msdkui_none" = "Wala";
 "msdkui_number_of_trailers" = "Mga trailer";
@@ -123,8 +123,8 @@
 "msdkui_route_results_title" = "Mga ruta";
 "msdkui_route_type_title" = "Uri ng ruta";
 "msdkui_routing_options_title" = "Mga opsyon ng ruta";
-"msdkui_rp_from" = "Mula: %@";
-"msdkui_rp_to" = "Tungo: %@";
+"msdkui_rp_from" = "Mula sa: %@";
+"msdkui_rp_to" = "Tungo sa: %@";
 "msdkui_rp_via" = "Via";
 "msdkui_scooter" = "Scooter";
 "msdkui_seconds" = "%ld s";
