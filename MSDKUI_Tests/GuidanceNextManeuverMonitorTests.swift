@@ -100,7 +100,7 @@ final class GuidanceNextManeuverMonitorTests: XCTestCase {
         monitorUnderTest?.navigationManager(NMANavigationManager.sharedInstance(), didUpdateManeuvers: nil, nextManuever)
 
         XCTAssertEqual(mockDelegate.lastNextManeuverMonitor, monitorUnderTest, "It calls the delegate with the correct monitor")
-        XCTAssertTrue(mockDelegate.didCallDidReveiveData, "It calls the did receive data method")
+        XCTAssertTrue(mockDelegate.didCallDidReceiveManeuverData, "It calls the did receive data method")
         XCTAssertNotNil(mockDelegate.lastManeuverIcon, "It passes a maneuver icon image")
         XCTAssertEqual(mockDelegate.lastStreetName, mockData.nextStreet, "It passes the correct next street name")
         XCTAssertEqual(mockDelegate.lastDistance,
@@ -120,7 +120,7 @@ final class GuidanceNextManeuverMonitorTests: XCTestCase {
         monitorUnderTest?.navigationManager(NMANavigationManager.sharedInstance(), didUpdateManeuvers: nil, nextManuever)
 
         XCTAssertEqual(mockDelegate.lastNextManeuverMonitor, monitorUnderTest, "It calls the delegate with the correct monitor")
-        XCTAssertTrue(mockDelegate.didCallDidReveiveData, "It calls the did receive data method")
+        XCTAssertTrue(mockDelegate.didCallDidReceiveManeuverData, "It calls the did receive data method")
         XCTAssertNotNil(mockDelegate.lastManeuverIcon, "It passes a maneuver icon image")
         XCTAssertNil(mockDelegate.lastStreetName, "It passes the nil street name")
         XCTAssertEqual(mockDelegate.lastDistance,

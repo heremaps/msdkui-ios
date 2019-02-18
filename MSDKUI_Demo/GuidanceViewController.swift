@@ -41,9 +41,12 @@ final class GuidanceViewController: UIViewController {
 
     // MARK: - Properties
 
+    @IBOutlet private(set) var maneuverViewContainer: UIView!
+
     @IBOutlet private(set) var maneuverView: GuidanceManeuverView!
 
-    /// The next maneuver view which is initially hidden.
+    @IBOutlet private(set) var nextManeuverViewContainer: UIView!
+
     @IBOutlet private(set) var nextManeuverView: GuidanceNextManeuverView!
 
     @IBOutlet private(set) var mapView: NMAMapView!
@@ -162,6 +165,9 @@ final class GuidanceViewController: UIViewController {
 
         // Applies maneuver view style
         setUpManeuverView()
+
+        // Applies next maneuver view style
+        setUpNextManeuverView()
 
         guard let route = route else {
             return
@@ -354,9 +360,15 @@ final class GuidanceViewController: UIViewController {
         speedLimitView.layer.borderColor = UIColor.red.cgColor
     }
 
-    /// Styles the maneuver view.
+    /// Styles the maneuver view and container.
     private func setUpManeuverView() {
         maneuverView.tintColor = .colorAccentLight
+        maneuverViewContainer.backgroundColor = maneuverView.backgroundColor
+    }
+
+    /// Styles the next maneuver view and container.
+    private func setUpNextManeuverView() {
+        nextManeuverViewContainer.backgroundColor = nextManeuverView.backgroundColor
     }
 
     private func setUpPositionNotificationsObservers() {
@@ -462,16 +474,16 @@ extension GuidanceViewController: LocationBasedViewController {
 extension GuidanceViewController: GuidanceNextManeuverMonitorDelegate {
 
     func guidanceNextManeuverMonitor(_ monitor: GuidanceNextManeuverMonitor,
-                                     didReveiveData maneuverIcon: UIImage?,
+                                     didReceiveIcon maneuverIcon: UIImage?,
                                      distance: Measurement<UnitLength>,
                                      streetName: String?) {
         let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: maneuverIcon, distance: distance, streetName: streetName)
         nextManeuverView.configure(with: viewModel)
-        nextManeuverView.isHidden = false
+        nextManeuverViewContainer.isHidden = false
     }
 
     func guidanceNextManeuverMonitorDidReceiveError(_ monitor: GuidanceNextManeuverMonitor) {
-        nextManeuverView.isHidden = true
+        nextManeuverViewContainer.isHidden = true
     }
 }
 

@@ -97,10 +97,23 @@ final class GuidanceViewControllerTests: XCTestCase {
         XCTAssertEqual(viewControllerUnderTest?.maneuverView.tintColor, .colorAccentLight, "It has the correct tint color")
     }
 
+    /// Tests the maneuver view container background color.
+    func testManeuverViewContainerBackgroundColor() {
+        XCTAssertEqual(viewControllerUnderTest?.maneuverViewContainer.backgroundColor, viewControllerUnderTest?.maneuverView.backgroundColor,
+                       "It has the correct background color (matching the maneuver view's background color)")
+    }
+
     /// Checks if the Next Maneuver View exists and is configured.
-    func testNextManeuverView() throws {
+    func testNextManeuverView() {
         XCTAssertNotNil(viewControllerUnderTest?.nextManeuverView, "It has the next maneuver view")
-        XCTAssertTrue(try require(viewControllerUnderTest?.nextManeuverView.isHidden), "It has the next maneuver view hidden by default")
+    }
+
+    /// Tests the next maneuver view container.
+    func testNextManeuverViewContainer() throws {
+        XCTAssertTrue(try require(viewControllerUnderTest?.nextManeuverViewContainer.isHidden), "It has the next maneuver view container hidden by default")
+
+        XCTAssertEqual(viewControllerUnderTest?.nextManeuverViewContainer.backgroundColor, viewControllerUnderTest?.nextManeuverView.backgroundColor,
+                       "It has the correct background color (matching the next maneuver view's background color)")
     }
 
     /// Checks if the Speed View exists and is configured.
@@ -468,6 +481,37 @@ final class GuidanceViewControllerTests: XCTestCase {
         viewControllerUnderTest?.guidanceDashboardViewControllerDidTapStopNavigation(GuidanceDashboardViewController())
 
         XCTAssertEqual(NMANavigationManager.sharedInstance().navigationState, .idle, "It stops the navigation")
+    }
+
+    // MARK: - GuidanceNextManeuverMonitorDelegate
+
+    /// Tests when `.guidanceNextManeuverMonitor(_:didReceiveIcon:distance:streetName:)` is triggered.
+    func testWhenGuidanceNextManeuverMonitorDdidReveiveDataDistanceStreetNameIsTriggered() throws {
+        let route = try require(viewControllerUnderTest?.route)
+        let nextManeuverViewContainer = try require(viewControllerUnderTest?.nextManeuverViewContainer)
+        let maneuverIcon = UIImage()
+        let distance = Measurement<UnitLength>(value: 2, unit: .meters)
+        let expectedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: distance)
+
+        viewControllerUnderTest?.guidanceNextManeuverMonitor(GuidanceNextManeuverMonitor(route: route),
+                                                             didReceiveIcon: maneuverIcon,
+                                                             distance: distance,
+                                                             streetName: "Foobarstrasse 123")
+
+        XCTAssertEqual(viewControllerUnderTest?.nextManeuverView.maneuverImageView.image, maneuverIcon, "It sets the correct maneuver image")
+        XCTAssertEqual(viewControllerUnderTest?.nextManeuverView.distanceLabel.text, expectedDistance, "It sets the correct distance text")
+        XCTAssertEqual(viewControllerUnderTest?.nextManeuverView.streetNameLabel.text, "Foobarstrasse 123", "It sets the correct street name text")
+        XCTAssertFalse(nextManeuverViewContainer.isHidden, "It shows the next maneuver view container")
+    }
+
+    /// Tests when `.guidanceNextManeuverMonitorDidReceiveError(_:)` is triggered.
+    func testWhenGuidanceNextManeuverMonitorDidReceiveErrorIsTriggered() throws {
+        let route = try require(viewControllerUnderTest?.route)
+        let nextManeuverViewContainer = try require(viewControllerUnderTest?.nextManeuverViewContainer)
+
+        viewControllerUnderTest?.guidanceNextManeuverMonitorDidReceiveError(GuidanceNextManeuverMonitor(route: route))
+
+        XCTAssertTrue(nextManeuverViewContainer.isHidden, "It hides the next maneuver view container")
     }
 
     // MARK: - Map Overlay

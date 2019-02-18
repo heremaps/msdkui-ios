@@ -28,7 +28,7 @@ public protocol GuidanceNextManeuverMonitorDelegate: AnyObject {
     ///   - distance: The distance to the next maneuver.
     ///   - streetName: The name of the next steet.
     func guidanceNextManeuverMonitor(_ monitor: GuidanceNextManeuverMonitor,
-                                     didReveiveData maneuverIcon: UIImage?,
+                                     didReceiveIcon maneuverIcon: UIImage?,
                                      distance: Measurement<UnitLength>,
                                      streetName: String?)
 
@@ -106,7 +106,7 @@ open class GuidanceNextManeuverMonitor: NSObject {
         }
 
         delegate?.guidanceNextManeuverMonitor(self,
-                                              didReveiveData: maneuverIcon,
+                                              didReceiveIcon: maneuverIcon,
                                               distance: Measurement<UnitLength>(value: Double(nextManeuver.distanceFromPreviousManeuver), unit: .meters),
                                               streetName: nextManeuver.getNextStreet(fallback: route))
     }
