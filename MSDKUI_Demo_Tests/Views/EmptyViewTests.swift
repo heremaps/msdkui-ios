@@ -22,9 +22,28 @@ import XCTest
 final class EmptyViewTests: XCTestCase {
 
     /// The view under test.
-    private var view = EmptyView(frame: CGRect(x: 0, y: 0, width: 375, height: 255))
+    private let view = EmptyView(frame: CGRect(x: 0, y: 0, width: 375, height: 255))
 
     // MARK: - Tests
+
+    /// Tests the view default colors.
+    func testViewColors() {
+        XCTAssertEqual(view.backgroundColor, .colorBackgroundLight, "The default background color is correct")
+        XCTAssertEqual(view.titleColor, .colorForeground, "The default title color is correct")
+        XCTAssertEqual(view.subtitleColor, .colorForegroundSecondary, "The default subtitle color is correct")
+    }
+
+    /// Tests the title label.
+    func testTitleLabel() {
+        XCTAssertEqual(view.titleLabel.textColor, view.titleColor, "It matches the view title color")
+        XCTAssertEqual(view.titleLabel.numberOfLines, 0, "It supports multiple lines")
+    }
+
+    /// Tests the subtitle label.
+    func testSubtitleLabel() {
+        XCTAssertEqual(view.subtitleLabel.textColor, view.subtitleColor, "It matches the view subtitle color")
+        XCTAssertEqual(view.subtitleLabel.numberOfLines, 0, "It supports multiple lines")
+    }
 
     /// Tests if the view configuration works as expected.
     func testConfiguration() {
@@ -38,13 +57,6 @@ final class EmptyViewTests: XCTestCase {
         XCTAssertEqual(view.imageView.image, viewModel.image, "The image is correctly set")
         XCTAssertEqual(view.titleLabel.text, viewModel.title, "The title is correctly set")
         XCTAssertEqual(view.subtitleLabel.text, viewModel.subtitle, "The subtitle is correctly set")
-    }
-
-    /// Tests the default style.
-    func testDefaultStyle() {
-        XCTAssertEqual(view.backgroundColor, .colorBackgroundLight, "The default background color is correct")
-        XCTAssertEqual(view.titleColor, .colorForeground, "The default title color is correct")
-        XCTAssertEqual(view.subtitleColor, .colorForegroundSecondary, "The default subtitle color is correct")
     }
 
     /// Tests if custom styling works as expected.
