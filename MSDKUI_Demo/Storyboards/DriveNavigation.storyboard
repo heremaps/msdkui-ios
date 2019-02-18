@@ -363,16 +363,10 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="mZW-g8-xhg" secondAttribute="trailing" constant="8" id="K1X-z3-Uw3"/>
-                                            <constraint firstAttribute="height" relation="lessThanOrEqual" constant="200" id="SI7-6e-3Ob"/>
                                             <constraint firstItem="mZW-g8-xhg" firstAttribute="top" secondItem="5ID-lq-Ajq" secondAttribute="top" constant="8" id="lqy-za-ezW"/>
                                             <constraint firstAttribute="bottom" secondItem="mZW-g8-xhg" secondAttribute="bottom" constant="8" id="ric-ZJ-2Kd"/>
                                             <constraint firstItem="mZW-g8-xhg" firstAttribute="leading" secondItem="5ID-lq-Ajq" secondAttribute="leading" constant="8" id="ujz-Vc-uQu"/>
                                         </constraints>
-                                        <variation key="heightClass=compact">
-                                            <mask key="constraints">
-                                                <exclude reference="SI7-6e-3Ob"/>
-                                            </mask>
-                                        </variation>
                                     </view>
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4EC-fE-CuL" userLabel="Next Maneuver View Container">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
@@ -433,7 +427,7 @@
                                 </constraints>
                             </stackView>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DoP-zY-A0Y" customClass="GuidanceStreetLabel" customModule="MSDKUI">
-                                <rect key="frame" x="171.5" y="539" width="32" height="32"/>
+                                <rect key="frame" x="187.5" y="539" width="0.0" height="32"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="PiV-ck-Rf4"/>
                                 </constraints>
