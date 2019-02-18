@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "Отримати вказівки";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "Щоб розпочати, виберіть пункт відправлення або призначення.";
 "msdkui_app_routeresults_error" = "Не вдалося знайти маршрути.";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "Дізнайтеся, як дістатися місця призначення легковим автомобілем, вантажівкою, велосипедом або пішки.";
 "msdkui_app_rp_teaser_title" = "Планувальник маршруту";
 "msdkui_app_rp_waypoint_subtitle" = "Торкніться карти або натисніть її та затримайте палець";

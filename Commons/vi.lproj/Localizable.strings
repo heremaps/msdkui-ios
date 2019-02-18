@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "Tìm chỉ đường";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "Bắt đầu bằng cách chọn địa điểm \"từ\" hoặc \"đến\"";
 "msdkui_app_routeresults_error" = "Không tìm thấy tuyến đường nào.";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "Nhận chỉ đường xe ô-tô, xe tải, xe đạp và đi bộ.";
 "msdkui_app_rp_teaser_title" = "Bộ lập lộ trình";
 "msdkui_app_rp_waypoint_subtitle" = "Nhấn hoặc nhấn giữ lên bản đồ";

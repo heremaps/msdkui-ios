@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "Calculer un itinéraire";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "Pour commencer, sélectionnez un point de départ et une destination";
 "msdkui_app_routeresults_error" = "Aucun itinéraire trouvé.";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "Obtenez des itinéraires en voiture, en poids lourd, à vélo et à pieds.";
 "msdkui_app_rp_teaser_title" = "Planification d'itinéraire";
 "msdkui_app_rp_waypoint_subtitle" = "Appuyez brièvement ou longuement sur la carte";

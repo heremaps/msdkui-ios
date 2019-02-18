@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "दिशाएँ प्राप्त करें";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "शुरुआत \"उद्गम\" या \"गंतव्य\" चुनकर करें";
 "msdkui_app_routeresults_error" = "कोई मार्ग नहीं मिला।";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "कार, लॉरियों, साइकिलों और पैदल चलने के निर्देश पाएँ।";
 "msdkui_app_rp_teaser_title" = "मार्ग योजनाकार";
 "msdkui_app_rp_waypoint_subtitle" = "मैप छुएँ या देर तक दबाएँ";

@@ -39,7 +39,6 @@
 "msdkui_app_routeplanner_getdirections" = "取得方位";
 "msdkui_app_routeplanner_startchoosingwaypoint" = "選擇「起點」或「目的地」以便開始";
 "msdkui_app_routeresults_error" = "找不到任何路線。";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
 "msdkui_app_rp_teaser_description" = "獲取汽車、卡車、自行車及步行的方向。";
 "msdkui_app_rp_teaser_title" = "路線規劃工具";
 "msdkui_app_rp_waypoint_subtitle" = "點擊或長按地圖";

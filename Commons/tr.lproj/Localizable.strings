@@ -1,7 +1,7 @@
 ﻿"msdkui_app_about" = "Hakkında";
 "msdkui_app_about_info_part_four" = "Şu anda rota planlayıcı ve kılavuz deneyimi oluşturmak için Here Mobile SDK UI Setindeki bileşenleri kullanabilirsiniz. Kullanıcı kılavuzundan daha fazla bilgi edinin.";
 "msdkui_app_about_info_part_one" = "Here Mobile SDK UI Seti ile Android ve iOS için güzel kullanıcı arabirimleri oluşturun";
-"msdkui_app_about_info_part_three" = "Birkaç satır kod kullanarak, HERE Mobile SDK'nın Premium sürümüyle tam UI oluşturabilirsiniz. Yerel API'leri kullanarak manevra listesi oluşturmak için birkaç gün uğraşmak yerine, bu işlemi yalnızca birkaç dakikada yapabilirsiniz. Daha az geliştirme süresi, daha hızlı pazarlama zamanı anlamına gelir.\n\nTabii isterseniz bazı UI denetimlerinin görünümünü (renkler, boyutlar) ve davranışını (veri mevcudiyeti, mantık, akış, alt bileşenler) değiştirebilirsiniz. Tamamen isteğinize bağlıdır.";
+"msdkui_app_about_info_part_three" = "Birkaç satır kod kullanarak, HERE Mobile SDK'nın Premium sürümüyle tam UI oluşturabilirsiniz. Yerel API'leri kullanarak manevra listesi oluşturmak için birkaç saat uğraşmak yerine, bu işlemi yalnızca birkaç dakikada yapabilirsiniz. Daha az geliştirme süresi, daha hızlı pazarlama zamanı anlamına gelir.\n\nTabii isterseniz bazı UI denetimlerinin görünümünü (renkler, boyutlar) ve davranışını (veri mevcudiyeti, mantık, akış, alt bileşenler) UI donanımını kullanarak değiştirebilirsiniz. Tamamen isteğinize bağlıdır.";
 "msdkui_app_about_info_part_two" = "İyi bir kullanıcı arabirimi, genelde kullanıcı bulma ve onları tutma ile kullanıcıları rakiplerinize kaybetme arasındaki temel farktır. Bu nedenle Android ve iOS için HERE Mobile SDK UI Seti tamamen işlevsel olan ve uygulamanızda kullanıma hazır çeşitli ekranlarla gönderilir.";
 "msdkui_app_add" = "Ekle";
 "msdkui_app_app_version" = "Uygulama sürümü";
@@ -37,9 +37,8 @@
 "msdkui_app_route_preview_title" = "Rotaya genel bakış";
 "msdkui_app_routeoverview_to" = "Hedef:";
 "msdkui_app_routeplanner_getdirections" = "Yol tarifleri alın";
-"msdkui_app_routeplanner_startchoosingwaypoint" = "\"Başlangıç\" veya \"varış\" noktalarını seçerek başlayın";
-"msdkui_app_routeresults_error" = "Rota bulunamadı.";
-"msdkui_app_routeresults_error_connection" = "Need an internet connection";
+"msdkui_app_routeplanner_startchoosingwaypoint" = "\"Başlangıç\" veya \"hedef\" noktalarını seçerek başlayın";
+"msdkui_app_routeresults_error" = "Hiçbir rota bulunamadı.";
 "msdkui_app_rp_teaser_description" = "Otomobil, kamyon, bisiklet ve yürüyüş için yol tarifi alın.";
 "msdkui_app_rp_teaser_title" = "Rota planlayıcı";
 "msdkui_app_rp_waypoint_subtitle" = "Haritaya dokunun veya uzun basın";
