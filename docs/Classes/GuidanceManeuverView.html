@@ -23,7 +23,7 @@
         <a class="header-link" href="../index.html">
           MSDKUI Docs
         </a>
-         (74% documented)
+         (73% documented)
       </p>
     
       <p class="header-col--secondary">
@@ -72,6 +72,9 @@
                 <a class="nav-group-task-link" href="../Classes/GuidanceManeuverView.html">GuidanceManeuverView</a>
               </li>
               <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Classes/GuidanceManeuverView.html#/s:6MSDKUI20GuidanceManeuverViewC5StateO">– State</a>
+              </li>
+              <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/GuidanceNextManeuverMonitor.html">GuidanceNextManeuverMonitor</a>
               </li>
               <li class="nav-group-task">
@@ -97,9 +100,6 @@
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/ManeuverItemView.html">ManeuverItemView</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="../Classes/ManeuverItemView/Section.html">– Section</a>
               </li>
               <li class="nav-group-task">
                 <a class="nav-group-task-link" href="../Classes/ManeuverTableView.html">ManeuverTableView</a>
@@ -279,16 +279,57 @@
 
                 </div>
               </div>
-            <p>A view for displaying the maneuvers during guidance. Note that
-this view displays a different view in portrait and landscape
-orientations. The view listens to the <code>UIDeviceOrientationDidChange</code>
-notification to monitor orientation changes.</p>
+            <p>A view for displaying the maneuvers during guidance.</p>
 
           </div>
         </section>
 
         <section class="section">
           <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Types"></a>
+                <a name="//apple_ref/swift/Section/Types" class="dashAnchor"></a>
+                <a href="#/Types">
+                  <h3 class="section-name">Types</h3>
+                </a>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6MSDKUI20GuidanceManeuverViewC5StateO"></a>
+                    <a name="//apple_ref/swift/Enum/State" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC5StateO">State</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>All the supported guidance maneuver view states.</p>
+
+<ul>
+<li>noData: State where the view does not have maneuver data (e.g. initial state).</li>
+<li>updating: State where the view awaits maneuver data.</li>
+<li>data: State where the view contains maneuver data.</li>
+</ul>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">State</span> <span class="p">:</span> <span class="kt">Equatable</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
             <div class="task-group">
               <div class="task-name-container">
                 <a name="/Properties"></a>
@@ -301,9 +342,9 @@ notification to monitor orientation changes.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/c:@M@MSDKUI@objc(cs)GuidanceManeuverView(py)backgroundColor"></a>
-                    <a name="//apple_ref/swift/Property/backgroundColor" class="dashAnchor"></a>
-                    <a class="token" href="#/c:@M@MSDKUI@objc(cs)GuidanceManeuverView(py)backgroundColor">backgroundColor</a>
+                    <a name="/s:6MSDKUI20GuidanceManeuverViewC5stateAC5StateOvp"></a>
+                    <a name="//apple_ref/swift/Property/state" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC5stateAC5StateOvp">state</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -311,14 +352,14 @@ notification to monitor orientation changes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The default background color is colorBackgroundDark.</p>
+                        <p>The view state. The default value is <code>.noData</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">override</span> <span class="kd">open</span> <span class="k">var</span> <span class="nv">backgroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">state</span><span class="p">:</span> <span class="kt">GuidanceManeuverView</span><span class="o">.</span><span class="kt"><a href="../Classes/GuidanceManeuverView.html#/s:6MSDKUI20GuidanceManeuverViewC5StateO">State</a></span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -328,9 +369,9 @@ notification to monitor orientation changes.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6MSDKUI20GuidanceManeuverViewC4dataAA0bC4DataVSgvp"></a>
-                    <a name="//apple_ref/swift/Property/data" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC4dataAA0bC4DataVSgvp">data</a>
+                    <a name="/s:6MSDKUI20GuidanceManeuverViewC4axisSo22UILayoutConstraintAxisVvp"></a>
+                    <a name="//apple_ref/swift/Property/axis" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC4axisSo22UILayoutConstraintAxisVvp">axis</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -338,14 +379,15 @@ notification to monitor orientation changes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>The data used by the view.</p>
+                        <p>The axis along which the arranged views are laid out.
+The default value is <code>NSLayoutConstraint.Axis.horizontal</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">data</span><span class="p">:</span> <span class="kt"><a href="../Structs/GuidanceManeuverData.html">GuidanceManeuverData</a></span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">axis</span><span class="p">:</span> <span class="kt">NSLayoutConstraint</span><span class="o">.</span><span class="kt">Axis</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -355,9 +397,37 @@ notification to monitor orientation changes.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6MSDKUI20GuidanceManeuverViewC15foregroundColorSo7UIColorCvp"></a>
+                    <a name="/s:6MSDKUI20GuidanceManeuverViewC17distanceFormatterSo013NSMeasurementF0Cvp"></a>
+                    <a name="//apple_ref/swift/Property/distanceFormatter" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC17distanceFormatterSo013NSMeasurementF0Cvp">distanceFormatter</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>The distance measurement formatter.
+The default value is <code><a href="../Extensions/MeasurementFormatter.html#/s:So22NSMeasurementFormatterC6MSDKUIE017currentMediumUnitB0ABvpZ">MeasurementFormatter.currentMediumUnitFormatter</a></code>.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">distanceFormatter</span><span class="p">:</span> <span class="kt">MeasurementFormatter</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:6MSDKUI20GuidanceManeuverViewC15foregroundColorSo7UIColorCSgvp"></a>
                     <a name="//apple_ref/swift/Property/foregroundColor" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC15foregroundColorSo7UIColorCvp">foregroundColor</a>
+                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC15foregroundColorSo7UIColorCSgvp">foregroundColor</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -365,38 +435,27 @@ notification to monitor orientation changes.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Sets the view&rsquo;s foreground color, i.e. the color for the icons, text and busy indicators.
-The default foreground color is colorForegroundLight.</p>
+                        <p>Sets the view&rsquo;s foreground color, i.e. the color for the icons,
+text and activity indicators. The default value is <code>UIColor.colorForegroundLight</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">foregroundColor</span><span class="p">:</span> <span class="kt">UIColor</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">foregroundColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Public"></a>
-                <a name="//apple_ref/swift/Section/Public" class="dashAnchor"></a>
-                <a href="#/Public">
-                  <h3 class="section-name">Public</h3>
-                </a>
-              </div>
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:6MSDKUI20GuidanceManeuverViewC09highlightC09textColorySo7UIColorC_tF"></a>
-                    <a name="//apple_ref/swift/Method/highlightManeuver(textColor:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC09highlightC09textColorySo7UIColorC_tF">highlightManeuver(textColor:)</a>
+                    <a name="/s:6MSDKUI20GuidanceManeuverViewC09highlightC0Sbvp"></a>
+                    <a name="//apple_ref/swift/Property/highlightManeuver" class="dashAnchor"></a>
+                    <a class="token" href="#/s:6MSDKUI20GuidanceManeuverViewC09highlightC0Sbvp">highlightManeuver</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -404,35 +463,19 @@ The default foreground color is colorForegroundLight.</p>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This method highlights the current maneuver with the specified text color.</p>
+                        <p>A Boolean value that determines whether the maneuver should be highlighted.
+If <code>true</code>, sets the maneuver text color to the view&rsquo;s <code>.tintColor</code>.
+If <code>false</code>, sets the maneuver text color to <code><a href="../Classes/GuidanceManeuverView.html#/s:6MSDKUI20GuidanceManeuverViewC15foregroundColorSo7UIColorCSgvp">.foregroundColor</a></code>.
+The default value is <code>false</code>.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">highlightManeuver</span><span class="p">(</span><span class="nv">textColor</span><span class="p">:</span> <span class="kt">UIColor</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">highlightManeuver</span><span class="p">:</span> <span class="kt">Bool</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Parameters</h4>
-                        <table class="graybox">
-                          <tbody>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>textColor</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The new highlight color.</p>
-                                </div>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
                       </div>
                     </section>
                   </div>
@@ -445,7 +488,7 @@ The default foreground color is colorForegroundLight.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2018 <a class="link" href="https://github.com/heremaps/msdkui-ios" target="_blank" rel="external">HERE Europe B.V.</a>. All rights reserved. (Last updated: 2018-12-14)</p>
+      <p>&copy; 2019 <a class="link" href="https://github.com/heremaps/msdkui-ios" target="_blank" rel="external">HERE Europe B.V.</a>. All rights reserved. (Last updated: 2019-02-19)</p>
       <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
