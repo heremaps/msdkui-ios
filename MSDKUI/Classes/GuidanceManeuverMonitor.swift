@@ -116,7 +116,10 @@ open class GuidanceManeuverMonitor: NSObject {
         // Try to set the distance
         if NMAPositioningManager.sharedInstance().currentPosition != nil {
             let distanceValue = NMANavigationManager.sharedInstance().distanceToCurrentManeuver
-            data.distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
+
+            if distanceValue != NMANavigationManagerInvalidValue {
+                data.distance = Measurement(value: Double(distanceValue), unit: UnitLength.meters)
+            }
         }
 
         // Try to set the info1 and info2 strings.
