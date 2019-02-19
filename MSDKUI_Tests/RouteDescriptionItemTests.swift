@@ -20,14 +20,7 @@ import XCTest
 final class RouteDescriptionItemTests: XCTestCase {
 
     /// The object under test.
-    private var itemUnterTest: RouteDescriptionItem?
-
-    override func setUp() {
-        super.setUp()
-
-        // Set up the item
-        itemUnterTest = RouteDescriptionItem()
-    }
+    private let itemUnterTest = RouteDescriptionItem()
 
     // MARK: - Tests
 
@@ -51,6 +44,11 @@ final class RouteDescriptionItemTests: XCTestCase {
         XCTAssertEqual(item.lengthLabel.textColor, .colorForegroundSecondary, "It has the correct length label text color")
         XCTAssertEqual(item.timeLabel.textColor, .colorForegroundSecondary, "It has the correct time label text color")
         XCTAssertEqual(item.warningIcon.tintColor, .colorAlert, "It has the correct warning icon tint color")
+    }
+
+    /// Tests the warning icon image view right after item initialization.
+    func testWarningIcon() throws {
+        XCTAssertTrue(try require(itemUnterTest.warningIcon.isHidden), "It is hidden by default after item initialization")
     }
 
     /// Tests visibility modifications.

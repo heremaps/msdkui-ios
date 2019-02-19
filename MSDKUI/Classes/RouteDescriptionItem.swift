@@ -395,10 +395,13 @@ import NMAKit
 
     /// Refreshes the view based on the visible sections.
     private func refresh() {
+        let warningImage = UIImage(named: "RouteDescriptionItem.warning", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
+
         transportModeView.isHidden = !isSectionVisible(.icon)
         durationLabel.isHidden = !isSectionVisible(.duration)
         delayLabel.isHidden = !isSectionVisible(.delay) || (delayLabel.attributedText?.length ?? 0) == 0
         warningIcon.isHidden = handler != nil && handler.hasDelay ? delayLabel.isHidden : true
+        warningIcon.image = warningIcon.isHidden ? nil : warningImage
         barView.isHidden = !isSectionVisible(.bar)
         lengthLabel.isHidden = !isSectionVisible(.length)
         timeLabel.isHidden = !isSectionVisible(.time)
@@ -421,8 +424,6 @@ import NMAKit
         primaryLabelColor = .colorForeground
         warningColor = .colorAlert
         secondaryLabelsColor = .colorForegroundSecondary
-
-        warningIcon.image = UIImage(named: "RouteDescriptionItem.warning", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
     }
 
     /// Sets the accessibility stuff.
