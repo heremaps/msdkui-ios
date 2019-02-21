@@ -222,12 +222,39 @@ final class GuidanceViewControllerTests: XCTestCase {
     /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitor(_:didUpdateData:)` returns data.
     func testWhenGuidanceManeuverMonitorDidUpdateDataIsTriggeredWithData() throws {
         let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
-        let maneuverData = GuidanceManeuverData()
+        let maneuverData = GuidanceManeuverData(maneuverIcon: UIImage(),
+                                                distance: Measurement(value: 10, unit: .parsecs),
+                                                info1: "Info 1",
+                                                info2: "Info 2",
+                                                nextRoadIcon: UIImage())
 
         viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: maneuverData)
 
         // Is the data passed?
         XCTAssertEqual(viewControllerUnderTest?.maneuverView.state, .data(maneuverData), "It has the correct data")
+    }
+
+    /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitor(_:didUpdateData:)` returns data but with distance equal to 0.
+    func testWhenGuidanceManeuverMonitorDidUpdateDataIsTriggeredWithDataAndDistanceZero() throws {
+        let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
+        let maneuverIcon = UIImage()
+        let nextRoadIcon = UIImage()
+        let expectedData = GuidanceManeuverData(maneuverIcon: maneuverIcon,
+                                                distance: nil,
+                                                info1: "Info 1",
+                                                info2: "Info 2",
+                                                nextRoadIcon: nextRoadIcon)
+
+        let maneuverData = GuidanceManeuverData(maneuverIcon: maneuverIcon,
+                                                distance: Measurement(value: 0, unit: .astronomicalUnits),
+                                                info1: "Info 1",
+                                                info2: "Info 2",
+                                                nextRoadIcon: nextRoadIcon)
+
+        viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: maneuverData)
+
+        // Is the data passed?
+        XCTAssertEqual(viewControllerUnderTest?.maneuverView.state, .data(expectedData), "It has the correct data, without distance")
     }
 
     /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitor(_:didUpdateData:)` doesn't return data.

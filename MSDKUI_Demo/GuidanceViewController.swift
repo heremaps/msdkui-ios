@@ -429,7 +429,8 @@ final class GuidanceViewController: UIViewController {
 extension GuidanceViewController: GuidanceManeuverMonitorDelegate {
 
     func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor, didUpdateData data: GuidanceManeuverData?) {
-        if let maneuverData = data {
+        if var maneuverData = data {
+            maneuverData.distance = maneuverData.distance?.value == 0 ? nil : maneuverData.distance
             maneuverView.state = .data(maneuverData)
         } else {
             maneuverView.state = .updating
