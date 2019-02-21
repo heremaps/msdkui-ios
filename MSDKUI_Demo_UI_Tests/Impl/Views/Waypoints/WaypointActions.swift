@@ -16,6 +16,7 @@
 
 import EarlGrey
 @testable import MSDKUI
+import NMAKit
 
 enum WaypointActions {
 
@@ -89,6 +90,24 @@ enum WaypointActions {
 
                 let isDisplayed = item.label.text?.starts(with: labelToTest) ?? false
                 return shouldBeDisplayed == isDisplayed
+            }
+        )
+    }
+
+    /// Sets current map view to new coordinates.
+    ///
+    /// - Parameter mapData: set of latitude and longitude coordinates.
+    static func switchMapViewTo(mapData: NMAGeoCoordinates) {
+        EarlGrey.selectElement(with: WaypointMatchers.waypointMapView).perform(
+            GREYActionBlock.action(withName: "Set map geo center to coordinates") { element, errorOrNil in
+                guard
+                    errorOrNil != nil,
+                    let mapView = element as? NMAMapView else {
+                        return false
+                }
+                // Center current map view to specified coordinates
+                mapView.set(geoCenter: mapData, animation: .none)
+                return true
             }
         )
     }

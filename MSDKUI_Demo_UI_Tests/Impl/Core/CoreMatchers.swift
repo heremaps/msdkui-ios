@@ -15,7 +15,6 @@
 //
 
 import EarlGrey
-import Foundation
 
 enum CoreMatchers {
 

@@ -15,7 +15,6 @@
 //
 
 import EarlGrey
-import Foundation
 @testable import MSDKUI
 @testable import MSDKUI_Demo
 import XCTest
@@ -73,7 +72,7 @@ enum CoreActions {
 
     /// Taps the specified element.
     ///
-    /// - Parameter element: element to tap on
+    /// - Parameter element: element to tap on.
     static func tap(element: GREYMatcher) {
         print("Tapping \(String(element.description))...")
         EarlGrey.selectElement(with: element)
@@ -83,8 +82,8 @@ enum CoreActions {
 
     /// Types text to element.
     ///
-    /// - Parameter element: element to type text into
-    /// - Parameter text: text string to type into element
+    /// - Parameter element: element to type text into.
+    /// - Parameter text: text string to type into element.
     static func typeText(element: GREYMatcher, text: String) {
         print("Typing \(String(text)) to \(String(element.description))...")
         EarlGrey.selectElement(with: element)
@@ -93,7 +92,7 @@ enum CoreActions {
 
     /// Swipes up on element(scroll down).
     ///
-    /// - Parameter element: element to swipe
+    /// - Parameter element: element to swipe.
     static func swipeUpOn(element: GREYMatcher) {
         print("Swiping up on \(String(element.description))...")
         EarlGrey.selectElement(with: element).perform(grey_swipeFastInDirection(GREYDirection.up))
@@ -101,16 +100,16 @@ enum CoreActions {
 
     /// Swipes down on element(scroll up).
     ///
-    /// - Parameter element: element to swipe
+    /// - Parameter element: element to swipe.
     static func swipeDownOn(element: GREYMatcher) {
         print("Swiping down on \(String(element.description))...")
         EarlGrey.selectElement(with: element).perform(grey_swipeFastInDirection(GREYDirection.down))
     }
 
-    /// Taps at a point on screen
+    /// Taps at a point on screen.
     ///
-    /// - Parameter element: Element to be tapped upon
-    /// - Parameter point: Coordinates of the point - CGPoint(x: coordinateX,y: coordinateY)
+    /// - Parameter element: Element to be tapped upon.
+    /// - Parameter point: Coordinates of the point - CGPoint(x: coordinateX,y: coordinateY).
     static func tap(element: GREYMatcher, point: CGPoint) {
         print("Tapping at point {\(point)}...")
 
@@ -118,14 +117,36 @@ enum CoreActions {
             .perform(grey_tapAtPoint(point))
     }
 
-    /// Long taps at a point on screen
+    /// Long taps at a point on screen.
     ///
-    /// - Parameter element: Element to be tapped upon
-    /// - Parameter point: Coordinates of the point - CGPoint(x: coordinateX,y: coordinateY)
+    /// - Parameter element: Element to be tapped upon.
+    /// - Parameter point: Coordinates of the point - CGPoint(x: coordinateX,y: coordinateY).
     static func longPress(element: GREYMatcher, point: CGPoint) {
         print("Tapping at point \(point)...")
 
         EarlGrey.selectElement(with: element)
             .perform(grey_longPressAtPointWithDuration(point, Constants.longPressDuration))
+    }
+
+    /// Finds point in the middle of the UI element.
+    ///
+    /// - Parameter element: Element under examination.
+    /// - Returns: A point in the middle of an observable element.
+    static func centerOfElement(element: GREYMatcher) -> CGPoint {
+        var point = CGPoint(x: 0.0, y: 0.0)
+        EarlGrey.selectElement(with: element).perform(
+            GREYActionBlock.action(withName: "Get center point of an UI element") { element, errorOrNil in
+                guard
+                    errorOrNil != nil,
+                    let element = element as? UIView else {
+                        return false
+                }
+                let heightMiddle = element.bounds.height / 2
+                let widthMiddle = element.bounds.width / 2
+                point = CGPoint(x: widthMiddle, y: heightMiddle)
+                return true
+            }
+        )
+        return point
     }
 }
