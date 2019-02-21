@@ -30,4 +30,8 @@ enum NMAGeoCoordinatesFixture {
     static func berlinCenter() -> NMAGeoCoordinates {
         return NMAGeoCoordinates(latitude: 52.52, longitude: 13.405)
     }
+
+    static func berlinSophienStrasse() -> NMAGeoCoordinates {
+        return NMAGeoCoordinates(latitude: 52.525080, longitude: 13.402928)
+    }
 }

@@ -15,9 +15,7 @@
 //
 
 import EarlGrey
-import Foundation
 @testable import MSDKUI
-import NMAKit
 import XCTest
 
 final class RoutePlannerIntegrationTests: XCTestCase {

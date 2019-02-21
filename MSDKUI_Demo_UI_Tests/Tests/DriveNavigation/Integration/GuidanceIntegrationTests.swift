@@ -16,7 +16,6 @@
 
 import EarlGrey
 @testable import MSDKUI
-import NMAKit
 import XCTest
 
 final class GuidanceIntegrationTests: XCTestCase {
@@ -35,7 +34,7 @@ final class GuidanceIntegrationTests: XCTestCase {
 
         // Drive navigation and map view is shown
         // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
+        DriveNavigationActions.setDestination(with: .tap, destination: NMAGeoCoordinatesFixture.berlinSophienStrasse())
     }
 
     override func tearDown() {

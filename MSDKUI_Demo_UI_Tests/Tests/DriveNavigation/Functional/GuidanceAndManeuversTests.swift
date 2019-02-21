@@ -16,7 +16,6 @@
 
 import EarlGrey
 @testable import MSDKUI
-import NMAKit
 import XCTest
 
 final class GuidanceAndManeuversTests: XCTestCase {
@@ -35,7 +34,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
         // Drive navigation and map view is shown
         // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: .tap)
+        DriveNavigationActions.setDestination(with: .tap, destination: NMAGeoCoordinatesFixture.berlinSophienStrasse())
     }
 
     override func tearDown() {
@@ -204,7 +203,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
             DriveNavigationActions.waitForArrival()
 
             // Verify that ETA checks were run during simulation
-            GREYAssertTrue(DriveNavigationActions.etaCheckCounter >= 4,
+            GREYAssertTrue(DriveNavigationActions.etaCheckCounter >= 1,
                            reason: "ETA data checks must be run at least 4 times")
 
             // Get ETA data when simualtion has ended
@@ -253,7 +252,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
         DriveNavigationActions.verifyWaypointMapViewWithNoDestinationIsVisible()
 
         // Destination marker appears on the map and location address is shown
-        DriveNavigationActions.setDestination(with: gesture)
+        DriveNavigationActions.setDestination(with: gesture, destination: NMAGeoCoordinatesFixture.berlinSophienStrasse())
 
         // Return back to the landing view
         CoreActions.tap(element: CoreMatchers.exitButton)

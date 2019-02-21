@@ -15,7 +15,6 @@
 //
 
 import EarlGrey
-import Foundation
 @testable import MSDKUI
 import XCTest
 
