@@ -204,7 +204,7 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
             // Verify that ETA checks were run during simulation
             GREYAssertTrue(DriveNavigationActions.etaCheckCounter >= 1,
-                           reason: "ETA data checks must be run at least 4 times")
+                           reason: "ETA data must be checked at least 1 time")
 
             // Get ETA data when simualtion has ended
             let finalEtaData = DriveNavigationActions.getEstimatedArrivalData().ETAData

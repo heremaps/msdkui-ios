@@ -124,7 +124,7 @@ enum DriveNavigationActions {
     ///   - gesture: Gesture type like tap or long press.
     ///   - screenPoint: Point on the map view to tap.
     static func setDestination(with gesture: CoreActions.Gestures, destination: NMAGeoCoordinates) {
-        let screenPoint = CoreActions.centerOfElement(element: WaypointMatchers.waypointMapView)
+        let screenPoint = CoreActions.centerOfElementBounds(element: WaypointMatchers.waypointMapView)
 
         // Drive navigation and map view is shown.
         verifyWaypointMapViewWithNoDestinationIsVisible()
