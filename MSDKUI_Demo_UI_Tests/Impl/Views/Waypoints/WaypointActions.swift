@@ -96,7 +96,7 @@ enum WaypointActions {
 
     /// Sets current map view to new coordinates.
     ///
-    /// - Parameter mapData: set of latitude and longitude coordinates.
+    /// - Parameter mapData: Latitude and longitude coordinates.
     static func switchMapViewTo(mapData: NMAGeoCoordinates) {
         EarlGrey.selectElement(with: WaypointMatchers.waypointMapView).perform(
             GREYActionBlock.action(withName: "Set map geo center to coordinates") { element, errorOrNil in

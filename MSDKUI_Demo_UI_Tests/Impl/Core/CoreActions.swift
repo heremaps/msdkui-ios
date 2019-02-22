@@ -132,7 +132,7 @@ enum CoreActions {
     ///
     /// - Parameter element: Element under examination.
     /// - Returns: A point in the middle of an observable element.
-    static func centerOfElement(element: GREYMatcher) -> CGPoint {
+    static func centerOfElementBounds(element: GREYMatcher) -> CGPoint {
         var point = CGPoint(x: 0.0, y: 0.0)
         EarlGrey.selectElement(with: element).perform(
             GREYActionBlock.action(withName: "Get center point of an UI element") { element, errorOrNil in
