@@ -16,7 +16,7 @@
 "msdkui_app_guidance_button_showmaneuvers" = "Voir manœuvres";
 "msdkui_app_guidance_button_showmap" = "Afficher la carte";
 "msdkui_app_guidance_button_start" = "Démarrer navigation";
-"msdkui_app_guidance_start_simulation" = "Une simulation de guidage démarre.";
+"msdkui_app_guidance_start_simulation" = "Une simulation de guidage va démarrer.";
 "msdkui_app_guidance_teaser_description" = "Aidez vos utilisateurs à arriver à destination avec la navigation détaillée.";
 "msdkui_app_guidance_teaser_title" = "Navigation auto";
 "msdkui_app_guidance_waypoint_subtitle" = "Appuyez sur la carte pour définir une destination";

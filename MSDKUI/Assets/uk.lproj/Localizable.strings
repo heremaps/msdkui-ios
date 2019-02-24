@@ -99,7 +99,7 @@
 "msdkui_minutes" = "%ld хв.";
 "msdkui_next_maneuver" = "Наступний маневр";
 "msdkui_no_maneuver_found" = "Не знайдено жодних маневрів";
-"msdkui_no_route_found" = "Не знайдено жодних маршрутів";
+"msdkui_no_route_found" = "Не вдалося знайти маршрути";
 "msdkui_no_traffic_delays" = "Без затримок";
 "msdkui_none" = "Не вибрано";
 "msdkui_number_of_trailers" = "Причіпи";
@@ -155,7 +155,7 @@
 "msdkui_unit_miles_per_hour" = "миль/год";
 "msdkui_unit_yard" = "ярд";
 "msdkui_unknown" = "Невідомо";
-"msdkui_userposition_search" = "Ваше місцезнаходження";
+"msdkui_userposition_search" = "Пошук місцезн.";
 "msdkui_violate_truck_options" = "Ігнорувати характеристики вантажівки";
 "msdkui_waypoint" = "Точка маршруту";
 "msdkui_waypoint_current_location" = "Поточне розташування";
