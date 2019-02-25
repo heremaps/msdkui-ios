@@ -314,12 +314,19 @@ final class GuidanceViewControllerTests: XCTestCase {
         }
     }
 
-    // MARK: - Routing
+    // MARK: - NMANavigationManagerDelegate
 
-    /// Tests failed rerouting for empty and nil routes.
+    /// Tests when `.navigationManager(_:didUpdateRoute:)` is triggered.
     func testFailedRerouting() throws {
         try failedRerouting(with: MockUtils.mockRouteResult(with: []))
         try failedRerouting(with: MockUtils.mockRouteResult(with: nil))
+    }
+
+    /// Tests when `.navigationManager(_:shouldPlayVoiceFeedback:)` is triggered.
+    func testWhenNavigationManagerShouldPlayVoiceFeedbackIsTriggered() throws {
+        let shouldPlay = viewControllerUnderTest?.navigationManager(NMANavigationManager.sharedInstance(), shouldPlayVoiceFeedback: nil)
+
+        XCTAssertTrue(try require(shouldPlay), "it has voice guidance enabled")
     }
 
     // MARK: - IdleTimerDisabler

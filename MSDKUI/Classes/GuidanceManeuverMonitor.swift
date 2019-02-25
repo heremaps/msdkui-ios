@@ -38,9 +38,6 @@ open class GuidanceManeuverMonitor: NSObject {
 
     // MARK: - Properties
 
-    /// Determines whether to enable navigation voice.
-    public var isVoiceEnabled = true
-
     /// The delegate object that conforms to the `GuidanceManeuverMonitorDelegate` protocol.
     public weak var delegate: GuidanceManeuverMonitorDelegate?
 
@@ -162,10 +159,6 @@ extension GuidanceManeuverMonitor: NMANavigationManagerDelegate {
 
     public func navigationManagerDidReachDestination(_ navigationManager: NMANavigationManager) {
         delegate?.guidanceManeuverMonitorDidReachDestination(self)
-    }
-
-    public func navigationManager(_ navigationManager: NMANavigationManager, shouldPlayVoiceFeedback text: String?) -> Bool {
-        return isVoiceEnabled
     }
 
     public func navigationManagerWillReroute(_ navigationManager: NMANavigationManager) {

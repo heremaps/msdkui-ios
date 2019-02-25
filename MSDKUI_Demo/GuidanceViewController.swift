@@ -459,6 +459,10 @@ extension GuidanceViewController: NMANavigationManagerDelegate {
         route = newRoute
         mapRoute = newMapRoute
     }
+
+    func navigationManager(_ navigationManager: NMANavigationManager, shouldPlayVoiceFeedback text: String?) -> Bool {
+        return true
+    }
 }
 
 // MARK: - LocationBasedViewController

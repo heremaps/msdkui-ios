@@ -138,21 +138,6 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
                        "It calls the delegate method with the correct guidance maneuver data")
     }
 
-    /// Tests that voice feedback is controlled by the `GuidanceManeuverMonitor.isVoiceEnabled` property.
-    func testVoiceFeedbackDuringGuidance() {
-        // By default voice should be enabled
-        XCTAssertTrue(try require(maneuverMonitor?.isVoiceEnabled), "By default, GuidanceManeuverMonitor.isVoiceEnabled should be set to true")
-
-        // Consequently, by default, voice feedbacks should be played
-        var shouldPlayVoiceFeedback = maneuverMonitor?.navigationManager(NMANavigationManager.sharedInstance(), shouldPlayVoiceFeedback: nil)
-        XCTAssertTrue(try require(shouldPlayVoiceFeedback), "By default, voice feedbacks should be played")
-
-        // When voice is disabled, the monitor should not let any voice feedback
-        maneuverMonitor?.isVoiceEnabled = false
-        shouldPlayVoiceFeedback = maneuverMonitor?.navigationManager(NMANavigationManager.sharedInstance(), shouldPlayVoiceFeedback: nil)
-        XCTAssertFalse(try require(shouldPlayVoiceFeedback), "No voice feedback should be played")
-    }
-
     /// Tests when "will reroute" notification is received, it is handled.
     func testWhenNMAPositioningManagerWillRerouteNotificationIsReceived() {
         maneuverMonitor?.navigationManagerWillReroute(.sharedInstance())
