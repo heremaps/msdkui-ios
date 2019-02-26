@@ -119,9 +119,9 @@ final class GuidanceAndManeuversTests: XCTestCase {
     /// MSDKUI-1532: Guidance next-Next maneuver view in portrait.
     /// Check that guidance next-next maneuver view behaves properly in portrait.
     func testGuidanceNextNextManeuverViewInPortrait() {
-       DriveNavigationActions.performGuidanceTest(isLandscape: false) {
+        DriveNavigationActions.performGuidanceTest(isLandscape: false) {
             checkGuidanceNextNextManeuverView()
-       }
+        }
     }
 
     /// MSDKUI-1532: Guidance next-next maneuver view in landscape.

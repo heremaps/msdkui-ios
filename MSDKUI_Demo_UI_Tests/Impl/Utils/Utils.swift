@@ -31,7 +31,7 @@ enum Utils {
                 guard
                     errorOrNil != nil,
                     let mapView = element as? NMAMapView else {
-                    return false
+                        return false
                 }
 
                 mapView.isRenderAllowed = status
@@ -141,7 +141,7 @@ enum Utils {
                 guard
                     errorOrNil != nil,
                     let matchedObject = element as? T else {
-                    return false
+                        return false
                 }
 
                 isMatched = conditionBlock(matchedObject)

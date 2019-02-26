@@ -32,8 +32,7 @@ import NMAKit
         didSet {
             if let routingMode = routingMode {
                 // One-by-one check
-                for index in 0 ..< TunnelOptionsPanel.options.count
-                          where TunnelOptionsPanel.options[index].value == routingMode.tunnelCategory {
+                for index in 0 ..< TunnelOptionsPanel.options.count where TunnelOptionsPanel.options[index].value == routingMode.tunnelCategory {
                     item?.selectedItemIndex = index
                     break
                 }

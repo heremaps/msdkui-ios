@@ -86,10 +86,7 @@ enum GuidanceManeuverUtil {
         var nextStreet: String?
         var distance = 0
 
-        while
-            distance < GuidanceManeuverUtil.nextManeuverThreshold &&
-            nextStreet == nil,
-            let iterationNextManeuver = nextManeuver {
+        while distance < GuidanceManeuverUtil.nextManeuverThreshold && nextStreet == nil, let iterationNextManeuver = nextManeuver {
             distance += Int(clamping: iterationNextManeuver.distanceFromPreviousManeuver)
             nextStreet = GuidanceManeuverUtil.combineStrings(maneuver: iterationNextManeuver,
                                                              name: iterationNextManeuver.nextRoadName as String?,

@@ -33,7 +33,7 @@ enum WaypointActions {
                     errorOrNil != nil,
                     let cell = element as? UITableViewCell,
                     let item = RoutePlannerActions.getWaypointItem(inside: cell) else {
-                    return false
+                        return false
                 }
 
                 // Does the waypoint name match the expected name?
@@ -82,7 +82,7 @@ enum WaypointActions {
                     errorOrNil != nil,
                     let cell = element as? UITableViewCell,
                     let item = RoutePlannerActions.getWaypointItem(inside: cell) else {
-                    return false
+                        return false
                 }
 
                 // Label must not be nil

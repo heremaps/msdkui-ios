@@ -201,7 +201,7 @@ extension TruckOptionsPanel: OptionItemDelegate {
 
         case OptionItemID.vehicleLength.rawValue:
             if let itemValue = (item as? NumericOptionItem)?.value?.floatValue {
-                 routingMode.vehicleLength = itemValue
+                routingMode.vehicleLength = itemValue
             }
 
         case OptionItemID.vehicleWidth.rawValue:
