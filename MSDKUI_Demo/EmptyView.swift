@@ -100,7 +100,7 @@ import UIKit
         isAccessibilityElement = true
         accessibilityTraits = .none
         accessibilityLabel =
-            "\("msdkui_app_routeplanner_getdirections".localized), \("msdkui_app_routeplanner_startchoosingwaypoint".localized)"
+        "\("msdkui_app_routeplanner_getdirections".localized), \("msdkui_app_routeplanner_startchoosingwaypoint".localized)"
         accessibilityIdentifier = "EmptyView"
     }
 }

@@ -90,7 +90,7 @@ extension XCTestCase {
         XCTAssertEqual(string, NSLocalizedString(key, tableName: "Nonlocalizable", bundle: bundle, comment: ""), message, file: file, line: line)
     }
 
-    // swiftlint:disable multiline_parameters
+    // swiftlint:disable line_length
 
     /// Asserts that the formatted string is localized.
     ///
@@ -102,11 +102,7 @@ extension XCTestCase {
     ///   - message: An optional description of the failure.
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    func XCTAssertLocalized(_ string: String?,
-                            formatKey: String,
-                            arguments: CVarArg...,
-                            bundle: Bundle? = .main, message: String = "",
-                            file: StaticString = #file, line: UInt = #line) {
+    func XCTAssertLocalized(_ string: String?, formatKey: String, arguments: CVarArg..., bundle: Bundle? = .main, message: String = "", file: StaticString = #file, line: UInt = #line) {
         guard let bundle = bundle else {
             XCTFail("Invalid bundle", file: file, line: line)
             return
@@ -122,5 +118,5 @@ extension XCTestCase {
         XCTAssertEqual(string, localizedString, message, file: file, line: line)
     }
 
-    // swiftlint:enable multiline_parameters
+    // swiftlint:enable line_length
 }

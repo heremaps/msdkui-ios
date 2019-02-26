@@ -47,7 +47,7 @@ import NMAKit
 /// - SeeAlso: ManeuverItemView
 @IBDesignable open class ManeuverTableView: UITableView {
 
-     // MARK: - Properties
+    // MARK: - Properties
 
     /// The underlying route object. It provides the data to be displayed.
     public var route: NMARoute? {

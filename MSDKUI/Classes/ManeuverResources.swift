@@ -173,18 +173,16 @@ class ManeuverResources {
         var nextManeuverStreetValue: String?
         var afterNextManeuver = getManeuver(at: newIndex)
 
-        while
-            distance < ManeuverResources.nextManeuverThreshold &&
-            afterNextManeuver != nil && nextManeuverStreetValue == nil {
-                if let distanceFromPreviousManeuver = afterNextManeuver?.distanceFromPreviousManeuver {
-                    distance += Int(clamping: distanceFromPreviousManeuver)
-                }
+        while distance < ManeuverResources.nextManeuverThreshold && afterNextManeuver != nil && nextManeuverStreetValue == nil {
+            if let distanceFromPreviousManeuver = afterNextManeuver?.distanceFromPreviousManeuver {
+                distance += Int(clamping: distanceFromPreviousManeuver)
+            }
 
-                nextManeuverStreetValue = GuidanceManeuverUtil.combineStrings(maneuver: afterNextManeuver,
-                                                                              name: afterNextManeuver?.nextRoadName as String?,
-                                                                              number: afterNextManeuver?.nextRoadNumber as String?)
-                newIndex += 1
-                afterNextManeuver = getManeuver(at: newIndex)
+            nextManeuverStreetValue = GuidanceManeuverUtil.combineStrings(maneuver: afterNextManeuver,
+                                                                          name: afterNextManeuver?.nextRoadName as String?,
+                                                                          number: afterNextManeuver?.nextRoadNumber as String?)
+            newIndex += 1
+            afterNextManeuver = getManeuver(at: newIndex)
         }
 
         return nextManeuverStreetValue
