@@ -28,9 +28,13 @@ final class ManeuverItemViewController: UIViewController {
             self?.title = item.title
 
             self?.maneuverView.icon = item.configuration.icon
+            self?.maneuverView.iconTintColor = item.configuration.iconTintColor
             self?.maneuverView.instructions = item.configuration.instructions
+            self?.maneuverView.instructionsTextColor = item.configuration.instructionsTextColor
             self?.maneuverView.address = item.configuration.address
+            self?.maneuverView.addressTextColor = item.configuration.addressTextColor
             self?.maneuverView.distance = item.configuration.distance
+            self?.maneuverView.distanceTextColor = item.configuration.distanceTextColor
         }
     }
 }

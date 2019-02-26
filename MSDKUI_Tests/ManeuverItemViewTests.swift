@@ -191,6 +191,34 @@ final class ManeuverItemViewTests: XCTestCase {
         XCTAssertEqual(view.accessibilityHint, expectedFormattedAccessbilityDistance, "It has the correct accessbility hint")
     }
 
+    /// Tests the behavior when the icon has a different color set.
+    func testWhenIconColorIsSet() {
+        view.iconTintColor = .red
+
+        XCTAssertEqual(view.iconImageView.tintColor, .red, "It sets the correct icon image view tint color")
+    }
+
+    /// Tests the behavior when instructions has a different color set.
+    func testWhenInstructionsColorIsSet() {
+        view.instructionsTextColor = .purple
+
+        XCTAssertEqual(view.instructionLabel.textColor, .purple, "It sets the correct label text color")
+    }
+
+    /// Tests the behavior when address has a different color set.
+    func testWhenAddressColorIsSet() {
+        view.addressTextColor = .brown
+
+        XCTAssertEqual(view.addressLabel.textColor, .brown, "It sets the correct label text color")
+    }
+
+    /// Tests the behavior when distance has a different color set.
+    func testWhenDistanceColorIsSet() {
+        view.distanceTextColor = .yellow
+
+        XCTAssertEqual(view.distanceLabel.textColor, .yellow, "It sets the correct label text color")
+    }
+
     /// Tests if the required `.init(coder:)` returns a new instance.
     func testInitWithCoder() {
         let coder = NSKeyedUnarchiver(forReadingWith: Data())
