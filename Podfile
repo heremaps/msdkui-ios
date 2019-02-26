@@ -12,12 +12,12 @@ target 'MSDKUI_Demo' do
 
     target 'MSDKUI_Tests' do
         inherit! :search_paths
-        pod 'OCMock', '3.4.1'
+        pod 'OCMock', '3.4.3'
     end
 
     target 'MSDKUI_Demo_Tests' do
         inherit! :search_paths
-        pod 'OCMock', '3.4.1'
+        pod 'OCMock', '3.4.3'
     end
 
     target 'MSDKUI_Demo_UI_Tests' do
