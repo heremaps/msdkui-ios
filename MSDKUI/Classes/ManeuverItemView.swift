@@ -37,11 +37,18 @@ import NMAKit
     /// The stack view which contains the address and the distance labels.
     @IBOutlet private(set) var addressDistanceStackView: UIStackView!
 
-    // The maneuver icon image.
+    /// The maneuver icon image.
     public var icon: UIImage? {
         didSet {
             iconImageView.image = icon
             iconImageView.isHidden = icon == nil
+        }
+    }
+
+    /// The maneuver icon image tint color. The default value is `UIColor.colorForeground`.
+    public var iconTintColor: UIColor? {
+        didSet {
+            iconImageView.tintColor = iconTintColor
         }
     }
 
@@ -52,6 +59,13 @@ import NMAKit
             instructionLabel.isHidden = instructions == nil
 
             updateAccessibility()
+        }
+    }
+
+    /// The maneuver instructions text color. The default value is `UIColor.colorForeground`.
+    public var instructionsTextColor: UIColor? {
+        didSet {
+            instructionLabel.textColor = instructionsTextColor
         }
     }
 
@@ -66,9 +80,23 @@ import NMAKit
         }
     }
 
+    /// The maneuver address text color. The default value is `UIColor.colorForegroundSecondary`.
+    public var addressTextColor: UIColor? {
+        didSet {
+            addressLabel.textColor = addressTextColor
+        }
+    }
+
     /// The maneuver distance.
     public var distance: Measurement<UnitLength>? {
         didSet { updateDistance() }
+    }
+
+    /// The maneuver distance text color. The default value is `UIColor.colorForegroundSecondary`.
+    public var distanceTextColor: UIColor? {
+        didSet {
+            distanceLabel.textColor = distanceTextColor
+        }
     }
 
     /// The distance formatter. The default value is `MeasurementFormatter.currentMediumUnitFormatter`.
@@ -113,10 +141,10 @@ import NMAKit
     private func setUpColors() {
         backgroundColor = .colorForegroundLight
 
-        iconImageView.tintColor = .colorForeground
-        instructionLabel.textColor = .colorForeground
-        addressLabel.textColor = .colorForegroundSecondary
-        distanceLabel.textColor = .colorForegroundSecondary
+        iconTintColor = .colorForeground
+        instructionsTextColor = .colorForeground
+        addressTextColor = .colorForegroundSecondary
+        distanceTextColor = .colorForegroundSecondary
     }
 
     private func setUpViewAccessibility() {

@@ -21,9 +21,31 @@ final class ManeuverItemSettingsViewController: SettingsViewController<ManeuverI
 
     struct Settings {
         var icon: UIImage?
+        var iconTintColor: UIColor?
         var instructions: String?
+        var instructionsTextColor: UIColor?
         var address: String?
+        var addressTextColor: UIColor?
         var distance: Measurement<UnitLength>?
+        var distanceTextColor: UIColor?
+
+        init(icon: UIImage?,
+             iconTintColor: UIColor? = .colorForeground,
+             instructions: String?,
+             instructionsTextColor: UIColor? = .colorForeground,
+             address: String?,
+             addressTextColor: UIColor? = .colorForegroundSecondary,
+             distance: Measurement<UnitLength>?,
+             distanceTextColor: UIColor? = .colorForegroundSecondary) {
+            self.icon = icon
+            self.iconTintColor = iconTintColor
+            self.instructions = instructions
+            self.instructionsTextColor = instructionsTextColor
+            self.address = address
+            self.addressTextColor = addressTextColor
+            self.distance = distance
+            self.distanceTextColor = distanceTextColor
+        }
     }
 
     override func viewDidLoad() {
@@ -79,7 +101,16 @@ final class ManeuverItemSettingsViewController: SettingsViewController<ManeuverI
                          configuration: Settings(icon: UIImage(named: "red_sign"),
                                                  instructions: "Short instruction!",
                                                  address: nil,
-                                                 distance: nil))
+                                                 distance: nil)),
+            SettingsItem(title: "With custom colors (blue, green, red, black)",
+                         configuration: Settings(icon: UIImage(named: "red_sign")?.withRenderingMode(.alwaysTemplate),
+                                                 iconTintColor: .blue,
+                                                 instructions: "Short instruction!",
+                                                 instructionsTextColor: .green,
+                                                 address: "Fuubarstrasse",
+                                                 addressTextColor: .red,
+                                                 distance: Measurement(value: 50, unit: .meters),
+                                                 distanceTextColor: .black))
         ]
     }
 }
