@@ -203,7 +203,7 @@ final class GuidanceDashboardViewController: UIViewController {
 extension GuidanceDashboardViewController: GuidanceSpeedMonitorDelegate {
 
     func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>,
+                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
                               isSpeeding: Bool,
                               speedLimit: Measurement<UnitSpeed>?) {
         currentSpeedView.speed = currentSpeed
