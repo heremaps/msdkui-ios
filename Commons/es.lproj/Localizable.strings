@@ -37,7 +37,7 @@
 "msdkui_app_route_preview_title" = "Descripción de ruta";
 "msdkui_app_routeoverview_to" = "A:";
 "msdkui_app_routeplanner_getdirections" = "Obtener indicaciones";
-"msdkui_app_routeplanner_startchoosingwaypoint" = "Empiece escogiendo un \"desde\" o un \"hasta\"";
+"msdkui_app_routeplanner_startchoosingwaypoint" = "Empiece escogiendo un \"de\" o un \"a\"";
 "msdkui_app_routeresults_error" = "No se ha encontrado ninguna ruta.";
 "msdkui_app_rp_teaser_description" = "Obtenga itinerarios para ir en coche, camión, bicicleta y a pie.";
 "msdkui_app_rp_teaser_title" = "Planificador de ruta";
