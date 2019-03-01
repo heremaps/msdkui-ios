@@ -18,6 +18,9 @@ import Foundation
 
 extension String {
 
+    /// Default string for missing value/content.
+    static let missingValue = "msdkui_value_not_available".nonlocalizable
+
     /// Helper property for easy localization. `"string".localized` fetches a
     /// localized string having the key "string".
     var localized: String {
