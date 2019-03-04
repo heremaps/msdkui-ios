@@ -22,6 +22,8 @@ final class NotificationCenterObservingMock {
     private(set) var didCallAddObserver = false
     private(set) var didCallRemoveObserver = false
 
+    private(set) var didCallAddObserverCount = 0
+
     private(set) var lastNotificationName: NSNotification.Name?
     private(set) var lastObject: Any?
     private(set) var lastQueue: OperationQueue?
@@ -38,6 +40,7 @@ extension NotificationCenterObservingMock: NotificationCenterObserving {
                      queue: OperationQueue?,
                      using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
         didCallAddObserver = true
+        didCallAddObserverCount += 1
 
         lastNotificationName = name
         lastObject = obj

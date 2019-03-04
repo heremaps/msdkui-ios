@@ -42,19 +42,19 @@ final class GuidanceSpeedViewTests: XCTestCase {
         XCTAssertNil(speedView.subviews.first?.backgroundColor, "It has a transparent container view")
     }
 
-    /// Tests if the view has the speed value label (with 0 km/h by the default).
+    /// Tests if the view has the speed value label (with '--' as current speed by the default).
     func testHasSpeedValueLabel() {
         XCTAssertNotNil(speedView.speedValueLabel, "It has the speed value label")
-        XCTAssertEqual(speedView.speedValueLabel.text, "0", "It shows the correct speed value")
+        XCTAssertNonlocalizable(speedView.speedValueLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI, "It shows dashes as current speed value")
         XCTAssertEqual(speedView.speedValueLabel.textAlignment, .left, "It shows the correct text alignment")
         XCTAssertEqual(speedView.speedValueLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
                        "It uses monospaced digits as the speed value label font")
     }
 
-    /// Tests if the view has the the speed unit label (with 0 km/h by the default).
+    /// Tests if the view has the the speed unit label.
     func testHasSpeedUnitLabel() {
         XCTAssertNotNil(speedView.speedUnitLabel, "It has the speed unit label")
-        XCTAssertEqual(speedView.speedUnitLabel.text, "km/hr", "it shows the correct speed unit")
+        XCTAssertNil(speedView.speedUnitLabel.text, "It hides the speed unit")
         XCTAssertEqual(speedView.speedUnitLabel.textAlignment, .left, "It shows the correct text alignment")
         XCTAssertEqual(speedView.speedUnitLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
                        "It uses monospaced digits as the duration label font")
@@ -76,10 +76,10 @@ final class GuidanceSpeedViewTests: XCTestCase {
 
     /// Test if the view accessibility hint is correct when view is not configured.
     func testViewAccessibilityHintWhenModelIsEmpty() {
-        XCTAssertEqual(speedView.accessibilityHint, "0 kilometers per hour", "It returns the correct hint")
+        XCTAssertNil(speedView.accessibilityHint, "It doesn't return any accessibility hint")
     }
 
-    /// Test if the labels are correct.
+    /// Test if the labels are correct when speed is provided.
     func testWhenSpeedIsSet() {
         speedView.speed = Measurement(value: 10, unit: UnitSpeed.kilometersPerHour)
 
@@ -88,6 +88,15 @@ final class GuidanceSpeedViewTests: XCTestCase {
         XCTAssertEqual(speedView.speedValueLabel.textColor, .colorForeground, "It shows the label with correct color")
         XCTAssertEqual(speedView.speedUnitLabel.textColor, .colorForegroundSecondary, "It shows the label with correct color")
         XCTAssertEqual(speedView.accessibilityHint, "10 kilometers per hour", "It returns the correct hint")
+    }
+
+    /// Tests if the labels are correct when speed is nil.
+    func testWhenSpeedIsNil() {
+        speedView.speed = nil
+
+        XCTAssertNonlocalizable(speedView.speedValueLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI, "It shows dashes as speed value")
+        XCTAssertNil(speedView.speedUnitLabel.text, "It hides the speed unit")
+        XCTAssertNil(speedView.accessibilityHint, "It doesn't return any accessibility hint")
     }
 
     /// Tests if the labels are correct when a different unit is provided.

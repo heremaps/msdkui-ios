@@ -33,7 +33,7 @@ final class GuidanceSpeedMonitorDelegateMock {
 extension GuidanceSpeedMonitorDelegateMock: GuidanceSpeedMonitorDelegate {
 
     func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>,
+                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
                               isSpeeding: Bool,
                               speedLimit: Measurement<UnitSpeed>?) {
         didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit = true

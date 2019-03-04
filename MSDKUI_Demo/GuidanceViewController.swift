@@ -508,7 +508,7 @@ extension GuidanceViewController: GuidanceCurrentStreetNameMonitorDelegate {
 extension GuidanceViewController: GuidanceSpeedMonitorDelegate {
 
     func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>,
+                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
                               isSpeeding: Bool,
                               speedLimit: Measurement<UnitSpeed>?) {
         // Updates the current speed view

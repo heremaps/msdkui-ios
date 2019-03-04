@@ -58,9 +58,7 @@ final class GuidanceSpeedMonitorTests: XCTestCase {
 
     /// Tests if the monitor observers position updates.
     func testPositionUpdateObserver() {
-        XCTAssertTrue(mockNotificationCenter.didCallAddObserver, "It adds an observer.")
-        XCTAssertEqual(mockNotificationCenter.lastNotificationName, .NMAPositioningManagerDidUpdatePosition,
-                       "It adds an observer for the correct event.")
+        XCTAssertEqual(mockNotificationCenter.didCallAddObserverCount, 2, "It adds two observers.")
     }
 
     /// Tests the behavior when current speed is known.
@@ -109,26 +107,41 @@ final class GuidanceSpeedMonitorTests: XCTestCase {
                        "It calls the delegate method once")
     }
 
-    /// Tests the behavior when current position is unknown.
-    func testWhenCurrentPositionIsUnknown() {
+    /// Tests the behavior when current position is unknown after known.
+    func testWhenCurrentPositionIsUnknownAfterKnown() {
+        // Stubs the current position provider mock to return a valid position (and speed)
+        let validPosition = NMAGeoPosition(coordinates: NMAGeoCoordinates(), speed: 12, course: 0, accuracy: 0)
+        mockCurrentPositionProvider.stubCurrentPosition(toReturn: validPosition)
+
+        // Triggers the `NMAPositioningManagerDidUpdatePosition` notification block
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidUpdatePosition))
+
         // Stubs the current position provider mock to return nil for position
         mockCurrentPositionProvider.stubCurrentPosition(toReturn: nil)
 
-        // Triggers the `NMAPositioningManagerDidUpdatePosition` notification block
-        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidUpdatePosition))
+        // Triggers the `NMAPositioningManagerDidLosePosition` notification block
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
 
-        XCTAssertFalse(mockDelegate.didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit,
-                       "It doesn't tell the delegate there were changes on the speed/speed limit information")
+        XCTAssertTrue(mockDelegate.didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit,
+                      "It tells the delegate there were changes on the speed/speed limit information")
+
+        XCTAssert(mockDelegate.lastSpeedMonitor === speedMonitor,
+                  "It calls the delegate with the correct speed monitor")
+
+        XCTAssertNil(mockDelegate.lastCurrentSpeed,
+                     "It calls the delegate with the correct speed (nil)")
+
+        XCTAssertFalse(try require(mockDelegate.lastIsSpeeding),
+                       "It calls the delegate with the correct speeding information")
     }
 
-    /// Tests the behavior when current speed is unknown.
-    func testWhenCurrentSpeedIsUnknown() {
-        // Stubs the current position provider mock to return `NMAGeoPositionUnknownValue` for speed
-        let position = NMAGeoPosition(coordinates: NMAGeoCoordinates(), speed: NMAGeoPositionUnknownValue, course: 0, accuracy: 0)
-        mockCurrentPositionProvider.stubCurrentPosition(toReturn: position)
+    /// Tests the behavior when current position is unknown after unknown.
+    func testWhenCurrentPositionIsUnknownAfterUnknown() {
+        // Stubs the current position provider mock to return nil for position
+        mockCurrentPositionProvider.stubCurrentPosition(toReturn: nil)
 
-        // Triggers the `NMAPositioningManagerDidUpdatePosition` notification block
-        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidUpdatePosition))
+        // Triggers the `NMAPositioningManagerDidLosePosition` notification block
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
 
         XCTAssertFalse(mockDelegate.didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit,
                        "It doesn't tell the delegate there were changes on the speed/speed limit information")
@@ -152,20 +165,62 @@ final class GuidanceSpeedMonitorTests: XCTestCase {
         XCTAssertTrue(mockDelegate.didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit,
                       "It tells the delegate there were changes on the speed/speed limit information")
 
-        XCTAssertEqual(mockDelegate.didUpdateCurrentSpeedIsSpeedingSpeedLimitCount, 1,
-                       "It calls the delegate method once")
+        XCTAssertEqual(mockDelegate.didUpdateCurrentSpeedIsSpeedingSpeedLimitCount, 2,
+                       "It calls the delegate method twice")
 
         XCTAssert(mockDelegate.lastSpeedMonitor === speedMonitor,
                   "It calls the delegate with the correct speed monitor")
 
-        XCTAssertEqual(mockDelegate.lastCurrentSpeed, Measurement(value: 100, unit: UnitSpeed.metersPerSecond),
-                       "It calls the delegate with the correct speed")
+        XCTAssertNil(mockDelegate.lastCurrentSpeed,
+                     "It calls the delegate with the correct speed (nil)")
 
         XCTAssertFalse(try require(mockDelegate.lastIsSpeeding),
                        "It calls the delegate with the correct speeding information")
 
         XCTAssertNil(mockDelegate.lastSpeedLimit,
                      "It calls the delegate with the correct speed limit information")
+    }
+
+    /// Tests the behavior when current speed is unknown after unknown.
+    func testWhenCurrentSpeedIsUnknownAfterUnknown() {
+        // Stubs the current position provider mock to return `NMAGeoPositionUnknownValue` for speed
+        let position = NMAGeoPosition(coordinates: NMAGeoCoordinates(), speed: NMAGeoPositionUnknownValue, course: 0, accuracy: 0)
+        mockCurrentPositionProvider.stubCurrentPosition(toReturn: position)
+
+        // Triggers the `NMAPositioningManagerDidUpdatePosition` notification block
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidUpdatePosition))
+
+        XCTAssertFalse(mockDelegate.didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit,
+                       "It doesn't tell the delegate there were changes on the speed/speed limit information")
+    }
+
+    /// Tests the behavior when current position (and, therefore, speed) is unknown multiple times.
+    func testWhenCurrentPositionIsUnknownMultipleTimes() {
+        // Sets a valid position and speed
+        let validPosition = NMAGeoPosition(coordinates: NMAGeoCoordinates(), speed: 100, course: 0, accuracy: 0)
+        mockCurrentPositionProvider.stubCurrentPosition(toReturn: validPosition)
+
+        // Triggers the `NMAPositioningManagerDidUpdatePosition` notification block
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidUpdatePosition))
+
+        // Sets an invalid position and speed
+        mockCurrentPositionProvider.stubCurrentPosition(toReturn: nil)
+
+        // Triggers the `NMAPositioningManagerDidLosePosition` notification block
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
+        mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidLosePosition))
+
+        XCTAssertTrue(mockDelegate.didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit,
+                      "It tells the delegate there were changes on the speed/speed limit information")
+
+        XCTAssertNil(mockDelegate.lastCurrentSpeed,
+                     "It calls the delegate with the correct current speed information")
+
+        XCTAssertEqual(mockDelegate.didUpdateCurrentSpeedIsSpeedingSpeedLimitCount, 2,
+                       "It calls the delegate method twice (one for the valid current speed and one for the invalid current speed)")
     }
 
     /// Tests the behavior when current speed is known and speed limit is below current speed.

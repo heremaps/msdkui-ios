@@ -24,11 +24,11 @@ public protocol GuidanceSpeedMonitorDelegate: AnyObject {
     ///
     /// - Parameters:
     ///   - monitor: The monitor announcing the changes.
-    ///   - currentSpeed: The current speed.
+    ///   - currentSpeed: The current speed.  It can be nil if no information is available or position is missing.
     ///   - isSpeeding: A boolean indicating if the current speed is above the road speed limit.
-    ///   - speedLimit: The lane speed limit, can be nil if no information is available
+    ///   - speedLimit: The lane speed limit. It can be nil if no information is available.
     func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>,
+                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
                               isSpeeding: Bool,
                               speedLimit: Measurement<UnitSpeed>?)
 }
@@ -43,12 +43,12 @@ open class GuidanceSpeedMonitor: NSObject {
 
         // MARK: - Properties
 
-        var currentSpeed: Measurement<UnitSpeed>
+        var currentSpeed: Measurement<UnitSpeed>?
         var speedLimit: Measurement<UnitSpeed>?
 
         /// A boolean indicating if the current speed is above the road limit.
         var isSpeeding: Bool {
-            guard let lastSpeedLimit = speedLimit else {
+            guard let lastSpeedLimit = speedLimit, let currentSpeed = currentSpeed else {
                 return false
             }
 
@@ -62,7 +62,7 @@ open class GuidanceSpeedMonitor: NSObject {
         /// - Parameters:
         ///   - currentSpeed: The current speed.
         ///   - speedLimit: The route speed limit.
-        init(currentSpeed: Measurement<UnitSpeed> = Measurement(value: 0, unit: .metersPerSecond), speedLimit: Measurement<UnitSpeed>? = nil) {
+        init(currentSpeed: Measurement<UnitSpeed>? = nil, speedLimit: Measurement<UnitSpeed>? = nil) {
             self.currentSpeed = currentSpeed
             self.speedLimit = speedLimit
         }
@@ -79,8 +79,8 @@ open class GuidanceSpeedMonitor: NSObject {
     /// The positioning manager used to retrieve the current location.
     private let positioningManager: CurrentPositionProviding
 
-    /// Reference to the `NMAPositioningManagerDidUpdatePosition` observer.
-    private var positionUpdateObserver: NSObjectProtocol?
+    /// Reference to `NMAPositioningManagerDidUpdatePosition` and `NMAPositioningManagerDidLosePosition` observers.
+    private var positionObservers: [NSObjectProtocol] = []
 
     /// The model used to store and compute speeds.
     private var model = MonitorModel()
@@ -107,18 +107,26 @@ open class GuidanceSpeedMonitor: NSObject {
     }
 
     deinit {
-        // Removes the observer
-        positionUpdateObserver.flatMap(notificationCenter.removeObserver)
+        // Removes observers
+        positionObservers.forEach(notificationCenter.removeObserver)
+        positionObservers.removeAll()
     }
 
     // MARK: - Private
 
     /// Sets up subscriptions.
     private func setUpSubscriptions() {
-        // Sets up the observer for position updates
-        positionUpdateObserver = notificationCenter.addObserver(forName: .NMAPositioningManagerDidUpdatePosition,
-                                                                object: nil,
-                                                                queue: nil) { [weak self] _ in self?.handlePositionUpdate() }
+        // Sets up the observer for when position has changed
+        let positionUpdateObserver = notificationCenter.addObserver(forName: .NMAPositioningManagerDidUpdatePosition,
+                                                                    object: nil,
+                                                                    queue: nil) { [weak self] _ in self?.handlePositionUpdate() }
+
+        // Sets up the observer for when position has been lost
+        let losePositionObserver = notificationCenter.addObserver(forName: .NMAPositioningManagerDidLosePosition,
+                                                                  object: nil,
+                                                                  queue: nil) { [weak self] _ in self?.handlePositionUpdate() }
+
+        positionObservers.append(contentsOf: [positionUpdateObserver, losePositionObserver])
     }
 
     /// Handle necessary changes after position update.
@@ -129,13 +137,16 @@ open class GuidanceSpeedMonitor: NSObject {
 
     /// Notifies the delegate about current speed changes if necessary.
     private func notifyCurrentSpeedChanges() {
-        // Checks if the current speed is valid and different from its previous value, otherwise exit without updating the model and telling the delegate
-        guard
-            let currentSpeed = positioningManager.currentPosition?.speed,
-            currentSpeed != NMAGeoPositionUnknownValue,
-            case let speed = Measurement<UnitSpeed>(value: currentSpeed, unit: .metersPerSecond),
-            speed != model.currentSpeed else {
-                return
+        var speed: Measurement<UnitSpeed>?
+
+        // Checks if the current speed is valid and sets the current speed
+        if let currentSpeed = positioningManager.currentPosition?.speed, currentSpeed != NMAGeoPositionUnknownValue {
+            speed = Measurement<UnitSpeed>(value: currentSpeed, unit: .metersPerSecond)
+        }
+
+        // Checks if current speed is different from its previous value, otherwise exit without updating the model and telling the delegate
+        guard speed != model.currentSpeed else {
+            return
         }
 
         model.currentSpeed = speed

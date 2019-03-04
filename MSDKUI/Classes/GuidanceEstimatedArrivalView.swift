@@ -186,9 +186,3 @@ import UIKit
         accessibilityHint = hint.isEmpty ? nil : hint
     }
 }
-
-// MARK: - Private
-
-private extension String {
-    static let missingValue = "msdkui_value_not_available".nonlocalizable
-}

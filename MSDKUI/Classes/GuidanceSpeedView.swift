@@ -28,7 +28,8 @@ import UIKit
     @IBOutlet private(set) var speedUnitLabel: UILabel!
 
     /// The speed used to populate the view.
-    public var speed: Measurement<UnitSpeed> = Measurement(value: 0, unit: .kilometersPerHour) {
+    /// The default value is `nil`.
+    public var speed: Measurement<UnitSpeed>? = nil {
         didSet { updateLabels() }
     }
 
@@ -109,18 +110,18 @@ import UIKit
     /// Updates the labels whenever the viewModel, colors or unit changes.
     private func updateLabels() {
         // Converts the speed to the appropriate unit.
-        let convertedSpeed = speed.converted(to: unit)
-        let speedValue = NSNumber(value: convertedSpeed.value)
+        let convertedSpeed = speed?.converted(to: unit)
+        let speedValue = convertedSpeed.flatMap { NSNumber(value: $0.value) }
 
         // Sets the labels information.
-        speedValueLabel.text = NumberFormatter.roundUpFormatter.string(from: speedValue)
-        speedUnitLabel.text = MeasurementFormatter.shortSpeedFormatter.string(from: unit)
+        speedValueLabel.text = speedValue.flatMap(NumberFormatter.roundUpFormatter.string) ?? .missingValue
+        speedUnitLabel.text = speed != nil ? MeasurementFormatter.shortSpeedFormatter.string(from: unit) : nil
 
         // Sets the labels colors.
         speedValueLabel.textColor = speedValueTextColor
         speedUnitLabel.textColor = speedUnitTextColor
 
         // Updates the view accessibility hint when the labels' content change.
-        accessibilityHint = MeasurementFormatter.longSpeedFormatter.string(from: convertedSpeed)
+        accessibilityHint = convertedSpeed.flatMap(MeasurementFormatter.longSpeedFormatter.string)
     }
 }
