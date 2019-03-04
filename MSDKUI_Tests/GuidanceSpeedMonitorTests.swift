@@ -58,9 +58,7 @@ final class GuidanceSpeedMonitorTests: XCTestCase {
 
     /// Tests if the monitor observers position updates.
     func testPositionUpdateObserver() {
-        XCTAssertTrue(mockNotificationCenter.didCallAddObserver, "It adds an observer.")
-        XCTAssertEqual(mockNotificationCenter.lastNotificationName, .NMAPositioningManagerDidUpdatePosition,
-                       "It adds an observer for the correct event.")
+        XCTAssertEqual(mockNotificationCenter.didCallAddObserverCount, 2, "It adds two observers.")
     }
 
     /// Tests the behavior when current speed is known.
