@@ -23,6 +23,9 @@ opt_in_rules:
   # Types used for hosting only static members should be implemented as a caseless enum to avoid instantiation.
   - convenience_type
 
+  # Availability checks or attributes shouldn't be using older versions that are satisfied by the deployment target.
+  - deployment_target
+
   # Prefer initializers over object literals.
   - discouraged_object_literal
 
@@ -160,6 +163,9 @@ opt_in_rules:
 
   # Don't include vertical whitespace (empty line) before closing braces.
   - vertical_whitespace_closing_braces
+
+  # Adding weak to a computed property has no effect.
+  - weak_computed_property
 
   # An XCTFail call should include a description of the assertion.
   - xctfail_message
