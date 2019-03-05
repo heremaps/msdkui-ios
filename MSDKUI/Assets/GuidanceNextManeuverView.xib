@@ -29,7 +29,7 @@
                             <rect key="frame" x="0.0" y="65" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="oLv-fc-4QF"/>
-                                <constraint firstAttribute="width" secondItem="p0e-Lb-zDt" secondAttribute="height" multiplier="1:1" id="tSZ-bf-NL7"/>
+                                <constraint firstAttribute="width" constant="32" id="rCm-W3-ZUp"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCU-qM-EZl">
