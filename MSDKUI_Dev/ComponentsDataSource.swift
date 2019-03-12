@@ -46,7 +46,7 @@ final class ComponentsDataSource: NSObject, UITableViewDataSource {
 
     var components: [ComponentEntry] = [] {
         didSet {
-            components.sort { $0.title < $1.title }
+            components.sort { $0.title.lowercased() < $1.title.lowercased() }
             tableView.reloadData()
         }
     }
