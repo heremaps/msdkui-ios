@@ -155,6 +155,7 @@
 		62B884F520ECA9EA00CA47C7 /* ExtensionNMARoutingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B884F420ECA9EA00CA47C7 /* ExtensionNMARoutingError.swift */; };
 		62B884F720ECADE900CA47C7 /* ExtensionNMARoutingErrorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62B884F620ECADE900CA47C7 /* ExtensionNMARoutingErrorTests.swift */; };
 		62BBB0F3213541AF003B843F /* GuidanceSpeedMonitorDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62BBB0F2213541AF003B843F /* GuidanceSpeedMonitorDelegateMock.swift */; };
+		62BF95232237FDE300E53566 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5A019F8F1FB9FA9900DCBBE9 /* Localizable.strings */; };
 		62C7FB60213608BC00B03644 /* CurrentPositionProviderMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7FB5F213608BC00B03644 /* CurrentPositionProviderMock.swift */; };
 		62C7FCFE21440B3F005AAED2 /* About.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 62C7FCFD21440B3F005AAED2 /* About.storyboard */; };
 		62C7FD0021440B8C005AAED2 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 62C7FCFF21440B8C005AAED2 /* AboutViewController.swift */; };
@@ -1379,6 +1380,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				62BF95232237FDE300E53566 /* Localizable.strings in Resources */,
 				6245BCAE21A447510042B00C /* LaunchScreen.storyboard in Resources */,
 				6210A17C21C8F0FB0095AA1A /* Colors.xcassets in Resources */,
 				6245BCAB21A447510042B00C /* Assets.xcassets in Resources */,
