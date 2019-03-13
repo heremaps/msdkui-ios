@@ -271,7 +271,6 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
         mapView.positionIndicator.isAccuracyIndicatorVisible = true
         mapView.extrudedBuildingsVisible = true
         mapView.copyrightLogoPosition = .bottomCenter
-        mapView.delegate = self
 
         // Is a zoom level specified?
         if let mapZoomLevel = mapZoomLevel {
@@ -318,6 +317,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
             if error == .none || error == .violatesOptions, let route = result?.routes?.first {
                 // Set the data
                 self.routeCalculationState = .hasRoute(route: route)
+                self.showRoute()
             } else {
                 self.routeCalculationState = .noRoute
             }
@@ -364,6 +364,24 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
         noRouteLabel.isHidden = false
     }
 
+    private func showRoute() {
+        guard
+            isRouteDisplayed == false,
+            case .hasRoute(let route) = routeCalculationState,
+            let mapRoute = mapRouteHandler.makeMapRoute(with: route) else {
+                return
+        }
+
+        // Draws the route on map
+        mapRouteHandler.add(mapRoute, to: mapView)
+
+        // Remember so it doesn't redraw the route
+        isRouteDisplayed = true
+
+        // In case of success, try to contain the markers and otherwise inform the user
+        updateViewport(of: mapView)
+    }
+
     private func setAccessibility() {
         backButton.accessibilityIdentifier = "RouteOverviewViewController.backButton"
 
@@ -404,29 +422,5 @@ extension RouteOverviewViewController: LocationBasedViewController {
 
     func noLocationAlertCanceledAction() {
         performSegue(withIdentifier: "LandingViewUnwind", sender: self)
-    }
-}
-
-// MARK: - NMAMapViewDelegate
-
-extension RouteOverviewViewController: NMAMapViewDelegate {
-
-    func mapViewDidDraw(_ mapView: NMAMapView) {
-        // Abort if route already on the map or not available
-        guard
-            isRouteDisplayed == false,
-            case .hasRoute(let route) = routeCalculationState,
-            let mapRoute = mapRouteHandler.makeMapRoute(with: route) else {
-                return
-        }
-
-        // Draws the route on map
-        mapRouteHandler.add(mapRoute, to: mapView)
-
-        // Remember so it doesn't redraw the route
-        isRouteDisplayed = true
-
-        // In case of success, try to contain the markers and otherwise inform the user
-        updateViewport(of: mapView)
     }
 }

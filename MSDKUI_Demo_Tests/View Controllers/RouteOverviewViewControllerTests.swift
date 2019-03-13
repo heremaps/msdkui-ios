@@ -243,11 +243,6 @@ final class RouteOverviewViewControllerTests: XCTestCase {
         let mockRouteResult = MockUtils.mockRouteResult(with: [mockRoute])
         mockCoreRouter.lastCompletion?(mockRouteResult, .none)
 
-        let mapView = try require(viewControllerUnderTest?.mapView)
-
-        // Triggers the map view delegate method
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
-
         // Reset mock map viewport handler
         mockMapViewportHandler = MapViewportHandlerMock()
         viewControllerUnderTest?.mapViewportHandler = mockMapViewportHandler
@@ -353,8 +348,8 @@ final class RouteOverviewViewControllerTests: XCTestCase {
 
     // MARK: - NMAMapViewDelegate
 
-    /// Tests when the map view finishes drawing with route.
-    func testWhenMapViewDidDrawIsTriggeredWithRoute() throws {
+    /// Tests when the core router returns a route.
+    func testWhenCoreRouterReturnsRoute() throws {
         viewControllerUnderTest?.fromCoordinates = NMAGeoCoordinatesFixture.berlinCenter()
         viewControllerUnderTest?.toCoordinates = NMAGeoCoordinatesFixture.berlinReichstag()
 
@@ -366,11 +361,6 @@ final class RouteOverviewViewControllerTests: XCTestCase {
         let mockRouteResult = MockUtils.mockRouteResult(with: [mockRoute])
         mockCoreRouter.lastCompletion?(mockRouteResult, .none)
 
-        let mapView = try require(viewControllerUnderTest?.mapView)
-
-        // Triggers the map view delegate method
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
-
         XCTAssertTrue(mockMapRouteHandler.didCallAddMapRouteToMapView, "It calls the map route handler to add a marker to the map")
         XCTAssertTrue(mockMapViewportHandler.didCallSetViewport, "It calls the map viewport handler to set map's viewport")
         XCTAssertEqual(mockMapRouteHandler.lastRoute, mockRoute, "It adds the correct route to the map")
@@ -378,38 +368,8 @@ final class RouteOverviewViewControllerTests: XCTestCase {
         XCTAssertTrue(try require(viewControllerUnderTest?.noRouteLabel.isHidden), "It hides the 'no route' label")
     }
 
-    /// Tests when the map view finishes drawing twice with route.
-    func testWhenMapViewDidDrawIsTriggeredTwiceWithRoute() throws {
-        viewControllerUnderTest?.fromCoordinates = NMAGeoCoordinatesFixture.berlinCenter()
-        viewControllerUnderTest?.toCoordinates = NMAGeoCoordinatesFixture.berlinReichstag()
-
-        // Triggers the view did load method (to trigger core router request)
-        viewControllerUnderTest?.viewDidLoad()
-
-        // Triggers the core router completion handler with route results
-        let mockRoute = MockUtils.mockRoute()
-        let mockRouteResult = MockUtils.mockRouteResult(with: [mockRoute])
-        mockCoreRouter.lastCompletion?(mockRouteResult, .none)
-
-        let mapView = try require(viewControllerUnderTest?.mapView)
-
-        // Triggers the map view delegate method
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
-
-        // Triggers the map view delegate method again
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
-
-        XCTAssertTrue(mockMapRouteHandler.didCallAddMapRouteToMapView, "It calls the map route handler to add a marker to the map")
-        XCTAssertTrue(mockMapViewportHandler.didCallSetViewport, "It calls the map viewport handler to set map's viewport")
-        XCTAssertEqual(mockMapRouteHandler.didCallAddMapRouteToMapViewCount, 1, "It calls the map route handler to add a marker to the map only once")
-        XCTAssertEqual(mockMapViewportHandler.didCallSetViewportCount, 1, "It calls the map viewport handler to set map's viewport only once")
-        XCTAssertEqual(mockMapRouteHandler.lastRoute, mockRoute, "It adds the correct route to the map")
-        XCTAssertFalse(try require(viewControllerUnderTest?.panelView.isHidden), "It shows the panel view")
-        XCTAssertTrue(try require(viewControllerUnderTest?.noRouteLabel.isHidden), "It hides the 'no route' label")
-    }
-
-    /// Tests when the map view finishes drawing but there's no route available.
-    func testWhenMapViewDidDrawIsTriggeredWithoutRoute() throws {
+    /// Tests when the core router doesn't return route.
+    func testWhenCoreRouterDoesntReturnRoute() throws {
         viewControllerUnderTest?.fromCoordinates = NMAGeoCoordinatesFixture.berlinCenter()
         viewControllerUnderTest?.toCoordinates = NMAGeoCoordinatesFixture.berlinReichstag()
 
@@ -419,36 +379,6 @@ final class RouteOverviewViewControllerTests: XCTestCase {
         // Triggers the core router completion handler without routes
         let mockRouteResult = MockUtils.mockRouteResult(with: [])
         mockCoreRouter.lastCompletion?(mockRouteResult, .none)
-
-        let mapView = try require(viewControllerUnderTest?.mapView)
-
-        // Triggers the map view delegate method
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
-
-        XCTAssertFalse(mockMapRouteHandler.didCallAddMapRouteToMapView, "It doesn't call the map route handler to add a marker to the map")
-        XCTAssertFalse(mockMapViewportHandler.didCallSetViewport, "It doesn't call the map viewport handler to set map's viewport")
-        XCTAssertTrue(try require(viewControllerUnderTest?.panelView.isHidden), "It hides the panel view")
-        XCTAssertFalse(try require(viewControllerUnderTest?.noRouteLabel.isHidden), "It shows the 'no route' label")
-    }
-
-    /// Tests when the map view finishes drawing twice but there's no route available.
-    func testWhenMapViewDidDrawIsTriggeredTwiceWithoutRoute() throws {
-        viewControllerUnderTest?.fromCoordinates = NMAGeoCoordinatesFixture.berlinCenter()
-        viewControllerUnderTest?.toCoordinates = NMAGeoCoordinatesFixture.berlinReichstag()
-
-        // Triggers the view did load method (to trigger core router request)
-        viewControllerUnderTest?.viewDidLoad()
-
-        // Triggers the core router completion handler without route results
-        mockCoreRouter.lastCompletion?(nil, .none)
-
-        let mapView = try require(viewControllerUnderTest?.mapView)
-
-        // Triggers the map view delegate method
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
-
-        // Triggers the map view delegate method again
-        viewControllerUnderTest?.mapViewDidDraw(mapView)
 
         XCTAssertFalse(mockMapRouteHandler.didCallAddMapRouteToMapView, "It doesn't call the map route handler to add a marker to the map")
         XCTAssertFalse(mockMapViewportHandler.didCallSetViewport, "It doesn't call the map viewport handler to set map's viewport")
