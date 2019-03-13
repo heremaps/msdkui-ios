@@ -19,21 +19,21 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="431" height="170"/>
+            <rect key="frame" x="0.0" y="0.0" width="731" height="358"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="R9j-N6-b1B">
-                    <rect key="frame" x="0.0" y="0.0" width="431" height="162"/>
+                    <rect key="frame" x="0.0" y="0.0" width="192" height="350"/>
                     <subviews>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="p0e-Lb-zDt">
-                            <rect key="frame" x="0.0" y="65" width="32" height="32"/>
+                            <rect key="frame" x="0.0" y="159" width="32" height="32"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="32" id="oLv-fc-4QF"/>
                                 <constraint firstAttribute="width" constant="32" id="rCm-W3-ZUp"/>
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="751" verticalCompressionResistancePriority="751" text="Distance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sCU-qM-EZl">
-                            <rect key="frame" x="40" y="71" width="67" height="20.5"/>
+                            <rect key="frame" x="40" y="165" width="67" height="20.5"/>
                             <accessibility key="accessibilityConfiguration">
                                 <bool key="isElement" value="NO"/>
                             </accessibility>
@@ -42,7 +42,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="・" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Al9-lS-4w7">
-                            <rect key="frame" x="115" y="68" width="22.5" height="26.5"/>
+                            <rect key="frame" x="115" y="162" width="22.5" height="26.5"/>
                             <accessibility key="accessibilityConfiguration">
                                 <bool key="isElement" value="NO"/>
                             </accessibility>
@@ -51,7 +51,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Street" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1fM-b3-8Pq" userLabel="Street Name Label">
-                            <rect key="frame" x="145.5" y="71" width="285.5" height="20.5"/>
+                            <rect key="frame" x="145.5" y="165" width="46.5" height="20.5"/>
                             <accessibility key="accessibilityConfiguration">
                                 <bool key="isElement" value="NO"/>
                             </accessibility>
@@ -65,7 +65,7 @@
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstAttribute="bottomMargin" secondItem="R9j-N6-b1B" secondAttribute="bottom" id="N2j-1k-kpp"/>
-                <constraint firstAttribute="trailing" secondItem="R9j-N6-b1B" secondAttribute="trailing" id="WrI-bY-wBZ"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="R9j-N6-b1B" secondAttribute="trailing" id="WrI-bY-wBZ"/>
                 <constraint firstItem="R9j-N6-b1B" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fTx-Ec-a2J"/>
                 <constraint firstItem="R9j-N6-b1B" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="msq-pu-gNw"/>
             </constraints>
@@ -73,7 +73,7 @@
             <nil key="simulatedBottomBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <edgeInsets key="layoutMargins" top="0.0" left="0.0" bottom="0.0" right="0.0"/>
-            <point key="canvasLocation" x="-1415" y="-737"/>
+            <point key="canvasLocation" x="-2612" y="-982"/>
         </view>
     </objects>
 </document>
