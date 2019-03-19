@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uyq-Lq-3mx">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -15,34 +15,34 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MSDKUIPrimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="0qw-Nx-WQw">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="GUo-DZ-AQK" customClass="WaypointList" customModule="MSDKUI">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="159"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="159"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="159" id="cyS-sj-Lg0"/>
                                         </constraints>
                                     </tableView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="CMZ-46-GWh">
-                                        <rect key="frame" x="0.0" y="159" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="159" width="320" height="70"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qTZ-ON-Zld" customClass="TransportModePanel" customModule="MSDKUI">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             </view>
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HJ5-zz-3ng" customClass="NMAMapView">
-                                        <rect key="frame" x="0.0" y="229" width="375" height="318"/>
+                                        <rect key="frame" x="0.0" y="229" width="320" height="219"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R6o-IU-UWw">
-                                        <rect key="frame" x="0.0" y="547" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="448" width="320" height="56"/>
                                         <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="7Vn-Rv-lYm"/>
@@ -89,25 +89,25 @@
             <objects>
                 <viewController id="1Ps-Qq-ORd" customClass="ManeuverViewController" customModule="MSDKUIPrimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uK0-7m-zP9">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="8hL-8C-ms8">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="I6U-b5-V2k" customClass="RouteDescriptionList" customModule="MSDKUI">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="170"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="170" id="B5c-DS-caO"/>
                                         </constraints>
                                     </view>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="aHN-r8-8eO" customClass="ManeuverTableView" customModule="MSDKUI">
-                                        <rect key="frame" x="0.0" y="170" width="375" height="377"/>
+                                        <rect key="frame" x="0.0" y="170" width="320" height="278"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </tableView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tx9-Dg-ujA">
-                                        <rect key="frame" x="0.0" y="547" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="448" width="320" height="56"/>
                                         <color key="backgroundColor" red="0.0" green="0.71372549019607845" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="SFO-78-Lsc"/>
@@ -147,7 +147,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uyq-Lq-3mx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="WbB-7S-wQj">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -164,25 +164,18 @@
             <objects>
                 <viewController id="agU-o4-yZ3" customClass="GuidanceViewController" customModule="MSDKUIPrimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xYT-To-QpS">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="cZ7-0y-OjX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-vf-u6J" customClass="GuidanceManeuverView" customModule="MSDKUI">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="126"/>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="126" id="LqO-8J-Jjm"/>
-                                        </constraints>
-                                    </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Rv-GK-2pK" customClass="NMAMapView">
-                                        <rect key="frame" x="0.0" y="126" width="375" height="421"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="448"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kUG-9F-Irb">
-                                        <rect key="frame" x="0.0" y="547" width="375" height="56"/>
+                                        <rect key="frame" x="0.0" y="448" width="320" height="56"/>
                                         <color key="backgroundColor" red="0.0039215686269999999" green="0.71372549019999998" blue="0.6993785014142857" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="wma-Vo-ijc"/>
@@ -196,14 +189,36 @@
                                         </connections>
                                     </button>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="kUG-9F-Irb" secondAttribute="bottom" id="LWK-dY-L2D"/>
+                                </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="guY-tm-mgQ" userLabel="Container for Guidance Maneuver View">
+                                <rect key="frame" x="0.0" y="64" width="320" height="128"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QOo-vf-u6J" customClass="GuidanceManeuverView" customModule="MSDKUI">
+                                        <rect key="frame" x="8" y="0.0" width="304" height="128"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.058823529411764705" green="0.086274509803921567" blue="0.12941176470588234" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="QOo-vf-u6J" secondAttribute="bottom" constant="8" id="ku2-GA-2y0"/>
+                                    <constraint firstItem="QOo-vf-u6J" firstAttribute="leading" secondItem="guY-tm-mgQ" secondAttribute="leading" constant="8" id="xwd-6M-llE"/>
+                                    <constraint firstAttribute="trailing" secondItem="QOo-vf-u6J" secondAttribute="trailing" constant="8" id="yAE-1L-w7R"/>
+                                    <constraint firstItem="QOo-vf-u6J" firstAttribute="top" secondItem="guY-tm-mgQ" secondAttribute="top" constant="8" id="zf9-i6-iY5"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="cZ7-0y-OjX" secondAttribute="bottom" id="4Lb-U5-f50"/>
-                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="leading" secondItem="f18-ez-Y6K" secondAttribute="leading" id="6ci-H9-Sep"/>
-                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="top" secondItem="f18-ez-Y6K" secondAttribute="top" id="Ckl-KD-N5A"/>
-                            <constraint firstAttribute="trailing" secondItem="cZ7-0y-OjX" secondAttribute="trailing" id="rme-qT-nQQ"/>
+                            <constraint firstItem="guY-tm-mgQ" firstAttribute="leading" secondItem="f18-ez-Y6K" secondAttribute="leading" id="Do1-az-wrz"/>
+                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="trailing" secondItem="f18-ez-Y6K" secondAttribute="trailing" id="Hhr-zY-ZOy"/>
+                            <constraint firstItem="guY-tm-mgQ" firstAttribute="trailing" secondItem="f18-ez-Y6K" secondAttribute="trailing" id="NXb-rX-vef"/>
+                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="bottom" secondItem="f18-ez-Y6K" secondAttribute="bottom" id="WaW-yr-oUl"/>
+                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="leading" secondItem="f18-ez-Y6K" secondAttribute="leading" id="Z2o-GJ-8m7"/>
+                            <constraint firstItem="cZ7-0y-OjX" firstAttribute="top" secondItem="f18-ez-Y6K" secondAttribute="top" id="i3z-IZ-22e"/>
+                            <constraint firstItem="guY-tm-mgQ" firstAttribute="top" secondItem="f18-ez-Y6K" secondAttribute="top" id="sXQ-TR-W5M"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f18-ez-Y6K"/>
                     </view>
@@ -214,7 +229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9k2-UN-Dk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2477.5999999999999" y="102.09895052473765"/>
+            <point key="canvasLocation" x="2476.875" y="101.40845070422536"/>
         </scene>
     </scenes>
 </document>

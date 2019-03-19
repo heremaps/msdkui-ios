@@ -6,7 +6,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 - [Development environment](#development-environment)
 	- [Getting the code](#getting-the-code)
-	- [Setting the HERE Mobile SDK license](#setting-the-here-mobile-sdk-license)
+	- [Setting the HERE Mobile SDK credentials](#setting-the-here-mobile-sdk-credentials)
 	- [Setting up the environment](#setting-up-the-environment)
 - [Building the MSKUI Framework](#building-the-mskui-framework)
 - [Building the Demo app](#building-the-demo-app)
@@ -40,9 +40,9 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 ## Development environment
 
-Prerequisites, as of November, 2018:
+Prerequisites, as of March, 2019:
 
-- Latest [Xcode](https://developer.apple.com/xcode/) (10.1), which requires macOS High Sierra
+- Latest [Xcode](https://developer.apple.com/xcode/) (10.1), which requires macOS High Sierra (or higher)
 - Xcode command line tools, which can be installed by running the command `xcode-select --install`
 - Ruby 2.0 or higher
 - [Bundler](https://bundler.io/) to ensure a consistent environment
@@ -56,7 +56,7 @@ $ git clone https://github.com/heremaps/msdkui-ios
 $ cd msdkui-ios
 ```
 
-### Setting the HERE Mobile SDK license
+### Setting the HERE Mobile SDK credentials
 
 Before building, testing, or running the MSDKUI Demo application it's important to set the HERE Mobile SDK credentials. If you don't know your credentials, please ask your HERE stakeholder or register on [developer.here.com](https://developer.here.com) and create new ones.
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		00EB024E43AAADBA864FCB97 /* libPods-HelloMSDKUI.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF2D2E7FFE603FBFDDD373C1 /* libPods-HelloMSDKUI.a */; };
 		C8083FD3216219DF007F4225 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8083FD2216219DF007F4225 /* AppDelegate.swift */; };
 		C8083FD5216219DF007F4225 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8083FD4216219DF007F4225 /* ViewController.swift */; };
 		C8083FD8216219DF007F4225 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C8083FD6216219DF007F4225 /* Main.storyboard */; };
@@ -22,6 +23,9 @@
 		C8083FD9216219E1007F4225 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8083FDC216219E1007F4225 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C8083FDE216219E1007F4225 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C937086FDB4646CA5D6CED31 /* Pods-HelloMSDKUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloMSDKUI.release.xcconfig"; path = "Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI.release.xcconfig"; sourceTree = "<group>"; };
+		CF2D2E7FFE603FBFDDD373C1 /* libPods-HelloMSDKUI.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-HelloMSDKUI.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F234D1C47B40EBF1EF77D991 /* Pods-HelloMSDKUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloMSDKUI.debug.xcconfig"; path = "Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +33,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				00EB024E43AAADBA864FCB97 /* libPods-HelloMSDKUI.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1247D44A3EA1918FD65E2C21 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F234D1C47B40EBF1EF77D991 /* Pods-HelloMSDKUI.debug.xcconfig */,
+				C937086FDB4646CA5D6CED31 /* Pods-HelloMSDKUI.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		C8083FC6216219DF007F4225 = {
 			isa = PBXGroup;
 			children = (
 				C8083FD1216219DF007F4225 /* HelloMSDKUI */,
 				C8083FD0216219DF007F4225 /* Products */,
+				1247D44A3EA1918FD65E2C21 /* Pods */,
+				FC8E14A1FAD56A2DCA82A4B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +80,14 @@
 			path = HelloMSDKUI;
 			sourceTree = "<group>";
 		};
+		FC8E14A1FAD56A2DCA82A4B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CF2D2E7FFE603FBFDDD373C1 /* libPods-HelloMSDKUI.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +95,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8083FE1216219E1007F4225 /* Build configuration list for PBXNativeTarget "HelloMSDKUI" */;
 			buildPhases = (
+				63F18125EA2B8D1F38DE79F8 /* [CP] Check Pods Manifest.lock */,
 				C8083FCB216219DF007F4225 /* Sources */,
 				C8083FCC216219DF007F4225 /* Frameworks */,
 				C8083FCD216219DF007F4225 /* Resources */,
+				A46645938E1DDDCB95394546 /* [CP] Embed Pods Frameworks */,
+				D0D314168A916EC3FFDF7037 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -96,7 +123,6 @@
 				TargetAttributes = {
 					C8083FCE216219DF007F4225 = {
 						CreatedOnToolsVersion = 10.0;
-						DevelopmentTeam = PQEP8H94J7;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +157,75 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		63F18125EA2B8D1F38DE79F8 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloMSDKUI-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A46645938E1DDDCB95394546 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-frameworks.sh",
+				"${PODS_ROOT}/HEREMaps/framework/NMAKit.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMAKit.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0D314168A916EC3FFDF7037 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/HEREMapsUI/MSDKUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MSDKUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C8083FCB216219DF007F4225 /* Sources */ = {
@@ -281,6 +376,7 @@
 		};
 		C8083FE2216219E1007F4225 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F234D1C47B40EBF1EF77D991 /* Pods-HelloMSDKUI.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -297,6 +393,7 @@
 		};
 		C8083FE3216219E1007F4225 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C937086FDB4646CA5D6CED31 /* Pods-HelloMSDKUI.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
