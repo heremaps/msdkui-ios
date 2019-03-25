@@ -232,4 +232,4 @@ DEPENDENCIES
   xcov (= 1.5.0)
 
 BUNDLED WITH
-   1.16.4
+   2.0.1
