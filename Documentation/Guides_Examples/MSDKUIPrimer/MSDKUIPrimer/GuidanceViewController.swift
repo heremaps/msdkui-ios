@@ -48,12 +48,17 @@ class GuidanceViewController: UIViewController, GuidanceManeuverMonitorDelegate 
     func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
                                  didUpdateData data: GuidanceManeuverData?) {
         print("data changed: \(String(describing: data))")
-        guidanceManeuverView.data = data
+        if let maneuverData = data {
+            guidanceManeuverView.state = .data(maneuverData)
+        } else {
+            guidanceManeuverView.state = .updating
+        }
     }
 
     func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
         print("Destination reached.")
-        guidanceManeuverView.highlightManeuver(textColor: .colorAccentLight)
+        guidanceManeuverView.tintColor = .colorAccentLight
+        guidanceManeuverView.highlightManeuver = true
     }
 
     // MARK: - GuidanceHelper

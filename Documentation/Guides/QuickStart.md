@@ -62,15 +62,16 @@ To run CocoaPods, please close Xcode and create a new "Podfile" in your project'
 ```ruby
 target 'HelloMSDKUI' do
     platform :ios, '10.0'
-    pod 'HEREMapsUI', '2.0'
+    pod 'HEREMapsUI', '2.1.0'
 end
 ```
+
+- The `target` specifies your project's name (which is "HelloMSDKUI" in the above example).
+- Make sure to set the version number for `HEREMapsUI` to a version we have published via CocoaPods.
 
 >**Note:** If you have forked or if you want to use the latest development branch, you can instead point to the local MSDKUI.podspec. For example, if your project lives in the same folder as the example apps, this would be: `pod 'HEREMapsUI', :path => '../../../'`.
 
 The podspec for MSDKUI already includes the dependency to the HERE Mobile SDK and the SDK will be automatically fetched and integrated into your app by CocoaPods. The HERE Mobile SDK version will be the one that MSDKUI has specified on its [podspec](https://cocoapods.org/pods/HEREMapsUI).
-
-As `target` please specify your project name (which is set to "HelloMSDKUI" in this example). Make sure to set the version number for `HEREMapsUI` to a version we have published via CocoaPods. In this example we have set it to the latest version.
 
 To include the required dependencies, please perform the following steps:
 

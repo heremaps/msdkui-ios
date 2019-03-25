@@ -64,6 +64,6 @@ class ManeuverViewController: UIViewController, RouteDescriptionListDelegate, Ma
     }
 
     @objc public func maneuverTableView(_ tableView: MSDKUI.ManeuverTableView, willDisplay view: MSDKUI.ManeuverItemView) {
-        view.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
+        view.iconTintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
     }
 }

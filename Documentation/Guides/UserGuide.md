@@ -12,10 +12,10 @@ This user guide describes the general workflow using the HERE Mobile SDK UI Kit 
 - [Overview of the HERE Mobile SDK UI Kit Primer example](#overview-of-the-here-mobile-sdk-ui-kit-primer-example)
 - [Designing the app flow](#designing-the-app-flow)
 - [Adding the HERE Mobile SDK UI Kit components](#adding-the-here-mobile-sdk-ui-kit-components)
-	- [Adding the map view](#adding-the-map-view)
+  - [Adding the map view](#adding-the-map-view)
 - [Using the WaypointList](#using-the-waypointlist)
-	- [Adding custom styles](#adding-custom-styles)
-	- [Calculating the route](#calculating-the-route)
+  - [Adding custom styles](#adding-custom-styles)
+  - [Calculating the route](#calculating-the-route)
 - [Using the TransportModePanel](#using-the-transportmodepanel)
 - [Implementing the route details screen](#implementing-the-route-details-screen)
 - [Using the RouteDescriptionList](#using-the-routedescriptionlist)
@@ -66,20 +66,20 @@ You can find the complete example code of the _MSDKUIPrimer_ app in the [example
 The HERE Mobile SDK UI Kit Primer example app consists of three screens illustrating some of the main HERE Mobile SDK UI Kit components _in action_:
 
 **Main Screen** (`ViewController.swift`)
-- Shows a programmatically pre-populated `WaypointList`
-- A `TransportModePanel` to select a transport mode and to trigger immediate route calculation
-- A `NMAMapView` to show the calculated route and zoom to selected waypoints
-- An `UIButton` to navigate to the next screen
+- Shows a programmatically pre-populated `WaypointList`.
+- A `TransportModePanel` to select a transport mode and to trigger immediate route calculation.
+- A `NMAMapView` to show the calculated route and zoom to selected waypoints.
+- An `UIButton` to navigate to the next screen.
 
 **Route Details Screen** (`ManeuverViewController.swift`)
-- Contains a `RouteDescriptionList` to select a route (if more than one route was found)
-- A `ManeuverTableView` to show the maneuvers of the selected route
-- An `UIButton` to navigate to the next screen
+- Contains a `RouteDescriptionList` to select a route (if more than one route was found).
+- A `ManeuverTableView` to show the maneuvers of the selected route.
+- An `UIButton` to navigate to the next screen.
 
 **Guidance Screen** (`GuidanceViewController.swift`)
-- Shows a `GuidanceManeuverView` to indicate the next maneuvers including voice over
-- A `NMAMapView` to show the current position and orientation on the map
-- An `UIButton` to stop guidance
+- Shows a `GuidanceManeuverView` to indicate the next maneuvers.
+- A `NMAMapView` to show the current position and orientation on the map.
+- An `UIButton` to stop guidance.
 
 First we need to create a new Xcode project, integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit. If you followed the [Quick Start](QuickStart.md) guide, you have already created a `ViewController` as the main entry point to your application. If you prefer, you can also integrate this example into an existing application. The following steps will remain the same.
 
@@ -355,7 +355,7 @@ As you may have noticed from the previous screenshot, we've also customized the 
 
 ```swift
 @objc public func maneuverTableView(_ tableView: MSDKUI.ManeuverTableView, willDisplay view: MSDKUI.ManeuverItemView) {
-    view.iconImageView.tintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
+    view.iconTintColor = UIColor(red: 1.0, green: 0.77, blue: 0.11, alpha: 1.0)
 }
 ```
 
@@ -364,6 +364,8 @@ Tip: Try to play around with other customizable properties.
 ## Implementing the guidance screen
 To finish our quick overview, we want to use the selected route from the previous step to start guidance along that route. For this we only need one new HERE Mobile SDK UI Kit component:
 - `GuidanceManeuverView`
+
+Since the contents of the `GuidanceManeuverView` may vary in height, it is recommended to _not_ set a constrained height. Note that all guidance components wrap their content without an additional padding. This gives us more flexibility to customize the layout - for example, we can specify our own padding by adding the `GuidanceManeuverView` with the desired outer constraints as a child to a parent view.
 
 In addition, we also want to show a map during guidance to let the user orientate where we currently are.
 
@@ -374,31 +376,40 @@ Once we have attached all needed views to our layout, we can Control-drag them t
 ```
 
 ## Using the GuidanceManeuverView
-The `GuidanceManeuverView` is a view where information about the next maneuvers will appear. As with all HERE Mobile SDK UI Kit components, it is already configured, so you only need to pass in the current `GuidanceManeuverData`. Therefore we need to implement the `GuidanceManeuverMonitorDelegate` which requires us to implement two methods:
-```swift
-func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
-                             didUpdateData data: GuidanceManeuverData?) {
-    print("data changed: \(String(describing: data))")
-    guidanceManeuverView.data = data
-}
+The `GuidanceManeuverView` is a view where information about the next maneuvers will appear. As with all HERE Mobile SDK UI Kit components, it is already configured, so you only need to pass in the desired state based on the provided `GuidanceManeuverData`.
 
-func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
-    print("Destination reached.")
-    guidanceManeuverView.highlightManeuver(textColor: .colorAccentLight)
-}
-```
-
-While the first method simply sets the received `GuidanceManeuverData` to the `GuidanceManeuverView`, by setting it to the `data` property of the view, the latter informs us when the user has finally reached the destination. In this case, we choose to highlight the last maneuver.
-
-Both methods require us to create a new `GuidanceManeuverMonitor` object to start listening:
+Before we can retrieve that data, we need to create a new `GuidanceManeuverMonitor` instance to start listening:
 ```swift
 guidanceManeuverMonitor = GuidanceManeuverMonitor(route: route!)
 guidanceManeuverMonitor.delegate = self
 ```
 
-This way our class can set the `route` that is used for guidance to the `GuidanceManeuverMonitor`. The presenter is then taking care of forwarding any navigation events to the delegate class - allowing it to intercept the current `GuidanceManeuverData`. In our implementation we simply set the current `data` to the `GuidanceManeuverView`, so the user can see which turn to take next.
+This way, we can set the `route` that will be used for guidance. The `GuidanceManeuverMonitor` is then taking care of forwarding any navigation events to the delegate class - allowing us to intercept the current `GuidanceManeuverData`.
 
->**Note:** `data: GuidanceManeuverData?` is an _optional_ value. If `nil` is passed to `guidanceManeuverView.data`, then the view will show a loading state - indicating that there is currently no data to show. In case you want to stick with the default behavior, you can simply pass `data` - regardless if it is `nil` or not. If you want to change the default behavior, you can set a customized `GuidanceManeuverData` instance. Please note, before starting the trip, no initial maneuver data may be present. In such a case, the view shows a suitable default instruction, like "Follow the route on the map", until the first maneuver data - whether `nil` or not - is provided.
+For this we need to implement the `GuidanceManeuverMonitorDelegate` which requires us to implement two methods:
+```swift
+func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor,
+                             didUpdateData data: GuidanceManeuverData?) {
+    print("data changed: \(String(describing: data))")
+    if let maneuverData = data {
+        guidanceManeuverView.state = .data(maneuverData)
+    } else {
+        guidanceManeuverView.state = .updating
+    }
+}
+
+func guidanceManeuverMonitorDidReachDestination(_ monitor: GuidanceManeuverMonitor) {
+    print("Destination reached.")
+    guidanceManeuverView.tintColor = .colorAccentLight
+    guidanceManeuverView.highlightManeuver = true
+}
+```
+
+While the first method simply sets the desired state to the `GuidanceManeuverView`, the latter informs us when the user has finally reached the destination. In this case, we choose to highlight the last maneuver.
+
+`data: GuidanceManeuverData?` is an _optional_ value. If it is `nil`, we set the `.updating`-state to show a loading state indicating that there is currently no data to show. If you want to change the default behavior, you can use a customized `GuidanceManeuverData` instance.
+
+>Before starting the trip, no initial maneuver data may be present. In such a case, the view shows a suitable default instruction, like "Follow the route on the map", until the first maneuver data - whether `nil` or not - is provided.
 
 In order for our app to be able to use guidance we must use the device's `location-services` and add the following permissions to our `Info.plist`.
 ```xml
