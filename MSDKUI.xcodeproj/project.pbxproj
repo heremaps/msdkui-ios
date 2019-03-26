@@ -1404,7 +1404,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Tests/Pods-MSDKUI_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Tests/Pods-MSDKUI_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/OCMock/OCMock.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1413,7 +1413,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Tests/Pods-MSDKUI_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Tests/Pods-MSDKUI_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4234253C24D699821F6D11A3 /* [CP] Embed Pods Frameworks */ = {
@@ -1422,7 +1422,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Demo_Tests/Pods-MSDKUI_Demo_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo_Tests/Pods-MSDKUI_Demo_Tests-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/OCMock/OCMock.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1431,7 +1431,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Demo_Tests/Pods-MSDKUI_Demo_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo_Tests/Pods-MSDKUI_Demo_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		479809847E86E3A6BF18EF08 /* SwiftLint */ = {
@@ -1571,7 +1571,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo-frameworks.sh",
 				"${PODS_ROOT}/HEREMaps/framework/NMAKit.framework",
 				"${BUILT_PRODUCTS_DIR}/HEREMapsUI/MSDKUI.framework",
 			);
@@ -1582,7 +1582,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		A0351FC6D21D193D579755BE /* [CP] Check Pods Manifest.lock */ = {
@@ -1611,7 +1611,7 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh",
 				"${PODS_ROOT}/HEREMaps/framework/NMAKit.framework",
 				"${BUILT_PRODUCTS_DIR}/HEREMapsUI/MSDKUI.framework",
 			);
@@ -1624,7 +1624,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BAA020550981B4C631FD407D /* [CP] Embed Pods Frameworks */ = {
@@ -1633,7 +1633,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Demo_UI_Tests/Pods-MSDKUI_Demo_UI_Tests-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo_UI_Tests/Pods-MSDKUI_Demo_UI_Tests-frameworks.sh",
 				"${PODS_ROOT}/EarlGrey/EarlGrey/EarlGrey.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1642,7 +1642,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MSDKUI_Demo_UI_Tests/Pods-MSDKUI_Demo_UI_Tests-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo_UI_Tests/Pods-MSDKUI_Demo_UI_Tests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BC4FEE2693ACE0FEDAC544AB /* [CP] Check Pods Manifest.lock */ = {
