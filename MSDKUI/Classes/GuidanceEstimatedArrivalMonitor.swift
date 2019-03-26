@@ -69,6 +69,7 @@ open class GuidanceEstimatedArrivalMonitor {
         setUpPositionUpdateObserver()
     }
 
+    // swiftlint:disable:next missing_docs
     deinit {
         // Removes the observer
         positionUpdateObserver.flatMap(notificationCenter.removeObserver)

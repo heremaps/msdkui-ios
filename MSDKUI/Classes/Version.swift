@@ -26,7 +26,7 @@ public class Version: NSObject {
         guard
             let plistURL = Bundle.MSDKUI?.url(forResource: "Info", withExtension: "plist"),
             let plistData = try? Data(contentsOf: plistURL),
-            let result = try? PropertyListSerialization.propertyList(from: plistData, format: nil) as? [String: Any],
+            let result = ((try? PropertyListSerialization.propertyList(from: plistData, format: nil) as? [String: Any]) as [String: Any]??),
             let version = result?["CFBundleShortVersionString"] as? String else { return "?" }
 
         return version

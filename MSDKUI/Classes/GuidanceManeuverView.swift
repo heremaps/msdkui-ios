@@ -97,6 +97,9 @@ import UIKit
             case .vertical:
                 contentStackView.alignment = .leading
                 contentStackView.spacing = 12
+
+            @unknown default:
+                fatalError("Unknown axis")
             }
 
             updateSeparator()

@@ -120,7 +120,7 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
         }
 
         // Expect hidden `destinationView`
-        let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView,
+        let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView as Any,
                                                                             keyPath: #keyPath(UIView.isHidden),
                                                                             expectedValue: false)
 
@@ -136,7 +136,7 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
         let navigationController = UINavigationController(rootViewController: viewController)
 
         // Expect hidden `destinationView`
-        let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView,
+        let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView as Any,
                                                                             keyPath: #keyPath(UIView.isHidden),
                                                                             expectedValue: false)
 

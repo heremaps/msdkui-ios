@@ -25,7 +25,7 @@ extension Bundle {
         guard
             let plistURL = url(forResource: "Info", withExtension: "plist"),
             let data = try? Data(contentsOf: plistURL),
-            let result = try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any],
+            let result = ((try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any]) as [String: Any]??),
             let versionPlist = result?["CFBundleShortVersionString"] as? String
             else {
                 return "?"

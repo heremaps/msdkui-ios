@@ -2,7 +2,7 @@ language: ruby
 rvm:
   - 2.5.3
 os: osx
-osx_image: xcode10.1
+osx_image: xcode10.2
 branches:
   only:
     - master
@@ -27,3 +27,4 @@ jobs:
         - rake test:demo_app_unit
       after_success:
         - bash <(curl -s https://codecov.io/bash) -cF ios -J '^MSDKUI_Demo$'
+

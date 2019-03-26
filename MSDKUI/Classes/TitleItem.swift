@@ -62,7 +62,7 @@ open class TitleItem: NSObject {
         view.translatesAutoresizingMaskIntoConstraints = false
 
         // The title height should remain constant
-        let heightConstraint = NSLayoutConstraint(item: view, attribute: .height, relatedBy: .equal,
+        let heightConstraint = NSLayoutConstraint(item: view as Any, attribute: .height, relatedBy: .equal,
                                                   toItem: nil, attribute: .notAnAttribute,
                                                   multiplier: 1, constant: view.bounds.size.height)
         heightConstraint.priority = UILayoutPriority(rawValue: 999) // iOS10 warns when the title is hidden
