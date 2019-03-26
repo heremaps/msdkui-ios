@@ -43,9 +43,10 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 Prerequisites, as of March, 2019:
 
 - Latest [Xcode](https://developer.apple.com/xcode/) (10.1), which requires macOS High Sierra (or higher)
+- [Brew](https://brew.sh/)
 - Xcode command line tools, which can be installed by running the command `xcode-select --install`
 - Ruby 2.0 or higher
-- [Bundler](https://bundler.io/) to ensure a consistent environment
+- [Bundler 1.16.6](https://bundler.io/) to ensure a consistent environment
 
 There are many ways to install Ruby on macOS. Recent macOS versions already include Ruby 2.0 or higher, but other popular ways to install Ruby include [brew](https://brew.sh/), [rbenv](https://github.com/rbenv/rbenv), and [rvm](https://rvm.io/rvm/install). For this reason, installing Bundler might differ between environments, see [Troubleshooting](#troubleshooting) for more details.
 
@@ -607,6 +608,34 @@ ENV['MSDKUI_DEMO_APP_STRINGS_URL'] = "https://.../release.zip"
 ```
 
 ## Troubleshooting
+
+### Installing rbenv, ruby, and bundler
+
+We highly recommend `rbenv` to install `ruby` and `gem`s, and `brew` to install `rbenv`. To create a ruby environment from scratch, follow the following instructions:
+
+```
+# Install rbenv (ruby manager)
+$ brew install rbenv
+
+# Install ruby-build (to install and build native extension)
+$ brew install ruby-build
+
+# Add rbenv (and gems) to PATH
+$ echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bash_profile
+
+# Initialize rbenv
+$ echo 'eval "$(rbenv init -)"' >> ~/.bash_profile
+
+# Install the Ruby version
+$ rbenv install 2.5.1
+
+# Set the ruby version
+$ rbenv global 2.5.1
+
+# Install bundler
+gem install bundler -v '1.16.6'
+```
+The instructions on how to install `rbenv` and `ruby-build` using `brew` can also be found at [rbenv's GitHub page](https://github.com/rbenv/rbenv).
 
 ### Bundler
 
