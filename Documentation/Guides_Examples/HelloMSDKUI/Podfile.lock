@@ -4,20 +4,17 @@ PODS:
     - HEREMaps (= 3.10.1)
 
 DEPENDENCIES:
-  - HEREMapsUI (from `../../../`)
+  - HEREMapsUI (= 2.1.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - HEREMaps
-
-EXTERNAL SOURCES:
-  HEREMapsUI:
-    :path: "../../../"
+    - HEREMapsUI
 
 SPEC CHECKSUMS:
   HEREMaps: 223c0a85c61b4336fb31c45160c249bb1625a0e3
   HEREMapsUI: d82d5246fc5942ed49383129135a38c33df0daca
 
-PODFILE CHECKSUM: dc931bf0dd4c77a3e65ce14b2e88d090cf10581f
+PODFILE CHECKSUM: e49df25d859c3b55231e92e60778c8b6f9359d95
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.6.1
