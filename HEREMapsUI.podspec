@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
     s.resource_bundles      = {
         'MSDKUI' => ['MSDKUI/Assets/*.png', 'MSDKUI/Assets/*.xib', 'MSDKUI/Assets/*.lproj']
     }
-    s.dependency            'HEREMaps', '3.10.1'
+    s.dependency            'HEREMaps', '3.11.0'
 end
