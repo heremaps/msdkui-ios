@@ -58,6 +58,8 @@ extension NMARoutingError: CustomDebugStringConvertible {
             reason = "Online route calculation request failed because of a networking error."
         case .unsupportedMapVersion:
             reason = "Routing server does not support map version specified in request."
+        @unknown default:
+            reason = "Unknown."
         }
 
         return "Error code \(rawValue). Possible reason: \(reason)"

@@ -42,7 +42,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 Prerequisites, as of March, 2019:
 
-- Latest [Xcode](https://developer.apple.com/xcode/) (10.1), which requires macOS High Sierra (or higher)
+- Latest [Xcode](https://developer.apple.com/xcode/) (10.2), which requires macOS Mojave (or higher)
 - [Brew](https://brew.sh/)
 - Xcode command line tools, which can be installed by running the command `xcode-select --install`
 - Ruby 2.0 or higher
@@ -546,7 +546,7 @@ rake tools:xcov_demo_app     # Run Test Coverage for the Demo App Unit Tests
 rake tools:xcov_msdkui       # Run Test Coverage for the MSDKUI Framework Unit Tests
 ```
 
-The iOS version used for testing is `12.1` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
+The iOS version used for testing is `12.2` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
 
 ```
 $ DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="12.0" bundle exec rake test:msdkui_unit

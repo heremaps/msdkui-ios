@@ -99,7 +99,7 @@ final class EmptyViewTests: XCTestCase {
         UIApplication.shared.keyWindow?.rootViewController = viewController
 
         // Expect visible `view.imageView` in regular vertical trait collection
-        let visibleImageViewExpectation = keyValueObservingExpectation(for: view.imageView,
+        let visibleImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
                                                                        keyPath: #keyPath(UIView.isHidden),
                                                                        expectedValue: false)
 
@@ -110,7 +110,7 @@ final class EmptyViewTests: XCTestCase {
         wait(for: [visibleImageViewExpectation], timeout: 5)
 
         // Expect hidden `view.imageView` in compact vertical trait collection
-        let hiddenImageViewExpectation = keyValueObservingExpectation(for: view.imageView,
+        let hiddenImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
                                                                       keyPath: #keyPath(UIView.isHidden),
                                                                       expectedValue: true)
 
