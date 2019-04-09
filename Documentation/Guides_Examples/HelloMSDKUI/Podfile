@@ -1,4 +1,4 @@
 target 'HelloMSDKUI' do
     platform :ios, '10.0'
-    pod 'HEREMapsUI', '2.1.0'
+    pod 'HEREMapsUI', '2.1.1'
 end
