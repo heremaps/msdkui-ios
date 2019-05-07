@@ -317,6 +317,7 @@ end
 def buildjazzy(workspace:, scheme:, module_name:, readme:, output_directory:)
     systemOrExit "bundle exec jazzy \
             --skip-undocumented \
+            --hide-documentation-coverage \
             --clean \
             --xcodebuild-arguments -workspace,#{workspace},-scheme,#{scheme},-configuration,Release,defines_module=yes \
             --module '#{module_name}' \
