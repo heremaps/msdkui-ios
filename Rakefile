@@ -307,6 +307,7 @@ def buildframework(workspace:, scheme:, architectures:, sdk:, output_directory:)
         .reduce("") { |previous, arch| "#{previous} -arch #{arch}" }
 
     systemOrExit "xcodebuild \
+    		BITCODE_GENERATION_MODE=bitcode \
             -workspace #{workspace} \
             -configuration Release \
             #{archs} only_active_arch=no defines_module=yes \
