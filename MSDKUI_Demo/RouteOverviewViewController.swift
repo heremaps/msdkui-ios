@@ -194,6 +194,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
         super.viewDidAppear(animated)
 
         checkLocationAuthorizationStatus()
+        updateViewport(of: mapView)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
