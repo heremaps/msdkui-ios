@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name                  = 'HEREMapsUI'
     s.module_name           = 'MSDKUI'
-    s.version               = '2.1.1'
+    s.version               = '2.1.2'
     s.summary               = 'HEREMapsUI (MSDKUI) provides ready-to-use UI components for the HERE Mobile SDK for iOS.'
     s.description           = 'HEREMapsUI (MSDKUI) aims to make life easier for the iOS developers using the HERE Mobile SDK for iOS. It provides ready-to-use UI components with strong customization support. Plus, it supports accessibility and localization.'
     s.homepage              = 'https://github.com/heremaps/msdkui-ios'
@@ -14,5 +14,5 @@ Pod::Spec.new do |s|
     s.resource_bundles      = {
         'MSDKUI' => ['MSDKUI/Assets/*.png', 'MSDKUI/Assets/*.xib', 'MSDKUI/Assets/*.lproj']
     }
-    s.dependency            'HEREMaps', '3.11.0'
+    s.dependency            'HEREMaps', '3.12.2'
 end
