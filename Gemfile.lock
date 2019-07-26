@@ -169,7 +169,7 @@ GEM
     os (1.0.1)
     plist (3.5.0)
     public_suffix (2.0.5)
-    rake (12.3.1)
+    rake (12.3.3)
     rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
@@ -239,7 +239,7 @@ PLATFORMS
 DEPENDENCIES
   cocoapods (= 1.7.5)
   jazzy (= 0.10.0)
-  rake (= 12.3.1)
+  rake (= 12.3.3)
   xcov (= 1.5.1)
 
 BUNDLED WITH
