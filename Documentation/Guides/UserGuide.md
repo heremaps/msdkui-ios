@@ -411,6 +411,8 @@ While the first method simply sets the desired state to the `GuidanceManeuverVie
 
 >Before starting the trip, no initial maneuver data may be present. In such a case, the view shows a suitable default instruction, like "Follow the route on the map", until the first maneuver data - whether `nil` or not - is provided.
 
+Optionally, you can use the MSDKUI's `NavigationManagerDelegateDispatcher` to multicast the HERE SDK's navigation events to your controller. This way you can, for example, enable voice commands during navigation. Check the `GuidanceViewController` for an example on how to do this.
+
 In order for our app to be able to use guidance we must use the device's `location-services` and add the following permissions to our `Info.plist`.
 ```xml
 <key>UIRequiredDeviceCapabilities</key>
@@ -452,6 +454,18 @@ Within Xcode you have to add the desired languages you want to support. If the l
 - Set a language on the device via the device's settings. Restart your app: The HERE Mobile SDK UI Kit components should be localized now.
 
 Note that this procedure does not contain any HERE specific steps. It's just the standard way on iOS how to add localization to your app. Once the app is properly localized the HERE Mobile SDK UI Kit will recognize the language and display the current language, if available.
+
+During navigation you can also localize the shown units in the `GuidanceManeuverView`. The view has a property `distanceFormatter` that allows to specify a [MeasurementFormatter](https://developer.apple.com/documentation/foundation/measurementformatter):
+
+```swift
+let measurementFormatter = MeasurementFormatter()
+measurementFormatter.unitOptions = .providedUnit
+measurementFormatter.unitStyle = .short
+measurementFormatter.locale = Locale(identifier: "de_DE")
+guidanceManeuverView.distanceFormatter = measurementFormatter
+```
+
+For this example we have set the locale identifier to German ("de_DE").
 
 ## Where to go from here?
 Congratulations, by following this HERE Mobile SDK UI Kit Primer tutorial you have discovered the basic HERE Mobile SDK UI Kit components and how they can work together to build extremely powerful apps. Please take a look at the [API Reference](https://heremaps.github.io/msdkui-ios/) to learn more about the various HERE Mobile SDK UI Kit components.
