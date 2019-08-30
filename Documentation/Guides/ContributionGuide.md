@@ -8,7 +8,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 	- [Getting the code](#getting-the-code)
 	- [Setting the HERE Mobile SDK credentials](#setting-the-here-mobile-sdk-credentials)
 	- [Setting up the environment](#setting-up-the-environment)
-- [Building the MSKUI Framework](#building-the-mskui-framework)
+- [Building the MSDKUI Framework](#building-the-msdkui-framework)
 - [Building the Demo app](#building-the-demo-app)
 - [Building the Dev app](#building-the-dev-app)
 - [Commit / pull request policy](#commit-pull-request-policy)
@@ -97,7 +97,7 @@ Everything after this point is done from within Xcode. Launch it via command lin
 $ open -a xcode MSDKUI.xcworkspace
 ```
 
-## Building the MSKUI Framework
+## Building the MSDKUI Framework
 
 The easiest way to build the MSDKUI Framework is using the command line:
 
@@ -106,6 +106,8 @@ $ bundle exec rake build:msdkui_framework
 ```
 
 At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`. The framework is a [fat binary](https://en.wikipedia.org/wiki/Fat_binary), built for device and simulator.
+
+>**Note:** Depending on your network and machine, building the framework may take longer for the first time. If the rake task complains about missing simulators, please try to install them from within Xcode. To do this, open *Xcode -> Preferences -> Components*.
 
 ## Building the Demo app
 
