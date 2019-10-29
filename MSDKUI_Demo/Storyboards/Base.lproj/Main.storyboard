@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dn0-HP-acH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dn0-HP-acH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--Landing View Controller-->
         <scene sceneID="PwE-4k-sM0">
             <objects>
-                <viewController storyboardIdentifier="LandingViewController" id="dn0-HP-acH" customClass="LandingViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FU0-JO-Ex9"/>
-                        <viewControllerLayoutGuide type="bottom" id="WJD-1u-EmG"/>
-                    </layoutGuides>
+                <viewController storyboardIdentifier="LandingViewController" modalPresentationStyle="fullScreen" id="dn0-HP-acH" customClass="LandingViewController" customModule="MSDKUI_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="dgx-oU-ObZ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <navigationBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Onr-rQ-xBy">
-                                <rect key="frame" x="0.0" y="20" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="MSDK UI Demo" id="J07-XS-kU8">
                                         <barButtonItem key="rightBarButtonItem" image="Info" id="sBa-c6-eDV">
@@ -31,26 +30,26 @@
                                 </items>
                             </navigationBar>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="91z-DP-Bfl">
-                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="563" axis="vertical" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="he6-YF-jk8">
-                                        <rect key="frame" x="20" y="20" width="560" height="500"/>
+                                        <rect key="frame" x="20" y="20" width="374" height="500"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="343" translatesAutoresizingMaskIntoConstraints="NO" id="23i-hJ-brZ" userLabel="RoutePlanner Card">
-                                                <rect key="frame" x="0.0" y="0.0" width="560" height="240"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="240"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="routeplanner_teaser" translatesAutoresizingMaskIntoConstraints="NO" id="uin-Wp-wHP" userLabel="RoutePlanner Image">
-                                                        <rect key="frame" x="297" y="128" width="263" height="112"/>
+                                                        <rect key="frame" x="111" y="128" width="263" height="112"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="uin-Wp-wHP" secondAttribute="height" multiplier="263:112" id="46L-jZ-Fko"/>
                                                             <constraint firstAttribute="height" constant="112" id="UTE-KU-buO"/>
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NKq-UQ-GPT">
-                                                        <rect key="frame" x="20" y="20" width="520" height="69"/>
+                                                        <rect key="frame" x="20" y="20" width="334" height="89"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Route Planner" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AUb-Wk-Wz7">
-                                                                <rect key="frame" x="0.0" y="0.0" width="520" height="25"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="334" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="otz-nP-oqI"/>
                                                                 </constraints>
@@ -59,13 +58,13 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get directions for trucks, driving, biking and walking" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IXg-Le-ieu">
-                                                                <rect key="frame" x="0.0" y="29" width="520" height="18"/>
+                                                                <rect key="frame" x="0.0" y="29" width="334" height="38"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have  a look" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R9j-pX-E8K">
-                                                                <rect key="frame" x="0.0" y="51" width="520" height="18"/>
+                                                                <rect key="frame" x="0.0" y="71" width="334" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="0l7-Ao-3oL"/>
                                                                 </constraints>
@@ -95,20 +94,20 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="335" placeholderIntrinsicHeight="200" translatesAutoresizingMaskIntoConstraints="NO" id="lGn-ap-fLV" userLabel="DriveNav Card">
-                                                <rect key="frame" x="0.0" y="260" width="560" height="240"/>
+                                                <rect key="frame" x="0.0" y="260" width="374" height="240"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="drivenav_teaser" translatesAutoresizingMaskIntoConstraints="NO" id="SpU-rb-Vni" userLabel="DriveNav Image">
-                                                        <rect key="frame" x="297" y="128" width="263" height="112"/>
+                                                        <rect key="frame" x="111" y="128" width="263" height="112"/>
                                                         <constraints>
                                                             <constraint firstAttribute="width" secondItem="SpU-rb-Vni" secondAttribute="height" multiplier="263:112" id="Yf6-da-vDv"/>
                                                             <constraint firstAttribute="height" constant="112" id="wag-O2-Yx1"/>
                                                         </constraints>
                                                     </imageView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Mct-lS-sdB">
-                                                        <rect key="frame" x="20" y="20" width="520" height="69"/>
+                                                        <rect key="frame" x="20" y="20" width="334" height="89"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Drive Navigation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qbD-ra-XSa">
-                                                                <rect key="frame" x="0.0" y="0.0" width="520" height="25"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="334" height="25"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="25" id="Ruw-EJ-940"/>
                                                                 </constraints>
@@ -117,13 +116,13 @@
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help your users get to their destinations with turn-by-turn guidance" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hB1-7Y-w66">
-                                                                <rect key="frame" x="0.0" y="29" width="520" height="18"/>
+                                                                <rect key="frame" x="0.0" y="29" width="334" height="38"/>
                                                                 <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have a look" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EcV-t9-0Te">
-                                                                <rect key="frame" x="0.0" y="51" width="520" height="18"/>
+                                                                <rect key="frame" x="0.0" y="71" width="334" height="18"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="18" id="9fA-ax-5qE"/>
                                                                 </constraints>
@@ -159,6 +158,7 @@
                                         <variation key="heightClass=compact" axis="horizontal"/>
                                     </stackView>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="he6-YF-jk8" secondAttribute="trailing" constant="20" id="8C6-7P-7ew"/>
                                     <constraint firstItem="he6-YF-jk8" firstAttribute="top" secondItem="91z-DP-Bfl" secondAttribute="top" constant="20" id="9DH-bV-ac3"/>
@@ -168,16 +168,17 @@
                                 </constraints>
                             </scrollView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.058823529409999999" green="0.086274509799999996" blue="0.12941176469999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="91z-DP-Bfl" firstAttribute="trailing" secondItem="dgx-oU-ObZ" secondAttribute="trailing" id="6NQ-Qi-XeO"/>
-                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="leading" secondItem="dgx-oU-ObZ" secondAttribute="leading" id="9U8-Ix-P6r"/>
-                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="trailing" secondItem="dgx-oU-ObZ" secondAttribute="trailing" id="9u1-bX-fBk"/>
-                            <constraint firstItem="91z-DP-Bfl" firstAttribute="bottom" secondItem="WJD-1u-EmG" secondAttribute="top" id="H3Z-EJ-ZO9"/>
-                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="top" secondItem="FU0-JO-Ex9" secondAttribute="bottom" id="Ps6-Lb-Ohv"/>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="trailing" secondItem="PKL-Fo-UIE" secondAttribute="trailing" id="6NQ-Qi-XeO"/>
+                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="leading" secondItem="PKL-Fo-UIE" secondAttribute="leading" id="9U8-Ix-P6r"/>
+                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="trailing" secondItem="PKL-Fo-UIE" secondAttribute="trailing" id="9u1-bX-fBk"/>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="bottom" secondItem="PKL-Fo-UIE" secondAttribute="bottom" id="H3Z-EJ-ZO9"/>
+                            <constraint firstItem="Onr-rQ-xBy" firstAttribute="top" secondItem="PKL-Fo-UIE" secondAttribute="top" id="Ps6-Lb-Ohv"/>
                             <constraint firstItem="91z-DP-Bfl" firstAttribute="top" secondItem="Onr-rQ-xBy" secondAttribute="bottom" id="U27-43-K0g"/>
-                            <constraint firstItem="91z-DP-Bfl" firstAttribute="leading" secondItem="dgx-oU-ObZ" secondAttribute="leading" id="lMS-3v-chU"/>
+                            <constraint firstItem="91z-DP-Bfl" firstAttribute="leading" secondItem="PKL-Fo-UIE" secondAttribute="leading" id="lMS-3v-chU"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="PKL-Fo-UIE"/>
                     </view>
                     <connections>
                         <outlet property="driveNavActionLabel" destination="EcV-t9-0Te" id="kwY-gF-k0S"/>

@@ -182,7 +182,10 @@ final class GuidanceViewControllerTests: XCTestCase {
             constraint.firstItem === viewControllerUnderTest?.dashboardOverlayView && constraint.firstAttribute == .leading
         }
 
-        XCTAssert(leadingConstraint?.secondItem === viewControllerUnderTest?.view, "It has the correct leading constraint")
+        if #available(iOS 11.0, *) {
+            XCTAssert(leadingConstraint?.secondItem === viewControllerUnderTest?.view.safeAreaLayoutGuide,
+                      "It has the correct leading constraint")
+        }
         XCTAssertEqual(leadingConstraint?.constant, 0, "It has the correct leading constraint constant")
 
         // Does it have the correct top constraint?
@@ -190,7 +193,10 @@ final class GuidanceViewControllerTests: XCTestCase {
             constraint.firstItem === viewControllerUnderTest?.dashboardOverlayView && constraint.firstAttribute == .top
         }
 
-        XCTAssert(topConstraint?.secondItem === viewControllerUnderTest?.bottomLayoutGuide, "It has the correct top constraint (the bottom safe layout guide)")
+        if #available(iOS 11.0, *) {
+            XCTAssert(topConstraint?.secondItem === viewControllerUnderTest?.view.safeAreaLayoutGuide,
+                      "It has the correct top constraint (the bottom safe layout guide)")
+        }
         XCTAssertEqual(topConstraint?.constant, 0, "It has the correct top constraint constant")
 
         // Does it have the correct bottom constraint?
@@ -206,7 +212,10 @@ final class GuidanceViewControllerTests: XCTestCase {
             constraint.secondItem === viewControllerUnderTest?.dashboardOverlayView && constraint.secondAttribute == .trailing
         }
 
-        XCTAssert(trailingConstraint?.firstItem === viewControllerUnderTest?.view, "It has the correct trailing constraint")
+        if #available(iOS 11.0, *) {
+            XCTAssert(trailingConstraint?.firstItem === viewControllerUnderTest?.view.safeAreaLayoutGuide,
+                      "It has the correct trailing constraint")
+        }
         XCTAssertEqual(trailingConstraint?.constant, 0, "It has the correct trailing constraint constant")
     }
 
