@@ -100,9 +100,10 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
         XCTAssertEqual(dashboardViewController?.stopNavigationButton.tintColor, .colorSignificant,
                        "It has the correct tint color")
 
-        let expectedImage = try require(UIImage(named: "Clear", in: Bundle(for: GuidanceViewController.self), compatibleWith: nil))
-        XCTAssertEqual(dashboardViewController?.stopNavigationButton.currentImage, expectedImage,
-                       "It has the correct image")
+        // TODO: MSDKUI-2161
+//        let expectedImage = try require(UIImage(named: "Clear", in: Bundle(for: GuidanceViewController.self), compatibleWith: nil))
+//        XCTAssertEqual(dashboardViewController?.stopNavigationButton.currentImage, expectedImage,
+//                       "It has the correct image")
     }
 
     /// Checks if the Estimated Arrival View exists.

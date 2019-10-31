@@ -1195,7 +1195,6 @@
 			buildConfigurationList = 607FACEF1AFB9204008FA782 /* Build configuration list for PBXNativeTarget "MSDKUI_Demo" */;
 			buildPhases = (
 				A0351FC6D21D193D579755BE /* [CP] Check Pods Manifest.lock */,
-				5A99D21E206A430F00B2A1CD /* Adapt to Build Platform */,
 				479809847E86E3A6BF18EF08 /* SwiftLint */,
 				627FA1A820FE350E0094AAF1 /* Generate NMACredentials.swift from Environment Variables */,
 				607FACCC1AFB9204008FA782 /* Sources */,
@@ -1203,7 +1202,6 @@
 				607FACCE1AFB9204008FA782 /* Resources */,
 				97831CE7465B0FAD18B4EA17 /* [CP] Embed Pods Frameworks */,
 				AC6BFD6A1E8137BD00D08AB4 /* Embed Frameworks */,
-				623CFB8A20FF96AA00FE7130 /* Revert changes from 'Adapt to Build Platform' */,
 			);
 			buildRules = (
 			);
@@ -1480,34 +1478,6 @@
 			shellPath = /bin/sh;
 			shellScript = "rm -rf MSDKUI_Demo_UI_Tests/EarlGreyArtifacts/*";
 		};
-		5A99D21E206A430F00B2A1CD /* Adapt to Build Platform */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Adapt to Build Platform";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Simulator or device? This flag is set only when build for any simulator\nif [ -n \"$SWIFT_ACTIVE_COMPILATION_CONDITIONS\" ]; then\n    # Simulator: no authorization alert boxes as they destroy the test scripts!\n    /usr/libexec/PlistBuddy -c \"delete :NSLocationAlwaysAndWhenInUseUsageDescription save\" $PROJECT_DIR/Commons/Info.plist 2>/dev/null\n    /usr/libexec/PlistBuddy -c \"delete :NSLocationAlwaysUsageDescription save\" $PROJECT_DIR/Commons/Info.plist 2>/dev/null\n    /usr/libexec/PlistBuddy -c \"delete :NSLocationWhenInUseUsageDescription save\" $PROJECT_DIR/Commons/Info.plist 2>/dev/null\n    /usr/libexec/PlistBuddy -c \"delete :NSBluetoothPeripheralUsageDescription save\" $PROJECT_DIR/Commons/Info.plist 2>/dev/null\n    /usr/libexec/PlistBuddy -c \"delete :NSMotionUsageDescription save\" $PROJECT_DIR/Commons/Info.plist 2>/dev/null\n    /usr/libexec/PlistBuddy -c \"delete :UIBackgroundModes save\" $PROJECT_DIR/Commons/Info.plist 2>/dev/null\n\n    # Always succeed\n    (exit 0)\nelse\n    # Device: authorization alert boxes are OK, so make sure to use the regular Info.plist file for the devices\n    git checkout $PROJECT_DIR/Commons/Info.plist\nfi\n";
-		};
-		623CFB8A20FF96AA00FE7130 /* Revert changes from 'Adapt to Build Platform' */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Revert changes from 'Adapt to Build Platform'";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Simulator or device? This flag is set only when build for any simulator\nif [ -n \"$SWIFT_ACTIVE_COMPILATION_CONDITIONS\" ]; then\n    git checkout $PROJECT_DIR/Commons/Info.plist\nfi\n";
-		};
 		627FA1A820FE350E0094AAF1 /* Generate NMACredentials.swift from Environment Variables */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1608,16 +1578,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh",
 				"${PODS_ROOT}/HEREMaps/framework/NMAKit.framework",
 				"${BUILT_PRODUCTS_DIR}/HEREMapsUI/MSDKUI.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMAKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MSDKUI.framework",

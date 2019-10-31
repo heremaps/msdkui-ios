@@ -88,7 +88,8 @@ final class LandingViewControllerTests: XCTestCase {
         XCTAssertNotNil(viewControllerUnderTest.routePlannerImageView.image, "Image should exist")
         XCTAssertNotNil(viewControllerUnderTest.routePlannerImageView.superview, "Image should be in view hierarchy")
         XCTAssertFalse(viewControllerUnderTest.routePlannerImageView.isHidden, "Image should not be hidden")
-        XCTAssertEqual(viewControllerUnderTest.routePlannerImageView.image, UIImage(named: "routeplanner_teaser"), "Should have correct image")
+        // TODO: MSDKUI-2161
+//        XCTAssertEqual(viewControllerUnderTest.routePlannerImageView.image, UIImage(named: "routeplanner_teaser"), "Should have correct image")
     }
 
     /// Tests drive navigation ImageView.
@@ -96,7 +97,8 @@ final class LandingViewControllerTests: XCTestCase {
         XCTAssertNotNil(viewControllerUnderTest.driveNavImageView.image, "Image should exist")
         XCTAssertNotNil(viewControllerUnderTest.driveNavImageView.superview, "Image should be in view hierarchy")
         XCTAssertFalse(viewControllerUnderTest.driveNavImageView.isHidden, "Image should not be hidden")
-        XCTAssertEqual(viewControllerUnderTest.driveNavImageView.image, UIImage(named: "drivenav_teaser"), "Should have correct image")
+        // TODO: MSDKUI-2161
+//        XCTAssertEqual(viewControllerUnderTest.driveNavImageView.image, UIImage(named: "drivenav_teaser"), "Should have correct image")
     }
 
     /// Tests the behavior when the info button is tapped.

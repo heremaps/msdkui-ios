@@ -41,8 +41,10 @@ import UIKit
         UINavigationBar.appearance().shadowImage = UIImage()
 
         // We want to update the status bar color to be inline with the default components styling
-        let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
-        statusBar?.backgroundColor = UIColor.colorBackgroundDark
+        if #available(iOS 13.0, *) { } else {
+            let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
+            statusBar?.backgroundColor = UIColor.colorBackgroundDark
+        }
 
         // Set up map matching
         NMAPositioningManager.sharedInstance().mapMatchingEnabled = true
