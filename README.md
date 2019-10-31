@@ -65,7 +65,7 @@ The HERE Mobile SDK UI Kit components are available for iOS and [Android](https:
 
 ### iOS Environment
 - The HERE Mobile SDK UI Kit supports Xcode 10.3, Swift 5.0 and CocoaPods 1.7.5.
-- Minimum deployment target is iOS 10.0.
+- Minimum deployment target is iOS 11.0.
 
 ## Quick Start
 Please have a look at our [Quick Start](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/QuickStart.md) tutorial to see how easy it is to integrate the HERE Mobile SDK UI Kit into your own apps. More information on how to use the HERE Mobile SDK UI Kit can be found in our [User Guide](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/UserGuide.md). Information on how to contribute to this project can be found in our [Contribution Guide](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/ContributionGuide.md).
