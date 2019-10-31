@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.license               = { :type => 'Apache-2.0', :file => 'LICENSE' }
     s.author                = { 'HERE Europe B.V.' => '' }
     s.source                = { :git => 'https://github.com/heremaps/msdkui-ios.git', :tag => s.version.to_s }
-    s.ios.deployment_target = '10.0'
+    s.ios.deployment_target = '11.0'
     s.swift_version         = '5.0'
     s.source_files          = 'MSDKUI/Classes/**/*'
     s.resource_bundles      = {

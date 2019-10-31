@@ -61,7 +61,7 @@ With the full support of the CocoaPods dependency manager, you don't have to dow
 To run CocoaPods, please close Xcode and create a new "Podfile" in your project's root folder:
 ```ruby
 target 'HelloMSDKUI' do
-    platform :ios, '10.0'
+    platform :ios, '11.0'
     pod 'HEREMapsUI', '2.1.2'
 end
 ```
