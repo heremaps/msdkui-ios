@@ -186,15 +186,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-frameworks.sh",
 				"${PODS_ROOT}/HEREMaps/framework/NMAKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NMAKit.framework",
 			);
@@ -208,15 +204,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-resources.sh",
 				"${PODS_CONFIGURATION_BUILD_DIR}/HEREMapsUI/MSDKUI.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/MSDKUI.bundle",
 			);

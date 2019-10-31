@@ -1,7 +1,7 @@
 PODS:
-  - HEREMaps (3.12.2)
+  - HEREMaps (3.13.2)
   - HEREMapsUI (2.1.2):
-    - HEREMaps (= 3.12.2)
+    - HEREMaps (= 3.13.2)
 
 DEPENDENCIES:
   - HEREMapsUI (from `../../../`)
@@ -15,8 +15,8 @@ EXTERNAL SOURCES:
     :path: "../../../"
 
 SPEC CHECKSUMS:
-  HEREMaps: 94aedb4134e14d806e34cc8688ec2db2584538ff
-  HEREMapsUI: 4d16a56eb55273bc7eef117e3f31b8a34f734af8
+  HEREMaps: cc8908bb685c078b4b7f4d372c2ce3c4b03bf13a
+  HEREMapsUI: 03f0f97498e99d18dc7ca00b4fc8f743850a337c
 
 PODFILE CHECKSUM: 80ce21e74c6cabf736c02adaa2c068a1243bd977
 
