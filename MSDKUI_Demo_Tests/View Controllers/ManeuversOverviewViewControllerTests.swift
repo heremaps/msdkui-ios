@@ -135,6 +135,9 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
         let viewController = try require(viewControllerUnderTest)
         let navigationController = UINavigationController(rootViewController: viewController)
 
+        // Set trait collection to compact, to make sure that transition will happen on iOS 13 and newer
+        navigationController.setOverrideTraitCollection(UITraitCollection(verticalSizeClass: .compact), forChild: viewController)
+
         // Expect hidden `destinationView`
         let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView as Any,
                                                                             keyPath: #keyPath(UIView.isHidden),
