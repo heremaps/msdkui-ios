@@ -267,7 +267,7 @@ class WaypointViewController: UIViewController {
     }
 
     private func updateStyle() {
-        view.backgroundColor = .colorBackgroundBrand
+        view.backgroundColor = .colorBackgroundDark
 
         exitButton.tintColor = .colorAccentLight
         exitButton.width = CGFloat(50.0) // Set the min button width

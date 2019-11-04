@@ -182,7 +182,7 @@ class LandingViewController: UIViewController {
     }
 
     private func updateStyle() {
-        view.backgroundColor = UIColor.colorBackgroundLight
+        scrollView.backgroundColor = UIColor.colorBackgroundLight
         routePlannerView.backgroundColor = UIColor.colorBackgroundViewLight
         driveNavView.backgroundColor = UIColor.colorBackgroundViewLight
 
