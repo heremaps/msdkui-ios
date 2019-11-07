@@ -98,17 +98,6 @@ final class EmptyViewTests: XCTestCase {
         let originalRootViewController = UIApplication.shared.keyWindow?.rootViewController
         UIApplication.shared.keyWindow?.rootViewController = viewController
 
-        // Expect visible `view.imageView` in regular vertical trait collection
-        let visibleImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
-                                                                       keyPath: #keyPath(UIView.isHidden),
-                                                                       expectedValue: false)
-
-        // Inject the regular vertical trait collection
-        let regularTraitCollection = UITraitCollection(verticalSizeClass: .regular)
-        navigationController.setOverrideTraitCollection(regularTraitCollection, forChild: viewController)
-
-        wait(for: [visibleImageViewExpectation], timeout: 5)
-
         // Expect hidden `view.imageView` in compact vertical trait collection
         let hiddenImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
                                                                       keyPath: #keyPath(UIView.isHidden),
@@ -119,6 +108,17 @@ final class EmptyViewTests: XCTestCase {
         navigationController.setOverrideTraitCollection(compactTraitCollection, forChild: viewController)
 
         wait(for: [hiddenImageViewExpectation], timeout: 5)
+
+        // Expect visible `view.imageView` in regular vertical trait collection
+        let visibleImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
+                                                                       keyPath: #keyPath(UIView.isHidden),
+                                                                       expectedValue: false)
+
+        // Inject the regular vertical trait collection
+        let regularTraitCollection = UITraitCollection(verticalSizeClass: .regular)
+        navigationController.setOverrideTraitCollection(regularTraitCollection, forChild: viewController)
+
+        wait(for: [visibleImageViewExpectation], timeout: 5)
 
         // Restore
         UIApplication.shared.keyWindow?.rootViewController = originalRootViewController

@@ -42,7 +42,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 Prerequisites, as of August, 2019:
 
-- Latest [Xcode](https://developer.apple.com/xcode/) (10.3), which requires macOS Mojave (or higher)
+- Latest [Xcode](https://developer.apple.com/xcode/) (11.1), which requires macOS Mojave (or higher)
 - [Brew](https://brew.sh/)
 - Xcode command line tools, which can be installed by running the command `xcode-select --install`
 - Ruby 2.0 or higher

@@ -39,7 +39,7 @@ If you are new to iOS development please follow the guides on [developer.apple.c
 
 >The example project is called "HelloMSDKUI" and it can be found [here](../Guides_Examples).
 
-For this Quick Start app, we have used Xcode 10.3 and Swift 5.0. Start Xcode and select:
+For this Quick Start app, we have used Xcode 11.1 and Swift 5. Start Xcode and select:
 - _Create a new Xcode project_.
 - As template, it is sufficient to choose _iOS_ => _Application_ => _Single View App_.
 - Provide a project name, e.g. "HelloMSDKUI" and select _Swift_ as language.
@@ -61,7 +61,7 @@ With the full support of the CocoaPods dependency manager, you don't have to dow
 To run CocoaPods, please close Xcode and create a new "Podfile" in your project's root folder:
 ```ruby
 target 'HelloMSDKUI' do
-    platform :ios, '10.0'
+    platform :ios, '11.0'
     pod 'HEREMapsUI', '2.1.2'
 end
 ```
