@@ -129,7 +129,7 @@ import UIKit
         // We want to monitor VoiceOver status updates
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(voiceOverStatusChanged),
-                                               name: NSNotification.Name(rawValue: UIAccessibilityVoiceOverStatusChanged),
+                                               name: UIAccessibility.voiceOverStatusDidChangeNotification,
                                                object: nil)
 
         optionLabel.accessibilityTraits = .button
