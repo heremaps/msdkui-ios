@@ -190,7 +190,8 @@ final class GuidanceViewControllerTests: XCTestCase {
             constraint.firstItem === viewControllerUnderTest?.dashboardOverlayView && constraint.firstAttribute == .top
         }
 
-        XCTAssert(topConstraint?.secondItem === viewControllerUnderTest?.view.safeAreaLayoutGuide, "It has the correct top constraint (the bottom safe layout guide)")
+        XCTAssert(topConstraint?.secondItem === viewControllerUnderTest?.view.safeAreaLayoutGuide,
+                  "It has the correct top constraint (the bottom safe layout guide)")
         XCTAssertEqual(topConstraint?.constant, 0, "It has the correct top constraint constant")
 
         // Does it have the correct bottom constraint?
