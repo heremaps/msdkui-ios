@@ -62,7 +62,7 @@ To run CocoaPods, please close Xcode and create a new "Podfile" in your project'
 ```ruby
 target 'HelloMSDKUI' do
     platform :ios, '11.0'
-    pod 'HEREMapsUI', '2.1.2'
+    pod 'HEREMapsUI', '2.1.3'
 end
 ```
 

@@ -55,12 +55,12 @@ final class AboutTableViewDataSourceTests: XCTestCase {
         // First item
         let firstItem = try require(dataSource?.item(at: IndexPath(row: 0, section: 0)))
         XCTAssertLocalized(firstItem.title, key: "msdkui_app_app_version", "It has the correct title")
-        XCTAssertEqual(firstItem.description, "2.1.2", "It has the correct description")
+        XCTAssertEqual(firstItem.description, "2.1.3", "It has the correct description")
 
         // Second item
         let secondItem = try require(dataSource?.item(at: IndexPath(row: 1, section: 0)))
         XCTAssertLocalized(secondItem.title, key: "msdkui_app_ui_kit_version", "It has the correct title")
-        XCTAssertEqual(secondItem.description, "2.1.2", "It has the correct description")
+        XCTAssertEqual(secondItem.description, "2.1.3", "It has the correct description")
 
         // Third item
         let thirdItem = try require(dataSource?.item(at: IndexPath(row: 2, section: 0)))
@@ -101,6 +101,6 @@ final class AboutTableViewDataSourceTests: XCTestCase {
         let cell = dataSource?.tableView(try require(tableView), cellForRowAt: IndexPath(row: 1, section: 0)) as? AboutTableViewCell
 
         XCTAssertLocalized(cell?.textLabel?.text, key: "msdkui_app_ui_kit_version", "It has the correct text")
-        XCTAssertEqual(cell?.detailTextLabel?.text, "2.1.2", "It has the correct detail text")
+        XCTAssertEqual(cell?.detailTextLabel?.text, "2.1.3", "It has the correct detail text")
     }
 }
