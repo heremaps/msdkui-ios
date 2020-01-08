@@ -275,6 +275,9 @@ final class GuidanceAndManeuversTests: XCTestCase {
 
         // Remove first - it will not be displayed in view, since application displays "upcoming" maneuver
         maneuversData.removeFirst()
+        // Very often EarlGrey is slower than simulation, and next maneuver disapears before being catched
+        // For safety (to avoid flacky tests), we will skip also next maneuver
+        maneuversData.removeFirst()
 
         // Set orientation here - to make sure that both orientations have the same route in test
         if isLandscape {
