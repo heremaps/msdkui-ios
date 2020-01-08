@@ -147,8 +147,8 @@ final class GuidanceSpeedViewTests: XCTestCase {
     }
 
     /// Tests if the required `.GuidanceSpeedView.init(coder:)` returns a new `GuidanceSpeedView` instance.
-    func testInitWithCoder() {
-        let coder = NSKeyedUnarchiver(forReadingWith: Data())
+    func testInitWithCoder() throws {
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
         let speedView = GuidanceSpeedView(coder: coder)
 
         XCTAssertNotNil(speedView, "It exists")

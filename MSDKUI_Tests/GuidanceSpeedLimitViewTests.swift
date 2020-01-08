@@ -43,8 +43,8 @@ final class GuidanceSpeedLimitViewTests: XCTestCase {
     }
 
     /// Tests if the required `.GuidanceSpeedLimitView.init(coder:)` returns a new `GuidanceSpeedLimit` instance.
-    func testInitWithCoder() {
-        let coder = NSKeyedUnarchiver(forReadingWith: Data())
+    func testInitWithCoder() throws {
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
         let speedLimitView = GuidanceSpeedLimitView(coder: coder)
 
         XCTAssertNotNil(speedLimitView, "It exists")

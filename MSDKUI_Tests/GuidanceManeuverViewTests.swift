@@ -397,8 +397,8 @@ final class GuidanceManeuverViewTests: XCTestCase {
     }
 
     /// Tests if the required `.init(coder:)` returns a new instance.
-    func testInitWithCoder() {
-        let coder = NSKeyedUnarchiver(forReadingWith: Data())
+    func testInitWithCoder() throws {
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
         let maneuverView = GuidanceManeuverView(coder: coder)
 
         XCTAssertNotNil(maneuverView, "It exists")
