@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
     s.name                  = 'HEREMapsUI'
     s.module_name           = 'MSDKUI'
-    s.version               = '2.1.3'
+    s.version               = '2.1.4'
     s.summary               = 'HEREMapsUI (MSDKUI) provides ready-to-use UI components for the HERE Mobile SDK for iOS.'
     s.description           = 'HEREMapsUI (MSDKUI) aims to make life easier for the iOS developers using the HERE Mobile SDK for iOS. It provides ready-to-use UI components with strong customization support. Plus, it supports accessibility and localization.'
     s.homepage              = 'https://github.com/heremaps/msdkui-ios'
