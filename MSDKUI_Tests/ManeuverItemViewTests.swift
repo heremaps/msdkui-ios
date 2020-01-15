@@ -223,8 +223,8 @@ final class ManeuverItemViewTests: XCTestCase {
     }
 
     /// Tests if the required `.init(coder:)` returns a new instance.
-    func testInitWithCoder() {
-        let coder = NSKeyedUnarchiver(forReadingWith: Data())
+    func testInitWithCoder() throws {
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
         let itemView = ManeuverItemView(coder: coder)
 
         XCTAssertNotNil(itemView, "It exists")

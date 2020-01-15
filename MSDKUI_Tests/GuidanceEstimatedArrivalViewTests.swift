@@ -32,8 +32,8 @@ final class GuidanceEstimatedArrivalViewTests: XCTestCase {
 
     /// Tests if the required `.GuidanceEstimatedArrivalView.init(coder:)` returns a new
     /// `GuidanceEstimatedArrivalView` instance.
-    func testInitWithCoder() {
-        let coder = NSKeyedUnarchiver(forReadingWith: Data())
+    func testInitWithCoder() throws {
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
         let arrivalView = GuidanceEstimatedArrivalView(coder: coder)
 
         XCTAssertNotNil(arrivalView, "It exists")

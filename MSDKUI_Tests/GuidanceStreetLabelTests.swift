@@ -119,7 +119,8 @@ final class GuidanceStreetLabelTests: XCTestCase {
         var labelUnderTest = try require(self.labelUnderTest)
         assertStyleProperties(of: labelUnderTest)
 
-        labelUnderTest = try require(GuidanceStreetLabel(coder: NSKeyedUnarchiver(forReadingWith: NSKeyedArchiver().encodedData)))
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
+        labelUnderTest = try require(GuidanceStreetLabel(coder: coder))
         assertStyleProperties(of: labelUnderTest)
     }
 
@@ -130,7 +131,8 @@ final class GuidanceStreetLabelTests: XCTestCase {
         var labelUnderTest = try require(self.labelUnderTest)
         assertAccessibility(of: labelUnderTest)
 
-        labelUnderTest = try require(GuidanceStreetLabel(coder: NSKeyedUnarchiver(forReadingWith: NSKeyedArchiver().encodedData)))
+        let coder = try NSKeyedUnarchiver(forReadingFrom: NSKeyedArchiver.archivedData(withRootObject: Data(), requiringSecureCoding: false))
+        labelUnderTest = try require(GuidanceStreetLabel(coder: coder))
         assertAccessibility(of: labelUnderTest)
     }
 
