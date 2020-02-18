@@ -1,8 +1,7 @@
 # Quick Start
-Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we are going to introduce you to the HERE Mobile SDK UI Kit and show you how easy it is to get started. As a very first example, we'll also develop a "Hello HERE Mobile SDK UI Kit" iOS application as part of this guide. For more examples and in-depth information on how to work with the HERE  Mobile SDK UI Kit framework, please refer to the [User Guide](UserGuide.md).
+Thank you for using the MSDKUI (HERE Mobile SDK UI Kit). In this Quick Start guide, we are going to introduce you to the HERE Mobile SDK UI Kit and show you how easy it is to get started. As a very first example, we'll also develop a "Hello HERE Mobile SDK UI Kit" iOS application as part of this guide. For more examples and in-depth information on how to work with the HERE  Mobile SDK UI Kit framework, please refer to the [User Guide](UserGuide.md).
 
 ## Contents
-
 - [How to run the example apps](#how-to-run-the-example-apps)
 - [How to run the Demo app](#how-to-run-the-demo-app)
 - [Set up an Xcode iOS Project](#set-up-an-xcode-ios-project)
@@ -14,11 +13,10 @@ Thank you for using the HERE Mobile SDK UI Kit. In this Quick Start guide, we ar
 
 
 ## How to run the example apps
-If you just want to try out the accompanying examples, please perform the following steps:
-
-- If you are new to CocoaPods or need to install it via Terminal, please follow the steps as described [here](https://guides.cocoapods.org/using/getting-started.html).
-- In the repository root folder (where the Podfile is located) run via Terminal `pod install --repo-update` to fetch and to integrate the HERE Mobile SDK for iOS _and_ the MSDKUI framework.
-- Set your HERE Mobile SDK credentials in `AppDelegate.swift`:
+If you want to try out the accompanying example apps, perform the following steps:
+- Prerequirement: If you are new to CocoaPods or need to install it via Terminal, please follow the steps as described [here](https://guides.cocoapods.org/using/getting-started.html).
+- Navigate to an example, for example: _msdkui-ios/Documentation/Guides_Examples/HelloMSDKUI_. In the example's root folder (where the Podfile is located) run via Terminal `pod install --repo-update` to fetch and to integrate the HERE Mobile SDK for iOS _and_ the MSDKUI framework.
+- Set your HERE SDK for iOS (Premium Edition) credentials in `AppDelegate.swift`:
 ```swift
 let appId = "YOUR_APP_ID"
 let appCode = "YOUR_APP_CODE"
@@ -39,7 +37,7 @@ If you are new to iOS development please follow the guides on [developer.apple.c
 
 >The example project is called "HelloMSDKUI" and it can be found [here](../Guides_Examples).
 
-For this Quick Start app, we have used Xcode 11.1 and Swift 5. Start Xcode and select:
+For this Quick Start app, we have used Xcode 11.3 and Swift 5. Start Xcode and select:
 - _Create a new Xcode project_.
 - As template, it is sufficient to choose _iOS_ => _Application_ => _Single View App_.
 - Provide a project name, e.g. "HelloMSDKUI" and select _Swift_ as language.
@@ -61,8 +59,8 @@ With the full support of the CocoaPods dependency manager, you don't have to dow
 To run CocoaPods, please close Xcode and create a new "Podfile" in your project's root folder:
 ```ruby
 target 'HelloMSDKUI' do
-    platform :ios, '11.0'
-    pod 'HEREMapsUI', '2.1.3'
+    platform :ios, '12.0'
+    pod 'HEREMapsUI', '2.1.4'
 end
 ```
 
