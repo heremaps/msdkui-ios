@@ -70,7 +70,7 @@ import UIKit
     /// - Note: Setting an index outside of the available range has no effect.
     public var selectedItemIndex: Int {
         get {
-            return backupSelectedItemIndex
+            backupSelectedItemIndex
         }
         set {
             // Is it valid? Otherwise, just ignore it: keep the
@@ -173,11 +173,11 @@ import UIKit
 extension SingleChoiceOptionItem: UIPickerViewDataSource {
 
     public func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
+        1
     }
 
     public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return labels.count
+        labels.count
     }
 }
 

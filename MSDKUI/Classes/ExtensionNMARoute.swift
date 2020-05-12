@@ -22,6 +22,6 @@ extension NMARoute {
     /// information considered.
     /// - Important: When the data is not available, the method returns zero.
     @objc func durationWithTraffic() -> TimeInterval {
-        return ttaIncludingTraffic(forSubleg: UInt(NMARouteSublegWhole))?.duration ?? 0
+        ttaIncludingTraffic(forSubleg: UInt(NMARouteSublegWhole))?.duration ?? 0
     }
 }

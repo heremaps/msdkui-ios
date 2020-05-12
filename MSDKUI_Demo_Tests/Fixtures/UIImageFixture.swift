@@ -17,7 +17,6 @@
 import UIKit
 
 enum UIImageFixture {
-
     /// Creates an image with a given size.
     ///
     /// - Parameter size: target size of the result image.

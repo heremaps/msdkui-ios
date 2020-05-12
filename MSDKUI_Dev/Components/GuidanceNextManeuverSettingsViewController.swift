@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceNextManeuverSettingsViewController: SettingsViewController<GuidanceNextManeuverSettingsViewController.Settings> {
-
     struct Settings {
         var maneuverIcon: UIImage?
         var distance: Measurement<UnitLength>?
@@ -31,60 +30,96 @@ final class GuidanceNextManeuverSettingsViewController: SettingsViewController<G
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "Without parameters",
-                         configuration: Settings(maneuverIcon: nil,
-                                                 distance: nil,
-                                                 streetName: nil,
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "With all parameters",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign"),
-                                                 distance: Measurement(value: 12, unit: .kilometers),
-                                                 streetName: "Foobarstrasse 123",
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "With all parameters (very long address)",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign"),
-                                                 distance: Measurement(value: 12, unit: .kilometers),
-                                                 streetName: "Lorem ipsum dolor sit amet, consectetur adipiscing elit 123",
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "With all parameters (w/ template image)",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign")?.withRenderingMode(.alwaysTemplate),
-                                                 distance: Measurement(value: 12, unit: .kilometers),
-                                                 streetName: "Foobarstrasse 123",
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "Without icon",
-                         configuration: Settings(maneuverIcon: nil,
-                                                 distance: Measurement(value: 12, unit: .kilometers),
-                                                 streetName: "Foobarstrasse 123",
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "Without distance",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign"),
-                                                 distance: nil,
-                                                 streetName: "Foobarstrasse 123",
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "Without street",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign"),
-                                                 distance: Measurement(value: 12, unit: .kilometers),
-                                                 streetName: nil,
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "Without distance and street",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign"),
-                                                 distance: nil,
-                                                 streetName: nil,
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .colorForegroundSecondaryLight)),
-            SettingsItem(title: "With all parameters in red",
-                         configuration: Settings(maneuverIcon: UIImage(named: "red_sign"),
-                                                 distance: Measurement(value: 12, unit: .kilometers),
-                                                 streetName: "Foobarstrasse 123",
-                                                 distanceFormatter: .currentMediumUnitFormatter,
-                                                 foregroundColor: .red))
+            SettingsItem(
+                title: "Without parameters",
+                configuration: Settings(
+                    maneuverIcon: nil,
+                    distance: nil,
+                    streetName: nil,
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "With all parameters",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign"),
+                    distance: Measurement(value: 12, unit: .kilometers),
+                    streetName: "Foobarstrasse 123",
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "With all parameters (very long address)",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign"),
+                    distance: Measurement(value: 12, unit: .kilometers),
+                    streetName: "Lorem ipsum dolor sit amet, consectetur adipiscing elit 123",
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "With all parameters (w/ template image)",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign")?.withRenderingMode(.alwaysTemplate),
+                    distance: Measurement(value: 12, unit: .kilometers),
+                    streetName: "Foobarstrasse 123",
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "Without icon",
+                configuration: Settings(
+                    maneuverIcon: nil,
+                    distance: Measurement(value: 12, unit: .kilometers),
+                    streetName: "Foobarstrasse 123",
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "Without distance",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign"),
+                    distance: nil,
+                    streetName: "Foobarstrasse 123",
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "Without street",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign"),
+                    distance: Measurement(value: 12, unit: .kilometers),
+                    streetName: nil,
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "Without distance and street",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign"),
+                    distance: nil,
+                    streetName: nil,
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .colorForegroundSecondaryLight
+                )
+            ),
+            SettingsItem(
+                title: "With all parameters in red",
+                configuration: Settings(
+                    maneuverIcon: UIImage(named: "red_sign"),
+                    distance: Measurement(value: 12, unit: .kilometers),
+                    streetName: "Foobarstrasse 123",
+                    distanceFormatter: .currentMediumUnitFormatter,
+                    foregroundColor: .red
+                )
+            )
         ]
     }
 }

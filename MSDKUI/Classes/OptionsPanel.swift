@@ -53,7 +53,7 @@ open class OptionsPanel: UIView {
     }
 
     override open var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
+        CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
     }
 
     /// All the available option item specs that are used to build the available option items.

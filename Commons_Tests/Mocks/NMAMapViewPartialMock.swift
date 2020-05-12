@@ -20,7 +20,6 @@ import NMAKit
 /// Partial mock for NMAMapKit, used to test expectations.
 /// As a partial mock, it forward calls to the super class.
 final class NMAMapViewPartialMock: NMAMapView {
-
     private(set) var didCallAddMapObject = false
     private(set) var didCallSetBoundingBoxWithAnimation = false
     private(set) var didCallSetBoundingBoxInsideWithAnimation = false

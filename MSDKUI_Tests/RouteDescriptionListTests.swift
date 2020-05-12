@@ -18,7 +18,6 @@
 import XCTest
 
 final class RouteDescriptionListTests: XCTestCase {
-
     /// The object under test.
     private var list = RouteDescriptionList(frame: CGRect(x: 0, y: 0, width: 500, height: 500))
 
@@ -182,14 +181,18 @@ final class RouteDescriptionListTests: XCTestCase {
         // Hide the title
         list.showTitle = false
 
-        XCTAssertTrue(titleItem.view.isHidden,
-                      "Setting the 'showTitle' property false doesn't set the related 'isHidden' property to true")
+        XCTAssertTrue(
+            titleItem.view.isHidden,
+            "Setting the 'showTitle' property false doesn't set the related 'isHidden' property to true"
+        )
 
         // Show the title
         list.showTitle = true
 
-        XCTAssertFalse(titleItem.view.isHidden,
-                       "Setting the 'showTitle' property true doesn't set the related 'isHidden' property to 'false")
+        XCTAssertFalse(
+            titleItem.view.isHidden,
+            "Setting the 'showTitle' property true doesn't set the related 'isHidden' property to 'false"
+        )
     }
 
     func testTitleViewsNumber() {
@@ -199,14 +202,18 @@ final class RouteDescriptionListTests: XCTestCase {
         // Set a title: was title.view added to stack view?
         list.title = "List"
 
-        XCTAssertEqual(list.stackView.arrangedSubviews.count, initialArrangedSubviews + 1,
-                       "Setting the title property doesn't add titleItem.view to stack view!")
+        XCTAssertEqual(
+            list.stackView.arrangedSubviews.count, initialArrangedSubviews + 1,
+            "Setting the title property doesn't add titleItem.view to stack view!"
+        )
 
         // Set title one more time, number of subviews should not change
         list.title = "List title"
 
-        XCTAssertEqual(list.stackView.arrangedSubviews.count, initialArrangedSubviews + 1,
-                       "Setting the title property again changed number of stack view subviews!")
+        XCTAssertEqual(
+            list.stackView.arrangedSubviews.count, initialArrangedSubviews + 1,
+            "Setting the title property again changed number of stack view subviews!"
+        )
     }
 
     func testSetTitleNil() {

@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class TransportModePanelDelegateMock {
-
     private(set) var didCallDidChangeToMode = false
 
     private(set) var lastPanel: TransportModePanel?
@@ -28,7 +27,6 @@ final class TransportModePanelDelegateMock {
 // MARK: - TransportModePanelDelegate
 
 extension TransportModePanelDelegateMock: TransportModePanelDelegate {
-
     func transportModePanel(_ panel: TransportModePanel, didChangeTo mode: NMATransportMode) {
         didCallDidChangeToMode = true
         lastPanel = panel

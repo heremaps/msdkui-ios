@@ -18,11 +18,9 @@ import MSDKUI
 import UIKit
 
 class LandingViewController: UIViewController {
-
     // MARK: - Types
 
     private enum Constants {
-
         // MARK: - Properties
 
         // After all the layout calculations are done, a card's height cant't
@@ -66,7 +64,7 @@ class LandingViewController: UIViewController {
     @IBOutlet private(set) var driveNavImageView: UIImageView!
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var isCardHandling = false
@@ -263,6 +261,5 @@ class LandingViewController: UIViewController {
     /// The method for unwinding to this view controller.
     ///
     /// - Parameter segue: The segue used for unwinding.
-    @IBAction private func unwindToLandingViewController(_ segue: UIStoryboardSegue) {
-    }
+    @IBAction private func unwindToLandingViewController(_ segue: UIStoryboardSegue) {}
 }

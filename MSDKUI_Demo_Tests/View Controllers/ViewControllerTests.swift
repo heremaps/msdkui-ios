@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class ViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: ViewController!
 
@@ -59,8 +58,10 @@ final class ViewControllerTests: XCTestCase {
     /// as 'expand' and 'collapse' buttons.
     func testRightButton() {
         // Check the initial app title
-        XCTAssertLocalized(viewControllerUnderTest.titleItem.title, key: "msdkui_app_rp_teaser_title",
-                           "The app title should be the route planner card title!")
+        XCTAssertLocalized(
+            viewControllerUnderTest.titleItem.title, key: "msdkui_app_rp_teaser_title",
+            "The app title should be the route planner card title!"
+        )
 
         // Triggers the core router completion handler with route results
         calculateRoute()
@@ -150,39 +151,55 @@ final class ViewControllerTests: XCTestCase {
         // Checks if core router is called (with correct parameters)
         XCTAssertTrue(mockCoreRouter.didCallCalculateRouteWithStopsRoutingMode, "It attempts to calculate route", file: file, line: line)
         XCTAssertEqual(mockCoreRouter.lastStops?.count, 2, "It passes two waypoints to the core router", file: file, line: line)
-        XCTAssertEqual(mockCoreRouter.lastRoutingMode, viewControllerUnderTest.routingMode,
-                       "It passes the correct routing mode to the core router", file: file, line: line)
+        XCTAssertEqual(
+            mockCoreRouter.lastRoutingMode, viewControllerUnderTest.routingMode,
+            "It passes the correct routing mode to the core router", file: file, line: line
+        )
     }
 
     private func assertRightButtonHasExpandFunctionality(file: StaticString = #file, line: UInt = #line) {
-        XCTAssertFalse(viewControllerUnderTest.showHelperScrollView,
-                       "ViewController hides the helper scroll view", file: file, line: line)
+        XCTAssertFalse(
+            viewControllerUnderTest.showHelperScrollView,
+            "ViewController hides the helper scroll view", file: file, line: line
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest.rightButton.accessibilityLabel, key: "msdkui_app_expand",
-                           "The right button function as 'expand' button", file: file, line: line)
+        XCTAssertLocalized(
+            viewControllerUnderTest.rightButton.accessibilityLabel, key: "msdkui_app_expand",
+            "The right button function as 'expand' button", file: file, line: line
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest.rightButton.accessibilityHint, key: "msdkui_app_hint_expand",
-                           "The right button has the 'expand' accessibility hint", file: file, line: line)
+        XCTAssertLocalized(
+            viewControllerUnderTest.rightButton.accessibilityHint, key: "msdkui_app_hint_expand",
+            "The right button has the 'expand' accessibility hint", file: file, line: line
+        )
 
         XCTAssertFalse(viewControllerUnderTest.routesList.showTitle, "The route list hides its title!", file: file, line: line)
 
-        XCTAssertNotEqual(viewControllerUnderTest.titleItem.title, localizedString(fromKey: "msdkui_app_rp_teaser_title"),
-                          "The app title is updated", file: file, line: line)
+        XCTAssertNotEqual(
+            viewControllerUnderTest.titleItem.title, localizedString(fromKey: "msdkui_app_rp_teaser_title"),
+            "The app title is updated", file: file, line: line
+        )
     }
 
     private func assertRightButtonHasCollapseFunctionality(file: StaticString = #file, line: UInt = #line) {
         XCTAssertFalse(viewControllerUnderTest.showHelperScrollView, "ViewController hides the helper scroll view", file: file, line: line)
 
-        XCTAssertLocalized(viewControllerUnderTest.rightButton.accessibilityLabel, key: "msdkui_app_collapse",
-                           "The right button functions as 'collapse' button", file: file, line: line)
+        XCTAssertLocalized(
+            viewControllerUnderTest.rightButton.accessibilityLabel, key: "msdkui_app_collapse",
+            "The right button functions as 'collapse' button", file: file, line: line
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest.rightButton.accessibilityHint, key: "msdkui_app_hint_collapse",
-                           "The right button has the 'collapse' accessibilty hint", file: file, line: line)
+        XCTAssertLocalized(
+            viewControllerUnderTest.rightButton.accessibilityHint, key: "msdkui_app_hint_collapse",
+            "The right button has the 'collapse' accessibilty hint", file: file, line: line
+        )
 
         XCTAssertFalse(viewControllerUnderTest.routesList.showTitle, "The route list hides its title", file: file, line: line)
 
-        XCTAssertNotEqual(viewControllerUnderTest.titleItem.title, localizedString(fromKey: "msdkui_app_rp_teaser_title"),
-                          "The app title is updated", file: file, line: line)
+        XCTAssertNotEqual(
+            viewControllerUnderTest.titleItem.title, localizedString(fromKey: "msdkui_app_rp_teaser_title"),
+            "The app title is updated", file: file, line: line
+        )
     }
 
     private func localizedString(fromKey key: String, bundle: Bundle? = .main) -> String {
@@ -193,6 +210,6 @@ final class ViewControllerTests: XCTestCase {
             return ""
         }
 
-        return NSLocalizedString(key, bundle: bundle, value: "", comment: "") //swiftlint:disable:this localized_string
+        return NSLocalizedString(key, bundle: bundle, value: "", comment: "") // swiftlint:disable:this localized_string
     }
 }

@@ -17,13 +17,11 @@
 import UIKit
 
 struct SettingsItem<Model> {
-
     var title: String
     var configuration: Model
 }
 
 class SettingsViewController<T>: UITableViewController {
-
     var data: [SettingsItem<T>] = []
     var didSelect: ((SettingsItem<T>) -> Void) = { _ in }
 
@@ -42,7 +40,7 @@ class SettingsViewController<T>: UITableViewController {
     // MARK: - UITableViewDataSource
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        data.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -18,7 +18,6 @@
 import XCTest
 
 final class ManeuverTableViewTests: XCTestCase {
-
     /// The object under test.
     private var tableView = ManeuverTableView(frame: CGRect(x: 0, y: 0, width: 500, height: 500), style: .plain)
 
@@ -62,8 +61,10 @@ final class ManeuverTableViewTests: XCTestCase {
         let expectedFormattedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: expectedDistance)
 
         XCTAssertFalse(maneuverItemView0.iconImageView.isHidden, "Init -> iconImageView is not visible")
-        XCTAssertLocalized(maneuverItemView0.instructionLabel.text, key: "msdkui_maneuver_enter_highway", bundle: .MSDKUI,
-                           "item is displaying wrong instruction")
+        XCTAssertLocalized(
+            maneuverItemView0.instructionLabel.text, key: "msdkui_maneuver_enter_highway", bundle: .MSDKUI,
+            "item is displaying wrong instruction"
+        )
         XCTAssertEqual(maneuverItemView0.distanceLabel.text, expectedFormattedDistance, "Maneuver should display distance '200 m'")
 
         let indexPath1 = IndexPath(row: 1, section: 0)
@@ -71,8 +72,10 @@ final class ManeuverTableViewTests: XCTestCase {
         let maneuverItemView1 = try getManeuverItemView(from: cell1)
 
         XCTAssertFalse(maneuverItemView1.iconImageView.isHidden, "Init -> iconImageView is not visible")
-        XCTAssertLocalized(maneuverItemView1.instructionLabel.text, key: "msdkui_maneuver_arrive_at_02y", bundle: .MSDKUI,
-                           "item is displaying wrong instruction")
+        XCTAssertLocalized(
+            maneuverItemView1.instructionLabel.text, key: "msdkui_maneuver_arrive_at_02y", bundle: .MSDKUI,
+            "item is displaying wrong instruction"
+        )
         XCTAssertTrue(maneuverItemView1.distanceLabel.isHidden, "Maneuver should not display a distance")
     }
 

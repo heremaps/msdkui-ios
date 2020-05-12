@@ -85,7 +85,7 @@ import UIKit
     /// The axis along which the arranged views are laid out.
     /// The default value is `NSLayoutConstraint.Axis.horizontal`.
     public var axis: NSLayoutConstraint.Axis {
-        get { return contentStackView.axis }
+        get { contentStackView.axis }
         set {
             contentStackView.axis = newValue
 

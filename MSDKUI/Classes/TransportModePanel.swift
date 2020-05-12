@@ -35,7 +35,7 @@ public protocol TransportModePanelDelegate: AnyObject {
     // MARK: - Properties
 
     override open var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
+        CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
     }
 
     /// The visible transport modes.

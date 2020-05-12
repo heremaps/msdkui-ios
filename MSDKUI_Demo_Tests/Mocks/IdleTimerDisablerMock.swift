@@ -18,6 +18,5 @@
 import UIKit
 
 final class IdleTimerDisablerMock: IdleTimerDisabling {
-
     var isIdleTimerDisabled: Bool = false
 }

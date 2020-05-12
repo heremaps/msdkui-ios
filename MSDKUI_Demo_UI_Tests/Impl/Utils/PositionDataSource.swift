@@ -40,6 +40,6 @@ extension PositionDataSource: NMAPositionDataSource {
     }
 
     func currentPosition() -> NMAGeoPosition? {
-        return currentGeoPosition
+        currentGeoPosition
     }
 }

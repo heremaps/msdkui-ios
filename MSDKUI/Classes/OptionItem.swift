@@ -49,7 +49,7 @@ open class OptionItem: UIView {
     // MARK: - Properties
 
     override open var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
+        CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
     }
 
     /// The unique id assigned to this option item. The id is useful for setting the initial

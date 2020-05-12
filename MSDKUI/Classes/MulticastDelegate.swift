@@ -26,12 +26,12 @@ class MulticastDelegate<T> {
 
     /// Returns the number of the delegates.
     var count: Int {
-        return delegates.allObjects.count
+        delegates.allObjects.count
     }
 
     /// A Boolean value indicating whether the delegates collection is empty.
     var isEmpty: Bool {
-        return delegates.allObjects.isEmpty
+        delegates.allObjects.isEmpty
     }
 
     /// All the `Weak` objects conforming to the delegate protocol.

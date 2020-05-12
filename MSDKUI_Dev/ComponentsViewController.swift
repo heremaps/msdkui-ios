@@ -17,7 +17,6 @@
 import UIKit
 
 final class ComponentsViewController: UIViewController {
-
     @IBOutlet private var tableView: UITableView!
     @IBOutlet private var segmentedControl: UISegmentedControl!
 

@@ -19,7 +19,6 @@ import Foundation
 import XCTest
 
 final class GuidanceNextManeuverMonitorTests: XCTestCase {
-
     /// The mock delegate used to verify expectations.
     private var mockDelegate = GuidanceNextManeuverMonitorDelegateMock() // swiftlint:disable:this weak_delegate
 
@@ -79,9 +78,11 @@ final class GuidanceNextManeuverMonitorTests: XCTestCase {
     /// `GuidanceNextManeuverMonitorDelegate.guidanceNextManeuverMonitorDidReceiveError(_:)`
     /// is called.
     func testWhenNextManeuverIsFarAwayDelegateDidReceiveErrorMethodIsCalled() {
-        let nextManuever = MockUtils.mockNextManeuver(UInt(3756),
-                                                      with: NMAManeuverIcon.uTurnLeft,
-                                                      andNextStreet: "Friedrichstr.")
+        let nextManuever = MockUtils.mockNextManeuver(
+            UInt(3756),
+            with: NMAManeuverIcon.uTurnLeft,
+            andNextStreet: "Friedrichstr."
+        )
         monitorUnderTest?.navigationManager(NMANavigationManager.sharedInstance(), didUpdateManeuvers: nil, nextManuever)
 
         XCTAssertEqual(mockDelegate.lastNextManeuverMonitor, monitorUnderTest, "It calls the delegate with the correct monitor")
@@ -92,20 +93,26 @@ final class GuidanceNextManeuverMonitorTests: XCTestCase {
     /// `GuidanceNextManeuverMonitor.navigationManager(_:didUpdateManeuvers:_:)`
     /// is called.
     func testWhenNextManeuverIsCloseDelegateDidReveiveDataMethodIsCalled() {
-        let mockData = (distance: UInt(97),
-                        nextStreet: "Invalidenstr.")
-        let nextManuever = MockUtils.mockNextManeuver(mockData.distance,
-                                                      with: NMAManeuverIcon.keepRight,
-                                                      andNextStreet: mockData.nextStreet)
+        let mockData = (
+            distance: UInt(97),
+            nextStreet: "Invalidenstr."
+        )
+        let nextManuever = MockUtils.mockNextManeuver(
+            mockData.distance,
+            with: NMAManeuverIcon.keepRight,
+            andNextStreet: mockData.nextStreet
+        )
         monitorUnderTest?.navigationManager(NMANavigationManager.sharedInstance(), didUpdateManeuvers: nil, nextManuever)
 
         XCTAssertEqual(mockDelegate.lastNextManeuverMonitor, monitorUnderTest, "It calls the delegate with the correct monitor")
         XCTAssertTrue(mockDelegate.didCallDidReceiveManeuverData, "It calls the did receive data method")
         XCTAssertNotNil(mockDelegate.lastManeuverIcon, "It passes a maneuver icon image")
         XCTAssertEqual(mockDelegate.lastStreetName, mockData.nextStreet, "It passes the correct next street name")
-        XCTAssertEqual(mockDelegate.lastDistance,
-                       Measurement<UnitLength>(value: Double(mockData.distance), unit: .meters),
-                       "It passes the correct next maneuver distance")
+        XCTAssertEqual(
+            mockDelegate.lastDistance,
+            Measurement<UnitLength>(value: Double(mockData.distance), unit: .meters),
+            "It passes the correct next maneuver distance"
+        )
     }
 
     /// Tests when there `NMAManeuver` is well formed,
@@ -113,9 +120,11 @@ final class GuidanceNextManeuverMonitorTests: XCTestCase {
     /// is called.
     func testWhenNextManeuverHasNoNextStreetNameDelegateDidReveiveDataMethodIsCalled() {
         let mockDistance = UInt(796)
-        let nextManuever = MockUtils.mockNextManeuver(mockDistance,
-                                                      with: NMAManeuverIcon.lightLeft,
-                                                      andNextStreet: nil)
+        let nextManuever = MockUtils.mockNextManeuver(
+            mockDistance,
+            with: NMAManeuverIcon.lightLeft,
+            andNextStreet: nil
+        )
 
         monitorUnderTest?.navigationManager(NMANavigationManager.sharedInstance(), didUpdateManeuvers: nil, nextManuever)
 
@@ -123,8 +132,10 @@ final class GuidanceNextManeuverMonitorTests: XCTestCase {
         XCTAssertTrue(mockDelegate.didCallDidReceiveManeuverData, "It calls the did receive data method")
         XCTAssertNotNil(mockDelegate.lastManeuverIcon, "It passes a maneuver icon image")
         XCTAssertNil(mockDelegate.lastStreetName, "It passes the nil street name")
-        XCTAssertEqual(mockDelegate.lastDistance,
-                       Measurement<UnitLength>(value: Double(mockDistance), unit: .meters),
-                       "It passes the correct next maneuver distance")
+        XCTAssertEqual(
+            mockDelegate.lastDistance,
+            Measurement<UnitLength>(value: Double(mockDistance), unit: .meters),
+            "It passes the correct next maneuver distance"
+        )
     }
 }

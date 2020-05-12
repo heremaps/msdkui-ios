@@ -19,7 +19,6 @@ import MSDKUI
 import XCTest
 
 final class OptionPanelViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: OptionPanelViewController?
 
@@ -49,38 +48,54 @@ final class OptionPanelViewControllerTests: XCTestCase {
 
     /// Tests if the View Controller has the correct title.
     func testTitle() {
-        XCTAssertEqual(viewControllerUnderTest?.titleItem.title, "Mocked Title",
-                       "It should have the correct title")
+        XCTAssertEqual(
+            viewControllerUnderTest?.titleItem.title, "Mocked Title",
+            "It should have the correct title"
+        )
     }
 
     /// Tests if the View Controller has the correct status bar style.
     func testPreferredStatusBarStyle() {
-        XCTAssertEqual(viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
-                       "It should have the correct status bar style")
+        XCTAssertEqual(
+            viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
+            "It should have the correct status bar style"
+        )
     }
 
     /// Tests the back button.
     func testBackButton() {
-        XCTAssertNotNil(viewControllerUnderTest?.backButton,
-                        "The back button should exist")
+        XCTAssertNotNil(
+            viewControllerUnderTest?.backButton,
+            "The back button should exist"
+        )
 
-        XCTAssertNotEqual(viewControllerUnderTest?.backButton.title, "msdkui_app_back",
-                          "The back button title should be localized")
+        XCTAssertNotEqual(
+            viewControllerUnderTest?.backButton.title, "msdkui_app_back",
+            "The back button title should be localized"
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest?.backButton.title, key: "msdkui_app_back",
-                           "The back button should have the correct title")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.backButton.title, key: "msdkui_app_back",
+            "The back button should have the correct title"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.backButton.tintColor, .colorAccentLight,
-                       "The back button should have the correct tint color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.tintColor, .colorAccentLight,
+            "The back button should have the correct tint color"
+        )
     }
 
     /// Tests the accessibility identifiers.
     func testAccessibilityIdentifiers() {
-        XCTAssertEqual(viewControllerUnderTest?.backButton.accessibilityIdentifier, "OptionPanelViewController.backButton",
-                       "The back button should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.accessibilityIdentifier, "OptionPanelViewController.backButton",
+            "The back button should have the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.scrollView.accessibilityIdentifier, "OptionPanelViewController.scrollView",
-                       "The scroll view should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.scrollView.accessibilityIdentifier, "OptionPanelViewController.scrollView",
+            "The scroll view should have the correct accessibility identifier"
+        )
     }
 
     /// Tests the back button action before option changes.
@@ -88,8 +103,10 @@ final class OptionPanelViewControllerTests: XCTestCase {
         // Triggers the back button action
         viewControllerUnderTest?.backButton.tap()
 
-        XCTAssertFalse(mockDelegate.didCallOptionsUpdated,
-                       "It doesn't call the delegate method")
+        XCTAssertFalse(
+            mockDelegate.didCallOptionsUpdated,
+            "It doesn't call the delegate method"
+        )
     }
 
     /// Tests the back button action after option changes.
@@ -102,10 +119,14 @@ final class OptionPanelViewControllerTests: XCTestCase {
         // Triggers the back button action
         viewControllerUnderTest?.backButton.tap()
 
-        XCTAssertTrue(mockDelegate.didCallOptionsUpdated,
-                      "It calls the delegate method")
-        XCTAssertEqual(mockDelegate.lastViewController, viewControllerUnderTest,
-                       "It passed the correct view controller instance to the delegate")
+        XCTAssertTrue(
+            mockDelegate.didCallOptionsUpdated,
+            "It calls the delegate method"
+        )
+        XCTAssertEqual(
+            mockDelegate.lastViewController, viewControllerUnderTest,
+            "It passed the correct view controller instance to the delegate"
+        )
     }
 
     /// Tests the conformance to the `PickerViewDelegate` protocol.
@@ -113,11 +134,15 @@ final class OptionPanelViewControllerTests: XCTestCase {
         let mockPickerView = UIPickerView()
         let label = viewControllerUnderTest?.makeLabel(mockPickerView, text: "Mock Text")
 
-        XCTAssertEqual(label?.attributedText?.string, "Mock Text",
-                       "It creates a label with the correct text")
+        XCTAssertEqual(
+            label?.attributedText?.string, "Mock Text",
+            "It creates a label with the correct text"
+        )
 
-        XCTAssertEqual(label?.textAlignment, .center,
-                       "It creates a label with the correct text alignment")
+        XCTAssertEqual(
+            label?.textAlignment, .center,
+            "It creates a label with the correct text alignment"
+        )
     }
 
     /// Tests the view life cycle when panel is of type RouteTypeOptionsPanel.
@@ -130,8 +155,10 @@ final class OptionPanelViewControllerTests: XCTestCase {
         // Load the view hierarchy
         viewControllerUnderTest?.viewDidLoad()
 
-        XCTAssertTrue(panel.pickerDelegate === viewControllerUnderTest,
-                      "It sets the view controller as the panel delegate")
+        XCTAssertTrue(
+            panel.pickerDelegate === viewControllerUnderTest,
+            "It sets the view controller as the panel delegate"
+        )
     }
 
     /// Tests the view life cycle when panel is of type TrafficOptionsPanel.
@@ -144,8 +171,10 @@ final class OptionPanelViewControllerTests: XCTestCase {
         // Load the view hierarchy
         viewControllerUnderTest?.viewDidLoad()
 
-        XCTAssertTrue(panel.pickerDelegate === viewControllerUnderTest,
-                      "It sets the view controller as the panel delegate")
+        XCTAssertTrue(
+            panel.pickerDelegate === viewControllerUnderTest,
+            "It sets the view controller as the panel delegate"
+        )
     }
 
     /// Tests the view life cycle when panel is of type TruckOptionsPanel.
@@ -158,8 +187,10 @@ final class OptionPanelViewControllerTests: XCTestCase {
         // Load the view hierarchy
         viewControllerUnderTest?.viewDidLoad()
 
-        XCTAssertTrue(panel.pickerDelegate === viewControllerUnderTest,
-                      "It sets the view controller as the panel delegate")
+        XCTAssertTrue(
+            panel.pickerDelegate === viewControllerUnderTest,
+            "It sets the view controller as the panel delegate"
+        )
     }
 
     /// Tests the view life cycle when panel is of type TunnelOptionsPanel.
@@ -172,7 +203,9 @@ final class OptionPanelViewControllerTests: XCTestCase {
         // Load the view hierarchy
         viewControllerUnderTest?.viewDidLoad()
 
-        XCTAssertTrue(panel.pickerDelegate === viewControllerUnderTest,
-                      "It sets the view controller as the panel delegate")
+        XCTAssertTrue(
+            panel.pickerDelegate === viewControllerUnderTest,
+            "It sets the view controller as the panel delegate"
+        )
     }
 }

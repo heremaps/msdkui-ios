@@ -19,7 +19,6 @@ import Foundation
 import NMAKit
 
 final class NMAGeocoderMock {
-
     private(set) var didCallReverseGeocode = false
     private(set) var lastCoordinates: NMAGeoCoordinates?
     private(set) var lastCompletionBlock: NMARequestCompletionBlock?
@@ -28,7 +27,6 @@ final class NMAGeocoderMock {
 // MARK: - NMAGeocoding
 
 extension NMAGeocoderMock: NMAGeocoding {
-
     func reverseGeocode(coordinates: NMAGeoCoordinates, completionBlock: @escaping NMARequestCompletionBlock) {
         didCallReverseGeocode = true
         lastCoordinates = coordinates

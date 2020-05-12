@@ -20,7 +20,6 @@ import UIKit
 
 /// This protocol is intended for view controllers requiring location data.
 protocol LocationBasedViewController: AnyObject {
-
     typealias CLAuthorizationStatusProvider = () -> CLAuthorizationStatus
 
     /// Flag that can enable/disable location permission checking if necessary.
@@ -61,7 +60,6 @@ protocol LocationBasedViewController: AnyObject {
 // MARK: - UIViewController
 
 extension LocationBasedViewController where Self: UIViewController {
-
     func setUpLocationAuthorizationObserver() {
         appBecomeActiveObserver = notificationCenter.addObserver(forName: UIApplication.didBecomeActiveNotification, object: nil, queue: nil) { [weak self] _ in
             self?.checkLocationAuthorizationStatus()
@@ -106,9 +104,11 @@ extension LocationBasedViewController where Self: UIViewController {
         }
 
         // Create new alert
-        let alert = UIAlertController(title: "msdkui_app_userposition_notfound".localized,
-                                      message: "msdkui_app_userposition_notfound_subtitle".localized,
-                                      preferredStyle: .alert)
+        let alert = UIAlertController(
+            title: "msdkui_app_userposition_notfound".localized,
+            message: "msdkui_app_userposition_notfound_subtitle".localized,
+            preferredStyle: .alert
+        )
         alert.view.accessibilityIdentifier = "LocationBasedViewController.AlertController.permissionsView"
 
         alert.addAction(UIAlertAction(title: "msdkui_app_cancel".localized, style: .cancel) { [weak self] _ in

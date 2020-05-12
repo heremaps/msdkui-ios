@@ -55,7 +55,7 @@ import NMAKit
     @IBOutlet private(set) var timeLabel: UILabel!
 
     override open var intrinsicContentSize: CGSize {
-        return CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
+        CGSize(width: UIView.noIntrinsicMetric, height: intrinsicContentHeight)
     }
 
     /// The time displayed date on the panel.

@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class GuidanceDashboardViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var dashboardViewController: GuidanceDashboardViewController?
 
@@ -52,8 +51,10 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
     func testViewRoundedCorners() {
         if #available(iOS 11.0, *) {
             XCTAssertEqual(dashboardViewController?.view.layer.cornerRadius, 12.0, "It has the correct corner radius")
-            XCTAssertEqual(dashboardViewController?.view.layer.maskedCorners, [.layerMaxXMinYCorner, .layerMinXMinYCorner],
-                           "It has the correct corners rounded")
+            XCTAssertEqual(
+                dashboardViewController?.view.layer.maskedCorners, [.layerMaxXMinYCorner, .layerMinXMinYCorner],
+                "It has the correct corners rounded"
+            )
         }
     }
 
@@ -86,19 +87,27 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
     func testStopNavigationButton() throws {
         XCTAssertNotNil(dashboardViewController?.stopNavigationButton, "It has the stop navigation button")
 
-        XCTAssertEqual(dashboardViewController?.stopNavigationButton.accessibilityIdentifier, "GuidanceDashboardViewController.stopNavigationButton",
-                       "It has the correct correct accessibility identifier")
+        XCTAssertEqual(
+            dashboardViewController?.stopNavigationButton.accessibilityIdentifier, "GuidanceDashboardViewController.stopNavigationButton",
+            "It has the correct correct accessibility identifier"
+        )
 
-        XCTAssertLocalized(dashboardViewController?.stopNavigationButton.accessibilityLabel, key: "msdkui_app_stop_navigation",
-                           "It has the correct accessibility label")
+        XCTAssertLocalized(
+            dashboardViewController?.stopNavigationButton.accessibilityLabel, key: "msdkui_app_stop_navigation",
+            "It has the correct accessibility label"
+        )
 
         XCTAssertNil(dashboardViewController?.stopNavigationButton.currentTitle, "It doens't have a title")
 
-        XCTAssertEqual(dashboardViewController?.stopNavigationButton.backgroundColor, .colorSignificantLight,
-                       "It has the correct background color")
+        XCTAssertEqual(
+            dashboardViewController?.stopNavigationButton.backgroundColor, .colorSignificantLight,
+            "It has the correct background color"
+        )
 
-        XCTAssertEqual(dashboardViewController?.stopNavigationButton.tintColor, .colorSignificant,
-                       "It has the correct tint color")
+        XCTAssertEqual(
+            dashboardViewController?.stopNavigationButton.tintColor, .colorSignificant,
+            "It has the correct tint color"
+        )
 
         // TODO: MSDKUI-2161
         // let expectedImage = try require(UIImage(named: "Clear", in: Bundle(for: GuidanceViewController.self), compatibleWith: nil))
@@ -184,23 +193,35 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
         let regularTraitCollection = UITraitCollection(verticalSizeClass: .regular)
         navigationController.setOverrideTraitCollection(regularTraitCollection, forChild: dashboardViewController)
 
-        XCTAssertEqual(dashboardViewController.estimatedArrivalView.primaryInfoTextColor, .colorForeground,
-                       "It has the correct primary text color")
-        XCTAssertEqual(dashboardViewController.estimatedArrivalView.secondaryInfoTextColor, .colorForegroundSecondary,
-                       "It has the correct secondary text color")
-        XCTAssertEqual(dashboardViewController.estimatedArrivalView.textAlignment, .center,
-                       "It has the correct text alignment")
+        XCTAssertEqual(
+            dashboardViewController.estimatedArrivalView.primaryInfoTextColor, .colorForeground,
+            "It has the correct primary text color"
+        )
+        XCTAssertEqual(
+            dashboardViewController.estimatedArrivalView.secondaryInfoTextColor, .colorForegroundSecondary,
+            "It has the correct secondary text color"
+        )
+        XCTAssertEqual(
+            dashboardViewController.estimatedArrivalView.textAlignment, .center,
+            "It has the correct text alignment"
+        )
 
         // Inject the compact trait collection
         let compactTrait = UITraitCollection(verticalSizeClass: .compact)
         navigationController.setOverrideTraitCollection(compactTrait, forChild: dashboardViewController)
 
-        XCTAssertEqual(dashboardViewController.estimatedArrivalView.primaryInfoTextColor, .colorForeground,
-                       "It has the correct primary text color")
-        XCTAssertEqual(dashboardViewController.estimatedArrivalView.secondaryInfoTextColor, .colorForegroundSecondary,
-                       "It has the correct secondary text color")
-        XCTAssertEqual(dashboardViewController.estimatedArrivalView.textAlignment, .left,
-                       "It has the correct text alignment")
+        XCTAssertEqual(
+            dashboardViewController.estimatedArrivalView.primaryInfoTextColor, .colorForeground,
+            "It has the correct primary text color"
+        )
+        XCTAssertEqual(
+            dashboardViewController.estimatedArrivalView.secondaryInfoTextColor, .colorForegroundSecondary,
+            "It has the correct secondary text color"
+        )
+        XCTAssertEqual(
+            dashboardViewController.estimatedArrivalView.textAlignment, .left,
+            "It has the correct text alignment"
+        )
     }
 
     // MARK: - GuidanceEstimatedArrivalMonitorDelegate
@@ -216,20 +237,28 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
         // Triggers the delegate method
         dashboardViewController?.guidanceEstimatedArrivalMonitor(monitor, didChangeTimeOfArrival: arrivalTime, distance: distance, duration: duration)
 
-        XCTAssertFalse(try require(dashboardViewController?.estimatedArrivalView.isHidden),
-                       "It shows the estimated arrival view")
+        XCTAssertFalse(
+            try require(dashboardViewController?.estimatedArrivalView.isHidden),
+            "It shows the estimated arrival view"
+        )
 
-        XCTAssertEqual(dashboardViewController?.estimatedArrivalView.estimatedTimeOfArrivalLabel.text,
-                       DateFormatter.currentShortTimeFormatter.string(from: arrivalTime),
-                       "It configures the arrival view with the correct ETA")
+        XCTAssertEqual(
+            dashboardViewController?.estimatedArrivalView.estimatedTimeOfArrivalLabel.text,
+            DateFormatter.currentShortTimeFormatter.string(from: arrivalTime),
+            "It configures the arrival view with the correct ETA"
+        )
 
-        XCTAssertEqual(dashboardViewController?.estimatedArrivalView.distanceLabel.text,
-                       MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
-                       "It configures the arrival view with the correct distance")
+        XCTAssertEqual(
+            dashboardViewController?.estimatedArrivalView.distanceLabel.text,
+            MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
+            "It configures the arrival view with the correct distance"
+        )
 
-        XCTAssertEqual(dashboardViewController?.estimatedArrivalView.durationLabel.text,
-                       MeasurementFormatter.currentMediumUnitFormatter.string(from: duration),
-                       "It configures the arrival view with the correct duration")
+        XCTAssertEqual(
+            dashboardViewController?.estimatedArrivalView.durationLabel.text,
+            MeasurementFormatter.currentMediumUnitFormatter.string(from: duration),
+            "It configures the arrival view with the correct duration"
+        )
     }
 
     /// Tests when `.guidanceEstimatedArrivalMonitor(_:didChangeTimeOfArrival:distance:duration:)` is triggered with incomplete model.
@@ -242,16 +271,22 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
         // Triggers the delegate method
         dashboardViewController?.guidanceEstimatedArrivalMonitor(monitor, didChangeTimeOfArrival: arrivalTime, distance: nil, duration: duration)
 
-        XCTAssertEqual(dashboardViewController?.estimatedArrivalView.estimatedTimeOfArrivalLabel.text,
-                       DateFormatter.currentShortTimeFormatter.string(from: arrivalTime),
-                       "It configures the arrival view with the correct ETA")
+        XCTAssertEqual(
+            dashboardViewController?.estimatedArrivalView.estimatedTimeOfArrivalLabel.text,
+            DateFormatter.currentShortTimeFormatter.string(from: arrivalTime),
+            "It configures the arrival view with the correct ETA"
+        )
 
-        XCTAssertNonlocalizable(dashboardViewController?.estimatedArrivalView.distanceLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI,
-                                "It configures the arrival view with dashes")
+        XCTAssertNonlocalizable(
+            dashboardViewController?.estimatedArrivalView.distanceLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI,
+            "It configures the arrival view with dashes"
+        )
 
-        XCTAssertEqual(dashboardViewController?.estimatedArrivalView.durationLabel.text,
-                       MeasurementFormatter.currentMediumUnitFormatter.string(from: duration),
-                       "It configures the arrival view with the correct duration")
+        XCTAssertEqual(
+            dashboardViewController?.estimatedArrivalView.durationLabel.text,
+            MeasurementFormatter.currentMediumUnitFormatter.string(from: duration),
+            "It configures the arrival view with the correct duration"
+        )
     }
 
     // MARK: - GuidanceSpeedMonitorDelegate
@@ -264,14 +299,20 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
 
         dashboardViewController?.guidanceSpeedMonitor(monitor, didUpdateCurrentSpeed: speed, isSpeeding: false, speedLimit: speedLimit)
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speed, speed,
-                       "It shows a view configured with the correct speed")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speed, speed,
+            "It shows a view configured with the correct speed"
+        )
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speedValueTextColor, .colorForeground,
-                       "It shows the speed view with correct speed value color")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speedValueTextColor, .colorForeground,
+            "It shows the speed view with correct speed value color"
+        )
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speedUnitTextColor, .colorForegroundSecondary,
-                       "It shows the speed view with correct speed unit color")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speedUnitTextColor, .colorForegroundSecondary,
+            "It shows the speed view with correct speed unit color"
+        )
     }
 
     /// Tests when `.guidanceSpeedMonitor(_:didUpdateCurrentSpeed:isSpeeding:speedLimit:)` is triggered with speeding speed.
@@ -282,14 +323,20 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
 
         dashboardViewController?.guidanceSpeedMonitor(monitor, didUpdateCurrentSpeed: speed, isSpeeding: true, speedLimit: speedLimit)
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speed, speed,
-                       "It shows a view configured with the correct speed")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speed, speed,
+            "It shows a view configured with the correct speed"
+        )
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speedValueTextColor, .colorNegative,
-                       "It shows the speed view with correct speed value color")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speedValueTextColor, .colorNegative,
+            "It shows the speed view with correct speed value color"
+        )
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speedUnitTextColor, .colorNegative,
-                       "It shows the speed view with correct speed unit color")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speedUnitTextColor, .colorNegative,
+            "It shows the speed view with correct speed unit color"
+        )
     }
 
     /// Tests when `.guidanceSpeedMonitor(_:didUpdateCurrentSpeed:isSpeeding:speedLimit:)` is triggered without speed limit.
@@ -299,14 +346,20 @@ final class GuidanceDashboardViewControllerTests: XCTestCase {
 
         dashboardViewController?.guidanceSpeedMonitor(monitor, didUpdateCurrentSpeed: speed, isSpeeding: false, speedLimit: nil)
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speed, speed,
-                       "It shows a view configured with the correct speed")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speed, speed,
+            "It shows a view configured with the correct speed"
+        )
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speedValueTextColor, .colorForeground,
-                       "It shows the speed view with correct speed value color")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speedValueTextColor, .colorForeground,
+            "It shows the speed view with correct speed value color"
+        )
 
-        XCTAssertEqual(dashboardViewController?.currentSpeedView.speedUnitTextColor, .colorForegroundSecondary,
-                       "It shows the speed view with correct speed unit color")
+        XCTAssertEqual(
+            dashboardViewController?.currentSpeedView.speedUnitTextColor, .colorForegroundSecondary,
+            "It shows the speed view with correct speed unit color"
+        )
     }
 
     // MARK: - UITableViewDelegate

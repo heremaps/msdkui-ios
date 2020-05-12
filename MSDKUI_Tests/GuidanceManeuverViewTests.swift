@@ -18,7 +18,6 @@
 import XCTest
 
 final class GuidanceManeuverViewTests: XCTestCase {
-
     /// The object under test.
     let view = GuidanceManeuverView(frame: CGRect(origin: .zero, size: CGSize(width: 375.0, height: 139.0)))
 
@@ -138,11 +137,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when a new distance formatter is set and the view has data.
     func testWhenDistanceFormatterChangesAndStateHasManeuverData() {
-        let maneuverData = GuidanceManeuverData(maneuverIcon: nil,
-                                                distance: Measurement(value: 30, unit: .meters),
-                                                info1: nil,
-                                                info2: nil,
-                                                nextRoadIcon: nil)
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: nil,
+            distance: Measurement(value: 30, unit: .meters),
+            info1: nil,
+            info2: nil,
+            nextRoadIcon: nil
+        )
         view.state = .data(maneuverData)
 
         view.distanceFormatter = MeasurementFormatter()
@@ -217,11 +218,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
     func testWhenStateIsDataWithAllParameters() {
         let maneuverIcon = UIImage()
         let roadIcon = UIImage()
-        let maneuverData = GuidanceManeuverData(maneuverIcon: maneuverIcon,
-                                                distance: Measurement(value: 30, unit: .meters),
-                                                info1: "Useful info1",
-                                                info2: "Useful info2",
-                                                nextRoadIcon: roadIcon)
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: maneuverIcon,
+            distance: Measurement(value: 30, unit: .meters),
+            info1: "Useful info1",
+            info2: "Useful info2",
+            nextRoadIcon: roadIcon
+        )
 
         view.state = .data(maneuverData)
 
@@ -250,11 +253,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when state is .data without maneuver icon.
     func testWhenStateIsDataWithoutManeuverIcon() {
-        let maneuverData = GuidanceManeuverData(maneuverIcon: nil,
-                                                distance: Measurement(value: 30, unit: .meters),
-                                                info1: "Useful info1",
-                                                info2: "Useful info2",
-                                                nextRoadIcon: UIImage())
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: nil,
+            distance: Measurement(value: 30, unit: .meters),
+            info1: "Useful info1",
+            info2: "Useful info2",
+            nextRoadIcon: UIImage()
+        )
 
         view.state = .data(maneuverData)
 
@@ -264,11 +269,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when state is .data without distance.
     func testWhenStateIsDataWithoutDistance() {
-        let maneuverData = GuidanceManeuverData(maneuverIcon: UIImage(),
-                                                distance: nil,
-                                                info1: "Useful info1",
-                                                info2: "Useful info2",
-                                                nextRoadIcon: UIImage())
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: UIImage(),
+            distance: nil,
+            info1: "Useful info1",
+            info2: "Useful info2",
+            nextRoadIcon: UIImage()
+        )
 
         view.state = .data(maneuverData)
 
@@ -278,11 +285,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when state is .data with info1.
     func testWhenStateIsDataWithoutInfo1() {
-        let maneuverData = GuidanceManeuverData(maneuverIcon: UIImage(),
-                                                distance: Measurement(value: 30, unit: .meters),
-                                                info1: nil,
-                                                info2: "Useful info2",
-                                                nextRoadIcon: UIImage())
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: UIImage(),
+            distance: Measurement(value: 30, unit: .meters),
+            info1: nil,
+            info2: "Useful info2",
+            nextRoadIcon: UIImage()
+        )
 
         view.state = .data(maneuverData)
 
@@ -292,11 +301,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when state is .data with info2.
     func testWhenStateIsDataWithoutInfo2() {
-        let maneuverData = GuidanceManeuverData(maneuverIcon: UIImage(),
-                                                distance: Measurement(value: 30, unit: .meters),
-                                                info1: "Useful info1",
-                                                info2: nil,
-                                                nextRoadIcon: UIImage())
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: UIImage(),
+            distance: Measurement(value: 30, unit: .meters),
+            info1: "Useful info1",
+            info2: nil,
+            nextRoadIcon: UIImage()
+        )
 
         view.state = .data(maneuverData)
 
@@ -306,11 +317,13 @@ final class GuidanceManeuverViewTests: XCTestCase {
 
     /// Tests the behavior when state is .data without next road icon.
     func testWhenStateIsDataWithoutNextRoadIcon() {
-        let maneuverData = GuidanceManeuverData(maneuverIcon: UIImage(),
-                                                distance: Measurement(value: 30, unit: .meters),
-                                                info1: "Useful info1",
-                                                info2: "Useful info2",
-                                                nextRoadIcon: nil)
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: UIImage(),
+            distance: Measurement(value: 30, unit: .meters),
+            info1: "Useful info1",
+            info2: "Useful info2",
+            nextRoadIcon: nil
+        )
 
         view.state = .data(maneuverData)
 

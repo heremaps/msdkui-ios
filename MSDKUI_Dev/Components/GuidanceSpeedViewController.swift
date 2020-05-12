@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceSpeedViewController: UIViewController {
-
     @IBOutlet private(set) var currentSpeedView: GuidanceSpeedView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

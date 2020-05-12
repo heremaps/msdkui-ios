@@ -18,7 +18,6 @@
 import XCTest
 
 final class RouteTypeOptionsPanelTests: XCTestCase {
-
     /// The object under test.
     private var panel = RouteTypeOptionsPanel()
 

@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceSpeedLimitSettingsViewController: SettingsViewController<GuidanceSpeedLimitSettingsViewController.Settings> {
-
     struct Settings {
         var speedLimit: Measurement<UnitSpeed>?
         var unit: UnitSpeed
@@ -30,31 +29,51 @@ final class GuidanceSpeedLimitSettingsViewController: SettingsViewController<Gui
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "km/h, red",
-                         configuration: Settings(speedLimit: Measurement(value: 42, unit: .kilometersPerHour),
-                                                 unit: .kilometersPerHour,
-                                                 speedLimitTextColor: .red,
-                                                 backgroundImage: nil)),
-            SettingsItem(title: "mph, brown",
-                         configuration: Settings(speedLimit: Measurement(value: 42, unit: .kilometersPerHour),
-                                                 unit: .milesPerHour,
-                                                 speedLimitTextColor: .brown,
-                                                 backgroundImage: nil)),
-            SettingsItem(title: "km/h, black, background image",
-                         configuration: Settings(speedLimit: Measurement(value: 42, unit: .kilometersPerHour),
-                                                 unit: .kilometersPerHour,
-                                                 speedLimitTextColor: .black,
-                                                 backgroundImage: UIImage(named: "red_sign"))),
-            SettingsItem(title: "Without speed",
-                         configuration: Settings(speedLimit: nil,
-                                                 unit: .kilometersPerHour,
-                                                 speedLimitTextColor: .red,
-                                                 backgroundImage: nil)),
-            SettingsItem(title: "Without speed, background image",
-                         configuration: Settings(speedLimit: nil,
-                                                 unit: .kilometersPerHour,
-                                                 speedLimitTextColor: .black,
-                                                 backgroundImage: UIImage(named: "red_sign")))
+            SettingsItem(
+                title: "km/h, red",
+                configuration: Settings(
+                    speedLimit: Measurement(value: 42, unit: .kilometersPerHour),
+                    unit: .kilometersPerHour,
+                    speedLimitTextColor: .red,
+                    backgroundImage: nil
+                )
+            ),
+            SettingsItem(
+                title: "mph, brown",
+                configuration: Settings(
+                    speedLimit: Measurement(value: 42, unit: .kilometersPerHour),
+                    unit: .milesPerHour,
+                    speedLimitTextColor: .brown,
+                    backgroundImage: nil
+                )
+            ),
+            SettingsItem(
+                title: "km/h, black, background image",
+                configuration: Settings(
+                    speedLimit: Measurement(value: 42, unit: .kilometersPerHour),
+                    unit: .kilometersPerHour,
+                    speedLimitTextColor: .black,
+                    backgroundImage: UIImage(named: "red_sign")
+                )
+            ),
+            SettingsItem(
+                title: "Without speed",
+                configuration: Settings(
+                    speedLimit: nil,
+                    unit: .kilometersPerHour,
+                    speedLimitTextColor: .red,
+                    backgroundImage: nil
+                )
+            ),
+            SettingsItem(
+                title: "Without speed, background image",
+                configuration: Settings(
+                    speedLimit: nil,
+                    unit: .kilometersPerHour,
+                    speedLimitTextColor: .black,
+                    backgroundImage: UIImage(named: "red_sign")
+                )
+            )
         ]
     }
 }

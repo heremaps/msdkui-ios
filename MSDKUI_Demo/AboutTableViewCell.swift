@@ -17,7 +17,6 @@
 import UIKit
 
 final class AboutTableViewCell: UITableViewCell {
-
     // MARK: - Types
 
     struct ViewModel {

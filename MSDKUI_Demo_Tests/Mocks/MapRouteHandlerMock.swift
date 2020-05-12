@@ -18,7 +18,6 @@
 import NMAKit
 
 final class MapRouteHandlerMock {
-
     private(set) var didCallMakeMapRoute = false
     private(set) var didCallAddMapRouteToMapView = false
     private(set) var didCallAddMapRouteToMapViewCount = 0
@@ -34,8 +33,7 @@ final class MapRouteHandlerMock {
 
 // MARK: - MapRouteHandling
 
-extension  MapRouteHandlerMock: MapRouteHandling {
-
+extension MapRouteHandlerMock: MapRouteHandling {
     func makeMapRoute(with route: NMARoute) -> NMAMapRoute? {
         didCallMakeMapRoute = true
         lastRoute = route
@@ -59,7 +57,6 @@ extension  MapRouteHandlerMock: MapRouteHandling {
 // MARK: - Stub
 
 extension MapRouteHandlerMock {
-
     func stubMapRoute(toReturn value: NMAMapRoute?) {
         stubbedMapRoute = value
     }

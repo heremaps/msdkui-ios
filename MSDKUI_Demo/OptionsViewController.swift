@@ -20,12 +20,10 @@ import UIKit
 
 /// A set of methods for communicating interactions with options.
 protocol OptionsDelegate: AnyObject {
-
     func optionsUpdated(_ viewController: UIViewController)
 }
 
 class OptionsViewController: UIViewController {
-
     // MARK: - Properties
 
     @IBOutlet private(set) var backButton: UIBarButtonItem!
@@ -43,7 +41,7 @@ class OptionsViewController: UIViewController {
     weak var delegate: OptionsDelegate?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var isUpdated = false
@@ -79,7 +77,7 @@ class OptionsViewController: UIViewController {
             panels.indices.contains(selectedRow),
             case let selectedOptionsPanelName = panels[selectedRow],
             let panel = configuredOptionsPanel(for: selectedOptionsPanelName) else {
-                return
+            return
         }
 
         viewController.panelTitle = selectedOptionsPanelName
@@ -216,7 +214,6 @@ class OptionsViewController: UIViewController {
 // MARK: - OptionsDelegate
 
 extension OptionsViewController: OptionsDelegate {
-
     func optionsUpdated(_ viewController: UIViewController) {
         isUpdated = true
     }
@@ -225,9 +222,8 @@ extension OptionsViewController: OptionsDelegate {
 // MARK: - UITableViewDataSource
 
 extension OptionsViewController: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return panels.count
+        panels.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -241,7 +237,6 @@ extension OptionsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension OptionsViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "ShowPanel", sender: self)
 

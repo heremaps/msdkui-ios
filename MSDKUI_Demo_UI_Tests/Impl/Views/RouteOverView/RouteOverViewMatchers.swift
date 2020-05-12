@@ -18,26 +18,26 @@ import EarlGrey
 
 enum RouteOverviewMatchers {
     static var maneuverTableView: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("MSDKUI.ManeuverTableView"),
+        grey_anyOf([grey_accessibilityID("MSDKUI.ManeuverTableView"),
                            grey_accessibilityID("ManeuversOverviewViewController.maneuverTableView")])
     }
 
     static func maneuverTableViewCell(cellNr: Int) -> GREYMatcher {
-        return grey_accessibilityID("MSDKUI.ManeuverTableView.cell_\(cellNr)")
+        grey_accessibilityID("MSDKUI.ManeuverTableView.cell_\(cellNr)")
     }
 
     static var routeDescriptionItem: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.RouteDescriptionItem")
+        grey_accessibilityID("MSDKUI.RouteDescriptionItem")
     }
 
     static var startNavigationButton: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("RouteOverviewViewController.startNavigationButton"),
+        grey_anyOf([grey_accessibilityID("RouteOverviewViewController.startNavigationButton"),
                            grey_accessibilityID("ManeuversOverviewViewController.startNavigationButton")]
         )
     }
 
     static var maneuversShowMapButton: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("ManeuversOverviewViewController.showMapButton"),
+        grey_anyOf([grey_accessibilityID("ManeuversOverviewViewController.showMapButton"),
                            grey_accessibilityID("RouteViewController.showButton")])
     }
 }

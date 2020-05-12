@@ -19,7 +19,6 @@ import Foundation
 import UIKit
 
 class Utils { // swiftlint:disable:this convenience_type
-
     // MARK: - Properties
 
     private static var bundleInstance: Bundle?

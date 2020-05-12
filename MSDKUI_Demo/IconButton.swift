@@ -18,12 +18,10 @@ import UIKit
 
 /// Generic button with predefined set of icons.
 @IBDesignable class IconButton: UIButton {
-
     // MARK: - Types
 
     /// An enum that defines the available Button types.
     enum IconButtonType: String {
-
         /// Add button
         case add
 
@@ -75,7 +73,7 @@ import UIKit
 
         /// Returns the nonlocalized `accessibilityIdentifier` string.
         var accessibilityIdentifier: String {
-            return "IconButton.\(rawValue)"
+            "IconButton.\(rawValue)"
         }
     }
 
@@ -98,7 +96,7 @@ import UIKit
     ///              value, the type remains unchanged.
     @IBInspectable var typeProxy: String? {
         get {
-            return type.rawValue
+            type.rawValue
         }
         set {
             if let value = newValue,

@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class OptionItemDelegateMock {
-
     private(set) var didCallDidChange = false
     private(set) var didCallDidChangeCount = 0
 
@@ -28,7 +27,6 @@ final class OptionItemDelegateMock {
 // MARK: - OptionItemDelegate
 
 extension OptionItemDelegateMock: OptionItemDelegate {
-
     func optionItemDidChange(_ item: OptionItem) {
         didCallDidChange = true
         didCallDidChangeCount += 1

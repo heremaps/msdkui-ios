@@ -18,7 +18,6 @@
 import XCTest
 
 final class TruckOptionsPanelTests: XCTestCase {
-
     /// The object under test.
     private var panel = TruckOptionsPanel()
 
@@ -99,8 +98,10 @@ final class TruckOptionsPanelTests: XCTestCase {
         XCTAssertEqual(mockDelegate.didChangeToOptionCount, 1, "It calls the delegate method only once")
 
         // Is the underlying NMARoutingMode object updated?
-        XCTAssertEqual(routingMode.truckRestrictionsMode, .noViolations,
-                       "Not the expected NMARoutingMode.truckRestrictionsMode value!")
+        XCTAssertEqual(
+            routingMode.truckRestrictionsMode, .noViolations,
+            "Not the expected NMARoutingMode.truckRestrictionsMode value!"
+        )
 
         // Set the same value again
         item.checked = false

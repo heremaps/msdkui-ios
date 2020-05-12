@@ -18,7 +18,6 @@
 import XCTest
 
 final class GuidanceManeuverUtilTests: XCTestCase {
-
     /// This is the real `NMANavigationManager` method.
     private var realNavigationManagerMethod: Method!
 
@@ -67,20 +66,30 @@ final class GuidanceManeuverUtilTests: XCTestCase {
         let maneuverLeaveHighway = MockUtils.mockManeuver(coordinates, with: NMAManeuverAction.leaveHighway, withSignpostString: signpostString)
         let maneuverNotLeaveHighway = MockUtils.mockManeuver(coordinates, with: NMAManeuverAction.changeLine)
 
-        XCTAssertEqual(GuidanceManeuverUtil.combineStrings(maneuver: maneuverLeaveHighway, name: name, number: number), signpostString,
-                       "Not the expected string from the signpost!")
+        XCTAssertEqual(
+            GuidanceManeuverUtil.combineStrings(maneuver: maneuverLeaveHighway, name: name, number: number), signpostString,
+            "Not the expected string from the signpost!"
+        )
 
-        XCTAssertEqual(GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: name, number: number), number + "/" + name,
-                       "Not the expected combined string!")
+        XCTAssertEqual(
+            GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: name, number: number), number + "/" + name,
+            "Not the expected combined string!"
+        )
 
-        XCTAssertEqual(GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: name, number: nil), name,
-                       "Not the expected combined string!")
+        XCTAssertEqual(
+            GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: name, number: nil), name,
+            "Not the expected combined string!"
+        )
 
-        XCTAssertEqual(GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: nil, number: number), number,
-                       "Not the expected combined string!")
+        XCTAssertEqual(
+            GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: nil, number: number), number,
+            "Not the expected combined string!"
+        )
 
-        XCTAssertNil(GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: nil, number: nil),
-                     "Not the expected combined string!")
+        XCTAssertNil(
+            GuidanceManeuverUtil.combineStrings(maneuver: maneuverNotLeaveHighway, name: nil, number: nil),
+            "Not the expected combined string!"
+        )
     }
 
     /// Tests `GuidanceManeuverUtil.getNextStreet()` method: the current maneuver should provide

@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'cocoapods', '1.8.4'
-gem 'xcov', '1.7.0'
-gem 'jazzy', '0.10.0'
-gem 'rake', '12.3.3'
+gem 'cocoapods', '1.9.1'
+gem 'xcov', '1.7.3'
+gem 'jazzy', '0.13.3'
+gem 'rake', '13.0.1'

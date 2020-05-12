@@ -18,7 +18,6 @@
 import XCTest
 
 final class ExtensionArrayTests: XCTestCase {
-
     /// Tests `Array.init(cloneValue:count:)` method.
     func testCloneValue() {
         let array = [WaypointEntry](cloneValue: WaypointEntry(NMAWaypoint(), name: ""), count: 2)

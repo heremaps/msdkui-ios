@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class GuidanceDashboardTableViewDataSourceTests: XCTestCase {
-
     /// The object under test.
     private var dataSource: GuidanceDashboardTableViewDataSource?
 

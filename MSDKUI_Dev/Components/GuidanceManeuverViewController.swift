@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceManeuverViewController: UIViewController {
-
     @IBOutlet private(set) var maneuverView: GuidanceManeuverView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

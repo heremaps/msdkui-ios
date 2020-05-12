@@ -17,7 +17,6 @@
 import UIKit
 
 final class GuidanceDashboardTableViewCell: UITableViewCell {
-
     // MARK: - Types
 
     struct ViewModel {

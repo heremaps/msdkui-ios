@@ -23,7 +23,7 @@ public extension NMAManeuver {
     ///
     /// - Returns: The current street name or nil when it is not available.
     @objc func getCurrentStreet() -> String? {
-        return GuidanceManeuverUtil.getCurrentStreet(from: self)
+        GuidanceManeuverUtil.getCurrentStreet(from: self)
     }
 
     /// Gets the next street name. In case the next street is not found, the next maneuvers
@@ -139,7 +139,7 @@ extension NMAManeuver {
 
     /// A Boolean value that determines whether the maneuver indicates a junction or a roundabout.
     var isChangingRoad: Bool {
-        return action == NMAManeuverAction.junction || action == NMAManeuverAction.roundabout
+        action == NMAManeuverAction.junction || action == NMAManeuverAction.roundabout
     }
 }
 

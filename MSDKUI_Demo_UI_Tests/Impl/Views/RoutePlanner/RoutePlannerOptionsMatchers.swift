@@ -18,30 +18,30 @@ import EarlGrey
 
 enum RoutePlannerOptionMatchers {
     static var optionRouteOptions: GREYMatcher {
-        return  grey_accessibilityLabel("Route options")
+        grey_accessibilityLabel("Route options")
     }
 
     static var optionAvoidTraffic: GREYMatcher {
-        return  grey_accessibilityLabel("Avoid traffic")
+        grey_accessibilityLabel("Avoid traffic")
     }
 
     static var optionSwitchAvoidTunnels: GREYMatcher {
-        return Utils.optionSwitchForLabelContainingText("Avoid tunnels")
+        Utils.optionSwitchForLabelContainingText("Avoid tunnels")
     }
 
     static var optionRouteType: GREYMatcher {
-        return grey_accessibilityLabel("Route type")
+        grey_accessibilityLabel("Route type")
     }
 
     static var truckOptionTunnelsAllowed: GREYMatcher {
-        return grey_accessibilityLabel("Tunnels allowed")
+        grey_accessibilityLabel("Tunnels allowed")
     }
 
     static var truckOptionHazardousMaterials: GREYMatcher {
-        return grey_accessibilityLabel("Hazardous materials")
+        grey_accessibilityLabel("Hazardous materials")
     }
 
     static var truckOptionTruckOptions: GREYMatcher {
-        return grey_accessibilityLabel("Truck options")
+        grey_accessibilityLabel("Truck options")
     }
 }

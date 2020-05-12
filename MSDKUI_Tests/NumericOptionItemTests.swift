@@ -18,7 +18,6 @@
 import XCTest
 
 final class NumericOptionItemTests: XCTestCase {
-
     /// The object under test.
     private var itemUnterTest = NumericOptionItem()
 
@@ -37,10 +36,12 @@ final class NumericOptionItemTests: XCTestCase {
 
     /// Tests that the default values are the expected ones.
     func testDefaultValues() {
-        XCTAssertLocalized(itemUnterTest.getButtonTitle(),
-                           key: "msdkui_set",
-                           bundle: .MSDKUI,
-                           "Not the expected value button title 'Set'!")
+        XCTAssertLocalized(
+            itemUnterTest.getButtonTitle(),
+            key: "msdkui_set",
+            bundle: .MSDKUI,
+            "Not the expected value button title 'Set'!"
+        )
     }
 
     /// Tests that the text values are set correctly.
@@ -67,10 +68,12 @@ final class NumericOptionItemTests: XCTestCase {
     /// Tests that the validator method is called.
     func testValidatorMethod() {
         // Set the input helper
-        itemUnterTest.inputHelper = NumericOptionItemInputHelper(title: "Title",
-                                                                 message: "Message",
-                                                                 placeholder: "Placeholder",
-                                                                 validator: validate)
+        itemUnterTest.inputHelper = NumericOptionItemInputHelper(
+            title: "Title",
+            message: "Message",
+            placeholder: "Placeholder",
+            validator: validate
+        )
         // Set the value property
         itemUnterTest.value = NSNumber(value: 3)
 

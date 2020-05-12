@@ -18,7 +18,6 @@
 import XCTest
 
 final class WaypointItemTests: XCTestCase {
-
     private var list = WaypointList(frame: CGRect(x: 0, y: 0, width: 500, height: 500), style: .plain)
     private var entries: [WaypointEntry]!
     private let indexPath0 = IndexPath(row: 0, section: 0)
@@ -38,8 +37,10 @@ final class WaypointItemTests: XCTestCase {
         let waypoint = NMAWaypoint(geoCoordinates: coordinates)
 
         // Create the WaypointList object
-        entries = [WaypointEntry](cloneValue: WaypointEntry(waypoint, name: "HERE"),
-                                  count: list.minWaypointItems)
+        entries = [WaypointEntry](
+            cloneValue: WaypointEntry(waypoint, name: "HERE"),
+            count: list.minWaypointItems
+        )
         list.waypointEntries = entries
     }
 

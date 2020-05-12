@@ -17,7 +17,6 @@
 import UIKit
 
 extension UIAlertController {
-
     private typealias AlertHandler = @convention(block) (UIAlertAction) -> Void
 
     /// Taps an UIAlertController button, triggering its action.
@@ -26,11 +25,11 @@ extension UIAlertController {
     /// - Important: This method doesn't do anything if fails to trigger the action.
     func tapButton(at index: Int) {
         guard
-            0..<actions.count ~= index,
+            0 ..< actions.count ~= index,
             let block = actions[index].value(forKey: "handler"),
             case let blockPointer = UnsafeRawPointer(Unmanaged<AnyObject>.passUnretained(block as AnyObject).toOpaque()),
             case let handler = unsafeBitCast(blockPointer, to: AlertHandler.self) else {
-                return
+            return
         }
 
         handler(actions[index])

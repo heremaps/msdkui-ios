@@ -19,7 +19,6 @@ import Foundation
 import NMAKit
 
 final class EstimatedArrivalProviderMock {
-
     private(set) var stubbedDistanceToDestination: NMAUint64?
     private(set) var stubbedTimeToArrival: [NMATrafficPenaltyMode: TimeInterval] = [:]
 }
@@ -27,7 +26,6 @@ final class EstimatedArrivalProviderMock {
 // MARK: - EstimatedArrivalProviding
 
 extension EstimatedArrivalProviderMock: EstimatedArrivalProviding {
-
     var distanceToDestination: NMAUint64 {
         guard let value = stubbedDistanceToDestination else {
             fatalError("Stub this value before accessing it")
@@ -48,7 +46,6 @@ extension EstimatedArrivalProviderMock: EstimatedArrivalProviding {
 // MARK: - Stub
 
 extension EstimatedArrivalProviderMock {
-
     func stubDistanceToDestination(toReturn value: NMAUint64) {
         stubbedDistanceToDestination = value
     }

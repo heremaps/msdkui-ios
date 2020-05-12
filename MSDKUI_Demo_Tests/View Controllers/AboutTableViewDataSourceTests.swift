@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class AboutTableViewDataSourceTests: XCTestCase {
-
     /// The object under test.
     private var dataSource: AboutTableViewDataSource?
 
@@ -65,18 +64,18 @@ final class AboutTableViewDataSourceTests: XCTestCase {
         // Third item
         let thirdItem = try require(dataSource?.item(at: IndexPath(row: 2, section: 0)))
         XCTAssertLocalized(thirdItem.title, key: "msdkui_app_here_sdk_version", "It has the correct title")
-        XCTAssertTrue(thirdItem.description.contains("3.14.2"), "It has the correct description")
+        XCTAssertTrue(thirdItem.description.contains("3.15.2"), "It has the correct description")
 
         // Fourth item
         let fourthItem = try require(dataSource?.item(at: IndexPath(row: 3, section: 0)))
         let fourthItemExpectedDescription =
-        """
-        \(NSLocalizedString("msdkui_app_about_info_part_two", comment: ""))
+            """
+            \(NSLocalizedString("msdkui_app_about_info_part_two", comment: ""))
 
-        \(NSLocalizedString("msdkui_app_about_info_part_three", comment: ""))
+            \(NSLocalizedString("msdkui_app_about_info_part_three", comment: ""))
 
-        \(NSLocalizedString("msdkui_app_about_info_part_four", comment: ""))
-        """
+            \(NSLocalizedString("msdkui_app_about_info_part_four", comment: ""))
+            """
 
         XCTAssertLocalized(fourthItem.title, key: "msdkui_app_about_info_part_one", "It has the correct title")
         XCTAssertEqual(fourthItem.description, fourthItemExpectedDescription, "It has the correct description")

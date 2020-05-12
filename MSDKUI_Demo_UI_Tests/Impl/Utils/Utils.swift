@@ -108,7 +108,7 @@ enum Utils {
     /// - Returns: The `GREYMatcher` object containing the given text.
     static func viewContainingText(_ text: String) -> GREYMatcher {
 
-        return GREYElementMatcherBlock(matchesBlock: {
+        GREYElementMatcherBlock(matchesBlock: {
             guard
                 case let element = $0 as AnyObject,
                 case let selector = #selector(getter: UILabel.text),
@@ -157,7 +157,7 @@ enum Utils {
     /// - Parameter text: Text that option label should contain.
     /// - Returns: UISwith element for option item.
     static func optionSwitchForLabelContainingText(_ text: String) -> GREYMatcher {
-        return GREYElementMatcherBlock(matchesBlock: { element in
+        GREYElementMatcherBlock(matchesBlock: { element in
 
             // Find option switch, switch must have parent
             guard let view = element as? UISwitch,

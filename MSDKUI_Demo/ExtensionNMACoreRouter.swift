@@ -19,7 +19,6 @@ import NMAKit
 
 /// This protocol is introduced to make testing router handing code possible.
 protocol NMACoreRouting {
-
     /// Indicate the dynamic penalty that should be applied to route calculations.
     /// Penalties can be applied in the form of restricting roads, areas and setting different traffic modes.
     var dynamicPenalty: NMADynamicPenalty? { get set }

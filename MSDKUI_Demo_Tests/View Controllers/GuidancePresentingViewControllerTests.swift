@@ -19,7 +19,6 @@ import UIKit
 import XCTest
 
 final class GuidancePresentingViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: RouteOverviewViewController?
 
@@ -55,23 +54,35 @@ final class GuidancePresentingViewControllerTests: XCTestCase {
 
         let alertController = try require(viewControllerUnderTest?.presentedViewController as? UIAlertController)
 
-        XCTAssertLocalized(alertController.title, key: "msdkui_app_guidance_start_simulation",
-                           "It presents an alert with the correct title.")
+        XCTAssertLocalized(
+            alertController.title, key: "msdkui_app_guidance_start_simulation",
+            "It presents an alert with the correct title."
+        )
 
-        XCTAssertEqual(alertController.actions.count, 2,
-                       "It presents an alert with the correct number of actions.")
+        XCTAssertEqual(
+            alertController.actions.count, 2,
+            "It presents an alert with the correct number of actions."
+        )
 
-        XCTAssertLocalized(alertController.actions[0].title, key: "msdkui_app_cancel",
-                           "It presents an alert with a cancel button.")
+        XCTAssertLocalized(
+            alertController.actions[0].title, key: "msdkui_app_cancel",
+            "It presents an alert with a cancel button."
+        )
 
-        XCTAssertEqual(alertController.actions[0].style, .cancel,
-                       "It presents an alert with the cancel style for the cancel button.")
+        XCTAssertEqual(
+            alertController.actions[0].style, .cancel,
+            "It presents an alert with the cancel style for the cancel button."
+        )
 
-        XCTAssertLocalized(alertController.actions[1].title, key: "msdkui_app_ok",
-                           "It presents an alert with an ok button.")
+        XCTAssertLocalized(
+            alertController.actions[1].title, key: "msdkui_app_ok",
+            "It presents an alert with an ok button."
+        )
 
-        XCTAssertEqual(alertController.actions[1].style, .default,
-                       "It presents an alert with the default style for the ok button.")
+        XCTAssertEqual(
+            alertController.actions[1].style, .default,
+            "It presents an alert with the default style for the ok button."
+        )
     }
 
     /// Tests the behavior when the cancel button is tapped after the start simulation button is long pressed.

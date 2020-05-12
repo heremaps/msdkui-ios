@@ -19,7 +19,6 @@ import XCTest
 
 /// Tests the MulticastDelegate object.
 final class MulticastDelegateTests: XCTestCase {
-
     /// The object under test.
     private var multicastDelegateUnderTest = MulticastDelegate<ProtocolMock>()
 
@@ -32,11 +31,15 @@ final class MulticastDelegateTests: XCTestCase {
         // Triggers the method
         multicastDelegateUnderTest.add(object)
 
-        XCTAssertFalse(multicastDelegateUnderTest.isEmpty,
-                       "It adds the object.")
+        XCTAssertFalse(
+            multicastDelegateUnderTest.isEmpty,
+            "It adds the object."
+        )
 
-        XCTAssertEqual(multicastDelegateUnderTest.count, 1,
-                       "It adds the correct number of objects.")
+        XCTAssertEqual(
+            multicastDelegateUnderTest.count, 1,
+            "It adds the correct number of objects."
+        )
     }
 
     /// Tests the `.add(_:)` method with multiple objects.
@@ -48,11 +51,15 @@ final class MulticastDelegateTests: XCTestCase {
         multicastDelegateUnderTest.add(objectA)
         multicastDelegateUnderTest.add(objectB)
 
-        XCTAssertFalse(multicastDelegateUnderTest.isEmpty,
-                       "It adds the objects.")
+        XCTAssertFalse(
+            multicastDelegateUnderTest.isEmpty,
+            "It adds the objects."
+        )
 
-        XCTAssertEqual(multicastDelegateUnderTest.count, 2,
-                       "It adds the correct number of objects.")
+        XCTAssertEqual(
+            multicastDelegateUnderTest.count, 2,
+            "It adds the correct number of objects."
+        )
     }
 
     // MARK: - Remove
@@ -65,10 +72,14 @@ final class MulticastDelegateTests: XCTestCase {
         multicastDelegateUnderTest.add(object)
         multicastDelegateUnderTest.remove(object)
 
-        XCTAssertTrue(multicastDelegateUnderTest.isEmpty,
-                      "It doesn't have objects.")
-        XCTAssertEqual(multicastDelegateUnderTest.count, 0,
-                       "It doesn't have objects.")
+        XCTAssertTrue(
+            multicastDelegateUnderTest.isEmpty,
+            "It doesn't have objects."
+        )
+        XCTAssertEqual(
+            multicastDelegateUnderTest.count, 0,
+            "It doesn't have objects."
+        )
     }
 
     /// Tests the `.remove(_:)` method with multiple objects.
@@ -82,10 +93,14 @@ final class MulticastDelegateTests: XCTestCase {
         multicastDelegateUnderTest.remove(objectA)
         multicastDelegateUnderTest.remove(objectB)
 
-        XCTAssertTrue(multicastDelegateUnderTest.isEmpty,
-                      "It doesn't have objects.")
-        XCTAssertEqual(multicastDelegateUnderTest.count, 0,
-                       "It doesn't have objects.")
+        XCTAssertTrue(
+            multicastDelegateUnderTest.isEmpty,
+            "It doesn't have objects."
+        )
+        XCTAssertEqual(
+            multicastDelegateUnderTest.count, 0,
+            "It doesn't have objects."
+        )
     }
 
     // MARK: - Invoke
@@ -104,8 +119,10 @@ final class MulticastDelegateTests: XCTestCase {
             numberOfMethodsTriggered += $0.method()
         }
 
-        XCTAssertEqual(numberOfMethodsTriggered, 2,
-                       "It invokes the method for all the objects.")
+        XCTAssertEqual(
+            numberOfMethodsTriggered, 2,
+            "It invokes the method for all the objects."
+        )
     }
 
     // MARK: - Corner Cases
@@ -119,10 +136,14 @@ final class MulticastDelegateTests: XCTestCase {
         // Releases the object
         object = nil
 
-        XCTAssertTrue(multicastDelegateUnderTest.isEmpty,
-                      "It doesn't have objects.")
-        XCTAssertEqual(multicastDelegateUnderTest.count, 0,
-                       "It doesn't have objects.")
+        XCTAssertTrue(
+            multicastDelegateUnderTest.isEmpty,
+            "It doesn't have objects."
+        )
+        XCTAssertEqual(
+            multicastDelegateUnderTest.count, 0,
+            "It doesn't have objects."
+        )
     }
 
     /// Tests the `.invoke(_:)` method after releasing an object.
@@ -142,8 +163,10 @@ final class MulticastDelegateTests: XCTestCase {
             numberOfMethodsTriggered += $0.method()
         }
 
-        XCTAssertEqual(numberOfMethodsTriggered, 1,
-                       "It invokes the method for the non-null object.")
+        XCTAssertEqual(
+            numberOfMethodsTriggered, 1,
+            "It invokes the method for the non-null object."
+        )
     }
 
     /// Tests `.add(_:)`, `.isEmpty` and `.count` when the type added isn't an reference type.
@@ -154,24 +177,26 @@ final class MulticastDelegateTests: XCTestCase {
         // Triggers the method
         anotherMulticastDelegateUnderTest.add(entity)
 
-        XCTAssertTrue(anotherMulticastDelegateUnderTest.isEmpty,
-                      "It doesn't add the entity.")
-        XCTAssertEqual(anotherMulticastDelegateUnderTest.count, 0,
-                       "It doesn't have entity.")
+        XCTAssertTrue(
+            anotherMulticastDelegateUnderTest.isEmpty,
+            "It doesn't add the entity."
+        )
+        XCTAssertEqual(
+            anotherMulticastDelegateUnderTest.count, 0,
+            "It doesn't have entity."
+        )
     }
 }
 
 // MARK: - Mocks
 
 private protocol ProtocolMock: AnyObject {
-
     func method() -> Int
 }
 
 private class ObjectMock: ProtocolMock {
-
     func method() -> Int {
-        return 1
+        1
     }
 }
 

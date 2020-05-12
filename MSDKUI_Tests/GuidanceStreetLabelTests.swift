@@ -18,7 +18,6 @@
 import XCTest
 
 final class GuidanceStreetLabelTests: XCTestCase {
-
     /// The object under test.
     private var labelUnderTest: GuidanceStreetLabel?
 
@@ -61,8 +60,10 @@ final class GuidanceStreetLabelTests: XCTestCase {
 
     /// Tests if the label has the correct default content insets.
     func testContentInsets() {
-        XCTAssertEqual(labelUnderTest?.contentInsets, UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
-                       "It has the correct content insets")
+        XCTAssertEqual(
+            labelUnderTest?.contentInsets, UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+            "It has the correct content insets"
+        )
     }
 
     /// Tests inset of label's content.
@@ -139,8 +140,10 @@ final class GuidanceStreetLabelTests: XCTestCase {
     // MARK: - Private
 
     private func assertAccessibility(of labelUnderTest: GuidanceStreetLabel) {
-        XCTAssertEqual(labelUnderTest.accessibilityIdentifier, "MSDKUI.GuidanceStreetLabel",
-                       "It has correct accessibility identifier")
+        XCTAssertEqual(
+            labelUnderTest.accessibilityIdentifier, "MSDKUI.GuidanceStreetLabel",
+            "It has correct accessibility identifier"
+        )
     }
 
     private func assertStyleProperties(of labelUnderTest: GuidanceStreetLabel) {
@@ -158,20 +161,22 @@ final class GuidanceStreetLabelTests: XCTestCase {
 
 /// Extension of `UIEdgeInsets` for conversion to `CGSize`.
 private extension UIEdgeInsets {
-
     /// `CGSize` of `UIEdgeInsets`
     var size: CGSize {
-        return CGSize(width: left + right,
-                      height: top + bottom)
+        CGSize(
+            width: left + right,
+            height: top + bottom
+        )
     }
 }
 
 /// Extension of `CGSize` for subtraction operator.
 private extension CGSize {
-
     /// Subtracts two `CGSize`. Result is a `CGSize` with componentwise subtraction.
     static func - (_ lhs: CGSize, _ rhs: CGSize) -> CGSize {
-        return CGSize(width: lhs.width - rhs.width,
-                      height: lhs.height - rhs.height)
+        CGSize(
+            width: lhs.width - rhs.width,
+            height: lhs.height - rhs.height
+        )
     }
 }

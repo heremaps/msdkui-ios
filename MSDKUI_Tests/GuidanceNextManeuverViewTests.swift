@@ -19,7 +19,6 @@ import Foundation
 import XCTest
 
 final class GuidanceNextManeuverViewTests: XCTestCase {
-
     /// The object under test.
     private var nextManeuverView = GuidanceNextManeuverView(frame: CGRect(x: 0, y: 0, width: 300, height: 50))
 
@@ -120,26 +119,42 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
 
     /// Tests if the subviews are elements that an assistive application can access.
     func testSubviewAccessibility() {
-        XCTAssertFalse(nextManeuverView.maneuverImageView.isAccessibilityElement,
-                       "It disables icon image view accessibility access")
-        XCTAssertFalse(nextManeuverView.distanceLabel.isAccessibilityElement,
-                       "It disables distance label accessibility access")
-        XCTAssertFalse(nextManeuverView.separatorLabel.isAccessibilityElement,
-                       "It disables separator label accessibility access")
-        XCTAssertFalse(nextManeuverView.streetNameLabel.isAccessibilityElement,
-                       "It disables street name label accessibility access")
+        XCTAssertFalse(
+            nextManeuverView.maneuverImageView.isAccessibilityElement,
+            "It disables icon image view accessibility access"
+        )
+        XCTAssertFalse(
+            nextManeuverView.distanceLabel.isAccessibilityElement,
+            "It disables distance label accessibility access"
+        )
+        XCTAssertFalse(
+            nextManeuverView.separatorLabel.isAccessibilityElement,
+            "It disables separator label accessibility access"
+        )
+        XCTAssertFalse(
+            nextManeuverView.streetNameLabel.isAccessibilityElement,
+            "It disables street name label accessibility access"
+        )
     }
 
     /// Tests if the view accessiblity is correct.
     func testViewAccessibility() {
-        XCTAssertTrue(nextManeuverView.isAccessibilityElement,
-                      "It allows accessibility access")
-        XCTAssertEqual(nextManeuverView.accessibilityTraits, .staticText,
-                       "It has the correct accessibility traits")
-        XCTAssertEqual(nextManeuverView.accessibilityIdentifier, "MSDKUI.GuidanceNextManeuverView",
-                       "It has the correct accessibility identifier")
-        XCTAssertLocalized(nextManeuverView.accessibilityLabel, key: "msdkui_next_maneuver", bundle: .MSDKUI,
-                           "It has the correct accessibility label")
+        XCTAssertTrue(
+            nextManeuverView.isAccessibilityElement,
+            "It allows accessibility access"
+        )
+        XCTAssertEqual(
+            nextManeuverView.accessibilityTraits, .staticText,
+            "It has the correct accessibility traits"
+        )
+        XCTAssertEqual(
+            nextManeuverView.accessibilityIdentifier, "MSDKUI.GuidanceNextManeuverView",
+            "It has the correct accessibility identifier"
+        )
+        XCTAssertLocalized(
+            nextManeuverView.accessibilityLabel, key: "msdkui_next_maneuver", bundle: .MSDKUI,
+            "It has the correct accessibility label"
+        )
     }
 
     /// Tests if the view accessibility hint is correct when view is not configured.
@@ -177,10 +192,12 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
     func testViewAccessibilityHintWithCustomDistanceFormatter() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
         let distanceFormatter = MeasurementFormatter()
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: "Foobarstrasse 123",
-                                                           distanceFormatter: distanceFormatter)
+        let viewModel = GuidanceNextManeuverView.ViewModel(
+            maneuverIcon: UIImage(),
+            distance: distance,
+            streetName: "Foobarstrasse 123",
+            distanceFormatter: distanceFormatter
+        )
 
         nextManeuverView.configure(with: viewModel)
 
@@ -195,10 +212,12 @@ final class GuidanceNextManeuverViewTests: XCTestCase {
     func testViewDistanceLabelAccessibilityLabelWithCustomDistanceFormatter() {
         let distance = Measurement<UnitLength>(value: 100, unit: .meters)
         let distanceFormatter = MeasurementFormatter()
-        let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: UIImage(),
-                                                           distance: distance,
-                                                           streetName: "Foobarstrasse 123",
-                                                           accessibilityDistanceFormatter: distanceFormatter)
+        let viewModel = GuidanceNextManeuverView.ViewModel(
+            maneuverIcon: UIImage(),
+            distance: distance,
+            streetName: "Foobarstrasse 123",
+            accessibilityDistanceFormatter: distanceFormatter
+        )
 
         nextManeuverView.configure(with: viewModel)
 

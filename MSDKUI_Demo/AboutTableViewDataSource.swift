@@ -19,7 +19,6 @@ import NMAKit
 import UIKit
 
 final class AboutTableViewDataSource: NSObject {
-
     // MARK: - Types
 
     struct Item {
@@ -54,7 +53,7 @@ final class AboutTableViewDataSource: NSObject {
     /// - Parameter indexPath: The table view index path.
     /// - Returns: The item at index path.
     func item(at indexPath: IndexPath) -> Item? {
-        guard 0..<items.count ~= indexPath.row else {
+        guard 0 ..< items.count ~= indexPath.row else {
             return nil
         }
 
@@ -65,9 +64,8 @@ final class AboutTableViewDataSource: NSObject {
 // MARK: - UITableViewDataSource
 
 extension AboutTableViewDataSource: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -75,8 +73,8 @@ extension AboutTableViewDataSource: UITableViewDataSource {
             case let cellIdentifier = String(describing: AboutTableViewCell.self),
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? AboutTableViewCell,
             let item = item(at: indexPath)
-            else {
-                fatalError("Failed to dequeue GuidanceDashboardTableViewCell")
+        else {
+            fatalError("Failed to dequeue GuidanceDashboardTableViewCell")
         }
 
         cell.configure(with: AboutTableViewCell.ViewModel(title: item.title, description: item.description))

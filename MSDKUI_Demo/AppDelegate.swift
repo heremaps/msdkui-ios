@@ -19,7 +19,6 @@ import NMAKit
 import UIKit
 
 @UIApplicationMain class AppDelegate: UIResponder, UIApplicationDelegate {
-
     // MARK: - Properties
 
     var window: UIWindow?
@@ -41,7 +40,7 @@ import UIKit
         UINavigationBar.appearance().shadowImage = UIImage()
 
         // We want to update the status bar color to be inline with the default components styling
-        if #available(iOS 13.0, *) { } else {
+        if #available(iOS 13.0, *) {} else {
             let statusBar = UIApplication.shared.value(forKey: "statusBar") as? UIView
             statusBar?.backgroundColor = UIColor.colorBackgroundDark
         }

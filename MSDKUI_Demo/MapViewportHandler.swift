@@ -19,7 +19,6 @@ import UIKit
 
 /// This protocol exposes handling methods of a `NMAMapView` viewport.
 protocol MapViewportHandling {
-
     /// Sets the viewport of a map view to encompass all visual elements passed as arguments.
     ///
     /// - Parameters:
@@ -32,7 +31,6 @@ protocol MapViewportHandling {
 
 /// Map viewport handler class with default behavior.
 class MapViewportHandler: MapViewportHandling {
-
     /// Sets the viewport of a map view to encompass all visual elements passed as arguments.
     ///
     /// - Parameters:
@@ -55,7 +53,7 @@ class MapViewportHandler: MapViewportHandling {
         guard
             let intersectionBoundingBox = NMAGeoBoundingBox(boundingBoxes: boundingBoxes),
             !intersectionBoundingBox.isEmpty() else {
-                return
+            return
         }
 
         // Calculate map insets

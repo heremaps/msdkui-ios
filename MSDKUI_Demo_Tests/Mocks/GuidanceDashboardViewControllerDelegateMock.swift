@@ -18,7 +18,6 @@ import Foundation
 @testable import MSDKUI_Demo
 
 final class GuidanceDashboardViewControllerDelegateMock {
-
     private(set) var didCallDidSelectItem = false
     private(set) var didCallDidTapView = false
     private(set) var didCallDidTapStopNavigation = false
@@ -30,7 +29,6 @@ final class GuidanceDashboardViewControllerDelegateMock {
 // MARK: - GuidanceDashboardViewControllerDelegate
 
 extension GuidanceDashboardViewControllerDelegateMock: GuidanceDashboardViewControllerDelegate {
-
     func guidanceDashboardViewController(_ controller: GuidanceDashboardViewController, didSelectItem item: GuidanceDashboardTableViewDataSource.Item) {
         didCallDidSelectItem = true
         lastController = controller

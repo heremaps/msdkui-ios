@@ -18,7 +18,6 @@
 import XCTest
 
 final class ExtensionMeasurementFormatterTests: XCTestCase {
-
     /// Tests `MeasurementFormatter.currentMediumUnitFormatter`.
     func testCurrentMediumUnitFormatter() {
         let formatter = MeasurementFormatter.currentMediumUnitFormatter

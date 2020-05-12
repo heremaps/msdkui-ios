@@ -224,7 +224,7 @@ import NMAKit
     /// - Note: It shadows the visibleSections property.
     @IBInspectable public var visibleSectionsProxy: String {
         get {
-            return visibleSections.stringized
+            visibleSections.stringized
         }
         set {
             visibleSections = RouteDescriptionItem.Section.make(from: newValue)
@@ -341,7 +341,7 @@ import NMAKit
     /// - Parameter section: The section whose visibility is to be queried.
     /// - Returns: true if the section is visible and false otherwise.
     public func isSectionVisible(_ section: Section) -> Bool {
-        return visibleSections.contains(section)
+        visibleSections.contains(section)
     }
 
     /// Sets the given section visible or not.

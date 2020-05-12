@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class ManeuverItemViewController: UIViewController {
-
     @IBOutlet private(set) var maneuverView: ManeuverItemView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

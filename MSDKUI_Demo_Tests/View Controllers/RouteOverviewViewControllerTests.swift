@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class RouteOverviewViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: RouteOverviewViewController?
 
@@ -90,70 +89,108 @@ final class RouteOverviewViewControllerTests: XCTestCase {
 
     /// Tests the accessibility elements.
     func testAccessibility() {
-        XCTAssertEqual(viewControllerUnderTest?.backButton.accessibilityIdentifier, "RouteOverviewViewController.backButton",
-                       "The backButton has the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.accessibilityIdentifier, "RouteOverviewViewController.backButton",
+            "The backButton has the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.mapView.accessibilityIdentifier, "RouteOverviewViewController.mapView",
-                       "The mapView has the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.mapView.accessibilityIdentifier, "RouteOverviewViewController.mapView",
+            "The mapView has the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.containerView.accessibilityIdentifier, "RouteOverviewViewController.containerView",
-                       "The containerView has the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.containerView.accessibilityIdentifier, "RouteOverviewViewController.containerView",
+            "The containerView has the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.showManeuversButton.accessibilityIdentifier, "RouteOverviewViewController.showManeuversButton",
-                       "The showManeuversButton has the correct accessibility identifier")
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.accessibilityIdentifier, "RouteOverviewViewController.startNavigationButton",
-                       "The startNavigationButton has the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.showManeuversButton.accessibilityIdentifier, "RouteOverviewViewController.showManeuversButton",
+            "The showManeuversButton has the correct accessibility identifier"
+        )
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.accessibilityIdentifier, "RouteOverviewViewController.startNavigationButton",
+            "The startNavigationButton has the correct accessibility identifier"
+        )
     }
 
     /// Tests if the View Controller has the correct status bar style.
     func testPreferredStatusBarStyle() {
-        XCTAssertEqual(viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
-                       "It has the correct status bar style")
+        XCTAssertEqual(
+            viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
+            "It has the correct status bar style"
+        )
     }
 
     /// Tests the back button.
     func testBackButton() {
-        XCTAssertNotNil(viewControllerUnderTest?.backButton,
-                        "The back button exists")
+        XCTAssertNotNil(
+            viewControllerUnderTest?.backButton,
+            "The back button exists"
+        )
 
-        XCTAssertNotEqual(viewControllerUnderTest?.backButton.title, "msdkui_app_back",
-                          "The back button title is localized")
+        XCTAssertNotEqual(
+            viewControllerUnderTest?.backButton.title, "msdkui_app_back",
+            "The back button title is localized"
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest?.backButton.title, key: "msdkui_app_back",
-                           "The back button has the correct title")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.backButton.title, key: "msdkui_app_back",
+            "The back button has the correct title"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.backButton.tintColor, .colorAccentLight,
-                       "The back button has the correct tint color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.tintColor, .colorAccentLight,
+            "The back button has the correct tint color"
+        )
     }
 
     /// Tests the navigation button.
     func testNavigationButtonState() {
-        XCTAssertNotNil(viewControllerUnderTest?.startNavigationButton,
-                        "The start navigation button exists")
+        XCTAssertNotNil(
+            viewControllerUnderTest?.startNavigationButton,
+            "The start navigation button exists"
+        )
 
-        XCTAssertNotEqual(viewControllerUnderTest?.startNavigationButton.currentTitle, "msdkui_app_guidance_button_start",
-                          "The start navigation button title is localized")
+        XCTAssertNotEqual(
+            viewControllerUnderTest?.startNavigationButton.currentTitle, "msdkui_app_guidance_button_start",
+            "The start navigation button title is localized"
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest?.startNavigationButton.currentTitle, key: "msdkui_app_guidance_button_start",
-                           "The start navigation button has the correct title")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.startNavigationButton.currentTitle, key: "msdkui_app_guidance_button_start",
+            "The start navigation button has the correct title"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.backgroundColor, .colorAccent,
-                       "The start navigation button has the correct background color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.backgroundColor, .colorAccent,
+            "The start navigation button has the correct background color"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.layer.cornerRadius, 2,
-                       "The start navigation button has the correct corner radius")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.layer.cornerRadius, 2,
+            "The start navigation button has the correct corner radius"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.currentTitleColor, .colorForegroundLight,
-                       "The start navigation button has the correct title color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.currentTitleColor, .colorForegroundLight,
+            "The start navigation button has the correct title color"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.titleLabel?.font, UIFont.preferredFont(forTextStyle: .callout),
-                       "The start navigation button has the correct font")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.titleLabel?.font, UIFont.preferredFont(forTextStyle: .callout),
+            "The start navigation button has the correct font"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.titleLabel?.lineBreakMode, .byTruncatingTail,
-                       "The start navigation button has the correct line break mode")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.titleLabel?.lineBreakMode, .byTruncatingTail,
+            "The start navigation button has the correct line break mode"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.titleEdgeInsets, UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
-                       "The start navigation button has the correct edge insets for title")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.titleEdgeInsets, UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16),
+            "The start navigation button has the correct edge insets for title"
+        )
     }
 
     /// Tests that the address line starts with "To".
@@ -162,15 +199,19 @@ final class RouteOverviewViewControllerTests: XCTestCase {
     }
 
     /// Tests that the address line contains the address.
-    func testAddressLineContainsTheAddressSet () {
-        XCTAssertEqual(viewControllerUnderTest?.addressLabel.text, toAddress,
-                       "The address line contains '\(toAddress)'")
+    func testAddressLineContainsTheAddressSet() {
+        XCTAssertEqual(
+            viewControllerUnderTest?.addressLabel.text, toAddress,
+            "The address line contains '\(toAddress)'"
+        )
     }
 
     /// Tests that the address line is visible in the portrait orientation.
     func testAddressLineIsVisibleInPortraitOrientation() {
-        XCTAssertFalse(try require(viewControllerUnderTest?.destinationView.isHidden),
-                       "The address line is hidden in portrait orientation")
+        XCTAssertFalse(
+            try require(viewControllerUnderTest?.destinationView.isHidden),
+            "The address line is hidden in portrait orientation"
+        )
     }
 
     /// Tests if the hud is displayed when the view loads and coordinates are set.
@@ -270,8 +311,10 @@ final class RouteOverviewViewControllerTests: XCTestCase {
         // Triggers the map view delegate method
         viewControllerUnderTest?.viewDidLoad()
 
-        XCTAssertEqual(viewControllerUnderTest?.routeDescriptionItem.trafficEnabled, viewControllerUnderTest?.mapView.isTrafficVisible,
-                       "It respects map view's traffic visibility")
+        XCTAssertEqual(
+            viewControllerUnderTest?.routeDescriptionItem.trafficEnabled, viewControllerUnderTest?.mapView.isTrafficVisible,
+            "It respects map view's traffic visibility"
+        )
     }
 
     // MARK: - Route calculation

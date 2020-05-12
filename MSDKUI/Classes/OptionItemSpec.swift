@@ -49,7 +49,7 @@ open class OptionItemSpec: NSObject {
     ///   - id: The optional id of the option item.
     /// - Returns: An `OptionItemSpec` instance created based on the parameter.
     public static func makeBooleanOptionItem(label: String, id: Int = 0) -> OptionItemSpec {
-        return OptionItemSpec(label: label, id: id)
+        OptionItemSpec(label: label, id: id)
     }
 
     /// Makes an option item spec configured for a multiple choice option item.
@@ -59,7 +59,7 @@ open class OptionItemSpec: NSObject {
     ///   - id: The optional id of the option item.
     /// - Returns: An `OptionItemSpec` instance created based on the parameter.
     public static func makeMultipleChoiceOptionItem(labels: [String], id: Int = 0) -> OptionItemSpec {
-        return OptionItemSpec(labels: labels, id: id)
+        OptionItemSpec(labels: labels, id: id)
     }
 
     /// Makes an option item spec configured for a numeric option item.
@@ -71,7 +71,7 @@ open class OptionItemSpec: NSObject {
     /// - Returns: An `OptionItemSpec` instance created based on the parameters.
     /// - Important: By default the button is titled "Set" which is localized.
     public static func makeNumericOptionItem(label: String, inputHelper: NumericOptionItemInputHelper, id: Int = 0) -> OptionItemSpec {
-        return OptionItemSpec(label: label, inputHelper: inputHelper, id: id)
+        OptionItemSpec(label: label, inputHelper: inputHelper, id: id)
     }
 
     /// Makes an option item spec configured for a single choice option item.
@@ -82,7 +82,7 @@ open class OptionItemSpec: NSObject {
     ///   - id: The optional id of the option item.
     /// - Returns: An `OptionItemSpec` instance created based on the parameters.
     public static func makeSingleChoiceOptionItem(title: String?, labels: [String], id: Int = 0) -> OptionItemSpec {
-        return OptionItemSpec(title: title, labels: labels, id: id)
+        OptionItemSpec(title: title, labels: labels, id: id)
     }
 
     /// Makes an option item out of the option item spec.

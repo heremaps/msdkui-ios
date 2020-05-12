@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class LocationBasedViewControllerTests: XCTestCase {
-
     /// The view controller under test which conforms to the `LocationBasedViewController` protocol.
     private var viewControllerUnderTest: WaypointViewController?
 
@@ -73,23 +72,35 @@ final class LocationBasedViewControllerTests: XCTestCase {
         // Check if alert was displayed
         let alertController = try require(viewControllerUnderTest?.presentedViewController as? UIAlertController)
 
-        XCTAssertLocalized(alertController.title, key: "msdkui_app_userposition_notfound",
-                           "It presents an alert with the correct title.")
+        XCTAssertLocalized(
+            alertController.title, key: "msdkui_app_userposition_notfound",
+            "It presents an alert with the correct title."
+        )
 
-        XCTAssertEqual(alertController.actions.count, 2,
-                       "It presents an alert with the correct number of actions.")
+        XCTAssertEqual(
+            alertController.actions.count, 2,
+            "It presents an alert with the correct number of actions."
+        )
 
-        XCTAssertLocalized(alertController.actions[0].title, key: "msdkui_app_cancel",
-                           "It presents an alert with a cancel button.")
+        XCTAssertLocalized(
+            alertController.actions[0].title, key: "msdkui_app_cancel",
+            "It presents an alert with a cancel button."
+        )
 
-        XCTAssertEqual(alertController.actions[0].style, .cancel,
-                       "It presents an alert with the cancel style for the cancel button.")
+        XCTAssertEqual(
+            alertController.actions[0].style, .cancel,
+            "It presents an alert with the cancel style for the cancel button."
+        )
 
-        XCTAssertLocalized(alertController.actions[1].title, key: "msdkui_app_settings",
-                           "It presents an alert with an Settings button.")
+        XCTAssertLocalized(
+            alertController.actions[1].title, key: "msdkui_app_settings",
+            "It presents an alert with an Settings button."
+        )
 
-        XCTAssertEqual(alertController.actions[1].style, .default,
-                       "It presents an alert with the default style for the ok button.")
+        XCTAssertEqual(
+            alertController.actions[1].style, .default,
+            "It presents an alert with the default style for the ok button."
+        )
     }
 
     /// Tests when the Cancel button is tapped for unauthorization location status alert.
@@ -129,19 +140,29 @@ final class LocationBasedViewControllerTests: XCTestCase {
         // Tap the Settings button (second button)
         alertController.tapButton(at: 1)
 
-        XCTAssertNil(viewControllerUnderTest?.noLocationAlert,
-                     "It releases the no location alert")
+        XCTAssertNil(
+            viewControllerUnderTest?.noLocationAlert,
+            "It releases the no location alert"
+        )
 
-        XCTAssertTrue(mockURLOpener.didCallOpen,
-                      "It calls the URL Opener to open the Settings URL")
+        XCTAssertTrue(
+            mockURLOpener.didCallOpen,
+            "It calls the URL Opener to open the Settings URL"
+        )
 
-        XCTAssertEqual(mockURLOpener.lastURL?.absoluteString, UIApplication.openSettingsURLString,
-                       "It opens the correct Settings URL")
+        XCTAssertEqual(
+            mockURLOpener.lastURL?.absoluteString, UIApplication.openSettingsURLString,
+            "It opens the correct Settings URL"
+        )
 
-        XCTAssertEqual(mockURLOpener.lastOptions?.isEmpty, true,
-                       "It opens the correct Settings URL without options")
+        XCTAssertEqual(
+            mockURLOpener.lastOptions?.isEmpty, true,
+            "It opens the correct Settings URL without options"
+        )
 
-        XCTAssertNil(mockURLOpener.lastCompletionHandler,
-                     "It opens the correct Settings URL without a completion handler")
+        XCTAssertNil(
+            mockURLOpener.lastCompletionHandler,
+            "It opens the correct Settings URL without a completion handler"
+        )
     }
 }

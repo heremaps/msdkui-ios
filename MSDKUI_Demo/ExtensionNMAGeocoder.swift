@@ -18,12 +18,10 @@ import Foundation
 import NMAKit
 
 protocol NMAGeocoding {
-
     func reverseGeocode(coordinates: NMAGeoCoordinates, completionBlock: @escaping NMARequestCompletionBlock)
 }
 
 extension NMAGeocoder: NMAGeocoding {
-
     func reverseGeocode(coordinates: NMAGeoCoordinates, completionBlock: @escaping NMARequestCompletionBlock) {
         let request = createReverseGeocodeRequest(coordinates: coordinates)
         request.languagePreference = Locale.preferredLanguages.first

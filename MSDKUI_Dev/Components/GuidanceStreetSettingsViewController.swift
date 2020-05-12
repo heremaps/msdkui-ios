@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceStreetSettingsViewController: SettingsViewController<GuidanceStreetSettingsViewController.Settings> {
-
     struct Settings {
         var text: String?
         var accentBackgroundColor: UIColor
@@ -31,48 +30,76 @@ final class GuidanceStreetSettingsViewController: SettingsViewController<Guidanc
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "With address, accented true",
-                         configuration: Settings(text: "Fuubarstrasse",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true,
-                                                 font: nil)),
-            SettingsItem(title: "With very long address, accented true",
-                         configuration: Settings(text: "12345 Fuubarstrasse North Tower Building 2 Unit 1",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true,
-                                                 font: nil)),
-            SettingsItem(title: "Looking for position (custom msg)",
-                         configuration: Settings(text: "👀 for position",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true,
-                                                 font: nil)),
-            SettingsItem(title: "Looking for position (font size: 11 points)",
-                         configuration: Settings(text: "👀 for position",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true,
-                                                 font: .systemFont(ofSize: 11))),
-            SettingsItem(title: "Looking for position (font size: 22 points)",
-                         configuration: Settings(text: "👀 for position",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: true,
-                                                 font: .systemFont(ofSize: 22))),
-            SettingsItem(title: "With address, accented: false",
-                         configuration: Settings(text: "Fuubarstrasse",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: false,
-                                                 font: nil)),
-            SettingsItem(title: "Looking for position, accented: false",
-                         configuration: Settings(text: "👀 for position",
-                                                 accentBackgroundColor: .colorPositive,
-                                                 plainBackgroundColor: .colorForegroundSecondary,
-                                                 isAccented: false,
-                                                 font: nil))
+            SettingsItem(
+                title: "With address, accented true",
+                configuration: Settings(
+                    text: "Fuubarstrasse",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: true,
+                    font: nil
+                )
+            ),
+            SettingsItem(
+                title: "With very long address, accented true",
+                configuration: Settings(
+                    text: "12345 Fuubarstrasse North Tower Building 2 Unit 1",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: true,
+                    font: nil
+                )
+            ),
+            SettingsItem(
+                title: "Looking for position (custom msg)",
+                configuration: Settings(
+                    text: "👀 for position",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: true,
+                    font: nil
+                )
+            ),
+            SettingsItem(
+                title: "Looking for position (font size: 11 points)",
+                configuration: Settings(
+                    text: "👀 for position",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: true,
+                    font: .systemFont(ofSize: 11)
+                )
+            ),
+            SettingsItem(
+                title: "Looking for position (font size: 22 points)",
+                configuration: Settings(
+                    text: "👀 for position",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: true,
+                    font: .systemFont(ofSize: 22)
+                )
+            ),
+            SettingsItem(
+                title: "With address, accented: false",
+                configuration: Settings(
+                    text: "Fuubarstrasse",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: false,
+                    font: nil
+                )
+            ),
+            SettingsItem(
+                title: "Looking for position, accented: false",
+                configuration: Settings(
+                    text: "👀 for position",
+                    accentBackgroundColor: .colorPositive,
+                    plainBackgroundColor: .colorForegroundSecondary,
+                    isAccented: false,
+                    font: nil
+                )
+            )
         ]
     }
 }

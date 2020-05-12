@@ -18,7 +18,6 @@
 import XCTest
 
 final class TravelTimePanelTests: XCTestCase {
-
     /// The panel under test.
     private var panel = TravelTimePanel()
 

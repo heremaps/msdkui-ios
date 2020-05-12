@@ -64,7 +64,7 @@ import NMAKit
 
     /// Number of `ManeuverItemView` objects in the table view.
     public var entryCount: Int {
-        return maneuvers.count
+        maneuvers.count
     }
 
     /// Sets the measurement formatter used to format distances.
@@ -192,7 +192,7 @@ extension ManeuverTableView: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entryCount
+        entryCount
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

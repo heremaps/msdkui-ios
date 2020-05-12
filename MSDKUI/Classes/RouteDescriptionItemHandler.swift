@@ -71,7 +71,7 @@ struct RouteDescriptionItemHandler {
 
     /// Has actual delay or not.
     var hasDelay: Bool {
-        return delaySeconds > 60
+        delaySeconds > 60
     }
 
     /// Graphical representation of the transportation mode or `nil` when mode is not supported.

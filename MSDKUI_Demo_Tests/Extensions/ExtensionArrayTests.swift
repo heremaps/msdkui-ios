@@ -19,7 +19,6 @@ import NMAKit
 import XCTest
 
 final class ExtensionArrayTests: XCTestCase {
-
     /// Tests if there are no insets when map marker's icon doesn't have size.
     func testZeroSizeMapMarkersIconInsets() {
         NMALayoutPosition.allCases.forEach {
@@ -29,24 +28,42 @@ final class ExtensionArrayTests: XCTestCase {
 
     /// Tests insets of map marker's icon for different image's anchor offsets.
     func testMapMarkersIconInsets() {
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .topLeft)].iconsInsets,
-                       UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 2))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .topCenter)].iconsInsets,
-                       UIEdgeInsets(top: 0, left: 1, bottom: 2, right: 1))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .topRight)].iconsInsets,
-                       UIEdgeInsets(top: 0, left: 2, bottom: 2, right: 0))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .centerLeft)].iconsInsets,
-                       UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 2))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .center)].iconsInsets,
-                       UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .centerRight)].iconsInsets,
-                       UIEdgeInsets(top: 1, left: 2, bottom: 1, right: 0))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .bottomLeft)].iconsInsets,
-                       UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 2))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .bottomCenter)].iconsInsets,
-                       UIEdgeInsets(top: 2, left: 1, bottom: 0, right: 1))
-        XCTAssertEqual([NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .bottomRight)].iconsInsets,
-                       UIEdgeInsets(top: 2, left: 2, bottom: 0, right: 0))
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .topLeft)].iconsInsets,
+            UIEdgeInsets(top: 0, left: 0, bottom: 2, right: 2)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .topCenter)].iconsInsets,
+            UIEdgeInsets(top: 0, left: 1, bottom: 2, right: 1)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .topRight)].iconsInsets,
+            UIEdgeInsets(top: 0, left: 2, bottom: 2, right: 0)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .centerLeft)].iconsInsets,
+            UIEdgeInsets(top: 1, left: 0, bottom: 1, right: 2)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .center)].iconsInsets,
+            UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .centerRight)].iconsInsets,
+            UIEdgeInsets(top: 1, left: 2, bottom: 1, right: 0)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .bottomLeft)].iconsInsets,
+            UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 2)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .bottomCenter)].iconsInsets,
+            UIEdgeInsets(top: 2, left: 1, bottom: 0, right: 1)
+        )
+        XCTAssertEqual(
+            [NMAMapMarker(size: CGSize(width: 2, height: 2), anchorOffset: .bottomRight)].iconsInsets,
+            UIEdgeInsets(top: 2, left: 2, bottom: 0, right: 0)
+        )
     }
 
     /// Tests insets of multiple same map marker's icon for different image's anchor offsets.
@@ -137,7 +154,6 @@ final class ExtensionArrayTests: XCTestCase {
 // MARK: - Private
 
 private extension NMAMapMarker {
-
     convenience init(size: CGSize, anchorOffset: NMALayoutPosition) {
         self.init(geoCoordinates: NMAGeoCoordinates(), image: UIImageFixture.image(with: size))
         setAnchorOffset(anchorOffset)

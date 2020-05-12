@@ -24,7 +24,7 @@ import UIKit
     /// The state of the checkbox.
     public var checked: Bool {
         get {
-            return optionSwitch.isOn
+            optionSwitch.isOn
         }
         set {
             // Any update?

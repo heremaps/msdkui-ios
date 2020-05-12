@@ -18,7 +18,6 @@
 import XCTest
 
 final class TravelTimePickerTests: XCTestCase {
-
     /// The object under test.
     private var picker: TravelTimePicker!
 

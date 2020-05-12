@@ -19,7 +19,6 @@ import NMAKit
 import UIKit
 
 final class ManeuversOverviewViewController: UIViewController, GuidancePresentingViewController {
-
     // MARK: - Properties
 
     @IBOutlet private(set) var titleItem: UINavigationItem!
@@ -54,7 +53,7 @@ final class ManeuversOverviewViewController: UIViewController, GuidancePresentin
     var toAddress: String?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     // MARK: - Life cycle
@@ -87,8 +86,10 @@ final class ManeuversOverviewViewController: UIViewController, GuidancePresentin
         setUpDestinationView(for: traitCollection)
     }
 
-    override func willTransition(to newCollection: UITraitCollection,
-                                 with coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(
+        to newCollection: UITraitCollection,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
         super.willTransition(to: newCollection, with: coordinator)
 
         // Sets up the view based on new `UITraitCollection`

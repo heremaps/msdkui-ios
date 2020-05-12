@@ -19,7 +19,6 @@ import UIKit
 import XCTest
 
 final class LandingViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: LandingViewController!
 

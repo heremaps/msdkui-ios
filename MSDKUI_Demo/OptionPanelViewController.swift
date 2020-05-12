@@ -19,7 +19,6 @@ import NMAKit
 import UIKit
 
 class OptionPanelViewController: UIViewController {
-
     // MARK: - Properties
 
     @IBOutlet private(set) var backButton: UIBarButtonItem!
@@ -35,7 +34,7 @@ class OptionPanelViewController: UIViewController {
     weak var delegate: OptionsDelegate?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var isUpdated = false
@@ -67,13 +66,15 @@ class OptionPanelViewController: UIViewController {
         panel.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
 
         // Set scroll view width
-        let widthConstraint = NSLayoutConstraint(item: panel,
-                                                 attribute: .width,
-                                                 relatedBy: .equal,
-                                                 toItem: scrollView,
-                                                 attribute: .width,
-                                                 multiplier: 1,
-                                                 constant: 0)
+        let widthConstraint = NSLayoutConstraint(
+            item: panel,
+            attribute: .width,
+            relatedBy: .equal,
+            toItem: scrollView,
+            attribute: .width,
+            multiplier: 1,
+            constant: 0
+        )
         scrollView.addConstraint(widthConstraint)
 
         // We want to monitor the updates
@@ -143,13 +144,12 @@ class OptionPanelViewController: UIViewController {
 // MARK: - PickerViewDelegate
 
 extension OptionPanelViewController: PickerViewDelegate {
-
     func makeLabel(_ pickerView: UIPickerView, text: String) -> UILabel {
         let pickerLabel = UILabel()
         let title = NSAttributedString(string: text, attributes: [
             NSAttributedString.Key.font: UIFont(name: "Verdana", size: 17.0) ?? UIFont.systemFont(ofSize: 17.0),
             NSAttributedString.Key.foregroundColor: UIColor.colorAccent
-            ])
+        ])
 
         pickerLabel.attributedText = title
         pickerLabel.textAlignment = .center
@@ -160,7 +160,6 @@ extension OptionPanelViewController: PickerViewDelegate {
 // MARK: - OptionsPanelDelegate
 
 extension OptionPanelViewController: OptionsPanelDelegate {
-
     func optionsPanel(_ panel: OptionsPanel, didChangeTo option: OptionItem) {
         isUpdated = true
     }

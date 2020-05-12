@@ -18,7 +18,6 @@
 import XCTest
 
 final class ManeuverItemViewTests: XCTestCase {
-
     private var view = ManeuverItemView()
 
     /// Tests the item view.

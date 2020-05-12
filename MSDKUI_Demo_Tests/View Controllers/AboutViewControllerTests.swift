@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class AboutViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var aboutViewController: AboutViewController?
 

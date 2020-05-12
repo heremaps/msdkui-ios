@@ -18,49 +18,48 @@
 import NMAKit
 
 enum WaypointEntryFixture {
-
     static func berlin() -> WaypointEntry {
-        return makeWaypoint(name: "Berlin", latitude: 52.530555, longitude: 13.379257)
+        makeWaypoint(name: "Berlin", latitude: 52.530555, longitude: 13.379257)
     }
 
     static func frankfurt() -> WaypointEntry {
-        return makeWaypoint(name: "Frankfurt", latitude: 50.110922, longitude: 8.682127)
+        makeWaypoint(name: "Frankfurt", latitude: 50.110922, longitude: 8.682127)
     }
 
     static func berlinNaturekundemuseum() -> WaypointEntry {
-        return makeWaypoint(name: "Naturekundemuseum, Berlin", latitude: 52.530555, longitude: 13.379257)
+        makeWaypoint(name: "Naturekundemuseum, Berlin", latitude: 52.530555, longitude: 13.379257)
     }
 
     static func berlinReichstag() -> WaypointEntry {
-        return makeWaypoint(name: "Reichstag, Berlin", latitude: 52.518620, longitude: 13.376187)
+        makeWaypoint(name: "Reichstag, Berlin", latitude: 52.518620, longitude: 13.376187)
     }
 
     static func berlinBranderburgerTor() -> WaypointEntry {
-        return makeWaypoint(name: "Branderburger Tor, Berlin", latitude: 52.516275, longitude: 13.377704)
+        makeWaypoint(name: "Branderburger Tor, Berlin", latitude: 52.516275, longitude: 13.377704)
     }
 
     static func berlinFernsehturm() -> WaypointEntry {
-        return makeWaypoint(name: "Fernsehturm, Berlin", latitude: 52.520815, longitude: 13.4094195)
+        makeWaypoint(name: "Fernsehturm, Berlin", latitude: 52.520815, longitude: 13.4094195)
     }
 
     static func berlinAlexanderplatz() -> WaypointEntry {
-        return makeWaypoint(name: "Alexanderplatz, Berlin", latitude: 52.521918, longitude: 13.413215)
+        makeWaypoint(name: "Alexanderplatz, Berlin", latitude: 52.521918, longitude: 13.413215)
     }
 
     static func berlinZoologischerGarten() -> WaypointEntry {
-        return makeWaypoint(name: "Zoologischer Garten, Berlin", latitude: 52.507920, longitude: 13.337755)
+        makeWaypoint(name: "Zoologischer Garten, Berlin", latitude: 52.507920, longitude: 13.337755)
     }
 
     static func berlinHauptbahnhof() -> WaypointEntry {
-        return makeWaypoint(name: "Hauptbahnhof, Berlin", latitude: 52.528533, longitude: 13.369879)
+        makeWaypoint(name: "Hauptbahnhof, Berlin", latitude: 52.528533, longitude: 13.369879)
     }
 
     static func berlinPotsdamerPlatz() -> WaypointEntry {
-        return makeWaypoint(name: "Potsdamer Platz, Berlin", latitude: 52.509590, longitude: 13.376363)
+        makeWaypoint(name: "Potsdamer Platz, Berlin", latitude: 52.509590, longitude: 13.376363)
     }
 
     static func empty() -> WaypointEntry {
-        return WaypointEntry(NMAWaypoint(), name: "Without coordinates")
+        WaypointEntry(NMAWaypoint(), name: "Without coordinates")
     }
 
     static func makeWaypoint(name: String, latitude: Double, longitude: Double) -> WaypointEntry {

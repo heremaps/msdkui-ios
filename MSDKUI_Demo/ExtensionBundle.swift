@@ -17,7 +17,6 @@
 import Foundation
 
 extension Bundle {
-
     /// Returns the application version.
     ///
     /// - Returns: The app version.
@@ -27,8 +26,8 @@ extension Bundle {
             let data = try? Data(contentsOf: plistURL),
             let result = ((try? PropertyListSerialization.propertyList(from: data, format: nil) as? [String: Any]) as [String: Any]??),
             let versionPlist = result?["CFBundleShortVersionString"] as? String
-            else {
-                return "?"
+        else {
+            return "?"
         }
 
         return versionPlist

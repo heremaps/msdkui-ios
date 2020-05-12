@@ -18,7 +18,6 @@ import NMAKit
 import UIKit
 
 extension NMAMapView {
-
     // MARK: - Properties
 
     /// An `NMAMapMarker` of `positionIndicator.displayObject` or default transparent marker object
@@ -48,7 +47,7 @@ extension NMAMapView {
 
         guard
             let coordinates = NMAPositioningManager.sharedInstance().currentPosition?.coordinates else {
-                return positionIndicatorFallbackMarker
+            return positionIndicatorFallbackMarker
         }
 
         positionIndicatorFallbackMarker.coordinates = coordinates
@@ -65,7 +64,7 @@ extension NMAMapView {
             let boundingBox = boundingBox,
             let latitude = boundingBox.center?.latitude,
             let longitude = boundingBox.center?.longitude else {
-                return false
+            return false
         }
 
         let ratio = 0.5
@@ -100,7 +99,7 @@ extension NMAMapView {
             case let width = Float(boundingBox.width),
             case let height = Float(boundingBox.height),
             let newBoundingBox = NMAGeoBoundingBox(center: newCenterSet, width: width, height: height) else {
-                return false
+            return false
         }
 
         set(boundingBox: newBoundingBox, animation: .linear)

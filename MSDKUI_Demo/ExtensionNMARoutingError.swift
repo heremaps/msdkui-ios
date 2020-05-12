@@ -17,7 +17,6 @@
 import NMAKit
 
 extension NMARoutingError: CustomDebugStringConvertible {
-
     public var debugDescription: String {
         let reason: String
 

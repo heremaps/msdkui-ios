@@ -17,7 +17,6 @@
 import UIKit
 
 final class AboutViewController: UIViewController {
-
     // MARK: - Properties
 
     /// The dashboard table view.
@@ -33,7 +32,7 @@ final class AboutViewController: UIViewController {
     let tableViewDataSource = AboutTableViewDataSource()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     // MARK: - Life cycle

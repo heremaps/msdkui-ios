@@ -18,7 +18,6 @@
 import NMAKit
 
 final class MapViewportHandlerMock: NSObject {
-
     @objc private(set) dynamic var didCallSetViewport = false {
         willSet {
             willChangeValue(for: \.didCallSetViewport)
@@ -27,6 +26,7 @@ final class MapViewportHandlerMock: NSObject {
             didChangeValue(for: \.didCallSetViewport)
         }
     }
+
     private(set) var didCallSetViewportCount = 0
     private(set) var lastMapView: NMAMapView?
     // swiftlint:disable discouraged_optional_collection
@@ -39,7 +39,6 @@ final class MapViewportHandlerMock: NSObject {
 // MARK: - MapViewportHandling
 
 extension MapViewportHandlerMock: MapViewportHandling {
-
     func setViewport(of mapView: NMAMapView, on routes: [NMARoute?], with markers: [NMAMapMarker?], animation: NMAMapAnimation) {
         didCallSetViewport = true
         didCallSetViewportCount += 1

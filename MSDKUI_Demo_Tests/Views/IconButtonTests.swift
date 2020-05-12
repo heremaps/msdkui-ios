@@ -18,7 +18,6 @@
 import XCTest
 
 final class IconButtonTests: XCTestCase {
-
     // Is the button tapped?
     private var isTapped = false
 

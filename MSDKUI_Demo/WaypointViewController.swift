@@ -20,12 +20,10 @@ import UIKit
 
 /// A set of methods for configuring a `WaypointViewController` object.
 protocol WaypointViewControllerDelegate: AnyObject {
-
     func waypointViewController(_ viewController: WaypointViewController, entry: WaypointEntry)
 }
 
 class WaypointViewController: UIViewController {
-
     // MARK: - Types
 
     enum LocationState {
@@ -96,7 +94,7 @@ class WaypointViewController: UIViewController {
     var reverseGeocoder: NMAGeocoding = NMAGeocoder.sharedInstance()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var observers: [Notification.Name: NSObjectProtocol] = [:]
@@ -457,7 +455,6 @@ class WaypointViewController: UIViewController {
 // MARK: - NMAMapGestureDelegate
 
 extension WaypointViewController: NMAMapGestureDelegate {
-
     func mapView(_ mapView: NMAMapView, didReceiveTapAt location: CGPoint) {
         handleGesture(at: location)
     }
@@ -470,7 +467,6 @@ extension WaypointViewController: NMAMapGestureDelegate {
 // MARK: - LocationBasedViewController
 
 extension WaypointViewController: LocationBasedViewController {
-
     func noLocationAlertCanceledAction() {
         performSegue(withIdentifier: "LandingViewUnwind", sender: self)
     }
