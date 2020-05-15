@@ -18,7 +18,6 @@
 import XCTest
 
 final class ExtensionNumberFormatterTests: XCTestCase {
-
     /// Tests `NumberFormatter.roundUpFormatter`.
     func testRoundUpFormatter() {
         let formatter = NumberFormatter.roundUpFormatter

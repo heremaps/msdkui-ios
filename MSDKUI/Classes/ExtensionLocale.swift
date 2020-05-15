@@ -21,6 +21,6 @@ extension Locale {
     /// Returns a boolean indicating if the locale should use km/h for speed.
     /// The default value is true, in case the Locale doesn't have a measurement system specified.
     var usesKilometersPerHour: Bool {
-        return (self as NSLocale).object(forKey: .measurementSystem) as? String == "Metric"
+        (self as NSLocale).object(forKey: .measurementSystem) as? String == "Metric"
     }
 }

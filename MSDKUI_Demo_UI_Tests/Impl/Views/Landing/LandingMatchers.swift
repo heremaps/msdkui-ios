@@ -18,15 +18,15 @@ import EarlGrey
 
 enum LandingMatchers {
     static var infoButton: GREYMatcher {
-        return grey_accessibilityID("LandingViewController.infoButton")
+        grey_accessibilityID("LandingViewController.infoButton")
     }
 
     static var routePlanner: GREYMatcher {
-        return grey_accessibilityID("LandingViewController.routePlannerView")
+        grey_accessibilityID("LandingViewController.routePlannerView")
     }
 
     static var driveNavigation: GREYMatcher {
-        return grey_accessibilityID("LandingViewController.driveNavView")
+        grey_accessibilityID("LandingViewController.driveNavView")
     }
 
     enum Cards: String {

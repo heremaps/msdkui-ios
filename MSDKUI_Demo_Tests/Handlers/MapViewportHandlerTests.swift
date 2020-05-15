@@ -19,7 +19,6 @@ import NMAKit
 import XCTest
 
 final class MapViewportHandlerTests: XCTestCase {
-
     /// The map viewpot handler instance under test.
     private var mapViewportHandlerUnderTest: MapViewportHandling = MapViewportHandler()
 
@@ -68,10 +67,14 @@ final class MapViewportHandlerTests: XCTestCase {
 
     /// Tests the set viewport method with empty bounding box routes and no markers.
     func testSetViewportWithEmptyBoundingBoxRoutesAndNoMarkers() {
-        mapViewportHandlerUnderTest.setViewport(of: mapViewPartialMock, on: [MockUtils.mockRoute(with: NMAGeoBoundingBox()),
-                                                                             MockUtils.mockRoute(with: NMAGeoBoundingBox()),
-                                                                             MockUtils.mockRoute(with: NMAGeoBoundingBox())],
-                                                with: [], animation: .bow)
+        mapViewportHandlerUnderTest.setViewport(
+            of: mapViewPartialMock, on: [
+                MockUtils.mockRoute(with: NMAGeoBoundingBox()),
+                MockUtils.mockRoute(with: NMAGeoBoundingBox()),
+                MockUtils.mockRoute(with: NMAGeoBoundingBox())
+            ],
+            with: [], animation: .bow
+        )
 
         XCTAssertFalse(mapViewPartialMock.didCallSetBoundingBoxInsideWithAnimation, "It doesn't call map view's expected set method")
     }
@@ -89,24 +92,40 @@ final class MapViewportHandlerTests: XCTestCase {
         let lastBoundingBox = try require(mapViewPartialMock.lastBoundingBox)
         XCTAssertEqual(lastBoundingBox.width, expectedBoundingBox.width, accuracy: 0.01, "Used bounding box has the same width")
         XCTAssertEqual(lastBoundingBox.height, expectedBoundingBox.height, accuracy: 0.01, "Used bounding box has the same height")
-        XCTAssertEqual(lastBoundingBox.topLeft.latitude, expectedBoundingBox.topLeft.latitude, accuracy: 0.01,
-                       "Used bounding box has the same top-left latitude")
-        XCTAssertEqual(lastBoundingBox.topLeft.longitude, expectedBoundingBox.topLeft.longitude, accuracy: 0.01,
-                       "Used bounding box has the same top-left longitude")
-        XCTAssertEqual(lastBoundingBox.bottomRight.latitude, expectedBoundingBox.bottomRight.latitude, accuracy: 0.01,
-                       "Used bounding box has the same bottom-right latitude")
-        XCTAssertEqual(lastBoundingBox.bottomRight.longitude, expectedBoundingBox.bottomRight.longitude, accuracy: 0.01,
-                       "Used bounding box has the same bottom-right longitude")
+        XCTAssertEqual(
+            lastBoundingBox.topLeft.latitude, expectedBoundingBox.topLeft.latitude, accuracy: 0.01,
+            "Used bounding box has the same top-left latitude"
+        )
+        XCTAssertEqual(
+            lastBoundingBox.topLeft.longitude, expectedBoundingBox.topLeft.longitude, accuracy: 0.01,
+            "Used bounding box has the same top-left longitude"
+        )
+        XCTAssertEqual(
+            lastBoundingBox.bottomRight.latitude, expectedBoundingBox.bottomRight.latitude, accuracy: 0.01,
+            "Used bounding box has the same bottom-right latitude"
+        )
+        XCTAssertEqual(
+            lastBoundingBox.bottomRight.longitude, expectedBoundingBox.bottomRight.longitude, accuracy: 0.01,
+            "Used bounding box has the same bottom-right longitude"
+        )
     }
 
     /// Tests the set viewport method with routes containing nonempty bounding boxes and no markers.
     func testSetViewportWithBoundingBoxRoutesAndNoMarkers() {
-        mapViewportHandlerUnderTest.setViewport(of: mapViewPartialMock,
-                                                on: [MockUtils.mockRoute(with: NMAGeoBoundingBox(center: NMAGeoCoordinates(latitude: 53.0, longitude: 14.0),
-                                                                                                 width: 0.1, height: 0.1)),
-                                                     MockUtils.mockRoute(with: NMAGeoBoundingBox(center: NMAGeoCoordinates(latitude: 52.0, longitude: 13.0),
-                                                                                                 width: 0.1, height: 0.1))],
-                                                with: [], animation: .rocket)
+        mapViewportHandlerUnderTest.setViewport(
+            of: mapViewPartialMock,
+            on: [
+                MockUtils.mockRoute(with: NMAGeoBoundingBox(
+                    center: NMAGeoCoordinates(latitude: 53.0, longitude: 14.0),
+                    width: 0.1, height: 0.1
+                )),
+                MockUtils.mockRoute(with: NMAGeoBoundingBox(
+                    center: NMAGeoCoordinates(latitude: 52.0, longitude: 13.0),
+                    width: 0.1, height: 0.1
+                ))
+            ],
+            with: [], animation: .rocket
+        )
 
         XCTAssertTrue(mapViewPartialMock.didCallSetBoundingBoxInsideWithAnimation, "It does call map view's expected set method")
         XCTAssertNotNil(mapViewPartialMock.lastBoundingBox, "It uses a bounding box")
@@ -132,8 +151,10 @@ final class MapViewportHandlerTests: XCTestCase {
 
     /// Tests the set viewport method with no routes and a marker.
     func testSetViewportWithEmptyRoutesAndAMarker() {
-        mapViewportHandlerUnderTest.setViewport(of: mapViewPartialMock, on: [],
-                                                with: [NMAMapMarker(geoCoordinates: NMAGeoCoordinates(latitude: 52.0, longitude: 13.0))], animation: .bow)
+        mapViewportHandlerUnderTest.setViewport(
+            of: mapViewPartialMock, on: [],
+            with: [NMAMapMarker(geoCoordinates: NMAGeoCoordinates(latitude: 52.0, longitude: 13.0))], animation: .bow
+        )
 
         XCTAssertFalse(mapViewPartialMock.didCallSetBoundingBoxInsideWithAnimation, "It doesn't call map view's expected set method")
     }
@@ -142,9 +163,11 @@ final class MapViewportHandlerTests: XCTestCase {
     func testSetViewportWithEmptyRoutesAndSameMarkers() {
         let geoCoordinates = NMAGeoCoordinates(latitude: 52.0, longitude: 13.0)
 
-        mapViewportHandlerUnderTest.setViewport(of: mapViewPartialMock, on: [],
-                                                with: [NMAMapMarker(geoCoordinates: geoCoordinates), NMAMapMarker(geoCoordinates: geoCoordinates)],
-                                                animation: .bow)
+        mapViewportHandlerUnderTest.setViewport(
+            of: mapViewPartialMock, on: [],
+            with: [NMAMapMarker(geoCoordinates: geoCoordinates), NMAMapMarker(geoCoordinates: geoCoordinates)],
+            animation: .bow
+        )
 
         XCTAssertFalse(mapViewPartialMock.didCallSetBoundingBoxInsideWithAnimation, "It doesn't call map view's expected set method")
     }
@@ -154,9 +177,11 @@ final class MapViewportHandlerTests: XCTestCase {
         let expectedTopRight = NMAGeoCoordinates(latitude: 53.0, longitude: 14.0)
         let expectedBottomLeft = NMAGeoCoordinates(latitude: 52.0, longitude: 13.0)
 
-        mapViewportHandlerUnderTest.setViewport(of: mapViewPartialMock, on: [],
-                                                with: [NMAMapMarker(geoCoordinates: expectedTopRight), NMAMapMarker(geoCoordinates: expectedBottomLeft)],
-                                                animation: .linear)
+        mapViewportHandlerUnderTest.setViewport(
+            of: mapViewPartialMock, on: [],
+            with: [NMAMapMarker(geoCoordinates: expectedTopRight), NMAMapMarker(geoCoordinates: expectedBottomLeft)],
+            animation: .linear
+        )
 
         XCTAssertTrue(mapViewPartialMock.didCallSetBoundingBoxInsideWithAnimation, "It does call map view's expected set method")
         XCTAssertEqual(mapViewPartialMock.lastScreenRect, .zero, "It uses a correct screen rectangle")
@@ -166,8 +191,10 @@ final class MapViewportHandlerTests: XCTestCase {
         XCTAssertEqual(lastBoundingBox.topRight.latitude, expectedTopRight.latitude, accuracy: 0.01, "Used bounding box has the same top-right latitude")
         XCTAssertEqual(lastBoundingBox.topRight.longitude, expectedTopRight.longitude, accuracy: 0.01, "Used bounding box has the same top-right longitude")
         XCTAssertEqual(lastBoundingBox.bottomLeft.latitude, expectedBottomLeft.latitude, accuracy: 0.01, "Used bounding box has the same bottom-left latitude")
-        XCTAssertEqual(lastBoundingBox.bottomLeft.longitude, expectedBottomLeft.longitude, accuracy: 0.01,
-                       "Used bounding box has the same bottom-left longitude")
+        XCTAssertEqual(
+            lastBoundingBox.bottomLeft.longitude, expectedBottomLeft.longitude, accuracy: 0.01,
+            "Used bounding box has the same bottom-left longitude"
+        )
     }
 
     /// Tests the set viewport method with no routes and different visible markers.
@@ -188,21 +215,28 @@ final class MapViewportHandlerTests: XCTestCase {
         XCTAssertEqual(mapViewPartialMock.lastScreenRect, CGRect(origin: .zero, size: CGSize(width: 1, height: 1)), "It uses a correct screen rectangle")
 
         let lastBoundingBox = try require(mapViewPartialMock.lastBoundingBox)
-        XCTAssertEqual(lastBoundingBox.topRight.latitude, topRightMarker.coordinates.latitude, accuracy: 0.01,
-                       "Used bounding box has the same top-right latitude")
-        XCTAssertEqual(lastBoundingBox.topRight.longitude, topRightMarker.coordinates.longitude, accuracy: 0.01,
-                       "Used bounding box has the same top-right longitude")
-        XCTAssertEqual(lastBoundingBox.bottomLeft.latitude, bottomLeftMarker.coordinates.latitude, accuracy: 0.01,
-                       "Used bounding box has the same bottom-left latitude")
-        XCTAssertEqual(lastBoundingBox.bottomLeft.longitude, bottomLeftMarker.coordinates.longitude, accuracy: 0.01,
-                       "Used bounding box has the same bottom-left longitude")
+        XCTAssertEqual(
+            lastBoundingBox.topRight.latitude, topRightMarker.coordinates.latitude, accuracy: 0.01,
+            "Used bounding box has the same top-right latitude"
+        )
+        XCTAssertEqual(
+            lastBoundingBox.topRight.longitude, topRightMarker.coordinates.longitude, accuracy: 0.01,
+            "Used bounding box has the same top-right longitude"
+        )
+        XCTAssertEqual(
+            lastBoundingBox.bottomLeft.latitude, bottomLeftMarker.coordinates.latitude, accuracy: 0.01,
+            "Used bounding box has the same bottom-left latitude"
+        )
+        XCTAssertEqual(
+            lastBoundingBox.bottomLeft.longitude, bottomLeftMarker.coordinates.longitude, accuracy: 0.01,
+            "Used bounding box has the same bottom-left longitude"
+        )
     }
 }
 
 // MARK: - Private
 
 private extension NMAMapMarker {
-
     convenience init(geoCoordinates: NMAGeoCoordinates, imageSize: CGSize) {
         self.init(geoCoordinates: geoCoordinates, image: UIImageFixture.image(with: imageSize))
     }

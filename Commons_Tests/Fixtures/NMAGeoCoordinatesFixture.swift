@@ -18,20 +18,19 @@ import Foundation
 import NMAKit
 
 enum NMAGeoCoordinatesFixture {
-
     static func berlinNaturekundemuseum() -> NMAGeoCoordinates {
-        return NMAGeoCoordinates(latitude: 52.530555, longitude: 13.379257)
+        NMAGeoCoordinates(latitude: 52.530555, longitude: 13.379257)
     }
 
     static func berlinReichstag() -> NMAGeoCoordinates {
-        return NMAGeoCoordinates(latitude: 52.518620, longitude: 13.376187)
+        NMAGeoCoordinates(latitude: 52.518620, longitude: 13.376187)
     }
 
     static func berlinCenter() -> NMAGeoCoordinates {
-        return NMAGeoCoordinates(latitude: 52.52, longitude: 13.405)
+        NMAGeoCoordinates(latitude: 52.52, longitude: 13.405)
     }
 
     static func berlinSophienStrasse() -> NMAGeoCoordinates {
-        return NMAGeoCoordinates(latitude: 52.525080, longitude: 13.402928)
+        NMAGeoCoordinates(latitude: 52.525080, longitude: 13.402928)
     }
 }

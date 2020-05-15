@@ -19,7 +19,6 @@ import NMAKit
 import XCTest
 
 final class ExtensionNMAMapViewTests: XCTestCase {
-
     /// The object under test.
     private var mapViewUnderTest: NMAMapViewPartialMock?
 

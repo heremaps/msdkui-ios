@@ -9,10 +9,10 @@ Pod::Spec.new do |s|
     s.author                = { 'HERE Europe B.V.' => '' }
     s.source                = { :git => 'https://github.com/heremaps/msdkui-ios.git', :tag => s.version.to_s }
     s.ios.deployment_target = '12.0'
-    s.swift_version         = '5.0'
+    s.swift_version         = '5.2'
     s.source_files          = 'MSDKUI/Classes/**/*'
     s.resource_bundles      = {
         'MSDKUI' => ['MSDKUI/Assets/*.png', 'MSDKUI/Assets/*.xib', 'MSDKUI/Assets/*.lproj']
     }
-    s.dependency            'HEREMaps', '3.14.2'
+    s.dependency            'HEREMaps', '3.15.2'
 end

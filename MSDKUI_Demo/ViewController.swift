@@ -19,7 +19,6 @@ import NMAKit
 import UIKit
 
 class ViewController: UIViewController {
-
     // MARK: - Properties
 
     @IBOutlet private(set) var titleItem: UINavigationItem!
@@ -89,7 +88,7 @@ class ViewController: UIViewController {
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var selectedRouteIndex: Int?
@@ -284,9 +283,11 @@ class ViewController: UIViewController {
     }
 
     private func setUpHelperScrollView() {
-        let viewModel = EmptyView.ViewModel(image: UIImage(named: "RoutingHelper"),
-                                            title: "msdkui_app_routeplanner_getdirections".localized,
-                                            subtitle: "msdkui_app_routeplanner_startchoosingwaypoint".localized)
+        let viewModel = EmptyView.ViewModel(
+            image: UIImage(named: "RoutingHelper"),
+            title: "msdkui_app_routeplanner_getdirections".localized,
+            subtitle: "msdkui_app_routeplanner_startchoosingwaypoint".localized
+        )
 
         emptyView.configure(with: viewModel)
     }
@@ -334,7 +335,6 @@ class ViewController: UIViewController {
 // MARK: - RouteViewControllerDelegate
 
 extension ViewController: RouteViewControllerDelegate {
-
     // In some cases the traffic data appears late, it is better to refresh the routes
     func refreshRoute(_ viewController: UIViewController) {
         // Simply re-assign the routes to force a refresh
@@ -346,7 +346,6 @@ extension ViewController: RouteViewControllerDelegate {
 // MARK: - WaypointViewControllerDelegate
 
 extension ViewController: WaypointViewControllerDelegate {
-
     func waypointViewController(_ viewController: WaypointViewController, entry: WaypointEntry) {
         // Is there a selected entry?
         if let indexPathForSelectedRow = waypointList.indexPathForSelectedRow {
@@ -367,7 +366,6 @@ extension ViewController: WaypointViewControllerDelegate {
 // MARK: - OptionsDelegate
 
 extension ViewController: OptionsDelegate {
-
     func optionsUpdated(_ viewController: UIViewController) {
         // In case the traffic penalty mode is not optimal, don't ask for the traffic data
         trafficEnabled = router.dynamicPenalty?.trafficPenaltyMode == .optimal
@@ -380,7 +378,6 @@ extension ViewController: OptionsDelegate {
 // MARK: - WaypointListDelegate
 
 extension ViewController: WaypointListDelegate {
-
     func waypointList(_ list: WaypointList, didAdd entry: WaypointEntry, at index: Int) {
         calculateRoute()
     }
@@ -405,7 +402,6 @@ extension ViewController: WaypointListDelegate {
 // MARK: - RouteDescriptionListDelegate
 
 extension ViewController: RouteDescriptionListDelegate {
-
     func routeDescriptionList(_ list: RouteDescriptionList, didSelect route: NMARoute, at index: Int) {
         // Update the selected route index
         selectedRouteIndex = index
@@ -417,7 +413,6 @@ extension ViewController: RouteDescriptionListDelegate {
 // MARK: - TravelTimePanelDelegate
 
 extension ViewController: TravelTimePanelDelegate {
-
     func travelTimePanel(_ panel: TravelTimePanel, didUpdate date: Date) {
         updateTime()
         calculateRoute()
@@ -427,7 +422,6 @@ extension ViewController: TravelTimePanelDelegate {
 // MARK: - TransportModePanelDelegate
 
 extension ViewController: TransportModePanelDelegate {
-
     func transportModePanel(_ panel: TransportModePanel, didChangeTo mode: NMATransportMode) {
         routingMode.transportMode = mode
         calculateRoute()

@@ -137,7 +137,7 @@ public struct NumericOptionItemInputHelper {
 
     /// Returns the button title or empty string when there is no title.
     func getButtonTitle() -> String {
-        return optionButton?.title(for: .normal) ?? ""
+        optionButton?.title(for: .normal) ?? ""
     }
 
     /// The OK button handler for the input box. It validates the

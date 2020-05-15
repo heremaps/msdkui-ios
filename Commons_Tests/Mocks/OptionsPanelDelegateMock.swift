@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class OptionsPanelDelegateMock {
-
     private(set) var didChangeToOption = false
     private(set) var didChangeToOptionCount = 0
 
@@ -29,7 +28,6 @@ final class OptionsPanelDelegateMock {
 // MARK: - OptionsPanelDelegate
 
 extension OptionsPanelDelegateMock: OptionsPanelDelegate {
-
     func optionsPanel(_ panel: OptionsPanel, didChangeTo option: OptionItem) {
         didChangeToOption = true
         didChangeToOptionCount += 1

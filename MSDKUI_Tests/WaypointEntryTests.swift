@@ -18,7 +18,6 @@
 import XCTest
 
 final class WaypointEntryTests: XCTestCase {
-
     /// Note that we round up the values to 5th decimal
     /// when create the name out of the coordinates.
     private var waypoint = NMAWaypoint(geoCoordinates: NMAGeoCoordinates(latitude: 52.530555, longitude: 13.379257))

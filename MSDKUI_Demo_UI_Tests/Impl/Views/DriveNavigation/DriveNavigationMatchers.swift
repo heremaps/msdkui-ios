@@ -19,78 +19,78 @@ import EarlGrey
 
 enum DriveNavigationMatchers {
     static var driveNavView: GREYMatcher {
-        return grey_accessibilityID("LandingViewController.driveNavView")
+        grey_accessibilityID("LandingViewController.driveNavView")
     }
 
     static var driveNavMapView: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("GuidanceViewController.mapView"),
+        grey_anyOf([grey_accessibilityID("GuidanceViewController.mapView"),
                            grey_accessibilityID("RouteOverviewViewController.mapView")]
         )
     }
 
     static var currentStreetLabel: GREYMatcher {
-        return grey_accessibilityID("GuidanceViewController.currentStreetLabel")
+        grey_accessibilityID("GuidanceViewController.currentStreetLabel")
     }
 
     static var stopNavigationButton: GREYMatcher {
-        return grey_accessibilityID("GuidanceDashboardViewController.stopNavigationButton")
+        grey_accessibilityID("GuidanceDashboardViewController.stopNavigationButton")
     }
 
     static var maneuverView: GREYMatcher {
-        return grey_kindOfClass(GuidanceManeuverView.self)
+        grey_kindOfClass(GuidanceManeuverView.self)
     }
 
     static var nextManeuverView: GREYMatcher {
-        return grey_allOf([grey_accessibilityID("MSDKUI.GuidanceNextManeuverView"),
+        grey_allOf([grey_accessibilityID("MSDKUI.GuidanceNextManeuverView"),
                            grey_accessibilityTrait(.staticText)]
         )
     }
 
     static var maneuverViewText: GREYMatcher {
-        return grey_allOf([grey_accessibilityTrait(.staticText),
+        grey_allOf([grey_accessibilityTrait(.staticText),
                            grey_ancestor(grey_kindOfClass(GuidanceManeuverView.self))]
         )
     }
 
     static var currentSpeed: GREYMatcher {
-        return grey_allOf([grey_accessibilityID("MSDKUI.GuidanceSpeedView"),
+        grey_allOf([grey_accessibilityID("MSDKUI.GuidanceSpeedView"),
                            grey_accessibilityTrait(.staticText)]
         )
     }
 
     static var arrivalTime: GREYMatcher {
-        return grey_allOf([grey_accessibilityID("MSDKUI.GuidanceEstimatedArrivalView"),
+        grey_allOf([grey_accessibilityID("MSDKUI.GuidanceEstimatedArrivalView"),
                            grey_accessibilityTrait(.staticText)]
         )
     }
 
     static var dashboardSettings: GREYMatcher {
-        return grey_allOf([grey_accessibilityLabel("Settings"),
+        grey_allOf([grey_accessibilityLabel("Settings"),
                            grey_accessibilityTrait(.staticText)]
         )
     }
 
     static var dashboardAbout: GREYMatcher {
-        return grey_allOf([grey_accessibilityLabel("About"),
+        grey_allOf([grey_accessibilityLabel("About"),
                            grey_accessibilityTrait(.staticText)]
         )
     }
 
     static var routeDescription: GREYMatcher {
-        return grey_allOf([grey_accessibilityID("MSDKUI.RouteDescriptionItem"),
+        grey_allOf([grey_accessibilityID("MSDKUI.RouteDescriptionItem"),
                            grey_accessibilityLabel("Route"),
                            grey_accessibilityTrait(.staticText)]
         )
     }
 
     static var speedLimit: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.GuidanceSpeedLimitView")
+        grey_accessibilityID("MSDKUI.GuidanceSpeedLimitView")
     }
 }
 
 extension GREYMatcher {
 
     func andSufficientlyVisible() -> GREYMatcher {
-        return grey_allOf([self, grey_sufficientlyVisible()])
+        grey_allOf([self, grey_sufficientlyVisible()])
     }
 }

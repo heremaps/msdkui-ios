@@ -18,7 +18,6 @@
 import XCTest
 
 final class HazardousMaterialsOptionsPanelTests: XCTestCase {
-
     /// The object under test.
     private var panel = HazardousMaterialsOptionsPanel()
 

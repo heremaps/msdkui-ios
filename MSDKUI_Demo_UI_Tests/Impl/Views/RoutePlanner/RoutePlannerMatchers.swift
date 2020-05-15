@@ -18,98 +18,98 @@ import EarlGrey
 
 enum RoutePlannerMatchers {
     static var viewContollerRight: GREYMatcher {
-        return grey_accessibilityID("ViewController.rightButton")
+        grey_accessibilityID("ViewController.rightButton")
     }
 
     static var waypointList: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.WaypointList")
+        grey_accessibilityID("MSDKUI.WaypointList")
     }
 
     static var swapButton: GREYMatcher {
-        return grey_accessibilityID("IconButton.swapButton")
+        grey_accessibilityID("IconButton.swapButton")
     }
 
     static var travelTimePanel: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TravelTimePanel")
+        grey_accessibilityID("MSDKUI.TravelTimePanel")
     }
 
     static var travelTimePanelTitle: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TravelTimePicker.titleLabel")
+        grey_accessibilityID("MSDKUI.TravelTimePicker.titleLabel")
     }
 
     static var travelTimePanelTime: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TravelTimePanel.timeLabel")
+        grey_accessibilityID("MSDKUI.TravelTimePanel.timeLabel")
     }
 
     static var transportModePanel: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TransportModePanel")
+        grey_accessibilityID("MSDKUI.TransportModePanel")
     }
 
     static var transportModeTruck: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TransportModePanel.truckButton")
+        grey_accessibilityID("MSDKUI.TransportModePanel.truckButton")
     }
 
     static var transportModePedestrian: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TransportModePanel.pedestrianButton")
+        grey_accessibilityID("MSDKUI.TransportModePanel.pedestrianButton")
     }
 
     static var transportModeScooter: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TransportModePanel.scooterButton")
+        grey_accessibilityID("MSDKUI.TransportModePanel.scooterButton")
     }
 
     static var transportModeBike: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TransportModePanel.bikeButton")
+        grey_accessibilityID("MSDKUI.TransportModePanel.bikeButton")
     }
 
     static var transportModeCar: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TransportModePanel.carButton")
+        grey_accessibilityID("MSDKUI.TransportModePanel.carButton")
     }
 
     static var addButton: GREYMatcher {
-        return grey_accessibilityID("IconButton.addButton")
+        grey_accessibilityID("IconButton.addButton")
     }
 
     static var travelTimePickerDatePicker: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TravelTimePicker.datePicker")
+        grey_accessibilityID("MSDKUI.TravelTimePicker.datePicker")
     }
 
     static var routeOptionsButton: GREYMatcher {
-        return grey_accessibilityID("IconButton.optionsButton")
+        grey_accessibilityID("IconButton.optionsButton")
     }
 
     static var waypointItemLabel: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.WaypointItem.label")
+        grey_accessibilityID("MSDKUI.WaypointItem.label")
     }
 
     static var travelTimePickerOk: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.TravelTimePicker.okButton")
+        grey_accessibilityID("MSDKUI.TravelTimePicker.okButton")
     }
 
     static func waypointListCell(cellNr: Int) -> GREYMatcher {
-        return grey_accessibilityID("MSDKUI.WaypointList.cell_\(cellNr)")
+        grey_accessibilityID("MSDKUI.WaypointList.cell_\(cellNr)")
     }
 
     static var backButton: GREYMatcher {
-        return grey_accessibilityID("RouteViewController.backButton")
+        grey_accessibilityID("RouteViewController.backButton")
     }
 
     static var routeDescriptionList: GREYMatcher {
-        return grey_accessibilityID("MSDKUI.RouteDescriptionList")
+        grey_accessibilityID("MSDKUI.RouteDescriptionList")
     }
 
     static var routeOverviewMapView: GREYMatcher {
-        return grey_accessibilityID("RouteViewController.mapView")
+        grey_accessibilityID("RouteViewController.mapView")
     }
 
     static var routeStackView: GREYMatcher {
-        return grey_accessibilityID("RouteViewController.routeStackView")
+        grey_accessibilityID("RouteViewController.routeStackView")
     }
 
     static func routeDescriptionListCell(cellNr: Int) -> GREYMatcher {
-        return grey_accessibilityID("MSDKUI.RouteDescriptionList.cell_\(cellNr)")
+        grey_accessibilityID("MSDKUI.RouteDescriptionList.cell_\(cellNr)")
     }
 
     static var helperScrollView: GREYMatcher {
-        return grey_accessibilityID("ViewController.helperScrollView")
+        grey_accessibilityID("ViewController.helperScrollView")
     }
 }

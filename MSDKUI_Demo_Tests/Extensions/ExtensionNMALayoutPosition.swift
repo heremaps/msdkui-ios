@@ -17,10 +17,9 @@
 import NMAKit
 
 extension NMALayoutPosition: CaseIterable {
-
     public typealias AllCases = [NMALayoutPosition]
 
     public static var allCases: AllCases {
-        return [.topLeft, .topCenter, .topRight, .centerLeft, .center, .centerRight, .bottomLeft, .bottomCenter, .bottomRight]
+        [.topLeft, .topCenter, .topRight, .centerLeft, .center, .centerRight, .bottomLeft, .bottomCenter, .bottomRight]
     }
 }

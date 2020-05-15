@@ -26,7 +26,7 @@ open class WaypointEntry: NSObject {
 
     /// A string representation of the entry which is useful for debugging.
     override open var description: String {
-        return "<MSDKUI.WaypointEntry: \(Unmanaged.passUnretained(self).toOpaque())" +
+        "<MSDKUI.WaypointEntry: \(Unmanaged.passUnretained(self).toOpaque())" +
             "; name:\"\(name)\"" +
             "; draggable:\(draggable)" +
             "; removable: \(removable)" +
@@ -82,7 +82,7 @@ open class WaypointEntry: NSObject {
     ///
     /// - Returns: True, if the `NMAWaypoint` contains a valid coordinate, false otherwise.
     public func isValid() -> Bool {
-        return waypoint.originalPosition.latitude != 0 && waypoint.originalPosition.latitude >= -90 && waypoint.originalPosition.latitude <= 90.0 &&
+        waypoint.originalPosition.latitude != 0 && waypoint.originalPosition.latitude >= -90 && waypoint.originalPosition.latitude <= 90.0 &&
             waypoint.originalPosition.longitude != 0 && waypoint.originalPosition.longitude >= -180 && waypoint.originalPosition.longitude <= 180
     }
 }

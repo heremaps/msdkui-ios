@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class TravelTimePanelDelegateMock {
-
     private(set) var didCallWillDisplayPicker = false
     private(set) var didCallDidUpdate = false
 
@@ -30,7 +29,6 @@ final class TravelTimePanelDelegateMock {
 // MARK: - TravelTimePanelDelegate
 
 extension TravelTimePanelDelegateMock: TravelTimePanelDelegate {
-
     func travelTimePanel(_ panel: TravelTimePanel, willDisplay pickerViewController: TravelTimePicker) {
         didCallWillDisplayPicker = true
         lastPanel = panel

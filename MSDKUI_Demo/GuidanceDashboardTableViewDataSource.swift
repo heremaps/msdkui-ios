@@ -17,7 +17,6 @@
 import UIKit
 
 final class GuidanceDashboardTableViewDataSource: NSObject {
-
     // MARK: - Types
 
     enum Item {
@@ -58,7 +57,7 @@ final class GuidanceDashboardTableViewDataSource: NSObject {
     /// - Parameter indexPath: The table view index path.
     /// - Returns: The item at index path.
     func item(at indexPath: IndexPath) -> Item? {
-        guard 0..<items.count ~= indexPath.row else {
+        guard 0 ..< items.count ~= indexPath.row else {
             return nil
         }
 
@@ -69,9 +68,8 @@ final class GuidanceDashboardTableViewDataSource: NSObject {
 // MARK: - UITableViewDataSource
 
 extension GuidanceDashboardTableViewDataSource: UITableViewDataSource {
-
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        items.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -79,8 +77,8 @@ extension GuidanceDashboardTableViewDataSource: UITableViewDataSource {
             case let cellIdentifier = String(describing: GuidanceDashboardTableViewCell.self),
             let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as? GuidanceDashboardTableViewCell,
             let item = item(at: indexPath)
-            else {
-                fatalError("Failed to dequeue GuidanceDashboardTableViewCell")
+        else {
+            fatalError("Failed to dequeue GuidanceDashboardTableViewCell")
         }
 
         cell.configure(with: GuidanceDashboardTableViewCell.ViewModel(image: item.icon, title: item.title))

@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceSpeedLimitViewController: UIViewController {
-
     @IBOutlet private(set) var speedLimitView: GuidanceSpeedLimitView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

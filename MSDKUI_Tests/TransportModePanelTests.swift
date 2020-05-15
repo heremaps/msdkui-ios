@@ -18,7 +18,6 @@
 import XCTest
 
 final class TransportModePanelTests: XCTestCase {
-
     /// The object under test.
     private var panel = TransportModePanel()
 
@@ -35,8 +34,10 @@ final class TransportModePanelTests: XCTestCase {
 
     /// Test the default transport modes.
     func testDefaultTransporModes() {
-        XCTAssertEqual(panel.transportModes, [.car, .truck, .pedestrian, .bike, .scooter],
-                       "It has the correct transport modes enabled by default.")
+        XCTAssertEqual(
+            panel.transportModes, [.car, .truck, .pedestrian, .bike, .scooter],
+            "It has the correct transport modes enabled by default."
+        )
     }
 
     /// Test the panel intrinsic content size.
@@ -46,10 +47,14 @@ final class TransportModePanelTests: XCTestCase {
             .compactMap { $0 as? UIButton }
             .last
 
-        XCTAssertEqual(panel.intrinsicContentSize.width, UIView.noIntrinsicMetric,
-                       "It doesn't constrain the width.")
-        XCTAssertEqual(panel.intrinsicContentSize.height, lastPanelButton?.bounds.height,
-                       "It constrains the height according to the last button added to the panel.")
+        XCTAssertEqual(
+            panel.intrinsicContentSize.width, UIView.noIntrinsicMetric,
+            "It doesn't constrain the width."
+        )
+        XCTAssertEqual(
+            panel.intrinsicContentSize.height, lastPanelButton?.bounds.height,
+            "It constrains the height according to the last button added to the panel."
+        )
     }
 
     /// Test the default transport mode images.
@@ -188,27 +193,39 @@ final class TransportModePanelTests: XCTestCase {
 
     // MARK: - Private
 
-    private func verifyButtonImage(_ image: UIImage?,
-                                   usingTemplateNamed name: String,
-                                   file: StaticString = #file,
-                                   line: UInt = #line) {
-        XCTAssertEqual(image, UIImage(named: name, in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate),
-                       "It matches the expected image.", file: file, line: line)
+    private func verifyButtonImage(
+        _ image: UIImage?,
+        usingTemplateNamed name: String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        XCTAssertEqual(
+            image, UIImage(named: name, in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate),
+            "It matches the expected image.", file: file, line: line
+        )
     }
 
-    private func verifyAccessibilityForButton(_ button: UIButton?,
-                                              type: String,
-                                              identifier: String,
-                                              file: StaticString = #file,
-                                              line: UInt = #line) {
-        XCTAssertLocalized(button?.accessibilityLabel,
-                           formatKey: "msdkui_transport_mode",
-                           arguments: type,
-                           bundle: .MSDKUI,
-                           message: "It has the correct accessibility label.", file: file, line: line)
-        XCTAssertNil(button?.accessibilityHint,
-                     "It has the correct accessibility hint.", file: file, line: line)
-        XCTAssertEqual(button?.accessibilityIdentifier,
-                       identifier, "It has the correct accessibility identifier.", file: file, line: line)
+    private func verifyAccessibilityForButton(
+        _ button: UIButton?,
+        type: String,
+        identifier: String,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
+        XCTAssertLocalized(
+            button?.accessibilityLabel,
+            formatKey: "msdkui_transport_mode",
+            arguments: type,
+            bundle: .MSDKUI,
+            message: "It has the correct accessibility label.", file: file, line: line
+        )
+        XCTAssertNil(
+            button?.accessibilityHint,
+            "It has the correct accessibility hint.", file: file, line: line
+        )
+        XCTAssertEqual(
+            button?.accessibilityIdentifier,
+            identifier, "It has the correct accessibility identifier.", file: file, line: line
+        )
     }
 }

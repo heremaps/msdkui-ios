@@ -17,9 +17,8 @@
 import NMAKit
 
 enum NMAGeoPositionFixture {
-
     static func berlinCenterStationary() -> NMAGeoPosition? {
-        return NMAGeoPosition(
+        NMAGeoPosition(
             coordinates: NMAGeoCoordinatesFixture.berlinCenter(),
             speed: 0,
             course: 0,

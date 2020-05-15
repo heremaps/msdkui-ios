@@ -20,7 +20,6 @@ import UIKit
 /// This protocol is intended for view controllers presenting a guidance
 /// maneuver view and support guidance simulation.
 protocol GuidancePresentingViewController: AnyObject {
-
     /// The route set for guidance.
     var route: NMARoute? { get }
 
@@ -45,7 +44,6 @@ protocol GuidancePresentingViewController: AnyObject {
 // MARK: - UIViewController
 
 extension GuidancePresentingViewController where Self: UIViewController {
-
     func showSimulationAlert() {
         let alert = UIAlertController(title: "msdkui_app_guidance_start_simulation".localized, message: nil, preferredStyle: .alert)
         alert.view.accessibilityIdentifier = "GuidancePresentingViewController.AlertController.showSimulationView"

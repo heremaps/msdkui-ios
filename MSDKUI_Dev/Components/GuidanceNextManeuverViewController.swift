@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceNextManeuverViewController: UIViewController {
-
     @IBOutlet private(set) var nextManeuverView: GuidanceNextManeuverView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -29,10 +28,12 @@ final class GuidanceNextManeuverViewController: UIViewController {
 
             self?.nextManeuverView.foregroundColor = item.configuration.foregroundColor
 
-            let model = GuidanceNextManeuverView.ViewModel(maneuverIcon: item.configuration.maneuverIcon,
-                                                           distance: item.configuration.distance,
-                                                           streetName: item.configuration.streetName,
-                                                           distanceFormatter: item.configuration.distanceFormatter)
+            let model = GuidanceNextManeuverView.ViewModel(
+                maneuverIcon: item.configuration.maneuverIcon,
+                distance: item.configuration.distance,
+                streetName: item.configuration.streetName,
+                distanceFormatter: item.configuration.distanceFormatter
+            )
             self?.nextManeuverView.configure(with: model)
         }
     }

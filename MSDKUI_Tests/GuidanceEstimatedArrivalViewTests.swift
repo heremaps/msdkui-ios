@@ -19,7 +19,6 @@ import Foundation
 import XCTest
 
 final class GuidanceEstimatedArrivalViewTests: XCTestCase {
-
     /// The object under test.
     private var arrivalView = GuidanceEstimatedArrivalView(frame: CGRect(x: 0, y: 0, width: 200, height: 80))
 
@@ -49,8 +48,10 @@ final class GuidanceEstimatedArrivalViewTests: XCTestCase {
         XCTAssertNonlocalizable(arrivalView.estimatedTimeOfArrivalLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI, "It shows dashes as ETA text")
         XCTAssertEqual(arrivalView.estimatedTimeOfArrivalLabel.textColor, .colorForeground, "It has the correct text color")
         XCTAssertEqual(arrivalView.estimatedTimeOfArrivalLabel.textAlignment, .center, "It has the correct text alignment")
-        XCTAssertEqual(arrivalView.estimatedTimeOfArrivalLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
-                       "It uses monospaced digits as the ETA label font")
+        XCTAssertEqual(
+            arrivalView.estimatedTimeOfArrivalLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
+            "It uses monospaced digits as the ETA label font"
+        )
     }
 
     /// Tests if the view has the duration label (with empty content by default).
@@ -59,8 +60,10 @@ final class GuidanceEstimatedArrivalViewTests: XCTestCase {
         XCTAssertNonlocalizable(arrivalView.durationLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI, "It shows dashes as duration text")
         XCTAssertEqual(arrivalView.durationLabel.textColor, .colorForegroundSecondary, "It has the correct text color")
         XCTAssertEqual(arrivalView.durationLabel.textAlignment, .center, "It has the correct text alignment")
-        XCTAssertEqual(arrivalView.durationLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
-                       "It uses monospaced digits as the duration label font")
+        XCTAssertEqual(
+            arrivalView.durationLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
+            "It uses monospaced digits as the duration label font"
+        )
     }
 
     /// Tests if the view has the remaining distance label (with empty content by default).
@@ -69,8 +72,10 @@ final class GuidanceEstimatedArrivalViewTests: XCTestCase {
         XCTAssertNonlocalizable(arrivalView.distanceLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI, "It shows dashes as distance text")
         XCTAssertEqual(arrivalView.distanceLabel.textColor, .colorForegroundSecondary, "It has the correct text color")
         XCTAssertEqual(arrivalView.distanceLabel.textAlignment, .center, "It has the correct text alignment")
-        XCTAssertEqual(arrivalView.distanceLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
-                       "It uses monospaced digits as the distance label font")
+        XCTAssertEqual(
+            arrivalView.distanceLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
+            "It uses monospaced digits as the distance label font"
+        )
     }
 
     /// Tests if the view has the duration/distance separator.
@@ -93,12 +98,18 @@ final class GuidanceEstimatedArrivalViewTests: XCTestCase {
         arrivalView.duration = duration
         arrivalView.distance = distance
 
-        XCTAssertEqual(arrivalView.estimatedTimeOfArrivalLabel.text, DateFormatter.currentShortTimeFormatter.string(from: arrivalTime),
-                       "It shows the correct ETA")
-        XCTAssertEqual(arrivalView.durationLabel.text, MeasurementFormatter.currentMediumUnitFormatter.string(from: duration),
-                       "It shows the correct duration")
-        XCTAssertEqual(arrivalView.distanceLabel.text, MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
-                       "It shows the correct remaining distance")
+        XCTAssertEqual(
+            arrivalView.estimatedTimeOfArrivalLabel.text, DateFormatter.currentShortTimeFormatter.string(from: arrivalTime),
+            "It shows the correct ETA"
+        )
+        XCTAssertEqual(
+            arrivalView.durationLabel.text, MeasurementFormatter.currentMediumUnitFormatter.string(from: duration),
+            "It shows the correct duration"
+        )
+        XCTAssertEqual(
+            arrivalView.distanceLabel.text, MeasurementFormatter.currentMediumUnitFormatter.string(from: distance),
+            "It shows the correct remaining distance"
+        )
     }
 
     /// Tests if the labels have the correct content when the view has custom formatters.

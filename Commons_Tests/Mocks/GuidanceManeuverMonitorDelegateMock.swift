@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class GuidanceManeuverMonitorDelegateMock {
-
     private(set) var didCallDidUpdateData = false
     private(set) var didCallDidReachDestination = false
 
@@ -29,7 +28,6 @@ final class GuidanceManeuverMonitorDelegateMock {
 // MARK: - GuidanceManeuverMonitorDelegate
 
 extension GuidanceManeuverMonitorDelegateMock: GuidanceManeuverMonitorDelegate {
-
     func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor, didUpdateData data: GuidanceManeuverData?) {
         didCallDidUpdateData = true
         lastMonitor = monitor

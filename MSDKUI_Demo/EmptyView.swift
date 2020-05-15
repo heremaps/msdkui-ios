@@ -20,12 +20,10 @@ import UIKit
 /// Note that when the orientation is landscape, the image is not shown.
 /// The default `.backgroundColor` is `.colorBackgroundLight`.
 @IBDesignable class EmptyView: UIView {
-
     // MARK: - Types
 
     /// The view model used to populate the empty view.
     struct ViewModel {
-
         // MARK: - Properties
 
         var image: UIImage?
@@ -100,7 +98,7 @@ import UIKit
         isAccessibilityElement = true
         accessibilityTraits = .none
         accessibilityLabel =
-        "\("msdkui_app_routeplanner_getdirections".localized), \("msdkui_app_routeplanner_startchoosingwaypoint".localized)"
+            "\("msdkui_app_routeplanner_getdirections".localized), \("msdkui_app_routeplanner_startchoosingwaypoint".localized)"
         accessibilityIdentifier = "EmptyView"
     }
 }

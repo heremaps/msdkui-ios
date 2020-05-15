@@ -18,7 +18,6 @@ import Foundation
 @testable import MSDKUI
 
 final class NotificationCenterObservingMock {
-
     private(set) var didCallAddObserver = false
     private(set) var didCallRemoveObserver = false
 
@@ -34,11 +33,12 @@ final class NotificationCenterObservingMock {
 // MARK: - NotificationCenterObserving
 
 extension NotificationCenterObservingMock: NotificationCenterObserving {
-
-    func addObserver(forName name: NSNotification.Name?,
-                     object obj: Any?,
-                     queue: OperationQueue?,
-                     using block: @escaping (Notification) -> Void) -> NSObjectProtocol {
+    func addObserver(
+        forName name: NSNotification.Name?,
+        object obj: Any?,
+        queue: OperationQueue?,
+        using block: @escaping (Notification) -> Void
+    ) -> NSObjectProtocol {
         didCallAddObserver = true
         didCallAddObserverCount += 1
 

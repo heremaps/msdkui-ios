@@ -17,7 +17,6 @@
 import UIKit
 
 extension UITableView {
-
     /// Returns all the index paths from a table view.
     ///
     /// - Returns: An array of index paths.

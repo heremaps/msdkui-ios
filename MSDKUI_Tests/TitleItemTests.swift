@@ -18,7 +18,6 @@
 import XCTest
 
 final class TitleItemTests: XCTestCase {
-
     /// The object under test.
     private var item = TitleItem()
 

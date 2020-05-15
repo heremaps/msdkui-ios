@@ -19,7 +19,6 @@ import Foundation
 import XCTest
 
 final class GuidanceSpeedLimitViewTests: XCTestCase {
-
     /// The object under test.
     private var speedLimitView = GuidanceSpeedLimitView(frame: CGRect(x: 0, y: 0, width: 200, height: 80))
 
@@ -57,8 +56,10 @@ final class GuidanceSpeedLimitViewTests: XCTestCase {
         XCTAssertNotNil(speedLimitView.speedLimitLabel, "It has the speed limit label")
         XCTAssertNil(speedLimitView.speedLimitLabel.text, "It doesn't have speed limit")
         XCTAssertEqual(speedLimitView.speedLimitLabel.textAlignment, .center, "It shows the correct text alignment")
-        XCTAssertEqual(speedLimitView.speedLimitLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
-                       "It uses monospaced digits as the speed limit label font")
+        XCTAssertEqual(
+            speedLimitView.speedLimitLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
+            "It uses monospaced digits as the speed limit label font"
+        )
     }
 
     /// Tests if the view has the background image view (empty by the default).

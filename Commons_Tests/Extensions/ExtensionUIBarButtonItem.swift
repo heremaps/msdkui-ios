@@ -17,7 +17,6 @@
 import UIKit
 
 extension UIBarButtonItem {
-
     /// Taps the UIBarButtonItem, triggering its action.
     func tap() {
         guard let selector = action, let target = target else {

@@ -18,7 +18,6 @@
 import XCTest
 
 final class ExtensionDateFormatterTests: XCTestCase {
-
     /// Tests `DateFormatter.currentShortTimeFormatter`.
     func testCurrentShortTimeFormatter() {
         let formatter = DateFormatter.currentShortTimeFormatter

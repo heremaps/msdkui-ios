@@ -18,7 +18,6 @@ import MSDKUI
 import XCTest
 
 final class VersionTests: XCTestCase {
-
     /// Tests that the framework version is correctly retrieved.
     func testFrameworkVersion() {
         let expectedVersion = "2.1.4"

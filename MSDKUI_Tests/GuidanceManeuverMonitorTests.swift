@@ -18,7 +18,6 @@
 import XCTest
 
 final class GuidanceManeuverMonitorTests: XCTestCase {
-
     /// This is the real `NMANavigationManager` method.
     private static var realNavigationManagerMethod: Method?
 
@@ -82,60 +81,80 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
 
     /// Tests the default observers, added when the object is initialized.
     func testDefaultObservables() {
-        XCTAssertTrue(mockNotificationCenter.didCallAddObserver,
-                      "It adds an observer.")
+        XCTAssertTrue(
+            mockNotificationCenter.didCallAddObserver,
+            "It adds an observer."
+        )
 
-        XCTAssertEqual(mockNotificationCenter.lastNotificationName, .NMAPositioningManagerDidUpdatePosition,
-                       "It adds an observer for the correct event.")
+        XCTAssertEqual(
+            mockNotificationCenter.lastNotificationName, .NMAPositioningManagerDidUpdatePosition,
+            "It adds an observer for the correct event."
+        )
     }
 
     /// Tests when the delegate method `.navigationManager(_:didUpdateManeuvers:nextManeuver:)` is triggered.
     func testWhenNavigationManagerDidUpdateManeuversNextManeuverIsTriggered() {
         let expectedDistance = Measurement(value: 300, unit: UnitLength.meters)
         let expectedManeuverIcon = UIImage(named: "maneuver_icon_4", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: expectedManeuverIcon,
-                                                        distance: expectedDistance,
-                                                        info1: nil,
-                                                        info2: "Invalidenstr.",
-                                                        nextRoadIcon: nil)
+        let expectedGuidanceData = GuidanceManeuverData(
+            maneuverIcon: expectedManeuverIcon,
+            distance: expectedDistance,
+            info1: nil,
+            info2: "Invalidenstr.",
+            nextRoadIcon: nil
+        )
 
         maneuverMonitor?.navigationManager(.sharedInstance(), didUpdateManeuvers: NMANavigationManager.sharedInstance().currentManeuver, nil)
 
-        XCTAssertTrue(mockDelegate.didCallDidUpdateData,
-                      "It tells the delegate that data has been updated.")
+        XCTAssertTrue(
+            mockDelegate.didCallDidUpdateData,
+            "It tells the delegate that data has been updated."
+        )
 
-        XCTAssertEqual(mockDelegate.lastData, expectedGuidanceData,
-                       "It calls the delegate method with the correct guidance maneuver data")
+        XCTAssertEqual(
+            mockDelegate.lastData, expectedGuidanceData,
+            "It calls the delegate method with the correct guidance maneuver data"
+        )
     }
 
     /// Tests when the delegate method `.navigationManagerDidReachDestination(_:)` is triggered.
     func testWhenNavigationManagerDidReachDestinationIsTriggered() {
         maneuverMonitor?.navigationManagerDidReachDestination(.sharedInstance())
 
-        XCTAssertTrue(mockDelegate.didCallDidReachDestination,
-                      "It tells the delegate that destination has been reached.")
+        XCTAssertTrue(
+            mockDelegate.didCallDidReachDestination,
+            "It tells the delegate that destination has been reached."
+        )
 
-        XCTAssertEqual(mockDelegate.lastMonitor, maneuverMonitor,
-                       "It calls the delegate method with the correct monitor.")
+        XCTAssertEqual(
+            mockDelegate.lastMonitor, maneuverMonitor,
+            "It calls the delegate method with the correct monitor."
+        )
     }
 
     /// Tests when a `NMAPositioningManagerDidUpdatePosition` notification is received.
     func testWhenNMAPositioningManagerDidUpdatePositionNotificationIsReceived() {
         let expectedDistance = Measurement(value: 300, unit: UnitLength.meters)
         let expectedManeuverIcon = UIImage(named: "maneuver_icon_4", in: .MSDKUI, compatibleWith: nil)?.withRenderingMode(.alwaysTemplate)
-        let expectedGuidanceData = GuidanceManeuverData(maneuverIcon: expectedManeuverIcon,
-                                                        distance: expectedDistance,
-                                                        info1: nil,
-                                                        info2: "Invalidenstr.",
-                                                        nextRoadIcon: nil)
+        let expectedGuidanceData = GuidanceManeuverData(
+            maneuverIcon: expectedManeuverIcon,
+            distance: expectedDistance,
+            info1: nil,
+            info2: "Invalidenstr.",
+            nextRoadIcon: nil
+        )
 
         mockNotificationCenter.lastBlock?(Notification(name: .NMAPositioningManagerDidUpdatePosition))
 
-        XCTAssertTrue(mockDelegate.didCallDidUpdateData,
-                      "It tells the delegate that data has been updated.")
+        XCTAssertTrue(
+            mockDelegate.didCallDidUpdateData,
+            "It tells the delegate that data has been updated."
+        )
 
-        XCTAssertEqual(mockDelegate.lastData, expectedGuidanceData,
-                       "It calls the delegate method with the correct guidance maneuver data")
+        XCTAssertEqual(
+            mockDelegate.lastData, expectedGuidanceData,
+            "It calls the delegate method with the correct guidance maneuver data"
+        )
     }
 
     /// Tests when "will reroute" notification is received, it is handled.
@@ -155,8 +174,8 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
             let mockNavigationManagerMethod = mockNavigationManagerMethod,
             let realPositioningManagerMethod = realPositioningManagerMethod,
             let mockPositioningManagerMethod = mockPositioningManagerMethod else {
-                XCTFail("Method swizzling failed!")
-                return
+            XCTFail("Method swizzling failed!")
+            return
         }
 
         method_exchangeImplementations(realNavigationManagerMethod, mockNavigationManagerMethod)
@@ -169,8 +188,8 @@ final class GuidanceManeuverMonitorTests: XCTestCase {
             let realNavigationManagerMethod = realNavigationManagerMethod,
             let mockPositioningManagerMethod = mockPositioningManagerMethod,
             let realPositioningManagerMethod = realPositioningManagerMethod else {
-                XCTFail("Method deswizzling failed!")
-                return
+            XCTFail("Method deswizzling failed!")
+            return
         }
 
         method_exchangeImplementations(mockNavigationManagerMethod, realNavigationManagerMethod)

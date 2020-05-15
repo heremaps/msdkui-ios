@@ -69,7 +69,7 @@ import NMAKit
 
     /// Convenience property to access the underlying `MultipleChoiceOptionItem` item.
     private var item: MultipleChoiceOptionItem? {
-        return optionItems.first as? MultipleChoiceOptionItem
+        optionItems.first as? MultipleChoiceOptionItem
     }
 
     // MARK: - Public

@@ -18,7 +18,6 @@
 import XCTest
 
 final class ExtensionLocaleTests: XCTestCase {
-
     /// Tests the `.usesKilometersPerHour` behavior for Germany.
     func testUsesKilometersPerHourForGermany() {
         XCTAssertTrue(Locale(identifier: "de_DE").usesKilometersPerHour, "It uses km/h for speed.")

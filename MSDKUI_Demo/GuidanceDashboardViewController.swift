@@ -19,7 +19,6 @@ import UIKit
 
 /// A set of methods for communicating interactions with a dashboard.
 protocol GuidanceDashboardViewControllerDelegate: AnyObject {
-
     /// Notifies the delegate when the stop navigation button is tapped.
     ///
     /// - Parameter controller: The controller notifying the event.
@@ -39,7 +38,6 @@ protocol GuidanceDashboardViewControllerDelegate: AnyObject {
 }
 
 final class GuidanceDashboardViewController: UIViewController {
-
     // MARK: - Properties
 
     /// The stop navigation button, which triggers the
@@ -96,8 +94,10 @@ final class GuidanceDashboardViewController: UIViewController {
         setUpEstimatedArrivalView(for: traitCollection)
     }
 
-    override func willTransition(to newCollection: UITraitCollection,
-                                 with coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(
+        to newCollection: UITraitCollection,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
         super.willTransition(to: newCollection, with: coordinator)
 
         // Sets up the view based on new `UITraitCollection`
@@ -201,11 +201,12 @@ final class GuidanceDashboardViewController: UIViewController {
 // MARK: - GuidanceSpeedMonitorDelegate
 
 extension GuidanceDashboardViewController: GuidanceSpeedMonitorDelegate {
-
-    func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
-                              isSpeeding: Bool,
-                              speedLimit: Measurement<UnitSpeed>?) {
+    func guidanceSpeedMonitor(
+        _ monitor: GuidanceSpeedMonitor,
+        didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
+        isSpeeding: Bool,
+        speedLimit: Measurement<UnitSpeed>?
+    ) {
         currentSpeedView.speed = currentSpeed
         currentSpeedView.speedValueTextColor = isSpeeding ? .colorNegative : .colorForeground
         currentSpeedView.speedUnitTextColor = isSpeeding ? .colorNegative : .colorForegroundSecondary
@@ -215,11 +216,12 @@ extension GuidanceDashboardViewController: GuidanceSpeedMonitorDelegate {
 // MARK: - GuidanceEstimatedArrivalMonitorDelegate
 
 extension GuidanceDashboardViewController: GuidanceEstimatedArrivalMonitorDelegate {
-
-    func guidanceEstimatedArrivalMonitor(_ monitor: GuidanceEstimatedArrivalMonitor,
-                                         didChangeTimeOfArrival timeOfArrival: Date?,
-                                         distance: Measurement<UnitLength>?,
-                                         duration: Measurement<UnitDuration>?) {
+    func guidanceEstimatedArrivalMonitor(
+        _ monitor: GuidanceEstimatedArrivalMonitor,
+        didChangeTimeOfArrival timeOfArrival: Date?,
+        distance: Measurement<UnitLength>?,
+        duration: Measurement<UnitDuration>?
+    ) {
         estimatedArrivalView.estimatedTimeOfArrival = timeOfArrival
         estimatedArrivalView.duration = duration
         estimatedArrivalView.distance = distance
@@ -229,7 +231,6 @@ extension GuidanceDashboardViewController: GuidanceEstimatedArrivalMonitorDelega
 // MARK: - UITableViewDelegate
 
 extension GuidanceDashboardViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let item = tableViewDataSource.item(at: indexPath) else {
             return

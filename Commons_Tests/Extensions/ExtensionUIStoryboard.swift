@@ -17,7 +17,6 @@
 import UIKit
 
 extension UIStoryboard {
-
     /// All the storyboards of the Demo application.
     enum StoryboardName: String {
         case about = "About"

@@ -18,7 +18,6 @@
 import XCTest
 
 final class MultipleChoiceOptionItemTests: XCTestCase {
-
     /// The object under test.
     private var item = MultipleChoiceOptionItem()
 

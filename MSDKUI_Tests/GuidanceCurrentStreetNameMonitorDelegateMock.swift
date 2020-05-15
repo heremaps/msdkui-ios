@@ -18,7 +18,6 @@ import Foundation
 @testable import MSDKUI
 
 final class GuidanceCurrentStreetNameMonitorDelegateMock {
-
     private(set) var didCallDidUpdateCurrentStreetName = false
 
     private(set) var lastMonitor: GuidanceCurrentStreetNameMonitor?
@@ -28,7 +27,6 @@ final class GuidanceCurrentStreetNameMonitorDelegateMock {
 // MARK: - GuidanceCurrentStreetNameMonitorDelegate
 
 extension GuidanceCurrentStreetNameMonitorDelegateMock: GuidanceCurrentStreetNameMonitorDelegate {
-
     func guidanceCurrentStreetNameMonitor(_ monitor: GuidanceCurrentStreetNameMonitor, didUpdateCurrentStreetName currentStreetName: String?) {
         didCallDidUpdateCurrentStreetName = true
         lastMonitor = monitor

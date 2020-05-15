@@ -18,7 +18,6 @@
 import XCTest
 
 final class NavigationManagerDelegateDispatcherTests: XCTestCase {
-
     /// The object under test.
     private var dispatcherUnderTest = NavigationManagerDelegateDispatcher()
 
@@ -31,14 +30,20 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Adds a delegate
         dispatcherUnderTest.add(delegate: mockDelegate)
 
-        XCTAssertFalse(dispatcherUnderTest.isEmpty,
-                       "It has delegates.")
+        XCTAssertFalse(
+            dispatcherUnderTest.isEmpty,
+            "It has delegates."
+        )
 
-        XCTAssertEqual(dispatcherUnderTest.count, 1,
-                       "It has one delegate.")
+        XCTAssertEqual(
+            dispatcherUnderTest.count, 1,
+            "It has one delegate."
+        )
 
-        XCTAssertTrue(NMANavigationManager.sharedInstance().delegate === dispatcherUnderTest,
-                      "It sets the dispatcher as the NMANavigationManager delegate.")
+        XCTAssertTrue(
+            NMANavigationManager.sharedInstance().delegate === dispatcherUnderTest,
+            "It sets the dispatcher as the NMANavigationManager delegate."
+        )
     }
 
     /// Tests when two delegates are added.
@@ -50,14 +55,20 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         dispatcherUnderTest.add(delegate: mockDelegateA)
         dispatcherUnderTest.add(delegate: mockDelegateB)
 
-        XCTAssertFalse(dispatcherUnderTest.isEmpty,
-                       "It has delegates.")
+        XCTAssertFalse(
+            dispatcherUnderTest.isEmpty,
+            "It has delegates."
+        )
 
-        XCTAssertEqual(dispatcherUnderTest.count, 2,
-                       "It has two delegates.")
+        XCTAssertEqual(
+            dispatcherUnderTest.count, 2,
+            "It has two delegates."
+        )
 
-        XCTAssertTrue(NMANavigationManager.sharedInstance().delegate === dispatcherUnderTest,
-                      "It sets the dispatcher as the NMANavigationManager delegate.")
+        XCTAssertTrue(
+            NMANavigationManager.sharedInstance().delegate === dispatcherUnderTest,
+            "It sets the dispatcher as the NMANavigationManager delegate."
+        )
     }
 
     // MARK: - Remove
@@ -70,11 +81,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         dispatcherUnderTest.add(delegate: mockDelegate)
         dispatcherUnderTest.remove(delegate: mockDelegate)
 
-        XCTAssertTrue(dispatcherUnderTest.isEmpty,
-                      "It doesn't have delegates.")
+        XCTAssertTrue(
+            dispatcherUnderTest.isEmpty,
+            "It doesn't have delegates."
+        )
 
-        XCTAssertNil(NMANavigationManager.sharedInstance().delegate,
-                     "It removes the NMANavigationManager's delegate.")
+        XCTAssertNil(
+            NMANavigationManager.sharedInstance().delegate,
+            "It removes the NMANavigationManager's delegate."
+        )
     }
 
     /// Tests when two delegates are added but one is removed.
@@ -87,14 +102,20 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         dispatcherUnderTest.add(delegate: mockDelegateB)
         dispatcherUnderTest.remove(delegate: mockDelegateA)
 
-        XCTAssertFalse(dispatcherUnderTest.isEmpty,
-                       "It has delegates.")
+        XCTAssertFalse(
+            dispatcherUnderTest.isEmpty,
+            "It has delegates."
+        )
 
-        XCTAssertEqual(dispatcherUnderTest.count, 1,
-                       "It has one delegate.")
+        XCTAssertEqual(
+            dispatcherUnderTest.count, 1,
+            "It has one delegate."
+        )
 
-        XCTAssertTrue(NMANavigationManager.sharedInstance().delegate === dispatcherUnderTest,
-                      "It sets the dispatcher as the NMANavigationManager delegate.")
+        XCTAssertTrue(
+            NMANavigationManager.sharedInstance().delegate === dispatcherUnderTest,
+            "It sets the dispatcher as the NMANavigationManager delegate."
+        )
     }
 
     /// Tests when two delegates are added and then removed.
@@ -108,11 +129,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         dispatcherUnderTest.remove(delegate: mockDelegateA)
         dispatcherUnderTest.remove(delegate: mockDelegateB)
 
-        XCTAssertTrue(dispatcherUnderTest.isEmpty,
-                      "It doesn't have delegates.")
+        XCTAssertTrue(
+            dispatcherUnderTest.isEmpty,
+            "It doesn't have delegates."
+        )
 
-        XCTAssertNil(NMANavigationManager.sharedInstance().delegate,
-                     "It removes the NMANavigationManager's delegate.")
+        XCTAssertNil(
+            NMANavigationManager.sharedInstance().delegate,
+            "It removes the NMANavigationManager's delegate."
+        )
     }
 
     // MARK: - NMANavigationManagerDelegate Methods
@@ -129,11 +154,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidReachDestination(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didUpdateManeuvers:_:)` is triggered.
@@ -148,11 +177,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), didUpdateManeuvers: nil, nil)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didReachStopover:)` is triggered.
@@ -169,17 +202,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
 
         dispatcherUnderTest.navigationManager(.sharedInstance(), didReachStopover: stopover)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateA.lastStopOver === stopover,
-                      "It calls the delegate method with the correct stopover.")
+        XCTAssertTrue(
+            mockDelegateA.lastStopOver === stopover,
+            "It calls the delegate method with the correct stopover."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastStopOver === stopover,
-                      "It calls the delegate method with the correct stopover.")
+        XCTAssertTrue(
+            mockDelegateB.lastStopOver === stopover,
+            "It calls the delegate method with the correct stopover."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didUpdateLaneInformation:roadElement:)` is triggered.
@@ -194,17 +235,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), didUpdateLaneInformation: [], roadElement: nil)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastLaneInformations?.isEmpty, true,
-                       "It calls the delegate method with the correct lane information.")
+        XCTAssertEqual(
+            mockDelegateA.lastLaneInformations?.isEmpty, true,
+            "It calls the delegate method with the correct lane information."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastLaneInformations?.isEmpty, true,
-                       "It calls the delegate method with the correct lane information.")
+        XCTAssertEqual(
+            mockDelegateB.lastLaneInformations?.isEmpty, true,
+            "It calls the delegate method with the correct lane information."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didUpdateRealisticViewsForCurrentManeuver:)` is triggered.
@@ -222,17 +271,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
 
         dispatcherUnderTest.navigationManager(.sharedInstance(), didUpdateRealisticViewsForCurrentManeuver: realisticViews)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(try require(mockDelegateA.lastRealisticViews), realisticViews,
-                       "It calls the delegate method with the correct realistic views.")
+        XCTAssertEqual(
+            try require(mockDelegateA.lastRealisticViews), realisticViews,
+            "It calls the delegate method with the correct realistic views."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(try require(mockDelegateB.lastRealisticViews), realisticViews,
-                       "It calls the delegate method with the correct realistic views.")
+        XCTAssertEqual(
+            try require(mockDelegateB.lastRealisticViews), realisticViews,
+            "It calls the delegate method with the correct realistic views."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didUpdateRealisticViewsForNextManeuver:)` is triggered.
@@ -250,17 +307,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
 
         dispatcherUnderTest.navigationManager(.sharedInstance(), didUpdateRealisticViewsForNextManeuver: realisticViews)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(try require(mockDelegateA.lastRealisticViews), realisticViews,
-                       "It calls the delegate method with the correct realistic views.")
+        XCTAssertEqual(
+            try require(mockDelegateA.lastRealisticViews), realisticViews,
+            "It calls the delegate method with the correct realistic views."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(try require(mockDelegateB.lastRealisticViews), realisticViews,
-                       "It calls the delegate method with the correct realistic views.")
+        XCTAssertEqual(
+            try require(mockDelegateB.lastRealisticViews), realisticViews,
+            "It calls the delegate method with the correct realistic views."
+        )
     }
 
     /// Tests when the method `.navigationManagerDidInvalidateRealisticViews(_:)` is triggered.
@@ -275,11 +340,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidInvalidateRealisticViews(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didUpdateSpeedingStatus:forCurrentSpeed:speedLimit:)` is triggered.
@@ -294,29 +363,45 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), didUpdateSpeedingStatus: true, forCurrentSpeed: 42.0, speedLimit: 40.0)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(try require(mockDelegateA.lastSpeedingStatus),
-                      "It calls the delegate method with the correct speeding status.")
+        XCTAssertTrue(
+            try require(mockDelegateA.lastSpeedingStatus),
+            "It calls the delegate method with the correct speeding status."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastSpeed, 42.0,
-                       "It calls the delegate method with the correct speed.")
+        XCTAssertEqual(
+            mockDelegateA.lastSpeed, 42.0,
+            "It calls the delegate method with the correct speed."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastSpeedLimit, 40.0,
-                       "It calls the delegate method with the correct speed limit.")
+        XCTAssertEqual(
+            mockDelegateA.lastSpeedLimit, 40.0,
+            "It calls the delegate method with the correct speed limit."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(try require(mockDelegateB.lastSpeedingStatus),
-                      "It calls the delegate method with the correct speeding status.")
+        XCTAssertTrue(
+            try require(mockDelegateB.lastSpeedingStatus),
+            "It calls the delegate method with the correct speeding status."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastSpeed, 42.0,
-                       "It calls the delegate method with the correct speed.")
+        XCTAssertEqual(
+            mockDelegateB.lastSpeed, 42.0,
+            "It calls the delegate method with the correct speed."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastSpeedLimit, 40.0,
-                       "It calls the delegate method with the correct speed limit.")
+        XCTAssertEqual(
+            mockDelegateB.lastSpeedLimit, 40.0,
+            "It calls the delegate method with the correct speed limit."
+        )
     }
 
     /// Tests when the method `.navigationManagerDidLosePosition(_:)` is triggered.
@@ -331,11 +416,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidLosePosition(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManagerDidFindPosition(_:)` is triggered.
@@ -350,11 +439,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidFindPosition(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManagerWillReroute(_:)` is triggered.
@@ -369,11 +462,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerWillReroute(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManagerDidReroute(_:)` is triggered.
@@ -388,12 +485,16 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), didRerouteWithError: .unknown)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
         XCTAssertEqual(mockDelegateA.lastError, .unknown, "It calls the delegate method with the correct error.")
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
         XCTAssertEqual(mockDelegateB.lastError, .unknown, "It calls the delegate method with the correct error.")
     }
 
@@ -409,17 +510,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), didChangeRoutingState: .on)
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastTrafficEnabledRoutingState, .on,
-                       "It calls the delegate method with the correct routing state.")
+        XCTAssertEqual(
+            mockDelegateA.lastTrafficEnabledRoutingState, .on,
+            "It calls the delegate method with the correct routing state."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastTrafficEnabledRoutingState, .on,
-                       "It calls the delegate method with the correct routing state.")
+        XCTAssertEqual(
+            mockDelegateB.lastTrafficEnabledRoutingState, .on,
+            "It calls the delegate method with the correct routing state."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:shouldPlayVoiceFeedback:)` is triggered.
@@ -440,17 +549,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
 
         XCTAssertFalse(shouldPlay, "It returns false.")
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateA.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateB.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:shouldPlayVoiceFeedback:)` is triggered.
@@ -471,17 +588,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
 
         XCTAssertTrue(shouldPlay, "It returns true.")
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateA.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateB.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:shouldPlayVoiceFeedback:)` is triggered.
@@ -502,17 +627,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
 
         XCTAssertTrue(shouldPlay, "It returns true.")
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateA.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateB.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:willPlayVoiceFeedback:)` is triggered.
@@ -527,17 +660,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), willPlayVoiceFeedback: "Turn left. There's water ahead!")
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateA.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateB.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
     }
 
     /// Tests when the method `.navigationManager(_:didPlayVoiceFeedback:)` is triggered.
@@ -552,17 +693,25 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManager(.sharedInstance(), didPlayVoiceFeedback: "Turn left. There's water ahead!")
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateA.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateA.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertEqual(mockDelegateB.lastText, "Turn left. There's water ahead!",
-                       "It calls the delegate method with the correct text.")
+        XCTAssertEqual(
+            mockDelegateB.lastText, "Turn left. There's water ahead!",
+            "It calls the delegate method with the correct text."
+        )
     }
 
     /// Tests when the method `.navigationManagerDidSuspendDueToInsufficientMapData(_:)` is triggered.
@@ -577,11 +726,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidSuspendDueToInsufficientMapData(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     /// Tests when the method `.navigationManagerDidResumeDueToMapDataAvailability(_:)` is triggered.
@@ -596,11 +749,15 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidResumeDueToMapDataAvailability(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
 
-        XCTAssertTrue(mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateB.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 
     // MARK: - Corner Cases
@@ -616,8 +773,10 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidResumeDueToMapDataAvailability(.sharedInstance())
 
-        XCTAssertNil(mockDelegateA.lastNavigationManager,
-                     "It doesn't call the delegate method.")
+        XCTAssertNil(
+            mockDelegateA.lastNavigationManager,
+            "It doesn't call the delegate method."
+        )
     }
 
     /// Tests when both comform to the protocol but only one implements the triggered method.
@@ -634,7 +793,9 @@ final class NavigationManagerDelegateDispatcherTests: XCTestCase {
         // Triggers the method
         dispatcherUnderTest.navigationManagerDidResumeDueToMapDataAvailability(.sharedInstance())
 
-        XCTAssertTrue(mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
-                      "It calls the delegate method with the correct navigation manager.")
+        XCTAssertTrue(
+            mockDelegateA.lastNavigationManager === NMANavigationManager.sharedInstance(),
+            "It calls the delegate method with the correct navigation manager."
+        )
     }
 }

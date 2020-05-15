@@ -19,7 +19,6 @@ import Foundation
 import XCTest
 
 final class GuidanceSpeedViewTests: XCTestCase {
-
     /// The object under test.
     private var speedView = GuidanceSpeedView(frame: CGRect(x: 0, y: 0, width: 200, height: 80))
 
@@ -47,8 +46,10 @@ final class GuidanceSpeedViewTests: XCTestCase {
         XCTAssertNotNil(speedView.speedValueLabel, "It has the speed value label")
         XCTAssertNonlocalizable(speedView.speedValueLabel.text, key: "msdkui_value_not_available", bundle: .MSDKUI, "It shows dashes as current speed value")
         XCTAssertEqual(speedView.speedValueLabel.textAlignment, .left, "It shows the correct text alignment")
-        XCTAssertEqual(speedView.speedValueLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
-                       "It uses monospaced digits as the speed value label font")
+        XCTAssertEqual(
+            speedView.speedValueLabel.font, .monospacedDigitSystemFont(ofSize: 22, weight: .bold),
+            "It uses monospaced digits as the speed value label font"
+        )
     }
 
     /// Tests if the view has the the speed unit label.
@@ -56,8 +57,10 @@ final class GuidanceSpeedViewTests: XCTestCase {
         XCTAssertNotNil(speedView.speedUnitLabel, "It has the speed unit label")
         XCTAssertNil(speedView.speedUnitLabel.text, "It hides the speed unit")
         XCTAssertEqual(speedView.speedUnitLabel.textAlignment, .left, "It shows the correct text alignment")
-        XCTAssertEqual(speedView.speedUnitLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
-                       "It uses monospaced digits as the duration label font")
+        XCTAssertEqual(
+            speedView.speedUnitLabel.font, .monospacedDigitSystemFont(ofSize: 15, weight: .regular),
+            "It uses monospaced digits as the duration label font"
+        )
     }
 
     /// Tests if the labels are elements that an assistive application can access.

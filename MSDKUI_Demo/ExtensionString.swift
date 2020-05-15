@@ -17,10 +17,9 @@
 import Foundation
 
 extension String {
-
     /// Helper property for easy localization. `"string".localized` fetches a
     /// localized string having the key "string".
     var localized: String {
-        return NSLocalizedString(self, bundle: Bundle.main, value: "", comment: "")
+        NSLocalizedString(self, bundle: Bundle.main, value: "", comment: "")
     }
 }

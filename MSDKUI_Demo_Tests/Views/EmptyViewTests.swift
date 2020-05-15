@@ -20,7 +20,6 @@ import Foundation
 import XCTest
 
 final class EmptyViewTests: XCTestCase {
-
     /// The view under test.
     private let view = EmptyView(frame: CGRect(x: 0, y: 0, width: 375, height: 255))
 
@@ -48,9 +47,11 @@ final class EmptyViewTests: XCTestCase {
     /// Tests if the view configuration works as expected.
     func testConfiguration() {
         /// The view model used for configuring `view`.
-        let viewModel = EmptyView.ViewModel(image: UIImage(),
-                                            title: "Title Test",
-                                            subtitle: "Subtitle Test")
+        let viewModel = EmptyView.ViewModel(
+            image: UIImage(),
+            title: "Title Test",
+            subtitle: "Subtitle Test"
+        )
 
         view.configure(with: viewModel)
 
@@ -75,16 +76,22 @@ final class EmptyViewTests: XCTestCase {
     func testAccessibility() {
         XCTAssertTrue(view.isAccessibilityElement, "The view is a accessibility element")
 
-        XCTAssertEqual(view.accessibilityIdentifier, "EmptyView",
-                       "The view has the correct accessibility identifier")
+        XCTAssertEqual(
+            view.accessibilityIdentifier, "EmptyView",
+            "The view has the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(view.accessibilityTraits, .none,
-                       "The view has the correct accessibility traits")
+        XCTAssertEqual(
+            view.accessibilityTraits, .none,
+            "The view has the correct accessibility traits"
+        )
 
         let accessibilityLabel = "\("msdkui_app_routeplanner_getdirections".localized), \("msdkui_app_routeplanner_startchoosingwaypoint".localized)"
 
-        XCTAssertEqual(view.accessibilityLabel, accessibilityLabel,
-                       "The view has the correct accessibility label")
+        XCTAssertEqual(
+            view.accessibilityLabel, accessibilityLabel,
+            "The view has the correct accessibility label"
+        )
     }
 
     /// Tests if the `imageView` visibility changes when the vertical trait collection changes.
@@ -99,9 +106,11 @@ final class EmptyViewTests: XCTestCase {
         UIApplication.shared.keyWindow?.rootViewController = viewController
 
         // Expect hidden `view.imageView` in compact vertical trait collection
-        let hiddenImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
-                                                                      keyPath: #keyPath(UIView.isHidden),
-                                                                      expectedValue: true)
+        let hiddenImageViewExpectation = keyValueObservingExpectation(
+            for: view.imageView as Any,
+            keyPath: #keyPath(UIView.isHidden),
+            expectedValue: true
+        )
 
         // Inject the compact vertical trait collection
         let compactTraitCollection = UITraitCollection(verticalSizeClass: .compact)
@@ -110,9 +119,11 @@ final class EmptyViewTests: XCTestCase {
         wait(for: [hiddenImageViewExpectation], timeout: 5)
 
         // Expect visible `view.imageView` in regular vertical trait collection
-        let visibleImageViewExpectation = keyValueObservingExpectation(for: view.imageView as Any,
-                                                                       keyPath: #keyPath(UIView.isHidden),
-                                                                       expectedValue: false)
+        let visibleImageViewExpectation = keyValueObservingExpectation(
+            for: view.imageView as Any,
+            keyPath: #keyPath(UIView.isHidden),
+            expectedValue: false
+        )
 
         // Inject the regular vertical trait collection
         let regularTraitCollection = UITraitCollection(verticalSizeClass: .regular)

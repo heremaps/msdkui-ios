@@ -18,7 +18,6 @@ import NMAKit
 
 /// This protocol is introduced to make testing `NMAMapRoute` handling methods easier.
 protocol MapRouteHandling: AnyObject {
-
     /// Makes a map route ot of the given route.
     ///
     /// - Parameter route: The route to be used.
@@ -41,9 +40,8 @@ protocol MapRouteHandling: AnyObject {
 }
 
 class MapRouteHandler: MapRouteHandling {
-
     func makeMapRoute(with route: NMARoute) -> NMAMapRoute? {
-        return NMAMapRoute(route)
+        NMAMapRoute(route)
     }
 
     func add(_ mapRoute: NMAMapRoute, to mapView: NMAMapView) {

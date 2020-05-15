@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceSpeedSettingsViewController: SettingsViewController<GuidanceSpeedSettingsViewController.Settings> {
-
     struct Settings {
         var speed: Measurement<UnitSpeed>?
         var textAligment: NSTextAlignment
@@ -31,30 +30,46 @@ final class GuidanceSpeedSettingsViewController: SettingsViewController<Guidance
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "Without speed",
-                         configuration: Settings(speed: nil,
-                                                 textAligment: .left,
-                                                 unit: .kilometersPerHour,
-                                                 speedValueTextColor: .colorForeground,
-                                                 speedUnitTextColor: .colorForegroundSecondary)),
-            SettingsItem(title: "Left aligned, km/h, red, blue",
-                         configuration: Settings(speed: Measurement(value: 32, unit: .kilometersPerHour),
-                                                 textAligment: .left,
-                                                 unit: .kilometersPerHour,
-                                                 speedValueTextColor: .red,
-                                                 speedUnitTextColor: .blue)),
-            SettingsItem(title: "Center aligned, mph, brown, orange",
-                         configuration: Settings(speed: Measurement(value: 32, unit: .kilometersPerHour),
-                                                 textAligment: .center,
-                                                 unit: .milesPerHour,
-                                                 speedValueTextColor: .brown,
-                                                 speedUnitTextColor: .orange)),
-            SettingsItem(title: "Right aligned, knots, blue, purple",
-                         configuration: Settings(speed: Measurement(value: 32, unit: .kilometersPerHour),
-                                                 textAligment: .right,
-                                                 unit: .knots,
-                                                 speedValueTextColor: .blue,
-                                                 speedUnitTextColor: .purple))
+            SettingsItem(
+                title: "Without speed",
+                configuration: Settings(
+                    speed: nil,
+                    textAligment: .left,
+                    unit: .kilometersPerHour,
+                    speedValueTextColor: .colorForeground,
+                    speedUnitTextColor: .colorForegroundSecondary
+                )
+            ),
+            SettingsItem(
+                title: "Left aligned, km/h, red, blue",
+                configuration: Settings(
+                    speed: Measurement(value: 32, unit: .kilometersPerHour),
+                    textAligment: .left,
+                    unit: .kilometersPerHour,
+                    speedValueTextColor: .red,
+                    speedUnitTextColor: .blue
+                )
+            ),
+            SettingsItem(
+                title: "Center aligned, mph, brown, orange",
+                configuration: Settings(
+                    speed: Measurement(value: 32, unit: .kilometersPerHour),
+                    textAligment: .center,
+                    unit: .milesPerHour,
+                    speedValueTextColor: .brown,
+                    speedUnitTextColor: .orange
+                )
+            ),
+            SettingsItem(
+                title: "Right aligned, knots, blue, purple",
+                configuration: Settings(
+                    speed: Measurement(value: 32, unit: .kilometersPerHour),
+                    textAligment: .right,
+                    unit: .knots,
+                    speedValueTextColor: .blue,
+                    speedUnitTextColor: .purple
+                )
+            )
         ]
     }
 }

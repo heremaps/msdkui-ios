@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class ManeuversOverviewViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: ManeuversOverviewViewController?
 
@@ -41,42 +40,58 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
 
     /// Tests the accessibility elements.
     func testAccessibility() {
-        XCTAssertEqual(viewControllerUnderTest?.backButton.accessibilityIdentifier,
-                       "ManeuversOverviewViewController.backButton",
-                       "The backButton should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.accessibilityIdentifier,
+            "ManeuversOverviewViewController.backButton",
+            "The backButton should have the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.routeDescriptionItem.accessibilityIdentifier,
-                       "ManeuversOverviewViewController.routeDescriptionItem",
-                       "The routeDescriptionItem should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.routeDescriptionItem.accessibilityIdentifier,
+            "ManeuversOverviewViewController.routeDescriptionItem",
+            "The routeDescriptionItem should have the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.maneuverTableView.accessibilityIdentifier,
-                       "ManeuversOverviewViewController.maneuverTableView",
-                       "The maneuverTableView should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.maneuverTableView.accessibilityIdentifier,
+            "ManeuversOverviewViewController.maneuverTableView",
+            "The maneuverTableView should have the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.showMapButton.accessibilityIdentifier,
-                       "ManeuversOverviewViewController.showMapButton",
-                       "The showMapButton should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.showMapButton.accessibilityIdentifier,
+            "ManeuversOverviewViewController.showMapButton",
+            "The showMapButton should have the correct accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.startNavigationButton.accessibilityIdentifier,
-                       "ManeuversOverviewViewController.startNavigationButton",
-                       "The startNavigationButton should have the correct accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.startNavigationButton.accessibilityIdentifier,
+            "ManeuversOverviewViewController.startNavigationButton",
+            "The startNavigationButton should have the correct accessibility identifier"
+        )
     }
 
     /// Tests if the View Controller has the correct status bar style.
     func testPreferredStatusBarStyle() {
-        XCTAssertEqual(viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
-                       "It has the correct status bar style")
+        XCTAssertEqual(
+            viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
+            "It has the correct status bar style"
+        )
     }
 
     /// Tests the back button exists, has the correct settings and has an action which works as expected.
     func testBackButton() throws {
         XCTAssertNotNil(viewControllerUnderTest?.backButton, "The back button should exist")
 
-        XCTAssertLocalized(viewControllerUnderTest?.backButton.title, key: "msdkui_app_back",
-                           "The back button should have the correct title")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.backButton.title, key: "msdkui_app_back",
+            "The back button should have the correct title"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.backButton.tintColor, .colorAccentLight,
-                       "The back button should have the correct tint color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.tintColor, .colorAccentLight,
+            "The back button should have the correct tint color"
+        )
 
         XCTAssertNotNil(viewControllerUnderTest?.backButton.action, "The back button should have an action")
 
@@ -99,16 +114,20 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
 
     /// Tests that the address line starts with "To".
     func testAddressLineStartsWithTo() {
-        XCTAssertLocalized(viewControllerUnderTest?.toLabel.text,
-                           key: "msdkui_app_routeoverview_to",
-                           "The address line should start with \("msdkui_app_routeoverview_to".localized)")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.toLabel.text,
+            key: "msdkui_app_routeoverview_to",
+            "The address line should start with \("msdkui_app_routeoverview_to".localized)"
+        )
     }
 
     /// Tests that the address line contains the address.
-    func testAddressLineContainsTheAddressSet () {
-        XCTAssertEqual(viewControllerUnderTest?.addressLabel.text,
-                       toAddress,
-                       "The address line should contain '\(toAddress)'")
+    func testAddressLineContainsTheAddressSet() {
+        XCTAssertEqual(
+            viewControllerUnderTest?.addressLabel.text,
+            toAddress,
+            "The address line should contain '\(toAddress)'"
+        )
     }
 
     /// Tests that the address line is visible in the portrait orientation when view is shown.
@@ -120,9 +139,11 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
         }
 
         // Expect hidden `destinationView`
-        let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView as Any,
-                                                                            keyPath: #keyPath(UIView.isHidden),
-                                                                            expectedValue: false)
+        let hiddenDestinationViewExpectation = keyValueObservingExpectation(
+            for: viewController.destinationView as Any,
+            keyPath: #keyPath(UIView.isHidden),
+            expectedValue: false
+        )
 
         // In order to show `viewControllerUnderTest.view` set it as the `rootViewController`
         UIApplication.shared.keyWindow?.rootViewController = viewControllerUnderTest
@@ -139,9 +160,11 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
         navigationController.setOverrideTraitCollection(UITraitCollection(verticalSizeClass: .compact), forChild: viewController)
 
         // Expect hidden `destinationView`
-        let hiddenDestinationViewExpectation = keyValueObservingExpectation(for: viewController.destinationView as Any,
-                                                                            keyPath: #keyPath(UIView.isHidden),
-                                                                            expectedValue: false)
+        let hiddenDestinationViewExpectation = keyValueObservingExpectation(
+            for: viewController.destinationView as Any,
+            keyPath: #keyPath(UIView.isHidden),
+            expectedValue: false
+        )
 
         // Inject the regular trait collection for a transition
         navigationController.setOverrideTraitCollection(UITraitCollection(verticalSizeClass: .regular), forChild: viewController)
@@ -154,8 +177,10 @@ final class ManeuversOverviewViewControllerTests: XCTestCase {
         viewControllerUnderTest?.toAddress = nil
         viewControllerUnderTest?.viewDidLoad()
 
-        XCTAssertTrue(viewControllerUnderTest?.destinationView.isHidden ?? false,
-                      "The address line should be hidden in portrait orientation")
+        XCTAssertTrue(
+            viewControllerUnderTest?.destinationView.isHidden ?? false,
+            "The address line should be hidden in portrait orientation"
+        )
     }
 
     /// Tests that the address line is hidden in the landscape orientations.

@@ -2,14 +2,16 @@
 Thank you for using the MSDKUI (HERE Mobile SDK UI Kit). In this Quick Start guide, we are going to introduce you to the HERE Mobile SDK UI Kit and show you how easy it is to get started. As a very first example, we'll also develop a "Hello HERE Mobile SDK UI Kit" iOS application as part of this guide. For more examples and in-depth information on how to work with the HERE  Mobile SDK UI Kit framework, please refer to the [User Guide](UserGuide.md).
 
 ## Contents
-- [How to run the example apps](#how-to-run-the-example-apps)
-- [How to run the Demo app](#how-to-run-the-demo-app)
-- [Set up an Xcode iOS Project](#set-up-an-xcode-ios-project)
-	- [Integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit](#integrate-the-here-mobile-sdk-and-the-here-mobile-sdk-ui-kit)
-		- [What to do if you have already included the HERE Mobile SDK in an existing project?](#what-to-do-if-you-have-already-included-the-here-mobile-sdk-in-an-existing-project)
-		- [Can I integrate the HERE Mobile SDK UI Kit manually without CocoaPods?](#can-i-integrate-the-here-mobile-sdk-ui-kit-manually-without-cocoapods)
-	- [Set your HERE Mobile SDK credentials](#set-your-here-mobile-sdk-credentials)
-	- [Add your first HERE Mobile SDK UI Kit component](#add-your-first-here-mobile-sdk-ui-kit-component)
+- [Quick Start](#quick-start)
+  - [Contents](#contents)
+  - [How to run the example apps](#how-to-run-the-example-apps)
+  - [How to run the Demo app](#how-to-run-the-demo-app)
+  - [Set up an Xcode iOS Project](#set-up-an-xcode-ios-project)
+    - [Integrate the HERE Mobile SDK and the HERE Mobile SDK UI Kit](#integrate-the-here-mobile-sdk-and-the-here-mobile-sdk-ui-kit)
+      - [What to do if you have already included the HERE Mobile SDK in an existing project?](#what-to-do-if-you-have-already-included-the-here-mobile-sdk-in-an-existing-project)
+      - [Can I integrate the HERE Mobile SDK UI Kit manually without CocoaPods?](#can-i-integrate-the-here-mobile-sdk-ui-kit-manually-without-cocoapods)
+    - [Set your HERE Mobile SDK credentials](#set-your-here-mobile-sdk-credentials)
+    - [Add your first HERE Mobile SDK UI Kit component](#add-your-first-here-mobile-sdk-ui-kit-component)
 
 
 ## How to run the example apps
@@ -37,7 +39,7 @@ If you are new to iOS development please follow the guides on [developer.apple.c
 
 >The example project is called "HelloMSDKUI" and it can be found [here](../Guides_Examples).
 
-For this Quick Start app, we have used Xcode 11.3 and Swift 5. Start Xcode and select:
+For this Quick Start app, we have used Xcode 11.4 and Swift 5.2. Start Xcode and select:
 - _Create a new Xcode project_.
 - As template, it is sufficient to choose _iOS_ => _Application_ => _Single View App_.
 - Provide a project name, e.g. "HelloMSDKUI" and select _Swift_ as language.

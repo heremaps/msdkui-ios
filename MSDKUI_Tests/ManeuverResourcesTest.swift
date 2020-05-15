@@ -18,7 +18,6 @@
 import XCTest
 
 final class ManeuverResourcesTest: XCTestCase {
-
     private var maneuverResources: ManeuverResources?
 
     // MARK: - Tests
@@ -64,8 +63,10 @@ final class ManeuverResourcesTest: XCTestCase {
     }
 
     func testManeuverActionChangeHighwayKeepLeft() {
-        maneuverActionTurn(maneuverAction: NMAManeuverAction.changeHighway, maneuverTurn: NMAManeuverTurn.keepLeft,
-                           expectedString: "msdkui_maneuver_turn_keep_left".localized)
+        maneuverActionTurn(
+            maneuverAction: NMAManeuverAction.changeHighway, maneuverTurn: NMAManeuverTurn.keepLeft,
+            expectedString: "msdkui_maneuver_turn_keep_left".localized
+        )
     }
 
     func testManeuverActionContinueHighway() {
@@ -73,8 +74,10 @@ final class ManeuverResourcesTest: XCTestCase {
     }
 
     func testManeuverActionContinueHighwayKeepRight() {
-        maneuverActionTurn(maneuverAction: NMAManeuverAction.changeHighway, maneuverTurn: NMAManeuverTurn.keepRight,
-                           expectedString: "msdkui_maneuver_turn_keep_right".localized)
+        maneuverActionTurn(
+            maneuverAction: NMAManeuverAction.changeHighway, maneuverTurn: NMAManeuverTurn.keepRight,
+            expectedString: "msdkui_maneuver_turn_keep_right".localized
+        )
     }
 
     func testManeuverActionEnd() {
@@ -183,9 +186,11 @@ final class ManeuverResourcesTest: XCTestCase {
         XCTAssertEqual(maneuverInstruction, expectedString, "Action instruction is not correct")
     }
 
-    private func maneuverActionTurn(maneuverAction: NMAManeuverAction,
-                                    maneuverTurn: NMAManeuverTurn,
-                                    expectedString: String) {
+    private func maneuverActionTurn(
+        maneuverAction: NMAManeuverAction,
+        maneuverTurn: NMAManeuverTurn,
+        expectedString: String
+    ) {
         let maneuver = MockUtils.mockManeuver(maneuverAction, with: maneuverTurn)
         maneuverResources = ManeuverResources(maneuvers: [maneuver])
         let maneuverInstruction = maneuverResources?.getInstruction(for: 0)
@@ -213,10 +218,12 @@ final class ManeuverResourcesTest: XCTestCase {
         maneuverResources = ManeuverResources(maneuvers: [maneuver])
         let maneuverInstruction = maneuverResources?.getInstruction(for: 0)
 
-        XCTAssertLocalized(maneuverInstruction,
-                           formatKey: "msdkui_maneuver_head_to",
-                           arguments: "msdkui_maneuver_orientation_north".localized,
-                           bundle: .MSDKUI,
-                           message: "Failed instruction is not correct")
+        XCTAssertLocalized(
+            maneuverInstruction,
+            formatKey: "msdkui_maneuver_head_to",
+            arguments: "msdkui_maneuver_orientation_north".localized,
+            bundle: .MSDKUI,
+            message: "Failed instruction is not correct"
+        )
     }
 }

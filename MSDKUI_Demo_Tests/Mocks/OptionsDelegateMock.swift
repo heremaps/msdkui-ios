@@ -19,7 +19,6 @@ import UIKit
 
 /// Mock Delegate used to check OptionsDelegate expectations.
 final class OptionsDelegateMock {
-
     private(set) var didCallOptionsUpdated = false
 
     private(set) var lastViewController: UIViewController?
@@ -28,7 +27,6 @@ final class OptionsDelegateMock {
 // MARK: - OptionsDelegate
 
 extension OptionsDelegateMock: OptionsDelegate {
-
     func optionsUpdated(_ viewController: UIViewController) {
         didCallOptionsUpdated = true
         lastViewController = viewController

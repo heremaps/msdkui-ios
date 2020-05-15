@@ -18,7 +18,6 @@
 import NMAKit
 
 enum NMAImageFixture {
-
     static func image(named: String = "maneuver_icon_0") -> NMAImage? {
         guard let image = UIImage(named: named, in: .MSDKUI, compatibleWith: nil) else {
             return nil

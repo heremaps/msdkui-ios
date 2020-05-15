@@ -18,7 +18,6 @@
 import XCTest
 
 final class BooleanOptionItemTests: XCTestCase {
-
     /// The object under test.
     private var item = BooleanOptionItem()
 

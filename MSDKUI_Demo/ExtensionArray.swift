@@ -19,9 +19,8 @@ import UIKit
 
 /// Extension for `Array<NMAMapMarker>`.
 extension Array where Element: NMAMapMarker {
-
     /// Insets that should be used to encompass all icons at the boarder of a rectangle.
     var iconsInsets: UIEdgeInsets {
-        return Element.calculateIconsInsets(from: self)
+        Element.calculateIconsInsets(from: self)
     }
 }

@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceEstimatedArrivalViewController: UIViewController {
-
     @IBOutlet private(set) var estimatedArrivalView: GuidanceEstimatedArrivalView!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

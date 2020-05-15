@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class GuidanceDashboardTableViewCellTests: XCTestCase {
-
     /// The cell under test.
     private var cell: GuidanceDashboardTableViewCell?
 

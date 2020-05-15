@@ -18,7 +18,6 @@
 import XCTest
 
 final class TunnelOptionsPanelTests: XCTestCase {
-
     /// The object under test.
     private var panel = TunnelOptionsPanel()
 

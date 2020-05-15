@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class RouteViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: RouteViewController?
 
@@ -135,49 +134,71 @@ final class RouteViewControllerTests: XCTestCase {
         let viewController = try require(viewControllerUnderTest)
         XCTAssertTrue(viewController.tableViewHeightConstraint.isActive, "Table View height constraint is active")
         XCTAssertTrue(viewController.mapView.isAccessibilityElement, "Map view is accessibility element")
-        XCTAssertLocalized(viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmaneuvers",
-                           "Button has correct title")
+        XCTAssertLocalized(
+            viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmaneuvers",
+            "Button has correct title"
+        )
 
         viewController.showButton.sendActions(for: .touchUpInside)
 
         XCTAssertFalse(viewController.tableViewHeightConstraint.isActive, "Table View height constraint is not active")
         XCTAssertFalse(viewController.mapView.isAccessibilityElement, "Map view is not accessibility element")
-        XCTAssertLocalized(viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmap",
-                           "Button has correct title")
+        XCTAssertLocalized(
+            viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmap",
+            "Button has correct title"
+        )
 
         viewController.showButton.sendActions(for: .touchUpInside)
 
         XCTAssertTrue(viewController.tableViewHeightConstraint.isActive, "Table View height constraint is active")
         XCTAssertTrue(viewController.mapView.isAccessibilityElement, "Map view is accessibility element")
-        XCTAssertLocalized(viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmaneuvers",
-                           "Button has correct title")
+        XCTAssertLocalized(
+            viewController.showButton.title(for: .normal), key: "msdkui_app_guidance_button_showmaneuvers",
+            "Button has correct title"
+        )
     }
 
     /// Tests accessibility.
     func testAccessibility() throws {
-        XCTAssertEqual(viewControllerUnderTest?.backButton.accessibilityIdentifier, "RouteViewController.backButton",
-                       "It has the correct back button accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.backButton.accessibilityIdentifier, "RouteViewController.backButton",
+            "It has the correct back button accessibility identifier"
+        )
 
-        XCTAssertTrue(try require(viewControllerUnderTest?.mapView.isAccessibilityElement),
-                      "It has map view accessibility enabled")
+        XCTAssertTrue(
+            try require(viewControllerUnderTest?.mapView.isAccessibilityElement),
+            "It has map view accessibility enabled"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.mapView.accessibilityTraits, UIAccessibilityTraits.none,
-                       "It doesn't have map view accessibility traits")
+        XCTAssertEqual(
+            viewControllerUnderTest?.mapView.accessibilityTraits, UIAccessibilityTraits.none,
+            "It doesn't have map view accessibility traits"
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest?.mapView.accessibilityLabel, key: "msdkui_app_map_view",
-                           "It has the correct map view accessibility label")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.mapView.accessibilityLabel, key: "msdkui_app_map_view",
+            "It has the correct map view accessibility label"
+        )
 
-        XCTAssertLocalized(viewControllerUnderTest?.mapView.accessibilityHint, key: "msdkui_app_hint_route_map_view",
-                           "It has the correct map view accessibility hint")
+        XCTAssertLocalized(
+            viewControllerUnderTest?.mapView.accessibilityHint, key: "msdkui_app_hint_route_map_view",
+            "It has the correct map view accessibility hint"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.mapView.accessibilityIdentifier, "RouteViewController.mapView",
-                       "It has the correct map view accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.mapView.accessibilityIdentifier, "RouteViewController.mapView",
+            "It has the correct map view accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.hudView.accessibilityIdentifier, "RouteViewController.hudView",
-                       "It has the correct hud accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.hudView.accessibilityIdentifier, "RouteViewController.hudView",
+            "It has the correct hud accessibility identifier"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.showButton.accessibilityIdentifier, "RouteViewController.showButton",
-                       "It has correct show button accessibility identifier")
+        XCTAssertEqual(
+            viewControllerUnderTest?.showButton.accessibilityIdentifier, "RouteViewController.showButton",
+            "It has correct show button accessibility identifier"
+        )
     }
 
     /// Tests initial source and destination addresses.
@@ -190,100 +211,140 @@ final class RouteViewControllerTests: XCTestCase {
     func testSourceReverseGeocoding() {
         viewControllerUnderTest?.sourceAddress = nil
 
-        reverseGeocodingTest(result: [MockUtils.mockReverseGeocodeResult("Formatted address",
-                                                                         street: "Street",
-                                                                         houseNumber: "123")],
-                             error: nil,
-                             labelToTest: viewControllerUnderTest?.sourceLabel,
-                             extectedLabelText: "Street 123",
-                             expectedCoordinates: mockRoute.start?.originalPosition)
+        reverseGeocodingTest(
+            result: [
+                MockUtils.mockReverseGeocodeResult(
+                    "Formatted address",
+                    street: "Street",
+                    houseNumber: "123"
+                )
+            ],
+            error: nil,
+            labelToTest: viewControllerUnderTest?.sourceLabel,
+            extectedLabelText: "Street 123",
+            expectedCoordinates: mockRoute.start?.originalPosition
+        )
     }
 
     /// Tests source label for reverse geocoding without house number.
     func testSourceReverseGeocodingWithoutHouseNumber() {
         viewControllerUnderTest?.sourceAddress = nil
 
-        reverseGeocodingTest(result: [MockUtils.mockReverseGeocodeResult("Formatted address",
-                                                                         street: "Street",
-                                                                         houseNumber: nil)],
-                             error: nil,
-                             labelToTest: viewControllerUnderTest?.sourceLabel,
-                             extectedLabelText: "Street",
-                             expectedCoordinates: mockRoute.start?.originalPosition)
+        reverseGeocodingTest(
+            result: [
+                MockUtils.mockReverseGeocodeResult(
+                    "Formatted address",
+                    street: "Street",
+                    houseNumber: nil
+                )
+            ],
+            error: nil,
+            labelToTest: viewControllerUnderTest?.sourceLabel,
+            extectedLabelText: "Street",
+            expectedCoordinates: mockRoute.start?.originalPosition
+        )
     }
 
     /// Tests source label for reverse geocoding without street and house number.
     func testSourceReverseGeocodingWithoutStreetAndHouseNumber() {
         viewControllerUnderTest?.sourceAddress = nil
 
-        reverseGeocodingTest(result: [MockUtils.mockReverseGeocodeResult("Formatted address",
-                                                                         street: nil,
-                                                                         houseNumber: nil)],
-                             error: nil,
-                             labelToTest: viewControllerUnderTest?.sourceLabel,
-                             extectedLabelText: "Formatted address",
-                             expectedCoordinates: mockRoute.start?.originalPosition)
+        reverseGeocodingTest(
+            result: [
+                MockUtils.mockReverseGeocodeResult(
+                    "Formatted address",
+                    street: nil,
+                    houseNumber: nil
+                )
+            ],
+            error: nil,
+            labelToTest: viewControllerUnderTest?.sourceLabel,
+            extectedLabelText: "Formatted address",
+            expectedCoordinates: mockRoute.start?.originalPosition
+        )
     }
 
     /// Tests source label for reverse geocoding error.
     func testSourceReverseGeocodingError() {
         viewControllerUnderTest?.sourceAddress = nil
 
-        reverseGeocodingTest(result: nil,
-                             error: NSError(domain: "", code: 0, userInfo: nil),
-                             labelToTest: viewControllerUnderTest?.sourceLabel,
-                             extectedLabelText: nil,
-                             expectedCoordinates: mockRoute.start?.originalPosition)
+        reverseGeocodingTest(
+            result: nil,
+            error: NSError(domain: "", code: 0, userInfo: nil),
+            labelToTest: viewControllerUnderTest?.sourceLabel,
+            extectedLabelText: nil,
+            expectedCoordinates: mockRoute.start?.originalPosition
+        )
     }
 
     /// Tests destination label for reverse geocoding with street and house number available.
     func testDestinationReverseGeocoding() {
         viewControllerUnderTest?.destinationAddress = nil
 
-        reverseGeocodingTest(result: [MockUtils.mockReverseGeocodeResult("Formatted address",
-                                                                         street: "Street",
-                                                                         houseNumber: "123")],
-                             error: nil,
-                             labelToTest: viewControllerUnderTest?.destinationLabel,
-                             extectedLabelText: "Street 123",
-                             expectedCoordinates: mockRoute.destination?.originalPosition)
+        reverseGeocodingTest(
+            result: [
+                MockUtils.mockReverseGeocodeResult(
+                    "Formatted address",
+                    street: "Street",
+                    houseNumber: "123"
+                )
+            ],
+            error: nil,
+            labelToTest: viewControllerUnderTest?.destinationLabel,
+            extectedLabelText: "Street 123",
+            expectedCoordinates: mockRoute.destination?.originalPosition
+        )
     }
 
     /// Tests destination label for reverse geocoding without house number.
     func testDestinationReverseGeocodingWithoutHouseNumber() {
         viewControllerUnderTest?.destinationAddress = nil
 
-        reverseGeocodingTest(result: [MockUtils.mockReverseGeocodeResult("Formatted address",
-                                                                         street: "Street",
-                                                                         houseNumber: nil)],
-                             error: nil,
-                             labelToTest: viewControllerUnderTest?.destinationLabel,
-                             extectedLabelText: "Street",
-                             expectedCoordinates: mockRoute.destination?.originalPosition)
+        reverseGeocodingTest(
+            result: [
+                MockUtils.mockReverseGeocodeResult(
+                    "Formatted address",
+                    street: "Street",
+                    houseNumber: nil
+                )
+            ],
+            error: nil,
+            labelToTest: viewControllerUnderTest?.destinationLabel,
+            extectedLabelText: "Street",
+            expectedCoordinates: mockRoute.destination?.originalPosition
+        )
     }
 
     /// Tests destination label for reverse geocoding without street and house number.
     func testDestinationReverseGeocodingWithoutStreetAndHouseNumber() {
         viewControllerUnderTest?.destinationAddress = nil
 
-        reverseGeocodingTest(result: [MockUtils.mockReverseGeocodeResult("Formatted address",
-                                                                         street: nil,
-                                                                         houseNumber: nil)],
-                             error: nil,
-                             labelToTest: viewControllerUnderTest?.destinationLabel,
-                             extectedLabelText: "Formatted address",
-                             expectedCoordinates: mockRoute.destination?.originalPosition)
+        reverseGeocodingTest(
+            result: [
+                MockUtils.mockReverseGeocodeResult(
+                    "Formatted address",
+                    street: nil,
+                    houseNumber: nil
+                )
+            ],
+            error: nil,
+            labelToTest: viewControllerUnderTest?.destinationLabel,
+            extectedLabelText: "Formatted address",
+            expectedCoordinates: mockRoute.destination?.originalPosition
+        )
     }
 
     /// Tests source label for reverse geocoding error.
     func testDestinationReverseGeocodingError() {
         viewControllerUnderTest?.destinationAddress = nil
 
-        reverseGeocodingTest(result: nil,
-                             error: NSError(domain: "", code: 0, userInfo: nil),
-                             labelToTest: viewControllerUnderTest?.destinationLabel,
-                             extectedLabelText: nil,
-                             expectedCoordinates: mockRoute.destination?.originalPosition)
+        reverseGeocodingTest(
+            result: nil,
+            error: NSError(domain: "", code: 0, userInfo: nil),
+            labelToTest: viewControllerUnderTest?.destinationLabel,
+            extectedLabelText: nil,
+            expectedCoordinates: mockRoute.destination?.originalPosition
+        )
     }
 
     /// Tests map with displayed route does update viewport when view is shown.
@@ -349,16 +410,18 @@ final class RouteViewControllerTests: XCTestCase {
         XCTAssertFalse(mockMapViewportHandler.didCallSetViewport, "It doesn't call the map viewport handler to set map's viewport")
     }
 
-    /// MARK: - Private
+    // MARK: - Private
 
     // swiftlint:disable:next discouraged_optional_collection
-    private func reverseGeocodingTest(result: [NMAReverseGeocodeResult]?,
-                                      error: NSError?,
-                                      labelToTest: UILabel?,
-                                      extectedLabelText: String?,
-                                      expectedCoordinates: NMAGeoCoordinates?,
-                                      file: StaticString = #file,
-                                      line: UInt = #line) {
+    private func reverseGeocodingTest(
+        result: [NMAReverseGeocodeResult]?,
+        error: NSError?,
+        labelToTest: UILabel?,
+        extectedLabelText: String?,
+        expectedCoordinates: NMAGeoCoordinates?,
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         viewControllerUnderTest?.viewDidLoad()
 
         XCTAssertTrue(mockGeocoder.didCallReverseGeocode, "Reverse geocoder called", file: file, line: line)

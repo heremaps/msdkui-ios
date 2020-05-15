@@ -17,11 +17,10 @@
 import UIKit
 
 extension UITableViewCell {
-
     /// Sets the selected background color.
     var selectedBackgroundColor: UIColor? {
         get {
-            return selectedBackgroundView?.backgroundColor
+            selectedBackgroundView?.backgroundColor
         }
         set {
             guard let color = newValue else {

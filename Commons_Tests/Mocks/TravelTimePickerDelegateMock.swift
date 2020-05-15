@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class TravelTimePickerDelegateMock {
-
     private(set) var didCallDidSelect = false
 
     private(set) var lastPicker: TravelTimePicker?
@@ -28,7 +27,6 @@ final class TravelTimePickerDelegateMock {
 // MARK: - TravelTimePickerDelegate
 
 extension TravelTimePickerDelegateMock: TravelTimePickerDelegate {
-
     func travelTimePicker(_ picker: TravelTimePicker, didSelect date: Date) {
         didCallDidSelect = true
         lastPicker = picker

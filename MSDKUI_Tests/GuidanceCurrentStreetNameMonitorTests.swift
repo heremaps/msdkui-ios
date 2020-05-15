@@ -18,7 +18,6 @@
 import XCTest
 
 final class GuidanceCurrentStreetNameMonitorTests: XCTestCase {
-
     /// The mock delegate used to verify expectations.
     private let mockDelegate = GuidanceCurrentStreetNameMonitorDelegateMock() // swiftlint:disable:this weak_delegate
 

@@ -123,7 +123,7 @@ import NMAKit
     /// from the Interface Builder.
     @IBInspectable public var sortTypeProxy: String {
         get {
-            return sortType.rawValue
+            sortType.rawValue
         }
         set {
             // Is a valid string specified?
@@ -140,7 +140,7 @@ import NMAKit
     /// from the Interface Builder.
     @IBInspectable public var sortOrderProxy: String {
         get {
-            return sortOrder.rawValue
+            sortOrder.rawValue
         }
         set {
             // Is a valid string specified?
@@ -161,7 +161,7 @@ import NMAKit
     /// - Important: It shadows the visibleSections property.
     @IBInspectable public var visibleSectionsProxy: String {
         get {
-            return visibleSections.stringized
+            visibleSections.stringized
         }
         set {
             visibleSections = RouteDescriptionItem.Section.make(from: newValue)
@@ -175,7 +175,7 @@ import NMAKit
     /// a `RouteDescriptionItem` in a row of this list.
     public var routes: [NMARoute] {
         get {
-            return sortedRoutes
+            sortedRoutes
         }
 
         set {
@@ -188,7 +188,7 @@ import NMAKit
 
     /// Number of `RouteDescriptionItem` objects in the list.
     public var entryCount: Int {
-        return sortedRoutes.count
+        sortedRoutes.count
     }
 
     /// Sorts the type for this `RouteDescriptionList`.
@@ -427,7 +427,7 @@ extension RouteDescriptionList: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return sortedRoutes.count
+        sortedRoutes.count
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

@@ -20,12 +20,10 @@ import UIKit
 
 /// A set of methods for communicating interactions with the route.
 protocol RouteViewControllerDelegate: AnyObject {
-
     func refreshRoute(_ viewController: UIViewController)
 }
 
 class RouteViewController: UIViewController {
-
     // MARK: - Properties
 
     @IBOutlet private(set) var backButton: UIBarButtonItem!
@@ -77,7 +75,7 @@ class RouteViewController: UIViewController {
     var destinationAddress: String?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var mapRoute: NMAMapRoute?

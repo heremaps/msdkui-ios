@@ -19,7 +19,6 @@ import Foundation
 import NMAKit
 
 final class CurrentPositionProviderMock {
-
     private(set) var stubbedCurrentPosition: NMAGeoPosition?
     private(set) var stubbedCurrentRoadElement: NMARoadElement?
 }
@@ -27,20 +26,18 @@ final class CurrentPositionProviderMock {
 // MARK: - CurrentPositionProviding
 
 extension CurrentPositionProviderMock: CurrentPositionProviding {
-
     var currentPosition: NMAGeoPosition? {
-        return stubbedCurrentPosition
+        stubbedCurrentPosition
     }
 
     func currentRoadElement() -> NMARoadElement? {
-        return stubbedCurrentRoadElement
+        stubbedCurrentRoadElement
     }
 }
 
 // MARK: - Stub
 
 extension CurrentPositionProviderMock {
-
     func stubCurrentPosition(toReturn value: NMAGeoPosition?) {
         stubbedCurrentPosition = value
     }

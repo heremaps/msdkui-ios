@@ -19,7 +19,6 @@ import UIKit
 
 /// Mock URL Openener used to check URLOpening expectations.
 final class URLOpenerMock {
-
     private(set) var didCallOpen = false
 
     private(set) var lastURL: URL?
@@ -30,7 +29,6 @@ final class URLOpenerMock {
 // MARK: - URLOpening
 
 extension URLOpenerMock: URLOpening {
-
     func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any] = [:], completionHandler completion: ((Bool) -> Void)? = nil) {
         didCallOpen = true
         lastURL = url

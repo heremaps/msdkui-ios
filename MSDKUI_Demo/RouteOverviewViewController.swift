@@ -19,7 +19,6 @@ import NMAKit
 import UIKit
 
 class RouteOverviewViewController: UIViewController, GuidancePresentingViewController {
-
     // MARK: - Types
 
     /// Route calculation state.
@@ -84,7 +83,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
     var shouldStartSimulation = false
 
     var route: NMARoute? {
-        guard case .hasRoute(let route) = routeCalculationState else {
+        guard case let .hasRoute(route) = routeCalculationState else {
             return nil
         }
 
@@ -113,7 +112,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
     var mapViewportHandler: MapViewportHandling = MapViewportHandler()
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     private var toMapMarker: NMAMapMarker?
@@ -128,7 +127,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
             case .calculating:
                 showHUD()
 
-            case .hasRoute(let route):
+            case let .hasRoute(route):
                 routeDescriptionItem.route = route
                 hideHUD()
                 hideNoRouteFound()
@@ -207,8 +206,10 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
         mapView.isTrafficVisible = false
     }
 
-    override func willTransition(to newCollection: UITraitCollection,
-                                 with coordinator: UIViewControllerTransitionCoordinator) {
+    override func willTransition(
+        to newCollection: UITraitCollection,
+        with coordinator: UIViewControllerTransitionCoordinator
+    ) {
         super.willTransition(to: newCollection, with: coordinator)
 
         // Sets up the view based on new `UITraitCollection`
@@ -293,7 +294,7 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
     private func calculateRoute() {
         // Abort if 'from' and 'to' coordinates aint available
         guard let fromCoordinates = fromCoordinates, let toCoordinates = toCoordinates else {
-            self.routeCalculationState = .noRoute
+            routeCalculationState = .noRoute
             return
         }
 
@@ -368,9 +369,9 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
     private func showRoute() {
         guard
             isRouteDisplayed == false,
-            case .hasRoute(let route) = routeCalculationState,
+            case let .hasRoute(route) = routeCalculationState,
             let mapRoute = mapRouteHandler.makeMapRoute(with: route) else {
-                return
+            return
         }
 
         // Draws the route on map
@@ -420,7 +421,6 @@ class RouteOverviewViewController: UIViewController, GuidancePresentingViewContr
 // MARK: - LocationBasedViewController
 
 extension RouteOverviewViewController: LocationBasedViewController {
-
     func noLocationAlertCanceledAction() {
         performSegue(withIdentifier: "LandingViewUnwind", sender: self)
     }

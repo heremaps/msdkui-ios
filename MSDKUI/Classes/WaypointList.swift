@@ -20,7 +20,6 @@ import NMAKit
 /// This protocol provides the methods which a `WaypointList` object
 /// needs after user interactions to inform its delegate object.
 @objc public protocol WaypointListDelegate: AnyObject {
-
     /// Tells the delegate that a `WaypointEntry` object is added.
     ///
     /// - Parameters:
@@ -77,7 +76,6 @@ import NMAKit
 /// ]
 /// ````
 @IBDesignable open class WaypointList: UITableView {
-
     // MARK: - Properties
 
     /// A string representation of the list which is useful for debugging.
@@ -159,13 +157,13 @@ import NMAKit
 
     /// Number of `WaypointEntry` objects in the list.
     public var entryCount: Int {
-        return waypointEntries.count
+        waypointEntries.count
     }
 
     /// A Boolean value indicating if it is possible to calculate a route. True, if the entries are valid and
     /// the minimum number of entries is available, false otherwise.
     public var isRoutingPossible: Bool {
-        return entryCount >= minWaypointItems && !waypointEntries.contains { $0.isValid() == false }
+        entryCount >= minWaypointItems && !waypointEntries.contains { $0.isValid() == false }
     }
 
     /// Array of `WaypointEntry` objects found in the list.
@@ -505,13 +503,18 @@ import NMAKit
     /// - Parameter index: The position within the list to check.
     /// - Returns: True, if the index is valid and false otherwise.
     private func isIndexValid(at index: Int) -> Bool {
-        return (index >= 0 && index < waypointEntries.count)
+        (index >= 0 && index < waypointEntries.count)
     }
 
     /// CreateS initial list of empty entries containing as many entries as the minimum number of waypoints
     private func makeDefaultWaypoints() -> [WaypointEntry] {
-        return [WaypointEntry](cloneValue: WaypointEntry(NMAWaypoint(), name: "msdkui_waypoint_select_location".localized),
-                               count: minWaypointItems)
+        [WaypointEntry](
+            cloneValue: WaypointEntry(
+                NMAWaypoint(),
+                name: "msdkui_waypoint_select_location".localized
+            ),
+            count: minWaypointItems
+        )
     }
 
     /// Invalidates the view’s intrinsic content size.
@@ -542,7 +545,6 @@ import NMAKit
 // MARK: - WaypointItemDelegate
 
 extension WaypointList: WaypointItemDelegate {
-
     func removeItem(_ item: WaypointItem) {
         // If we get the index path, remove the cell
         for cell in visibleCells where cell.contentView == item.superview {
@@ -581,13 +583,12 @@ extension WaypointList: WaypointItemDelegate {
 // MARK: - UITableViewDataSource
 
 extension WaypointList: UITableViewDataSource {
-
     public func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        1
     }
 
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entryCount
+        entryCount
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -668,7 +669,6 @@ extension WaypointList: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension WaypointList: UITableViewDelegate {
-
     public func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         // Deleting a row?
         if editingStyle == .delete {
@@ -684,12 +684,14 @@ extension WaypointList: UITableViewDelegate {
     }
 
     public func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
-        return false
+        false
     }
 
-    public func tableView(_ tableView: UITableView,
-                          targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
-                          toProposedIndexPath proposedDestinationIndexPath: IndexPath) -> IndexPath {
+    public func tableView(
+        _ tableView: UITableView,
+        targetIndexPathForMoveFromRowAt sourceIndexPath: IndexPath,
+        toProposedIndexPath proposedDestinationIndexPath: IndexPath
+    ) -> IndexPath {
         // Can the row move to the proposed row? i.e. is the proposed row draggable?
         return waypointEntries[proposedDestinationIndexPath.row].draggable == true ?
             proposedDestinationIndexPath : sourceIndexPath

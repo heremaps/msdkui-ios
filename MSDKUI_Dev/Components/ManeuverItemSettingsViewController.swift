@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class ManeuverItemSettingsViewController: SettingsViewController<ManeuverItemSettingsViewController.Settings> {
-
     struct Settings {
         var icon: UIImage?
         var iconTintColor: UIColor?
@@ -29,14 +28,16 @@ final class ManeuverItemSettingsViewController: SettingsViewController<ManeuverI
         var distance: Measurement<UnitLength>?
         var distanceTextColor: UIColor?
 
-        init(icon: UIImage?,
-             iconTintColor: UIColor? = .colorForeground,
-             instructions: String?,
-             instructionsTextColor: UIColor? = .colorForeground,
-             address: String?,
-             addressTextColor: UIColor? = .colorForegroundSecondary,
-             distance: Measurement<UnitLength>?,
-             distanceTextColor: UIColor? = .colorForegroundSecondary) {
+        init(
+            icon: UIImage?,
+            iconTintColor: UIColor? = .colorForeground,
+            instructions: String?,
+            instructionsTextColor: UIColor? = .colorForeground,
+            address: String?,
+            addressTextColor: UIColor? = .colorForegroundSecondary,
+            distance: Measurement<UnitLength>?,
+            distanceTextColor: UIColor? = .colorForegroundSecondary
+        ) {
             self.icon = icon
             self.iconTintColor = iconTintColor
             self.instructions = instructions
@@ -52,65 +53,109 @@ final class ManeuverItemSettingsViewController: SettingsViewController<ManeuverI
         super.viewDidLoad()
 
         data = [
-            SettingsItem(title: "Without any value",
-                         configuration: Settings(icon: nil,
-                                                 instructions: nil,
-                                                 address: nil,
-                                                 distance: nil)),
-            SettingsItem(title: "With all values (short instruction)",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "Short instruction!",
-                                                 address: "Fuubarstrasse",
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "With all values (long instruction)",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "This is a very very very long instruction!",
-                                                 address: "Fuubarstrasse",
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "With all values (long address)",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "Short instruction!",
-                                                 address: "This is a very very very long address line!",
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "With all values (long instruction and address)",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "This is a very very very long instruction!",
-                                                 address: "This is a very very very long address line!",
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "Without icon",
-                         configuration: Settings(icon: nil,
-                                                 instructions: "Short instruction!",
-                                                 address: "Fuubarstrasse",
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "Without instructions",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: nil,
-                                                 address: "Fuubarstrasse",
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "Without address",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "Short instruction!",
-                                                 address: nil,
-                                                 distance: Measurement(value: 50, unit: .meters))),
-            SettingsItem(title: "Without distance",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "Short instruction!",
-                                                 address: "Fuubarstrasse",
-                                                 distance: nil)),
-            SettingsItem(title: "Without address and distance",
-                         configuration: Settings(icon: UIImage(named: "red_sign"),
-                                                 instructions: "Short instruction!",
-                                                 address: nil,
-                                                 distance: nil)),
-            SettingsItem(title: "With custom colors (blue, green, red, black)",
-                         configuration: Settings(icon: UIImage(named: "red_sign")?.withRenderingMode(.alwaysTemplate),
-                                                 iconTintColor: .blue,
-                                                 instructions: "Short instruction!",
-                                                 instructionsTextColor: .green,
-                                                 address: "Fuubarstrasse",
-                                                 addressTextColor: .red,
-                                                 distance: Measurement(value: 50, unit: .meters),
-                                                 distanceTextColor: .black))
+            SettingsItem(
+                title: "Without any value",
+                configuration: Settings(
+                    icon: nil,
+                    instructions: nil,
+                    address: nil,
+                    distance: nil
+                )
+            ),
+            SettingsItem(
+                title: "With all values (short instruction)",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "Short instruction!",
+                    address: "Fuubarstrasse",
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "With all values (long instruction)",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "This is a very very very long instruction!",
+                    address: "Fuubarstrasse",
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "With all values (long address)",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "Short instruction!",
+                    address: "This is a very very very long address line!",
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "With all values (long instruction and address)",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "This is a very very very long instruction!",
+                    address: "This is a very very very long address line!",
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "Without icon",
+                configuration: Settings(
+                    icon: nil,
+                    instructions: "Short instruction!",
+                    address: "Fuubarstrasse",
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "Without instructions",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: nil,
+                    address: "Fuubarstrasse",
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "Without address",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "Short instruction!",
+                    address: nil,
+                    distance: Measurement(value: 50, unit: .meters)
+                )
+            ),
+            SettingsItem(
+                title: "Without distance",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "Short instruction!",
+                    address: "Fuubarstrasse",
+                    distance: nil
+                )
+            ),
+            SettingsItem(
+                title: "Without address and distance",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign"),
+                    instructions: "Short instruction!",
+                    address: nil,
+                    distance: nil
+                )
+            ),
+            SettingsItem(
+                title: "With custom colors (blue, green, red, black)",
+                configuration: Settings(
+                    icon: UIImage(named: "red_sign")?.withRenderingMode(.alwaysTemplate),
+                    iconTintColor: .blue,
+                    instructions: "Short instruction!",
+                    instructionsTextColor: .green,
+                    address: "Fuubarstrasse",
+                    addressTextColor: .red,
+                    distance: Measurement(value: 50, unit: .meters),
+                    distanceTextColor: .black
+                )
+            )
         ]
     }
 }

@@ -21,7 +21,6 @@ import UIKit
 import XCTest
 
 final class GuidanceViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: GuidanceViewController?
 
@@ -88,8 +87,10 @@ final class GuidanceViewControllerTests: XCTestCase {
 
     /// Checks the GuidanceViewController.preferredStatusBarStyle variable.
     func testStatusBarStyle() {
-        XCTAssertEqual(viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
-                       "Not the expected statusbar style!")
+        XCTAssertEqual(
+            viewControllerUnderTest?.preferredStatusBarStyle, .lightContent,
+            "Not the expected statusbar style!"
+        )
     }
 
     /// Tests the maneuver view's default state.
@@ -99,8 +100,10 @@ final class GuidanceViewControllerTests: XCTestCase {
 
     /// Tests the maneuver view container background color.
     func testManeuverViewContainerBackgroundColor() {
-        XCTAssertEqual(viewControllerUnderTest?.maneuverViewContainer.backgroundColor, viewControllerUnderTest?.maneuverView.backgroundColor,
-                       "It has the correct background color (matching the maneuver view's background color)")
+        XCTAssertEqual(
+            viewControllerUnderTest?.maneuverViewContainer.backgroundColor, viewControllerUnderTest?.maneuverView.backgroundColor,
+            "It has the correct background color (matching the maneuver view's background color)"
+        )
     }
 
     /// Checks if the Next Maneuver View exists and is configured.
@@ -112,45 +115,65 @@ final class GuidanceViewControllerTests: XCTestCase {
     func testNextManeuverViewContainer() throws {
         XCTAssertTrue(try require(viewControllerUnderTest?.nextManeuverViewContainer.isHidden), "It has the next maneuver view container hidden by default")
 
-        XCTAssertEqual(viewControllerUnderTest?.nextManeuverViewContainer.backgroundColor, viewControllerUnderTest?.nextManeuverView.backgroundColor,
-                       "It has the correct background color (matching the next maneuver view's background color)")
+        XCTAssertEqual(
+            viewControllerUnderTest?.nextManeuverViewContainer.backgroundColor, viewControllerUnderTest?.nextManeuverView.backgroundColor,
+            "It has the correct background color (matching the next maneuver view's background color)"
+        )
     }
 
     /// Checks if the Speed View exists and is configured.
     func testSpeedView() throws {
         XCTAssertNotNil(viewControllerUnderTest?.currentSpeedView, "It has the speed view")
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.textAlignment, .center,
-                       "It has a speed view with centered content")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.textAlignment, .center,
+            "It has a speed view with centered content"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorBackgroundBrand,
-                       "It has a speed view with correct background color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorBackgroundBrand,
+            "It has a speed view with correct background color"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.speedValueTextColor, .colorForegroundLight,
-                       "It has a speed view with correct speed value color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.speedValueTextColor, .colorForegroundLight,
+            "It has a speed view with correct speed value color"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.speedUnitTextColor, .colorForegroundLight,
-                       "It has a speed view with correct speed unit color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.speedUnitTextColor, .colorForegroundLight,
+            "It has a speed view with correct speed unit color"
+        )
 
-        XCTAssertTrue(try require(viewControllerUnderTest?.currentSpeedView.isHidden),
-                      "It hides the current speed view")
+        XCTAssertTrue(
+            try require(viewControllerUnderTest?.currentSpeedView.isHidden),
+            "It hides the current speed view"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.layer.cornerRadius, (try require(viewControllerUnderTest?.currentSpeedView.bounds.height)) / 2,
-                       "It has a circular speed view")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.layer.cornerRadius, (try require(viewControllerUnderTest?.currentSpeedView.bounds.height)) / 2,
+            "It has a circular speed view"
+        )
     }
 
     /// Checks if the Speed Limit View exists and is configured.
     func testSpeedLimitView() throws {
         XCTAssertNotNil(viewControllerUnderTest?.speedLimitView, "It has the speed limit view")
 
-        XCTAssertEqual(viewControllerUnderTest?.speedLimitView.layer.cornerRadius, (try require(viewControllerUnderTest?.speedLimitView.bounds.height)) / 2,
-                       "It has a circular speed limit view")
+        XCTAssertEqual(
+            viewControllerUnderTest?.speedLimitView.layer.cornerRadius, (try require(viewControllerUnderTest?.speedLimitView.bounds.height)) / 2,
+            "It has a circular speed limit view"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.speedLimitView.layer.borderWidth, 4,
-                       "It has a circular speed limit view with border")
+        XCTAssertEqual(
+            viewControllerUnderTest?.speedLimitView.layer.borderWidth, 4,
+            "It has a circular speed limit view with border"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.speedLimitView.layer.borderColor, UIColor.red.cgColor,
-                       "It has a circular speed limit view with colored border")
+        XCTAssertEqual(
+            viewControllerUnderTest?.speedLimitView.layer.borderColor, UIColor.red.cgColor,
+            "It has a circular speed limit view with colored border"
+        )
     }
 
     /// Tests if the Map Overlay View exists and is configured.
@@ -190,8 +213,10 @@ final class GuidanceViewControllerTests: XCTestCase {
             constraint.firstItem === viewControllerUnderTest?.dashboardOverlayView && constraint.firstAttribute == .top
         }
 
-        XCTAssert(topConstraint?.secondItem === viewControllerUnderTest?.view.safeAreaLayoutGuide,
-                  "It has the correct top constraint (the bottom safe layout guide)")
+        XCTAssert(
+            topConstraint?.secondItem === viewControllerUnderTest?.view.safeAreaLayoutGuide,
+            "It has the correct top constraint (the bottom safe layout guide)"
+        )
         XCTAssertEqual(topConstraint?.constant, 0, "It has the correct top constraint constant")
 
         // Does it have the correct bottom constraint?
@@ -223,11 +248,13 @@ final class GuidanceViewControllerTests: XCTestCase {
     /// Tests the behavior when `GuidanceViewController.guidanceManeuverMonitor(_:didUpdateData:)` returns data.
     func testWhenGuidanceManeuverMonitorDidUpdateDataIsTriggeredWithData() throws {
         let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
-        let maneuverData = GuidanceManeuverData(maneuverIcon: UIImage(),
-                                                distance: Measurement(value: 10, unit: .parsecs),
-                                                info1: "Info 1",
-                                                info2: "Info 2",
-                                                nextRoadIcon: UIImage())
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: UIImage(),
+            distance: Measurement(value: 10, unit: .parsecs),
+            info1: "Info 1",
+            info2: "Info 2",
+            nextRoadIcon: UIImage()
+        )
 
         viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: maneuverData)
 
@@ -240,17 +267,21 @@ final class GuidanceViewControllerTests: XCTestCase {
         let monitor = try require(viewControllerUnderTest?.maneuverMonitor)
         let maneuverIcon = UIImage()
         let nextRoadIcon = UIImage()
-        let expectedData = GuidanceManeuverData(maneuverIcon: maneuverIcon,
-                                                distance: nil,
-                                                info1: "Info 1",
-                                                info2: "Info 2",
-                                                nextRoadIcon: nextRoadIcon)
+        let expectedData = GuidanceManeuverData(
+            maneuverIcon: maneuverIcon,
+            distance: nil,
+            info1: "Info 1",
+            info2: "Info 2",
+            nextRoadIcon: nextRoadIcon
+        )
 
-        let maneuverData = GuidanceManeuverData(maneuverIcon: maneuverIcon,
-                                                distance: Measurement(value: 0, unit: .astronomicalUnits),
-                                                info1: "Info 1",
-                                                info2: "Info 2",
-                                                nextRoadIcon: nextRoadIcon)
+        let maneuverData = GuidanceManeuverData(
+            maneuverIcon: maneuverIcon,
+            distance: Measurement(value: 0, unit: .astronomicalUnits),
+            info1: "Info 1",
+            info2: "Info 2",
+            nextRoadIcon: nextRoadIcon
+        )
 
         viewControllerUnderTest?.guidanceManeuverMonitor(monitor, didUpdateData: maneuverData)
 
@@ -289,8 +320,10 @@ final class GuidanceViewControllerTests: XCTestCase {
         let viewControllerUnderTest = try require(self.viewControllerUnderTest)
 
         let expectedCurrentStreetName = "Invalidenstraße"
-        viewControllerUnderTest.guidanceCurrentStreetNameMonitor(viewControllerUnderTest.guidanceCurrentStreetNameMonitor,
-                                                                 didUpdateCurrentStreetName: expectedCurrentStreetName)
+        viewControllerUnderTest.guidanceCurrentStreetNameMonitor(
+            viewControllerUnderTest.guidanceCurrentStreetNameMonitor,
+            didUpdateCurrentStreetName: expectedCurrentStreetName
+        )
 
         // Label
         XCTAssertFalse(viewControllerUnderTest.currentStreetLabel.isHidden, "It is visible")
@@ -307,8 +340,10 @@ final class GuidanceViewControllerTests: XCTestCase {
             // Initially label should be visible to verify if it will be hidden
             viewControllerUnderTest.currentStreetLabel.isHidden = false
 
-            viewControllerUnderTest.guidanceCurrentStreetNameMonitor(viewControllerUnderTest.guidanceCurrentStreetNameMonitor,
-                                                                     didUpdateCurrentStreetName: $0)
+            viewControllerUnderTest.guidanceCurrentStreetNameMonitor(
+                viewControllerUnderTest.guidanceCurrentStreetNameMonitor,
+                didUpdateCurrentStreetName: $0
+            )
 
             // Label
             XCTAssertTrue(viewControllerUnderTest.currentStreetLabel.isHidden, "It is hidden")
@@ -369,11 +404,15 @@ final class GuidanceViewControllerTests: XCTestCase {
 
         viewControllerUnderTest?.guidanceSpeedMonitor(monitor, didUpdateCurrentSpeed: speed, isSpeeding: false, speedLimit: speedLimit)
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.speed, speed,
-                       "It shows a view configured with the correct speed")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.speed, speed,
+            "It shows a view configured with the correct speed"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorBackgroundBrand,
-                       "It shows the speed view with correct background color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorBackgroundBrand,
+            "It shows the speed view with correct background color"
+        )
 
         XCTAssertFalse(try require(viewControllerUnderTest?.speedLimitView.isHidden), "It shows the speed limit view")
     }
@@ -386,11 +425,15 @@ final class GuidanceViewControllerTests: XCTestCase {
 
         viewControllerUnderTest?.guidanceSpeedMonitor(monitor, didUpdateCurrentSpeed: speed, isSpeeding: true, speedLimit: speedLimit)
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.speed, speed,
-                       "It shows a view configured with the correct speed")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.speed, speed,
+            "It shows a view configured with the correct speed"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorNegative,
-                       "It shows the speed view with correct background color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorNegative,
+            "It shows the speed view with correct background color"
+        )
 
         XCTAssertFalse(try require(viewControllerUnderTest?.speedLimitView.isHidden), "It shows the speed limit view")
     }
@@ -402,11 +445,15 @@ final class GuidanceViewControllerTests: XCTestCase {
 
         viewControllerUnderTest?.guidanceSpeedMonitor(monitor, didUpdateCurrentSpeed: speed, isSpeeding: false, speedLimit: nil)
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.speed, speed,
-                       "It shows a view configured with the correct speed")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.speed, speed,
+            "It shows a view configured with the correct speed"
+        )
 
-        XCTAssertEqual(viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorBackgroundBrand,
-                       "It shows the speed view with correct background color")
+        XCTAssertEqual(
+            viewControllerUnderTest?.currentSpeedView.backgroundColor, .colorBackgroundBrand,
+            "It shows the speed view with correct background color"
+        )
 
         XCTAssertTrue(try require(viewControllerUnderTest?.speedLimitView.isHidden), "It hides the speed limit view")
     }
@@ -468,12 +515,16 @@ final class GuidanceViewControllerTests: XCTestCase {
         lastAnimation?()
 
         // Checks if the dashboard has the correct height after the animation
-        XCTAssertEqual(viewControllerUnderTest?.dashboardVisibleHeightConstraint.constant, 197,
-                       "It opens the dashboard with correct height")
+        XCTAssertEqual(
+            viewControllerUnderTest?.dashboardVisibleHeightConstraint.constant, 197,
+            "It opens the dashboard with correct height"
+        )
 
         // Checks if the map overlay view has the correct alpha
-        XCTAssertEqual(try require(viewControllerUnderTest?.mapOverlayView.alpha), 0.5, accuracy: 0.01,
-                       "It sets the correct map overlay view alpha")
+        XCTAssertEqual(
+            try require(viewControllerUnderTest?.mapOverlayView.alpha), 0.5, accuracy: 0.01,
+            "It sets the correct map overlay view alpha"
+        )
     }
 
     /// Tests when `.guidanceDashboardViewControllerDidTapView(_:)` is triggered twice.
@@ -492,8 +543,10 @@ final class GuidanceViewControllerTests: XCTestCase {
         lastAnimation?()
 
         // Checks if the dashboard has the correct height after the animation
-        XCTAssertEqual(viewControllerUnderTest?.dashboardVisibleHeightConstraint.constant, 197,
-                       "It opens the dashboard with correct height")
+        XCTAssertEqual(
+            viewControllerUnderTest?.dashboardVisibleHeightConstraint.constant, 197,
+            "It opens the dashboard with correct height"
+        )
 
         // Triggers the delegate method (again)
         viewControllerUnderTest?.guidanceDashboardViewControllerDidTapView(GuidanceDashboardViewController())
@@ -502,8 +555,10 @@ final class GuidanceViewControllerTests: XCTestCase {
         lastAnimation?()
 
         // Checks if the dashboard has the correct height after the animation
-        XCTAssertEqual(viewControllerUnderTest?.dashboardVisibleHeightConstraint.constant, 84,
-                       "It collapses the dashboard with correct height")
+        XCTAssertEqual(
+            viewControllerUnderTest?.dashboardVisibleHeightConstraint.constant, 84,
+            "It collapses the dashboard with correct height"
+        )
 
         // Checks if the map overlay view has the correct alpha
         XCTAssertEqual(viewControllerUnderTest?.mapOverlayView.alpha, 0.0, "It sets the correct map overlay view alpha")
@@ -528,10 +583,12 @@ final class GuidanceViewControllerTests: XCTestCase {
         let distance = Measurement<UnitLength>(value: 2, unit: .meters)
         let expectedDistance = MeasurementFormatter.currentMediumUnitFormatter.string(from: distance)
 
-        viewControllerUnderTest?.guidanceNextManeuverMonitor(GuidanceNextManeuverMonitor(route: route),
-                                                             didReceiveIcon: maneuverIcon,
-                                                             distance: distance,
-                                                             streetName: "Foobarstrasse 123")
+        viewControllerUnderTest?.guidanceNextManeuverMonitor(
+            GuidanceNextManeuverMonitor(route: route),
+            didReceiveIcon: maneuverIcon,
+            distance: distance,
+            streetName: "Foobarstrasse 123"
+        )
 
         XCTAssertEqual(viewControllerUnderTest?.nextManeuverView.maneuverImageView.image, maneuverIcon, "It sets the correct maneuver image")
         XCTAssertEqual(viewControllerUnderTest?.nextManeuverView.distanceLabel.text, expectedDistance, "It sets the correct distance text")

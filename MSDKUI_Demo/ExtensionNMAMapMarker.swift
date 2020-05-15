@@ -19,13 +19,12 @@ import UIKit
 
 /// Extension for `NMAMapMarker`.
 extension NMAMapMarker {
-
     // MARK: - Properties
 
     /// A rectangle that aligns an anchor offset point with the origin of UIKit's default coordinate system, that is positive values increase from the origin to the right on x-axis and down on y-axis.
     /// This property is meant to be used only in context of `NMAMapMarker`.
     private var anchorFrame: CGRect {
-        return NMAMapMarker.calculateAnchorFrame(for: icon?.size ?? .zero, with: anchorOffset)
+        NMAMapMarker.calculateAnchorFrame(for: icon?.size ?? .zero, with: anchorOffset)
     }
 
     // MARK: - Public

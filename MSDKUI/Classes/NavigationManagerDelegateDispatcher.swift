@@ -69,11 +69,11 @@ extension NavigationManagerDelegateDispatcher: NavigationManagerDelegateDispatch
     // MARK: - Public
 
     public var count: Int {
-        return delegates.count
+        delegates.count
     }
 
     public var isEmpty: Bool {
-        return delegates.isEmpty
+        delegates.isEmpty
     }
 
     public func add(delegate: NMANavigationManagerDelegate) {

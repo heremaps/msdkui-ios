@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class GuidanceNextManeuverMonitorDelegateMock {
-
     private(set) var didCallDidReceiveManeuverData = false
     private(set) var didCallDidReceiveError = false
 
@@ -31,11 +30,12 @@ final class GuidanceNextManeuverMonitorDelegateMock {
 // MARK: - GuidanceNextManeuverMonitorDelegate
 
 extension GuidanceNextManeuverMonitorDelegateMock: GuidanceNextManeuverMonitorDelegate {
-
-    func guidanceNextManeuverMonitor(_ monitor: GuidanceNextManeuverMonitor,
-                                     didReceiveIcon maneuverIcon: UIImage?,
-                                     distance: Measurement<UnitLength>,
-                                     streetName: String?) {
+    func guidanceNextManeuverMonitor(
+        _ monitor: GuidanceNextManeuverMonitor,
+        didReceiveIcon maneuverIcon: UIImage?,
+        distance: Measurement<UnitLength>,
+        streetName: String?
+    ) {
         didCallDidReceiveManeuverData = true
         lastNextManeuverMonitor = monitor
         lastManeuverIcon = maneuverIcon

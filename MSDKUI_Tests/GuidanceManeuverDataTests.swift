@@ -18,7 +18,6 @@
 import XCTest
 
 final class GuidanceManeuverDataTests: XCTestCase {
-
     private let maneuverIcon = UIImage()
     private let distance = Measurement(value: 300, unit: UnitLength.meters)
     private let info1 = "Exit 30"

@@ -29,7 +29,7 @@ import UIKit
     /// - Note: Any selected item index outside of the available range has no effect.
     public var selectedItemIndexes: Set<Int>? { // swiftlint:disable:this discouraged_optional_collection
         get {
-            return getSelectedSwitches()
+            getSelectedSwitches()
         }
 
         set {

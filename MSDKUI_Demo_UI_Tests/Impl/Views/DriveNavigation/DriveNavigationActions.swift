@@ -448,7 +448,7 @@ enum DriveNavigationActions {
     /// - Parameter guidanceNextManeuverView: the view to check for cmpleteness.
     /// - Returns: true if the view has content in all of it's properties, false otherwise.
     static func isViewComplete(_ guidanceNextManeuverView: GuidanceNextManeuverView) -> Bool {
-        return guidanceNextManeuverView.maneuverImageView.image != nil &&
+        guidanceNextManeuverView.maneuverImageView.image != nil &&
             guidanceNextManeuverView.distanceLabel.text != nil &&
             guidanceNextManeuverView.separatorLabel.text != nil &&
             guidanceNextManeuverView.streetNameLabel.text != nil

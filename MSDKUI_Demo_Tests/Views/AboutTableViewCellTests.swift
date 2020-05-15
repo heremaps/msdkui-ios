@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class AboutTableViewCellTests: XCTestCase {
-
     /// The cell under test.
     private var cell: AboutTableViewCell?
 
@@ -66,7 +65,6 @@ final class AboutTableViewCellTests: XCTestCase {
 
     /// Tests if the cell is correctly configured.
     func testConfigure() {
-
         cell?.configure(with: AboutTableViewCell.ViewModel(title: "foo", description: "bar"))
 
         XCTAssertEqual(cell?.textLabel?.text, "foo", "It has the correct text")

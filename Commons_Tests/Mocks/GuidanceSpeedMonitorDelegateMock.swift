@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class GuidanceSpeedMonitorDelegateMock {
-
     private(set) var didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit = false
     private(set) var didUpdateCurrentSpeedIsSpeedingSpeedLimitCount = 0
 
@@ -31,11 +30,12 @@ final class GuidanceSpeedMonitorDelegateMock {
 // MARK: - GuidanceSpeedMonitorDelegate
 
 extension GuidanceSpeedMonitorDelegateMock: GuidanceSpeedMonitorDelegate {
-
-    func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
-                              isSpeeding: Bool,
-                              speedLimit: Measurement<UnitSpeed>?) {
+    func guidanceSpeedMonitor(
+        _ monitor: GuidanceSpeedMonitor,
+        didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
+        isSpeeding: Bool,
+        speedLimit: Measurement<UnitSpeed>?
+    ) {
         didCallDidUpdateCurrentSpeedIsSpeedingSpeedLimit = true
         didUpdateCurrentSpeedIsSpeedingSpeedLimitCount += 1
         lastSpeedMonitor = monitor

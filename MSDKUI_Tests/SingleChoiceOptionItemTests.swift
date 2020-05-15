@@ -18,7 +18,6 @@
 import XCTest
 
 final class SingleChoiceOptionItemTests: XCTestCase {
-
     /// The object under test.
     private var item = SingleChoiceOptionItem()
 

@@ -20,7 +20,6 @@ import UIKit
 import XCTest
 
 final class WaypointViewControllerTests: XCTestCase {
-
     /// The object under test.
     private var viewControllerUnderTest: WaypointViewController?
 

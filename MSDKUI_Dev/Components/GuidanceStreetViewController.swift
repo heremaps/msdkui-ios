@@ -18,7 +18,6 @@ import MSDKUI
 import UIKit
 
 final class GuidanceStreetViewController: UIViewController {
-
     @IBOutlet private(set) var currentStreetLabel: GuidanceStreetLabel!
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

@@ -19,7 +19,6 @@ import Foundation
 import NMAKit
 
 final class NMACoreRouterMock {
-
     private(set) var didCallCalculateRouteWithStopsRoutingMode = false
     private(set) var didCallCalculateRouteWithStopsRoutingModeCount = 0
 
@@ -34,7 +33,6 @@ final class NMACoreRouterMock {
 // MARK: - NMACoreRouting
 
 extension NMACoreRouterMock: NMACoreRouting {
-
     func calculateRoute(withStops stops: [Any], routingMode mode: NMARoutingMode, _ completion: NMACalculateResultBlock?) -> Progress? {
         didCallCalculateRouteWithStopsRoutingMode = true
         didCallCalculateRouteWithStopsRoutingModeCount += 1

@@ -19,11 +19,9 @@ import NMAKit
 import UIKit
 
 final class GuidanceViewController: UIViewController {
-
     // MARK: - Types
 
     private enum Constants {
-
         // MARK: - Properties
 
         static let mapViewZoomLevel = Float(18.40)
@@ -114,7 +112,7 @@ final class GuidanceViewController: UIViewController {
     }
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
-        return .lightContent
+        .lightContent
     }
 
     var isLocationMandatory = true
@@ -391,8 +389,10 @@ final class GuidanceViewController: UIViewController {
         } else if currentStreetLabel.isLookingForPosition {
             currentStreetLabel.isLookingForPosition = false
             let currentStreetName = NMANavigationManager.sharedInstance().currentManeuver?.getCurrentStreet()
-            guidanceCurrentStreetNameMonitor(guidanceCurrentStreetNameMonitor,
-                                             didUpdateCurrentStreetName: currentStreetName)
+            guidanceCurrentStreetNameMonitor(
+                guidanceCurrentStreetNameMonitor,
+                didUpdateCurrentStreetName: currentStreetName
+            )
         }
         // Ignore position updates when not looking for position
     }
@@ -427,7 +427,6 @@ final class GuidanceViewController: UIViewController {
 // MARK: - GuidanceManeuverMonitorDelegate
 
 extension GuidanceViewController: GuidanceManeuverMonitorDelegate {
-
     func guidanceManeuverMonitor(_ monitor: GuidanceManeuverMonitor, didUpdateData data: GuidanceManeuverData?) {
         if var maneuverData = data {
             maneuverData.distance = maneuverData.distance?.value == 0 ? nil : maneuverData.distance
@@ -447,12 +446,11 @@ extension GuidanceViewController: GuidanceManeuverMonitorDelegate {
 // MARK: - NMANavigationManagerDelegate
 
 extension GuidanceViewController: NMANavigationManagerDelegate {
-
     func navigationManager(_ navigationManager: NMANavigationManager, didUpdateRoute routeResult: NMARouteResult) {
         guard let newRoute = routeResult.routes?.first,
             let newMapRoute = mapRouteHandler.makeMapRoute(with: newRoute) else {
-                // Route calculation failed
-                return
+            // Route calculation failed
+            return
         }
 
         // Refresh the route and map route
@@ -461,14 +459,13 @@ extension GuidanceViewController: NMANavigationManagerDelegate {
     }
 
     func navigationManager(_ navigationManager: NMANavigationManager, shouldPlayVoiceFeedback text: String?) -> Bool {
-        return true
+        true
     }
 }
 
 // MARK: - LocationBasedViewController
 
 extension GuidanceViewController: LocationBasedViewController {
-
     func noLocationAlertCanceledAction() {
         stopNavigation()
     }
@@ -477,11 +474,12 @@ extension GuidanceViewController: LocationBasedViewController {
 // MARK: - GuidanceNextManeuverMonitorDelegate
 
 extension GuidanceViewController: GuidanceNextManeuverMonitorDelegate {
-
-    func guidanceNextManeuverMonitor(_ monitor: GuidanceNextManeuverMonitor,
-                                     didReceiveIcon maneuverIcon: UIImage?,
-                                     distance: Measurement<UnitLength>,
-                                     streetName: String?) {
+    func guidanceNextManeuverMonitor(
+        _ monitor: GuidanceNextManeuverMonitor,
+        didReceiveIcon maneuverIcon: UIImage?,
+        distance: Measurement<UnitLength>,
+        streetName: String?
+    ) {
         let viewModel = GuidanceNextManeuverView.ViewModel(maneuverIcon: maneuverIcon, distance: distance, streetName: streetName)
         nextManeuverView.configure(with: viewModel)
         nextManeuverViewContainer.isHidden = false
@@ -495,7 +493,6 @@ extension GuidanceViewController: GuidanceNextManeuverMonitorDelegate {
 // MARK: - GuidanceCurrentStreetNameMonitorDelegate
 
 extension GuidanceViewController: GuidanceCurrentStreetNameMonitorDelegate {
-
     func guidanceCurrentStreetNameMonitor(_ monitor: GuidanceCurrentStreetNameMonitor, didUpdateCurrentStreetName currentStreetName: String?) {
         currentStreetLabel.text = currentStreetName
         currentStreetLabel.isAccented = true
@@ -506,11 +503,12 @@ extension GuidanceViewController: GuidanceCurrentStreetNameMonitorDelegate {
 // MARK: - GuidanceSpeedMonitorDelegate
 
 extension GuidanceViewController: GuidanceSpeedMonitorDelegate {
-
-    func guidanceSpeedMonitor(_ monitor: GuidanceSpeedMonitor,
-                              didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
-                              isSpeeding: Bool,
-                              speedLimit: Measurement<UnitSpeed>?) {
+    func guidanceSpeedMonitor(
+        _ monitor: GuidanceSpeedMonitor,
+        didUpdateCurrentSpeed currentSpeed: Measurement<UnitSpeed>?,
+        isSpeeding: Bool,
+        speedLimit: Measurement<UnitSpeed>?
+    ) {
         // Updates the current speed view
         currentSpeedView.speed = currentSpeed
         currentSpeedView.backgroundColor = isSpeeding ? .colorNegative : .colorBackgroundBrand
@@ -524,7 +522,6 @@ extension GuidanceViewController: GuidanceSpeedMonitorDelegate {
 // MARK: - GuidanceDashboardViewControllerDelegate
 
 extension GuidanceViewController: GuidanceDashboardViewControllerDelegate {
-
     func guidanceDashboardViewController(_ controller: GuidanceDashboardViewController, didSelectItem item: GuidanceDashboardTableViewDataSource.Item) {
         guard item == .about else {
             return
@@ -545,7 +542,6 @@ extension GuidanceViewController: GuidanceDashboardViewControllerDelegate {
 // MARK: - Dashboard Constants
 
 private extension CGFloat {
-
     /// The dashboard alpha when collapsed.
     static let dashboardCollapsedAlpha = CGFloat(0.0)
 

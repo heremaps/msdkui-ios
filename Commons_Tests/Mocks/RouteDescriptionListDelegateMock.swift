@@ -19,7 +19,6 @@ import MSDKUI
 import NMAKit
 
 final class RouteDescriptionListDelegateMock {
-
     private(set) var didCallRouteSelected = false
     private(set) var didCallWillDisplayItem = false
 
@@ -32,7 +31,6 @@ final class RouteDescriptionListDelegateMock {
 // MARK: - RouteDescriptionListDelegate
 
 extension RouteDescriptionListDelegateMock: RouteDescriptionListDelegate {
-
     func routeDescriptionList(_ list: RouteDescriptionList, didSelect route: NMARoute, at index: Int) {
         didCallRouteSelected = true
         lastList = list

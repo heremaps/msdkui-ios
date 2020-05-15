@@ -18,7 +18,6 @@ import Foundation
 @testable import MSDKUI
 
 final class NavigationManagerDelegateDispatcherMock {
-
     private(set) var didCallAdd = false
     private(set) var didCallRemove = false
 
@@ -28,13 +27,12 @@ final class NavigationManagerDelegateDispatcherMock {
 // MARK: - NavigationManagerDelegateDispatching
 
 extension NavigationManagerDelegateDispatcherMock: NavigationManagerDelegateDispatching {
-
     var count: Int {
-        return lastPassedDelegate == nil ? 0 : 1
+        lastPassedDelegate == nil ? 0 : 1
     }
 
     var isEmpty: Bool {
-        return lastPassedDelegate == nil ? false : true
+        lastPassedDelegate == nil ? false : true
     }
 
     func add(delegate: NMANavigationManagerDelegate) {

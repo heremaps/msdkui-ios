@@ -20,7 +20,6 @@ import NMAKit
 // swiftlint:disable discouraged_optional_collection discouraged_optional_boolean
 
 final class NMANavigationManagerDelegateMock: NSObject {
-
     // Properties used for verifying expectations.
     private(set) var lastNavigationManager: NMANavigationManager?
     private(set) var lastCurrentManeuver: NMAManeuver?
@@ -46,7 +45,6 @@ final class NMANavigationManagerDelegateMock: NSObject {
 // MARK: - Stubs
 
 extension NMANavigationManagerDelegateMock {
-
     func stubNavigationManagerShouldPlayVoiceFeedback(andReturn boolean: Bool) {
         stubbedShouldPlayVoiceFeedback = boolean
     }
@@ -55,7 +53,6 @@ extension NMANavigationManagerDelegateMock {
 // MARK: - NMANavigationManagerDelegate
 
 extension NMANavigationManagerDelegateMock: NMANavigationManagerDelegate {
-
     public func navigationManagerDidReachDestination(_ navigationManager: NMANavigationManager) {
         lastNavigationManager = navigationManager
     }
@@ -76,22 +73,28 @@ extension NMANavigationManagerDelegateMock: NMANavigationManagerDelegate {
         lastRouteResult = routeResult
     }
 
-    public func navigationManager(_ navigationManager: NMANavigationManager,
-                                  didUpdateLaneInformation laneInformations: [NMALaneInformation],
-                                  roadElement: NMARoadElement?) {
+    public func navigationManager(
+        _ navigationManager: NMANavigationManager,
+        didUpdateLaneInformation laneInformations: [NMALaneInformation],
+        roadElement: NMARoadElement?
+    ) {
         lastNavigationManager = navigationManager
         lastLaneInformations = laneInformations
         lastRoadElement = roadElement
     }
 
-    public func navigationManager(_ navigationManager: NMANavigationManager,
-                                  didUpdateRealisticViewsForCurrentManeuver realisticViews: [NSNumber: [String: NMAImage]]) {
+    public func navigationManager(
+        _ navigationManager: NMANavigationManager,
+        didUpdateRealisticViewsForCurrentManeuver realisticViews: [NSNumber: [String: NMAImage]]
+    ) {
         lastNavigationManager = navigationManager
         lastRealisticViews = realisticViews
     }
 
-    public func navigationManager(_ navigationManager: NMANavigationManager,
-                                  didUpdateRealisticViewsForNextManeuver realisticViews: [NSNumber: [String: NMAImage]]) {
+    public func navigationManager(
+        _ navigationManager: NMANavigationManager,
+        didUpdateRealisticViewsForNextManeuver realisticViews: [NSNumber: [String: NMAImage]]
+    ) {
         lastNavigationManager = navigationManager
         lastRealisticViews = realisticViews
     }
@@ -100,10 +103,12 @@ extension NMANavigationManagerDelegateMock: NMANavigationManagerDelegate {
         lastNavigationManager = navigationManager
     }
 
-    public func navigationManager(_ navigationManager: NMANavigationManager,
-                                  didUpdateSpeedingStatus isSpeeding: Bool,
-                                  forCurrentSpeed speed: Float,
-                                  speedLimit: Float) {
+    public func navigationManager(
+        _ navigationManager: NMANavigationManager,
+        didUpdateSpeedingStatus isSpeeding: Bool,
+        forCurrentSpeed speed: Float,
+        speedLimit: Float
+    ) {
         lastNavigationManager = navigationManager
         lastSpeedingStatus = isSpeeding
         lastSpeed = speed

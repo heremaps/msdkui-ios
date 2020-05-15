@@ -18,19 +18,19 @@ import EarlGrey
 
 enum WaypointMatchers {
     static var waypointViewControllerOk: GREYMatcher {
-        return grey_accessibilityID("WaypointViewController.okButton")
+        grey_accessibilityID("WaypointViewController.okButton")
     }
 
     static var waypoint: GREYMatcher {
-        return grey_accessibilityID("WaypointViewController.waypointLabel")
+        grey_accessibilityID("WaypointViewController.waypointLabel")
     }
 
     static var waypointMapView: GREYMatcher {
-        return grey_accessibilityID("WaypointViewController.mapView")
+        grey_accessibilityID("WaypointViewController.mapView")
     }
 
     static var showManeuversButton: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("RouteOverviewViewController.showManeuversButton"),
+        grey_anyOf([grey_accessibilityID("RouteOverviewViewController.showManeuversButton"),
                            grey_accessibilityID("RouteViewController.showButton")]
         )
     }

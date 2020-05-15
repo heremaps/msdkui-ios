@@ -18,7 +18,6 @@
 import XCTest
 
 final class WaypointListTests: XCTestCase {
-
     /// The object under test.
     private var list = WaypointList(frame: CGRect(x: 0, y: 0, width: 500, height: 500), style: .plain)
 
@@ -133,73 +132,95 @@ final class WaypointListTests: XCTestCase {
     func testMinWaypointItemsNotGreaterThanCurrentNumberOfEntries() {
         list.minWaypointItems = list.entryCount + 1
 
-        XCTAssertLessThanOrEqual(list.minWaypointItems, list.entryCount,
-                                 "MinWaypointItems cannot be set to a value greater than existing number of entries")
+        XCTAssertLessThanOrEqual(
+            list.minWaypointItems, list.entryCount,
+            "MinWaypointItems cannot be set to a value greater than existing number of entries"
+        )
     }
 
     /// Tests the maximum number of entries is never lower than `minWaypointItems`.
     func testMaxWaypointItemsNotLowerThanMinWaypointItems() {
         list.maxWaypointItems = list.minWaypointItems - 1
 
-        XCTAssertGreaterThanOrEqual(list.maxWaypointItems, list.minWaypointItems,
-                                    "MaxWaypointItems cannot be set to a value lower than minWaypointItems")
+        XCTAssertGreaterThanOrEqual(
+            list.maxWaypointItems, list.minWaypointItems,
+            "MaxWaypointItems cannot be set to a value lower than minWaypointItems"
+        )
     }
 
     /// Tests the maximum number of entries is never lower than existing entries.
     func testMaxWaypointItemsNotLowerThanNumberOfExistingEntries() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.maxWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.maxWaypointItems
+        )
         list.maxWaypointItems = list.entryCount - 1
 
-        XCTAssertGreaterThanOrEqual(list.maxWaypointItems, list.entryCount,
-                                    "MaxWaypointItems cannot be set to a value lower than existing entries")
+        XCTAssertGreaterThanOrEqual(
+            list.maxWaypointItems, list.entryCount,
+            "MaxWaypointItems cannot be set to a value lower than existing entries"
+        )
     }
 
     /// Tests the maximum number of entries is never lower than existing `maxVisibleItems`.
     func testMaxWaypointItemsNotLowerThanMaxVisibleItems() {
         list.maxWaypointItems = list.maxVisibleItems - 1
 
-        XCTAssertGreaterThanOrEqual(list.maxWaypointItems, list.maxVisibleItems,
-                                    "MaxWaypointItems cannot be set to a value lower than maxVisibleItems")
+        XCTAssertGreaterThanOrEqual(
+            list.maxWaypointItems, list.maxVisibleItems,
+            "MaxWaypointItems cannot be set to a value lower than maxVisibleItems"
+        )
     }
 
     /// Tests the `maxVisibleItems` cannot be lower than `minWaypointItems`.
     func testMaxVisibleItemsNotLowerThanMinWaypointItems() {
         list.maxVisibleItems = list.minWaypointItems - 1
 
-        XCTAssertGreaterThanOrEqual(list.maxVisibleItems, list.minWaypointItems,
-                                    "Max number of visible items should not be lower than the minimum number of entries to allow a route calculation!")
+        XCTAssertGreaterThanOrEqual(
+            list.maxVisibleItems, list.minWaypointItems,
+            "Max number of visible items should not be lower than the minimum number of entries to allow a route calculation!"
+        )
     }
 
     /// Tests the `maxVisibleItems` cannot be greater than `maxWaypointItems`.
     func testMaxVisibleItemsNotGreaterThanMaxWaypointItems() {
         list.maxVisibleItems = list.maxWaypointItems + 1
 
-        XCTAssertLessThanOrEqual(list.maxVisibleItems, list.maxWaypointItems,
-                                 "Max number of visible items should not be greater than the maximum number of waypoint items!")
+        XCTAssertLessThanOrEqual(
+            list.maxVisibleItems, list.maxWaypointItems,
+            "Max number of visible items should not be greater than the maximum number of waypoint items!"
+        )
     }
 
     /// Tests cannot set entries to a number lower than `minWaypointItems`.
     func testEntriesCannotBeLessThanMinWaypointItems() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.minWaypointItems - 1)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.minWaypointItems - 1
+        )
 
-        XCTAssertGreaterThanOrEqual(list.entryCount, list.minWaypointItems,
-                                    "Entries should not be less than minWaypointItems!")
+        XCTAssertGreaterThanOrEqual(
+            list.entryCount, list.minWaypointItems,
+            "Entries should not be less than minWaypointItems!"
+        )
     }
 
     /// Tests cannot set entries to a number greater than `maxWaypointItems`.
     func testEntriesCannotBeGreaterThanMaxWaypointItems() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.maxWaypointItems + 1)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.maxWaypointItems + 1
+        )
 
         XCTAssertLessThanOrEqual(list.entryCount, list.maxWaypointItems, "Entries should not be greater than maxWaypointItems!")
     }
 
     /// Tests cannot add more entries when has `maxWaypointItems` items already.
     func testCannotAddOneEntryWhenHasMaxWaypointItemsAlready() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.maxWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.maxWaypointItems
+        )
         list.addEntry(WaypointEntryFixture.berlin())
 
         XCTAssertLessThanOrEqual(list.entryCount, list.maxWaypointItems, "Entries should not be greater than maxWaypointItems!")
@@ -207,8 +228,10 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests cannot insert more entries when has `maxWaypointItems` items already.
     func testCannotInsertOneEntryWhenHasMaxWaypointItemsAlready() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.maxWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.maxWaypointItems
+        )
         list.insertEntry(WaypointEntryFixture.berlin(), at: 0)
 
         XCTAssertLessThanOrEqual(list.entryCount, list.maxWaypointItems, "Entries should not be greater than maxWaypointItems!")
@@ -216,8 +239,10 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests cannot add one more empty entry when has `maxWaypointItems` items already.
     func testCannotAddOneEmptyEntryWhenHasMaxWaypointItemsAlready() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.maxWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.maxWaypointItems
+        )
         list.addEmptyEntry()
 
         XCTAssertLessThanOrEqual(list.entryCount, list.maxWaypointItems, "Entries should not be greater than maxWaypointItems!")
@@ -225,8 +250,10 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests can insert an empty entry when the index is valid.
     func testCanInsertEmptyEntriesWhenIndexIsValid() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: 6)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: 6
+        )
 
         // Can insert at a valid in-the-list position?
         var last = list.entryCount
@@ -246,8 +273,10 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests cannot insert an empty entry when the index is invalid.
     func testCannotInsertAnEmptyEntryWhenIndexIsInvalid() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: 6)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: 6
+        )
 
         // Can insert at the last + 2 position?
         let last = list.entryCount
@@ -258,12 +287,16 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests cannot remove an entry when have less than `minWaypointItems`.
     func testCannotRemoveEntryWhenHaveLessThanMinWaypointItems() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.minWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.minWaypointItems
+        )
         list.removeEntry(at: 0)
 
-        XCTAssertGreaterThanOrEqual(list.entryCount, list.minWaypointItems,
-                                    "Entries should not be less than minWaypointItems!")
+        XCTAssertGreaterThanOrEqual(
+            list.entryCount, list.minWaypointItems,
+            "Entries should not be less than minWaypointItems!"
+        )
     }
 
     /// Tests that reset restores initial number of empty entries.
@@ -390,8 +423,10 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests it is not possible to calculate a route with invalid entries.
     func testRoutingIsNotPossibleWithOneInvalidEntry() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.minWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.minWaypointItems
+        )
         list.addEntry(WaypointEntryFixture.empty())
 
         XCTAssertFalse(list.isRoutingPossible, "Should not be able to calculate route when there are invalid entries")
@@ -399,8 +434,10 @@ final class WaypointListTests: XCTestCase {
 
     /// Tests it is possible to calculate routes when all entries are valid.
     func testRoutingIsPossibleWhenAllEntriesAreValid() {
-        list.waypointEntries = [WaypointEntry](cloneValue: WaypointEntryFixture.berlin(),
-                                               count: list.minWaypointItems)
+        list.waypointEntries = [WaypointEntry](
+            cloneValue: WaypointEntryFixture.berlin(),
+            count: list.minWaypointItems
+        )
 
         XCTAssertTrue(list.isRoutingPossible, "Should be able to calculate route")
     }
@@ -415,28 +452,36 @@ final class WaypointListTests: XCTestCase {
         let removeString = getLocalizedString(forKey: "msdkui_remove")
 
         // First element should be start and placeholder
-        try checkRow(at: 0,
-                     expectedType: .startPoint,
-                     expectedName: stringChooseWaypoint,
-                     expectedDisplayedText: getLocalizedFormattedString(forKey: "msdkui_rp_from", arguments: stringChooseWaypoint))
+        try checkRow(
+            at: 0,
+            expectedType: .startPoint,
+            expectedName: stringChooseWaypoint,
+            expectedDisplayedText: getLocalizedFormattedString(forKey: "msdkui_rp_from", arguments: stringChooseWaypoint)
+        )
 
         var expectedCellAccessibilityLabel = getLocalizedFormattedString(forKey: "msdkui_rp_from", arguments: stringChooseWaypoint)
         var expectedCellRemoveAccessibilityLabel = removeString + ": " + expectedCellAccessibilityLabel
-        try checkAccessilibityForRow(at: 0,
-                                     expectedCellLabel: expectedCellAccessibilityLabel,
-                                     expectedRemoveLabel: expectedCellRemoveAccessibilityLabel)
+        try checkAccessilibityForRow(
+            at: 0,
+            expectedCellLabel: expectedCellAccessibilityLabel,
+            expectedRemoveLabel: expectedCellRemoveAccessibilityLabel
+        )
 
         // Second element should be end and placeholder
-        try checkRow(at: 1,
-                     expectedType: .endPoint,
-                     expectedName: stringChooseWaypoint,
-                     expectedDisplayedText: getLocalizedFormattedString(forKey: "msdkui_rp_to", arguments: stringChooseWaypoint))
+        try checkRow(
+            at: 1,
+            expectedType: .endPoint,
+            expectedName: stringChooseWaypoint,
+            expectedDisplayedText: getLocalizedFormattedString(forKey: "msdkui_rp_to", arguments: stringChooseWaypoint)
+        )
 
         expectedCellAccessibilityLabel = getLocalizedFormattedString(forKey: "msdkui_rp_to", arguments: stringChooseWaypoint)
         expectedCellRemoveAccessibilityLabel = removeString + ": " + expectedCellAccessibilityLabel
-        try checkAccessilibityForRow(at: 1,
-                                     expectedCellLabel: expectedCellAccessibilityLabel,
-                                     expectedRemoveLabel: expectedCellRemoveAccessibilityLabel)
+        try checkAccessilibityForRow(
+            at: 1,
+            expectedCellLabel: expectedCellAccessibilityLabel,
+            expectedRemoveLabel: expectedCellRemoveAccessibilityLabel
+        )
     }
 
     /// Tests if labels stay correct when waypoints are reordered.
@@ -597,9 +642,11 @@ final class WaypointListTests: XCTestCase {
         XCTAssertEqual(entry.name, expectedName, "WaypointEntry name is different than expected!")
     }
 
-    private func checkAccessilibityForRow(at index: Int,
-                                          expectedCellLabel: String,
-                                          expectedRemoveLabel: String) throws {
+    private func checkAccessilibityForRow(
+        at index: Int,
+        expectedCellLabel: String,
+        expectedRemoveLabel: String
+    ) throws {
         let indexPath = IndexPath(row: index, section: 0)
 
         // Get cell
@@ -631,7 +678,6 @@ final class WaypointListTests: XCTestCase {
 // MARK: - WaypointListDelegate
 
 extension WaypointListTests: WaypointListDelegate {
-
     func waypointList(_ list: WaypointList, didAdd entry: WaypointEntry, at index: Int) {
         addedEntry = true
     }

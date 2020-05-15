@@ -18,7 +18,6 @@
 import XCTest
 
 final class TrafficOptionsPanelTests: XCTestCase {
-
     /// The object under test.
     private var panel = TrafficOptionsPanel()
 
@@ -75,8 +74,10 @@ final class TrafficOptionsPanelTests: XCTestCase {
         XCTAssertEqual(mockDelegate.didChangeToOptionCount, 1, "It calls the delegate method only once")
 
         // Is the underlying NMADynamicPenalty object updated?
-        XCTAssertEqual(dynamicPenalty.trafficPenaltyMode, NMATrafficPenaltyMode.disabled,
-                       "Not the expected NMADynamicPenalty.trafficPenaltyMode value!")
+        XCTAssertEqual(
+            dynamicPenalty.trafficPenaltyMode, NMATrafficPenaltyMode.disabled,
+            "Not the expected NMADynamicPenalty.trafficPenaltyMode value!"
+        )
 
         // Set the same selected item again
         item.selectedItemIndex = 0

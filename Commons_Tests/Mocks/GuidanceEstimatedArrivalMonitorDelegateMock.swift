@@ -18,7 +18,6 @@ import Foundation
 import MSDKUI
 
 final class GuidanceEstimatedArrivalMonitorDelegateMock {
-
     private(set) var didCallDidChangeTimeOfArrivalDistanceDuration = false
 
     private(set) var lastEstimatedArrivalMonitor: GuidanceEstimatedArrivalMonitor?
@@ -30,11 +29,12 @@ final class GuidanceEstimatedArrivalMonitorDelegateMock {
 // MARK: - GuidanceEstimatedArrivalMonitorDelegate
 
 extension GuidanceEstimatedArrivalMonitorDelegateMock: GuidanceEstimatedArrivalMonitorDelegate {
-
-    func guidanceEstimatedArrivalMonitor(_ monitor: GuidanceEstimatedArrivalMonitor,
-                                         didChangeTimeOfArrival timeOfArrival: Date?,
-                                         distance: Measurement<UnitLength>?,
-                                         duration: Measurement<UnitDuration>?) {
+    func guidanceEstimatedArrivalMonitor(
+        _ monitor: GuidanceEstimatedArrivalMonitor,
+        didChangeTimeOfArrival timeOfArrival: Date?,
+        distance: Measurement<UnitLength>?,
+        duration: Measurement<UnitDuration>?
+    ) {
         didCallDidChangeTimeOfArrivalDistanceDuration = true
         lastEstimatedArrivalMonitor = monitor
         lastTimeOfArrival = timeOfArrival

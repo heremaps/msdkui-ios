@@ -17,7 +17,6 @@
 import XCTest
 
 extension XCTestCase {
-
     enum RequireError: Error {
         case failedToUnwrapOptional
     }
@@ -45,12 +44,14 @@ extension XCTestCase {
     ///   - message: An optional description of the failure.
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    func XCTAssertLocalized(_ string: String?,
-                            key: String,
-                            bundle: Bundle? = .main,
-                            _ message: String = "",
-                            file: StaticString = #file,
-                            line: UInt = #line) {
+    func XCTAssertLocalized(
+        _ string: String?,
+        key: String,
+        bundle: Bundle? = .main,
+        _ message: String = "",
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         guard let bundle = bundle else {
             XCTFail("Invalid bundle", file: file, line: line)
             return
@@ -72,12 +73,14 @@ extension XCTestCase {
     ///   - message: An optional description of the failure.
     ///   - file: The file in which failure occurred. Defaults to the file name of the test case in which this function was called.
     ///   - line: The line number on which failure occurred. Defaults to the line number on which this function was called.
-    func XCTAssertNonlocalizable(_ string: String?,
-                                 key: String,
-                                 bundle: Bundle? = .main,
-                                 _ message: String = "",
-                                 file: StaticString = #file,
-                                 line: UInt = #line) {
+    func XCTAssertNonlocalizable(
+        _ string: String?,
+        key: String,
+        bundle: Bundle? = .main,
+        _ message: String = "",
+        file: StaticString = #file,
+        line: UInt = #line
+    ) {
         guard let bundle = bundle else {
             XCTFail("Invalid bundle", file: file, line: line)
             return

@@ -61,7 +61,7 @@ import NMAKit
 
     /// Convenience property to access the underlying `SingleChoiceOptionItem` item.
     private var item: SingleChoiceOptionItem? {
-        return optionItems.first as? SingleChoiceOptionItem
+        optionItems.first as? SingleChoiceOptionItem
     }
 
     // MARK: - Public

@@ -17,7 +17,6 @@
 import UIKit
 
 struct ComponentEntry {
-
     enum ComponentPresentation: String, CustomStringConvertible {
         case intrinsic
         case constrained
@@ -36,12 +35,11 @@ struct ComponentEntry {
     let presentationType: ComponentPresentation
 
     var segueID: String {
-        return "\(title)_\(presentationType.rawValue)"
+        "\(title)_\(presentationType.rawValue)"
     }
 }
 
 final class ComponentsDataSource: NSObject, UITableViewDataSource {
-
     private var tableView: UITableView
 
     var components: [ComponentEntry] = [] {
@@ -57,11 +55,11 @@ final class ComponentsDataSource: NSObject, UITableViewDataSource {
     }
 
     func component(at indexPath: IndexPath) -> ComponentEntry {
-        return components[indexPath.row]
+        components[indexPath.row]
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return components.count
+        components.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

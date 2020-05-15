@@ -18,7 +18,6 @@
 import XCTest
 
 final class RouteDescriptionItemTests: XCTestCase {
-
     /// The object under test.
     private let itemUnterTest = RouteDescriptionItem()
 

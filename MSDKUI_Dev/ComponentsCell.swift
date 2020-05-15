@@ -17,7 +17,6 @@
 import UIKit
 
 final class ComponentsCell: UITableViewCell {
-
     // MARK: - Life cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

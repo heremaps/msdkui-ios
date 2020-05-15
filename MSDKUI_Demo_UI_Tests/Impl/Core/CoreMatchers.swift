@@ -19,14 +19,14 @@ import EarlGrey
 enum CoreMatchers {
 
     static var backButton: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("RouteViewController.backButton"),
+        grey_anyOf([grey_accessibilityID("RouteViewController.backButton"),
                            grey_accessibilityID("OptionsViewController.backButton"),
                            grey_accessibilityID("OptionPanelViewController.backButton"),
                            grey_accessibilityID("RouteOverviewViewController.backButton")])
     }
 
     static var exitButton: GREYMatcher {
-        return grey_anyOf([grey_accessibilityID("ViewController.exitButton"),
+        grey_anyOf([grey_accessibilityID("ViewController.exitButton"),
                            grey_accessibilityID("WaypointViewController.exitButton")])
     }
 }

@@ -18,7 +18,6 @@
 import XCTest
 
 final class ExtensionUITableViewCellTests: XCTestCase {
-
     /// Tests `.selectedBackgroundColor` when called with color.
     func testSelectedBackgroundColorWithValue() {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)

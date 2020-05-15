@@ -18,13 +18,11 @@ import UIKit
 
 /// This protocol is introduced to make testing the URL opening feature easier.
 protocol URLOpening {
-
     func open(_ url: URL, options: [UIApplication.OpenExternalURLOptionsKey: Any], completionHandler completion: ((Bool) -> Swift.Void)?)
 }
 
 /// This protocol is introduced to make testing the idle timer disabling feature easier.
 protocol IdleTimerDisabling {
-
     var isIdleTimerDisabled: Bool { get set }
 }
 
