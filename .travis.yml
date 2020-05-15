@@ -18,13 +18,13 @@ jobs:
   include:
     - stage: run framework unit tests
       script:
-        - rake test:msdkui_unit
+        - rake test:msdkui_unit >unit_test.log
       after_success:
         - bash <(curl -s https://codecov.io/bash) -cF ios -J '^HEREMapsUI$' -J '^MSDKUI$'
 
     - stage: run demo app unit tests
       script:
-        - rake test:demo_app_unit
+        - rake test:demo_app_unit >demo_app_test.log
       after_success:
         - bash <(curl -s https://codecov.io/bash) -cF ios -J '^MSDKUI_Demo$'
 
