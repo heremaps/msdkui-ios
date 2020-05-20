@@ -1,4 +1,4 @@
-# MSDKUI Contribution Guide
+# HERE Mobile SDK UI Kit (MSDKUI) Contribution Guide
 
 This guide is for developers who want to contribute to the MSDKUI codebase, build the MSDKUI framework, or run the Demo application on their local machines. For using the `MSDKUI.framework` on your own project, or running the accompanying example apps, please check the [QuickStart](QuickStart.md) guide.
 
