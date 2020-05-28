@@ -1,5 +1,5 @@
 # HERE Mobile SDK UI Kit (MSDKUI) - User Guide
-Are you looking for a framework that lets you build feature-rich and compelling user interfaces on top of the HERE Mobile SDK, _Premium_ edition? Then the HERE Mobile SDK UI Kit (MSDKUI) for iOS and Android is the perfect companion for you.
+Are you looking for a framework that lets you build feature-rich and compelling user interfaces on top of the HERE Mobile SDK, _Premium_ Edition? Then the HERE Mobile SDK UI Kit (MSDKUI) for iOS and Android is the perfect companion for you.
 
 This user guide describes the general workflow using the HERE Mobile SDK UI Kit (MSDKUI) and its components in detail. If you are looking for a quick overview, please look at our [README](../../README.md), our [Quick Start](QuickStart.md) guide or the latest _Release Notes_.
 
@@ -278,7 +278,7 @@ The screenshot shows how the updated main `ViewController` would look like on an
 </p></center>
 
 ## Implementing the route details screen
-In the previous screen the user was able to calculate a route based on his or her waypoint selection and a suitable route mode. Now we want to show a summary for the found routes and their maneuvers on a new screen. As described above we will show this in the `ManeuverViewController` of our HERE Mobile SDK UI Kit (MSDKUI) Primer example app. The `ManeuverViewController` controller holds two HERE Mobile SDK UI Kit (MSDKUI) components:
+In the previous screen the user was able to calculate a route based on his or her waypoint selection and a suitable route mode. Now we want to show a summary of the routes found and their maneuvers on a new screen. As described above we will show this in the `ManeuverViewController` of our HERE Mobile SDK UI Kit (MSDKUI) Primer example app. The `ManeuverViewController` controller holds two HERE Mobile SDK UI Kit (MSDKUI) components:
 - `RouteDescriptionList`: Shows all found routes as a summary in a scrollable list
 - `ManeuverTableView`: Shows all maneuvers belonging to a route
 
@@ -426,7 +426,7 @@ In order for our app to be able to use guidance we must use the device's `locati
 
 You can open the `plist` file as source file to add the above, or edit the list items directly as property list. The `NSLocationWhenInUseUsageDescription` is just an example - you may want to adapt the description to your specific needs. In this case, we need it for guidance, so we add a suitable text.
 
->**Note:** During guidance it may be useful to [prevent the device's display from dimming](https://developer.apple.com/documentation/uikit/uiapplication/1623070-idletimerdisabled). Therefore, it may be recommended to set the `UIApplication.shared.isIdleTimerDisabled` property to `true` before starting guidance - and back to `false`, once destination is reached.
+>**Note:** During guidance it may be useful to [prevent the device's display from dimming](https://developer.apple.com/documentation/uikit/uiapplication/1623070-idletimerdisabled). It may therefore be recommended that the `UIApplication.shared.isIdleTimerDisabled` property be set to `true` before starting guidance - and back to `false` as soon as the destination is reached.
 
 Now, we are ready to start guidance by calling the helper method `startGuidanceSimulation(route: route!)`.
 

@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/heremaps/msdkui-ios.svg?branch=master)](https://travis-ci.com/heremaps/msdkui-ios) [![codecov](https://codecov.io/gh/heremaps/msdkui-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/heremaps/msdkui-ios)
 
 # What is the HERE Mobile SDK UI Kit (MSDKUI)?
-The HERE Mobile SDK UI Kit (MSDKUI) is a framework that provides modular and highly customizable user interface components that can be used on top of the HERE Mobile SDKs for iOS and Android ([Premium Edition](https://developer.here.com/develop/mobile-sdks)).
+The HERE Mobile SDK UI Kit (MSDKUI) is a framework that provides modular and highly customizable user interface components that can be used on top of the HERE SDKs for iOS and Android ([Premium Edition](https://developer.here.com/develop/mobile-sdks)).
 
 ![](https://github.com/heremaps/msdkui-ios/blob/master/Documentation/Guides/Images/UIKit_Intro.png?raw=true)
 
@@ -14,7 +14,7 @@ Rapidly build beautiful UIs for common use cases and scenarios within minutes. V
 - Full support for all device orientations and screen sizes
 - Already localized for 14+ languages
 - Full accessibility support including voice over for customers with special needs
-- Designed for the HERE Mobile SDKs for iOS and Android ([Premium Edition](https://developer.here.com/develop/mobile-sdks))
+- Designed for the HERE SDKs for iOS and Android ([Premium Edition](https://developer.here.com/develop/mobile-sdks))
 
 ## Component Overview
 The HERE Mobile SDK UI Kit (MSDKUI) comes with various high- and low-level components supporting core use cases around the HERE Mobile SDK. Along with these components we deliver a rich set of supportive controls and tailored data structures to further reduce your development cost. All components can be freely arranged in your layouts and are highly customizable. More components will be delivered as part of the next releases. We already provide UI-centric support for the following features:
