@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SQp-1E-f9T">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SQp-1E-f9T">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="GuidanceEstimatedArrivalViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="240" placeholderIntrinsicHeight="128" translatesAutoresizingMaskIntoConstraints="NO" id="XIe-B5-Ymo" customClass="GuidanceEstimatedArrivalView" customModule="MSDKUI">
-                                <rect key="frame" x="67.5" y="237.5" width="240" height="128"/>
+                                <rect key="frame" x="67.5" y="247.5" width="240" height="128"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -52,18 +50,18 @@
             <objects>
                 <viewController id="8CA-jA-Y4s" customClass="ComponentsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w0U-eH-snk">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Lyp-fK-Ae7">
-                                <rect key="frame" x="0.0" y="44" width="375" height="559"/>
+                                <rect key="frame" x="0.0" y="47" width="375" height="576"/>
                                 <color key="backgroundColor" name="colorBackgroundLight"/>
                                 <connections>
                                     <outlet property="delegate" destination="8CA-jA-Y4s" id="gkU-FE-8DW"/>
                                 </connections>
                             </tableView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ugI-CU-ii9">
-                                <rect key="frame" x="8" y="8" width="359" height="29"/>
+                                <rect key="frame" x="8" y="8" width="359" height="32"/>
                                 <segments>
                                     <segment title="All"/>
                                     <segment title="Intrinsic"/>
@@ -116,11 +114,11 @@
             <objects>
                 <viewController id="ijs-wL-pxb" customClass="GuidanceEstimatedArrivalViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yhx-3w-HMr">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ixp-4F-R0P" customClass="GuidanceEstimatedArrivalView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <rect key="frame" x="50" y="50" width="275" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -154,7 +152,7 @@
             <objects>
                 <tableViewController id="zpD-QY-F4J" customClass="GuidanceEstimatedArrivalSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oop-RA-vrM">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -173,11 +171,11 @@
             <objects>
                 <viewController id="Bv6-II-ueS" customClass="GuidanceSpeedViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hUZ-xp-vmh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="s2R-II-L3r" customClass="GuidanceSpeedView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <rect key="frame" x="50" y="50" width="275" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -211,11 +209,11 @@
             <objects>
                 <viewController id="zgq-KB-cQc" customClass="GuidanceSpeedViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zqY-h1-kfT">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="CEh-ce-3CM" customClass="GuidanceSpeedView" customModule="MSDKUI">
-                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="261.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -248,7 +246,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SQp-1E-f9T" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="rPF-Ez-b1G">
-                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="colorAccentLight"/>
                         <color key="barTintColor" name="colorBackgroundBrand"/>
@@ -273,11 +271,11 @@
             <objects>
                 <viewController id="Bx0-sy-OYB" customClass="GuidanceSpeedLimitViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gFH-dm-glv">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="LRP-Ak-CaJ" customClass="GuidanceSpeedLimitView" customModule="MSDKUI">
-                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="261.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -309,11 +307,11 @@
             <objects>
                 <viewController id="ASS-hp-lFj" customClass="GuidanceSpeedLimitViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r7e-OA-zGW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Q99-87-DKT" customClass="GuidanceSpeedLimitView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <rect key="frame" x="50" y="50" width="275" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -347,7 +345,7 @@
             <objects>
                 <tableViewController id="i19-Ep-FK2" customClass="GuidanceSpeedSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Dd7-LT-6Ta">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -366,7 +364,7 @@
             <objects>
                 <tableViewController id="plQ-Un-d55" customClass="GuidanceSpeedLimitSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Nki-kf-aKG">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -385,11 +383,11 @@
             <objects>
                 <viewController id="7s3-TQ-TbA" customClass="GuidanceNextManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="aKP-tY-6Yh">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="LJd-Vv-9Qx" customClass="GuidanceNextManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="261.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -421,7 +419,7 @@
             <objects>
                 <tableViewController id="OnD-BN-wIL" customClass="GuidanceNextManeuverSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CLg-kZ-z2n">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -440,11 +438,11 @@
             <objects>
                 <viewController id="OyC-sr-Zkm" customClass="GuidanceNextManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OjE-Rp-BlB">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="XKp-Kf-sEN" customClass="GuidanceNextManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <rect key="frame" x="50" y="50" width="275" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -478,11 +476,11 @@
             <objects>
                 <viewController id="yTF-p7-Rm3" customClass="GuidanceStreetViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uz7-3r-I4L">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="jbU-I8-XKQ" customClass="GuidanceStreetLabel" customModule="MSDKUI">
-                                <rect key="frame" x="137.5" y="251.5" width="100" height="100"/>
+                                <rect key="frame" x="137.5" y="261.5" width="100" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -514,11 +512,11 @@
             <objects>
                 <viewController id="poX-rT-7rd" customClass="GuidanceStreetViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rzz-yU-XEK">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="5pp-qj-fTs" customClass="GuidanceStreetLabel" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="283.5" width="275" height="36"/>
+                                <rect key="frame" x="50" y="293.5" width="275" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                                 <constraints>
@@ -554,7 +552,7 @@
             <objects>
                 <tableViewController id="Myq-RG-obX" customClass="GuidanceStreetSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="hva-Qr-Myi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -573,11 +571,11 @@
             <objects>
                 <viewController id="G7d-EC-RAS" customClass="ManeuverItemViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="R8O-Ew-7NN">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="asb-U5-c4F" customClass="ManeuverItemView" customModule="MSDKUI">
-                                <rect key="frame" x="187.5" y="251.5" width="0.0" height="100"/>
+                                <rect key="frame" x="187.5" y="261.5" width="0.0" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -609,11 +607,11 @@
             <objects>
                 <viewController id="RQi-b0-b4V" customClass="ManeuverItemViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="k1R-7t-kBu">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="h0h-kw-tt4" customClass="ManeuverItemView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <rect key="frame" x="50" y="50" width="275" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <gestureRecognizers/>
                             </view>
@@ -647,7 +645,7 @@
             <objects>
                 <tableViewController id="GLi-ns-HdV" customClass="ManeuverItemSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="vQp-uB-e3j">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -666,11 +664,11 @@
             <objects>
                 <viewController id="liR-U3-oag" customClass="GuidanceManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ur6-nf-v2w">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="sOH-bR-kgU" customClass="GuidanceManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="24.5" y="251.5" width="326" height="100"/>
+                                <rect key="frame" x="24.5" y="261.5" width="326" height="100"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="colorAccentLight"/>
                                 <gestureRecognizers/>
@@ -703,11 +701,11 @@
             <objects>
                 <viewController id="Qka-HJ-Pgg" customClass="GuidanceManeuverViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bU4-CT-x44">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" placeholderIntrinsicWidth="100" placeholderIntrinsicHeight="100" translatesAutoresizingMaskIntoConstraints="NO" id="Fij-cd-66Z" customClass="GuidanceManeuverView" customModule="MSDKUI">
-                                <rect key="frame" x="50" y="50" width="275" height="503"/>
+                                <rect key="frame" x="50" y="50" width="275" height="523"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" name="colorAccentLight"/>
                                 <gestureRecognizers/>
@@ -742,7 +740,7 @@
             <objects>
                 <tableViewController id="RK9-tA-6Dv" customClass="GuidanceManeuverSettingsViewController" customModule="MSDKUI_Dev" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="e1n-HX-UXD">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="separatorColor" name="colorHint"/>
@@ -757,6 +755,15 @@
             <point key="canvasLocation" x="4038" y="2358"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="6of-DG-Qgr"/>
+        <segue reference="t0s-xA-uls"/>
+        <segue reference="yIW-oY-x8P"/>
+        <segue reference="1w3-H9-b8O"/>
+        <segue reference="nx1-9c-kra"/>
+        <segue reference="n02-0M-D70"/>
+        <segue reference="dBU-L3-LA3"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <namedColor name="colorAccentLight">
             <color red="0.17647058823529413" green="0.83529411764705885" blue="0.78823529411764703" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -771,13 +778,4 @@
             <color red="0.058823529411764705" green="0.086274509803921567" blue="0.12941176470588237" alpha="0.30000001192092896" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="6of-DG-Qgr"/>
-        <segue reference="t0s-xA-uls"/>
-        <segue reference="yIW-oY-x8P"/>
-        <segue reference="1w3-H9-b8O"/>
-        <segue reference="nx1-9c-kra"/>
-        <segue reference="n02-0M-D70"/>
-        <segue reference="dBU-L3-LA3"/>
-    </inferredMetricsTieBreakers>
 </document>

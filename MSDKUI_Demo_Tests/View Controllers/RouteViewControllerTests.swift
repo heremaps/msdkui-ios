@@ -412,8 +412,8 @@ final class RouteViewControllerTests: XCTestCase {
 
     // MARK: - Private
 
-    // swiftlint:disable:next discouraged_optional_collection
     private func reverseGeocodingTest(
+        // swiftlint:disable:next discouraged_optional_collection
         result: [NMAReverseGeocodeResult]?,
         error: NSError?,
         labelToTest: UILabel?,

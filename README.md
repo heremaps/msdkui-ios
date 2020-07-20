@@ -61,10 +61,10 @@ The HERE Mobile SDK UI Kit (MSDKUI) is already fully localized for the following
 - Vietnamese
 
 ## Supported platforms
-The HERE Mobile SDK UI Kit (MSDKUI) components are available for iOS and [Android](https://github.com/heremaps/msdkui-android). The required HERE Mobile SDK is Version 3.15.2, only the _Premium edition_ is supported. HERE Mobile SDK UI Kit (MSDKUI) supports scooter routing. Please, make sure to extend your license key if you want to include scooter routing in your app.
+The HERE Mobile SDK UI Kit (MSDKUI) components are available for iOS and [Android](https://github.com/heremaps/msdkui-android). The required HERE Mobile SDK is Version 3.16.2, only the _Premium edition_ is supported. HERE Mobile SDK UI Kit (MSDKUI) supports scooter routing. Please, make sure to extend your license key if you want to include scooter routing in your app.
 
 ### iOS Environment
-- The HERE Mobile SDK UI Kit (MSDKUI) supports Xcode 11.4 or higher, Swift 5.2 and CocoaPods 1.9.1. or higher.
+- The HERE Mobile SDK UI Kit (MSDKUI) supports Xcode 11.6 or higher, Swift 5.2.4 and CocoaPods 1.9.3 or higher.
 - Minimum deployment target is iOS 12.0.
 
 ## Quick Start
