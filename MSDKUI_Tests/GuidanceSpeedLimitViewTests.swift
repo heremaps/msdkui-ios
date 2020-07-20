@@ -109,9 +109,9 @@ final class GuidanceSpeedLimitViewTests: XCTestCase {
         speedLimitView.unit = .knots
         speedLimitView.speedLimit = Measurement(value: 80, unit: UnitSpeed.kilometersPerHour)
 
-        XCTAssertEqual(speedLimitView.speedLimitLabel.text, "44", "It shows the correct speed value")
+        XCTAssertEqual(speedLimitView.speedLimitLabel.text, "43", "It shows the correct speed value")
         XCTAssertEqual(speedLimitView.speedLimitLabel.textColor, .colorForeground, "It shows the label with correct color")
-        XCTAssertEqual(speedLimitView.accessibilityHint, "44 knots", "It returns the correct hint")
+        XCTAssertEqual(speedLimitView.accessibilityHint, "43 knots", "It returns the correct hint")
     }
 
     /// Test if the background image view shows the correct image when set.
@@ -150,6 +150,6 @@ final class GuidanceSpeedLimitViewTests: XCTestCase {
 
         speedLimitView.unit = .knots
 
-        XCTAssertEqual(speedLimitView.speedLimitLabel.text, "44", "It shows the correct speed value after the change")
+        XCTAssertEqual(speedLimitView.speedLimitLabel.text, "43", "It shows the correct speed value after the change")
     }
 }

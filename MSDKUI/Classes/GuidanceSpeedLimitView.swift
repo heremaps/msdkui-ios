@@ -95,7 +95,7 @@ import UIKit
         let convertedSpeed = speedLimit?.converted(to: unit)
         let speedValue = convertedSpeed.map { NSNumber(value: $0.value) }
 
-        speedLimitLabel.text = speedValue.flatMap(NumberFormatter.roundUpFormatter.string)
+        speedLimitLabel.text = speedValue.flatMap(NumberFormatter.roundHalfUpFormatter.string)
         speedLimitLabel.textColor = speedLimitTextColor
 
         accessibilityHint = convertedSpeed.map(MeasurementFormatter.longSpeedFormatter.string)

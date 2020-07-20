@@ -114,7 +114,7 @@ import UIKit
         let speedValue = convertedSpeed.flatMap { NSNumber(value: $0.value) }
 
         // Sets the labels information.
-        speedValueLabel.text = speedValue.flatMap(NumberFormatter.roundUpFormatter.string) ?? .missingValue
+        speedValueLabel.text = speedValue.flatMap(NumberFormatter.roundHalfUpFormatter.string) ?? .missingValue
         speedUnitLabel.text = speed != nil ? MeasurementFormatter.shortSpeedFormatter.string(from: unit) : nil
 
         // Sets the labels colors.
