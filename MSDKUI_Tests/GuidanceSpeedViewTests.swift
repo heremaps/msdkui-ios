@@ -107,11 +107,11 @@ final class GuidanceSpeedViewTests: XCTestCase {
         speedView.unit = .knots
         speedView.speed = Measurement(value: 10, unit: UnitSpeed.kilometersPerHour)
 
-        XCTAssertEqual(speedView.speedValueLabel.text, "6", "It shows the correct speed value")
+        XCTAssertEqual(speedView.speedValueLabel.text, "5", "It shows the correct speed value")
         XCTAssertEqual(speedView.speedUnitLabel.text, "kn", "It shows the correct speed unit")
         XCTAssertEqual(speedView.speedValueLabel.textColor, .colorForeground, "It shows the label with correct color")
         XCTAssertEqual(speedView.speedUnitLabel.textColor, .colorForegroundSecondary, "It shows the label with correct color")
-        XCTAssertEqual(speedView.accessibilityHint, "6 knots", "It returns the correct hint")
+        XCTAssertEqual(speedView.accessibilityHint, "5 knots", "It returns the correct hint")
     }
 
     /// Tests if the labels are correct when `.speedValueTextColor` and `.speedUnitTextColor` are changed.
@@ -137,7 +137,7 @@ final class GuidanceSpeedViewTests: XCTestCase {
 
         speedView.unit = .knots
 
-        XCTAssertEqual(speedView.speedValueLabel.text, "6", "It shows the correct speed value after the change")
+        XCTAssertEqual(speedView.speedValueLabel.text, "5", "It shows the correct speed value after the change")
         XCTAssertEqual(speedView.speedUnitLabel.text, "kn", "It shows the correct speed unit after the change")
     }
 

@@ -18,12 +18,12 @@
 import XCTest
 
 final class ExtensionNumberFormatterTests: XCTestCase {
-    /// Tests `NumberFormatter.roundUpFormatter`.
-    func testRoundUpFormatter() {
-        let formatter = NumberFormatter.roundUpFormatter
+    /// Tests `NumberFormatter.roundHalfUpFormatter`.
+    func testRoundHalfUpFormatter() {
+        let formatter = NumberFormatter.roundHalfUpFormatter
 
         XCTAssertEqual(formatter.string(from: NSNumber(value: 6.0)), "6", "It returns the correct rounded up string")
-        XCTAssertEqual(formatter.string(from: NSNumber(value: 6.1)), "7", "It returns the correct rounded up string")
+        XCTAssertEqual(formatter.string(from: NSNumber(value: 6.1)), "6", "It returns the correct rounded up string")
         XCTAssertEqual(formatter.string(from: NSNumber(value: 6.5)), "7", "It returns the correct rounded up string")
         XCTAssertEqual(formatter.string(from: NSNumber(value: 6.9)), "7", "It returns the correct rounded up string")
         XCTAssertEqual(formatter.string(from: NSNumber(value: 7.0)), "7", "It returns the correct rounded up string")

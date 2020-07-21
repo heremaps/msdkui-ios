@@ -48,7 +48,7 @@ extension MeasurementFormatter {
         formatter.unitOptions = .providedUnit
         formatter.unitStyle = .short
         formatter.locale = .current
-        formatter.numberFormatter = .roundUpFormatter
+        formatter.numberFormatter = .roundHalfUpFormatter
         return formatter
     }()
 
@@ -58,7 +58,7 @@ extension MeasurementFormatter {
         formatter.unitOptions = .providedUnit
         formatter.unitStyle = .long
         formatter.locale = .current
-        formatter.numberFormatter = .roundUpFormatter
+        formatter.numberFormatter = .roundHalfUpFormatter
         return formatter
     }()
 }

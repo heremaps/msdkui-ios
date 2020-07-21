@@ -18,10 +18,10 @@ import Foundation
 
 extension NumberFormatter {
 
-    /// Returns a `NumberFormatter` that rounds up to the closest integer.
-    static let roundUpFormatter: NumberFormatter = {
+    /// Returns a `NumberFormatter` that rounds up to the closest integer, or away from zero if equidistant.
+    static let roundHalfUpFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
-        formatter.roundingMode = .up
+        formatter.roundingMode = .halfUp
         formatter.maximumFractionDigits = 0
         return formatter
     }()
