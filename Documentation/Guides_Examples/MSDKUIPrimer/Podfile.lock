@@ -1,6 +1,6 @@
 PODS:
   - HEREMaps (3.16.2)
-  - HEREMapsUI (2.1.5):
+  - HEREMapsUI (2.1.6):
     - HEREMaps (= 3.16.2)
 
 DEPENDENCIES:

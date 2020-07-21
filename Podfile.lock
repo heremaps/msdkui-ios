@@ -1,7 +1,7 @@
 PODS:
   - EarlGrey (1.16.0)
   - HEREMaps (3.16.2)
-  - HEREMapsUI (2.1.5):
+  - HEREMapsUI (2.1.6):
     - HEREMaps (= 3.16.2)
   - OCMock (3.6)
   - SwiftLint (0.39.2)
