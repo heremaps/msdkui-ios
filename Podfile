@@ -4,7 +4,7 @@ use_frameworks!
 
 def project_pods
     pod 'HEREMapsUI', :path => './'
-    pod 'SwiftLint', '0.39.2'
+    pod 'SwiftLint', '0.41.0'
 end
 
 target 'MSDKUI_Demo' do
@@ -12,12 +12,12 @@ target 'MSDKUI_Demo' do
 
     target 'MSDKUI_Tests' do
         inherit! :search_paths
-        pod 'OCMock', '3.6'
+        pod 'OCMock', '3.7.1'
     end
 
     target 'MSDKUI_Demo_Tests' do
         inherit! :search_paths
-        pod 'OCMock', '3.6'
+        pod 'OCMock', '3.7.1'
     end
 
     target 'MSDKUI_Demo_UI_Tests' do
@@ -36,6 +36,7 @@ post_install do |installer|
             config.build_settings['LD_RUNPATH_SEARCH_PATHS'] = ['$(inherited)', '${PODS_ROOT}/HEREMaps/framework']
             config.build_settings['PRODUCT_BUNDLE_IDENTIFIER'] = 'org.cocoapods.MSDKUI'
             config.build_settings['RUN_CLANG_STATIC_ANALYZER'] = 'YES'
+            config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '12.0'
         end
     end
 end

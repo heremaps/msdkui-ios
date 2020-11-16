@@ -109,7 +109,7 @@ final class TransportModePanelTests: XCTestCase {
 
     /// Tests the panel with unsupported transport modes.
     func testWhenTransportModesDoesntHaveSupportModes() {
-        panel.transportModes = [.publicTransport, .urbanMobility]
+        panel.transportModes = [.publicTransport]
 
         let buttons = panel.subviews.first?.subviews
             .compactMap { $0 as? UIButton }
