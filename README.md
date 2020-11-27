@@ -74,7 +74,7 @@ The HERE Mobile SDK UI Kit (MSDKUI) components are available for iOS and [Androi
 
 ### iOS Environment
 
-- The HERE Mobile SDK UI Kit (MSDKUI) supports Xcode 11.6 or higher, Swift 5.2.4 and CocoaPods 1.9.3 or higher.
+- The HERE Mobile SDK UI Kit (MSDKUI) supports Xcode 12.2 or higher, Swift 5.3 and CocoaPods 1.10 or higher.
 - Minimum deployment target is iOS 12.0.
 
 ## Quick Start
