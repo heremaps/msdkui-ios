@@ -4,56 +4,59 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 ## Contents
 
-- [Development environment](#development-environment)
-  - [Getting the code](#getting-the-code)
-  - [Setting the HERE Mobile SDK credentials](#setting-the-here-mobile-sdk-credentials)
-  - [Setting up the environment](#setting-up-the-environment)
-- [Building the MSDKUI Framework](#building-the-msdkui-framework)
-- [Building the Demo app](#building-the-demo-app)
-- [Building the Dev app](#building-the-dev-app)
-- [Commit / pull request policy](#commit-pull-request-policy)
-- [Writing Git commit messages](#writing-git-commit-messages)
-  - [A normal ticket](#a-normal-ticket)
-  - [Solving multiple tickets](#solving-multiple-tickets)
-- [Submitting a pull request](#submitting-a-pull-request)
-- [Writing unit tests](#writing-unit-tests)
-  - [Localized Strings](#localized-strings)
-  - [Nonlocalizable Strings](#nonlocalizable-strings)
-  - [IBActions](#ibactions)
-  - [UIAlertController](#uialertcontroller)
-    - [Testing UIAlertController presentation](#testing-uialertcontroller-presentation)
-    - [Testing UIAlertController actions (when buttons are tapped)](#testing-uialertcontroller-actions-when-buttons-are-tapped)
-  - [UIBarButtonItem](#uibarbuttonitem)
-  - [Test cases MARK directives](#test-cases-mark-directives)
-- [Running tests](#running-tests)
-- [Writing code](#writing-code)
-  - [Accessibility Identifiers](#accessibility-identifiers)
-  - [MARK directives](#mark-directives)
-- [Command line](#command-line)
-  - [MSDKUI API Reference (tools:jazzy)](#msdkui-api-reference-toolsjazzy)
-  - [Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)](#test-coverage-for-the-msdkui-framework-toolsxcovmsdkui)
-  - [Test Coverage for the Demo Application (tools:xcov_demo_app)](#test-coverage-for-the-demo-application-toolsxcovdemoapp)
-  - [Updating localized strings (strings:all)](#updating-localized-strings-stringsall)
-- [Troubleshooting](#troubleshooting)
-  - [Bundler](#bundler)
+- [HERE Mobile SDK UI Kit (MSDKUI) Contribution Guide](#here-mobile-sdk-ui-kit-msdkui-contribution-guide)
+  - [Contents](#contents)
+  - [Development environment](#development-environment)
+    - [Getting the code](#getting-the-code)
+    - [Setting the HERE Mobile SDK credentials](#setting-the-here-mobile-sdk-credentials)
+    - [Setting up the environment](#setting-up-the-environment)
+  - [Building the MSDKUI Framework](#building-the-msdkui-framework)
+  - [Building the Demo app](#building-the-demo-app)
+  - [Building the Dev app](#building-the-dev-app)
+  - [Commit / pull request policy](#commit--pull-request-policy)
+  - [Writing Git commit messages](#writing-git-commit-messages)
+    - [A normal ticket](#a-normal-ticket)
+    - [Solving multiple tickets](#solving-multiple-tickets)
+  - [Submitting a pull request](#submitting-a-pull-request)
+  - [Writing unit tests](#writing-unit-tests)
+    - [Localized Strings](#localized-strings)
+    - [Nonlocalizable Strings](#nonlocalizable-strings)
+    - [IBActions](#ibactions)
+    - [UIAlertController](#uialertcontroller)
+      - [Testing UIAlertController presentation](#testing-uialertcontroller-presentation)
+      - [Testing UIAlertController actions (when buttons are tapped)](#testing-uialertcontroller-actions-when-buttons-are-tapped)
+    - [UIBarButtonItem](#uibarbuttonitem)
+    - [Test cases MARK directives](#test-cases-mark-directives)
+  - [Running tests](#running-tests)
+  - [Writing code](#writing-code)
+    - [Accessibility Identifiers](#accessibility-identifiers)
+    - [MARK directives](#mark-directives)
+  - [Command line](#command-line)
+    - [MSDKUI API Reference (tools:jazzy)](#msdkui-api-reference-toolsjazzy)
+    - [Test Coverage for the MSDKUI Framework (tools:xcov_msdkui)](#test-coverage-for-the-msdkui-framework-toolsxcov_msdkui)
+    - [Test Coverage for the Demo Application (tools:xcov_demo_app)](#test-coverage-for-the-demo-application-toolsxcov_demo_app)
+    - [Updating localized strings (strings:all)](#updating-localized-strings-stringsall)
+  - [Troubleshooting](#troubleshooting)
+    - [Installing rbenv, ruby, and bundler](#installing-rbenv-ruby-and-bundler)
+    - [Bundler](#bundler)
 
 ## Development environment
 
 Prerequisites, as of August, 2019:
 
-- Latest [Xcode](https://developer.apple.com/xcode/) (11.1), which requires macOS Mojave (or higher)
+- Latest [Xcode](https://developer.apple.com/xcode/) (12.2), which requires macOS Catalina (or higher)
 - [Brew](https://brew.sh/)
 - Xcode command line tools, which can be installed by running the command `xcode-select --install`
 - Ruby 2.0 or higher
-- [Bundler 1.16.6](https://bundler.io/) to ensure a consistent environment
+- [Bundler](https://bundler.io/) to ensure a consistent environment
 
 There are many ways to install Ruby on macOS. Recent macOS versions already include Ruby 2.0 or higher, but other popular ways to install Ruby include [brew](https://brew.sh/), [rbenv](https://github.com/rbenv/rbenv), and [rvm](https://rvm.io/rvm/install). For this reason, installing Bundler might differ between environments, see [Troubleshooting](#troubleshooting) for more details.
 
 ### Getting the code
 
 ```bash
-$ git clone https://github.com/heremaps/msdkui-ios
-$ cd msdkui-ios
+git clone https://github.com/heremaps/msdkui-ios
+cd msdkui-ios
 ```
 
 ### Setting the HERE Mobile SDK credentials
@@ -82,8 +85,8 @@ ENV['MSDKUI_APP_LICENSE_IOS'] = "your license"
 ### Setting up the environment
 
 ```bash
-$ bundle install
-$ bundle exec pod install
+bundle install
+bundle exec pod install
 ```
 
 The first command `bundle install` installs the gem dependencies needed to build the project. This includes [CocoaPods](https://rubygems.org/gems/cocoapods) for managing Pod dependencies, [xcov](https://rubygems.org/gems/xcov) for the code coverage report, and [jazzy](https://rubygems.org/gems/jazzy) to generate the MSDKUI framework API Reference. The `Gemfile` and `Gemfile.lock` files found in the repo specify the exact versions that Bundler should install to avoid dependency conflicts.
@@ -93,7 +96,7 @@ The latter, `bundle exec pod install`, installs the Pods (including the HERE Mob
 Everything after this point is done from within Xcode. Launch it via command line (or by double clicking the workspace via Finder).
 
 ```bash
-$ open -a xcode MSDKUI.xcworkspace
+open -a xcode MSDKUI.xcworkspace
 ```
 
 ## Building the MSDKUI Framework
@@ -101,7 +104,7 @@ $ open -a xcode MSDKUI.xcworkspace
 The easiest way to build the MSDKUI Framework is using the command line:
 
 ```bash
-$ bundle exec rake build:msdkui_framework
+bundle exec rake build:msdkui_framework
 ```
 
 At the end it will drop the `MSDKUI.framework` at `output/framework/universal/`. The framework is a [fat binary](https://en.wikipedia.org/wiki/Fat_binary), built for device and simulator.
@@ -549,7 +552,7 @@ rake tools:xcov_msdkui       # Run Test Coverage for the MSDKUI Framework Unit T
 The iOS version used for testing is `12.2` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
 
 ```bash
-$ DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="12.0" bundle exec rake test:msdkui_unit
+DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="12.0" bundle exec rake test:msdkui_unit
 ```
 
 Although most of the Rake tasks included are meant to be used by CI, some are relevant for developers. For instance, `tools:jazzy`, `tools:xcov_msdkui`, `tools:xcov_demo_app`, and the aforementioned `build:msdkui_framework`.
@@ -559,7 +562,7 @@ Although most of the Rake tasks included are meant to be used by CI, some are re
 To generate the MSDKUI API Reference, run:
 
 ```bash
-$ bundle exec rake tools:jazzy
+bundle exec rake tools:jazzy
 ```
 
 It will place the API Reference at `output/jazzy/`. Run `open output/jazzy/index.html` to open the API Reference on the default browser.
@@ -569,7 +572,7 @@ It will place the API Reference at `output/jazzy/`. Run `open output/jazzy/index
 To generate the test coverage for the MSDKUI framework, run:
 
 ```bash
-$ bundle exec rake tools:xcov_msdkui
+bundle exec rake tools:xcov_msdkui
 ```
 
 It will place the report at `output/xcov/msdkui/`. Run `open output/xcov/msdkui/index.html` to open the report on the default browser.
@@ -579,7 +582,7 @@ It will place the report at `output/xcov/msdkui/`. Run `open output/xcov/msdkui/
 To generate the test coverage for the Demo application, run:
 
 ```bash
-$ bundle exec rake tools:xcov_demo_app
+bundle exec rake tools:xcov_demo_app
 ```
 
 It will place the report at `output/xcov/demo_app/`. Run `open output/xcov/demo_app/index.html` to open the report on the default browser.
@@ -591,13 +594,13 @@ It will place the report at `output/xcov/demo_app/`. Run `open output/xcov/demo_
 In order to update the localized strings, two env. variables are required: `MSDKUI_FRAMEWORK_STRINGS_URL` and `MSDKUI_DEMO_APP_STRINGS_URL`. They should hold the URLs to the .zip files containing the localized strings.
 
 ```bash
-$ bundle exec rake strings:all
+bundle exec rake strings:all
 ```
 
 The env. variables can be set via command line (preferable for CI)
 
 ```bash
-$ MSDKUI_FRAMEWORK_STRINGS_URL="https://.../release.zip" MSDKUI_DEMO_APP_STRINGS_URL="https://.../release.zip" bundle exec rake strings:all
+MSDKUI_FRAMEWORK_STRINGS_URL="https://.../release.zip" MSDKUI_DEMO_APP_STRINGS_URL="https://.../release.zip" bundle exec rake strings:all
 ```
 
 Or via `.env.rb` (preferable for developer workstation)
@@ -643,7 +646,7 @@ The instructions on how to install `rbenv` and `ruby-build` using `brew` can als
 The easiest way to install Bundler, as [described on Bundler's website](https://bundler.io/), is:
 
 ```bash
-$ gem install bundler
+gem install bundler
 ```
 
 This installs Bundler as a [gem](https://rubygems.org/gems/bundler) through [RubyGems](https://rubygems.org/). Basically, Bundler itself is a gem that can install other gems to ensure the required versions are compatible.
@@ -651,13 +654,13 @@ This installs Bundler as a [gem](https://rubygems.org/gems/bundler) through [Rub
 But depending on how Ruby is installed, `--user-install` might be necessary:
 
 ```bash
-$ gem install bundler --user-install
+gem install bundler --user-install
 ```
 
 Also, depending on how Ruby is installed, `--path vendor/bundle` might be necessary before running `bundle install`
 
 ```bash
-$ bundle install --path vendor/bundle
+bundle install --path vendor/bundle
 ```
 
 This will install the required dependencies locally to `./vendor` - depending on how Ruby is installed, Bundler might try to install gems at system-level (aka globally) on directories the current user doesn't have write privileges.
