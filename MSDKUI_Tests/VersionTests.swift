@@ -20,7 +20,7 @@ import XCTest
 final class VersionTests: XCTestCase {
     /// Tests that the framework version is correctly retrieved.
     func testFrameworkVersion() {
-        let expectedVersion = "2.1.6"
+        let expectedVersion = "2.1.7"
 
         XCTAssertEqual(Version.getString(), expectedVersion, "Not the expected version!")
     }
