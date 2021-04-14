@@ -4,7 +4,7 @@ use_frameworks!
 
 def project_pods
     pod 'HEREMapsUI', :path => './'
-    pod 'SwiftLint', '0.41.0'
+    pod 'SwiftLint', '0.43.1'
 end
 
 target 'MSDKUI_Demo' do
@@ -12,12 +12,12 @@ target 'MSDKUI_Demo' do
 
     target 'MSDKUI_Tests' do
         inherit! :search_paths
-        pod 'OCMock', '3.7.1'
+        pod 'OCMock', '3.8.1'
     end
 
     target 'MSDKUI_Demo_Tests' do
         inherit! :search_paths
-        pod 'OCMock', '3.7.1'
+        pod 'OCMock', '3.8.1'
     end
 
     target 'MSDKUI_Demo_UI_Tests' do
