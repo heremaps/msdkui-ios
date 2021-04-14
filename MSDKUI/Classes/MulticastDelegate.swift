@@ -59,7 +59,7 @@ class MulticastDelegate<T> {
     func invoke(_ invocation: (T) -> Void) {
         // One-by-one for each delegate invoke the closure
         delegates.allObjects.forEach {
-            let delegate = $0 as! T //swiftlint:disable:this force_cast
+            let delegate = $0 as! T // swiftlint:disable:this force_cast
             invocation(delegate)
         }
     }

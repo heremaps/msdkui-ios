@@ -164,9 +164,6 @@ opt_in_rules:
   # Don't include vertical whitespace (empty line) before closing braces.
   - vertical_whitespace_closing_braces
 
-  # Adding weak to a computed property has no effect.
-  - weak_computed_property
-
   # An XCTFail call should include a description of the assertion.
   - xctfail_message
 
