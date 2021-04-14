@@ -46,7 +46,7 @@ If you are new to iOS development please follow the guides on [developer.apple.c
 
 >The example project is called "HelloMSDKUI" and it can be found [here](../Guides_Examples).
 
-For this Quick Start app, we have used Xcode 12.2 and Swift 5.3 Start Xcode and select:
+For this Quick Start app, we have used Xcode 12.4 and Swift 5.3.3 Start Xcode and select:
 
 - _Create a new Xcode project_.
 - As template, it is sufficient to choose _iOS_ => _Application_ => _Single View App_.
