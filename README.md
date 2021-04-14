@@ -94,6 +94,6 @@ We are happy to hear your feedback. Please [contact us](https://developer.here.c
 
 ## License
 
-Copyright (C) 2017-2020 HERE Europe B.V.
+Copyright (C) 2017-2021 HERE Europe B.V.
 
 See the [LICENSE](https://github.com/heremaps/msdkui-ios/blob/master/LICENSE) file in the root of this project for license details.
