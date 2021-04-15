@@ -65,7 +65,7 @@ enum GuidanceManeuverUtil {
     /// - Returns: The current street or nil.
     static func getCurrentStreet(from maneuver: NMAManeuver) -> String? {
         var currentStreet = combineStrings(maneuver: maneuver,
-                                           name: maneuver.roadName as String?,
+                                           name: maneuver.roadNames()?.first as String?,
                                            number: maneuver.roadNumber as String?)
 
         if !currentStreet.hasContent {
@@ -89,7 +89,7 @@ enum GuidanceManeuverUtil {
         while distance < GuidanceManeuverUtil.nextManeuverThreshold && nextStreet == nil, let iterationNextManeuver = nextManeuver {
             distance += Int(clamping: iterationNextManeuver.distanceFromPreviousManeuver)
             nextStreet = GuidanceManeuverUtil.combineStrings(maneuver: iterationNextManeuver,
-                                                             name: iterationNextManeuver.nextRoadName as String?,
+                                                             name: iterationNextManeuver.nextRoadNames()?.first as String?,
                                                              number: iterationNextManeuver.nextRoadNumber as String?)
             nextManeuver = GuidanceManeuverUtil.getNextManeuver(last: iterationNextManeuver, fallback: route)
         }

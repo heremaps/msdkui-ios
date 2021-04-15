@@ -110,9 +110,11 @@
     OCMStub([mockManeuver0 action]).andReturn(NMAManeuverActionEnterHighway);
     OCMStub([mockManeuver0 turn]).andReturn(NMAManeuverTurnKeepLeft);
     OCMStub([mockManeuver0 roadNumber]).andReturn(@"10");
-    OCMStub([mockManeuver0 roadName]).andReturn(@"Current road");
+    NSArray<NSString *> *roadNames1 = [NSArray arrayWithObjects:@"Current road", nil];
+    OCMStub([[mockManeuver0 roadNames] firstObject]).andReturn(roadNames1);
     OCMStub([mockManeuver0 nextRoadNumber]).andReturn(@"11");
-    OCMStub([mockManeuver0 nextRoadName]).andReturn(@"Next road");
+    NSArray<NSString *> *nextRoadNames1 = [NSArray arrayWithObjects:@"Next road", nil];
+    OCMStub([[mockManeuver0 nextRoadNames] firstObject]).andReturn(nextRoadNames1);
     OCMStub([mockManeuver0 coordinates]).andReturn([NMAGeoCoordinates geoCoordinatesWithLatitude:1.0f longitude:2.0f]);
     OCMStub([mockManeuver0 getIconFileName]).andReturn(@"maneuver_icon_0");
 
@@ -121,9 +123,11 @@
     OCMStub([mockManeuver1 action]).andReturn(NMAManeuverActionEnd);
     OCMStub([mockManeuver1 turn]).andReturn(NMAManeuverTurnNone);
     OCMStub([mockManeuver1 roadNumber]).andReturn(@"12");
-    OCMStub([mockManeuver1 roadName]).andReturn(@"End");
+    NSArray<NSString *> *roadNames2 = [NSArray arrayWithObjects:@"End", nil];
+    OCMStub([[mockManeuver1 roadNames] firstObject]).andReturn(roadNames2);
     OCMStub([mockManeuver1 nextRoadNumber]).andReturn(@"116");
-    OCMStub([mockManeuver1 nextRoadName]).andReturn(@"Invalidenstr.");
+    NSArray<NSString *> *nextRoadNames2 = [NSArray arrayWithObjects:@"Invalidenstr.", nil];
+    OCMStub([[mockManeuver1 nextRoadNames] firstObject]).andReturn(nextRoadNames2);
     OCMStub([mockManeuver1 coordinates]).andReturn([NMAGeoCoordinates geoCoordinatesWithLatitude:3.0f longitude:4.0f]);
     OCMStub([mockManeuver1 getIconFileName]).andReturn(@"maneuver_icon_1");
 
@@ -203,7 +207,8 @@
     NMANavigationManager *mockNavigationManager = OCMClassMock([NMANavigationManager class]);
 
     NMAManeuver *currentManeuver = OCMClassMock([NMAManeuver class]);
-    OCMStub([currentManeuver nextRoadName]).andReturn(@"Invalidenstr.");
+    NSArray<NSString *> *nextRoadNames1 = [NSArray arrayWithObjects:@"Invalidenstr.", nil];
+    OCMStub([[currentManeuver nextRoadNames] firstObject]).andReturn(nextRoadNames1);
     OCMStub([currentManeuver icon]).andReturn(NMAManeuverIconKeepRight);
     OCMStub([currentManeuver getIconFileName]).andReturn(@"maneuver_icon_4");
     OCMStub([currentManeuver getSignpostExitNumber]).andReturn(nil);
@@ -211,7 +216,8 @@
     OCMStub(mockNavigationManager.currentManeuver).andReturn(currentManeuver);
 
     NMAManeuver *nextManeuver = OCMClassMock([NMAManeuver class]);
-    OCMStub([nextManeuver nextRoadName]).andReturn(@"Chausseestr.");
+    NSArray<NSString *> *nextRoadNames2 = [NSArray arrayWithObjects:@"Chausseestr.", nil];
+    OCMStub([[nextManeuver nextRoadNames] firstObject]).andReturn(nextRoadNames2);
     OCMStub([nextManeuver nextRoadNumber]).andReturn(@"58");
     OCMStub([nextManeuver icon]).andReturn(NMAManeuverIconKeepLeft);
     OCMStub([nextManeuver getIconFileName]).andReturn(@"maneuver_icon_9");

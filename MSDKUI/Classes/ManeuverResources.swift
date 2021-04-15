@@ -144,11 +144,11 @@ class ManeuverResources {
     /// - Parameter index: The index of a maneuver.
     /// - Returns: The road name for the indexed maneuver.
     private func getRoadName(maneuver: NMAManeuver, index: Int) -> String? {
-        var roadName = maneuver.roadName as String?
+        var roadName = maneuver.roadNames()?.first as String?
         var roadNumber = maneuver.roadNumber as String?
 
         if maneuver.isChangingRoad || index == 0 {
-            roadName = maneuver.nextRoadName as String?
+            roadName = maneuver.nextRoadNames()?.first as String?
             roadNumber = maneuver.nextRoadNumber as String?
         }
 
@@ -179,7 +179,7 @@ class ManeuverResources {
             }
 
             nextManeuverStreetValue = GuidanceManeuverUtil.combineStrings(maneuver: afterNextManeuver,
-                                                                          name: afterNextManeuver?.nextRoadName as String?,
+                                                                          name: afterNextManeuver?.nextRoadNames()?.first as String?,
                                                                           number: afterNextManeuver?.nextRoadNumber as String?)
             newIndex += 1
             afterNextManeuver = getManeuver(at: newIndex)
