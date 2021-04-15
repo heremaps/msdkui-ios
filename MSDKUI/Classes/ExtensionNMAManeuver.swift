@@ -34,7 +34,7 @@ public extension NMAManeuver {
     /// - Returns: The next street name or nil when it is not available.
     @objc func getNextStreet(fallback route: NMARoute?) -> String? {
         var nextStreet = GuidanceManeuverUtil.combineStrings(maneuver: self,
-                                                             name: nextRoadName as String?,
+                                                             name: nextRoadNames()?.first as String?,
                                                              number: nextRoadNumber as String?)
 
         if nextStreet.hasContent == false {
@@ -43,7 +43,7 @@ public extension NMAManeuver {
 
         if nextStreet.hasContent == false {
             nextStreet = GuidanceManeuverUtil.combineStrings(maneuver: self,
-                                                             name: roadName as String?,
+                                                             name: roadNames()?.first as String?,
                                                              number: roadNumber as String?)
         }
 
