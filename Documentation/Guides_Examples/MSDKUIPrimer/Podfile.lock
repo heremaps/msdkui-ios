@@ -1,7 +1,7 @@
 PODS:
-  - HEREMaps (3.17.2)
+  - HEREMaps (3.18.2)
   - HEREMapsUI (2.1.7):
-    - HEREMaps (= 3.17.2)
+    - HEREMaps (= 3.18.2)
 
 DEPENDENCIES:
   - HEREMapsUI (from `../../../`)
@@ -20,4 +20,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 83148ff1192b8f48431c4e20900a5426b03fe23d
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

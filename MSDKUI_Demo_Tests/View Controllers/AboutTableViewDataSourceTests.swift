@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017-2020 HERE Europe B.V.
+// Copyright (C) 2017-2021 HERE Europe B.V.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -64,7 +64,7 @@ final class AboutTableViewDataSourceTests: XCTestCase {
         // Third item
         let thirdItem = try require(dataSource?.item(at: IndexPath(row: 2, section: 0)))
         XCTAssertLocalized(thirdItem.title, key: "msdkui_app_here_sdk_version", "It has the correct title")
-        XCTAssertTrue(thirdItem.description.contains("3.17.2"), "It has the correct description")
+        XCTAssertTrue(thirdItem.description.contains("3.18.2"), "It has the correct description")
 
         // Fourth item
         let fourthItem = try require(dataSource?.item(at: IndexPath(row: 3, section: 0)))

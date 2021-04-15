@@ -1,5 +1,5 @@
 //
-// Copyright (C) 2017-2020 HERE Europe B.V.
+// Copyright (C) 2017-2021 HERE Europe B.V.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -59,7 +59,7 @@ class MulticastDelegate<T> {
     func invoke(_ invocation: (T) -> Void) {
         // One-by-one for each delegate invoke the closure
         delegates.allObjects.forEach {
-            let delegate = $0 as! T //swiftlint:disable:this force_cast
+            let delegate = $0 as! T // swiftlint:disable:this force_cast
             invocation(delegate)
         }
     }
