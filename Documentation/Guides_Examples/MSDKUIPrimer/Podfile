@@ -1,5 +1,5 @@
 target 'MSDKUIPrimer' do
     platform :ios, '12.0'
     pod 'HEREMapsUI', :path => '../../../' # Integrate dependencies based on the local podspec from this repo (always the latest).
-    # Alternatively, to integrate dependencies based on a released podspec use: pod 'HEREMapsUI', '2.1.7'
+    # Alternatively, to integrate dependencies based on a released podspec use: pod 'HEREMapsUI', '2.1.8'
 end
