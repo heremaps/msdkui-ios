@@ -191,7 +191,7 @@ import NMAKit
 
 extension TruckOptionsPanel: OptionItemDelegate {
 
-    public func optionItemDidChange(_ item: OptionItem) { //swiftlint:disable:this cyclomatic_complexity
+    public func optionItemDidChange(_ item: OptionItem) { // swiftlint:disable:this cyclomatic_complexity
         // Proceeds based on the option item id
         switch item.id {
         case OptionItemID.vehicleHeight.rawValue:
