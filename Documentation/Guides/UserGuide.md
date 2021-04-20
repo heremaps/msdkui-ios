@@ -6,8 +6,6 @@ This user guide describes the general workflow using the HERE Mobile SDK UI Kit 
 
 ## Contents
 
-- [HERE Mobile SDK UI Kit (MSDKUI) - User Guide](#here-mobile-sdk-ui-kit-msdkui---user-guide)
-  - [Contents](#contents)
   - [Why use the HERE Mobile SDK UI Kit (MSDKUI)?](#why-use-the-here-mobile-sdk-ui-kit-msdkui)
   - [Where to start?](#where-to-start)
   - [How to read this guide?](#how-to-read-this-guide)
