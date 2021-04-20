@@ -44,7 +44,7 @@ This guide is for developers who want to contribute to the MSDKUI codebase, buil
 
 Prerequisites, as of August, 2019:
 
-- Latest [Xcode](https://developer.apple.com/xcode/) (12.2), which requires macOS Catalina (or higher)
+- Latest [Xcode](https://developer.apple.com/xcode/) (12.4), which requires macOS Catalina (or higher)
 - [Brew](https://brew.sh/)
 - Xcode command line tools, which can be installed by running the command `xcode-select --install`
 - Ruby 2.0 or higher
@@ -549,10 +549,10 @@ rake tools:xcov_demo_app     # Run Test Coverage for the Demo App Unit Tests
 rake tools:xcov_msdkui       # Run Test Coverage for the MSDKUI Framework Unit Tests
 ```
 
-The iOS version used for testing is `12.2` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
+The iOS version used for testing is `14.4` (latest), and the Simulator used is `iPhone 8`. To run the tests using a different simulator or iOS version, specify the environment variables `DEFAULT_SIMULATOR_NAME` and `DEFAULT_IOS_VERSION`. For instance:
 
 ```bash
-DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="12.0" bundle exec rake test:msdkui_unit
+DEFAULT_SIMULATOR_NAME="iPhone 8 Plus" DEFAULT_IOS_VERSION="14.4.2" bundle exec rake test:msdkui_unit
 ```
 
 Although most of the Rake tasks included are meant to be used by CI, some are relevant for developers. For instance, `tools:jazzy`, `tools:xcov_msdkui`, `tools:xcov_demo_app`, and the aforementioned `build:msdkui_framework`.

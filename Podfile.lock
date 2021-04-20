@@ -1,7 +1,7 @@
 PODS:
   - EarlGrey (1.16.0)
   - HEREMaps (3.18.2)
-  - HEREMapsUI (2.1.7):
+  - HEREMapsUI (2.1.8):
     - HEREMaps (= 3.18.2)
   - OCMock (3.8.1)
   - SwiftLint (0.43.1)
@@ -26,7 +26,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   EarlGrey: 455e5597ae5ccaca92cd46b81d8b25cacec060a1
   HEREMaps: 2ce8fe190eaf7c3438c381af11650cad7d4879c6
-  HEREMapsUI: 8a89414255b3f6c321c709ab3a51d4de518c11c8
+  HEREMapsUI: 88eace0b19a8a77eb9ea0b56df6d9209c4d547dc
   OCMock: 29f6e52085b4e7d9b075cbf03ed7c3112f82f934
   SwiftLint: 99f82d07b837b942dd563c668de129a03fc3fb52
 
