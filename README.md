@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/heremaps/msdkui-ios.svg?branch=master)](https://travis-ci.com/heremaps/msdkui-ios) [![codecov](https://codecov.io/gh/heremaps/msdkui-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/heremaps/msdkui-ios)
+[![codecov](https://codecov.io/gh/heremaps/msdkui-ios/branch/master/graph/badge.svg)](https://codecov.io/gh/heremaps/msdkui-ios)
 
 # What is the HERE Mobile SDK UI Kit (MSDKUI)?
 
