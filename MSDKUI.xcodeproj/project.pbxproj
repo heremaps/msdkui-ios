@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2544E4BCD7DB26EC1BE02080 /* Pods_MSDKUI_Dev.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7641FA5E5CB1E23C5A672D57 /* Pods_MSDKUI_Dev.framework */; };
+		266B86EE274E3F4C0090A7F0 /* Pods_MSDKUI_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84C670E9BEADEDFECD6B305 /* Pods_MSDKUI_Demo.framework */; };
+		266B86EF274E3F4C0090A7F0 /* Pods_MSDKUI_Demo.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A84C670E9BEADEDFECD6B305 /* Pods_MSDKUI_Demo.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2B03B90721148B8300CA612C /* GuidanceStreetLabelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B03B90621148B8300CA612C /* GuidanceStreetLabelTests.swift */; };
 		2B049B1F217632C90001F117 /* ExtensionArrayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B049B1E217632C90001F117 /* ExtensionArrayTests.swift */; };
 		2B09C2EB2178D95A00B90B23 /* MapViewportHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B09C2EA2178D95A00B90B23 /* MapViewportHandlerTests.swift */; };
@@ -228,7 +230,6 @@
 		A3C83BF120AC3A10007B2E12 /* WaypointActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C83BD420AC3A10007B2E12 /* WaypointActions.swift */; };
 		A3C83BF320AC3A10007B2E12 /* RouteOverViewMatchers.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3C83BD920AC3A10007B2E12 /* RouteOverViewMatchers.swift */; };
 		A6992176AC14206805864746 /* Pods_MSDKUI_Demo_UI_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBAFD3BD5CCA335BE80DB553 /* Pods_MSDKUI_Demo_UI_Tests.framework */; };
-		A74385CBFCA4AB1BCCA0CD55 /* Pods_MSDKUI_Demo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A84C670E9BEADEDFECD6B305 /* Pods_MSDKUI_Demo.framework */; };
 		ACC4E8DA1E8264A200653691 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACC4E8D91E8264A200653691 /* Utils.swift */; };
 		B64C71CFAEDC03AAE68BF9F7 /* Pods_MSDKUI_Demo_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8EA75F943C3E58D05BFD7282 /* Pods_MSDKUI_Demo_Tests.framework */; };
 		BD7F07891F18C46B00B161DD /* ManeuverItemViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD7F07871F18C45D00B161DD /* ManeuverItemViewTests.swift */; };
@@ -263,13 +264,14 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		AC6BFD6A1E8137BD00D08AB4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				266B86EF274E3F4C0090A7F0 /* Pods_MSDKUI_Demo.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -535,7 +537,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A74385CBFCA4AB1BCCA0CD55 /* Pods_MSDKUI_Demo.framework in Frameworks */,
+				266B86EE274E3F4C0090A7F0 /* Pods_MSDKUI_Demo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1573,7 +1575,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Demo/Pods-MSDKUI_Demo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HEREMapsUI/MSDKUI.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMAKit/NMAKit.framework/NMAKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/HEREMaps/NMAKit.framework/NMAKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -1611,7 +1613,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-MSDKUI_Dev/Pods-MSDKUI_Dev-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/HEREMapsUI/MSDKUI.framework",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMAKit/NMAKit.framework/NMAKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/HEREMaps/NMAKit.framework/NMAKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

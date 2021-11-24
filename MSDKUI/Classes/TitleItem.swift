@@ -101,7 +101,9 @@ open class TitleItem: NSObject {
 
         // Updates the view's `accessibilityLabel` whenever the label `text` is updated
         labelObservation = observe(\.label.text, options: [.new]) { [weak self] _, change in
-            self?.view.accessibilityLabel = change.newValue as? String
+            if let newValue = change.newValue {
+                self?.view.accessibilityLabel = newValue
+            }
         }
     }
 }
