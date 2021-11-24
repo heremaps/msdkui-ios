@@ -28,7 +28,7 @@ import UIKit
     @IBOutlet private(set) var speedLimitLabel: UILabel!
 
     /// The speed limit used to populate the view.
-    public var speedLimit: Measurement<UnitSpeed>? = nil {
+    public var speedLimit: Measurement<UnitSpeed>? {
         didSet { updateContent() }
     }
 

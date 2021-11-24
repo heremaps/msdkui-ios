@@ -29,7 +29,7 @@ import UIKit
 
     /// The speed used to populate the view.
     /// The default value is `nil`.
-    public var speed: Measurement<UnitSpeed>? = nil {
+    public var speed: Measurement<UnitSpeed>? {
         didSet { updateLabels() }
     }
 
