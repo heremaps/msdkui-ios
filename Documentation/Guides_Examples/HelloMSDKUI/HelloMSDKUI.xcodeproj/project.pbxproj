@@ -188,7 +188,7 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-HelloMSDKUI/Pods-HelloMSDKUI-frameworks.sh",
-				"${PODS_XCFRAMEWORKS_BUILD_DIR}/NMAKit/NMAKit.framework/NMAKit",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/HEREMaps/NMAKit.framework/NMAKit",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (

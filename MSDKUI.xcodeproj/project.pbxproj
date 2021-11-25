@@ -2209,7 +2209,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Commons/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				MODULE_NAME = MSDKUI_Demo;
 				PRODUCT_BUNDLE_IDENTIFIER = com.here.msdkui.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2242,7 +2242,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Commons/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				MODULE_NAME = MSDKUI_Demo;
 				PRODUCT_BUNDLE_IDENTIFIER = com.here.msdkui.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2532,7 +2532,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Commons/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 2.1.8;
+				MARKETING_VERSION = 2.1.9;
 				MODULE_NAME = MSDKUI_Demo;
 				PRODUCT_BUNDLE_IDENTIFIER = com.here.msdkui.demo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
