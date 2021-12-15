@@ -1286,25 +1286,30 @@
 				TargetAttributes = {
 					5ADC01E1203F6BD500EBA8A5 = {
 						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = PQEP8H94J7;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = PQEP8H94J7;
 						LastSwiftMigration = 1020;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = PQEP8H94J7;
 						LastSwiftMigration = 1020;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
 					6245BCA021A447500042B00C = {
 						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = PQEP8H94J7;
 						ProvisioningStyle = Automatic;
 					};
 					62EA5EC420D81B7C004AE496 = {
 						CreatedOnToolsVersion = 9.4.1;
+						DevelopmentTeam = PQEP8H94J7;
 						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 607FACCF1AFB9204008FA782;
@@ -1523,7 +1528,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "rake tools:buildcredentials\n";
+			shellScript = "if [ $ACTION != \"indexbuild\" ]; then\n    rake tools:buildcredentials\nfi\n";
 		};
 		62F7CF4121AD53A3005FF537 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2014,7 +2019,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Demo_UI_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2040,7 +2045,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Demo_UI_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2065,7 +2070,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Demo_UI_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2197,7 +2202,7 @@
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2226,7 +2231,7 @@
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MSDKUI\"",
@@ -2255,7 +2260,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -2279,7 +2284,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MSDKUI_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2306,7 +2311,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2334,7 +2339,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2360,7 +2365,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Dev/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2387,7 +2392,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Demo_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2415,7 +2420,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Demo_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2442,7 +2447,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MSDKUI_Demo_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -2516,7 +2521,7 @@
 				BUNDLE_LOADER = "";
 				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MSDKUI\"",
@@ -2545,7 +2550,7 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ENABLE_MODULES = YES;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = PQEP8H94J7;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = MSDKUI_Tests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
